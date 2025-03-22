@@ -9,6 +9,10 @@
 
 using namespace godot;
 
+discordpp::AuthorizationArgs *DiscordAuthorizationArgs::unwrap() {
+	return &args;
+}
+
 uint64_t DiscordAuthorizationArgs::get_client_id() {
 	return args.ClientId();
 }

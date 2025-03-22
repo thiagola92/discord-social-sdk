@@ -17,6 +17,8 @@ protected:
 	static void _bind_methods();
 
 public:
+	discordpp::AuthorizationArgs *unwrap(); // Internal usage.
+
 	uint64_t get_client_id();
 	void set_client_id(uint64_t client_id);
 

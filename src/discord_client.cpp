@@ -5,7 +5,11 @@
 
 using namespace godot;
 
-void DiscordClient::authorize(Ref<DiscordAuthorizationArgs> args) {
+discordpp::Client *DiscordClient::unwrap() {
+	return &client;
+}
+
+void DiscordClient::authorize(DiscordAuthorizationArgs *args) {
 	auto code_verifier = client.CreateAuthorizationCodeVerifier();
 
 	// client.Authorize(

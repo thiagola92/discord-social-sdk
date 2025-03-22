@@ -5,6 +5,10 @@
 
 using namespace godot;
 
+discordpp::AuthorizationCodeChallenge *DiscordAuthorizationCodeChallenge::unwrap() {
+	return &code_challenge;
+}
+
 String DiscordAuthorizationCodeChallenge::get_challenge() {
 	return String(code_challenge.Challenge().c_str());
 }

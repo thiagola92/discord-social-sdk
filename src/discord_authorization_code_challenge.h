@@ -17,6 +17,8 @@ protected:
 	static void _bind_methods();
 
 public:
+	discordpp::AuthorizationCodeChallenge *unwrap(); // Internal usage.
+
 	// AuthenticationCodeChallengeMethod get_method();
 	// void set_method(AuthenticationCodeChallengeMethod method);
 

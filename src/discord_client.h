@@ -20,10 +20,12 @@ protected:
 	static void _bind_methods();
 
 public:
+	discordpp::Client *unwrap(); // Internal usage.
+
 	DiscordClient();
 	~DiscordClient();
 
-	void authorize(Ref<DiscordAuthorizationArgs> args);
+	void authorize(DiscordAuthorizationArgs *args);
 };
 
 } // namespace godot
