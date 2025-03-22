@@ -1,5 +1,5 @@
-#ifndef DISCORDGDEXTENSION_REGISTER_TYPES_H
-#define DISCORDGDEXTENSION_REGISTER_TYPES_H
+#ifndef DISCORD_SOCIAL_SDK_REGISTER_TYPES_H
+#define DISCORD_SOCIAL_SDK_REGISTER_TYPES_H
 
 #define DISCORDPP_IMPLEMENTATION
 
@@ -10,4 +10,4 @@ using namespace godot;
 void initialize_module(ModuleInitializationLevel p_level);
 void uninitialize_module(ModuleInitializationLevel p_level);
 
-#endif // DISCORDGDEXTENSION_REGISTER_TYPES_H
+#endif // DISCORD_SOCIAL_SDK_REGISTER_TYPES_H
