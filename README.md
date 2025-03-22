@@ -1,4 +1,4 @@
-# Discord GDExtension
+# Discord Social SDK
 Wrapper around [Discord Social SDK](https://discord.com/developers/docs/discord-social-sdk/overview).  
 
 # Development
@@ -15,19 +15,46 @@ Wrapper around [Discord Social SDK](https://discord.com/developers/docs/discord-
         - `discord_social_sdk/lib/release/` to `lib/release/`
         - `discord_social_sdk/bin/release/` to `lib/release/`
 
-## Develop
+## Tree
+```
+.
+├── demo/
+│   └── Godot project containing the addon and examples
+├── doc_classes/
+│   └── Project classes documentation
+├── godot-cpp/
+│   └── C++ bindings for GDExtension API
+├── include/
+│   └── Discord headers
+├── lib/
+│   └── Discord libs
+└── src/
+    └── Project source code and headers
+```
+
+## Setup
+Generate GDExtension API files.
+
 ```bash
-# Setup once
 cd godot-cpp
 godot --dump-extension-api
 scons platform=linux custom_api_file=extension_api.json
 cd ..
+```
 
-# Generate classes documentation
+## Generate Documentation
+Execute to create/update/delete XMLs with classes documentation.
+
+```bash
 cd demo
 godot --doctool ../ --gdextension-docs
+cd ..
+```
 
-# Generate GDExtension
+## Generate GDExtension
+Execute to generate the GDExtension.
+
+```bash
 scons platform=linux                            # Debug
 scons platform=linux target=template_release    # Release
 ```
