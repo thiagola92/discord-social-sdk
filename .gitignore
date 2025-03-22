@@ -13,5 +13,8 @@
 *.exp
 *.dll
 
+# MacOS
+*.dylib
+
 # Maintain project libs
 !lib/**
