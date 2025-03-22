@@ -1,0 +1,17 @@
+# Project
+
+# Scons
+*.dblite
+
+# Linux
+*.os
+*.so
+
+# Windows
+*.obj
+*.lib
+*.exp
+*.dll
+
+# Maintain project libs
+!lib/**
