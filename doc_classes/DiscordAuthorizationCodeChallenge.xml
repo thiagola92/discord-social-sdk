@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="DiscordAuthorizationCodeChallenge" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	Wrapper for [url=https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1AuthorizationCodeChallenge.html]AuthorizationCodeChallenge[/url]
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="get_challenge">
+			<return type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="set_challenge">
+			<return type="void" />
+			<param index="0" name="challenge" type="String" />
+			<description>
+			</description>
+		</method>
+	</methods>
+</class>

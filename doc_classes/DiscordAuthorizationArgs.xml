@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="DiscordAuthorizationArgs" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	Wrapper for [url=https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1AuthorizationArgs.html]AuthorizationArgs[/url]
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="get_client_id">
+			<return type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="get_nonce">
+			<return type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="get_scopes">
+			<return type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="get_state">
+			<return type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="set_client_id">
+			<return type="void" />
+			<param index="0" name="client_id" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="set_nonce">
+			<return type="void" />
+			<param index="0" name="nonce" type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="set_scopes">
+			<return type="void" />
+			<param index="0" name="scopes" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="set_state">
+			<return type="void" />
+			<param index="0" name="state" type="Variant" />
+			<description>
+			</description>
+		</method>
+	</methods>
+</class>
