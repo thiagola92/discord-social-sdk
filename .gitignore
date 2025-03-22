@@ -16,5 +16,11 @@
 # MacOS
 *.dylib
 
-# Maintain project libs
-!lib/**
+# Android
+*.aar
+
+# Debug
+*.dbg
+
+# XCode
+lib/release/discord_partner_sdk.xcframework
