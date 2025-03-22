@@ -19,7 +19,7 @@ Wrapper around [Discord Social SDK](https://discord.com/developers/docs/discord-
 ```
 .
 ├── demo/
-│   └── Godot project containing the addon and examples
+│   └── Godot project containing the addon, examples and tests
 ├── doc_classes/
 │   └── Project classes documentation
 ├── godot-cpp/
