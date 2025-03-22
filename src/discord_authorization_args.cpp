@@ -1,6 +1,7 @@
 #include "discord_authorization_args.h"
 #include "discord_authorization_code_challenge.h"
 #include "discord_enum.h"
+#include "godot_cpp/core/memory.hpp"
 #include "godot_cpp/variant/variant.hpp"
 
 #include <godot_cpp/core/class_db.hpp>
@@ -36,7 +37,7 @@ Variant DiscordAuthorizationArgs::get_state() {
 		return Variant(state.value().c_str());
 	}
 
-	return Variant(nullptr);
+	return nullptr;
 }
 
 void DiscordAuthorizationArgs::set_state(Variant state) {
@@ -55,7 +56,7 @@ Variant DiscordAuthorizationArgs::get_nonce() {
 		return Variant(nonce.value().c_str());
 	}
 
-	return Variant(nullptr);
+	return nullptr;
 }
 
 void DiscordAuthorizationArgs::set_nonce(Variant nonce) {
@@ -71,11 +72,12 @@ Variant DiscordAuthorizationArgs::get_code_challenge() {
 	auto code_challenge = args.CodeChallenge();
 
 	if (code_challenge.has_value()) {
+		auto cc = memnew(DiscordAuthorizationCodeChallenge);
 		// auto c = DiscordAuthorizationCodeChallenge(code_challenge.value());
-		// return &c;
+		return cc;
 	}
 
-	return Variant(nullptr);
+	return nullptr;
 }
 
 void DiscordAuthorizationArgs::set_code_challenge(Variant code_challenge) {

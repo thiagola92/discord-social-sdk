@@ -27,7 +27,7 @@ if env["target"] in ["editor", "template_debug"]:
         print("Not including class reference as we're targeting a pre-4.3 baseline.")
 
 # Copy Discord Social SDK lib to the same place where this lib will be.
-destination_dir = Path("demo/bin")
+destination_dir = Path("demo/addons/discord_social_sdk/bin/")
 
 if env["target"] == "template_release":
     env.Append(LIBPATH=["lib/release/"])
@@ -43,7 +43,7 @@ else:
 # Generate library.
 if env["platform"] == "macos":
     library = env.SharedLibrary(
-        "demo/bin/libdiscord_social_sdk.{}.{}.framework/libdiscord_social_sdk.{}.{}".format(
+        "demo/addons/discord_social_sdk/bin/libdiscord_social_sdk.{}.{}.framework/libdiscord_social_sdk.{}.{}".format(
             env["platform"], env["target"], env["platform"], env["target"]
         ),
         source=sources,
@@ -51,17 +51,17 @@ if env["platform"] == "macos":
 elif env["platform"] == "ios":
     if env["ios_simulator"]:
         library = env.StaticLibrary(
-            "demo/bin/libdiscord_social_sdk.{}.{}.simulator.a".format(env["platform"], env["target"]),
+            "demo/addons/discord_social_sdk/bin/libdiscord_social_sdk.{}.{}.simulator.a".format(env["platform"], env["target"]),
             source=sources,
         )
     else:
         library = env.StaticLibrary(
-            "demo/bin/libdiscord_social_sdk.{}.{}.a".format(env["platform"], env["target"]),
+            "demo/addons/discord_social_sdk/bin/libdiscord_social_sdk.{}.{}.a".format(env["platform"], env["target"]),
             source=sources,
         )
 else:
     library = env.SharedLibrary(
-        "demo/bin/libdiscord_social_sdk{}{}".format(env["suffix"], env["SHLIBSUFFIX"]),
+        "demo/addons/discord_social_sdk/bin/libdiscord_social_sdk{}{}".format(env["suffix"], env["SHLIBSUFFIX"]),
         source=sources,
     )
 

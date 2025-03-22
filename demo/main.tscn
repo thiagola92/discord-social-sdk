@@ -4,5 +4,3 @@
 
 [node name="Main" type="Node"]
 script = ExtResource("1_ig7tw")
-
-[node name="DiscordClient" type="DiscordClient" parent="."]
