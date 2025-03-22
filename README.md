@@ -59,3 +59,7 @@ scons platform=linux                            # Debug
 scons platform=linux target=template_release    # Release
 ```
 
+# References
+- [Discord Social SDK Overview](https://discord.com/developers/docs/discord-social-sdk/overview)
+- [Discord Social SDK Rich Presence](https://discord.com/developers/docs/rich-presence/using-with-the-discord-social-sdk)
+- [Discord Social SDK Reference](https://discord.com/developers/docs/social-sdk/index.html)
