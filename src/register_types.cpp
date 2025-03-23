@@ -1,13 +1,11 @@
 #include "register_types.h"
-#include "discord_authorization_args.h"
 #include "discord_authorization_code_challenge.h"
 #include "discord_client.h"
 #include "discord_enum.h"
-
-#include <gdextension_interface.h>
-#include <godot_cpp/core/class_db.hpp>
-#include <godot_cpp/core/defs.hpp>
-#include <godot_cpp/godot.hpp>
+#include "gdextension_interface.h"
+#include "godot_cpp/core/class_db.hpp"
+#include "godot_cpp/core/defs.hpp"
+#include "godot_cpp/godot.hpp"
 
 using namespace godot;
 

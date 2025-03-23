@@ -1,12 +1,8 @@
-// https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1Client.html
 #ifndef DISCORD_CLIENT_H
 #define DISCORD_CLIENT_H
 
 #include "discord_authorization_args.h"
-
-#include <discordpp.h>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/wrapped.hpp>
+#include "godot_cpp/classes/node.hpp"
 
 namespace godot {
 

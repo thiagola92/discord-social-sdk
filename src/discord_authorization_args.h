@@ -1,9 +1,8 @@
 #ifndef DISCORD_AUTHORIZATION_ARGS_H
 #define DISCORD_AUTHORIZATION_ARGS_H
 
-#include <discordpp.h>
-#include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/wrapped.hpp>
+#include "discord_authorization_code_challenge.h"
+#include "godot_cpp/classes/ref_counted.hpp"
 
 namespace godot {
 

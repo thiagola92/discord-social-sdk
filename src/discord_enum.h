@@ -1,9 +1,8 @@
 #ifndef DISCORD_ENUM_H
 #define DISCORD_ENUM_H
 
-#include <discordpp.h>
-#include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/wrapped.hpp>
+#include "godot_cpp/classes/ref_counted.hpp"
+#include "godot_cpp/classes/wrapped.hpp"
 
 namespace godot {
 

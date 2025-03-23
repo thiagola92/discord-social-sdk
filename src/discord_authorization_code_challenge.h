@@ -1,9 +1,8 @@
 #ifndef DISCORD_AUTHORIZATION_CODE_CHALLENGE_H
 #define DISCORD_AUTHORIZATION_CODE_CHALLENGE_H
 
-#include <discordpp.h>
-#include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/wrapped.hpp>
+#include "discordpp.h"
+#include "godot_cpp/classes/ref_counted.hpp"
 
 namespace godot {
 
@@ -26,7 +25,7 @@ public:
 	void set_challenge(String challenge);
 
 	DiscordAuthorizationCodeChallenge();
-	// DiscordAuthorizationCodeChallenge(discordpp::AuthorizationCodeChallenge);
+	DiscordAuthorizationCodeChallenge(discordpp::AuthorizationCodeChallenge code_challenge);
 	~DiscordAuthorizationCodeChallenge();
 };
 

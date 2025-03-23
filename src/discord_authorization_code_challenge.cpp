@@ -1,8 +1,5 @@
 #include "discord_authorization_code_challenge.h"
 
-#include <godot_cpp/core/class_db.hpp>
-#include <string>
-
 using namespace godot;
 
 discordpp::AuthorizationCodeChallenge *DiscordAuthorizationCodeChallenge::unwrap() {
@@ -25,5 +22,9 @@ void DiscordAuthorizationCodeChallenge::_bind_methods() {
 }
 
 DiscordAuthorizationCodeChallenge::DiscordAuthorizationCodeChallenge() {}
+
+DiscordAuthorizationCodeChallenge::DiscordAuthorizationCodeChallenge(discordpp::AuthorizationCodeChallenge code_challenge) {
+	this->code_challenge = code_challenge;
+}
 
 DiscordAuthorizationCodeChallenge::~DiscordAuthorizationCodeChallenge() {}

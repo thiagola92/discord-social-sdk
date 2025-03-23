@@ -1,12 +1,4 @@
 #include "discord_authorization_args.h"
-#include "discord_authorization_code_challenge.h"
-#include "discord_enum.h"
-#include "godot_cpp/core/memory.hpp"
-#include "godot_cpp/variant/variant.hpp"
-
-#include <godot_cpp/core/class_db.hpp>
-#include <optional>
-#include <string>
 
 using namespace godot;
 
@@ -72,9 +64,7 @@ Variant DiscordAuthorizationArgs::get_code_challenge() {
 	auto code_challenge = args.CodeChallenge();
 
 	if (code_challenge.has_value()) {
-		auto cc = memnew(DiscordAuthorizationCodeChallenge);
-		// auto c = DiscordAuthorizationCodeChallenge(code_challenge.value());
-		return cc;
+		return memnew(DiscordAuthorizationCodeChallenge(code_challenge.value()));
 	}
 
 	return nullptr;
@@ -82,7 +72,8 @@ Variant DiscordAuthorizationArgs::get_code_challenge() {
 
 void DiscordAuthorizationArgs::set_code_challenge(Variant code_challenge) {
 	if (code_challenge.get_type() == Variant::OBJECT) {
-		// args.SetCodeChallenge({ code_challenge.utf8().get_data() });
+		auto cc = Object::cast_to<DiscordAuthorizationCodeChallenge>(code_challenge)->unwrap();
+		// args.SetCodeChallenge(std::optional<discordpp::AuthorizationCodeChallenge>{ *cc });
 		return;
 	}
 
