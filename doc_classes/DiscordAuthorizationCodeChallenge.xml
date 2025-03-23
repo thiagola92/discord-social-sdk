@@ -3,7 +3,7 @@
 	<brief_description>
 	</brief_description>
 	<description>
-	Wrapper for [url=https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1AuthorizationCodeChallenge.html]AuthorizationCodeChallenge[/url]
+		Wrapper for class [url=https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1AuthorizationCodeChallenge.html]AuthorizationCodeChallenge[/url]
 	</description>
 	<tutorials>
 	</tutorials>
@@ -13,9 +13,20 @@
 			<description>
 			</description>
 		</method>
+		<method name="get_method">
+			<return type="int" enum="DiscordAuthenticationCodeChallengeMethod.Enum" />
+			<description>
+			</description>
+		</method>
 		<method name="set_challenge">
 			<return type="void" />
 			<param index="0" name="challenge" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="set_method">
+			<return type="void" />
+			<param index="0" name="method" type="int" enum="DiscordAuthenticationCodeChallengeMethod.Enum" />
 			<description>
 			</description>
 		</method>

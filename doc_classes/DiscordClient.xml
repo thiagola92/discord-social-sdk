@@ -3,15 +3,14 @@
 	<brief_description>
 	</brief_description>
 	<description>
-	Wrapper for [url=https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1Client.html]Client[/url]
+		Wrapper for class [url=https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1Client.html]Client[/url]
 	</description>
 	<tutorials>
 	</tutorials>
 	<methods>
 		<method name="authorize">
 			<return type="void" />
-			<param index="0" name="application_id" type="int" />
-			<param index="1" name="scopes" type="String" />
+			<param index="0" name="args" type="DiscordAuthorizationArgs" />
 			<description>
 			</description>
 		</method>
