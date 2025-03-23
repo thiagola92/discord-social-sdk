@@ -1,6 +1,7 @@
 #ifndef DISCORD_AUTHORIZATION_CODE_CHALLENGE_H
 #define DISCORD_AUTHORIZATION_CODE_CHALLENGE_H
 
+#include "discord_enum.h"
 #include "discordpp.h"
 #include "godot_cpp/classes/ref_counted.hpp"
 
@@ -18,8 +19,8 @@ protected:
 public:
 	discordpp::AuthorizationCodeChallenge *unwrap(); // Internal usage.
 
-	// AuthenticationCodeChallengeMethod get_method();
-	// void set_method(AuthenticationCodeChallengeMethod method);
+	// DiscordEnum::AuthenticationCodeChallengeMethod get_method();
+	// void set_method(DiscordEnum::AuthenticationCodeChallengeMethod method);
 
 	String get_challenge();
 	void set_challenge(String challenge);

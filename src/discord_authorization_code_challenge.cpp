@@ -6,6 +6,14 @@ discordpp::AuthorizationCodeChallenge *DiscordAuthorizationCodeChallenge::unwrap
 	return &code_challenge;
 }
 
+// DiscordEnum::AuthenticationCodeChallengeMethod DiscordAuthorizationCodeChallenge::get_method() {
+// 	return (DiscordEnum::AuthenticationCodeChallengeMethod)code_challenge.Method();
+// }
+
+// void DiscordAuthorizationCodeChallenge::set_method(DiscordEnum::AuthenticationCodeChallengeMethod method) {
+// 	code_challenge.SetMethod((discordpp::AuthenticationCodeChallengeMethod)method);
+// }
+
 String DiscordAuthorizationCodeChallenge::get_challenge() {
 	return String(code_challenge.Challenge().c_str());
 }
@@ -15,6 +23,11 @@ void DiscordAuthorizationCodeChallenge::set_challenge(String challenge) {
 }
 
 void DiscordAuthorizationCodeChallenge::_bind_methods() {
+	// ClassDB::bind_method(D_METHOD("get_method"),
+	// 		&DiscordAuthorizationCodeChallenge::get_method);
+	// ClassDB::bind_method(D_METHOD("set_method", "method"),
+	// 		&DiscordAuthorizationCodeChallenge::set_method);
+
 	ClassDB::bind_method(D_METHOD("get_challenge"),
 			&DiscordAuthorizationCodeChallenge::get_challenge);
 	ClassDB::bind_method(D_METHOD("set_challenge", "challenge"),

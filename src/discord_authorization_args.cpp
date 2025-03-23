@@ -73,7 +73,7 @@ Variant DiscordAuthorizationArgs::get_code_challenge() {
 void DiscordAuthorizationArgs::set_code_challenge(Variant code_challenge) {
 	if (code_challenge.get_type() == Variant::OBJECT) {
 		auto cc = Object::cast_to<DiscordAuthorizationCodeChallenge>(code_challenge)->unwrap();
-		// args.SetCodeChallenge(std::optional<discordpp::AuthorizationCodeChallenge>{ *cc });
+		args.SetCodeChallenge(std::optional<discordpp::AuthorizationCodeChallenge>{ *cc });
 		return;
 	}
 
@@ -100,6 +100,11 @@ void DiscordAuthorizationArgs::_bind_methods() {
 			&DiscordAuthorizationArgs::get_nonce);
 	ClassDB::bind_method(D_METHOD("set_nonce", "nonce"),
 			&DiscordAuthorizationArgs::set_nonce);
+
+	ClassDB::bind_method(D_METHOD("get_code_challenge"),
+			&DiscordAuthorizationArgs::get_code_challenge);
+	ClassDB::bind_method(D_METHOD("set_code_challenge", "code_challenge"),
+			&DiscordAuthorizationArgs::set_code_challenge);
 }
 
 DiscordAuthorizationArgs::DiscordAuthorizationArgs() {}
