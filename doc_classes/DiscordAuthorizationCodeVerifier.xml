@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="DiscordAuthorizationCodeVerifier" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="get_challenge">
+			<return type="DiscordAuthorizationCodeChallenge" />
+			<description>
+			</description>
+		</method>
+		<method name="get_verifier">
+			<return type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="set_challenge">
+			<return type="void" />
+			<param index="0" name="challenge" type="DiscordAuthorizationCodeChallenge" />
+			<description>
+			</description>
+		</method>
+		<method name="set_verifier">
+			<return type="void" />
+			<param index="0" name="verifier" type="String" />
+			<description>
+			</description>
+		</method>
+	</methods>
+</class>

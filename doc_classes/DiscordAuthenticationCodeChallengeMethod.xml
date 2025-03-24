@@ -3,7 +3,7 @@
 	<brief_description>
 	</brief_description>
 	<description>
-	Wrapper for enum [url=https://discord.com/developers/docs/social-sdk/namespacediscordpp.html#a1c123930bb42c6f9f77f18b5593ad876]AuthenticationCodeChallengeMethod[/url]
+		Wrapper for enum [url=https://discord.com/developers/docs/social-sdk/namespacediscordpp.html#a1c123930bb42c6f9f77f18b5593ad876]AuthenticationCodeChallengeMethod[/url]
 	</description>
 	<tutorials>
 	</tutorials>

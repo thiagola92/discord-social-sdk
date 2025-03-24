@@ -2,6 +2,7 @@
 #define DISCORD_CLIENT_H
 
 #include "discord_authorization_args.h"
+#include "discord_authorization_code_verifier.h"
 #include "godot_cpp/classes/node.hpp"
 
 namespace godot {
@@ -20,7 +21,7 @@ public:
 
 	// Auth
 	void authorize(DiscordAuthorizationArgs *args);
-	// DiscordAuthorizationCodeVerifier CreateAuthorizationCodeVerifier();
+	DiscordAuthorizationCodeVerifier *create_authorization_code_verifier();
 
 	DiscordClient();
 	~DiscordClient();

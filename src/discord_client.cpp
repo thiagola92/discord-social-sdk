@@ -1,4 +1,7 @@
 #include "discord_client.h"
+#include "discordpp.h"
+#include "godot_cpp/core/memory.hpp"
+#include "godot_cpp/core/print_string.hpp"
 
 using namespace godot;
 
@@ -7,16 +10,21 @@ discordpp::Client *DiscordClient::unwrap() {
 }
 
 void DiscordClient::authorize(DiscordAuthorizationArgs *args) {
-	auto code_verifier = client.CreateAuthorizationCodeVerifier();
+	client.Authorize(
+			*args->unwrap(), [this](auto result, auto code, auto redirect_uri) {
+				if (result.Successful()) {
+					emit_signal("authorized");
+				} else {
+					emit_signal("rejected");
+				}
+			});
+}
 
-	// client.Authorize(
-	// 		*args->unwrap(), [this, code_verifier](auto result, auto code, auto redirect_uri) {
-	// 			if (result.Successful()) {
-	// 				emit_signal("authorized");
-	// 			} else {
-	// 				emit_signal("rejected");
-	// 			}
-	// 		});
+DiscordAuthorizationCodeVerifier *DiscordClient::create_authorization_code_verifier() {
+	auto cv = (discordpp::AuthorizationCodeVerifier *)memalloc(sizeof(discordpp::AuthorizationCodeVerifier));
+	*cv = client.CreateAuthorizationCodeVerifier();
+	// discordpp::AuthorizationCodeVerifier cv = client.CreateAuthorizationCodeVerifier();
+	return memnew(DiscordAuthorizationCodeVerifier(cv));
 }
 
 void DiscordClient::_bind_methods() {
@@ -25,6 +33,9 @@ void DiscordClient::_bind_methods() {
 
 	ClassDB::bind_method(D_METHOD("authorize", "args"),
 			&DiscordClient::authorize);
+
+	ClassDB::bind_method(D_METHOD("create_authorization_code_verifier"),
+			&DiscordClient::create_authorization_code_verifier);
 }
 
 DiscordClient::DiscordClient() {}

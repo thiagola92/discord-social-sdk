@@ -6,3 +6,6 @@
 script = ExtResource("1_2i7gc")
 
 [node name="DiscordClient" type="DiscordClient" parent="."]
+
+[connection signal="authorized" from="DiscordClient" to="." method="_on_discord_client_authorized"]
+[connection signal="rejected" from="DiscordClient" to="." method="_on_discord_client_rejected"]
