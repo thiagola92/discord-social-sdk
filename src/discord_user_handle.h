@@ -10,7 +10,7 @@ class DiscordUserHandle : public RefCounted {
 	GDCLASS(DiscordUserHandle, RefCounted)
 
 private:
-	discordpp::UserHandle user_handle;
+	discordpp::UserHandle *user_handle;
 
 protected:
 	static void _bind_methods();
@@ -18,7 +18,7 @@ protected:
 public:
 	discordpp::UserHandle *unwrap(); // Internal usage.
 
-	DiscordUserHandle();
+	// DiscordUserHandle();
 	~DiscordUserHandle();
 };
 

@@ -12,15 +12,13 @@ class DiscordChannelHandle : public RefCounted {
 private:
 	discordpp::ChannelHandle *channel_handle;
 
-	DiscordChannelHandle();
-
 protected:
 	static void _bind_methods();
 
 public:
 	discordpp::ChannelHandle *unwrap(); // Internal usage.
 
-	DiscordChannelHandle(discordpp::ChannelHandle *channel_handle);
+	// DiscordChannelHandle();
 	~DiscordChannelHandle();
 };
 

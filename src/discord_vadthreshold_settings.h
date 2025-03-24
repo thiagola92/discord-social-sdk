@@ -10,7 +10,7 @@ class DiscordVADThresholdSettings : public RefCounted {
 	GDCLASS(DiscordVADThresholdSettings, RefCounted)
 
 private:
-	discordpp::VADThresholdSettings vadthreshold_settings;
+	discordpp::VADThresholdSettings *vadthreshold_settings;
 
 protected:
 	static void _bind_methods();
@@ -18,7 +18,7 @@ protected:
 public:
 	discordpp::VADThresholdSettings *unwrap(); // Internal usage.
 
-	DiscordVADThresholdSettings();
+	// DiscordVADThresholdSettings();
 	~DiscordVADThresholdSettings();
 };
 

@@ -10,7 +10,7 @@ class DiscordLobbyMemberHandle : public RefCounted {
 	GDCLASS(DiscordLobbyMemberHandle, RefCounted)
 
 private:
-	discordpp::LobbyMemberHandle lobby_member_handle;
+	discordpp::LobbyMemberHandle *lobby_member_handle;
 
 protected:
 	static void _bind_methods();
@@ -18,7 +18,7 @@ protected:
 public:
 	discordpp::LobbyMemberHandle *unwrap(); // Internal usage.
 
-	DiscordLobbyMemberHandle();
+	// DiscordLobbyMemberHandle();
 	~DiscordLobbyMemberHandle();
 };
 

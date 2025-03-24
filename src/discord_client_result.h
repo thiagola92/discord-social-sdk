@@ -10,7 +10,7 @@ class DiscordClientResult : public RefCounted {
 	GDCLASS(DiscordClientResult, RefCounted)
 
 private:
-	discordpp::ClientResult client_result;
+	discordpp::ClientResult *client_result;
 
 protected:
 	static void _bind_methods();
@@ -18,7 +18,7 @@ protected:
 public:
 	discordpp::ClientResult *unwrap(); // Internal usage.
 
-	DiscordClientResult();
+	// DiscordClientResult();
 	~DiscordClientResult();
 };
 

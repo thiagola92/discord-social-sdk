@@ -10,7 +10,7 @@ class DiscordGuildChannel : public RefCounted {
 	GDCLASS(DiscordGuildChannel, RefCounted)
 
 private:
-	discordpp::GuildChannel guild_channel;
+	discordpp::GuildChannel *guild_channel;
 
 protected:
 	static void _bind_methods();
@@ -18,7 +18,7 @@ protected:
 public:
 	discordpp::GuildChannel *unwrap(); // Internal usage.
 
-	DiscordGuildChannel();
+	// DiscordGuildChannel();
 	~DiscordGuildChannel();
 };
 

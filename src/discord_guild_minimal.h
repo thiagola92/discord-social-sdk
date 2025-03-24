@@ -10,7 +10,7 @@ class DiscordGuildMinimal : public RefCounted {
 	GDCLASS(DiscordGuildMinimal, RefCounted)
 
 private:
-	discordpp::GuildMinimal guild_minimal;
+	discordpp::GuildMinimal *guild_minimal;
 
 protected:
 	static void _bind_methods();
@@ -18,7 +18,7 @@ protected:
 public:
 	discordpp::GuildMinimal *unwrap(); // Internal usage.
 
-	DiscordGuildMinimal();
+	// DiscordGuildMinimal();
 	~DiscordGuildMinimal();
 };
 

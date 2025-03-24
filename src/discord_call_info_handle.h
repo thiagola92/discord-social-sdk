@@ -10,7 +10,7 @@ class DiscordCallInfoHandle : public RefCounted {
 	GDCLASS(DiscordCallInfoHandle, RefCounted)
 
 private:
-	discordpp::CallInfoHandle call_info_handle;
+	discordpp::CallInfoHandle *call_info_handle;
 
 protected:
 	static void _bind_methods();
@@ -18,7 +18,7 @@ protected:
 public:
 	discordpp::CallInfoHandle *unwrap(); // Internal usage.
 
-	DiscordCallInfoHandle();
+	// DiscordCallInfoHandle();
 	~DiscordCallInfoHandle();
 };
 

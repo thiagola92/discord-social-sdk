@@ -10,7 +10,7 @@ class DiscordRelationshipHandle : public RefCounted {
 	GDCLASS(DiscordRelationshipHandle, RefCounted)
 
 private:
-	discordpp::RelationshipHandle relationship_handle;
+	discordpp::RelationshipHandle *relationship_handle;
 
 protected:
 	static void _bind_methods();
@@ -18,7 +18,7 @@ protected:
 public:
 	discordpp::RelationshipHandle *unwrap(); // Internal usage.
 
-	DiscordRelationshipHandle();
+	// DiscordRelationshipHandle();
 	~DiscordRelationshipHandle();
 };
 

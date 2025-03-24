@@ -10,7 +10,7 @@ class DiscordCall : public RefCounted {
 	GDCLASS(DiscordCall, RefCounted)
 
 private:
-	discordpp::Call call;
+	discordpp::Call *call;
 
 protected:
 	static void _bind_methods();
@@ -18,7 +18,7 @@ protected:
 public:
 	discordpp::Call *unwrap(); // Internal usage.
 
-	DiscordCall();
+	// DiscordCall();
 	~DiscordCall();
 };
 

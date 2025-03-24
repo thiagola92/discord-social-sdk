@@ -10,7 +10,7 @@ class DiscordAudioDevice : public RefCounted {
 	GDCLASS(DiscordAudioDevice, RefCounted)
 
 private:
-	discordpp::AudioDevice audio_device;
+	discordpp::AudioDevice *audio_device;
 
 protected:
 	static void _bind_methods();
@@ -18,7 +18,7 @@ protected:
 public:
 	discordpp::AudioDevice *unwrap(); // Internal usage.
 
-	DiscordAudioDevice();
+	// DiscordAudioDevice();
 	~DiscordAudioDevice();
 };
 

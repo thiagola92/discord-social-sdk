@@ -10,7 +10,7 @@ class DiscordVoiceStateHandle : public RefCounted {
 	GDCLASS(DiscordVoiceStateHandle, RefCounted)
 
 private:
-	discordpp::VoiceStateHandle voice_state_handle;
+	discordpp::VoiceStateHandle *voice_state_handle;
 
 protected:
 	static void _bind_methods();
@@ -18,7 +18,7 @@ protected:
 public:
 	discordpp::VoiceStateHandle *unwrap(); // Internal usage.
 
-	DiscordVoiceStateHandle();
+	// DiscordVoiceStateHandle();
 	~DiscordVoiceStateHandle();
 };
 

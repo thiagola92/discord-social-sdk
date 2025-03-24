@@ -10,7 +10,7 @@ class DiscordMessageHandle : public RefCounted {
 	GDCLASS(DiscordMessageHandle, RefCounted)
 
 private:
-	discordpp::MessageHandle message_handle;
+	discordpp::MessageHandle *message_handle;
 
 protected:
 	static void _bind_methods();
@@ -18,7 +18,7 @@ protected:
 public:
 	discordpp::MessageHandle *unwrap(); // Internal usage.
 
-	DiscordMessageHandle();
+	// DiscordMessageHandle();
 	~DiscordMessageHandle();
 };
 
