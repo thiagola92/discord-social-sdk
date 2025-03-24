@@ -10,7 +10,7 @@ void DiscordClient::authorize(DiscordAuthorizationArgs *args) {
 	auto code_verifier = client.CreateAuthorizationCodeVerifier();
 
 	// client.Authorize(
-	// 		args.args, [this, code_verifier](auto result, auto code, auto redirect_uri) {
+	// 		*args->unwrap(), [this, code_verifier](auto result, auto code, auto redirect_uri) {
 	// 			if (result.Successful()) {
 	// 				emit_signal("authorized");
 	// 			} else {

@@ -18,10 +18,12 @@ protected:
 public:
 	discordpp::Client *unwrap(); // Internal usage.
 
+	// Auth
+	void authorize(DiscordAuthorizationArgs *args);
+	// DiscordAuthorizationCodeVerifier CreateAuthorizationCodeVerifier();
+
 	DiscordClient();
 	~DiscordClient();
-
-	void authorize(DiscordAuthorizationArgs *args);
 };
 
 } // namespace godot
