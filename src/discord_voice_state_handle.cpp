@@ -7,9 +7,13 @@ discordpp::VoiceStateHandle *DiscordVoiceStateHandle::unwrap() {
 }
 
 void DiscordVoiceStateHandle::_bind_methods() {
-	//
+    //
 }
 
-// DiscordVoiceStateHandle::DiscordVoiceStateHandle() {}
+DiscordVoiceStateHandle::DiscordVoiceStateHandle() {}
+
+DiscordVoiceStateHandle::DiscordVoiceStateHandle(discordpp::VoiceStateHandle *voice_state_handle) {
+    this->voice_state_handle = voice_state_handle;
+}
 
 DiscordVoiceStateHandle::~DiscordVoiceStateHandle() {}

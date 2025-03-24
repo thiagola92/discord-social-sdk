@@ -27,6 +27,8 @@ void Discord{class_name}::_bind_methods() {{
     //
 }}
 
+Discord{class_name}::Discord{class_name}() {{}}
+
 Discord{class_name}::Discord{class_name}(discordpp::{class_name} *{property_name}) {{
     this->{property_name} = {property_name};
 }}

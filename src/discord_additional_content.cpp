@@ -7,8 +7,7 @@ discordpp::AdditionalContent *DiscordAdditionalContent::unwrap() {
 }
 
 void DiscordAdditionalContent::_bind_methods() {
-	discordpp::AdditionalContent();
-	//
+    //
 }
 
 DiscordAdditionalContent::DiscordAdditionalContent() {}

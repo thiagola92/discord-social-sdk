@@ -7,9 +7,13 @@ discordpp::VADThresholdSettings *DiscordVADThresholdSettings::unwrap() {
 }
 
 void DiscordVADThresholdSettings::_bind_methods() {
-	//
+    //
 }
 
-// DiscordVADThresholdSettings::DiscordVADThresholdSettings() {}
+DiscordVADThresholdSettings::DiscordVADThresholdSettings() {}
+
+DiscordVADThresholdSettings::DiscordVADThresholdSettings(discordpp::VADThresholdSettings *vadthreshold_settings) {
+    this->vadthreshold_settings = vadthreshold_settings;
+}
 
 DiscordVADThresholdSettings::~DiscordVADThresholdSettings() {}

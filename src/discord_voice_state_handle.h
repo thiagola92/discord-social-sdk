@@ -9,6 +9,8 @@ namespace godot {
 class DiscordVoiceStateHandle : public RefCounted {
 	GDCLASS(DiscordVoiceStateHandle, RefCounted)
 
+    DiscordVoiceStateHandle();
+
 private:
 	discordpp::VoiceStateHandle *voice_state_handle;
 
@@ -18,7 +20,7 @@ protected:
 public:
 	discordpp::VoiceStateHandle *unwrap(); // Internal usage.
 
-	// DiscordVoiceStateHandle();
+	DiscordVoiceStateHandle(discordpp::VoiceStateHandle *voice_state_handle);
 	~DiscordVoiceStateHandle();
 };
 

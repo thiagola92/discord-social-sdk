@@ -9,6 +9,8 @@ namespace godot {
 class DiscordUserHandle : public RefCounted {
 	GDCLASS(DiscordUserHandle, RefCounted)
 
+    DiscordUserHandle();
+
 private:
 	discordpp::UserHandle *user_handle;
 
@@ -18,7 +20,7 @@ protected:
 public:
 	discordpp::UserHandle *unwrap(); // Internal usage.
 
-	// DiscordUserHandle();
+	DiscordUserHandle(discordpp::UserHandle *user_handle);
 	~DiscordUserHandle();
 };
 

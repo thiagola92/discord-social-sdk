@@ -9,10 +9,10 @@ namespace godot {
 class DiscordChannelHandle : public RefCounted {
 	GDCLASS(DiscordChannelHandle, RefCounted)
 
+    DiscordChannelHandle();
+
 private:
 	discordpp::ChannelHandle *channel_handle;
-
-	DiscordChannelHandle();
 
 protected:
 	static void _bind_methods();

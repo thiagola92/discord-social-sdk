@@ -9,6 +9,8 @@ namespace godot {
 class DiscordCallInfoHandle : public RefCounted {
 	GDCLASS(DiscordCallInfoHandle, RefCounted)
 
+    DiscordCallInfoHandle();
+
 private:
 	discordpp::CallInfoHandle *call_info_handle;
 
@@ -18,7 +20,7 @@ protected:
 public:
 	discordpp::CallInfoHandle *unwrap(); // Internal usage.
 
-	// DiscordCallInfoHandle();
+	DiscordCallInfoHandle(discordpp::CallInfoHandle *call_info_handle);
 	~DiscordCallInfoHandle();
 };
 

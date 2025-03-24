@@ -9,6 +9,8 @@ namespace godot {
 class DiscordMessageHandle : public RefCounted {
 	GDCLASS(DiscordMessageHandle, RefCounted)
 
+    DiscordMessageHandle();
+
 private:
 	discordpp::MessageHandle *message_handle;
 
@@ -18,7 +20,7 @@ protected:
 public:
 	discordpp::MessageHandle *unwrap(); // Internal usage.
 
-	// DiscordMessageHandle();
+	DiscordMessageHandle(discordpp::MessageHandle *message_handle);
 	~DiscordMessageHandle();
 };
 

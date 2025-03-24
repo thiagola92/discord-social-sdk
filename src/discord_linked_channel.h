@@ -9,6 +9,8 @@ namespace godot {
 class DiscordLinkedChannel : public RefCounted {
 	GDCLASS(DiscordLinkedChannel, RefCounted)
 
+    DiscordLinkedChannel();
+
 private:
 	discordpp::LinkedChannel *linked_channel;
 
@@ -18,7 +20,7 @@ protected:
 public:
 	discordpp::LinkedChannel *unwrap(); // Internal usage.
 
-	// DiscordLinkedChannel();
+	DiscordLinkedChannel(discordpp::LinkedChannel *linked_channel);
 	~DiscordLinkedChannel();
 };
 

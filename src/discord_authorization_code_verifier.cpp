@@ -7,9 +7,13 @@ discordpp::AuthorizationCodeVerifier *DiscordAuthorizationCodeVerifier::unwrap()
 }
 
 void DiscordAuthorizationCodeVerifier::_bind_methods() {
-	//
+    //
 }
 
-DiscordAuthorizationCodeVerifier::DiscordAuthorizationCodeVerifier(discordpp::AuthorizationCodeVerifier *authorization_code_verifier) {}
+DiscordAuthorizationCodeVerifier::DiscordAuthorizationCodeVerifier() {}
+
+DiscordAuthorizationCodeVerifier::DiscordAuthorizationCodeVerifier(discordpp::AuthorizationCodeVerifier *authorization_code_verifier) {
+    this->authorization_code_verifier = authorization_code_verifier;
+}
 
 DiscordAuthorizationCodeVerifier::~DiscordAuthorizationCodeVerifier() {}

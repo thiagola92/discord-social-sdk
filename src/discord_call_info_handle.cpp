@@ -7,9 +7,13 @@ discordpp::CallInfoHandle *DiscordCallInfoHandle::unwrap() {
 }
 
 void DiscordCallInfoHandle::_bind_methods() {
-	//
+    //
 }
 
-// DiscordCallInfoHandle::DiscordCallInfoHandle() {}
+DiscordCallInfoHandle::DiscordCallInfoHandle() {}
+
+DiscordCallInfoHandle::DiscordCallInfoHandle(discordpp::CallInfoHandle *call_info_handle) {
+    this->call_info_handle = call_info_handle;
+}
 
 DiscordCallInfoHandle::~DiscordCallInfoHandle() {}

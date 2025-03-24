@@ -7,11 +7,13 @@ discordpp::ChannelHandle *DiscordChannelHandle::unwrap() {
 }
 
 void DiscordChannelHandle::_bind_methods() {
-	//
+    //
 }
 
+DiscordChannelHandle::DiscordChannelHandle() {}
+
 DiscordChannelHandle::DiscordChannelHandle(discordpp::ChannelHandle *channel_handle) {
-	this->channel_handle = channel_handle;
+    this->channel_handle = channel_handle;
 }
 
 DiscordChannelHandle::~DiscordChannelHandle() {}

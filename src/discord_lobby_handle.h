@@ -9,6 +9,8 @@ namespace godot {
 class DiscordLobbyHandle : public RefCounted {
 	GDCLASS(DiscordLobbyHandle, RefCounted)
 
+    DiscordLobbyHandle();
+
 private:
 	discordpp::LobbyHandle *lobby_handle;
 
@@ -18,7 +20,7 @@ protected:
 public:
 	discordpp::LobbyHandle *unwrap(); // Internal usage.
 
-	// DiscordLobbyHandle();
+	DiscordLobbyHandle(discordpp::LobbyHandle *lobby_handle);
 	~DiscordLobbyHandle();
 };
 

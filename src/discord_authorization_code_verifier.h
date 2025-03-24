@@ -9,10 +9,10 @@ namespace godot {
 class DiscordAuthorizationCodeVerifier : public RefCounted {
 	GDCLASS(DiscordAuthorizationCodeVerifier, RefCounted)
 
+    DiscordAuthorizationCodeVerifier();
+
 private:
 	discordpp::AuthorizationCodeVerifier *authorization_code_verifier;
-
-	DiscordAuthorizationCodeVerifier();
 
 protected:
 	static void _bind_methods();

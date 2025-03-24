@@ -9,6 +9,8 @@ namespace godot {
 class DiscordVADThresholdSettings : public RefCounted {
 	GDCLASS(DiscordVADThresholdSettings, RefCounted)
 
+    DiscordVADThresholdSettings();
+
 private:
 	discordpp::VADThresholdSettings *vadthreshold_settings;
 
@@ -18,7 +20,7 @@ protected:
 public:
 	discordpp::VADThresholdSettings *unwrap(); // Internal usage.
 
-	// DiscordVADThresholdSettings();
+	DiscordVADThresholdSettings(discordpp::VADThresholdSettings *vadthreshold_settings);
 	~DiscordVADThresholdSettings();
 };
 

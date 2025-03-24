@@ -7,9 +7,13 @@ discordpp::GuildChannel *DiscordGuildChannel::unwrap() {
 }
 
 void DiscordGuildChannel::_bind_methods() {
-	//
+    //
 }
 
-// DiscordGuildChannel::DiscordGuildChannel() {}
+DiscordGuildChannel::DiscordGuildChannel() {}
+
+DiscordGuildChannel::DiscordGuildChannel(discordpp::GuildChannel *guild_channel) {
+    this->guild_channel = guild_channel;
+}
 
 DiscordGuildChannel::~DiscordGuildChannel() {}

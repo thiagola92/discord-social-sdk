@@ -7,9 +7,13 @@ discordpp::GuildMinimal *DiscordGuildMinimal::unwrap() {
 }
 
 void DiscordGuildMinimal::_bind_methods() {
-	//
+    //
 }
 
-// DiscordGuildMinimal::DiscordGuildMinimal() {}
+DiscordGuildMinimal::DiscordGuildMinimal() {}
+
+DiscordGuildMinimal::DiscordGuildMinimal(discordpp::GuildMinimal *guild_minimal) {
+    this->guild_minimal = guild_minimal;
+}
 
 DiscordGuildMinimal::~DiscordGuildMinimal() {}

@@ -7,9 +7,13 @@ discordpp::Call *DiscordCall::unwrap() {
 }
 
 void DiscordCall::_bind_methods() {
-	//
+    //
 }
 
-// DiscordCall::DiscordCall() {}
+DiscordCall::DiscordCall() {}
+
+DiscordCall::DiscordCall(discordpp::Call *call) {
+    this->call = call;
+}
 
 DiscordCall::~DiscordCall() {}

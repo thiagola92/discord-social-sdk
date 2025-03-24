@@ -7,9 +7,13 @@ discordpp::AudioDevice *DiscordAudioDevice::unwrap() {
 }
 
 void DiscordAudioDevice::_bind_methods() {
-	//
+    //
 }
 
-// DiscordAudioDevice::DiscordAudioDevice() {}
+DiscordAudioDevice::DiscordAudioDevice() {}
+
+DiscordAudioDevice::DiscordAudioDevice(discordpp::AudioDevice *audio_device) {
+    this->audio_device = audio_device;
+}
 
 DiscordAudioDevice::~DiscordAudioDevice() {}

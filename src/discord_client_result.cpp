@@ -7,9 +7,13 @@ discordpp::ClientResult *DiscordClientResult::unwrap() {
 }
 
 void DiscordClientResult::_bind_methods() {
-	//
+    //
 }
 
-// DiscordClientResult::DiscordClientResult() {}
+DiscordClientResult::DiscordClientResult() {}
+
+DiscordClientResult::DiscordClientResult(discordpp::ClientResult *client_result) {
+    this->client_result = client_result;
+}
 
 DiscordClientResult::~DiscordClientResult() {}

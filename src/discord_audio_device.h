@@ -9,6 +9,8 @@ namespace godot {
 class DiscordAudioDevice : public RefCounted {
 	GDCLASS(DiscordAudioDevice, RefCounted)
 
+    DiscordAudioDevice();
+
 private:
 	discordpp::AudioDevice *audio_device;
 
@@ -18,7 +20,7 @@ protected:
 public:
 	discordpp::AudioDevice *unwrap(); // Internal usage.
 
-	// DiscordAudioDevice();
+	DiscordAudioDevice(discordpp::AudioDevice *audio_device);
 	~DiscordAudioDevice();
 };
 

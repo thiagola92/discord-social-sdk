@@ -9,6 +9,8 @@ namespace godot {
 class DiscordGuildChannel : public RefCounted {
 	GDCLASS(DiscordGuildChannel, RefCounted)
 
+    DiscordGuildChannel();
+
 private:
 	discordpp::GuildChannel *guild_channel;
 
@@ -18,7 +20,7 @@ protected:
 public:
 	discordpp::GuildChannel *unwrap(); // Internal usage.
 
-	// DiscordGuildChannel();
+	DiscordGuildChannel(discordpp::GuildChannel *guild_channel);
 	~DiscordGuildChannel();
 };
 

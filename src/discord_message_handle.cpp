@@ -7,9 +7,13 @@ discordpp::MessageHandle *DiscordMessageHandle::unwrap() {
 }
 
 void DiscordMessageHandle::_bind_methods() {
-	//
+    //
 }
 
-// DiscordMessageHandle::DiscordMessageHandle() {}
+DiscordMessageHandle::DiscordMessageHandle() {}
+
+DiscordMessageHandle::DiscordMessageHandle(discordpp::MessageHandle *message_handle) {
+    this->message_handle = message_handle;
+}
 
 DiscordMessageHandle::~DiscordMessageHandle() {}

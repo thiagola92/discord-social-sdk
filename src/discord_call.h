@@ -9,6 +9,8 @@ namespace godot {
 class DiscordCall : public RefCounted {
 	GDCLASS(DiscordCall, RefCounted)
 
+    DiscordCall();
+
 private:
 	discordpp::Call *call;
 
@@ -18,7 +20,7 @@ protected:
 public:
 	discordpp::Call *unwrap(); // Internal usage.
 
-	// DiscordCall();
+	DiscordCall(discordpp::Call *call);
 	~DiscordCall();
 };
 

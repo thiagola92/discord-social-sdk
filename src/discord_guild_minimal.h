@@ -9,6 +9,8 @@ namespace godot {
 class DiscordGuildMinimal : public RefCounted {
 	GDCLASS(DiscordGuildMinimal, RefCounted)
 
+    DiscordGuildMinimal();
+
 private:
 	discordpp::GuildMinimal *guild_minimal;
 
@@ -18,7 +20,7 @@ protected:
 public:
 	discordpp::GuildMinimal *unwrap(); // Internal usage.
 
-	// DiscordGuildMinimal();
+	DiscordGuildMinimal(discordpp::GuildMinimal *guild_minimal);
 	~DiscordGuildMinimal();
 };
 

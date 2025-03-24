@@ -9,6 +9,8 @@ namespace godot {
 class DiscordClientResult : public RefCounted {
 	GDCLASS(DiscordClientResult, RefCounted)
 
+    DiscordClientResult();
+
 private:
 	discordpp::ClientResult *client_result;
 
@@ -18,7 +20,7 @@ protected:
 public:
 	discordpp::ClientResult *unwrap(); // Internal usage.
 
-	// DiscordClientResult();
+	DiscordClientResult(discordpp::ClientResult *client_result);
 	~DiscordClientResult();
 };
 

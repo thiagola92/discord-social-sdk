@@ -9,6 +9,8 @@ namespace godot {
 class DiscordRelationshipHandle : public RefCounted {
 	GDCLASS(DiscordRelationshipHandle, RefCounted)
 
+    DiscordRelationshipHandle();
+
 private:
 	discordpp::RelationshipHandle *relationship_handle;
 
@@ -18,7 +20,7 @@ protected:
 public:
 	discordpp::RelationshipHandle *unwrap(); // Internal usage.
 
-	// DiscordRelationshipHandle();
+	DiscordRelationshipHandle(discordpp::RelationshipHandle *relationship_handle);
 	~DiscordRelationshipHandle();
 };
 
