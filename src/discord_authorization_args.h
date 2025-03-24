@@ -10,7 +10,7 @@ class DiscordAuthorizationArgs : public RefCounted {
 	GDCLASS(DiscordAuthorizationArgs, RefCounted)
 
 private:
-	discordpp::AuthorizationArgs args;
+	discordpp::AuthorizationArgs authorization_args;
 
 protected:
 	static void _bind_methods();

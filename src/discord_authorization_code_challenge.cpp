@@ -3,23 +3,23 @@
 using namespace godot;
 
 discordpp::AuthorizationCodeChallenge *DiscordAuthorizationCodeChallenge::unwrap() {
-	return &code_challenge;
+	return &authorization_code_challenge;
 }
 
 DiscordAuthenticationCodeChallengeMethod::Enum DiscordAuthorizationCodeChallenge::get_method() {
-	return (DiscordAuthenticationCodeChallengeMethod::Enum)code_challenge.Method();
+	return (DiscordAuthenticationCodeChallengeMethod::Enum)authorization_code_challenge.Method();
 }
 
 void DiscordAuthorizationCodeChallenge::set_method(DiscordAuthenticationCodeChallengeMethod::Enum method) {
-	code_challenge.SetMethod((discordpp::AuthenticationCodeChallengeMethod)method);
+	authorization_code_challenge.SetMethod((discordpp::AuthenticationCodeChallengeMethod)method);
 }
 
 String DiscordAuthorizationCodeChallenge::get_challenge() {
-	return String(code_challenge.Challenge().c_str());
+	return String(authorization_code_challenge.Challenge().c_str());
 }
 
 void DiscordAuthorizationCodeChallenge::set_challenge(String challenge) {
-	code_challenge.SetChallenge(challenge.utf8().get_data());
+	authorization_code_challenge.SetChallenge(challenge.utf8().get_data());
 }
 
 void DiscordAuthorizationCodeChallenge::_bind_methods() {
@@ -36,8 +36,8 @@ void DiscordAuthorizationCodeChallenge::_bind_methods() {
 
 DiscordAuthorizationCodeChallenge::DiscordAuthorizationCodeChallenge() {}
 
-DiscordAuthorizationCodeChallenge::DiscordAuthorizationCodeChallenge(discordpp::AuthorizationCodeChallenge code_challenge) {
-	this->code_challenge = code_challenge;
+DiscordAuthorizationCodeChallenge::DiscordAuthorizationCodeChallenge(discordpp::AuthorizationCodeChallenge authorization_code_challenge) {
+	this->authorization_code_challenge = authorization_code_challenge;
 }
 
 DiscordAuthorizationCodeChallenge::~DiscordAuthorizationCodeChallenge() {}

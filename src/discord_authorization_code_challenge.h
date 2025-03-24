@@ -11,7 +11,7 @@ class DiscordAuthorizationCodeChallenge : public RefCounted {
 	GDCLASS(DiscordAuthorizationCodeChallenge, RefCounted)
 
 private:
-	discordpp::AuthorizationCodeChallenge code_challenge;
+	discordpp::AuthorizationCodeChallenge authorization_code_challenge;
 
 protected:
 	static void _bind_methods();
@@ -26,7 +26,7 @@ public:
 	void set_challenge(String challenge);
 
 	DiscordAuthorizationCodeChallenge();
-	DiscordAuthorizationCodeChallenge(discordpp::AuthorizationCodeChallenge code_challenge);
+	DiscordAuthorizationCodeChallenge(discordpp::AuthorizationCodeChallenge authorization_code_challenge);
 	~DiscordAuthorizationCodeChallenge();
 };
 

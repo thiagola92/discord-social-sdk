@@ -10,7 +10,7 @@ class DiscordAuthorizationCodeVerifier : public RefCounted {
 	GDCLASS(DiscordAuthorizationCodeVerifier, RefCounted)
 
 private:
-	discordpp::AuthorizationCodeVerifier code_verifier;
+	discordpp::AuthorizationCodeVerifier authorization_code_verifier;
 
 protected:
 	static void _bind_methods();

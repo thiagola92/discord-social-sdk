@@ -3,27 +3,27 @@
 using namespace godot;
 
 discordpp::AuthorizationArgs *DiscordAuthorizationArgs::unwrap() {
-	return &args;
+	return &authorization_args;
 }
 
 uint64_t DiscordAuthorizationArgs::get_client_id() {
-	return args.ClientId();
+	return authorization_args.ClientId();
 }
 
 void DiscordAuthorizationArgs::set_client_id(uint64_t client_id) {
-	args.SetClientId(client_id);
+	authorization_args.SetClientId(client_id);
 }
 
 String DiscordAuthorizationArgs::get_scopes() {
-	return String(args.Scopes().c_str());
+	return String(authorization_args.Scopes().c_str());
 }
 
 void DiscordAuthorizationArgs::set_scopes(String scopes) {
-	args.SetScopes(scopes.utf8().get_data());
+	authorization_args.SetScopes(scopes.utf8().get_data());
 }
 
 Variant DiscordAuthorizationArgs::get_state() {
-	auto state = args.State();
+	auto state = authorization_args.State();
 
 	if (state.has_value()) {
 		return Variant(state.value().c_str());
@@ -34,15 +34,15 @@ Variant DiscordAuthorizationArgs::get_state() {
 
 void DiscordAuthorizationArgs::set_state(Variant state) {
 	if (state.get_type() == Variant::STRING) {
-		args.SetState({ state.stringify().utf8().get_data() });
+		authorization_args.SetState({ state.stringify().utf8().get_data() });
 		return;
 	}
 
-	args.SetState({});
+	authorization_args.SetState({});
 }
 
 Variant DiscordAuthorizationArgs::get_nonce() {
-	auto nonce = args.Nonce();
+	auto nonce = authorization_args.Nonce();
 
 	if (nonce.has_value()) {
 		return Variant(nonce.value().c_str());
@@ -53,15 +53,15 @@ Variant DiscordAuthorizationArgs::get_nonce() {
 
 void DiscordAuthorizationArgs::set_nonce(Variant nonce) {
 	if (nonce.get_type() == Variant::STRING) {
-		args.SetNonce({ nonce.stringify().utf8().get_data() });
+		authorization_args.SetNonce({ nonce.stringify().utf8().get_data() });
 		return;
 	}
 
-	args.SetNonce({});
+	authorization_args.SetNonce({});
 }
 
 Variant DiscordAuthorizationArgs::get_code_challenge() {
-	auto code_challenge = args.CodeChallenge();
+	auto code_challenge = authorization_args.CodeChallenge();
 
 	if (code_challenge.has_value()) {
 		return memnew(DiscordAuthorizationCodeChallenge(code_challenge.value()));
@@ -73,11 +73,11 @@ Variant DiscordAuthorizationArgs::get_code_challenge() {
 void DiscordAuthorizationArgs::set_code_challenge(Variant code_challenge) {
 	if (code_challenge.get_type() == Variant::OBJECT) {
 		auto cc = Object::cast_to<DiscordAuthorizationCodeChallenge>(code_challenge)->unwrap();
-		args.SetCodeChallenge(std::optional<discordpp::AuthorizationCodeChallenge>{ *cc });
+		authorization_args.SetCodeChallenge(std::optional<discordpp::AuthorizationCodeChallenge>{ *cc });
 		return;
 	}
 
-	args.SetCodeChallenge({});
+	authorization_args.SetCodeChallenge({});
 }
 
 void DiscordAuthorizationArgs::_bind_methods() {

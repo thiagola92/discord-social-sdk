@@ -28,6 +28,8 @@ Wrapper around [Discord Social SDK](https://discord.com/developers/docs/discord-
 │   └── Discord headers
 ├── lib/
 │   └── Discord libs
+├── scripts/
+│   └── Python utility scripts
 └── src/
     └── Project source code and headers
 ```
