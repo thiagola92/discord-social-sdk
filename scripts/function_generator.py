@@ -1,9 +1,13 @@
 # Generates a GET method based on method signature.
 from template_get import (
     get_enum_template,
-    get_uint64_template,
     get_int32_template,
+    get_uint64_template,
     get_string_template,
+    get_optional_int32_template,
+    get_optional_uint64_template,
+    get_optional_string_template,
+    get_optional_enum_template,
 )
 from helper import to_snake_case
 
@@ -20,6 +24,7 @@ class FunctionDetails:
     # Deduced
     method_snake_name: str = ""
     is_setter: bool = False
+    is_ret_opt: bool = False
     is_ret_enum: bool = False
 
 
@@ -49,11 +54,18 @@ def extract_function_info(
         func.method_name.startswith("Set") and func.method_name[3].isupper()
     )
 
+    func.is_ret_opt = func.return_type.startswith("std::optional<")
+
+    if func.is_ret_opt:
+        func.return_type = func.return_type.removeprefix("std::optional<")
+        func.return_type = func.return_type.removesuffix(">")
+        func.return_type = func.return_type.strip()
+
     func.is_ret_enum = (
         func.return_type.startswith("discordpp::") and func.return_type not in classes
     )
 
-    if func.return_type.startswith("discordpp::"):
+    if func.is_ret_enum:
         func.return_type = func.return_type.removeprefix("discordpp::")
 
     return func
@@ -65,43 +77,80 @@ def generate_get(func: FunctionDetails, is_property_pointer: bool) -> str:
 
     match func.return_type:
         case "int32_t":
-            function = get_int32_template.format(
-                class_name=func.class_name,
-                method_snake_name=func.method_snake_name,
-                method_name=func.method_name,
-                property_name=func.property_name,
-                operator=operator,
-            )
-        case "uint64_t":
-            function = get_uint64_template.format(
-                class_name=func.class_name,
-                method_snake_name=func.method_snake_name,
-                method_name=func.method_name,
-                property_name=func.property_name,
-                operator=operator,
-            )
-        case "std::string":
-            function = get_string_template.format(
-                class_name=func.class_name,
-                method_snake_name=func.method_snake_name,
-                method_name=func.method_name,
-                property_name=func.property_name,
-                operator=operator,
-            )
-        case _:
-            if func.is_ret_enum:
-                function = get_enum_template.format(
-                    return_type=func.return_type,
+            if not func.is_ret_opt:
+                function = get_int32_template.format(
                     class_name=func.class_name,
                     method_snake_name=func.method_snake_name,
                     method_name=func.method_name,
                     property_name=func.property_name,
                     operator=operator,
                 )
+            else:
+                function = get_optional_int32_template.format(
+                    class_name=func.class_name,
+                    method_snake_name=func.method_snake_name,
+                    method_name=func.method_name,
+                    property_name=func.property_name,
+                    operator=operator,
+                )
+        case "uint64_t":
+            if not func.is_ret_opt:
+                function = get_uint64_template.format(
+                    class_name=func.class_name,
+                    method_snake_name=func.method_snake_name,
+                    method_name=func.method_name,
+                    property_name=func.property_name,
+                    operator=operator,
+                )
+            else:
+                function = get_optional_uint64_template.format(
+                    class_name=func.class_name,
+                    method_snake_name=func.method_snake_name,
+                    method_name=func.method_name,
+                    property_name=func.property_name,
+                    operator=operator,
+                )
+        case "std::string":
+            if not func.is_ret_opt:
+                function = get_string_template.format(
+                    class_name=func.class_name,
+                    method_snake_name=func.method_snake_name,
+                    method_name=func.method_name,
+                    property_name=func.property_name,
+                    operator=operator,
+                )
+            else:
+                function = get_optional_string_template.format(
+                    class_name=func.class_name,
+                    method_snake_name=func.method_snake_name,
+                    method_name=func.method_name,
+                    property_name=func.property_name,
+                    operator=operator,
+                )
+        case _:
+            if func.is_ret_enum:
+                if not func.is_ret_opt:
+                    function = get_enum_template.format(
+                        return_type=func.return_type,
+                        class_name=func.class_name,
+                        method_snake_name=func.method_snake_name,
+                        method_name=func.method_name,
+                        property_name=func.property_name,
+                        operator=operator,
+                    )
+                else:
+                    function = get_optional_enum_template.format(
+                        return_type=func.return_type,
+                        class_name=func.class_name,
+                        method_snake_name=func.method_snake_name,
+                        method_name=func.method_name,
+                        property_name=func.property_name,
+                        operator=operator,
+                    )
 
     return function
 
 
-text = "std::string 	Error () const"
-i = extract_function_info(text, "ClientResult", "client_result", [])
-print(generate_get(i, True))
+text = "std::optional< std::string > 	State () "
+i = extract_function_info(text, "AuthorizationArgs", "authorization_args", [])
+print(generate_get(i, False))
