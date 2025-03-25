@@ -9,13 +9,17 @@ discordpp::Client *DiscordClient::unwrap() {
 	return &client;
 }
 
+void DiscordClient::_process(float delta) {
+	discordpp::RunCallbacks();
+}
+
 void DiscordClient::authorize(DiscordAuthorizationArgs *args) {
 	client.Authorize(
-			*args->unwrap(), [this](auto result, auto code, auto redirect_uri) {
+			*args->unwrap(), [this](discordpp::ClientResult result, std::string code, std::string redirect_uri) {
 				if (result.Successful()) {
-					emit_signal("authorized");
+					this->emit_signal("authorized");
 				} else {
-					emit_signal("rejected");
+					this->emit_signal("rejected");
 				}
 			});
 }
@@ -23,7 +27,6 @@ void DiscordClient::authorize(DiscordAuthorizationArgs *args) {
 DiscordAuthorizationCodeVerifier *DiscordClient::create_authorization_code_verifier() {
 	auto cv = (discordpp::AuthorizationCodeVerifier *)memalloc(sizeof(discordpp::AuthorizationCodeVerifier));
 	*cv = client.CreateAuthorizationCodeVerifier();
-	// discordpp::AuthorizationCodeVerifier cv = client.CreateAuthorizationCodeVerifier();
 	return memnew(DiscordAuthorizationCodeVerifier(cv));
 }
 

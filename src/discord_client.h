@@ -19,6 +19,9 @@ protected:
 public:
 	discordpp::Client *unwrap(); // Internal usage.
 
+	// Godot Methods
+	void _process(float delta);
+
 	// Auth
 	void authorize(DiscordAuthorizationArgs *args);
 	DiscordAuthorizationCodeVerifier *create_authorization_code_verifier();
