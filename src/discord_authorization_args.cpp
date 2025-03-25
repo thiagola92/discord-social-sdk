@@ -72,8 +72,9 @@ Variant DiscordAuthorizationArgs::get_code_challenge() {
 
 void DiscordAuthorizationArgs::set_code_challenge(Variant code_challenge) {
 	if (code_challenge.get_type() == Variant::OBJECT) {
-		auto cc = Object::cast_to<DiscordAuthorizationCodeChallenge>(code_challenge)->unwrap();
-		authorization_args.SetCodeChallenge(std::optional<discordpp::AuthorizationCodeChallenge>{ *cc });
+		auto dacc = Object::cast_to<DiscordAuthorizationCodeChallenge>(code_challenge);
+		auto acc = dacc->unwrap();
+		authorization_args.SetCodeChallenge(std::optional<discordpp::AuthorizationCodeChallenge>{ *acc });
 		return;
 	}
 

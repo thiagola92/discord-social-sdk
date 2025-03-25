@@ -1,7 +1,6 @@
 #include "discord_client.h"
 #include "discordpp.h"
 #include "godot_cpp/core/memory.hpp"
-#include "godot_cpp/core/print_string.hpp"
 
 using namespace godot;
 
