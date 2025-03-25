@@ -14,7 +14,7 @@
 // #include "discord_call_info_handle.h"
 // #include "discord_channel_handle.h"
 #include "discord_client.h"
-// #include "discord_client_result.h"
+#include "discord_client_result.h"
 // #include "discord_device_authorization_args.h"
 #include "discord_enum.h"
 // #include "discord_guild_channel.h"
@@ -55,7 +55,7 @@ void initialize_module(ModuleInitializationLevel p_level) {
 	// GDREGISTER_RUNTIME_CLASS(DiscordCallInfoHandle);
 	// GDREGISTER_RUNTIME_CLASS(DiscordChannelHandle);
 	GDREGISTER_RUNTIME_CLASS(DiscordClient);
-	// GDREGISTER_RUNTIME_CLASS(DiscordClientResult);
+	GDREGISTER_RUNTIME_CLASS(DiscordClientResult);
 	// GDREGISTER_RUNTIME_CLASS(DiscordDeviceAuthorizationArgs);
 	// GDREGISTER_RUNTIME_CLASS(DiscordGuildChannel);
 	// GDREGISTER_RUNTIME_CLASS(DiscordGuildMinimal);
