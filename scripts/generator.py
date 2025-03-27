@@ -9,6 +9,8 @@ from template_set import get_set_template
 
 DISCORDPP = Path("include/discordpp.h").read_text()
 
+assert len(DISCORDPP) > 0
+
 
 def generate_class(class_name: str, class_methods: list[str]) -> tuple[str, str]:
     """
@@ -23,7 +25,7 @@ def generate_class(class_name: str, class_methods: list[str]) -> tuple[str, str]
     filename_h = filename + ".h"
     property_name = to_snake_case(class_name)
     header_definition = property_name.upper()
-    is_property_pointer = f"explicit {class_name}();" in DISCORDPP
+    is_property_pointer = f"explicit {class_name}();" not in DISCORDPP
 
     methods = ""
     binds = ""
@@ -42,6 +44,10 @@ def generate_class(class_name: str, class_methods: list[str]) -> tuple[str, str]
         methods += method
         binds += bind
         signatures += signature
+
+    # print(methods)
+    # print(binds)
+    # print(signatures)
 
     source_file = Path(f"src/{filename_cpp}")
     source_content = get_source_template(is_property_pointer).format(

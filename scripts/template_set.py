@@ -1,12 +1,24 @@
 from parser import Method
 
+# Order:
+# - int
+# - float
+# - bool
+# - string
+# - enum
+# - obj
+
 #####################################################
 
-TEMPLATE_SET_NUMBER = """
+TEMPLATE_SET_INT = """
 void Discord{class_name}::{method_snake_name}({parameter_type} {parameter_name}) {{
     {property_name}{operator}{method_name}({parameter_name});
 }}
 """
+
+TEMPLATE_SET_FLOAT = TEMPLATE_SET_INT
+
+TEMPLATE_SET_BOOL = TEMPLATE_SET_INT
 
 TEMPLATE_SET_STRING = """
 void Discord{class_name}::{method_snake_name}(String {parameter_name}) {{
@@ -81,19 +93,31 @@ void Discord{class_name}::{method_snake_name}(Variant {parameter_name}) {{
 
 def get_set_template(method: Method) -> str:
     if method.params[0].type.is_opt:
+        if method.params[0].type.name in ["int64_t", "uint64_t", "int32_t", "int32_t"]:
+            return TEMPLATE_SET_OPTIONAL_INT
+
+        if method.params[0].type.name == "std::string":
+            return TEMPLATE_SET_OPTIONAL_STRING
+
         if method.params[0].type.is_enum:
             return TEMPLATE_SET_OPTIONAL_ENUM
 
         if method.params[0].type.is_discord:
             return TEMPLATE_SET_OPTIONAL_OBJ
 
-        if method.params[0].type.name == "std::string":
-            return TEMPLATE_SET_OPTIONAL_STRING
+        return f"\n// IMPLEMENT SET OPTIONAL FOR {method.params[0].type.name}\n"
 
-        if method.params[0].type.name in ["int64_t", "uint64_t", "int32_t", "int32_t"]:
-            return TEMPLATE_SET_OPTIONAL_INT
+    if method.params[0].type.name in ["int64_t", "uint64_t", "int32_t", "int32_t"]:
+        return TEMPLATE_SET_INT
 
-        return f"// IMPLEMENT SET OPTIONAL FOR {method.params[0].type.name}"
+    if method.params[0].type.name == "float":
+        return TEMPLATE_SET_FLOAT
+
+    if method.params[0].type.name == "bool":
+        return TEMPLATE_SET_BOOL
+
+    if method.params[0].type.name == "std::string":
+        return TEMPLATE_SET_STRING
 
     if method.params[0].type.is_enum:
         return TEMPLATE_SET_ENUM
@@ -101,10 +125,4 @@ def get_set_template(method: Method) -> str:
     if method.params[0].type.is_discord:
         return TEMPLATE_SET_OPTIONAL_OBJ
 
-    if method.params[0].type.name == "std::string":
-        return TEMPLATE_SET_STRING
-
-    if method.params[0].type.name in ["int64_t", "uint64_t", "int32_t", "int32_t"]:
-        return TEMPLATE_SET_NUMBER
-
-    return f"// IMPLEMENT SET FOR {method.params[0].type.name}"
+    return f"\n// IMPLEMENT SET FOR {method.params[0].type.name}\n"

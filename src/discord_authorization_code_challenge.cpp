@@ -25,10 +25,13 @@ void DiscordAuthorizationCodeChallenge::set_challenge(String challenge) {
 void DiscordAuthorizationCodeChallenge::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("get_method"),
 			&DiscordAuthorizationCodeChallenge::get_method);
+
 	ClassDB::bind_method(D_METHOD("set_method", "method"),
 			&DiscordAuthorizationCodeChallenge::set_method);
+
 	ClassDB::bind_method(D_METHOD("get_challenge"),
 			&DiscordAuthorizationCodeChallenge::get_challenge);
+
 	ClassDB::bind_method(D_METHOD("set_challenge", "challenge"),
 			&DiscordAuthorizationCodeChallenge::set_challenge);
 }

@@ -1,8 +1,6 @@
-from pathlib import Path
 from generator import generate_class
 from classes import CLASSES
 
-DISCORDPP = Path("include/discordpp.h").read_text()
 
 if __name__ == "__main__":
     classes = list(CLASSES.keys())

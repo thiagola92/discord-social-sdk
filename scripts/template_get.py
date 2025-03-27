@@ -1,12 +1,24 @@
 from parser import Method
 
+# Order:
+# - int
+# - float
+# - bool
+# - string
+# - enum
+# - obj
+
 #####################################################
 
 TEMPLATE_GET_INT = """
-{return_type} Discord{class_name}::get_{method_snake_name}() {{
+{return_type} Discord{class_name}::{method_snake_name}() {{
     return {property_name}{operator}{method_name}();
 }}
 """
+
+TEMPLATE_GET_FLOAT = TEMPLATE_GET_INT
+
+TEMPLATE_GET_BOOL = TEMPLATE_GET_INT
 
 TEMPLATE_GET_STRING = """
 String Discord{class_name}::{method_snake_name}() {{
@@ -71,19 +83,31 @@ TEMPLATE_GET_OPTIONAL_OBJ = """
 
 def get_get_template(method: Method) -> str:
     if method.ret.is_opt:
+        if method.ret.name in ["int64_t", "uint64_t", "int32_t", "int32_t"]:
+            return TEMPLATE_GET_OPTIONAL_INT
+
+        if method.ret.name == "std::string":
+            return TEMPLATE_GET_OPTIONAL_STRING
+
         if method.ret.is_enum:
             return TEMPLATE_GET_OPTIONAL_ENUM
 
         if method.ret.is_discord:
             return TEMPLATE_GET_OPTIONAL_OBJ
 
-        if method.ret.name == "std::string":
-            return TEMPLATE_GET_OPTIONAL_STRING
+        return f"\n// IMPLEMENT GET OPTIONAL FOR {method.ret.name}\n"
 
-        if method.ret.name in ["int64_t", "uint64_t", "int32_t", "int32_t"]:
-            return TEMPLATE_GET_OPTIONAL_INT
+    if method.ret.name in ["int64_t", "uint64_t", "int32_t", "int32_t"]:
+        return TEMPLATE_GET_INT
 
-        return f"// IMPLEMENT GET OPTIONAL FOR {method.ret.name}"
+    if method.ret.name == "float":
+        return TEMPLATE_GET_FLOAT
+
+    if method.ret.name == "bool":
+        return TEMPLATE_GET_BOOL
+
+    if method.ret.name == "std::string":
+        return TEMPLATE_GET_STRING
 
     if method.ret.is_enum:
         return TEMPLATE_GET_ENUM
@@ -91,10 +115,4 @@ def get_get_template(method: Method) -> str:
     if method.ret.is_discord:
         return TEMPLATE_GET_OBJ
 
-    if method.ret.name == "std::string":
-        return TEMPLATE_GET_STRING
-
-    if method.ret.name in ["int64_t", "uint64_t", "int32_t", "int32_t"]:
-        return TEMPLATE_GET_INT
-
-    return f"// IMPLEMENT GET FOR {method.ret.name}"
+    return f"\n// IMPLEMENT GET FOR {method.ret.name}\n"
