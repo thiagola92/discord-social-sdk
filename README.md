@@ -2,7 +2,7 @@
 Wrapper around [Discord Social SDK](https://discord.com/developers/docs/discord-social-sdk/overview).  
 
 # Development
-**Note**: If something in code is weird or doesn't make sense, try checking my [notes](NOTES.md) to understand why I did what I did.  
+**Note**: If something in the code is weird or doesn't make sense, try checking my [notes](NOTES.md) to understand why I did what I did.  
 
 ## Prerequisites
 - [Godot](https://godotengine.org/)
