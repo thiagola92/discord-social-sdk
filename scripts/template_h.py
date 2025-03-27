@@ -1,4 +1,4 @@
-header_template = """#ifndef DISCORD_{header_definition}_H
+TEMPLATE_H_1 = """#ifndef DISCORD_{header_definition}_H
 #define DISCORD_{header_definition}_H
 
 #include "discordpp.h"
@@ -17,7 +17,7 @@ protected:
 
 public:
 	discordpp::{class_name} *unwrap(); // Internal usage.
-
+{signatures}
 	Discord{class_name}();
 	~Discord{class_name}();
 }};
@@ -27,7 +27,9 @@ public:
 #endif
 """
 
-header_template2 = """#ifndef DISCORD_{header_definition}_H
+#####################################################
+
+TEMPLATE_H_2 = """#ifndef DISCORD_{header_definition}_H
 #define DISCORD_{header_definition}_H
 
 #include "discordpp.h"
@@ -50,6 +52,7 @@ protected:
 public:
 	discordpp::{class_name} *unwrap(); // Internal usage.
 
+{signatures}
 	Discord{class_name}(discordpp::{class_name} *{property_name});
 	~Discord{class_name}();
 }};
@@ -58,3 +61,11 @@ public:
 
 #endif
 """
+
+#####################################################
+
+
+def get_header_template(is_property_pointer: bool) -> str:
+    if is_property_pointer:
+        return TEMPLATE_H_2
+    return TEMPLATE_H_1

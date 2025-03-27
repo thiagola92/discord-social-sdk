@@ -1,63 +1,56 @@
-set_int32_template = """
-void Discord{class_name}::{method_snake_name}(int32_t {parameter_name}) {{
+from parser import Method
+
+#####################################################
+
+TEMPLATE_SET_NUMBER = """
+void Discord{class_name}::{method_snake_name}({parameter_type} {parameter_name}) {{
     {property_name}{operator}{method_name}({parameter_name});
 }}
 """
 
-set_uint64_template = """
-void Discord{class_name}::{method_snake_name}(uint64_t {parameter_name}) {{
-    {property_name}{operator}{method_name}({parameter_name});
-}}
-"""
-
-set_string_template = """
+TEMPLATE_SET_STRING = """
 void Discord{class_name}::{method_snake_name}(String {parameter_name}) {{
     {property_name}{operator}{method_name}({parameter_name}.utf8().get_data());
 }}
 """
 
-set_enum_template = """
+TEMPLATE_SET_ENUM = """
 void Discord{class_name}::{method_snake_name}(Discord{parameter_type}::Enum {parameter_name}) {{
-    {property_name}{operator}{method_name}((discordp::{parameter_type}){parameter_name});
+    {property_name}{operator}{method_name}((discordpp::{parameter_type}){parameter_name});
 }}
 """
 
-##### Optional return #####
+#####################################################
 
-set_optional_int32_template = """
-Variant Discord{class_name}::{method_snake_name}() {{
-    auto {method_snake_name} = {property_name}{operator}{method_name}();
+TEMPLATE_SET_OPTIONAL_NUMBER = """
 
-    if ({method_snake_name}.has_value()) {{
-        return Variant({method_snake_name}.value());
-    }}
-
-    return nullptr;
-}}
 """
 
-set_optional_uint64_template = set_optional_int32_template
+TEMPLATE_SET_OPTIONAL_STRING = """
 
-set_optional_string_template = """
-Variant Discord{class_name}::{method_snake_name}() {{
-    auto {method_snake_name} = {property_name}{operator}{method_name}();
-
-    if ({method_snake_name}.has_value()) {{
-        return Variant({method_snake_name}.value().c_str());
-    }}
-
-    return nullptr;
-}}
 """
 
-set_optional_enum_template = """
-Variant Discord{class_name}::{method_snake_name}() {{
-    auto {method_snake_name} = {property_name}{operator}{method_name}();
+TEMPLATE_SET_OPTIONAL_ENUM = """
 
-    if ({method_snake_name}.has_value()) {{
-        return Variant((Discord{return_type}::Enum){method_snake_name}.value());
-    }}
-
-    return nullptr;
-}}
 """
+
+#####################################################
+
+
+def get_set_template(method: Method) -> str:
+    if method.params[0].type.is_opt:
+        if method.params[0].type.is_enum:
+            return TEMPLATE_SET_OPTIONAL_ENUM
+
+        if method.params[0].type.name == "std::string":
+            return TEMPLATE_SET_OPTIONAL_STRING
+
+        return TEMPLATE_SET_OPTIONAL_NUMBER
+
+    if method.params[0].type.is_enum:
+        return TEMPLATE_SET_ENUM
+
+    if method.params[0].type.name == "std::string":
+        return TEMPLATE_SET_STRING
+
+    return TEMPLATE_SET_NUMBER

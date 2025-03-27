@@ -1,4 +1,5 @@
 def to_snake_case(string: str) -> str:
+    """Convert string to snake_case"""
     new_string = ""
     can_add_underscore = False
 
