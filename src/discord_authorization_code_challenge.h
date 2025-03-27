@@ -21,7 +21,6 @@ public:
 
 	DiscordAuthenticationCodeChallengeMethod::Enum get_method();
 	void set_method(DiscordAuthenticationCodeChallengeMethod::Enum method);
-
 	String get_challenge();
 	void set_challenge(String challenge);
 

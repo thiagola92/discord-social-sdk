@@ -29,7 +29,6 @@ void DiscordAuthorizationCodeVerifier::_bind_methods() {
 			&DiscordAuthorizationCodeVerifier::get_challenge);
 	ClassDB::bind_method(D_METHOD("set_challenge", "challenge"),
 			&DiscordAuthorizationCodeVerifier::set_challenge);
-
 	ClassDB::bind_method(D_METHOD("get_verifier"),
 			&DiscordAuthorizationCodeVerifier::get_verifier);
 	ClassDB::bind_method(D_METHOD("set_verifier", "verifier"),

@@ -35,7 +35,6 @@ void DiscordClient::_bind_methods() {
 
 	ClassDB::bind_method(D_METHOD("authorize", "args"),
 			&DiscordClient::authorize);
-
 	ClassDB::bind_method(D_METHOD("create_authorization_code_verifier"),
 			&DiscordClient::create_authorization_code_verifier);
 }

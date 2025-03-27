@@ -86,22 +86,18 @@ void DiscordAuthorizationArgs::_bind_methods() {
 			&DiscordAuthorizationArgs::get_client_id);
 	ClassDB::bind_method(D_METHOD("set_client_id", "client_id"),
 			&DiscordAuthorizationArgs::set_client_id);
-
 	ClassDB::bind_method(D_METHOD("get_scopes"),
 			&DiscordAuthorizationArgs::get_scopes);
 	ClassDB::bind_method(D_METHOD("set_scopes", "scopes"),
 			&DiscordAuthorizationArgs::set_scopes);
-
 	ClassDB::bind_method(D_METHOD("get_state"),
 			&DiscordAuthorizationArgs::get_state);
 	ClassDB::bind_method(D_METHOD("set_state", "state"),
 			&DiscordAuthorizationArgs::set_state);
-
 	ClassDB::bind_method(D_METHOD("get_nonce"),
 			&DiscordAuthorizationArgs::get_nonce);
 	ClassDB::bind_method(D_METHOD("set_nonce", "nonce"),
 			&DiscordAuthorizationArgs::set_nonce);
-
 	ClassDB::bind_method(D_METHOD("get_code_challenge"),
 			&DiscordAuthorizationArgs::get_code_challenge);
 	ClassDB::bind_method(D_METHOD("set_code_challenge", "code_challenge"),

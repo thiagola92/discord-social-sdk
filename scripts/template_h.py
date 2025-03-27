@@ -43,7 +43,7 @@ class Discord{class_name} : public RefCounted {{
     Discord{class_name}();
 
 private:
-	// Doesn't have contrusctor, needs to be a pointer.
+	// Doesn't have empty contrusctor, needs to be a pointer.
 	discordpp::{class_name} *{property_name};
 
 protected:

@@ -23,7 +23,6 @@ public:
 
 	DiscordAuthorizationCodeChallenge *get_challenge();
 	void set_challenge(DiscordAuthorizationCodeChallenge *challenge);
-
 	String get_verifier();
 	void set_verifier(String verifier);
 

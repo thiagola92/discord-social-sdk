@@ -27,7 +27,6 @@ void DiscordAuthorizationCodeChallenge::_bind_methods() {
 			&DiscordAuthorizationCodeChallenge::get_method);
 	ClassDB::bind_method(D_METHOD("set_method", "method"),
 			&DiscordAuthorizationCodeChallenge::set_method);
-
 	ClassDB::bind_method(D_METHOD("get_challenge"),
 			&DiscordAuthorizationCodeChallenge::get_challenge);
 	ClassDB::bind_method(D_METHOD("set_challenge", "challenge"),
