@@ -26,8 +26,26 @@ TEMPLATE_SET_OBJ = """
 
 #####################################################
 
-TEMPLATE_SET_OPTIONAL_NUMBER = """
-// IMPLEMENT TEMPLATE_SET_OPTIONAL_NUMBER
+TEMPLATE_SET_OPTIONAL_INT = """
+void Discord{class_name}::{method_snake_name}(Variant {parameter_name}) {{
+	if ({parameter_name}.get_type() == Variant::INT) {{
+		{property_name}{operator}{method_name}({{ {parameter_name}.value() }});
+		return;
+	}}
+
+	{property_name}{operator}{method_name}({{}});
+}}
+"""
+
+TEMPLATE_SET_OPTIONAL_FLOAT = """
+void Discord{class_name}::{method_snake_name}(Variant {parameter_name}) {{
+	if ({parameter_name}.get_type() == Variant::FLOAT) {{
+		{property_name}{operator}{method_name}({{ {parameter_name}.value() }});
+		return;
+	}}
+
+	{property_name}{operator}{method_name}({{}});
+}}
 """
 
 TEMPLATE_SET_OPTIONAL_STRING = """
@@ -66,15 +84,27 @@ def get_set_template(method: Method) -> str:
         if method.params[0].type.is_enum:
             return TEMPLATE_SET_OPTIONAL_ENUM
 
+        if method.params[0].type.is_discord:
+            return TEMPLATE_SET_OPTIONAL_OBJ
+
         if method.params[0].type.name == "std::string":
             return TEMPLATE_SET_OPTIONAL_STRING
 
-        return TEMPLATE_SET_OPTIONAL_NUMBER
+        if method.params[0].type.name in ["int64_t", "uint64_t", "int32_t", "int32_t"]:
+            return TEMPLATE_SET_OPTIONAL_INT
+
+        return f"// IMPLEMENT SET OPTIONAL FOR {method.params[0].type.name}"
 
     if method.params[0].type.is_enum:
         return TEMPLATE_SET_ENUM
 
+    if method.params[0].type.is_discord:
+        return TEMPLATE_SET_OPTIONAL_OBJ
+
     if method.params[0].type.name == "std::string":
         return TEMPLATE_SET_STRING
 
-    return TEMPLATE_SET_NUMBER
+    if method.params[0].type.name in ["int64_t", "uint64_t", "int32_t", "int32_t"]:
+        return TEMPLATE_SET_NUMBER
+
+    return f"// IMPLEMENT SET FOR {method.params[0].type.name}"
