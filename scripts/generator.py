@@ -3,7 +3,7 @@ from helper import to_snake_case
 from parser import parse_signature
 from template_cpp import get_source_template
 from template_h import get_header_template
-from template_bind import TEMPLATE_BIND
+from template_bind import get_bind_template
 from template_get import get_get_template
 from template_set import get_set_template
 
@@ -97,8 +97,9 @@ def generate_method(
                 operator=operator,
                 method_name="Set" + method.name,
             ),
-            TEMPLATE_BIND.format(
+            get_bind_template(method).format(
                 method_snake_name="set_" + to_snake_case(method.name),
+                parameter_name=to_snake_case(method.params[0].name),
                 class_name=class_name,
             ),
         )
@@ -112,7 +113,7 @@ def generate_method(
             operator=operator,
             method_name=method.name,
         ),
-        TEMPLATE_BIND.format(
+        get_bind_template(method).format(
             method_snake_name="get_" + to_snake_case(method.name),
             class_name=class_name,
         ),
