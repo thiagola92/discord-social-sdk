@@ -1,5 +1,7 @@
 #include "discord_client.h"
+#include "discord_client_result.h"
 #include "discordpp.h"
+#include "godot_cpp/classes/global_constants.hpp"
 #include "godot_cpp/core/memory.hpp"
 
 using namespace godot;
@@ -15,11 +17,8 @@ void DiscordClient::_process(float delta) {
 void DiscordClient::authorize(DiscordAuthorizationArgs *args) {
 	client.Authorize(
 			*args->unwrap(), [this](discordpp::ClientResult result, std::string code, std::string redirect_uri) {
-				if (result.Successful()) {
-					this->emit_signal("authorized");
-				} else {
-					this->emit_signal("rejected");
-				}
+				auto r = memnew(DiscordClientResult{ &result });
+				this->emit_signal("authorization_callback", r, String(code.c_str()), String(redirect_uri.c_str()));
 			});
 }
 
@@ -30,8 +29,7 @@ DiscordAuthorizationCodeVerifier *DiscordClient::create_authorization_code_verif
 }
 
 void DiscordClient::_bind_methods() {
-	ADD_SIGNAL(MethodInfo("authorized"));
-	ADD_SIGNAL(MethodInfo("rejected"));
+	ADD_SIGNAL(MethodInfo("authorization_callback", PropertyInfo(Variant::OBJECT, "result", PROPERTY_HINT_RESOURCE_TYPE, "DiscordClientResult"), PropertyInfo(Variant::STRING, "code"), PropertyInfo(Variant::STRING, "redirect_uri")));
 
 	ClassDB::bind_method(D_METHOD("authorize", "args"),
 			&DiscordClient::authorize);

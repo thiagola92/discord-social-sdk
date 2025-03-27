@@ -17,9 +17,7 @@ func _ready() -> void:
 	client.authorize(args)
 
 
-func _on_discord_client_authorized() -> void:
-	print("authorized")
-
-
-func _on_discord_client_rejected() -> void:
-	print("rejected")
+func _on_discord_client_authorization_callback(result: DiscordClientResult, code: String, redirect_uri: String) -> void:
+	print("result.get_successful()", result.get_successful())
+	print("code", code)
+	print("redirect_uri", redirect_uri)
