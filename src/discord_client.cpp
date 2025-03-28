@@ -25,7 +25,7 @@ void DiscordClient::authorize(DiscordAuthorizationArgs *args) {
 DiscordAuthorizationCodeVerifier *DiscordClient::create_authorization_code_verifier() {
 	auto cv = (discordpp::AuthorizationCodeVerifier *)memalloc(sizeof(discordpp::AuthorizationCodeVerifier));
 	*cv = client.CreateAuthorizationCodeVerifier();
-	return memnew(DiscordAuthorizationCodeVerifier(cv));
+	return memnew(DiscordAuthorizationCodeVerifier{ cv });
 }
 
 void DiscordClient::_bind_methods() {

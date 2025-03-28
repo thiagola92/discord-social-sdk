@@ -49,8 +49,8 @@ GDScript signature:
 Variant get_state()
 ```
 
-## New memory
-All the following cases assume that class `DiscordXXXXX` property is a pointer, otherwise you could just copy to your property using `=` (equal operator).  
+## Memory allocation when property is a pointer
+There is only one case that was annoying to wrap, which is the last one.  
 
 If you receive a reference to a `discordpp:XXXXX` object:  
 ```C++
@@ -66,5 +66,5 @@ If you receive a copy of a `discordpp:XXXXX` object:
 ```C++
 auto t = (discordpp::XXXXX *)memalloc(sizeof(discordpp::XXXXX));
 *t = CreateXXXXX();
-auto x = memnew(DiscordXXXXX(t));
+auto x = memnew(DiscordXXXXX{ t });
 ```
