@@ -18,6 +18,7 @@ class Method:
     name: str = ""
     params: list[Param]
     is_setter: bool = False
+    maybe_getter: bool = False
 
 
 def parse_typing(text: str) -> VarType:
@@ -88,6 +89,8 @@ def parse_signature(text: str) -> Method:
         method.is_setter = True
 
         name = name.removeprefix("Set")
+    elif method.ret.name != "void" and len(method.params) == 0:
+        method.maybe_getter = True
 
     method.name = name
     method.ret = parse_typing(ret)
