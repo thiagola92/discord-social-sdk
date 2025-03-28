@@ -18,5 +18,5 @@ if __name__ == "__main__":
         classes_registrations += class_registration
         classes_includes += class_include
 
-    print(f"##### CLASSES_INCLUDES #####\n\n{classes_includes}")
-    print(f"##### CLASSES_REGISTRATIONS #####\n\n{classes_registrations}")
+    print(f"########## CLASSES_INCLUDES ##########\n\n{classes_includes}")
+    print(f"########## CLASSES_REGISTRATIONS ##########\n\n{classes_registrations}")

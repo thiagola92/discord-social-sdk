@@ -8,6 +8,7 @@ assert not method.ret.is_enum
 assert method.name == "ClientId"
 assert len(method.params) == 0
 assert not method.is_setter
+assert method.maybe_getter
 
 method = parse_signature("std::string 	Scopes () const")
 assert method.ret.name == "std::string"
@@ -17,6 +18,7 @@ assert not method.ret.is_enum
 assert method.name == "Scopes"
 assert len(method.params) == 0
 assert not method.is_setter
+assert method.maybe_getter
 
 method = parse_signature("std::optional< std::string > 	State () const")
 assert method.ret.name == "std::string"
@@ -26,6 +28,7 @@ assert not method.ret.is_enum
 assert method.name == "State"
 assert len(method.params) == 0
 assert not method.is_setter
+assert method.maybe_getter
 
 method = parse_signature(
     "discordpp::AuthorizationCodeVerifier 	CreateAuthorizationCodeVerifier ()"
@@ -37,6 +40,7 @@ assert not method.ret.is_enum
 assert method.name == "CreateAuthorizationCodeVerifier"
 assert len(method.params) == 0
 assert not method.is_setter
+assert method.maybe_getter
 
 method = parse_signature(
     "discordpp::AuthenticationCodeChallengeMethod 	Method () const"
@@ -48,3 +52,4 @@ assert method.ret.is_enum
 assert method.name == "Method"
 assert len(method.params) == 0
 assert not method.is_setter
+assert method.maybe_getter

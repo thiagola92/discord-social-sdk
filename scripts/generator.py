@@ -6,6 +6,7 @@ from template_h import get_header_template
 from template_bind import get_bind_template
 from template_get import get_get_template
 from template_set import get_set_template
+from translator import translate_method
 
 DISCORDPP = Path("include/discordpp.h").read_text()
 
@@ -45,10 +46,6 @@ def generate_class(class_name: str, class_methods: list[str]) -> tuple[str, str]
         binds += bind
         signatures += signature
 
-    # print(methods)
-    # print(binds)
-    # print(signatures)
-
     source_file = Path(f"src/{filename_cpp}")
     source_content = get_source_template(is_property_pointer).format(
         filename_h=filename_h,
@@ -65,6 +62,12 @@ def generate_class(class_name: str, class_methods: list[str]) -> tuple[str, str]
         property_name=property_name,
         signatures=signatures,
     )
+
+    print(f"========== {source_file.name} ==========")
+    print(f"\n{source_content}\n")
+
+    print(f"========== {header_file.name} ==========")
+    print(f"\n{header_content}\n")
 
     # Generate template source code (don't overwrite).
     if not source_file.exists():
@@ -92,7 +95,22 @@ def generate_method(
     method = parse_signature(signature)
     operator = "->" if is_property_pointer else "."
 
-    if method.is_setter:
+    if method.maybe_getter:
+        return (
+            get_get_template(method).format(
+                return_type=method.ret.name,
+                class_name=class_name,
+                method_snake_name="get_" + to_snake_case(method.name),
+                property_name=property_name,
+                operator=operator,
+                method_name=method.name,
+            ),
+            get_bind_template(method).format(
+                method_snake_name="get_" + to_snake_case(method.name),
+                class_name=class_name,
+            ),
+        )
+    elif method.is_setter:
         return (
             get_set_template(method).format(
                 class_name=class_name,
@@ -111,16 +129,15 @@ def generate_method(
         )
 
     return (
-        get_get_template(method).format(
-            return_type=method.ret.name,
-            class_name=class_name,
-            method_snake_name="get_" + to_snake_case(method.name),
-            property_name=property_name,
-            operator=operator,
-            method_name=method.name,
+        translate_method(
+            method,
+            class_name,
+            property_name,
+            operator,
         ),
         get_bind_template(method).format(
-            method_snake_name="get_" + to_snake_case(method.name),
+            method_snake_name=to_snake_case(method.name),
+            parameter_name=to_snake_case(method.params[0].name),
             class_name=class_name,
         ),
     )

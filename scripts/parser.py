@@ -6,6 +6,7 @@ class VarType:
     is_opt: bool = False
     is_discord: bool = False
     is_enum: bool = False
+    is_callback: bool = False
 
 
 class Param:
@@ -47,6 +48,7 @@ def parse_typing(text: str) -> VarType:
         text = text.strip()
 
         var_type.is_enum = text not in CLASSES.keys()
+        var_type.is_callback = var_type.name.endswith("Callback")
 
     var_type.name = text
 
@@ -85,15 +87,14 @@ def parse_signature(text: str) -> Method:
     ret, _, name = text.rpartition(" ")
     name = name.strip()
 
-    if len(name) > 3 and name[3].isupper() and name.startswith("Set"):
-        method.is_setter = True
-
-        name = name.removeprefix("Set")
-    elif method.ret.name != "void" and len(method.params) == 0:
-        method.maybe_getter = True
-
     method.name = name
     method.ret = parse_typing(ret)
     method.params = parse_params(params)
+
+    if len(name) > 3 and name[3].isupper() and name.startswith("Set"):
+        method.is_setter = True
+        method.name = name.removeprefix("Set")
+    elif method.ret.name != "void" and len(method.params) == 0:
+        method.maybe_getter = True
 
     return method
