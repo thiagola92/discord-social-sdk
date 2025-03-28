@@ -10,6 +10,7 @@ Wrapper around [Discord Social SDK](https://discord.com/developers/docs/discord-
     - Debian/Ubuntu: `sudo apt install scons`
 - Discord Social SDK in `lib/` directory
     - [Download the Discord SDK for C++](https://discord.com/developers/docs/discord-social-sdk/getting-started/using-c++#step-4-download-the-discord-sdk-for-c++)
+        - SDK Version: **1.0.7445**
     - Extract files from:
         - `discord_social_sdk/lib/debug/` to `lib/debug/`
         - `discord_social_sdk/bin/debug/` to `lib/debug/`
