@@ -45,6 +45,13 @@ CLASSES = {
     # "ChannelHandle": [],
     # "Client": [],
     "ClientResult": [
+        "std::string 	ToString () const",
+        "discordpp::ErrorType 	Type () const",
+        "void 	SetType (discordpp::ErrorType Type)",
+        "std::string 	Error () const",
+        "void 	SetError (std::string Error)",
+        "int32_t 	ErrorCode () const",
+        "void 	SetErrorCode (int32_t ErrorCode)",
         "discordpp::HttpStatusCode 	Status () const",
         "void 	SetStatus (discordpp::HttpStatusCode Status)",
         "std::string 	ResponseBody () const",

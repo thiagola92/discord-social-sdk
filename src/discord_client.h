@@ -26,6 +26,9 @@ public:
 	void authorize(DiscordAuthorizationArgs *args);
 	DiscordAuthorizationCodeVerifier *create_authorization_code_verifier();
 
+	// Core
+	void add_log_callback(DiscordLoggingSeverity::Enum min_severity);
+
 	DiscordClient();
 	~DiscordClient();
 };
