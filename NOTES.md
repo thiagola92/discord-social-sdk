@@ -64,7 +64,7 @@ auto x = memnew(DiscordXXXXX{ xxxxx });
 
 If you receive a copy of a `discordpp:XXXXX` object:
 ```C++
-auto t = (discordpp::XXXXX *)memalloc(sizeof(discordpp::XXXXX));
-*t = CreateXXXXX();
-auto x = memnew(DiscordXXXXX{ t });
+auto x1 = (discordpp::XXXXX *)memalloc(sizeof(discordpp::XXXXX));
+*x1 = CreateXXXXX();
+auto x2 = memnew(DiscordXXXXX{ x1 });
 ```
