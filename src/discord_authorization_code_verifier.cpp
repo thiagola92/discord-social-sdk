@@ -13,7 +13,7 @@ DiscordAuthorizationCodeChallenge *DiscordAuthorizationCodeVerifier::get_challen
 }
 
 void DiscordAuthorizationCodeVerifier::set_challenge(DiscordAuthorizationCodeChallenge *challenge) {
-	authorization_code_verifier->SetChallenge(*(challenge->unwrap()));
+	authorization_code_verifier->SetChallenge(*challenge->unwrap());
 }
 
 String DiscordAuthorizationCodeVerifier::get_verifier() {
