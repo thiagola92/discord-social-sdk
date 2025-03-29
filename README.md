@@ -8,6 +8,11 @@ Wrapper around [Discord Social SDK](https://discord.com/developers/docs/discord-
 - [Godot](https://godotengine.org/)
 - [SCons](https://scons.org/)
     - Debian/Ubuntu: `sudo apt install scons`
+- [Python](https://www.python.org/) >=3.12
+    - Included in Debian
+- Clang format
+    - Debian: `sudo apt install clang-format`
+    - [VSCode](https://marketplace.visualstudio.com/items?itemName=xaver.clang-format)
 - Discord Social SDK in `lib/` directory
     - [Download the Discord SDK for C++](https://discord.com/developers/docs/discord-social-sdk/getting-started/using-c++#step-4-download-the-discord-sdk-for-c++)
         - SDK Version: **1.0.7445**

@@ -18,6 +18,9 @@ class Method:
     ret: VarType
     name: str = ""
     params: list[Param]
+    uncallables: list[Param]
+    callables: list[Param]
+    use_enum: bool = False
     is_setter: bool = False
     maybe_getter: bool = False
 
@@ -47,8 +50,10 @@ def parse_typing(text: str) -> VarType:
         text = text.removeprefix("discordpp::")
         text = text.strip()
 
-        var_type.is_enum = text not in CLASSES.keys()
-        var_type.is_callback = var_type.name.endswith("Callback")
+        if text.endswith("Callback"):
+            var_type.is_callback = True
+        else:
+            var_type.is_enum = text not in CLASSES.keys()
 
     var_type.name = text
 
@@ -90,10 +95,12 @@ def parse_signature(text: str) -> Method:
     method.name = name
     method.ret = parse_typing(ret)
     method.params = parse_params(params)
+    method.uncallables = [p for p in method.params if not p.type.is_callback]
+    method.callables = [p for p in method.params if p.type.is_callback]
+    method.use_enum = any([p for p in method.params if p.type.is_enum])
 
     if len(name) > 3 and name[3].isupper() and name.startswith("Set"):
         method.is_setter = True
-        method.name = name.removeprefix("Set")
     elif method.ret.name != "void" and len(method.params) == 0:
         method.maybe_getter = True
 

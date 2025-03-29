@@ -12,6 +12,11 @@ TEMPLATE_BIND_SET = """
 			&Discord{class_name}::{method_snake_name});
 """
 
+TEMPLATE_BIND = """
+	ClassDB::bind_method(D_METHOD({bind_params}),
+			&Discord{class_name}::{method_snake_name});
+"""
+
 #####################################################
 
 

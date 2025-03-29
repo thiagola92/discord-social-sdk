@@ -1,7 +1,7 @@
 TEMPLATE_H_1 = """#ifndef DISCORD_{header_definition}_H
 #define DISCORD_{header_definition}_H
 
-#include "discordpp.h"
+#include "discordpp.h"{includes}
 #include "godot_cpp/classes/ref_counted.hpp"
 
 namespace godot {{
@@ -32,7 +32,7 @@ public:
 TEMPLATE_H_2 = """#ifndef DISCORD_{header_definition}_H
 #define DISCORD_{header_definition}_H
 
-#include "discordpp.h"
+#include "discordpp.h"{includes}
 #include "godot_cpp/classes/ref_counted.hpp"
 
 namespace godot {{

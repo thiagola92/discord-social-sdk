@@ -1,6 +1,7 @@
 from helper import to_snake_case
 from parser import VarType, Param, Method
-from template_method import TEMPLATE_METHOD
+from template_method import TEMPLATE_METHOD, TEMPLATE_LAMBDA
+from template_bind import TEMPLATE_BIND
 
 
 def translate_type(var_type: VarType) -> str:
@@ -29,36 +30,51 @@ def translate_param(param: Param) -> str:
     return f"{var_type} {name}"
 
 
+def translate_passing_param(param: Param) -> str:
+    if not param.type.is_callback:
+        return to_snake_case(param.name)
+
+    return TEMPLATE_LAMBDA.format(signal_name=param.name)
+
+
 def translate_method(
     method: Method, class_name: str, property_name: str, operator: str
 ) -> str:
     """
     Translate Method class to a template string.
 
-    Worst than using get/set templates, but still  something to start.
+    Returns a tuple with informations to be inserted into source or header files:
+    - Method code
+    - Code to be inserted in _bind_methods()
+    - Includes to add into header file
     """
-
     ret = translate_type(method.ret)
     method_snake_name = to_snake_case(method.name)
-    params = ", ".join([translate_param(p) for p in method.params])
+    params = ", ".join([translate_param(p) for p in method.uncallables])
     return_keyword = "" if ret == "void" else "return "
     method_name = method.name
-    params_names = ", ".join([to_snake_case(p.name) for p in method.params])
+    passing_params = ", ".join([translate_passing_param(p) for p in method.params])
+    bind_params = [f'"{to_snake_case(p.name)}"' for p in method.uncallables]
+    bind_params = [f'"{method_snake_name}"'] + bind_params
+    bind_params = ", ".join(bind_params)
+    includes = {'\n#include "discord_enum.h"'} if method.use_enum else set()
 
-    if method.is_setter:
-        method_snake_name = "set_" + method_snake_name
-        method_name = "Set" + method_name
-    elif method.maybe_getter:
-        method_snake_name = "get_" + method_snake_name
-
-    return TEMPLATE_METHOD.format(
-        return_type=ret,
-        class_name=class_name,
-        method_snake_name=method_snake_name,
-        params=params,
-        return_keyword=return_keyword,
-        property_name=property_name,
-        operator=operator,
-        method_name=method.name,
-        params_names=params_names,
+    return (
+        TEMPLATE_METHOD.format(
+            return_type=ret,
+            class_name=class_name,
+            method_snake_name=method_snake_name,
+            params=params,
+            return_keyword=return_keyword,
+            property_name=property_name,
+            operator=operator,
+            method_name=method_name,
+            passing_params=passing_params,
+        ),
+        TEMPLATE_BIND.format(
+            bind_params=bind_params,
+            class_name=class_name,
+            method_snake_name=method_snake_name,
+        ),
+        includes,
     )

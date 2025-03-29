@@ -41,7 +41,7 @@ TEMPLATE_SET_OBJ = """
 TEMPLATE_SET_OPTIONAL_INT = """
 void Discord{class_name}::{method_snake_name}(Variant {parameter_name}) {{
 	if ({parameter_name}.get_type() == Variant::INT) {{
-		{property_name}{operator}{method_name}({{ {parameter_name}.value() }});
+		{property_name}{operator}{method_name}({{ ({parameter_type}){parameter_name} }});
 		return;
 	}}
 
@@ -52,7 +52,7 @@ void Discord{class_name}::{method_snake_name}(Variant {parameter_name}) {{
 TEMPLATE_SET_OPTIONAL_FLOAT = """
 void Discord{class_name}::{method_snake_name}(Variant {parameter_name}) {{
 	if ({parameter_name}.get_type() == Variant::FLOAT) {{
-		{property_name}{operator}{method_name}({{ {parameter_name}.value() }});
+		{property_name}{operator}{method_name}({{ ({parameter_type}){parameter_name} }});
 		return;
 	}}
 

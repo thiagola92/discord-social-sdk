@@ -1,5 +1,5 @@
 from pathlib import Path
-from helper import to_snake_case
+from helper import to_snake_case, clang_format
 from parser import parse_signature
 from template_cpp import get_source_template
 from template_h import get_header_template
@@ -17,8 +17,9 @@ def generate_class(class_name: str, class_methods: list[str]) -> tuple[str, str]
     """
     Generates the minimum file for a Class from SDK.
 
-    Returns a tuple with information to be inserted in register_types.cpp,
-    first value is the include to be added and second value is macro to add to Godot.
+    Returns a tuple with informations to be inserted in "register_types.cpp":
+    - The #include to be added
+    - Macro to add class into Godot
     """
 
     filename = to_snake_case("Discord" + class_name)
@@ -31,9 +32,10 @@ def generate_class(class_name: str, class_methods: list[str]) -> tuple[str, str]
     methods = ""
     binds = ""
     signatures = ""
+    includes = set()
 
     for m in class_methods:
-        method, bind = generate_method(
+        method, bind, includes_ = generate_method(
             m,
             class_name,
             property_name,
@@ -45,6 +47,7 @@ def generate_class(class_name: str, class_methods: list[str]) -> tuple[str, str]
         methods += method
         binds += bind
         signatures += signature
+        includes = includes.union(includes_)
 
     source_file = Path(f"src/{filename_cpp}")
     source_content = get_source_template(is_property_pointer).format(
@@ -58,6 +61,7 @@ def generate_class(class_name: str, class_methods: list[str]) -> tuple[str, str]
     header_file = Path(f"src/{filename_h}")
     header_content = get_header_template(is_property_pointer).format(
         header_definition=header_definition,
+        includes="".join(includes),
         class_name=class_name,
         property_name=property_name,
         signatures=signatures,
@@ -72,10 +76,12 @@ def generate_class(class_name: str, class_methods: list[str]) -> tuple[str, str]
     # Generate template source code (don't overwrite).
     if not source_file.exists():
         source_file.write_text(source_content)
+        clang_format(source_file.absolute())
 
     # Generate template header (don't overwrite).
     if not header_file.exists():
         header_file.write_text(header_content)
+        clang_format(header_file.absolute())
 
     return (
         f'#include "{filename_h}"\n',
@@ -89,57 +95,55 @@ def generate_method(
     """
     Generates the minium Get/Set method for this signature.
 
-    Returns a tuple with information to be inserted in the cpp file,
-    first value is the method code and second value code to be inserted in _bind_methods()."
+    Returns a tuple with informations to be inserted in the cpp file:
+    - Method code
+    - Code to be inserted in _bind_methods()
+    - Includes to add into header file
     """
     method = parse_signature(signature)
     operator = "->" if is_property_pointer else "."
+    includes = {'\n#include "discord_enum.h"'} if method.use_enum else set()
 
     if method.maybe_getter:
         return (
             get_get_template(method).format(
                 return_type=method.ret.name,
                 class_name=class_name,
-                method_snake_name="get_" + to_snake_case(method.name),
+                method_snake_name=to_snake_case(method.name),
                 property_name=property_name,
                 operator=operator,
                 method_name=method.name,
             ),
             get_bind_template(method).format(
-                method_snake_name="get_" + to_snake_case(method.name),
+                method_snake_name=to_snake_case(method.name),
                 class_name=class_name,
             ),
+            includes,
         )
     elif method.is_setter:
         return (
             get_set_template(method).format(
                 class_name=class_name,
-                method_snake_name="set_" + to_snake_case(method.name),
+                method_snake_name=to_snake_case(method.name),
                 parameter_type=method.params[0].type.name,
                 parameter_name=to_snake_case(method.params[0].name),
                 property_name=property_name,
                 operator=operator,
-                method_name="Set" + method.name,
+                method_name=method.name,
             ),
             get_bind_template(method).format(
-                method_snake_name="set_" + to_snake_case(method.name),
+                method_snake_name=to_snake_case(method.name),
                 parameter_name=to_snake_case(method.params[0].name),
                 class_name=class_name,
             ),
+            includes,
         )
 
-    return (
-        translate_method(
-            method,
-            class_name,
-            property_name,
-            operator,
-        ),
-        get_bind_template(method).format(
-            method_snake_name=to_snake_case(method.name),
-            parameter_name=to_snake_case(method.params[0].name),
-            class_name=class_name,
-        ),
+    return translate_method(
+        method,
+        class_name,
+        property_name,
+        operator,
     )
 
 
