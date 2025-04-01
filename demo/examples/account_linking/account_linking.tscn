@@ -4,7 +4,3 @@
 
 [node name="AccountLinking" type="Node"]
 script = ExtResource("1_2i7gc")
-
-[node name="DiscordClient" type="DiscordClient" parent="."]
-
-[connection signal="authorization_callback" from="DiscordClient" to="." method="_on_discord_client_authorization_callback"]

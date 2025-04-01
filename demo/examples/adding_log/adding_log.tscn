@@ -4,7 +4,3 @@
 
 [node name="AddingLog" type="Node"]
 script = ExtResource("1_yk60j")
-
-[node name="DiscordClient" type="DiscordClient" parent="."]
-
-[connection signal="log_callback" from="DiscordClient" to="." method="_on_discord_client_log_callback"]
