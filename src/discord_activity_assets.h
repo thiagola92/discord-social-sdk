@@ -4,6 +4,8 @@
 
 #include "discordpp.h"
 #include "godot_cpp/classes/ref_counted.hpp"
+#include "godot_cpp/variant/typed_array.hpp"
+#include "godot_cpp/variant/typed_dictionary.hpp"
 
 namespace godot {
 
@@ -11,7 +13,7 @@ class DiscordActivityAssets : public RefCounted {
 	GDCLASS(DiscordActivityAssets, RefCounted)
 
 private:
-	discordpp::ActivityAssets activity_assets;
+	discordpp::ActivityAssets *activity_assets;
 
 protected:
 	static void _bind_methods();
@@ -29,7 +31,7 @@ public:
 	void set_small_text(Variant small_text);
 
 	DiscordActivityAssets();
-	DiscordActivityAssets(discordpp::ActivityAssets activity_assets);
+	DiscordActivityAssets(discordpp::ActivityAssets *activity_assets);
 	~DiscordActivityAssets();
 };
 

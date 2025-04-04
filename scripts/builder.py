@@ -19,12 +19,10 @@ from template_code import (
     string_to_godot_,
     enum_to_godot_,
     obj_to_godot_,
-    obj_ref_to_godot_,
     optional_to_godot_,
     optional_number_to_variant_,
     optional_string_to_variant_,
     optional_enum_to_variant_,
-    optional_obj_ref_to_godot_,
     optional_obj_to_godot_,
     number_to_godot_,
     vector_number_to_godot_,
@@ -53,7 +51,8 @@ def build_type(var_type: VarType) -> str:
         return typed_dict
 
     if var_type.is_enum:
-        return f"Discord{var_type.name}::Enum"
+        enum_name = var_type.name.replace("::", "")
+        return f"Discord{enum_name}::Enum"
 
     if var_type.is_discord:
         return f"Discord{var_type.name} *"
@@ -91,21 +90,21 @@ def build_signals(method: Method, class_name: str) -> str:
     for s in signals_params:
         for p in s:
             if p.type.is_opt:
-                p.var = "VARIANT::NIL"
+                p.var = "Variant::NIL"
             elif p.type.is_vector:
-                p.var = "VARIANT::ARRAY"
+                p.var = "Variant::ARRAY"
             elif p.type.is_map:
-                p.var = "VARIANT::DICTIONARY"
+                p.var = "Variant::DICTIONARY"
             elif p.type.is_discord:
-                p.var = "VARIANT::OBJECT"
+                p.var = "Variant::OBJECT"
             elif p.type.is_boolean:
-                p.var = "VARIANT::BOOL"
+                p.var = "Variant::BOOL"
             elif p.type.is_integer:
-                p.var = "VARIANT::INTEGER"
+                p.var = "Variant::INT"
             elif p.type.is_float:
-                p.var = "VARIANT::FLOAT"
+                p.var = "Variant::FLOAT"
             elif p.type.is_string:
-                p.var = "VARIANT::STRING"
+                p.var = "Variant::STRING"
             else:
                 assert False
 
@@ -157,12 +156,12 @@ def build_includes(method: Method) -> list:
         includes.append(include_(include="discord_enum.h"))
 
     for p in method.params:
-        if p.type.is_discord and not p.type.is_enum:
+        if p.type.is_discord and not (p.type.is_enum or p.type.is_callback):
             includes.append(
                 include_(include=to_snake_case("Discord" + p.type.name) + ".h")
             )
 
-    if method.ret.is_discord and not method.ret.is_enum:
+    if method.ret.is_discord and not (method.ret.is_enum or method.ret.is_callback):
         includes.append(
             include_(include=to_snake_case("Discord" + method.ret.name) + ".h")
         )
@@ -182,7 +181,7 @@ def build_signature(method: Method) -> str:
     )
 
 
-def build_lambda(method: Method, param: Param, class_name: str, operator: str) -> str:
+def build_lambda(method: Method, param: Param, class_name: str) -> str:
     # Decide signal called.
     signal_name = to_snake_case(method.name)
     signal_name += "_callback"
@@ -202,7 +201,6 @@ def build_lambda(method: Method, param: Param, class_name: str, operator: str) -
         return_statement = build_after_call(
             method=lambda_method,
             variable_name=p.name,
-            is_property_pointer=operator == "->",
         )
         p.var = f"p{i}"
         statement = return_statement.replace("return ", f"auto {p.var} = ")
@@ -228,7 +226,6 @@ def build_call(
     method: Method,
     class_name: str,
     property_name: str,
-    operator: str,
 ):
     passing_params = []
 
@@ -239,7 +236,6 @@ def build_call(
                     method=method,
                     param=p,
                     class_name=class_name,
-                    operator=operator,
                 )
             )
         else:
@@ -249,21 +245,19 @@ def build_call(
 
     return call_(
         property_name=property_name,
-        operator=operator,
         method_name=method.name,
         passing_params=passing_params,
     )
 
 
 def build_method(
-    method: Method, class_name: str, property_name: str, is_property_pointer: bool
+    method: Method, class_name: str, property_name: str, has_empty_constructor: bool
 ) -> str:
     return_type = build_type(method.ret)
     method_snake_name = to_snake_case(method.name)
     params = [build_param(p) for p in method.uncallables]
     params = ", ".join(params)
-    operator = "->" if is_property_pointer else "."
-    before_call = build_before_call(method, operator)
+    before_call = build_before_call(method)
 
     # Nothing to return? Just call method.
     if method.ret.name == "void":
@@ -271,7 +265,6 @@ def build_method(
             method=method,
             class_name=class_name,
             property_name=property_name,
-            operator=operator,
         )
 
         statements = [before_call, call]
@@ -292,13 +285,11 @@ def build_method(
         method=method,
         class_name=class_name,
         property_name=property_name,
-        operator=operator,
     )
 
     after_call = build_after_call(
         method=method,
         variable_name=return_name,
-        is_property_pointer=is_property_pointer,
     )
 
     statements = [before_call, call, after_call]
@@ -338,7 +329,7 @@ def build_variant_type_name(param: Param) -> str:
     return param.type.name
 
 
-def build_variant_convertion(param: Param, variable_name: str, operator: str) -> str:
+def build_variant_convertion(param: Param, variable_name: str) -> str:
     variant_type = param.type.name
     param_snake_name = to_snake_case(param.name)
 
@@ -358,7 +349,6 @@ def build_variant_convertion(param: Param, variable_name: str, operator: str) ->
             variable_name=variable_name,
             variant_type=variant_type,
             param_snake_name=param_snake_name,
-            operator=operator,
         )
 
     if param.type.is_boolean:
@@ -380,7 +370,7 @@ def build_variant_convertion(param: Param, variable_name: str, operator: str) ->
     return f"// FIX ME: build_variant_convertion >> {variant_type}"
 
 
-def build_before_call(method: Method, operator: str) -> str:
+def build_before_call(method: Method) -> str:
     statements = []
 
     for n, param in enumerate(method.uncallables):
@@ -393,7 +383,6 @@ def build_before_call(method: Method, operator: str) -> str:
             variant_convertion = build_variant_convertion(
                 param,
                 variable_name,
-                operator,
             )
 
             statements.append(
@@ -435,7 +424,6 @@ def build_before_call(method: Method, operator: str) -> str:
                 obj_from_godot_(
                     variable_name=variable_name,
                     param_snake_name=param_snake_name,
-                    operator=operator,
                 )
             )
 
@@ -462,9 +450,7 @@ def build_before_call(method: Method, operator: str) -> str:
 ####################################################
 
 
-def build_after_call(
-    method: Method, variable_name: str, is_property_pointer: str
-) -> str:
+def build_after_call(method: Method, variable_name: str) -> str:
     assert method.ret.name != "void"
 
     if method.ret.is_opt:
@@ -485,16 +471,9 @@ def build_after_call(
                     variable_name=variable_name,
                 )
             )
-        elif method.ret.is_discord and not is_property_pointer:
+        elif method.ret.is_discord:
             statements.append(
                 optional_obj_to_godot_(
-                    class_name=method.ret.name,
-                    variable_name=variable_name,
-                )
-            )
-        elif method.ret.is_discord and is_property_pointer:
-            statements.append(
-                optional_obj_ref_to_godot_(
                     class_name=method.ret.name,
                     variable_name=variable_name,
                 )
@@ -553,18 +532,12 @@ def build_after_call(
 
     if method.ret.is_enum:
         return enum_to_godot_(
-            return_type=method.ret.name,
+            return_type=method.ret.name.replace("::", ""),
             variable_name=variable_name,
         )
 
-    if method.ret.is_discord and not is_property_pointer:
+    if method.ret.is_discord:
         return obj_to_godot_(
-            class_name=method.ret.name,
-            variable_name=variable_name,
-        )
-
-    if method.ret.is_discord and is_property_pointer:
-        return obj_ref_to_godot_(
             variable_name=variable_name,
             class_name=method.ret.name,
         )

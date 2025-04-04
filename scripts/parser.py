@@ -1,4 +1,4 @@
-from extractor import get_classes
+from extractor import get_classes, is_callback
 
 
 class VarType:
@@ -33,6 +33,7 @@ class Method:
     uncallables: list[Param] = []
     callables: list[Param] = []
     use_enum: bool = False
+    has_callbacks: bool = False
 
 
 def parse_typing(text: str) -> VarType:
@@ -74,7 +75,7 @@ def parse_typing(text: str) -> VarType:
         text = text.removeprefix("discordpp::")
         text = text.strip()
 
-        if text.endswith("Callback"):
+        if is_callback(text):
             var_type.is_callback = True
         else:
             var_type.is_enum = text not in get_classes().keys()
@@ -152,5 +153,6 @@ def parse_signature(text: str) -> Method:
     method.use_enum = (
         any([p for p in method.params if p.type.is_enum]) or method.ret.is_enum
     )
+    method.has_callbacks = any([p for p in method.params if p.type.is_callback])
 
     return method

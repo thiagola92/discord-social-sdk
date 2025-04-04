@@ -39,7 +39,8 @@ void DiscordVADThresholdSettings::_bind_methods() {
 			&DiscordVADThresholdSettings::set_automatic);
 }
 
-DiscordVADThresholdSettings::DiscordVADThresholdSettings() {}
+DiscordVADThresholdSettings::DiscordVADThresholdSettings() {
+}
 
 DiscordVADThresholdSettings::DiscordVADThresholdSettings(discordpp::VADThresholdSettings *vadthreshold_settings) {
 	this->vadthreshold_settings = vadthreshold_settings;

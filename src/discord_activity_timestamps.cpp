@@ -4,25 +4,25 @@
 using namespace godot;
 
 discordpp::ActivityTimestamps *DiscordActivityTimestamps::unwrap() {
-	return &activity_timestamps;
+	return activity_timestamps;
 }
 
 uint64_t DiscordActivityTimestamps::start() {
-	auto r = activity_timestamps.Start();
+	auto r = activity_timestamps->Start();
 	return r;
 }
 
 void DiscordActivityTimestamps::set_start(uint64_t start) {
-	activity_timestamps.SetStart(start);
+	activity_timestamps->SetStart(start);
 }
 
 uint64_t DiscordActivityTimestamps::end() {
-	auto r = activity_timestamps.End();
+	auto r = activity_timestamps->End();
 	return r;
 }
 
 void DiscordActivityTimestamps::set_end(uint64_t end) {
-	activity_timestamps.SetEnd(end);
+	activity_timestamps->SetEnd(end);
 }
 
 void DiscordActivityTimestamps::_bind_methods() {
@@ -39,9 +39,11 @@ void DiscordActivityTimestamps::_bind_methods() {
 			&DiscordActivityTimestamps::set_end);
 }
 
-DiscordActivityTimestamps::DiscordActivityTimestamps() {}
+DiscordActivityTimestamps::DiscordActivityTimestamps() {
+	this->activity_timestamps = memnew(discordpp::ActivityTimestamps);
+}
 
-DiscordActivityTimestamps::DiscordActivityTimestamps(discordpp::ActivityTimestamps activity_timestamps) {
+DiscordActivityTimestamps::DiscordActivityTimestamps(discordpp::ActivityTimestamps *activity_timestamps) {
 	this->activity_timestamps = activity_timestamps;
 }
 

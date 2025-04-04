@@ -5,6 +5,8 @@
 #include "discord_voice_state_handle.h"
 #include "discordpp.h"
 #include "godot_cpp/classes/ref_counted.hpp"
+#include "godot_cpp/variant/typed_array.hpp"
+#include "godot_cpp/variant/typed_dictionary.hpp"
 
 namespace godot {
 
@@ -12,7 +14,7 @@ class DiscordCallInfoHandle : public RefCounted {
 	GDCLASS(DiscordCallInfoHandle, RefCounted)
 
 private:
-	discordpp::CallInfoHandle *call_info_handle; // Doesn't have public empty contrusctor, needs to be a pointer.
+	discordpp::CallInfoHandle *call_info_handle;
 
 	DiscordCallInfoHandle();
 

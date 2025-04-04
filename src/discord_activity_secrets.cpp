@@ -4,17 +4,17 @@
 using namespace godot;
 
 discordpp::ActivitySecrets *DiscordActivitySecrets::unwrap() {
-	return &activity_secrets;
+	return activity_secrets;
 }
 
 String DiscordActivitySecrets::join() {
-	auto r = activity_secrets.Join();
+	auto r = activity_secrets->Join();
 	return String(r.c_str());
 }
 
 void DiscordActivitySecrets::set_join(String join) {
 	auto p0 = join.utf8().get_data();
-	activity_secrets.SetJoin(p0);
+	activity_secrets->SetJoin(p0);
 }
 
 void DiscordActivitySecrets::_bind_methods() {
@@ -25,9 +25,11 @@ void DiscordActivitySecrets::_bind_methods() {
 			&DiscordActivitySecrets::set_join);
 }
 
-DiscordActivitySecrets::DiscordActivitySecrets() {}
+DiscordActivitySecrets::DiscordActivitySecrets() {
+	this->activity_secrets = memnew(discordpp::ActivitySecrets);
+}
 
-DiscordActivitySecrets::DiscordActivitySecrets(discordpp::ActivitySecrets activity_secrets) {
+DiscordActivitySecrets::DiscordActivitySecrets(discordpp::ActivitySecrets *activity_secrets) {
 	this->activity_secrets = activity_secrets;
 }
 

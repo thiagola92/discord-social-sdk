@@ -4,6 +4,8 @@
 
 #include "discordpp.h"
 #include "godot_cpp/classes/ref_counted.hpp"
+#include "godot_cpp/variant/typed_array.hpp"
+#include "godot_cpp/variant/typed_dictionary.hpp"
 
 namespace godot {
 
@@ -11,7 +13,7 @@ class DiscordActivityTimestamps : public RefCounted {
 	GDCLASS(DiscordActivityTimestamps, RefCounted)
 
 private:
-	discordpp::ActivityTimestamps activity_timestamps;
+	discordpp::ActivityTimestamps *activity_timestamps;
 
 protected:
 	static void _bind_methods();
@@ -25,7 +27,7 @@ public:
 	void set_end(uint64_t end);
 
 	DiscordActivityTimestamps();
-	DiscordActivityTimestamps(discordpp::ActivityTimestamps activity_timestamps);
+	DiscordActivityTimestamps(discordpp::ActivityTimestamps *activity_timestamps);
 	~DiscordActivityTimestamps();
 };
 

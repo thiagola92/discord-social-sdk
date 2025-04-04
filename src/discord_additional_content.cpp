@@ -4,27 +4,27 @@
 using namespace godot;
 
 discordpp::AdditionalContent *DiscordAdditionalContent::unwrap() {
-	return &additional_content;
+	return additional_content;
 }
 
 bool DiscordAdditionalContent::equals(DiscordAdditionalContent *rhs) {
 	auto p0 = *rhs->unwrap();
-	auto r = additional_content.Equals(p0);
+	auto r = additional_content->Equals(p0);
 	return r;
 }
 
 DiscordAdditionalContentType::Enum DiscordAdditionalContent::type() {
-	auto r = additional_content.Type();
+	auto r = additional_content->Type();
 	return (DiscordAdditionalContentType::Enum)r;
 }
 
 void DiscordAdditionalContent::set_type(DiscordAdditionalContentType::Enum type) {
 	auto p0 = (discordpp::AdditionalContentType)type;
-	additional_content.SetType(p0);
+	additional_content->SetType(p0);
 }
 
 Variant DiscordAdditionalContent::title() {
-	auto r = additional_content.Title();
+	auto r = additional_content->Title();
 
 	if (!r.has_value()) {
 		return nullptr;
@@ -40,16 +40,16 @@ void DiscordAdditionalContent::set_title(Variant title) {
 		p0 = title.stringify().utf8().get_data();
 	}
 
-	additional_content.SetTitle(p0);
+	additional_content->SetTitle(p0);
 }
 
 uint8_t DiscordAdditionalContent::count() {
-	auto r = additional_content.Count();
+	auto r = additional_content->Count();
 	return r;
 }
 
 void DiscordAdditionalContent::set_count(uint8_t count) {
-	additional_content.SetCount(count);
+	additional_content->SetCount(count);
 }
 
 void DiscordAdditionalContent::_bind_methods() {
@@ -75,9 +75,11 @@ void DiscordAdditionalContent::_bind_methods() {
 			&DiscordAdditionalContent::set_count);
 }
 
-DiscordAdditionalContent::DiscordAdditionalContent() {}
+DiscordAdditionalContent::DiscordAdditionalContent() {
+	this->additional_content = memnew(discordpp::AdditionalContent);
+}
 
-DiscordAdditionalContent::DiscordAdditionalContent(discordpp::AdditionalContent additional_content) {
+DiscordAdditionalContent::DiscordAdditionalContent(discordpp::AdditionalContent *additional_content) {
 	this->additional_content = additional_content;
 }
 

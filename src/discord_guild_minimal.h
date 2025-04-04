@@ -4,6 +4,8 @@
 
 #include "discordpp.h"
 #include "godot_cpp/classes/ref_counted.hpp"
+#include "godot_cpp/variant/typed_array.hpp"
+#include "godot_cpp/variant/typed_dictionary.hpp"
 
 namespace godot {
 
@@ -11,7 +13,7 @@ class DiscordGuildMinimal : public RefCounted {
 	GDCLASS(DiscordGuildMinimal, RefCounted)
 
 private:
-	discordpp::GuildMinimal *guild_minimal; // Doesn't have public empty contrusctor, needs to be a pointer.
+	discordpp::GuildMinimal *guild_minimal;
 
 	DiscordGuildMinimal();
 

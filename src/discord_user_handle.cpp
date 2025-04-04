@@ -17,7 +17,7 @@ Variant DiscordUserHandle::avatar() {
 	return Variant(r.value().c_str());
 }
 
-String DiscordUserHandle::avatar_url(DiscordUserHandle::AvatarType::Enum animated_type, DiscordUserHandle::AvatarType::Enum static_type) {
+String DiscordUserHandle::avatar_url(DiscordUserHandleAvatarType::Enum animated_type, DiscordUserHandleAvatarType::Enum static_type) {
 	auto p0 = (discordpp::UserHandle::AvatarType)animated_type;
 	auto p1 = (discordpp::UserHandle::AvatarType)static_type;
 	auto r = user_handle->AvatarUrl(p0, p1);
@@ -110,7 +110,8 @@ void DiscordUserHandle::_bind_methods() {
 			&DiscordUserHandle::username);
 }
 
-DiscordUserHandle::DiscordUserHandle() {}
+DiscordUserHandle::DiscordUserHandle() {
+}
 
 DiscordUserHandle::DiscordUserHandle(discordpp::UserHandle *user_handle) {
 	this->user_handle = user_handle;

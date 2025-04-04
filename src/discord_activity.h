@@ -9,6 +9,8 @@
 #include "discord_enum.h"
 #include "discordpp.h"
 #include "godot_cpp/classes/ref_counted.hpp"
+#include "godot_cpp/variant/typed_array.hpp"
+#include "godot_cpp/variant/typed_dictionary.hpp"
 
 namespace godot {
 
@@ -16,7 +18,7 @@ class DiscordActivity : public RefCounted {
 	GDCLASS(DiscordActivity, RefCounted)
 
 private:
-	discordpp::Activity activity;
+	discordpp::Activity *activity;
 
 protected:
 	static void _bind_methods();
@@ -46,7 +48,7 @@ public:
 	void set_supported_platforms(DiscordActivityGamePlatforms::Enum supported_platforms);
 
 	DiscordActivity();
-	DiscordActivity(discordpp::Activity activity);
+	DiscordActivity(discordpp::Activity *activity);
 	~DiscordActivity();
 };
 

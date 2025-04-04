@@ -65,7 +65,7 @@ Variant DiscordMessageHandle::disclosure_type() {
 		return nullptr;
 	}
 
-	return Variant((Discord<parser.VarType object at 0x7edc91b0f290>::Enum)r.value());
+	return Variant((Discord<parser.VarType object at 0x79fb3da8f230>::Enum)r.value());
 }
 
 uint64_t DiscordMessageHandle::edited_timestamp() {
@@ -183,7 +183,8 @@ void DiscordMessageHandle::_bind_methods() {
 			&DiscordMessageHandle::sent_timestamp);
 }
 
-DiscordMessageHandle::DiscordMessageHandle() {}
+DiscordMessageHandle::DiscordMessageHandle() {
+}
 
 DiscordMessageHandle::DiscordMessageHandle(discordpp::MessageHandle *message_handle) {
 	this->message_handle = message_handle;

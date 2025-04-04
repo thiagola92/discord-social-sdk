@@ -29,13 +29,14 @@ def generate_class(class_name: str, class_methods: list[str]) -> tuple[str, str]
     filename_h = filename + ".h"
     property_name = to_snake_case(class_name)
     header_definition = property_name.upper()
-    is_property_pointer = f"explicit {class_name}();" not in DISCORDPP
+    has_empty_constructor = f"explicit {class_name}();" in DISCORDPP
 
     methods = []
     signals = []
     binds = []
     signatures = []
     includes = set()
+    has_callbacks = False
 
     for m in class_methods:
         method = parse_signature(m)
@@ -43,6 +44,7 @@ def generate_class(class_name: str, class_methods: list[str]) -> tuple[str, str]
         signals.append(build_signals(method=method, class_name=class_name))
         binds.append(build_bind(method=method, class_name=class_name))
         signatures.append(build_signature(method=method))
+        has_callbacks = method.has_callbacks or has_callbacks
 
         for i in build_includes(method=method):
             includes.add(i)
@@ -52,7 +54,7 @@ def generate_class(class_name: str, class_methods: list[str]) -> tuple[str, str]
                 method=method,
                 class_name=class_name,
                 property_name=property_name,
-                is_property_pointer=is_property_pointer,
+                has_empty_constructor=has_empty_constructor,
             )
         )
 
@@ -70,7 +72,7 @@ def generate_class(class_name: str, class_methods: list[str]) -> tuple[str, str]
         methods=methods,
         signals=signals,
         binds=binds,
-        is_property_pointer=is_property_pointer,
+        has_empty_constructor=has_empty_constructor,
     )
 
     header_file = Path(f"src/{filename_h}")
@@ -80,7 +82,8 @@ def generate_class(class_name: str, class_methods: list[str]) -> tuple[str, str]
         class_name=class_name,
         property_name=property_name,
         signatures=signatures,
-        is_property_pointer=is_property_pointer,
+        has_empty_constructor=has_empty_constructor,
+        has_callbacks=has_callbacks,
     )
 
     print(f"========== {source_file.name} ==========")

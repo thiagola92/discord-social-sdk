@@ -7,6 +7,8 @@
 #include "discord_lobby_member_handle.h"
 #include "discordpp.h"
 #include "godot_cpp/classes/ref_counted.hpp"
+#include "godot_cpp/variant/typed_array.hpp"
+#include "godot_cpp/variant/typed_dictionary.hpp"
 
 namespace godot {
 
@@ -14,7 +16,7 @@ class DiscordLobbyHandle : public RefCounted {
 	GDCLASS(DiscordLobbyHandle, RefCounted)
 
 private:
-	discordpp::LobbyHandle *lobby_handle; // Doesn't have public empty contrusctor, needs to be a pointer.
+	discordpp::LobbyHandle *lobby_handle;
 
 	DiscordLobbyHandle();
 

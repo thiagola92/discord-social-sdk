@@ -5,6 +5,8 @@
 #include "discord_enum.h"
 #include "discordpp.h"
 #include "godot_cpp/classes/ref_counted.hpp"
+#include "godot_cpp/variant/typed_array.hpp"
+#include "godot_cpp/variant/typed_dictionary.hpp"
 
 namespace godot {
 
@@ -12,7 +14,7 @@ class DiscordActivityInvite : public RefCounted {
 	GDCLASS(DiscordActivityInvite, RefCounted)
 
 private:
-	discordpp::ActivityInvite activity_invite;
+	discordpp::ActivityInvite *activity_invite;
 
 protected:
 	static void _bind_methods();
@@ -36,7 +38,7 @@ public:
 	void set_is_valid(bool is_valid);
 
 	DiscordActivityInvite();
-	DiscordActivityInvite(discordpp::ActivityInvite activity_invite);
+	DiscordActivityInvite(discordpp::ActivityInvite *activity_invite);
 	~DiscordActivityInvite();
 };
 

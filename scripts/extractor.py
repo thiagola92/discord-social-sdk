@@ -427,7 +427,7 @@ def get_callbacks() -> dict:
             "OnVoiceStateChanged": "uint64_t userId",
             "OnParticipantChanged": "uint64_t userId, bool added",
             "OnSpeakingStatusChanged": "uint64_t userId, bool isPlayingSound",
-            "OnStatusChanged": "",
+            "OnStatusChanged": "discordpp::Call::Status status, discordpp::Call::Error error, int32_t errorDetail",
         },
         "Client": {
             "EndCallCallback": "",
@@ -487,3 +487,13 @@ def get_callbacks() -> dict:
     }
 
     return CALLBACKS_ARGS
+
+
+def is_callback(text: str) -> bool:
+    _, _, text = text.rpartition("::")
+
+    for callbacks in get_callbacks().values():
+        if text in callbacks:
+            return True
+
+    return False

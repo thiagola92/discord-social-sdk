@@ -5,6 +5,8 @@
 #include "discord_audio_device.h"
 #include "discordpp.h"
 #include "godot_cpp/classes/ref_counted.hpp"
+#include "godot_cpp/variant/typed_array.hpp"
+#include "godot_cpp/variant/typed_dictionary.hpp"
 
 namespace godot {
 
@@ -12,7 +14,7 @@ class DiscordAudioDevice : public RefCounted {
 	GDCLASS(DiscordAudioDevice, RefCounted)
 
 private:
-	discordpp::AudioDevice *audio_device; // Doesn't have public empty contrusctor, needs to be a pointer.
+	discordpp::AudioDevice *audio_device;
 
 	DiscordAudioDevice();
 

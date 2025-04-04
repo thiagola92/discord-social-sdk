@@ -5,6 +5,8 @@
 #include "discord_enum.h"
 #include "discordpp.h"
 #include "godot_cpp/classes/ref_counted.hpp"
+#include "godot_cpp/variant/typed_array.hpp"
+#include "godot_cpp/variant/typed_dictionary.hpp"
 
 namespace godot {
 
@@ -12,7 +14,7 @@ class DiscordActivityParty : public RefCounted {
 	GDCLASS(DiscordActivityParty, RefCounted)
 
 private:
-	discordpp::ActivityParty activity_party;
+	discordpp::ActivityParty *activity_party;
 
 protected:
 	static void _bind_methods();
@@ -30,7 +32,7 @@ public:
 	void set_privacy(DiscordActivityPartyPrivacy::Enum privacy);
 
 	DiscordActivityParty();
-	DiscordActivityParty(discordpp::ActivityParty activity_party);
+	DiscordActivityParty(discordpp::ActivityParty *activity_party);
 	~DiscordActivityParty();
 };
 

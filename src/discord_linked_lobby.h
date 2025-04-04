@@ -4,6 +4,8 @@
 
 #include "discordpp.h"
 #include "godot_cpp/classes/ref_counted.hpp"
+#include "godot_cpp/variant/typed_array.hpp"
+#include "godot_cpp/variant/typed_dictionary.hpp"
 
 namespace godot {
 
@@ -11,7 +13,7 @@ class DiscordLinkedLobby : public RefCounted {
 	GDCLASS(DiscordLinkedLobby, RefCounted)
 
 private:
-	discordpp::LinkedLobby linked_lobby;
+	discordpp::LinkedLobby *linked_lobby;
 
 protected:
 	static void _bind_methods();
@@ -25,7 +27,7 @@ public:
 	void set_lobby_id(uint64_t lobby_id);
 
 	DiscordLinkedLobby();
-	DiscordLinkedLobby(discordpp::LinkedLobby linked_lobby);
+	DiscordLinkedLobby(discordpp::LinkedLobby *linked_lobby);
 	~DiscordLinkedLobby();
 };
 

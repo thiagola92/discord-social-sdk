@@ -4,25 +4,25 @@
 using namespace godot;
 
 discordpp::LinkedLobby *DiscordLinkedLobby::unwrap() {
-	return &linked_lobby;
+	return linked_lobby;
 }
 
 uint64_t DiscordLinkedLobby::application_id() {
-	auto r = linked_lobby.ApplicationId();
+	auto r = linked_lobby->ApplicationId();
 	return r;
 }
 
 void DiscordLinkedLobby::set_application_id(uint64_t application_id) {
-	linked_lobby.SetApplicationId(application_id);
+	linked_lobby->SetApplicationId(application_id);
 }
 
 uint64_t DiscordLinkedLobby::lobby_id() {
-	auto r = linked_lobby.LobbyId();
+	auto r = linked_lobby->LobbyId();
 	return r;
 }
 
 void DiscordLinkedLobby::set_lobby_id(uint64_t lobby_id) {
-	linked_lobby.SetLobbyId(lobby_id);
+	linked_lobby->SetLobbyId(lobby_id);
 }
 
 void DiscordLinkedLobby::_bind_methods() {
@@ -39,9 +39,11 @@ void DiscordLinkedLobby::_bind_methods() {
 			&DiscordLinkedLobby::set_lobby_id);
 }
 
-DiscordLinkedLobby::DiscordLinkedLobby() {}
+DiscordLinkedLobby::DiscordLinkedLobby() {
+	this->linked_lobby = memnew(discordpp::LinkedLobby);
+}
 
-DiscordLinkedLobby::DiscordLinkedLobby(discordpp::LinkedLobby linked_lobby) {
+DiscordLinkedLobby::DiscordLinkedLobby(discordpp::LinkedLobby *linked_lobby) {
 	this->linked_lobby = linked_lobby;
 }
 

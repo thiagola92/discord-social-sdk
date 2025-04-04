@@ -9,6 +9,8 @@
 #include "discord_user_handle.h"
 #include "discordpp.h"
 #include "godot_cpp/classes/ref_counted.hpp"
+#include "godot_cpp/variant/typed_array.hpp"
+#include "godot_cpp/variant/typed_dictionary.hpp"
 
 namespace godot {
 
@@ -16,7 +18,7 @@ class DiscordMessageHandle : public RefCounted {
 	GDCLASS(DiscordMessageHandle, RefCounted)
 
 private:
-	discordpp::MessageHandle *message_handle; // Doesn't have public empty contrusctor, needs to be a pointer.
+	discordpp::MessageHandle *message_handle;
 
 	DiscordMessageHandle();
 

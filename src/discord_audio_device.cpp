@@ -65,7 +65,8 @@ void DiscordAudioDevice::_bind_methods() {
 			&DiscordAudioDevice::set_is_default);
 }
 
-DiscordAudioDevice::DiscordAudioDevice() {}
+DiscordAudioDevice::DiscordAudioDevice() {
+}
 
 DiscordAudioDevice::DiscordAudioDevice(discordpp::AudioDevice *audio_device) {
 	this->audio_device = audio_device;

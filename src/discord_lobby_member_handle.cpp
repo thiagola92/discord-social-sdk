@@ -62,7 +62,8 @@ void DiscordLobbyMemberHandle::_bind_methods() {
 			&DiscordLobbyMemberHandle::user);
 }
 
-DiscordLobbyMemberHandle::DiscordLobbyMemberHandle() {}
+DiscordLobbyMemberHandle::DiscordLobbyMemberHandle() {
+}
 
 DiscordLobbyMemberHandle::DiscordLobbyMemberHandle(discordpp::LobbyMemberHandle *lobby_member_handle) {
 	this->lobby_member_handle = lobby_member_handle;

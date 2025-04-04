@@ -104,7 +104,8 @@ void DiscordLobbyHandle::_bind_methods() {
 			&DiscordLobbyHandle::metadata);
 }
 
-DiscordLobbyHandle::DiscordLobbyHandle() {}
+DiscordLobbyHandle::DiscordLobbyHandle() {
+}
 
 DiscordLobbyHandle::DiscordLobbyHandle(discordpp::LobbyHandle *lobby_handle) {
 	this->lobby_handle = lobby_handle;

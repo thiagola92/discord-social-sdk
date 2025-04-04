@@ -34,11 +34,10 @@ def signature_(return_type: str, method_snake_name: str, params: str) -> str:
 
 def call_(
     property_name: str,
-    operator: str,
     method_name: str,
     passing_params: str,
 ) -> str:
-    return f"{property_name}{operator}{method_name}({passing_params});"
+    return f"{property_name}->{method_name}({passing_params});"
 
 
 def method_(
@@ -70,8 +69,8 @@ def enum_from_godot_(variable_name: str, enum_type: str, param_snake_name: str) 
     return f"auto {variable_name} = (discordpp::{enum_type}){param_snake_name};"
 
 
-def obj_from_godot_(variable_name: str, param_snake_name: str, operator: str) -> str:
-    return f"auto {variable_name} = *{param_snake_name}->unwrap();"  # problems here?
+def obj_from_godot_(variable_name: str, param_snake_name: str) -> str:
+    return f"auto {variable_name} = *{param_snake_name}->unwrap();"
 
 
 def dict_from_godot(variable_name: str, param_snake_name: str) -> str:
@@ -116,7 +115,9 @@ def variant_string_from_godot_(variable_name: str, param_snake_name: str) -> str
 
 
 def variant_object_from_godot_(
-    variable_name: str, variant_type: str, param_snake_name: str, operator: str
+    variable_name: str,
+    variant_type: str,
+    param_snake_name: str,
 ) -> str:
     return f"""
         auto t_{variable_name} = Object::cast_to<Discord{variant_type}>({param_snake_name});
@@ -144,11 +145,7 @@ def enum_to_godot_(return_type: str, variable_name: str) -> str:
     return f"return (Discord{return_type}::Enum){variable_name};"
 
 
-def obj_to_godot_(class_name: str, variable_name: str) -> str:
-    return f"""return memnew(Discord{class_name}{{ {variable_name} }});"""
-
-
-def obj_ref_to_godot_(variable_name: str, class_name: str) -> str:
+def obj_to_godot_(variable_name: str, class_name: str) -> str:
     return f"""auto t_{variable_name} = (discordpp::{class_name} *)memalloc(sizeof(discordpp::{class_name}));
     *t_{variable_name} = {variable_name};
     return memnew(Discord{class_name}{{ t_{variable_name} }});
@@ -219,13 +216,7 @@ def optional_enum_to_variant_(return_type: str, variable_name: str) -> str:
     return f"return Variant((Discord{return_type}::Enum){variable_name}.value());"
 
 
-def optional_obj_to_godot_(class_name: str, variable_name: str) -> str:
-    return f"""auto t_{variable_name} = memnew(Discord{class_name}{{ {variable_name}.value() }});
-    return Variant(t_{variable_name});
-    """
-
-
-def optional_obj_ref_to_godot_(variable_name: str, class_name: str) -> str:
+def optional_obj_to_godot_(variable_name: str, class_name: str) -> str:
     return f"""auto t_{variable_name} = (discordpp::{class_name} *)memalloc(sizeof(discordpp::{class_name}));
     *t_{variable_name} = {variable_name}.value();
     return Variant(memnew(Discord{class_name}{{ t_{variable_name} }}));

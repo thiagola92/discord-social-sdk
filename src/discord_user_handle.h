@@ -7,6 +7,8 @@
 #include "discord_relationship_handle.h"
 #include "discordpp.h"
 #include "godot_cpp/classes/ref_counted.hpp"
+#include "godot_cpp/variant/typed_array.hpp"
+#include "godot_cpp/variant/typed_dictionary.hpp"
 
 namespace godot {
 
@@ -14,7 +16,7 @@ class DiscordUserHandle : public RefCounted {
 	GDCLASS(DiscordUserHandle, RefCounted)
 
 private:
-	discordpp::UserHandle *user_handle; // Doesn't have public empty contrusctor, needs to be a pointer.
+	discordpp::UserHandle *user_handle;
 
 	DiscordUserHandle();
 
@@ -25,7 +27,7 @@ public:
 	discordpp::UserHandle *unwrap(); // Internal usage.
 
 	Variant avatar();
-	String avatar_url(DiscordUserHandle::AvatarType::Enum animated_type, DiscordUserHandle::AvatarType::Enum static_type);
+	String avatar_url(DiscordUserHandleAvatarType::Enum animated_type, DiscordUserHandleAvatarType::Enum static_type);
 	String display_name();
 	Variant game_activity();
 	Variant global_name();

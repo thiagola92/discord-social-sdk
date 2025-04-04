@@ -7,24 +7,24 @@ def header_(
     class_name: str,
     property_name: str,
     signatures: str,
-    is_property_pointer: bool,
+    has_empty_constructor: bool,
+    has_callbacks: bool,
 ) -> str:
     empty_constructor = f"Discord{class_name}();"
+    property_declaration = f"discordpp::{class_name} *{property_name};"
+    public_constructor = (
+        f"Discord{class_name}(discordpp::{class_name} *{property_name});"
+    )
 
-    if is_property_pointer:
-        private_empty_constructor = empty_constructor
-        public_empty_constructor = ""
-        property_declaration = f"discordpp::{class_name} *{property_name}; // Doesn't have public empty contrusctor, needs to be a pointer."
-        public_constructor = (
-            f"Discord{class_name}(discordpp::{class_name} *{property_name});"
-        )
-    else:
+    include_class = "node" if has_callbacks else "ref_counted"
+    super_class = "Node" if has_callbacks else "RefCounted"
+
+    if has_empty_constructor:
         private_empty_constructor = ""
         public_empty_constructor = empty_constructor
-        property_declaration = f"discordpp::{class_name} {property_name};"
-        public_constructor = (
-            f"Discord{class_name}(discordpp::{class_name} {property_name});"
-        )
+    else:
+        private_empty_constructor = empty_constructor
+        public_empty_constructor = ""
 
     return f"""{AUTO_GENERATED_COMMENT}
 #ifndef DISCORD_{header_definition}_H
@@ -32,12 +32,14 @@ def header_(
 
 {includes}
 #include "discordpp.h"
-#include "godot_cpp/classes/ref_counted.hpp"
+#include "godot_cpp/classes/{include_class}.hpp"
+#include "godot_cpp/variant/typed_dictionary.hpp"
+#include "godot_cpp/variant/typed_array.hpp"
 
 namespace godot {{
 
-class Discord{class_name} : public RefCounted {{
-    GDCLASS(Discord{class_name}, RefCounted)
+class Discord{class_name} : public {super_class} {{
+    GDCLASS(Discord{class_name}, {super_class})
 
 private:
     {property_declaration}
@@ -69,14 +71,12 @@ def source_(
     methods: str,
     signals: str,
     binds: str,
-    is_property_pointer: bool,
+    has_empty_constructor: bool,
 ) -> str:
-    if is_property_pointer:
-        ampersand = ""
-        asterisk = "*"
+    if has_empty_constructor:
+        constructor = f"this->{property_name} = memnew(discordpp::{class_name});"
     else:
-        ampersand = "&"
-        asterisk = ""
+        constructor = ""
 
     return f"""{AUTO_GENERATED_COMMENT}
 #include "{filename_h}"
@@ -84,7 +84,7 @@ def source_(
 using namespace godot;
 
 discordpp::{class_name} *Discord{class_name}::unwrap() {{
-    return {ampersand}{property_name};
+    return {property_name};
 }}
 {methods}
 void Discord{class_name}::_bind_methods() {{
@@ -92,9 +92,11 @@ void Discord{class_name}::_bind_methods() {{
     {binds}
 }}
 
-Discord{class_name}::Discord{class_name}() {{}}
+Discord{class_name}::Discord{class_name}() {{
+    {constructor}
+}}
 
-Discord{class_name}::Discord{class_name}(discordpp::{class_name} {asterisk}{property_name}) {{
+Discord{class_name}::Discord{class_name}(discordpp::{class_name} *{property_name}) {{
     this->{property_name} = {property_name};
 }}
 

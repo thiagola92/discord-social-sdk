@@ -100,7 +100,8 @@ void DiscordGuildChannel::_bind_methods() {
 			&DiscordGuildChannel::set_linked_lobby);
 }
 
-DiscordGuildChannel::DiscordGuildChannel() {}
+DiscordGuildChannel::DiscordGuildChannel() {
+}
 
 DiscordGuildChannel::DiscordGuildChannel(discordpp::GuildChannel *guild_channel) {
 	this->guild_channel = guild_channel;

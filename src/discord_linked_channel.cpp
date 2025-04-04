@@ -55,7 +55,8 @@ void DiscordLinkedChannel::_bind_methods() {
 			&DiscordLinkedChannel::set_guild_id);
 }
 
-DiscordLinkedChannel::DiscordLinkedChannel() {}
+DiscordLinkedChannel::DiscordLinkedChannel() {
+}
 
 DiscordLinkedChannel::DiscordLinkedChannel(discordpp::LinkedChannel *linked_channel) {
 	this->linked_channel = linked_channel;

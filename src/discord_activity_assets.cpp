@@ -4,11 +4,11 @@
 using namespace godot;
 
 discordpp::ActivityAssets *DiscordActivityAssets::unwrap() {
-	return &activity_assets;
+	return activity_assets;
 }
 
 Variant DiscordActivityAssets::large_image() {
-	auto r = activity_assets.LargeImage();
+	auto r = activity_assets->LargeImage();
 
 	if (!r.has_value()) {
 		return nullptr;
@@ -24,11 +24,11 @@ void DiscordActivityAssets::set_large_image(Variant large_image) {
 		p0 = large_image.stringify().utf8().get_data();
 	}
 
-	activity_assets.SetLargeImage(p0);
+	activity_assets->SetLargeImage(p0);
 }
 
 Variant DiscordActivityAssets::large_text() {
-	auto r = activity_assets.LargeText();
+	auto r = activity_assets->LargeText();
 
 	if (!r.has_value()) {
 		return nullptr;
@@ -44,11 +44,11 @@ void DiscordActivityAssets::set_large_text(Variant large_text) {
 		p0 = large_text.stringify().utf8().get_data();
 	}
 
-	activity_assets.SetLargeText(p0);
+	activity_assets->SetLargeText(p0);
 }
 
 Variant DiscordActivityAssets::small_image() {
-	auto r = activity_assets.SmallImage();
+	auto r = activity_assets->SmallImage();
 
 	if (!r.has_value()) {
 		return nullptr;
@@ -64,11 +64,11 @@ void DiscordActivityAssets::set_small_image(Variant small_image) {
 		p0 = small_image.stringify().utf8().get_data();
 	}
 
-	activity_assets.SetSmallImage(p0);
+	activity_assets->SetSmallImage(p0);
 }
 
 Variant DiscordActivityAssets::small_text() {
-	auto r = activity_assets.SmallText();
+	auto r = activity_assets->SmallText();
 
 	if (!r.has_value()) {
 		return nullptr;
@@ -84,7 +84,7 @@ void DiscordActivityAssets::set_small_text(Variant small_text) {
 		p0 = small_text.stringify().utf8().get_data();
 	}
 
-	activity_assets.SetSmallText(p0);
+	activity_assets->SetSmallText(p0);
 }
 
 void DiscordActivityAssets::_bind_methods() {
@@ -113,9 +113,11 @@ void DiscordActivityAssets::_bind_methods() {
 			&DiscordActivityAssets::set_small_text);
 }
 
-DiscordActivityAssets::DiscordActivityAssets() {}
+DiscordActivityAssets::DiscordActivityAssets() {
+	this->activity_assets = memnew(discordpp::ActivityAssets);
+}
 
-DiscordActivityAssets::DiscordActivityAssets(discordpp::ActivityAssets activity_assets) {
+DiscordActivityAssets::DiscordActivityAssets(discordpp::ActivityAssets *activity_assets) {
 	this->activity_assets = activity_assets;
 }
 

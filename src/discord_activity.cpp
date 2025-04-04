@@ -4,31 +4,31 @@
 using namespace godot;
 
 discordpp::Activity *DiscordActivity::unwrap() {
-	return &activity;
+	return activity;
 }
 
 String DiscordActivity::name() {
-	auto r = activity.Name();
+	auto r = activity->Name();
 	return String(r.c_str());
 }
 
 void DiscordActivity::set_name(String name) {
 	auto p0 = name.utf8().get_data();
-	activity.SetName(p0);
+	activity->SetName(p0);
 }
 
 DiscordActivityTypes::Enum DiscordActivity::type() {
-	auto r = activity.Type();
+	auto r = activity->Type();
 	return (DiscordActivityTypes::Enum)r;
 }
 
 void DiscordActivity::set_type(DiscordActivityTypes::Enum type) {
 	auto p0 = (discordpp::ActivityTypes)type;
-	activity.SetType(p0);
+	activity->SetType(p0);
 }
 
 Variant DiscordActivity::state() {
-	auto r = activity.State();
+	auto r = activity->State();
 
 	if (!r.has_value()) {
 		return nullptr;
@@ -44,11 +44,11 @@ void DiscordActivity::set_state(Variant state) {
 		p0 = state.stringify().utf8().get_data();
 	}
 
-	activity.SetState(p0);
+	activity->SetState(p0);
 }
 
 Variant DiscordActivity::details() {
-	auto r = activity.Details();
+	auto r = activity->Details();
 
 	if (!r.has_value()) {
 		return nullptr;
@@ -64,11 +64,11 @@ void DiscordActivity::set_details(Variant details) {
 		p0 = details.stringify().utf8().get_data();
 	}
 
-	activity.SetDetails(p0);
+	activity->SetDetails(p0);
 }
 
 Variant DiscordActivity::application_id() {
-	auto r = activity.ApplicationId();
+	auto r = activity->ApplicationId();
 
 	if (!r.has_value()) {
 		return nullptr;
@@ -84,18 +84,19 @@ void DiscordActivity::set_application_id(Variant application_id) {
 		p0 = (uint64_t)application_id;
 	}
 
-	activity.SetApplicationId(p0);
+	activity->SetApplicationId(p0);
 }
 
 Variant DiscordActivity::assets() {
-	auto r = activity.Assets();
+	auto r = activity->Assets();
 
 	if (!r.has_value()) {
 		return nullptr;
 	}
 
-	auto t_r = memnew(DiscordActivityAssets{ r.value() });
-	return Variant(t_r);
+	auto t_r = (discordpp::ActivityAssets *)memalloc(sizeof(discordpp::ActivityAssets));
+	*t_r = r.value();
+	return Variant(memnew(DiscordActivityAssets{ t_r }));
 }
 
 void DiscordActivity::set_assets(Variant assets) {
@@ -107,18 +108,19 @@ void DiscordActivity::set_assets(Variant assets) {
 		p0 = std::optional<discordpp::ActivityAssets>{ *t2_p0 };
 	}
 
-	activity.SetAssets(p0);
+	activity->SetAssets(p0);
 }
 
 Variant DiscordActivity::timestamps() {
-	auto r = activity.Timestamps();
+	auto r = activity->Timestamps();
 
 	if (!r.has_value()) {
 		return nullptr;
 	}
 
-	auto t_r = memnew(DiscordActivityTimestamps{ r.value() });
-	return Variant(t_r);
+	auto t_r = (discordpp::ActivityTimestamps *)memalloc(sizeof(discordpp::ActivityTimestamps));
+	*t_r = r.value();
+	return Variant(memnew(DiscordActivityTimestamps{ t_r }));
 }
 
 void DiscordActivity::set_timestamps(Variant timestamps) {
@@ -130,18 +132,19 @@ void DiscordActivity::set_timestamps(Variant timestamps) {
 		p0 = std::optional<discordpp::ActivityTimestamps>{ *t2_p0 };
 	}
 
-	activity.SetTimestamps(p0);
+	activity->SetTimestamps(p0);
 }
 
 Variant DiscordActivity::party() {
-	auto r = activity.Party();
+	auto r = activity->Party();
 
 	if (!r.has_value()) {
 		return nullptr;
 	}
 
-	auto t_r = memnew(DiscordActivityParty{ r.value() });
-	return Variant(t_r);
+	auto t_r = (discordpp::ActivityParty *)memalloc(sizeof(discordpp::ActivityParty));
+	*t_r = r.value();
+	return Variant(memnew(DiscordActivityParty{ t_r }));
 }
 
 void DiscordActivity::set_party(Variant party) {
@@ -153,18 +156,19 @@ void DiscordActivity::set_party(Variant party) {
 		p0 = std::optional<discordpp::ActivityParty>{ *t2_p0 };
 	}
 
-	activity.SetParty(p0);
+	activity->SetParty(p0);
 }
 
 Variant DiscordActivity::secrets() {
-	auto r = activity.Secrets();
+	auto r = activity->Secrets();
 
 	if (!r.has_value()) {
 		return nullptr;
 	}
 
-	auto t_r = memnew(DiscordActivitySecrets{ r.value() });
-	return Variant(t_r);
+	auto t_r = (discordpp::ActivitySecrets *)memalloc(sizeof(discordpp::ActivitySecrets));
+	*t_r = r.value();
+	return Variant(memnew(DiscordActivitySecrets{ t_r }));
 }
 
 void DiscordActivity::set_secrets(Variant secrets) {
@@ -176,17 +180,17 @@ void DiscordActivity::set_secrets(Variant secrets) {
 		p0 = std::optional<discordpp::ActivitySecrets>{ *t2_p0 };
 	}
 
-	activity.SetSecrets(p0);
+	activity->SetSecrets(p0);
 }
 
 DiscordActivityGamePlatforms::Enum DiscordActivity::supported_platforms() {
-	auto r = activity.SupportedPlatforms();
+	auto r = activity->SupportedPlatforms();
 	return (DiscordActivityGamePlatforms::Enum)r;
 }
 
 void DiscordActivity::set_supported_platforms(DiscordActivityGamePlatforms::Enum supported_platforms) {
 	auto p0 = (discordpp::ActivityGamePlatforms)supported_platforms;
-	activity.SetSupportedPlatforms(p0);
+	activity->SetSupportedPlatforms(p0);
 }
 
 void DiscordActivity::_bind_methods() {
@@ -251,9 +255,11 @@ void DiscordActivity::_bind_methods() {
 			&DiscordActivity::set_supported_platforms);
 }
 
-DiscordActivity::DiscordActivity() {}
+DiscordActivity::DiscordActivity() {
+	this->activity = memnew(discordpp::Activity);
+}
 
-DiscordActivity::DiscordActivity(discordpp::Activity activity) {
+DiscordActivity::DiscordActivity(discordpp::Activity *activity) {
 	this->activity = activity;
 }
 

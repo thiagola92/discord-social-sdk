@@ -40,7 +40,8 @@ void DiscordGuildMinimal::_bind_methods() {
 			&DiscordGuildMinimal::set_name);
 }
 
-DiscordGuildMinimal::DiscordGuildMinimal() {}
+DiscordGuildMinimal::DiscordGuildMinimal() {
+}
 
 DiscordGuildMinimal::DiscordGuildMinimal(discordpp::GuildMinimal *guild_minimal) {
 	this->guild_minimal = guild_minimal;

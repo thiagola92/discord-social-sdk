@@ -58,15 +58,14 @@ bool DiscordCall::get_self_mute() {
 	return r;
 }
 
-DiscordCall::Status::Enum DiscordCall::get_status() {
+DiscordCallStatus::Enum DiscordCall::get_status() {
 	auto r = call->GetStatus();
-	return (DiscordCall::Status::Enum)r;
+	return (DiscordCallStatus::Enum)r;
 }
 
 DiscordVADThresholdSettings *DiscordCall::get_vadthreshold() {
-	auto r = call->GetVADThreshold();
 	auto t_r = (discordpp::VADThresholdSettings *)memalloc(sizeof(discordpp::VADThresholdSettings));
-	*t_r = r;
+	*t_r = call->GetVADThreshold();
 	return memnew(DiscordVADThresholdSettings{ t_r });
 }
 
@@ -91,14 +90,19 @@ void DiscordCall::set_local_mute(uint64_t user_id, bool mute) {
 	call->SetLocalMute(user_id, mute);
 }
 
-void DiscordCall::set_on_voice_state_changed_callback(DiscordCall::OnVoiceStateChanged::Enum cb) {
-	auto p0 = (discordpp::Call::OnVoiceStateChanged)cb;
-	call->SetOnVoiceStateChangedCallback(p0);
+void DiscordCall::set_on_voice_state_changed_callback() {
+	call->SetOnVoiceStateChangedCallback([this](uint64_t userId) {
+		auto p0 = userId;
+		this->emit_signal("set_on_voice_state_changed_callback_callback", p0);
+	});
 }
 
-void DiscordCall::set_participant_changed_callback(DiscordCall::OnParticipantChanged::Enum cb) {
-	auto p0 = (discordpp::Call::OnParticipantChanged)cb;
-	call->SetParticipantChangedCallback(p0);
+void DiscordCall::set_participant_changed_callback() {
+	call->SetParticipantChangedCallback([this](uint64_t userId, bool added) {
+		auto p0 = userId;
+		auto p1 = added;
+		this->emit_signal("set_participant_changed_callback_callback", p0, p1);
+	});
 }
 
 void DiscordCall::set_participant_volume(uint64_t user_id, float volume) {
@@ -121,14 +125,21 @@ void DiscordCall::set_self_mute(bool mute) {
 	call->SetSelfMute(mute);
 }
 
-void DiscordCall::set_speaking_status_changed_callback(DiscordCall::OnSpeakingStatusChanged::Enum cb) {
-	auto p0 = (discordpp::Call::OnSpeakingStatusChanged)cb;
-	call->SetSpeakingStatusChangedCallback(p0);
+void DiscordCall::set_speaking_status_changed_callback() {
+	call->SetSpeakingStatusChangedCallback([this](uint64_t userId, bool isPlayingSound) {
+		auto p0 = userId;
+		auto p1 = isPlayingSound;
+		this->emit_signal("set_speaking_status_changed_callback_callback", p0, p1);
+	});
 }
 
-void DiscordCall::set_status_changed_callback(DiscordCall::OnStatusChanged::Enum cb) {
-	auto p0 = (discordpp::Call::OnStatusChanged)cb;
-	call->SetStatusChangedCallback(p0);
+void DiscordCall::set_status_changed_callback() {
+	call->SetStatusChangedCallback([this](discordpp::Call::Status status, discordpp::Call::Error error, int32_t errorDetail) {
+		auto p0 = (DiscordCallStatus::Enum)status;
+		auto p1 = (DiscordCallError::Enum)error;
+		auto p2 = errorDetail;
+		this->emit_signal("set_status_changed_callback_callback", p0, p1, p2);
+	});
 }
 
 void DiscordCall::set_vadthreshold(bool automatic, float threshold) {
@@ -136,6 +147,14 @@ void DiscordCall::set_vadthreshold(bool automatic, float threshold) {
 }
 
 void DiscordCall::_bind_methods() {
+	ADD_SIGNAL(MethodInfo("call_on_voice_state_changed", PropertyInfo(Variant::INT, "user_id")));
+
+	ADD_SIGNAL(MethodInfo("call_on_participant_changed", PropertyInfo(Variant::INT, "user_id"), PropertyInfo(Variant::BOOL, "added")));
+
+	ADD_SIGNAL(MethodInfo("call_on_speaking_status_changed", PropertyInfo(Variant::INT, "user_id"), PropertyInfo(Variant::BOOL, "is_playing_sound")));
+
+	ADD_SIGNAL(MethodInfo("call_on_status_changed", PropertyInfo(Variant::OBJECT, "status"), PropertyInfo(Variant::OBJECT, "error"), PropertyInfo(Variant::INT, "error_detail")));
+
 	ClassDB::bind_method(D_METHOD("get_audio_mode"),
 			&DiscordCall::get_audio_mode);
 
@@ -178,10 +197,10 @@ void DiscordCall::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("set_local_mute", "user_id", "mute"),
 			&DiscordCall::set_local_mute);
 
-	ClassDB::bind_method(D_METHOD("set_on_voice_state_changed_callback", "cb"),
+	ClassDB::bind_method(D_METHOD("set_on_voice_state_changed_callback"),
 			&DiscordCall::set_on_voice_state_changed_callback);
 
-	ClassDB::bind_method(D_METHOD("set_participant_changed_callback", "cb"),
+	ClassDB::bind_method(D_METHOD("set_participant_changed_callback"),
 			&DiscordCall::set_participant_changed_callback);
 
 	ClassDB::bind_method(D_METHOD("set_participant_volume", "user_id", "volume"),
@@ -199,17 +218,18 @@ void DiscordCall::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("set_self_mute", "mute"),
 			&DiscordCall::set_self_mute);
 
-	ClassDB::bind_method(D_METHOD("set_speaking_status_changed_callback", "cb"),
+	ClassDB::bind_method(D_METHOD("set_speaking_status_changed_callback"),
 			&DiscordCall::set_speaking_status_changed_callback);
 
-	ClassDB::bind_method(D_METHOD("set_status_changed_callback", "cb"),
+	ClassDB::bind_method(D_METHOD("set_status_changed_callback"),
 			&DiscordCall::set_status_changed_callback);
 
 	ClassDB::bind_method(D_METHOD("set_vadthreshold", "automatic", "threshold"),
 			&DiscordCall::set_vadthreshold);
 }
 
-DiscordCall::DiscordCall() {}
+DiscordCall::DiscordCall() {
+}
 
 DiscordCall::DiscordCall(discordpp::Call *call) {
 	this->call = call;

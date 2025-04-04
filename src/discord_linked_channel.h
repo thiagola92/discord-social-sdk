@@ -4,6 +4,8 @@
 
 #include "discordpp.h"
 #include "godot_cpp/classes/ref_counted.hpp"
+#include "godot_cpp/variant/typed_array.hpp"
+#include "godot_cpp/variant/typed_dictionary.hpp"
 
 namespace godot {
 
@@ -11,7 +13,7 @@ class DiscordLinkedChannel : public RefCounted {
 	GDCLASS(DiscordLinkedChannel, RefCounted)
 
 private:
-	discordpp::LinkedChannel *linked_channel; // Doesn't have public empty contrusctor, needs to be a pointer.
+	discordpp::LinkedChannel *linked_channel;
 
 	DiscordLinkedChannel();
 
