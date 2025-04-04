@@ -1,18 +1,17 @@
 from generator import generate_class
-from classes import CLASSES
+from extractor import get_classes
 
 
 if __name__ == "__main__":
-    classes = list(CLASSES.keys())
+    classes = list(get_classes().keys())
     classes.sort()
 
     classes_registrations = ""
     classes_includes = ""
 
     for class_name in classes:
-        class_registration, class_include = generate_class(
-            class_name, CLASSES[class_name]
-        )
+        class_methods = get_classes()[class_name]
+        class_registration, class_include = generate_class(class_name, class_methods)
 
         # Increase strings to print later.
         classes_registrations += class_registration
