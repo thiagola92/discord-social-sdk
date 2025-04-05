@@ -80,7 +80,14 @@ def parse_typing(text: str) -> VarType:
         else:
             var_type.is_enum = text not in get_classes().keys()
 
-    if text in ["uint8_t", "int64_t", "uint64_t", "int32_t", "uint32_t"]:
+    if text in [
+        "uint8_t",
+        "int16_t const*",
+        "int64_t",
+        "uint64_t",
+        "int32_t",
+        "uint32_t",
+    ]:
         var_type.is_integer = True
         var_type.is_number = True
 
@@ -91,7 +98,7 @@ def parse_typing(text: str) -> VarType:
     if text in ["std::string", "std::string const"]:
         var_type.is_string = True
 
-    if text in ["bool"]:
+    if text in ["bool", "bool&"]:
         var_type.is_boolean = True
 
     var_type.name = text

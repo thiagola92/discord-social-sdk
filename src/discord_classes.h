@@ -19,9 +19,14 @@ class DiscordActivitySecrets;
 class DiscordActivityTimestamps;
 class DiscordAdditionalContent;
 class DiscordAudioDevice;
+class DiscordAuthorizationArgs;
+class DiscordAuthorizationCodeChallenge;
+class DiscordAuthorizationCodeVerifier;
 class DiscordCall;
 class DiscordCallInfoHandle;
 class DiscordChannelHandle;
+class DiscordClient;
+class DiscordClientResult;
 class DiscordDeviceAuthorizationArgs;
 class DiscordGuildChannel;
 class DiscordGuildMinimal;
@@ -258,6 +263,81 @@ public:
     ~DiscordAudioDevice();
 };
 
+class DiscordAuthorizationArgs : public RefCounted {
+    GDCLASS(DiscordAuthorizationArgs, RefCounted)
+
+private:
+    discordpp::AuthorizationArgs *authorization_args;
+
+    
+protected:
+    static void _bind_methods();
+
+public:
+    discordpp::AuthorizationArgs *unwrap(); // Internal usage.
+
+    uint64_t client_id();
+    void set_client_id(uint64_t client_id);
+    String scopes();
+    void set_scopes(String scopes);
+    Variant state();
+    void set_state(Variant state);
+    Variant nonce();
+    void set_nonce(Variant nonce);
+    Variant code_challenge();
+    void set_code_challenge(Variant code_challenge);
+
+    DiscordAuthorizationArgs();
+    DiscordAuthorizationArgs(discordpp::AuthorizationArgs *authorization_args);
+    ~DiscordAuthorizationArgs();
+};
+
+class DiscordAuthorizationCodeChallenge : public RefCounted {
+    GDCLASS(DiscordAuthorizationCodeChallenge, RefCounted)
+
+private:
+    discordpp::AuthorizationCodeChallenge *authorization_code_challenge;
+
+    
+protected:
+    static void _bind_methods();
+
+public:
+    discordpp::AuthorizationCodeChallenge *unwrap(); // Internal usage.
+
+    DiscordAuthenticationCodeChallengeMethod::Enum method();
+    void set_method(DiscordAuthenticationCodeChallengeMethod::Enum method);
+    String challenge();
+    void set_challenge(String challenge);
+
+    DiscordAuthorizationCodeChallenge();
+    DiscordAuthorizationCodeChallenge(discordpp::AuthorizationCodeChallenge *authorization_code_challenge);
+    ~DiscordAuthorizationCodeChallenge();
+};
+
+class DiscordAuthorizationCodeVerifier : public RefCounted {
+    GDCLASS(DiscordAuthorizationCodeVerifier, RefCounted)
+
+private:
+    discordpp::AuthorizationCodeVerifier *authorization_code_verifier;
+
+    DiscordAuthorizationCodeVerifier();
+protected:
+    static void _bind_methods();
+
+public:
+    discordpp::AuthorizationCodeVerifier *unwrap(); // Internal usage.
+
+    DiscordAuthorizationCodeChallenge * challenge();
+    void set_challenge(DiscordAuthorizationCodeChallenge * challenge);
+    String verifier();
+    void set_verifier(String verifier);
+
+    
+    DiscordAuthorizationCodeVerifier(discordpp::AuthorizationCodeVerifier *authorization_code_verifier);
+    ~DiscordAuthorizationCodeVerifier();
+};
+
 class DiscordCall : public Node {
     GDCLASS(DiscordCall, Node)
 
@@ -345,6 +425,184 @@ public:
     
     DiscordChannelHandle(discordpp::ChannelHandle *channel_handle);
     ~DiscordChannelHandle();
+};
+
+class DiscordClient : public Node {
+    GDCLASS(DiscordClient, Node)
+
+private:
+    discordpp::Client *client;
+
+    
+protected:
+    static void _bind_methods();
+
+public:
+    discordpp::Client *unwrap(); // Internal usage.
+
+    void end_call(uint64_t channel_id);
+    void end_calls();
+    DiscordCall * get_call(uint64_t channel_id);
+    TypedArray<DiscordCall > get_calls();
+    void get_current_input_device();
+    void get_current_output_device();
+    void get_input_devices();
+    float get_input_volume();
+    void get_output_devices();
+    float get_output_volume();
+    bool get_self_deaf_all();
+    bool get_self_mute_all();
+    void set_automatic_gain_control(bool on);
+    void set_device_change_callback();
+    void set_echo_cancellation(bool on);
+    void set_input_device(String device_id);
+    void set_input_volume(float input_volume);
+    void set_no_audio_input_callback();
+    void set_no_audio_input_threshold(float d_bfsthreshold);
+    void set_noise_suppression(bool on);
+    void set_opus_hardware_coding(bool encode, bool decode);
+    void set_output_device(String device_id);
+    void set_output_volume(float output_volume);
+    void set_self_deaf_all(bool deaf);
+    void set_self_mute_all(bool mute);
+    bool set_speaker_mode(bool speaker_mode);
+    void set_thread_priority(DiscordClientThread::Enum thread, int32_t priority);
+    void set_voice_participant_changed_callback();
+    bool show_audio_route_picker();
+    DiscordCall * start_call(uint64_t channel_id);
+    DiscordCall * start_call_with_audio_callbacks(uint64_t lobby_id);
+    void abort_authorize();
+    void abort_get_token_from_device();
+    void authorize(DiscordAuthorizationArgs * args);
+    void close_authorize_device_screen();
+    DiscordAuthorizationCodeVerifier * create_authorization_code_verifier();
+    void fetch_current_user(DiscordAuthorizationTokenType::Enum token_type, String token);
+    void get_provisional_token(uint64_t application_id, DiscordAuthenticationExternalAuthType::Enum external_auth_type, String external_auth_token);
+    void get_token(uint64_t application_id, String code, String code_verifier, String redirect_uri);
+    void get_token_from_device(DiscordDeviceAuthorizationArgs * args);
+    void get_token_from_device_provisional_merge(DiscordDeviceAuthorizationArgs * args, DiscordAuthenticationExternalAuthType::Enum external_auth_type, String external_auth_token);
+    void get_token_from_provisional_merge(uint64_t application_id, String code, String code_verifier, String redirect_uri, DiscordAuthenticationExternalAuthType::Enum external_auth_type, String external_auth_token);
+    bool is_authenticated();
+    void open_authorize_device_screen(uint64_t client_id, String user_code);
+    void provisional_user_merge_completed(bool success);
+    void refresh_token(uint64_t application_id, String refresh_token);
+    void set_authorize_device_screen_closed_callback();
+    void set_game_window_pid(int32_t pid);
+    void set_token_expiration_callback();
+    void update_provisional_account_display_name(String name);
+    void update_token(DiscordAuthorizationTokenType::Enum token_type, String token);
+    bool can_open_message_in_discord(uint64_t message_id);
+    void delete_user_message(uint64_t recipient_id, uint64_t message_id);
+    void edit_user_message(uint64_t recipient_id, uint64_t message_id, String content);
+    Variant get_channel_handle(uint64_t channel_id);
+    Variant get_message_handle(uint64_t message_id);
+    void open_message_in_discord(uint64_t message_id);
+    void send_lobby_message(uint64_t lobby_id, String content);
+    void send_lobby_message_with_metadata(uint64_t lobby_id, String content, TypedDictionary<String, String> metadata);
+    void send_user_message(uint64_t recipient_id, String content);
+    void send_user_message_with_metadata(uint64_t recipient_id, String content, TypedDictionary<String, String> metadata);
+    void set_message_created_callback();
+    void set_message_deleted_callback();
+    void set_message_updated_callback();
+    void set_showing_chat(bool showing_chat);
+    void add_log_callback(DiscordLoggingSeverity::Enum min_severity);
+    void add_voice_log_callback(DiscordLoggingSeverity::Enum min_severity);
+    void connect();
+    void disconnect();
+    DiscordClientStatus::Enum get_status();
+    bool set_log_dir(String path, DiscordLoggingSeverity::Enum min_severity);
+    void set_status_changed_callback();
+    void set_voice_log_dir(String path, DiscordLoggingSeverity::Enum min_severity);
+    void create_or_join_lobby(String secret);
+    void create_or_join_lobby_with_metadata(String secret, TypedDictionary<String, String> lobby_metadata, TypedDictionary<String, String> member_metadata);
+    void get_guild_channels(uint64_t guild_id);
+    Variant get_lobby_handle(uint64_t lobby_id);
+    TypedArray<uint64_t> get_lobby_ids();
+    void get_user_guilds();
+    void leave_lobby(uint64_t lobby_id);
+    void link_channel_to_lobby(uint64_t lobby_id, uint64_t channel_id);
+    void set_lobby_created_callback();
+    void set_lobby_deleted_callback();
+    void set_lobby_member_added_callback();
+    void set_lobby_member_removed_callback();
+    void set_lobby_member_updated_callback();
+    void set_lobby_updated_callback();
+    void unlink_channel_from_lobby(uint64_t lobby_id);
+    void accept_activity_invite(DiscordActivityInvite * invite);
+    void clear_rich_presence();
+    bool register_launch_command(uint64_t application_id, String command);
+    bool register_launch_steam_application(uint64_t application_id, uint32_t steam_app_id);
+    void send_activity_invite(uint64_t user_id, String content);
+    void send_activity_join_request(uint64_t user_id);
+    void send_activity_join_request_reply(DiscordActivityInvite * invite);
+    void set_activity_invite_created_callback();
+    void set_activity_invite_updated_callback();
+    void set_activity_join_callback();
+    void set_online_status(DiscordStatusType::Enum status);
+    void update_rich_presence(DiscordActivity * activity);
+    void accept_discord_friend_request(uint64_t user_id);
+    void accept_game_friend_request(uint64_t user_id);
+    void block_user(uint64_t user_id);
+    void cancel_discord_friend_request(uint64_t user_id);
+    void cancel_game_friend_request(uint64_t user_id);
+    DiscordRelationshipHandle * get_relationship_handle(uint64_t user_id);
+    TypedArray<DiscordRelationshipHandle > get_relationships();
+    void reject_discord_friend_request(uint64_t user_id);
+    void reject_game_friend_request(uint64_t user_id);
+    void remove_discord_and_game_friend(uint64_t user_id);
+    void remove_game_friend(uint64_t user_id);
+    TypedArray<DiscordUserHandle > search_friends_by_username(String search_str);
+    void send_discord_friend_request(String username);
+    void send_discord_friend_request_by_id(uint64_t user_id);
+    void send_game_friend_request(String username);
+    void send_game_friend_request_by_id(uint64_t user_id);
+    void set_relationship_created_callback();
+    void set_relationship_deleted_callback();
+    void unblock_user(uint64_t user_id);
+    DiscordUserHandle * get_current_user();
+    void get_discord_client_connected_user(uint64_t application_id);
+    Variant get_user(uint64_t user_id);
+    void set_user_updated_callback();
+
+    DiscordClient();
+    DiscordClient(discordpp::Client *client);
+    ~DiscordClient();
+};
+
+class DiscordClientResult : public RefCounted {
+    GDCLASS(DiscordClientResult, RefCounted)
+
+private:
+    discordpp::ClientResult *client_result;
+
+    DiscordClientResult();
+protected:
+    static void _bind_methods();
+
+public:
+    discordpp::ClientResult *unwrap(); // Internal usage.
+
+    String to_string();
+    DiscordErrorType::Enum type();
+    void set_type(DiscordErrorType::Enum type);
+    String error();
+    void set_error(String error);
+    int32_t error_code();
+    void set_error_code(int32_t error_code);
+    DiscordHttpStatusCode::Enum status();
+    void set_status(DiscordHttpStatusCode::Enum status);
+    String response_body();
+    void set_response_body(String response_body);
+    bool successful();
+    void set_successful(bool successful);
+    bool retryable();
+    void set_retryable(bool retryable);
+    float retry_after();
+    void set_retry_after(float retry_after);
+
+    
+    DiscordClientResult(discordpp::ClientResult *client_result);
+    ~DiscordClientResult();
 };
 
 class DiscordDeviceAuthorizationArgs : public RefCounted {

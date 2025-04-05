@@ -75,9 +75,14 @@ def obj_from_godot_(variable_name: str, param_snake_name: str) -> str:
 
 def dict_from_godot(variable_name: str, param_snake_name: str) -> str:
     return f"""auto {variable_name} = std::unordered_map<std::string, std::string>();
+    auto k_{variable_name} = {param_snake_name}.keys();
 
-    for (auto p_{variable_name} : {param_snake_name}) {{
-        {variable_name}[p_{variable_name}.key] = p_{variable_name}.value;
+    for (int i = 0; i < k_{variable_name}.size(); i++) {{
+        auto k = k_{variable_name}[i];
+        auto v = {param_snake_name}[k];
+        auto k_s = k.stringify().utf8().get_data();
+        auto v_s = v.stringify().utf8().get_data();
+        {variable_name}[k_s]= v_s;
     }}
     """
 

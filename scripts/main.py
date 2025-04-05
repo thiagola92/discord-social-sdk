@@ -15,16 +15,6 @@ if __name__ == "__main__":
     classes_definitions = ""
 
     for class_name in classes:
-        # Skipping for now
-        if class_name in [
-            "AuthorizationArgs",
-            "AuthorizationCodeChallenge",
-            "AuthorizationCodeVerifier",
-            "ClientResult",
-            "Client",
-        ]:
-            continue
-
         class_methods = get_classes()[class_name]
         class_registration, classes_definition = generate_class(
             class_name, class_methods
