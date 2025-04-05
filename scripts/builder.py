@@ -40,7 +40,7 @@ def build_type(var_type: VarType) -> str:
 
     if var_type.is_vector:
         var_type.is_vector = False
-        typed_array = f"TypedArray<{build_type(var_type)}>"
+        typed_array = f"TypedArray<{build_type(var_type).replace('*', '')}>"
         var_type.is_vector = True
         return typed_array
 

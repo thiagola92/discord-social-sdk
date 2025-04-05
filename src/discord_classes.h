@@ -488,7 +488,7 @@ public:
     uint64_t id();
     Variant linked_channel();
     TypedArray<uint64_t> lobby_member_ids();
-    TypedArray<DiscordLobbyMemberHandle *> lobby_members();
+    TypedArray<DiscordLobbyMemberHandle > lobby_members();
     TypedDictionary<String, String> metadata();
 
     

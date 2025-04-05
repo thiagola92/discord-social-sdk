@@ -59,9 +59,9 @@ TypedArray<uint64_t> DiscordLobbyHandle::lobby_member_ids() {
 	return t_r;
 }
 
-TypedArray<DiscordLobbyMemberHandle *> DiscordLobbyHandle::lobby_members() {
+TypedArray<DiscordLobbyMemberHandle> DiscordLobbyHandle::lobby_members() {
 	auto r = lobby_handle->LobbyMembers();
-	auto t_r = TypedArray<DiscordLobbyMemberHandle *>();
+	auto t_r = TypedArray<DiscordLobbyMemberHandle>();
 
 	for (auto i_r : r) {
 		t_r.push_back(memnew(DiscordLobbyMemberHandle{ &i_r }));
