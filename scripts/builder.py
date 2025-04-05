@@ -1,13 +1,12 @@
 from helper import to_snake_case
 from parser import VarType, Param, Method, parse_params
-from extractor import get_callbacks
+from extractor import get_callbacks, RESERVED_NAMES
 from template_code import (
     signature_,
     method_,
     enum_from_godot_,
     obj_from_godot_,
     bind_,
-    include_,
     signal_,
     signal_property,
     call_,
@@ -156,6 +155,9 @@ def build_signature(method: Method) -> str:
     method_snake_name = to_snake_case(method.name)
     params = ", ".join([build_param(p) for p in method.uncallables])
 
+    if method_snake_name in RESERVED_NAMES:
+        method_snake_name += "2"
+
     return signature_(
         return_type=return_type,
         method_snake_name=method_snake_name,
@@ -239,6 +241,9 @@ def build_method(
     params = [build_param(p) for p in method.uncallables]
     params = ", ".join(params)
     before_call = build_before_call(method)
+
+    if method_snake_name in RESERVED_NAMES:
+        method_snake_name += "2"
 
     # Nothing to return? Just call method.
     if method.ret.name == "void":

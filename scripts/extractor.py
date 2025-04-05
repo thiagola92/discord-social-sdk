@@ -498,3 +498,6 @@ def is_callback(text: str) -> bool:
             return True
 
     return False
+
+
+RESERVED_NAMES = ["connect", "disconnect"]
