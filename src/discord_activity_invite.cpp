@@ -1,5 +1,5 @@
 // AUTO-GENERATED
-#include "discord_activity_invite.h"
+#include "discord_classes.h"
 
 using namespace godot;
 

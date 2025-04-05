@@ -149,26 +149,6 @@ def build_bind(method: Method, class_name: str) -> str:
     )
 
 
-def build_includes(method: Method) -> list:
-    includes = []
-
-    if method.use_enum:
-        includes.append(include_(include="discord_enum.h"))
-
-    for p in method.params:
-        if p.type.is_discord and not (p.type.is_enum or p.type.is_callback):
-            includes.append(
-                include_(include=to_snake_case("Discord" + p.type.name) + ".h")
-            )
-
-    if method.ret.is_discord and not (method.ret.is_enum or method.ret.is_callback):
-        includes.append(
-            include_(include=to_snake_case("Discord" + method.ret.name) + ".h")
-        )
-
-    return includes
-
-
 def build_signature(method: Method) -> str:
     return_type = build_type(method.ret)
     method_snake_name = to_snake_case(method.name)
@@ -467,7 +447,7 @@ def build_after_call(method: Method, variable_name: str) -> str:
         elif method.ret.is_enum:
             statements.append(
                 optional_enum_to_variant_(
-                    return_type=method.ret,
+                    return_type=method.ret.name,
                     variable_name=variable_name,
                 )
             )

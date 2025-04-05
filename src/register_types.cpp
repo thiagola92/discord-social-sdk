@@ -1,33 +1,11 @@
 #include "register_types.h"
-// #include "discord_activity.h"
-// #include "discord_activity_assets.h"
-// #include "discord_activity_invite.h"
-// #include "discord_activity_party.h"
-// #include "discord_activity_secrets.h"
-// #include "discord_activity_timestamps.h"
-// #include "discord_additional_content.h"
-// #include "discord_audio_device.h"
 #include "discord_authorization_args.h"
 #include "discord_authorization_code_challenge.h"
 #include "discord_authorization_code_verifier.h"
-// #include "discord_call.h"
-// #include "discord_call_info_handle.h"
-// #include "discord_channel_handle.h"
+#include "discord_classes.h"
 #include "discord_client.h"
 #include "discord_client_result.h"
-// #include "discord_device_authorization_args.h"
 #include "discord_enum.h"
-// #include "discord_guild_channel.h"
-// #include "discord_guild_minimal.h"
-// #include "discord_linked_channel.h"
-// #include "discord_linked_lobby.h"
-// #include "discord_lobby_handle.h"
-// #include "discord_lobby_member_handle.h"
-// #include "discord_message_handle.h"
-// #include "discord_relationship_handle.h"
-// #include "discord_user_handle.h"
-// #include "discord_vadthreshold_settings.h"
-// #include "discord_voice_state_handle.h"
 #include "gdextension_interface.h"
 #include "godot_cpp/core/class_db.hpp"
 #include "godot_cpp/core/defs.hpp"
@@ -40,34 +18,34 @@ void initialize_module(ModuleInitializationLevel p_level) {
 		return;
 	}
 
-	// GDREGISTER_RUNTIME_CLASS(DiscordActivity);
-	// GDREGISTER_RUNTIME_CLASS(DiscordActivityAssets);
-	// GDREGISTER_RUNTIME_CLASS(DiscordActivityInvite);
-	// GDREGISTER_RUNTIME_CLASS(DiscordActivityParty);
-	// GDREGISTER_RUNTIME_CLASS(DiscordActivitySecrets);
-	// GDREGISTER_RUNTIME_CLASS(DiscordActivityTimestamps);
-	// GDREGISTER_RUNTIME_CLASS(DiscordAdditionalContent);
-	// GDREGISTER_RUNTIME_CLASS(DiscordAudioDevice);
+	GDREGISTER_RUNTIME_CLASS(DiscordActivity);
+	GDREGISTER_RUNTIME_CLASS(DiscordActivityAssets);
+	GDREGISTER_RUNTIME_CLASS(DiscordActivityInvite);
+	GDREGISTER_RUNTIME_CLASS(DiscordActivityParty);
+	GDREGISTER_RUNTIME_CLASS(DiscordActivitySecrets);
+	GDREGISTER_RUNTIME_CLASS(DiscordActivityTimestamps);
+	GDREGISTER_RUNTIME_CLASS(DiscordAdditionalContent);
+	GDREGISTER_RUNTIME_CLASS(DiscordAudioDevice);
 	GDREGISTER_RUNTIME_CLASS(DiscordAuthorizationArgs);
 	GDREGISTER_RUNTIME_CLASS(DiscordAuthorizationCodeChallenge);
 	GDREGISTER_RUNTIME_CLASS(DiscordAuthorizationCodeVerifier);
-	// GDREGISTER_RUNTIME_CLASS(DiscordCall);
-	// GDREGISTER_RUNTIME_CLASS(DiscordCallInfoHandle);
-	// GDREGISTER_RUNTIME_CLASS(DiscordChannelHandle);
+	GDREGISTER_RUNTIME_CLASS(DiscordCall);
+	GDREGISTER_RUNTIME_CLASS(DiscordCallInfoHandle);
+	GDREGISTER_RUNTIME_CLASS(DiscordChannelHandle);
 	GDREGISTER_RUNTIME_CLASS(DiscordClient);
 	GDREGISTER_RUNTIME_CLASS(DiscordClientResult);
-	// GDREGISTER_RUNTIME_CLASS(DiscordDeviceAuthorizationArgs);
-	// GDREGISTER_RUNTIME_CLASS(DiscordGuildChannel);
-	// GDREGISTER_RUNTIME_CLASS(DiscordGuildMinimal);
-	// GDREGISTER_RUNTIME_CLASS(DiscordLinkedChannel);
-	// GDREGISTER_RUNTIME_CLASS(DiscordLinkedLobby);
-	// GDREGISTER_RUNTIME_CLASS(DiscordLobbyHandle);
-	// GDREGISTER_RUNTIME_CLASS(DiscordLobbyMemberHandle);
-	// GDREGISTER_RUNTIME_CLASS(DiscordMessageHandle);
-	// GDREGISTER_RUNTIME_CLASS(DiscordRelationshipHandle);
-	// GDREGISTER_RUNTIME_CLASS(DiscordUserHandle);
-	// GDREGISTER_RUNTIME_CLASS(DiscordVADThresholdSettings);
-	// GDREGISTER_RUNTIME_CLASS(DiscordVoiceStateHandle);
+	GDREGISTER_RUNTIME_CLASS(DiscordDeviceAuthorizationArgs);
+	GDREGISTER_RUNTIME_CLASS(DiscordGuildChannel);
+	GDREGISTER_RUNTIME_CLASS(DiscordGuildMinimal);
+	GDREGISTER_RUNTIME_CLASS(DiscordLinkedChannel);
+	GDREGISTER_RUNTIME_CLASS(DiscordLinkedLobby);
+	GDREGISTER_RUNTIME_CLASS(DiscordLobbyHandle);
+	GDREGISTER_RUNTIME_CLASS(DiscordLobbyMemberHandle);
+	GDREGISTER_RUNTIME_CLASS(DiscordMessageHandle);
+	GDREGISTER_RUNTIME_CLASS(DiscordRelationshipHandle);
+	GDREGISTER_RUNTIME_CLASS(DiscordUserHandle);
+	GDREGISTER_RUNTIME_CLASS(DiscordVADThresholdSettings);
+	GDREGISTER_RUNTIME_CLASS(DiscordVoiceStateHandle);
 
 	// discord_enum.h
 	GDREGISTER_ABSTRACT_CLASS(DiscordActivityActionTypes);

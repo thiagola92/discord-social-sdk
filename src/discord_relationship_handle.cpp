@@ -1,5 +1,5 @@
 // AUTO-GENERATED
-#include "discord_relationship_handle.h"
+#include "discord_classes.h"
 
 using namespace godot;
 

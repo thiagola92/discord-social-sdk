@@ -189,7 +189,7 @@ def vector_obj_to_godot_(variable_name: str, typed_array: str, class_name: str) 
     return f"""auto t_{variable_name} = {typed_array}();
 
     for (auto i_{variable_name} : {variable_name}) {{
-        t_{variable_name}.push_back(memnew(Discord{class_name}{{ {variable_name} }}));
+        t_{variable_name}.push_back(memnew(Discord{class_name}{{ &i_{variable_name} }}));
     }}
 
     return t_{variable_name};

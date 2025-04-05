@@ -1,5 +1,5 @@
 // AUTO-GENERATED
-#include "discord_device_authorization_args.h"
+#include "discord_classes.h"
 
 using namespace godot;
 

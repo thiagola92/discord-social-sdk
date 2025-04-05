@@ -1,5 +1,5 @@
 // AUTO-GENERATED
-#include "discord_message_handle.h"
+#include "discord_classes.h"
 
 using namespace godot;
 
@@ -65,7 +65,7 @@ Variant DiscordMessageHandle::disclosure_type() {
 		return nullptr;
 	}
 
-	return Variant((Discord<parser.VarType object at 0x79fb3da8f230>::Enum)r.value());
+	return Variant((DiscordDisclosureTypes::Enum)r.value());
 }
 
 uint64_t DiscordMessageHandle::edited_timestamp() {

@@ -1,5 +1,5 @@
 // AUTO-GENERATED
-#include "discord_channel_handle.h"
+#include "discord_classes.h"
 
 using namespace godot;
 

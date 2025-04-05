@@ -1,5 +1,5 @@
 // AUTO-GENERATED
-#include "discord_audio_device.h"
+#include "discord_classes.h"
 
 using namespace godot;
 

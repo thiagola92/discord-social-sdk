@@ -1,5 +1,5 @@
 // AUTO-GENERATED
-#include "discord_user_handle.h"
+#include "discord_classes.h"
 
 using namespace godot;
 

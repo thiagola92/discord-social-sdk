@@ -1,5 +1,5 @@
 // AUTO-GENERATED
-#include "discord_lobby_handle.h"
+#include "discord_classes.h"
 
 using namespace godot;
 
@@ -64,7 +64,7 @@ TypedArray<DiscordLobbyMemberHandle *> DiscordLobbyHandle::lobby_members() {
 	auto t_r = TypedArray<DiscordLobbyMemberHandle *>();
 
 	for (auto i_r : r) {
-		t_r.push_back(memnew(DiscordLobbyMemberHandle{ r }));
+		t_r.push_back(memnew(DiscordLobbyMemberHandle{ &i_r }));
 	}
 
 	return t_r;
