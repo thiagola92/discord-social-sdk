@@ -4,3 +4,5 @@
 
 [node name="AddingLog" type="Node"]
 script = ExtResource("1_yk60j")
+
+[node name="DiscordClient" type="DiscordClient" parent="."]

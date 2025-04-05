@@ -95,6 +95,8 @@ def build_signals(method: Method, class_name: str) -> str:
                 p.var = "Variant::ARRAY"
             elif p.type.is_map:
                 p.var = "Variant::DICTIONARY"
+            elif p.type.is_enum:
+                p.var = "Variant::INT"
             elif p.type.is_discord:
                 p.var = "Variant::OBJECT"
             elif p.type.is_boolean:
@@ -163,8 +165,7 @@ def build_signature(method: Method) -> str:
 
 def build_lambda(method: Method, param: Param, class_name: str) -> str:
     # Decide signal called.
-    signal_name = to_snake_case(method.name)
-    signal_name += "_callback"
+    signal_name = to_snake_case(param.type.name)
 
     # Get callback params.
     callback_type = param.type.name

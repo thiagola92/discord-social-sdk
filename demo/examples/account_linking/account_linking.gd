@@ -12,12 +12,12 @@ func _ready() -> void:
 	var args := DiscordAuthorizationArgs.new()
 	args.set_client_id(APPLICATION_ID)
 	args.set_scopes("openid sdk.social_layer_presence")
-	args.set_code_challenge(code_verifier.get_challenge());
+	args.set_code_challenge(code_verifier.challenge());
 	
 	client.authorize(args)
 
 
 func _on_discord_client_authorization_callback(result: DiscordClientResult, code: String, redirect_uri: String) -> void:
-	print("result.get_successful()", result.get_successful())
+	print("result.get_successful()", result.successful())
 	print("code", code)
 	print("redirect_uri", redirect_uri)

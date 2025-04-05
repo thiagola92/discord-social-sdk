@@ -93,7 +93,7 @@ void DiscordCall::set_local_mute(uint64_t user_id, bool mute) {
 void DiscordCall::set_on_voice_state_changed_callback() {
 	call->SetOnVoiceStateChangedCallback([this](uint64_t userId) {
 		auto p0 = userId;
-		this->emit_signal("set_on_voice_state_changed_callback_callback", p0);
+		this->emit_signal("call_on_voice_state_changed", p0);
 	});
 }
 
@@ -101,7 +101,7 @@ void DiscordCall::set_participant_changed_callback() {
 	call->SetParticipantChangedCallback([this](uint64_t userId, bool added) {
 		auto p0 = userId;
 		auto p1 = added;
-		this->emit_signal("set_participant_changed_callback_callback", p0, p1);
+		this->emit_signal("call_on_participant_changed", p0, p1);
 	});
 }
 
@@ -129,7 +129,7 @@ void DiscordCall::set_speaking_status_changed_callback() {
 	call->SetSpeakingStatusChangedCallback([this](uint64_t userId, bool isPlayingSound) {
 		auto p0 = userId;
 		auto p1 = isPlayingSound;
-		this->emit_signal("set_speaking_status_changed_callback_callback", p0, p1);
+		this->emit_signal("call_on_speaking_status_changed", p0, p1);
 	});
 }
 
@@ -138,7 +138,7 @@ void DiscordCall::set_status_changed_callback() {
 		auto p0 = (DiscordCallStatus::Enum)status;
 		auto p1 = (DiscordCallError::Enum)error;
 		auto p2 = errorDetail;
-		this->emit_signal("set_status_changed_callback_callback", p0, p1, p2);
+		this->emit_signal("call_on_status_changed", p0, p1, p2);
 	});
 }
 
@@ -147,13 +147,13 @@ void DiscordCall::set_vadthreshold(bool automatic, float threshold) {
 }
 
 void DiscordCall::_bind_methods() {
-	ADD_SIGNAL(MethodInfo("call_on_status_changed", PropertyInfo(Variant::OBJECT, "status"), PropertyInfo(Variant::OBJECT, "error"), PropertyInfo(Variant::INT, "error_detail")));
+	ADD_SIGNAL(MethodInfo("call_on_participant_changed", PropertyInfo(Variant::INT, "user_id"), PropertyInfo(Variant::BOOL, "added")));
 
 	ADD_SIGNAL(MethodInfo("call_on_speaking_status_changed", PropertyInfo(Variant::INT, "user_id"), PropertyInfo(Variant::BOOL, "is_playing_sound")));
 
-	ADD_SIGNAL(MethodInfo("call_on_participant_changed", PropertyInfo(Variant::INT, "user_id"), PropertyInfo(Variant::BOOL, "added")));
-
 	ADD_SIGNAL(MethodInfo("call_on_voice_state_changed", PropertyInfo(Variant::INT, "user_id")));
+
+	ADD_SIGNAL(MethodInfo("call_on_status_changed", PropertyInfo(Variant::INT, "status"), PropertyInfo(Variant::INT, "error"), PropertyInfo(Variant::INT, "error_detail")));
 
 	ClassDB::bind_method(D_METHOD("get_audio_mode"),
 			&DiscordCall::get_audio_mode);

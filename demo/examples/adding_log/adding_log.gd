@@ -13,7 +13,3 @@ func _ready() -> void:
 	
 	# Just for testing (it's suppose to fail)
 	client.authorize(DiscordAuthorizationArgs.new())
-
-
-func _on_discord_client_log_callback(message: String, severity: int) -> void:
-	printt(severity, message)

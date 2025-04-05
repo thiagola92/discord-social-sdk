@@ -12,7 +12,7 @@ def signal_(signal_name: str, signal_params: str) -> str:
 
 
 def signal_property(param_type: str, param_name: str, param_type_name="") -> str:
-    if param_type == "VARIANT::OBJECT":
+    if param_type == "Variant::OBJECT":
         return f'PropertyInfo({param_type}, "{param_name}", PROPERTY_HINT_RESOURCE_TYPE, "{param_type_name}")'
     return f'PropertyInfo({param_type}, "{param_name}")'
 

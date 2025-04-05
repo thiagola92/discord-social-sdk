@@ -7,15 +7,19 @@ discordpp::Client *DiscordClient::unwrap() {
 	return client;
 }
 
+void DiscordClient::_process(double delta) {
+	//
+}
+
 void DiscordClient::end_call(uint64_t channel_id) {
 	client->EndCall(channel_id, [this]() {
-		this->emit_signal("end_call_callback");
+		this->emit_signal("client_end_call_callback");
 	});
 }
 
 void DiscordClient::end_calls() {
 	client->EndCalls([this]() {
-		this->emit_signal("end_calls_callback");
+		this->emit_signal("client_end_calls_callback");
 	});
 }
 
@@ -43,7 +47,7 @@ void DiscordClient::get_current_input_device() {
 		*t_device = device;
 		auto p0 = memnew(DiscordAudioDevice{ t_device });
 
-		this->emit_signal("get_current_input_device_callback", p0);
+		this->emit_signal("client_get_current_input_device_callback", p0);
 	});
 }
 
@@ -53,7 +57,7 @@ void DiscordClient::get_current_output_device() {
 		*t_device = device;
 		auto p0 = memnew(DiscordAudioDevice{ t_device });
 
-		this->emit_signal("get_current_output_device_callback", p0);
+		this->emit_signal("client_get_current_output_device_callback", p0);
 	});
 }
 
@@ -67,7 +71,7 @@ void DiscordClient::get_input_devices() {
 
 		auto p0 = t_devices;
 
-		this->emit_signal("get_input_devices_callback", p0);
+		this->emit_signal("client_get_input_devices_callback", p0);
 	});
 }
 
@@ -86,7 +90,7 @@ void DiscordClient::get_output_devices() {
 
 		auto p0 = t_devices;
 
-		this->emit_signal("get_output_devices_callback", p0);
+		this->emit_signal("client_get_output_devices_callback", p0);
 	});
 }
 
@@ -127,7 +131,7 @@ void DiscordClient::set_device_change_callback() {
 
 		auto p1 = t_outputDevices;
 
-		this->emit_signal("set_device_change_callback_callback", p0, p1);
+		this->emit_signal("client_device_change_callback", p0, p1);
 	});
 }
 
@@ -142,7 +146,7 @@ void DiscordClient::set_input_device(String device_id) {
 		*t_result = result;
 		auto p0 = memnew(DiscordClientResult{ t_result });
 
-		this->emit_signal("set_input_device_callback", p0);
+		this->emit_signal("client_set_input_device_callback", p0);
 	});
 }
 
@@ -153,7 +157,7 @@ void DiscordClient::set_input_volume(float input_volume) {
 void DiscordClient::set_no_audio_input_callback() {
 	client->SetNoAudioInputCallback([this](bool inputDetected) {
 		auto p0 = inputDetected;
-		this->emit_signal("set_no_audio_input_callback_callback", p0);
+		this->emit_signal("client_no_audio_input_callback", p0);
 	});
 }
 
@@ -176,7 +180,7 @@ void DiscordClient::set_output_device(String device_id) {
 		*t_result = result;
 		auto p0 = memnew(DiscordClientResult{ t_result });
 
-		this->emit_signal("set_output_device_callback", p0);
+		this->emit_signal("client_set_output_device_callback", p0);
 	});
 }
 
@@ -207,7 +211,7 @@ void DiscordClient::set_voice_participant_changed_callback() {
 		auto p0 = lobbyId;
 		auto p1 = memberId;
 		auto p2 = added;
-		this->emit_signal("set_voice_participant_changed_callback_callback", p0, p1, p2);
+		this->emit_signal("client_voice_participant_changed_callback", p0, p1, p2);
 	});
 }
 
@@ -231,12 +235,12 @@ auto p2 = samplesPerChannel;
 auto p3 = sampleRate;
 auto p4 = channels;
 auto p5 = outShouldMute;
-        this->emit_signal("start_call_with_audio_callbacks_callback",p0,p1,p2,p3,p4,p5); }, [this](int16_t const *data, uint64_t samplesPerChannel, int32_t sampleRate, uint64_t channels) {
+        this->emit_signal("client_user_audio_received_callback",p0,p1,p2,p3,p4,p5); }, [this](int16_t const *data, uint64_t samplesPerChannel, int32_t sampleRate, uint64_t channels) {
         auto p0 = data;
 auto p1 = samplesPerChannel;
 auto p2 = sampleRate;
 auto p3 = channels;
-        this->emit_signal("start_call_with_audio_callbacks_callback",p0,p1,p2,p3); });
+        this->emit_signal("client_user_audio_captured_callback",p0,p1,p2,p3); });
 	auto t_r = (discordpp::Call *)memalloc(sizeof(discordpp::Call));
 	*t_r = r;
 	return memnew(DiscordCall{ t_r });
@@ -259,7 +263,7 @@ void DiscordClient::authorize(DiscordAuthorizationArgs *args) {
 
 		auto p1 = String(code.c_str());
 		auto p2 = String(redirectUri.c_str());
-		this->emit_signal("authorize_callback", p0, p1, p2);
+		this->emit_signal("client_authorization_callback", p0, p1, p2);
 	});
 }
 
@@ -284,7 +288,7 @@ void DiscordClient::fetch_current_user(DiscordAuthorizationTokenType::Enum token
 
 		auto p1 = id;
 		auto p2 = String(name.c_str());
-		this->emit_signal("fetch_current_user_callback", p0, p1, p2);
+		this->emit_signal("client_fetch_current_user_callback", p0, p1, p2);
 	});
 }
 
@@ -301,7 +305,7 @@ void DiscordClient::get_provisional_token(uint64_t application_id, DiscordAuthen
 		auto p3 = (DiscordAuthorizationTokenType::Enum)tokenType;
 		auto p4 = expiresIn;
 		auto p5 = String(scopes.c_str());
-		this->emit_signal("get_provisional_token_callback", p0, p1, p2, p3, p4, p5);
+		this->emit_signal("client_token_exchange_callback", p0, p1, p2, p3, p4, p5);
 	});
 }
 
@@ -319,7 +323,7 @@ void DiscordClient::get_token(uint64_t application_id, String code, String code_
 		auto p3 = (DiscordAuthorizationTokenType::Enum)tokenType;
 		auto p4 = expiresIn;
 		auto p5 = String(scopes.c_str());
-		this->emit_signal("get_token_callback", p0, p1, p2, p3, p4, p5);
+		this->emit_signal("client_token_exchange_callback", p0, p1, p2, p3, p4, p5);
 	});
 }
 
@@ -335,7 +339,7 @@ void DiscordClient::get_token_from_device(DiscordDeviceAuthorizationArgs *args) 
 		auto p3 = (DiscordAuthorizationTokenType::Enum)tokenType;
 		auto p4 = expiresIn;
 		auto p5 = String(scopes.c_str());
-		this->emit_signal("get_token_from_device_callback", p0, p1, p2, p3, p4, p5);
+		this->emit_signal("client_token_exchange_callback", p0, p1, p2, p3, p4, p5);
 	});
 }
 
@@ -353,7 +357,7 @@ void DiscordClient::get_token_from_device_provisional_merge(DiscordDeviceAuthori
 		auto p3 = (DiscordAuthorizationTokenType::Enum)tokenType;
 		auto p4 = expiresIn;
 		auto p5 = String(scopes.c_str());
-		this->emit_signal("get_token_from_device_provisional_merge_callback", p0, p1, p2, p3, p4, p5);
+		this->emit_signal("client_token_exchange_callback", p0, p1, p2, p3, p4, p5);
 	});
 }
 
@@ -373,7 +377,7 @@ void DiscordClient::get_token_from_provisional_merge(uint64_t application_id, St
 		auto p3 = (DiscordAuthorizationTokenType::Enum)tokenType;
 		auto p4 = expiresIn;
 		auto p5 = String(scopes.c_str());
-		this->emit_signal("get_token_from_provisional_merge_callback", p0, p1, p2, p3, p4, p5);
+		this->emit_signal("client_token_exchange_callback", p0, p1, p2, p3, p4, p5);
 	});
 }
 
@@ -403,13 +407,13 @@ void DiscordClient::refresh_token(uint64_t application_id, String refresh_token)
 		auto p3 = (DiscordAuthorizationTokenType::Enum)tokenType;
 		auto p4 = expiresIn;
 		auto p5 = String(scopes.c_str());
-		this->emit_signal("refresh_token_callback", p0, p1, p2, p3, p4, p5);
+		this->emit_signal("client_token_exchange_callback", p0, p1, p2, p3, p4, p5);
 	});
 }
 
 void DiscordClient::set_authorize_device_screen_closed_callback() {
 	client->SetAuthorizeDeviceScreenClosedCallback([this]() {
-		this->emit_signal("set_authorize_device_screen_closed_callback_callback");
+		this->emit_signal("client_authorize_device_screen_closed_callback");
 	});
 }
 
@@ -419,7 +423,7 @@ void DiscordClient::set_game_window_pid(int32_t pid) {
 
 void DiscordClient::set_token_expiration_callback() {
 	client->SetTokenExpirationCallback([this]() {
-		this->emit_signal("set_token_expiration_callback_callback");
+		this->emit_signal("client_token_expiration_callback");
 	});
 }
 
@@ -430,7 +434,7 @@ void DiscordClient::update_provisional_account_display_name(String name) {
 		*t_result = result;
 		auto p0 = memnew(DiscordClientResult{ t_result });
 
-		this->emit_signal("update_provisional_account_display_name_callback", p0);
+		this->emit_signal("client_update_provisional_account_display_name_callback", p0);
 	});
 }
 
@@ -442,7 +446,7 @@ void DiscordClient::update_token(DiscordAuthorizationTokenType::Enum token_type,
 		*t_result = result;
 		auto p0 = memnew(DiscordClientResult{ t_result });
 
-		this->emit_signal("update_token_callback", p0);
+		this->emit_signal("client_update_token_callback", p0);
 	});
 }
 
@@ -457,7 +461,7 @@ void DiscordClient::delete_user_message(uint64_t recipient_id, uint64_t message_
 		*t_result = result;
 		auto p0 = memnew(DiscordClientResult{ t_result });
 
-		this->emit_signal("delete_user_message_callback", p0);
+		this->emit_signal("client_delete_user_message_callback", p0);
 	});
 }
 
@@ -468,7 +472,7 @@ void DiscordClient::edit_user_message(uint64_t recipient_id, uint64_t message_id
 		*t_result = result;
 		auto p0 = memnew(DiscordClientResult{ t_result });
 
-		this->emit_signal("edit_user_message_callback", p0);
+		this->emit_signal("client_edit_user_message_callback", p0);
 	});
 }
 
@@ -497,12 +501,12 @@ Variant DiscordClient::get_message_handle(uint64_t message_id) {
 }
 
 void DiscordClient::open_message_in_discord(uint64_t message_id) {
-	client->OpenMessageInDiscord(message_id, [this]() { this->emit_signal("open_message_in_discord_callback"); }, [this](discordpp::ClientResult result) {
+	client->OpenMessageInDiscord(message_id, [this]() { this->emit_signal("client_provisional_user_merge_required_callback"); }, [this](discordpp::ClientResult result) {
         auto t_result = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
     *t_result = result;
     auto p0 = memnew(DiscordClientResult{ t_result });
     
-        this->emit_signal("open_message_in_discord_callback",p0); });
+        this->emit_signal("client_open_message_in_discord_callback",p0); });
 }
 
 void DiscordClient::send_lobby_message(uint64_t lobby_id, String content) {
@@ -513,7 +517,7 @@ void DiscordClient::send_lobby_message(uint64_t lobby_id, String content) {
 		auto p0 = memnew(DiscordClientResult{ t_result });
 
 		auto p1 = messageId;
-		this->emit_signal("send_lobby_message_callback", p0, p1);
+		this->emit_signal("client_send_user_message_callback", p0, p1);
 	});
 }
 
@@ -536,7 +540,7 @@ void DiscordClient::send_lobby_message_with_metadata(uint64_t lobby_id, String c
 		auto p0 = memnew(DiscordClientResult{ t_result });
 
 		auto p1 = messageId;
-		this->emit_signal("send_lobby_message_with_metadata_callback", p0, p1);
+		this->emit_signal("client_send_user_message_callback", p0, p1);
 	});
 }
 
@@ -548,7 +552,7 @@ void DiscordClient::send_user_message(uint64_t recipient_id, String content) {
 		auto p0 = memnew(DiscordClientResult{ t_result });
 
 		auto p1 = messageId;
-		this->emit_signal("send_user_message_callback", p0, p1);
+		this->emit_signal("client_send_user_message_callback", p0, p1);
 	});
 }
 
@@ -571,14 +575,14 @@ void DiscordClient::send_user_message_with_metadata(uint64_t recipient_id, Strin
 		auto p0 = memnew(DiscordClientResult{ t_result });
 
 		auto p1 = messageId;
-		this->emit_signal("send_user_message_with_metadata_callback", p0, p1);
+		this->emit_signal("client_send_user_message_callback", p0, p1);
 	});
 }
 
 void DiscordClient::set_message_created_callback() {
 	client->SetMessageCreatedCallback([this](uint64_t messageId) {
 		auto p0 = messageId;
-		this->emit_signal("set_message_created_callback_callback", p0);
+		this->emit_signal("client_message_created_callback", p0);
 	});
 }
 
@@ -586,14 +590,14 @@ void DiscordClient::set_message_deleted_callback() {
 	client->SetMessageDeletedCallback([this](uint64_t messageId, uint64_t channelId) {
 		auto p0 = messageId;
 		auto p1 = channelId;
-		this->emit_signal("set_message_deleted_callback_callback", p0, p1);
+		this->emit_signal("client_message_deleted_callback", p0, p1);
 	});
 }
 
 void DiscordClient::set_message_updated_callback() {
 	client->SetMessageUpdatedCallback([this](uint64_t messageId) {
 		auto p0 = messageId;
-		this->emit_signal("set_message_updated_callback_callback", p0);
+		this->emit_signal("client_message_updated_callback", p0);
 	});
 }
 
@@ -606,7 +610,7 @@ void DiscordClient::add_log_callback(DiscordLoggingSeverity::Enum min_severity) 
 	client->AddLogCallback([this](std::string message, discordpp::LoggingSeverity severity) {
 		auto p0 = String(message.c_str());
 		auto p1 = (DiscordLoggingSeverity::Enum)severity;
-		this->emit_signal("add_log_callback_callback", p0, p1);
+		this->emit_signal("client_log_callback", p0, p1);
 	},
 			p0);
 }
@@ -616,7 +620,7 @@ void DiscordClient::add_voice_log_callback(DiscordLoggingSeverity::Enum min_seve
 	client->AddVoiceLogCallback([this](std::string message, discordpp::LoggingSeverity severity) {
 		auto p0 = String(message.c_str());
 		auto p1 = (DiscordLoggingSeverity::Enum)severity;
-		this->emit_signal("add_voice_log_callback_callback", p0, p1);
+		this->emit_signal("client_log_callback", p0, p1);
 	},
 			p0);
 }
@@ -646,7 +650,7 @@ void DiscordClient::set_status_changed_callback() {
 		auto p0 = (DiscordClientStatus::Enum)status;
 		auto p1 = (DiscordClientError::Enum)error;
 		auto p2 = errorDetail;
-		this->emit_signal("set_status_changed_callback_callback", p0, p1, p2);
+		this->emit_signal("client_on_status_changed", p0, p1, p2);
 	});
 }
 
@@ -664,7 +668,7 @@ void DiscordClient::create_or_join_lobby(String secret) {
 		auto p0 = memnew(DiscordClientResult{ t_result });
 
 		auto p1 = lobbyId;
-		this->emit_signal("create_or_join_lobby_callback", p0, p1);
+		this->emit_signal("client_create_or_join_lobby_callback", p0, p1);
 	});
 }
 
@@ -698,7 +702,7 @@ void DiscordClient::create_or_join_lobby_with_metadata(String secret, TypedDicti
 		auto p0 = memnew(DiscordClientResult{ t_result });
 
 		auto p1 = lobbyId;
-		this->emit_signal("create_or_join_lobby_with_metadata_callback", p0, p1);
+		this->emit_signal("client_create_or_join_lobby_callback", p0, p1);
 	});
 }
 
@@ -716,7 +720,7 @@ void DiscordClient::get_guild_channels(uint64_t guild_id) {
 
 		auto p1 = t_guildChannels;
 
-		this->emit_signal("get_guild_channels_callback", p0, p1);
+		this->emit_signal("client_get_guild_channels_callback", p0, p1);
 	});
 }
 
@@ -757,7 +761,7 @@ void DiscordClient::get_user_guilds() {
 
 		auto p1 = t_guilds;
 
-		this->emit_signal("get_user_guilds_callback", p0, p1);
+		this->emit_signal("client_get_user_guilds_callback", p0, p1);
 	});
 }
 
@@ -767,7 +771,7 @@ void DiscordClient::leave_lobby(uint64_t lobby_id) {
 		*t_result = result;
 		auto p0 = memnew(DiscordClientResult{ t_result });
 
-		this->emit_signal("leave_lobby_callback", p0);
+		this->emit_signal("client_leave_lobby_callback", p0);
 	});
 }
 
@@ -777,21 +781,21 @@ void DiscordClient::link_channel_to_lobby(uint64_t lobby_id, uint64_t channel_id
 		*t_result = result;
 		auto p0 = memnew(DiscordClientResult{ t_result });
 
-		this->emit_signal("link_channel_to_lobby_callback", p0);
+		this->emit_signal("client_link_or_unlink_channel_callback", p0);
 	});
 }
 
 void DiscordClient::set_lobby_created_callback() {
 	client->SetLobbyCreatedCallback([this](uint64_t lobbyId) {
 		auto p0 = lobbyId;
-		this->emit_signal("set_lobby_created_callback_callback", p0);
+		this->emit_signal("client_lobby_created_callback", p0);
 	});
 }
 
 void DiscordClient::set_lobby_deleted_callback() {
 	client->SetLobbyDeletedCallback([this](uint64_t lobbyId) {
 		auto p0 = lobbyId;
-		this->emit_signal("set_lobby_deleted_callback_callback", p0);
+		this->emit_signal("client_lobby_deleted_callback", p0);
 	});
 }
 
@@ -799,7 +803,7 @@ void DiscordClient::set_lobby_member_added_callback() {
 	client->SetLobbyMemberAddedCallback([this](uint64_t lobbyId, uint64_t memberId) {
 		auto p0 = lobbyId;
 		auto p1 = memberId;
-		this->emit_signal("set_lobby_member_added_callback_callback", p0, p1);
+		this->emit_signal("client_lobby_member_added_callback", p0, p1);
 	});
 }
 
@@ -807,7 +811,7 @@ void DiscordClient::set_lobby_member_removed_callback() {
 	client->SetLobbyMemberRemovedCallback([this](uint64_t lobbyId, uint64_t memberId) {
 		auto p0 = lobbyId;
 		auto p1 = memberId;
-		this->emit_signal("set_lobby_member_removed_callback_callback", p0, p1);
+		this->emit_signal("client_lobby_member_removed_callback", p0, p1);
 	});
 }
 
@@ -815,14 +819,14 @@ void DiscordClient::set_lobby_member_updated_callback() {
 	client->SetLobbyMemberUpdatedCallback([this](uint64_t lobbyId, uint64_t memberId) {
 		auto p0 = lobbyId;
 		auto p1 = memberId;
-		this->emit_signal("set_lobby_member_updated_callback_callback", p0, p1);
+		this->emit_signal("client_lobby_member_updated_callback", p0, p1);
 	});
 }
 
 void DiscordClient::set_lobby_updated_callback() {
 	client->SetLobbyUpdatedCallback([this](uint64_t lobbyId) {
 		auto p0 = lobbyId;
-		this->emit_signal("set_lobby_updated_callback_callback", p0);
+		this->emit_signal("client_lobby_updated_callback", p0);
 	});
 }
 
@@ -832,7 +836,7 @@ void DiscordClient::unlink_channel_from_lobby(uint64_t lobby_id) {
 		*t_result = result;
 		auto p0 = memnew(DiscordClientResult{ t_result });
 
-		this->emit_signal("unlink_channel_from_lobby_callback", p0);
+		this->emit_signal("client_link_or_unlink_channel_callback", p0);
 	});
 }
 
@@ -844,7 +848,7 @@ void DiscordClient::accept_activity_invite(DiscordActivityInvite *invite) {
 		auto p0 = memnew(DiscordClientResult{ t_result });
 
 		auto p1 = String(joinSecret.c_str());
-		this->emit_signal("accept_activity_invite_callback", p0, p1);
+		this->emit_signal("client_accept_activity_invite_callback", p0, p1);
 	});
 }
 
@@ -870,7 +874,7 @@ void DiscordClient::send_activity_invite(uint64_t user_id, String content) {
 		*t_result = result;
 		auto p0 = memnew(DiscordClientResult{ t_result });
 
-		this->emit_signal("send_activity_invite_callback", p0);
+		this->emit_signal("client_send_activity_invite_callback", p0);
 	});
 }
 
@@ -880,7 +884,7 @@ void DiscordClient::send_activity_join_request(uint64_t user_id) {
 		*t_result = result;
 		auto p0 = memnew(DiscordClientResult{ t_result });
 
-		this->emit_signal("send_activity_join_request_callback", p0);
+		this->emit_signal("client_send_activity_invite_callback", p0);
 	});
 }
 
@@ -891,7 +895,7 @@ void DiscordClient::send_activity_join_request_reply(DiscordActivityInvite *invi
 		*t_result = result;
 		auto p0 = memnew(DiscordClientResult{ t_result });
 
-		this->emit_signal("send_activity_join_request_reply_callback", p0);
+		this->emit_signal("client_send_activity_invite_callback", p0);
 	});
 }
 
@@ -901,7 +905,7 @@ void DiscordClient::set_activity_invite_created_callback() {
 		*t_invite = invite;
 		auto p0 = memnew(DiscordActivityInvite{ t_invite });
 
-		this->emit_signal("set_activity_invite_created_callback_callback", p0);
+		this->emit_signal("client_activity_invite_callback", p0);
 	});
 }
 
@@ -911,14 +915,14 @@ void DiscordClient::set_activity_invite_updated_callback() {
 		*t_invite = invite;
 		auto p0 = memnew(DiscordActivityInvite{ t_invite });
 
-		this->emit_signal("set_activity_invite_updated_callback_callback", p0);
+		this->emit_signal("client_activity_invite_callback", p0);
 	});
 }
 
 void DiscordClient::set_activity_join_callback() {
 	client->SetActivityJoinCallback([this](std::string joinSecret) {
 		auto p0 = String(joinSecret.c_str());
-		this->emit_signal("set_activity_join_callback_callback", p0);
+		this->emit_signal("client_activity_join_callback", p0);
 	});
 }
 
@@ -929,7 +933,7 @@ void DiscordClient::set_online_status(DiscordStatusType::Enum status) {
 		*t_result = result;
 		auto p0 = memnew(DiscordClientResult{ t_result });
 
-		this->emit_signal("set_online_status_callback", p0);
+		this->emit_signal("client_update_status_callback", p0);
 	});
 }
 
@@ -940,7 +944,7 @@ void DiscordClient::update_rich_presence(DiscordActivity *activity) {
 		*t_result = result;
 		auto p0 = memnew(DiscordClientResult{ t_result });
 
-		this->emit_signal("update_rich_presence_callback", p0);
+		this->emit_signal("client_update_rich_presence_callback", p0);
 	});
 }
 
@@ -950,7 +954,7 @@ void DiscordClient::accept_discord_friend_request(uint64_t user_id) {
 		*t_result = result;
 		auto p0 = memnew(DiscordClientResult{ t_result });
 
-		this->emit_signal("accept_discord_friend_request_callback", p0);
+		this->emit_signal("client_update_relationship_callback", p0);
 	});
 }
 
@@ -960,7 +964,7 @@ void DiscordClient::accept_game_friend_request(uint64_t user_id) {
 		*t_result = result;
 		auto p0 = memnew(DiscordClientResult{ t_result });
 
-		this->emit_signal("accept_game_friend_request_callback", p0);
+		this->emit_signal("client_update_relationship_callback", p0);
 	});
 }
 
@@ -970,7 +974,7 @@ void DiscordClient::block_user(uint64_t user_id) {
 		*t_result = result;
 		auto p0 = memnew(DiscordClientResult{ t_result });
 
-		this->emit_signal("block_user_callback", p0);
+		this->emit_signal("client_update_relationship_callback", p0);
 	});
 }
 
@@ -980,7 +984,7 @@ void DiscordClient::cancel_discord_friend_request(uint64_t user_id) {
 		*t_result = result;
 		auto p0 = memnew(DiscordClientResult{ t_result });
 
-		this->emit_signal("cancel_discord_friend_request_callback", p0);
+		this->emit_signal("client_update_relationship_callback", p0);
 	});
 }
 
@@ -990,7 +994,7 @@ void DiscordClient::cancel_game_friend_request(uint64_t user_id) {
 		*t_result = result;
 		auto p0 = memnew(DiscordClientResult{ t_result });
 
-		this->emit_signal("cancel_game_friend_request_callback", p0);
+		this->emit_signal("client_update_relationship_callback", p0);
 	});
 }
 
@@ -1018,7 +1022,7 @@ void DiscordClient::reject_discord_friend_request(uint64_t user_id) {
 		*t_result = result;
 		auto p0 = memnew(DiscordClientResult{ t_result });
 
-		this->emit_signal("reject_discord_friend_request_callback", p0);
+		this->emit_signal("client_update_relationship_callback", p0);
 	});
 }
 
@@ -1028,7 +1032,7 @@ void DiscordClient::reject_game_friend_request(uint64_t user_id) {
 		*t_result = result;
 		auto p0 = memnew(DiscordClientResult{ t_result });
 
-		this->emit_signal("reject_game_friend_request_callback", p0);
+		this->emit_signal("client_update_relationship_callback", p0);
 	});
 }
 
@@ -1038,7 +1042,7 @@ void DiscordClient::remove_discord_and_game_friend(uint64_t user_id) {
 		*t_result = result;
 		auto p0 = memnew(DiscordClientResult{ t_result });
 
-		this->emit_signal("remove_discord_and_game_friend_callback", p0);
+		this->emit_signal("client_update_relationship_callback", p0);
 	});
 }
 
@@ -1048,7 +1052,7 @@ void DiscordClient::remove_game_friend(uint64_t user_id) {
 		*t_result = result;
 		auto p0 = memnew(DiscordClientResult{ t_result });
 
-		this->emit_signal("remove_game_friend_callback", p0);
+		this->emit_signal("client_update_relationship_callback", p0);
 	});
 }
 
@@ -1071,7 +1075,7 @@ void DiscordClient::send_discord_friend_request(String username) {
 		*t_result = result;
 		auto p0 = memnew(DiscordClientResult{ t_result });
 
-		this->emit_signal("send_discord_friend_request_callback", p0);
+		this->emit_signal("client_send_friend_request_callback", p0);
 	});
 }
 
@@ -1081,7 +1085,7 @@ void DiscordClient::send_discord_friend_request_by_id(uint64_t user_id) {
 		*t_result = result;
 		auto p0 = memnew(DiscordClientResult{ t_result });
 
-		this->emit_signal("send_discord_friend_request_by_id_callback", p0);
+		this->emit_signal("client_update_relationship_callback", p0);
 	});
 }
 
@@ -1092,7 +1096,7 @@ void DiscordClient::send_game_friend_request(String username) {
 		*t_result = result;
 		auto p0 = memnew(DiscordClientResult{ t_result });
 
-		this->emit_signal("send_game_friend_request_callback", p0);
+		this->emit_signal("client_send_friend_request_callback", p0);
 	});
 }
 
@@ -1102,7 +1106,7 @@ void DiscordClient::send_game_friend_request_by_id(uint64_t user_id) {
 		*t_result = result;
 		auto p0 = memnew(DiscordClientResult{ t_result });
 
-		this->emit_signal("send_game_friend_request_by_id_callback", p0);
+		this->emit_signal("client_update_relationship_callback", p0);
 	});
 }
 
@@ -1110,7 +1114,7 @@ void DiscordClient::set_relationship_created_callback() {
 	client->SetRelationshipCreatedCallback([this](uint64_t userId, bool isDiscordRelationshipUpdate) {
 		auto p0 = userId;
 		auto p1 = isDiscordRelationshipUpdate;
-		this->emit_signal("set_relationship_created_callback_callback", p0, p1);
+		this->emit_signal("client_relationship_created_callback", p0, p1);
 	});
 }
 
@@ -1118,7 +1122,7 @@ void DiscordClient::set_relationship_deleted_callback() {
 	client->SetRelationshipDeletedCallback([this](uint64_t userId, bool isDiscordRelationshipUpdate) {
 		auto p0 = userId;
 		auto p1 = isDiscordRelationshipUpdate;
-		this->emit_signal("set_relationship_deleted_callback_callback", p0, p1);
+		this->emit_signal("client_relationship_deleted_callback", p0, p1);
 	});
 }
 
@@ -1128,7 +1132,7 @@ void DiscordClient::unblock_user(uint64_t user_id) {
 		*t_result = result;
 		auto p0 = memnew(DiscordClientResult{ t_result });
 
-		this->emit_signal("unblock_user_callback", p0);
+		this->emit_signal("client_update_relationship_callback", p0);
 	});
 }
 
@@ -1153,7 +1157,7 @@ void DiscordClient::get_discord_client_connected_user(uint64_t application_id) {
 		*t_user = user.value();
 		auto p1 = Variant(memnew(DiscordUserHandle{ t_user }));
 
-		this->emit_signal("get_discord_client_connected_user_callback", p0, p1);
+		this->emit_signal("client_get_discord_client_connected_user_callback", p0, p1);
 	});
 }
 
@@ -1172,116 +1176,116 @@ Variant DiscordClient::get_user(uint64_t user_id) {
 void DiscordClient::set_user_updated_callback() {
 	client->SetUserUpdatedCallback([this](uint64_t userI) {
 		auto p0 = userI;
-		this->emit_signal("set_user_updated_callback_callback", p0);
+		this->emit_signal("client_user_updated_callback", p0);
 	});
 }
 
 void DiscordClient::_bind_methods() {
-	ADD_SIGNAL(MethodInfo("client_get_input_devices_callback", PropertyInfo(Variant::ARRAY, "devices")));
-
-	ADD_SIGNAL(MethodInfo("client_no_audio_input_callback", PropertyInfo(Variant::BOOL, "input_detected")));
-
-	ADD_SIGNAL(MethodInfo("client_authorization_callback", PropertyInfo(Variant::OBJECT, "result"), PropertyInfo(Variant::STRING, "code"), PropertyInfo(Variant::STRING, "redirect_uri")));
-
-	ADD_SIGNAL(MethodInfo("client_leave_lobby_callback", PropertyInfo(Variant::OBJECT, "result")));
-
-	ADD_SIGNAL(MethodInfo("client_lobby_member_added_callback", PropertyInfo(Variant::INT, "lobby_id"), PropertyInfo(Variant::INT, "member_id")));
-
-	ADD_SIGNAL(MethodInfo("client_message_created_callback", PropertyInfo(Variant::INT, "message_id")));
-
-	ADD_SIGNAL(MethodInfo("client_accept_activity_invite_callback", PropertyInfo(Variant::OBJECT, "result"), PropertyInfo(Variant::STRING, "join_secret")));
-
-	ADD_SIGNAL(MethodInfo("client_update_rich_presence_callback", PropertyInfo(Variant::OBJECT, "result")));
-
-	ADD_SIGNAL(MethodInfo("client_lobby_member_removed_callback", PropertyInfo(Variant::INT, "lobby_id"), PropertyInfo(Variant::INT, "member_id")));
-
-	ADD_SIGNAL(MethodInfo("client_update_relationship_callback", PropertyInfo(Variant::OBJECT, "result")));
-
-	ADD_SIGNAL(MethodInfo("client_update_status_callback", PropertyInfo(Variant::OBJECT, "result")));
-
-	ADD_SIGNAL(MethodInfo("client_edit_user_message_callback", PropertyInfo(Variant::OBJECT, "result")));
-
-	ADD_SIGNAL(MethodInfo("client_log_callback", PropertyInfo(Variant::STRING, "message"), PropertyInfo(Variant::OBJECT, "severity")));
-
-	ADD_SIGNAL(MethodInfo("client_lobby_deleted_callback", PropertyInfo(Variant::INT, "lobby_id")));
-
-	ADD_SIGNAL(MethodInfo("client_lobby_updated_callback", PropertyInfo(Variant::INT, "lobby_id")));
-
-	ADD_SIGNAL(MethodInfo("client_lobby_created_callback", PropertyInfo(Variant::INT, "lobby_id")));
-
-	ADD_SIGNAL(MethodInfo("client_fetch_current_user_callback", PropertyInfo(Variant::OBJECT, "result"), PropertyInfo(Variant::INT, "id"), PropertyInfo(Variant::STRING, "name")));
-
-	ADD_SIGNAL(MethodInfo("client_token_expiration_callback"));
-
-	ADD_SIGNAL(MethodInfo("client_provisional_user_merge_required_callback"));
-
-	ADD_SIGNAL(MethodInfo("client_open_message_in_discord_callback", PropertyInfo(Variant::OBJECT, "result")));
-
-	ADD_SIGNAL(MethodInfo("client_delete_user_message_callback", PropertyInfo(Variant::OBJECT, "result")));
-
-	ADD_SIGNAL(MethodInfo("client_set_input_device_callback", PropertyInfo(Variant::OBJECT, "result")));
-
-	ADD_SIGNAL(MethodInfo("client_get_output_devices_callback", PropertyInfo(Variant::ARRAY, "devices")));
-
-	ADD_SIGNAL(MethodInfo("client_voice_participant_changed_callback", PropertyInfo(Variant::INT, "lobby_id"), PropertyInfo(Variant::INT, "member_id"), PropertyInfo(Variant::BOOL, "added")));
-
-	ADD_SIGNAL(MethodInfo("client_send_activity_invite_callback", PropertyInfo(Variant::OBJECT, "result")));
-
-	ADD_SIGNAL(MethodInfo("client_activity_invite_callback", PropertyInfo(Variant::OBJECT, "invite")));
-
-	ADD_SIGNAL(MethodInfo("client_device_change_callback", PropertyInfo(Variant::ARRAY, "input_devices"), PropertyInfo(Variant::ARRAY, "output_devices")));
-
 	ADD_SIGNAL(MethodInfo("client_message_deleted_callback", PropertyInfo(Variant::INT, "message_id"), PropertyInfo(Variant::INT, "channel_id")));
 
-	ADD_SIGNAL(MethodInfo("client_relationship_deleted_callback", PropertyInfo(Variant::INT, "user_id"), PropertyInfo(Variant::BOOL, "is_discord_relationship_update")));
-
-	ADD_SIGNAL(MethodInfo("client_update_provisional_account_display_name_callback", PropertyInfo(Variant::OBJECT, "result")));
-
-	ADD_SIGNAL(MethodInfo("client_token_exchange_callback", PropertyInfo(Variant::OBJECT, "result"), PropertyInfo(Variant::STRING, "access_token"), PropertyInfo(Variant::STRING, "refresh_token"), PropertyInfo(Variant::OBJECT, "token_type"), PropertyInfo(Variant::INT, "expires_in"), PropertyInfo(Variant::STRING, "scopes")));
-
-	ADD_SIGNAL(MethodInfo("client_create_or_join_lobby_callback", PropertyInfo(Variant::OBJECT, "result"), PropertyInfo(Variant::INT, "lobby_id")));
-
-	ADD_SIGNAL(MethodInfo("client_lobby_member_updated_callback", PropertyInfo(Variant::INT, "lobby_id"), PropertyInfo(Variant::INT, "member_id")));
-
-	ADD_SIGNAL(MethodInfo("client_get_discord_client_connected_user_callback", PropertyInfo(Variant::OBJECT, "result"), PropertyInfo(Variant::NIL, "user")));
-
-	ADD_SIGNAL(MethodInfo("client_get_current_output_device_callback", PropertyInfo(Variant::OBJECT, "device")));
-
-	ADD_SIGNAL(MethodInfo("client_send_user_message_callback", PropertyInfo(Variant::OBJECT, "result"), PropertyInfo(Variant::INT, "message_id")));
-
-	ADD_SIGNAL(MethodInfo("client_relationship_created_callback", PropertyInfo(Variant::INT, "user_id"), PropertyInfo(Variant::BOOL, "is_discord_relationship_update")));
-
-	ADD_SIGNAL(MethodInfo("client_send_friend_request_callback", PropertyInfo(Variant::OBJECT, "result")));
-
-	ADD_SIGNAL(MethodInfo("client_end_calls_callback"));
-
-	ADD_SIGNAL(MethodInfo("client_on_status_changed", PropertyInfo(Variant::OBJECT, "status"), PropertyInfo(Variant::OBJECT, "error"), PropertyInfo(Variant::INT, "error_detail")));
-
-	ADD_SIGNAL(MethodInfo("client_update_token_callback", PropertyInfo(Variant::OBJECT, "result")));
-
-	ADD_SIGNAL(MethodInfo("client_activity_join_callback", PropertyInfo(Variant::STRING, "join_secret")));
-
-	ADD_SIGNAL(MethodInfo("client_get_current_input_device_callback", PropertyInfo(Variant::OBJECT, "device")));
-
-	ADD_SIGNAL(MethodInfo("client_set_output_device_callback", PropertyInfo(Variant::OBJECT, "result")));
-
-	ADD_SIGNAL(MethodInfo("client_message_updated_callback", PropertyInfo(Variant::INT, "message_id")));
-
-	ADD_SIGNAL(MethodInfo("client_link_or_unlink_channel_callback", PropertyInfo(Variant::OBJECT, "result")));
-
-	ADD_SIGNAL(MethodInfo("client_get_user_guilds_callback", PropertyInfo(Variant::OBJECT, "result"), PropertyInfo(Variant::ARRAY, "guilds")));
+	ADD_SIGNAL(MethodInfo("client_activity_invite_callback", PropertyInfo(Variant::OBJECT, "invite", PROPERTY_HINT_RESOURCE_TYPE, "DiscordActivityInvite")));
 
 	ADD_SIGNAL(MethodInfo("client_user_audio_received_callback", PropertyInfo(Variant::INT, "user_id"), PropertyInfo(Variant::INT, "data"), PropertyInfo(Variant::INT, "samples_per_channel"), PropertyInfo(Variant::INT, "sample_rate"), PropertyInfo(Variant::INT, "channels"), PropertyInfo(Variant::BOOL, "out_should_mute")));
 
 	ADD_SIGNAL(MethodInfo("client_user_audio_captured_callback", PropertyInfo(Variant::INT, "data"), PropertyInfo(Variant::INT, "samples_per_channel"), PropertyInfo(Variant::INT, "sample_rate"), PropertyInfo(Variant::INT, "channels")));
 
-	ADD_SIGNAL(MethodInfo("client_user_updated_callback", PropertyInfo(Variant::INT, "user_i")));
+	ADD_SIGNAL(MethodInfo("client_delete_user_message_callback", PropertyInfo(Variant::OBJECT, "result", PROPERTY_HINT_RESOURCE_TYPE, "DiscordClientResult")));
+
+	ADD_SIGNAL(MethodInfo("client_end_calls_callback"));
+
+	ADD_SIGNAL(MethodInfo("client_on_status_changed", PropertyInfo(Variant::INT, "status"), PropertyInfo(Variant::INT, "error"), PropertyInfo(Variant::INT, "error_detail")));
+
+	ADD_SIGNAL(MethodInfo("client_send_friend_request_callback", PropertyInfo(Variant::OBJECT, "result", PROPERTY_HINT_RESOURCE_TYPE, "DiscordClientResult")));
+
+	ADD_SIGNAL(MethodInfo("client_message_created_callback", PropertyInfo(Variant::INT, "message_id")));
+
+	ADD_SIGNAL(MethodInfo("client_leave_lobby_callback", PropertyInfo(Variant::OBJECT, "result", PROPERTY_HINT_RESOURCE_TYPE, "DiscordClientResult")));
+
+	ADD_SIGNAL(MethodInfo("client_get_discord_client_connected_user_callback", PropertyInfo(Variant::OBJECT, "result", PROPERTY_HINT_RESOURCE_TYPE, "DiscordClientResult"), PropertyInfo(Variant::NIL, "user")));
+
+	ADD_SIGNAL(MethodInfo("client_set_input_device_callback", PropertyInfo(Variant::OBJECT, "result", PROPERTY_HINT_RESOURCE_TYPE, "DiscordClientResult")));
 
 	ADD_SIGNAL(MethodInfo("client_end_call_callback"));
 
-	ADD_SIGNAL(MethodInfo("client_get_guild_channels_callback", PropertyInfo(Variant::OBJECT, "result"), PropertyInfo(Variant::ARRAY, "guild_channels")));
+	ADD_SIGNAL(MethodInfo("client_send_user_message_callback", PropertyInfo(Variant::OBJECT, "result", PROPERTY_HINT_RESOURCE_TYPE, "DiscordClientResult"), PropertyInfo(Variant::INT, "message_id")));
+
+	ADD_SIGNAL(MethodInfo("client_set_output_device_callback", PropertyInfo(Variant::OBJECT, "result", PROPERTY_HINT_RESOURCE_TYPE, "DiscordClientResult")));
+
+	ADD_SIGNAL(MethodInfo("client_log_callback", PropertyInfo(Variant::STRING, "message"), PropertyInfo(Variant::INT, "severity")));
+
+	ADD_SIGNAL(MethodInfo("client_update_relationship_callback", PropertyInfo(Variant::OBJECT, "result", PROPERTY_HINT_RESOURCE_TYPE, "DiscordClientResult")));
+
+	ADD_SIGNAL(MethodInfo("client_user_updated_callback", PropertyInfo(Variant::INT, "user_i")));
+
+	ADD_SIGNAL(MethodInfo("client_fetch_current_user_callback", PropertyInfo(Variant::OBJECT, "result", PROPERTY_HINT_RESOURCE_TYPE, "DiscordClientResult"), PropertyInfo(Variant::INT, "id"), PropertyInfo(Variant::STRING, "name")));
+
+	ADD_SIGNAL(MethodInfo("client_token_expiration_callback"));
+
+	ADD_SIGNAL(MethodInfo("client_get_guild_channels_callback", PropertyInfo(Variant::OBJECT, "result", PROPERTY_HINT_RESOURCE_TYPE, "DiscordClientResult"), PropertyInfo(Variant::ARRAY, "guild_channels")));
+
+	ADD_SIGNAL(MethodInfo("client_message_updated_callback", PropertyInfo(Variant::INT, "message_id")));
+
+	ADD_SIGNAL(MethodInfo("client_lobby_deleted_callback", PropertyInfo(Variant::INT, "lobby_id")));
+
+	ADD_SIGNAL(MethodInfo("client_provisional_user_merge_required_callback"));
+
+	ADD_SIGNAL(MethodInfo("client_open_message_in_discord_callback", PropertyInfo(Variant::OBJECT, "result", PROPERTY_HINT_RESOURCE_TYPE, "DiscordClientResult")));
+
+	ADD_SIGNAL(MethodInfo("client_relationship_created_callback", PropertyInfo(Variant::INT, "user_id"), PropertyInfo(Variant::BOOL, "is_discord_relationship_update")));
+
+	ADD_SIGNAL(MethodInfo("client_accept_activity_invite_callback", PropertyInfo(Variant::OBJECT, "result", PROPERTY_HINT_RESOURCE_TYPE, "DiscordClientResult"), PropertyInfo(Variant::STRING, "join_secret")));
+
+	ADD_SIGNAL(MethodInfo("client_get_input_devices_callback", PropertyInfo(Variant::ARRAY, "devices")));
+
+	ADD_SIGNAL(MethodInfo("client_activity_join_callback", PropertyInfo(Variant::STRING, "join_secret")));
+
+	ADD_SIGNAL(MethodInfo("client_link_or_unlink_channel_callback", PropertyInfo(Variant::OBJECT, "result", PROPERTY_HINT_RESOURCE_TYPE, "DiscordClientResult")));
+
+	ADD_SIGNAL(MethodInfo("client_update_status_callback", PropertyInfo(Variant::OBJECT, "result", PROPERTY_HINT_RESOURCE_TYPE, "DiscordClientResult")));
 
 	ADD_SIGNAL(MethodInfo("client_authorize_device_screen_closed_callback"));
+
+	ADD_SIGNAL(MethodInfo("client_lobby_created_callback", PropertyInfo(Variant::INT, "lobby_id")));
+
+	ADD_SIGNAL(MethodInfo("client_update_token_callback", PropertyInfo(Variant::OBJECT, "result", PROPERTY_HINT_RESOURCE_TYPE, "DiscordClientResult")));
+
+	ADD_SIGNAL(MethodInfo("client_token_exchange_callback", PropertyInfo(Variant::OBJECT, "result", PROPERTY_HINT_RESOURCE_TYPE, "DiscordClientResult"), PropertyInfo(Variant::STRING, "access_token"), PropertyInfo(Variant::STRING, "refresh_token"), PropertyInfo(Variant::INT, "token_type"), PropertyInfo(Variant::INT, "expires_in"), PropertyInfo(Variant::STRING, "scopes")));
+
+	ADD_SIGNAL(MethodInfo("client_device_change_callback", PropertyInfo(Variant::ARRAY, "input_devices"), PropertyInfo(Variant::ARRAY, "output_devices")));
+
+	ADD_SIGNAL(MethodInfo("client_update_provisional_account_display_name_callback", PropertyInfo(Variant::OBJECT, "result", PROPERTY_HINT_RESOURCE_TYPE, "DiscordClientResult")));
+
+	ADD_SIGNAL(MethodInfo("client_send_activity_invite_callback", PropertyInfo(Variant::OBJECT, "result", PROPERTY_HINT_RESOURCE_TYPE, "DiscordClientResult")));
+
+	ADD_SIGNAL(MethodInfo("client_lobby_updated_callback", PropertyInfo(Variant::INT, "lobby_id")));
+
+	ADD_SIGNAL(MethodInfo("client_get_output_devices_callback", PropertyInfo(Variant::ARRAY, "devices")));
+
+	ADD_SIGNAL(MethodInfo("client_lobby_member_removed_callback", PropertyInfo(Variant::INT, "lobby_id"), PropertyInfo(Variant::INT, "member_id")));
+
+	ADD_SIGNAL(MethodInfo("client_get_user_guilds_callback", PropertyInfo(Variant::OBJECT, "result", PROPERTY_HINT_RESOURCE_TYPE, "DiscordClientResult"), PropertyInfo(Variant::ARRAY, "guilds")));
+
+	ADD_SIGNAL(MethodInfo("client_no_audio_input_callback", PropertyInfo(Variant::BOOL, "input_detected")));
+
+	ADD_SIGNAL(MethodInfo("client_update_rich_presence_callback", PropertyInfo(Variant::OBJECT, "result", PROPERTY_HINT_RESOURCE_TYPE, "DiscordClientResult")));
+
+	ADD_SIGNAL(MethodInfo("client_edit_user_message_callback", PropertyInfo(Variant::OBJECT, "result", PROPERTY_HINT_RESOURCE_TYPE, "DiscordClientResult")));
+
+	ADD_SIGNAL(MethodInfo("client_create_or_join_lobby_callback", PropertyInfo(Variant::OBJECT, "result", PROPERTY_HINT_RESOURCE_TYPE, "DiscordClientResult"), PropertyInfo(Variant::INT, "lobby_id")));
+
+	ADD_SIGNAL(MethodInfo("client_voice_participant_changed_callback", PropertyInfo(Variant::INT, "lobby_id"), PropertyInfo(Variant::INT, "member_id"), PropertyInfo(Variant::BOOL, "added")));
+
+	ADD_SIGNAL(MethodInfo("client_relationship_deleted_callback", PropertyInfo(Variant::INT, "user_id"), PropertyInfo(Variant::BOOL, "is_discord_relationship_update")));
+
+	ADD_SIGNAL(MethodInfo("client_authorization_callback", PropertyInfo(Variant::OBJECT, "result", PROPERTY_HINT_RESOURCE_TYPE, "DiscordClientResult"), PropertyInfo(Variant::STRING, "code"), PropertyInfo(Variant::STRING, "redirect_uri")));
+
+	ADD_SIGNAL(MethodInfo("client_lobby_member_updated_callback", PropertyInfo(Variant::INT, "lobby_id"), PropertyInfo(Variant::INT, "member_id")));
+
+	ADD_SIGNAL(MethodInfo("client_get_current_output_device_callback", PropertyInfo(Variant::OBJECT, "device", PROPERTY_HINT_RESOURCE_TYPE, "DiscordAudioDevice")));
+
+	ADD_SIGNAL(MethodInfo("client_lobby_member_added_callback", PropertyInfo(Variant::INT, "lobby_id"), PropertyInfo(Variant::INT, "member_id")));
+
+	ADD_SIGNAL(MethodInfo("client_get_current_input_device_callback", PropertyInfo(Variant::OBJECT, "device", PROPERTY_HINT_RESOURCE_TYPE, "DiscordAudioDevice")));
 
 	ClassDB::bind_method(D_METHOD("end_call", "channel_id"),
 			&DiscordClient::end_call);
