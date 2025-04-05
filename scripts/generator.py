@@ -64,7 +64,7 @@ def generate_class(class_name: str, class_methods: list[str]) -> tuple[str, str]
         )
 
     binds = "".join(binds)
-    signals = "".join(signals)
+    signals = "".join(set(signals))
     signatures = "\n".join(signatures)
     methods = "".join(methods)
 

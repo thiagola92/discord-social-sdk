@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="DiscordClientResult" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="error">
+			<return type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="error_code">
+			<return type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="response_body">
+			<return type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="retry_after">
+			<return type="float" />
+			<description>
+			</description>
+		</method>
+		<method name="retryable">
+			<return type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="set_error">
+			<return type="void" />
+			<param index="0" name="error" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="set_error_code">
+			<return type="void" />
+			<param index="0" name="error_code" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="set_response_body">
+			<return type="void" />
+			<param index="0" name="response_body" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="set_retry_after">
+			<return type="void" />
+			<param index="0" name="retry_after" type="float" />
+			<description>
+			</description>
+		</method>
+		<method name="set_retryable">
+			<return type="void" />
+			<param index="0" name="retryable" type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="set_status">
+			<return type="void" />
+			<param index="0" name="status" type="int" enum="DiscordHttpStatusCode.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="set_successful">
+			<return type="void" />
+			<param index="0" name="successful" type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="set_type">
+			<return type="void" />
+			<param index="0" name="type" type="int" enum="DiscordErrorType.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="status">
+			<return type="int" enum="DiscordHttpStatusCode.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="successful">
+			<return type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="to_string">
+			<return type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="type">
+			<return type="int" enum="DiscordErrorType.Enum" />
+			<description>
+			</description>
+		</method>
+	</methods>
+</class>

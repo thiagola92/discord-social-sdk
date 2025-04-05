@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="DiscordChannelHandle" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="id">
+			<return type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="name">
+			<return type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="recipients">
+			<return type="int[]" />
+			<description>
+			</description>
+		</method>
+		<method name="type">
+			<return type="int" enum="DiscordChannelType.Enum" />
+			<description>
+			</description>
+		</method>
+	</methods>
+</class>

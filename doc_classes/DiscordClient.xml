@@ -3,14 +3,92 @@
 	<brief_description>
 	</brief_description>
 	<description>
-		Wrapper for class [url=https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1Client.html]Client[/url]
 	</description>
 	<tutorials>
 	</tutorials>
 	<methods>
+		<method name="abort_authorize">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="abort_get_token_from_device">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="accept_activity_invite">
+			<return type="void" />
+			<param index="0" name="invite" type="DiscordActivityInvite" />
+			<description>
+			</description>
+		</method>
+		<method name="accept_discord_friend_request">
+			<return type="void" />
+			<param index="0" name="user_id" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="accept_game_friend_request">
+			<return type="void" />
+			<param index="0" name="user_id" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="add_log_callback">
+			<return type="void" />
+			<param index="0" name="min_severity" type="int" enum="DiscordLoggingSeverity.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="add_voice_log_callback">
+			<return type="void" />
+			<param index="0" name="min_severity" type="int" enum="DiscordLoggingSeverity.Enum" />
+			<description>
+			</description>
+		</method>
 		<method name="authorize">
 			<return type="void" />
 			<param index="0" name="args" type="DiscordAuthorizationArgs" />
+			<description>
+			</description>
+		</method>
+		<method name="block_user">
+			<return type="void" />
+			<param index="0" name="user_id" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="can_open_message_in_discord">
+			<return type="bool" />
+			<param index="0" name="message_id" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="cancel_discord_friend_request">
+			<return type="void" />
+			<param index="0" name="user_id" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="cancel_game_friend_request">
+			<return type="void" />
+			<param index="0" name="user_id" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="clear_rich_presence">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="close_authorize_device_screen">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="connect">
+			<return type="void" />
 			<description>
 			</description>
 		</method>
@@ -19,13 +97,938 @@
 			<description>
 			</description>
 		</method>
+		<method name="create_or_join_lobby">
+			<return type="void" />
+			<param index="0" name="secret" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="create_or_join_lobby_with_metadata">
+			<return type="void" />
+			<param index="0" name="secret" type="String" />
+			<param index="1" name="lobby_metadata" type="Dictionary[String, String]" />
+			<param index="2" name="member_metadata" type="Dictionary[String, String]" />
+			<description>
+			</description>
+		</method>
+		<method name="delete_user_message">
+			<return type="void" />
+			<param index="0" name="recipient_id" type="int" />
+			<param index="1" name="message_id" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="disconnect">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="edit_user_message">
+			<return type="void" />
+			<param index="0" name="recipient_id" type="int" />
+			<param index="1" name="message_id" type="int" />
+			<param index="2" name="content" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="end_call">
+			<return type="void" />
+			<param index="0" name="channel_id" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="end_calls">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="fetch_current_user">
+			<return type="void" />
+			<param index="0" name="token_type" type="int" enum="DiscordAuthorizationTokenType.Enum" />
+			<param index="1" name="token" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="get_call">
+			<return type="DiscordCall" />
+			<param index="0" name="channel_id" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="get_calls">
+			<return type="DiscordCall[]" />
+			<description>
+			</description>
+		</method>
+		<method name="get_channel_handle">
+			<return type="Variant" />
+			<param index="0" name="channel_id" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="get_current_input_device">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="get_current_output_device">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="get_current_user">
+			<return type="DiscordUserHandle" />
+			<description>
+			</description>
+		</method>
+		<method name="get_discord_client_connected_user">
+			<return type="void" />
+			<param index="0" name="application_id" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="get_guild_channels">
+			<return type="void" />
+			<param index="0" name="guild_id" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="get_input_devices">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="get_input_volume">
+			<return type="float" />
+			<description>
+			</description>
+		</method>
+		<method name="get_lobby_handle">
+			<return type="Variant" />
+			<param index="0" name="lobby_id" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="get_lobby_ids">
+			<return type="int[]" />
+			<description>
+			</description>
+		</method>
+		<method name="get_message_handle">
+			<return type="Variant" />
+			<param index="0" name="message_id" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="get_output_devices">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="get_output_volume">
+			<return type="float" />
+			<description>
+			</description>
+		</method>
+		<method name="get_provisional_token">
+			<return type="void" />
+			<param index="0" name="application_id" type="int" />
+			<param index="1" name="external_auth_type" type="int" enum="DiscordAuthenticationExternalAuthType.Enum" />
+			<param index="2" name="external_auth_token" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="get_relationship_handle">
+			<return type="DiscordRelationshipHandle" />
+			<param index="0" name="user_id" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="get_relationships">
+			<return type="DiscordRelationshipHandle[]" />
+			<description>
+			</description>
+		</method>
+		<method name="get_self_deaf_all">
+			<return type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="get_self_mute_all">
+			<return type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="get_status">
+			<return type="int" enum="DiscordClientStatus.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="get_token">
+			<return type="void" />
+			<param index="0" name="application_id" type="int" />
+			<param index="1" name="code" type="String" />
+			<param index="2" name="code_verifier" type="String" />
+			<param index="3" name="redirect_uri" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="get_token_from_device">
+			<return type="void" />
+			<param index="0" name="args" type="DiscordDeviceAuthorizationArgs" />
+			<description>
+			</description>
+		</method>
+		<method name="get_token_from_device_provisional_merge">
+			<return type="void" />
+			<param index="0" name="args" type="DiscordDeviceAuthorizationArgs" />
+			<param index="1" name="external_auth_type" type="int" enum="DiscordAuthenticationExternalAuthType.Enum" />
+			<param index="2" name="external_auth_token" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="get_token_from_provisional_merge">
+			<return type="void" />
+			<param index="0" name="application_id" type="int" />
+			<param index="1" name="code" type="String" />
+			<param index="2" name="code_verifier" type="String" />
+			<param index="3" name="redirect_uri" type="String" />
+			<param index="4" name="external_auth_type" type="int" enum="DiscordAuthenticationExternalAuthType.Enum" />
+			<param index="5" name="external_auth_token" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="get_user">
+			<return type="Variant" />
+			<param index="0" name="user_id" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="get_user_guilds">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="is_authenticated">
+			<return type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="leave_lobby">
+			<return type="void" />
+			<param index="0" name="lobby_id" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="link_channel_to_lobby">
+			<return type="void" />
+			<param index="0" name="lobby_id" type="int" />
+			<param index="1" name="channel_id" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="open_authorize_device_screen">
+			<return type="void" />
+			<param index="0" name="client_id" type="int" />
+			<param index="1" name="user_code" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="open_message_in_discord">
+			<return type="void" />
+			<param index="0" name="message_id" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="provisional_user_merge_completed">
+			<return type="void" />
+			<param index="0" name="success" type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="refresh_token">
+			<return type="void" />
+			<param index="0" name="application_id" type="int" />
+			<param index="1" name="refresh_token" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="register_launch_command">
+			<return type="bool" />
+			<param index="0" name="application_id" type="int" />
+			<param index="1" name="command" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="register_launch_steam_application">
+			<return type="bool" />
+			<param index="0" name="application_id" type="int" />
+			<param index="1" name="steam_app_id" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="reject_discord_friend_request">
+			<return type="void" />
+			<param index="0" name="user_id" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="reject_game_friend_request">
+			<return type="void" />
+			<param index="0" name="user_id" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="remove_discord_and_game_friend">
+			<return type="void" />
+			<param index="0" name="user_id" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="remove_game_friend">
+			<return type="void" />
+			<param index="0" name="user_id" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="search_friends_by_username">
+			<return type="DiscordUserHandle[]" />
+			<param index="0" name="search_str" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="send_activity_invite">
+			<return type="void" />
+			<param index="0" name="user_id" type="int" />
+			<param index="1" name="content" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="send_activity_join_request">
+			<return type="void" />
+			<param index="0" name="user_id" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="send_activity_join_request_reply">
+			<return type="void" />
+			<param index="0" name="invite" type="DiscordActivityInvite" />
+			<description>
+			</description>
+		</method>
+		<method name="send_discord_friend_request">
+			<return type="void" />
+			<param index="0" name="username" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="send_discord_friend_request_by_id">
+			<return type="void" />
+			<param index="0" name="user_id" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="send_game_friend_request">
+			<return type="void" />
+			<param index="0" name="username" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="send_game_friend_request_by_id">
+			<return type="void" />
+			<param index="0" name="user_id" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="send_lobby_message">
+			<return type="void" />
+			<param index="0" name="lobby_id" type="int" />
+			<param index="1" name="content" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="send_lobby_message_with_metadata">
+			<return type="void" />
+			<param index="0" name="lobby_id" type="int" />
+			<param index="1" name="content" type="String" />
+			<param index="2" name="metadata" type="Dictionary[String, String]" />
+			<description>
+			</description>
+		</method>
+		<method name="send_user_message">
+			<return type="void" />
+			<param index="0" name="recipient_id" type="int" />
+			<param index="1" name="content" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="send_user_message_with_metadata">
+			<return type="void" />
+			<param index="0" name="recipient_id" type="int" />
+			<param index="1" name="content" type="String" />
+			<param index="2" name="metadata" type="Dictionary[String, String]" />
+			<description>
+			</description>
+		</method>
+		<method name="set_activity_invite_created_callback">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="set_activity_invite_updated_callback">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="set_activity_join_callback">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="set_authorize_device_screen_closed_callback">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="set_automatic_gain_control">
+			<return type="void" />
+			<param index="0" name="on" type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="set_device_change_callback">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="set_echo_cancellation">
+			<return type="void" />
+			<param index="0" name="on" type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="set_game_window_pid">
+			<return type="void" />
+			<param index="0" name="pid" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="set_input_device">
+			<return type="void" />
+			<param index="0" name="device_id" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="set_input_volume">
+			<return type="void" />
+			<param index="0" name="input_volume" type="float" />
+			<description>
+			</description>
+		</method>
+		<method name="set_lobby_created_callback">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="set_lobby_deleted_callback">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="set_lobby_member_added_callback">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="set_lobby_member_removed_callback">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="set_lobby_member_updated_callback">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="set_lobby_updated_callback">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="set_log_dir">
+			<return type="bool" />
+			<param index="0" name="path" type="String" />
+			<param index="1" name="min_severity" type="int" enum="DiscordLoggingSeverity.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="set_message_created_callback">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="set_message_deleted_callback">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="set_message_updated_callback">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="set_no_audio_input_callback">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="set_no_audio_input_threshold">
+			<return type="void" />
+			<param index="0" name="d_bfsthreshold" type="float" />
+			<description>
+			</description>
+		</method>
+		<method name="set_noise_suppression">
+			<return type="void" />
+			<param index="0" name="on" type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="set_online_status">
+			<return type="void" />
+			<param index="0" name="status" type="int" enum="DiscordStatusType.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="set_opus_hardware_coding">
+			<return type="void" />
+			<param index="0" name="encode" type="bool" />
+			<param index="1" name="decode" type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="set_output_device">
+			<return type="void" />
+			<param index="0" name="device_id" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="set_output_volume">
+			<return type="void" />
+			<param index="0" name="output_volume" type="float" />
+			<description>
+			</description>
+		</method>
+		<method name="set_relationship_created_callback">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="set_relationship_deleted_callback">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="set_self_deaf_all">
+			<return type="void" />
+			<param index="0" name="deaf" type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="set_self_mute_all">
+			<return type="void" />
+			<param index="0" name="mute" type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="set_showing_chat">
+			<return type="void" />
+			<param index="0" name="showing_chat" type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="set_speaker_mode">
+			<return type="bool" />
+			<param index="0" name="speaker_mode" type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="set_status_changed_callback">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="set_thread_priority">
+			<return type="void" />
+			<param index="0" name="thread" type="int" enum="DiscordClientThread.Enum" />
+			<param index="1" name="priority" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="set_token_expiration_callback">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="set_user_updated_callback">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="set_voice_log_dir">
+			<return type="void" />
+			<param index="0" name="path" type="String" />
+			<param index="1" name="min_severity" type="int" enum="DiscordLoggingSeverity.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="set_voice_participant_changed_callback">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="show_audio_route_picker">
+			<return type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="start_call">
+			<return type="DiscordCall" />
+			<param index="0" name="channel_id" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="start_call_with_audio_callbacks">
+			<return type="DiscordCall" />
+			<param index="0" name="lobby_id" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="unblock_user">
+			<return type="void" />
+			<param index="0" name="user_id" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="unlink_channel_from_lobby">
+			<return type="void" />
+			<param index="0" name="lobby_id" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="update_provisional_account_display_name">
+			<return type="void" />
+			<param index="0" name="name" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="update_rich_presence">
+			<return type="void" />
+			<param index="0" name="activity" type="DiscordActivity" />
+			<description>
+			</description>
+		</method>
+		<method name="update_token">
+			<return type="void" />
+			<param index="0" name="token_type" type="int" enum="DiscordAuthorizationTokenType.Enum" />
+			<param index="1" name="token" type="String" />
+			<description>
+			</description>
+		</method>
 	</methods>
 	<signals>
-		<signal name="authorized">
+		<signal name="client_accept_activity_invite_callback">
+			<param index="0" name="result" type="Object" />
+			<param index="1" name="join_secret" type="String" />
 			<description>
 			</description>
 		</signal>
-		<signal name="rejected">
+		<signal name="client_activity_invite_callback">
+			<param index="0" name="invite" type="Object" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_activity_join_callback">
+			<param index="0" name="join_secret" type="String" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_authorization_callback">
+			<param index="0" name="result" type="Object" />
+			<param index="1" name="code" type="String" />
+			<param index="2" name="redirect_uri" type="String" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_authorize_device_screen_closed_callback">
+			<description>
+			</description>
+		</signal>
+		<signal name="client_create_or_join_lobby_callback">
+			<param index="0" name="result" type="Object" />
+			<param index="1" name="lobby_id" type="int" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_delete_user_message_callback">
+			<param index="0" name="result" type="Object" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_device_change_callback">
+			<param index="0" name="input_devices" type="Array" />
+			<param index="1" name="output_devices" type="Array" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_edit_user_message_callback">
+			<param index="0" name="result" type="Object" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_end_call_callback">
+			<description>
+			</description>
+		</signal>
+		<signal name="client_end_calls_callback">
+			<description>
+			</description>
+		</signal>
+		<signal name="client_fetch_current_user_callback">
+			<param index="0" name="result" type="Object" />
+			<param index="1" name="id" type="int" />
+			<param index="2" name="name" type="String" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_get_current_input_device_callback">
+			<param index="0" name="device" type="Object" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_get_current_output_device_callback">
+			<param index="0" name="device" type="Object" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_get_discord_client_connected_user_callback">
+			<param index="0" name="result" type="Object" />
+			<param index="1" name="user" type="Variant" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_get_guild_channels_callback">
+			<param index="0" name="result" type="Object" />
+			<param index="1" name="guild_channels" type="Array" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_get_input_devices_callback">
+			<param index="0" name="devices" type="Array" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_get_output_devices_callback">
+			<param index="0" name="devices" type="Array" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_get_user_guilds_callback">
+			<param index="0" name="result" type="Object" />
+			<param index="1" name="guilds" type="Array" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_leave_lobby_callback">
+			<param index="0" name="result" type="Object" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_link_or_unlink_channel_callback">
+			<param index="0" name="result" type="Object" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_lobby_created_callback">
+			<param index="0" name="lobby_id" type="int" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_lobby_deleted_callback">
+			<param index="0" name="lobby_id" type="int" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_lobby_member_added_callback">
+			<param index="0" name="lobby_id" type="int" />
+			<param index="1" name="member_id" type="int" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_lobby_member_removed_callback">
+			<param index="0" name="lobby_id" type="int" />
+			<param index="1" name="member_id" type="int" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_lobby_member_updated_callback">
+			<param index="0" name="lobby_id" type="int" />
+			<param index="1" name="member_id" type="int" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_lobby_updated_callback">
+			<param index="0" name="lobby_id" type="int" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_log_callback">
+			<param index="0" name="message" type="String" />
+			<param index="1" name="severity" type="Object" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_message_created_callback">
+			<param index="0" name="message_id" type="int" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_message_deleted_callback">
+			<param index="0" name="message_id" type="int" />
+			<param index="1" name="channel_id" type="int" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_message_updated_callback">
+			<param index="0" name="message_id" type="int" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_no_audio_input_callback">
+			<param index="0" name="input_detected" type="bool" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_on_status_changed">
+			<param index="0" name="status" type="Object" />
+			<param index="1" name="error" type="Object" />
+			<param index="2" name="error_detail" type="int" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_open_message_in_discord_callback">
+			<param index="0" name="result" type="Object" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_provisional_user_merge_required_callback">
+			<description>
+			</description>
+		</signal>
+		<signal name="client_relationship_created_callback">
+			<param index="0" name="user_id" type="int" />
+			<param index="1" name="is_discord_relationship_update" type="bool" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_relationship_deleted_callback">
+			<param index="0" name="user_id" type="int" />
+			<param index="1" name="is_discord_relationship_update" type="bool" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_send_activity_invite_callback">
+			<param index="0" name="result" type="Object" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_send_friend_request_callback">
+			<param index="0" name="result" type="Object" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_send_user_message_callback">
+			<param index="0" name="result" type="Object" />
+			<param index="1" name="message_id" type="int" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_set_input_device_callback">
+			<param index="0" name="result" type="Object" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_set_output_device_callback">
+			<param index="0" name="result" type="Object" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_token_exchange_callback">
+			<param index="0" name="result" type="Object" />
+			<param index="1" name="access_token" type="String" />
+			<param index="2" name="refresh_token" type="String" />
+			<param index="3" name="token_type" type="Object" />
+			<param index="4" name="expires_in" type="int" />
+			<param index="5" name="scopes" type="String" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_token_expiration_callback">
+			<description>
+			</description>
+		</signal>
+		<signal name="client_update_provisional_account_display_name_callback">
+			<param index="0" name="result" type="Object" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_update_relationship_callback">
+			<param index="0" name="result" type="Object" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_update_rich_presence_callback">
+			<param index="0" name="result" type="Object" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_update_status_callback">
+			<param index="0" name="result" type="Object" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_update_token_callback">
+			<param index="0" name="result" type="Object" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_user_audio_captured_callback">
+			<param index="0" name="data" type="int" />
+			<param index="1" name="samples_per_channel" type="int" />
+			<param index="2" name="sample_rate" type="int" />
+			<param index="3" name="channels" type="int" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_user_audio_received_callback">
+			<param index="0" name="user_id" type="int" />
+			<param index="1" name="data" type="int" />
+			<param index="2" name="samples_per_channel" type="int" />
+			<param index="3" name="sample_rate" type="int" />
+			<param index="4" name="channels" type="int" />
+			<param index="5" name="out_should_mute" type="bool" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_user_updated_callback">
+			<param index="0" name="user_i" type="int" />
+			<description>
+			</description>
+		</signal>
+		<signal name="client_voice_participant_changed_callback">
+			<param index="0" name="lobby_id" type="int" />
+			<param index="1" name="member_id" type="int" />
+			<param index="2" name="added" type="bool" />
 			<description>
 			</description>
 		</signal>

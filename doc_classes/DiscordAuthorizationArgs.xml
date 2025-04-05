@@ -3,33 +3,27 @@
 	<brief_description>
 	</brief_description>
 	<description>
-		Wrapper for class [url=https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1AuthorizationArgs.html]AuthorizationArgs[/url]
 	</description>
 	<tutorials>
 	</tutorials>
 	<methods>
-		<method name="get_client_id">
+		<method name="client_id">
 			<return type="int" />
 			<description>
 			</description>
 		</method>
-		<method name="get_code_challenge">
+		<method name="code_challenge">
 			<return type="Variant" />
 			<description>
 			</description>
 		</method>
-		<method name="get_nonce">
+		<method name="nonce">
 			<return type="Variant" />
 			<description>
 			</description>
 		</method>
-		<method name="get_scopes">
+		<method name="scopes">
 			<return type="String" />
-			<description>
-			</description>
-		</method>
-		<method name="get_state">
-			<return type="Variant" />
 			<description>
 			</description>
 		</method>
@@ -60,6 +54,11 @@
 		<method name="set_state">
 			<return type="void" />
 			<param index="0" name="state" type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="state">
+			<return type="Variant" />
 			<description>
 			</description>
 		</method>

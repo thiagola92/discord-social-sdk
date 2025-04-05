@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="DiscordAudioDevice" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="equals">
+			<return type="bool" />
+			<param index="0" name="rhs" type="DiscordAudioDevice" />
+			<description>
+			</description>
+		</method>
+		<method name="id">
+			<return type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="is_default">
+			<return type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="name">
+			<return type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="set_id">
+			<return type="void" />
+			<param index="0" name="id" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="set_is_default">
+			<return type="void" />
+			<param index="0" name="is_default" type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="set_name">
+			<return type="void" />
+			<param index="0" name="name" type="String" />
+			<description>
+			</description>
+		</method>
+	</methods>
+</class>

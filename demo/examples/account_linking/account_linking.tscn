@@ -4,3 +4,5 @@
 
 [node name="AccountLinking" type="Node"]
 script = ExtResource("1_2i7gc")
+
+[node name="DiscordClient" type="DiscordClient" parent="."]

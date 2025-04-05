@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="DiscordCall" inherits="Node" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="get_audio_mode">
+			<return type="int" enum="DiscordAudioModeType.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="get_channel_id">
+			<return type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="get_guild_id">
+			<return type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="get_local_mute">
+			<return type="bool" />
+			<param index="0" name="user_id" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="get_participant_volume">
+			<return type="float" />
+			<param index="0" name="user_id" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="get_participants">
+			<return type="int[]" />
+			<description>
+			</description>
+		</method>
+		<method name="get_pttactive">
+			<return type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="get_self_deaf">
+			<return type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="get_self_mute">
+			<return type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="get_status">
+			<return type="int" enum="DiscordCallStatus.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="get_vadthreshold">
+			<return type="DiscordVADThresholdSettings" />
+			<description>
+			</description>
+		</method>
+		<method name="get_voice_state_handle">
+			<return type="Variant" />
+			<param index="0" name="user_id" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="set_audio_mode">
+			<return type="void" />
+			<param index="0" name="audio_mode" type="int" enum="DiscordAudioModeType.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="set_local_mute">
+			<return type="void" />
+			<param index="0" name="user_id" type="int" />
+			<param index="1" name="mute" type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="set_on_voice_state_changed_callback">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="set_participant_changed_callback">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="set_participant_volume">
+			<return type="void" />
+			<param index="0" name="user_id" type="int" />
+			<param index="1" name="volume" type="float" />
+			<description>
+			</description>
+		</method>
+		<method name="set_pttactive">
+			<return type="void" />
+			<param index="0" name="active" type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="set_pttrelease_delay">
+			<return type="void" />
+			<param index="0" name="release_delay_ms" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="set_self_deaf">
+			<return type="void" />
+			<param index="0" name="deaf" type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="set_self_mute">
+			<return type="void" />
+			<param index="0" name="mute" type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="set_speaking_status_changed_callback">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="set_status_changed_callback">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="set_vadthreshold">
+			<return type="void" />
+			<param index="0" name="automatic" type="bool" />
+			<param index="1" name="threshold" type="float" />
+			<description>
+			</description>
+		</method>
+	</methods>
+	<signals>
+		<signal name="call_on_participant_changed">
+			<param index="0" name="user_id" type="int" />
+			<param index="1" name="added" type="bool" />
+			<description>
+			</description>
+		</signal>
+		<signal name="call_on_speaking_status_changed">
+			<param index="0" name="user_id" type="int" />
+			<param index="1" name="is_playing_sound" type="bool" />
+			<description>
+			</description>
+		</signal>
+		<signal name="call_on_status_changed">
+			<param index="0" name="status" type="Object" />
+			<param index="1" name="error" type="Object" />
+			<param index="2" name="error_detail" type="int" />
+			<description>
+			</description>
+		</signal>
+		<signal name="call_on_voice_state_changed">
+			<param index="0" name="user_id" type="int" />
+			<description>
+			</description>
+		</signal>
+	</signals>
+</class>

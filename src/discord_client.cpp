@@ -1177,163 +1177,111 @@ void DiscordClient::set_user_updated_callback() {
 }
 
 void DiscordClient::_bind_methods() {
-	ADD_SIGNAL(MethodInfo("client_end_call_callback"));
-
-	ADD_SIGNAL(MethodInfo("client_end_calls_callback"));
-
-	ADD_SIGNAL(MethodInfo("client_get_current_input_device_callback", PropertyInfo(Variant::OBJECT, "device")));
-
-	ADD_SIGNAL(MethodInfo("client_get_current_output_device_callback", PropertyInfo(Variant::OBJECT, "device")));
-
 	ADD_SIGNAL(MethodInfo("client_get_input_devices_callback", PropertyInfo(Variant::ARRAY, "devices")));
-
-	ADD_SIGNAL(MethodInfo("client_get_output_devices_callback", PropertyInfo(Variant::ARRAY, "devices")));
-
-	ADD_SIGNAL(MethodInfo("client_device_change_callback", PropertyInfo(Variant::ARRAY, "input_devices"), PropertyInfo(Variant::ARRAY, "output_devices")));
-
-	ADD_SIGNAL(MethodInfo("client_set_input_device_callback", PropertyInfo(Variant::OBJECT, "result")));
 
 	ADD_SIGNAL(MethodInfo("client_no_audio_input_callback", PropertyInfo(Variant::BOOL, "input_detected")));
 
-	ADD_SIGNAL(MethodInfo("client_set_output_device_callback", PropertyInfo(Variant::OBJECT, "result")));
-
-	ADD_SIGNAL(MethodInfo("client_voice_participant_changed_callback", PropertyInfo(Variant::INT, "lobby_id"), PropertyInfo(Variant::INT, "member_id"), PropertyInfo(Variant::BOOL, "added")));
-
-	ADD_SIGNAL(MethodInfo("client_user_audio_received_callback", PropertyInfo(Variant::INT, "user_id"), PropertyInfo(Variant::INT, "data"), PropertyInfo(Variant::INT, "samples_per_channel"), PropertyInfo(Variant::INT, "sample_rate"), PropertyInfo(Variant::INT, "channels"), PropertyInfo(Variant::BOOL, "out_should_mute")));
-
-	ADD_SIGNAL(MethodInfo("client_user_audio_captured_callback", PropertyInfo(Variant::INT, "data"), PropertyInfo(Variant::INT, "samples_per_channel"), PropertyInfo(Variant::INT, "sample_rate"), PropertyInfo(Variant::INT, "channels")));
-
 	ADD_SIGNAL(MethodInfo("client_authorization_callback", PropertyInfo(Variant::OBJECT, "result"), PropertyInfo(Variant::STRING, "code"), PropertyInfo(Variant::STRING, "redirect_uri")));
+
+	ADD_SIGNAL(MethodInfo("client_leave_lobby_callback", PropertyInfo(Variant::OBJECT, "result")));
+
+	ADD_SIGNAL(MethodInfo("client_lobby_member_added_callback", PropertyInfo(Variant::INT, "lobby_id"), PropertyInfo(Variant::INT, "member_id")));
+
+	ADD_SIGNAL(MethodInfo("client_message_created_callback", PropertyInfo(Variant::INT, "message_id")));
+
+	ADD_SIGNAL(MethodInfo("client_accept_activity_invite_callback", PropertyInfo(Variant::OBJECT, "result"), PropertyInfo(Variant::STRING, "join_secret")));
+
+	ADD_SIGNAL(MethodInfo("client_update_rich_presence_callback", PropertyInfo(Variant::OBJECT, "result")));
+
+	ADD_SIGNAL(MethodInfo("client_lobby_member_removed_callback", PropertyInfo(Variant::INT, "lobby_id"), PropertyInfo(Variant::INT, "member_id")));
+
+	ADD_SIGNAL(MethodInfo("client_update_relationship_callback", PropertyInfo(Variant::OBJECT, "result")));
+
+	ADD_SIGNAL(MethodInfo("client_update_status_callback", PropertyInfo(Variant::OBJECT, "result")));
+
+	ADD_SIGNAL(MethodInfo("client_edit_user_message_callback", PropertyInfo(Variant::OBJECT, "result")));
+
+	ADD_SIGNAL(MethodInfo("client_log_callback", PropertyInfo(Variant::STRING, "message"), PropertyInfo(Variant::OBJECT, "severity")));
+
+	ADD_SIGNAL(MethodInfo("client_lobby_deleted_callback", PropertyInfo(Variant::INT, "lobby_id")));
+
+	ADD_SIGNAL(MethodInfo("client_lobby_updated_callback", PropertyInfo(Variant::INT, "lobby_id")));
+
+	ADD_SIGNAL(MethodInfo("client_lobby_created_callback", PropertyInfo(Variant::INT, "lobby_id")));
 
 	ADD_SIGNAL(MethodInfo("client_fetch_current_user_callback", PropertyInfo(Variant::OBJECT, "result"), PropertyInfo(Variant::INT, "id"), PropertyInfo(Variant::STRING, "name")));
 
-	ADD_SIGNAL(MethodInfo("client_token_exchange_callback", PropertyInfo(Variant::OBJECT, "result"), PropertyInfo(Variant::STRING, "access_token"), PropertyInfo(Variant::STRING, "refresh_token"), PropertyInfo(Variant::OBJECT, "token_type"), PropertyInfo(Variant::INT, "expires_in"), PropertyInfo(Variant::STRING, "scopes")));
-
-	ADD_SIGNAL(MethodInfo("client_token_exchange_callback", PropertyInfo(Variant::OBJECT, "result"), PropertyInfo(Variant::STRING, "access_token"), PropertyInfo(Variant::STRING, "refresh_token"), PropertyInfo(Variant::OBJECT, "token_type"), PropertyInfo(Variant::INT, "expires_in"), PropertyInfo(Variant::STRING, "scopes")));
-
-	ADD_SIGNAL(MethodInfo("client_token_exchange_callback", PropertyInfo(Variant::OBJECT, "result"), PropertyInfo(Variant::STRING, "access_token"), PropertyInfo(Variant::STRING, "refresh_token"), PropertyInfo(Variant::OBJECT, "token_type"), PropertyInfo(Variant::INT, "expires_in"), PropertyInfo(Variant::STRING, "scopes")));
-
-	ADD_SIGNAL(MethodInfo("client_token_exchange_callback", PropertyInfo(Variant::OBJECT, "result"), PropertyInfo(Variant::STRING, "access_token"), PropertyInfo(Variant::STRING, "refresh_token"), PropertyInfo(Variant::OBJECT, "token_type"), PropertyInfo(Variant::INT, "expires_in"), PropertyInfo(Variant::STRING, "scopes")));
-
-	ADD_SIGNAL(MethodInfo("client_token_exchange_callback", PropertyInfo(Variant::OBJECT, "result"), PropertyInfo(Variant::STRING, "access_token"), PropertyInfo(Variant::STRING, "refresh_token"), PropertyInfo(Variant::OBJECT, "token_type"), PropertyInfo(Variant::INT, "expires_in"), PropertyInfo(Variant::STRING, "scopes")));
-
-	ADD_SIGNAL(MethodInfo("client_token_exchange_callback", PropertyInfo(Variant::OBJECT, "result"), PropertyInfo(Variant::STRING, "access_token"), PropertyInfo(Variant::STRING, "refresh_token"), PropertyInfo(Variant::OBJECT, "token_type"), PropertyInfo(Variant::INT, "expires_in"), PropertyInfo(Variant::STRING, "scopes")));
-
-	ADD_SIGNAL(MethodInfo("client_authorize_device_screen_closed_callback"));
-
 	ADD_SIGNAL(MethodInfo("client_token_expiration_callback"));
-
-	ADD_SIGNAL(MethodInfo("client_update_provisional_account_display_name_callback", PropertyInfo(Variant::OBJECT, "result")));
-
-	ADD_SIGNAL(MethodInfo("client_update_token_callback", PropertyInfo(Variant::OBJECT, "result")));
-
-	ADD_SIGNAL(MethodInfo("client_delete_user_message_callback", PropertyInfo(Variant::OBJECT, "result")));
-
-	ADD_SIGNAL(MethodInfo("client_edit_user_message_callback", PropertyInfo(Variant::OBJECT, "result")));
 
 	ADD_SIGNAL(MethodInfo("client_provisional_user_merge_required_callback"));
 
 	ADD_SIGNAL(MethodInfo("client_open_message_in_discord_callback", PropertyInfo(Variant::OBJECT, "result")));
 
-	ADD_SIGNAL(MethodInfo("client_send_user_message_callback", PropertyInfo(Variant::OBJECT, "result"), PropertyInfo(Variant::INT, "message_id")));
+	ADD_SIGNAL(MethodInfo("client_delete_user_message_callback", PropertyInfo(Variant::OBJECT, "result")));
 
-	ADD_SIGNAL(MethodInfo("client_send_user_message_callback", PropertyInfo(Variant::OBJECT, "result"), PropertyInfo(Variant::INT, "message_id")));
+	ADD_SIGNAL(MethodInfo("client_set_input_device_callback", PropertyInfo(Variant::OBJECT, "result")));
 
-	ADD_SIGNAL(MethodInfo("client_send_user_message_callback", PropertyInfo(Variant::OBJECT, "result"), PropertyInfo(Variant::INT, "message_id")));
+	ADD_SIGNAL(MethodInfo("client_get_output_devices_callback", PropertyInfo(Variant::ARRAY, "devices")));
 
-	ADD_SIGNAL(MethodInfo("client_send_user_message_callback", PropertyInfo(Variant::OBJECT, "result"), PropertyInfo(Variant::INT, "message_id")));
+	ADD_SIGNAL(MethodInfo("client_voice_participant_changed_callback", PropertyInfo(Variant::INT, "lobby_id"), PropertyInfo(Variant::INT, "member_id"), PropertyInfo(Variant::BOOL, "added")));
 
-	ADD_SIGNAL(MethodInfo("client_message_created_callback", PropertyInfo(Variant::INT, "message_id")));
+	ADD_SIGNAL(MethodInfo("client_send_activity_invite_callback", PropertyInfo(Variant::OBJECT, "result")));
+
+	ADD_SIGNAL(MethodInfo("client_activity_invite_callback", PropertyInfo(Variant::OBJECT, "invite")));
+
+	ADD_SIGNAL(MethodInfo("client_device_change_callback", PropertyInfo(Variant::ARRAY, "input_devices"), PropertyInfo(Variant::ARRAY, "output_devices")));
 
 	ADD_SIGNAL(MethodInfo("client_message_deleted_callback", PropertyInfo(Variant::INT, "message_id"), PropertyInfo(Variant::INT, "channel_id")));
 
-	ADD_SIGNAL(MethodInfo("client_message_updated_callback", PropertyInfo(Variant::INT, "message_id")));
+	ADD_SIGNAL(MethodInfo("client_relationship_deleted_callback", PropertyInfo(Variant::INT, "user_id"), PropertyInfo(Variant::BOOL, "is_discord_relationship_update")));
 
-	ADD_SIGNAL(MethodInfo("client_log_callback", PropertyInfo(Variant::STRING, "message"), PropertyInfo(Variant::OBJECT, "severity")));
+	ADD_SIGNAL(MethodInfo("client_update_provisional_account_display_name_callback", PropertyInfo(Variant::OBJECT, "result")));
 
-	ADD_SIGNAL(MethodInfo("client_log_callback", PropertyInfo(Variant::STRING, "message"), PropertyInfo(Variant::OBJECT, "severity")));
-
-	ADD_SIGNAL(MethodInfo("client_on_status_changed", PropertyInfo(Variant::OBJECT, "status"), PropertyInfo(Variant::OBJECT, "error"), PropertyInfo(Variant::INT, "error_detail")));
+	ADD_SIGNAL(MethodInfo("client_token_exchange_callback", PropertyInfo(Variant::OBJECT, "result"), PropertyInfo(Variant::STRING, "access_token"), PropertyInfo(Variant::STRING, "refresh_token"), PropertyInfo(Variant::OBJECT, "token_type"), PropertyInfo(Variant::INT, "expires_in"), PropertyInfo(Variant::STRING, "scopes")));
 
 	ADD_SIGNAL(MethodInfo("client_create_or_join_lobby_callback", PropertyInfo(Variant::OBJECT, "result"), PropertyInfo(Variant::INT, "lobby_id")));
-
-	ADD_SIGNAL(MethodInfo("client_create_or_join_lobby_callback", PropertyInfo(Variant::OBJECT, "result"), PropertyInfo(Variant::INT, "lobby_id")));
-
-	ADD_SIGNAL(MethodInfo("client_get_guild_channels_callback", PropertyInfo(Variant::OBJECT, "result"), PropertyInfo(Variant::ARRAY, "guild_channels")));
-
-	ADD_SIGNAL(MethodInfo("client_get_user_guilds_callback", PropertyInfo(Variant::OBJECT, "result"), PropertyInfo(Variant::ARRAY, "guilds")));
-
-	ADD_SIGNAL(MethodInfo("client_leave_lobby_callback", PropertyInfo(Variant::OBJECT, "result")));
-
-	ADD_SIGNAL(MethodInfo("client_link_or_unlink_channel_callback", PropertyInfo(Variant::OBJECT, "result")));
-
-	ADD_SIGNAL(MethodInfo("client_lobby_created_callback", PropertyInfo(Variant::INT, "lobby_id")));
-
-	ADD_SIGNAL(MethodInfo("client_lobby_deleted_callback", PropertyInfo(Variant::INT, "lobby_id")));
-
-	ADD_SIGNAL(MethodInfo("client_lobby_member_added_callback", PropertyInfo(Variant::INT, "lobby_id"), PropertyInfo(Variant::INT, "member_id")));
-
-	ADD_SIGNAL(MethodInfo("client_lobby_member_removed_callback", PropertyInfo(Variant::INT, "lobby_id"), PropertyInfo(Variant::INT, "member_id")));
 
 	ADD_SIGNAL(MethodInfo("client_lobby_member_updated_callback", PropertyInfo(Variant::INT, "lobby_id"), PropertyInfo(Variant::INT, "member_id")));
 
-	ADD_SIGNAL(MethodInfo("client_lobby_updated_callback", PropertyInfo(Variant::INT, "lobby_id")));
+	ADD_SIGNAL(MethodInfo("client_get_discord_client_connected_user_callback", PropertyInfo(Variant::OBJECT, "result"), PropertyInfo(Variant::NIL, "user")));
 
-	ADD_SIGNAL(MethodInfo("client_link_or_unlink_channel_callback", PropertyInfo(Variant::OBJECT, "result")));
+	ADD_SIGNAL(MethodInfo("client_get_current_output_device_callback", PropertyInfo(Variant::OBJECT, "device")));
 
-	ADD_SIGNAL(MethodInfo("client_accept_activity_invite_callback", PropertyInfo(Variant::OBJECT, "result"), PropertyInfo(Variant::STRING, "join_secret")));
-
-	ADD_SIGNAL(MethodInfo("client_send_activity_invite_callback", PropertyInfo(Variant::OBJECT, "result")));
-
-	ADD_SIGNAL(MethodInfo("client_send_activity_invite_callback", PropertyInfo(Variant::OBJECT, "result")));
-
-	ADD_SIGNAL(MethodInfo("client_send_activity_invite_callback", PropertyInfo(Variant::OBJECT, "result")));
-
-	ADD_SIGNAL(MethodInfo("client_activity_invite_callback", PropertyInfo(Variant::OBJECT, "invite")));
-
-	ADD_SIGNAL(MethodInfo("client_activity_invite_callback", PropertyInfo(Variant::OBJECT, "invite")));
-
-	ADD_SIGNAL(MethodInfo("client_activity_join_callback", PropertyInfo(Variant::STRING, "join_secret")));
-
-	ADD_SIGNAL(MethodInfo("client_update_status_callback", PropertyInfo(Variant::OBJECT, "result")));
-
-	ADD_SIGNAL(MethodInfo("client_update_rich_presence_callback", PropertyInfo(Variant::OBJECT, "result")));
-
-	ADD_SIGNAL(MethodInfo("client_update_relationship_callback", PropertyInfo(Variant::OBJECT, "result")));
-
-	ADD_SIGNAL(MethodInfo("client_update_relationship_callback", PropertyInfo(Variant::OBJECT, "result")));
-
-	ADD_SIGNAL(MethodInfo("client_update_relationship_callback", PropertyInfo(Variant::OBJECT, "result")));
-
-	ADD_SIGNAL(MethodInfo("client_update_relationship_callback", PropertyInfo(Variant::OBJECT, "result")));
-
-	ADD_SIGNAL(MethodInfo("client_update_relationship_callback", PropertyInfo(Variant::OBJECT, "result")));
-
-	ADD_SIGNAL(MethodInfo("client_update_relationship_callback", PropertyInfo(Variant::OBJECT, "result")));
-
-	ADD_SIGNAL(MethodInfo("client_update_relationship_callback", PropertyInfo(Variant::OBJECT, "result")));
-
-	ADD_SIGNAL(MethodInfo("client_update_relationship_callback", PropertyInfo(Variant::OBJECT, "result")));
-
-	ADD_SIGNAL(MethodInfo("client_update_relationship_callback", PropertyInfo(Variant::OBJECT, "result")));
-
-	ADD_SIGNAL(MethodInfo("client_send_friend_request_callback", PropertyInfo(Variant::OBJECT, "result")));
-
-	ADD_SIGNAL(MethodInfo("client_update_relationship_callback", PropertyInfo(Variant::OBJECT, "result")));
-
-	ADD_SIGNAL(MethodInfo("client_send_friend_request_callback", PropertyInfo(Variant::OBJECT, "result")));
-
-	ADD_SIGNAL(MethodInfo("client_update_relationship_callback", PropertyInfo(Variant::OBJECT, "result")));
+	ADD_SIGNAL(MethodInfo("client_send_user_message_callback", PropertyInfo(Variant::OBJECT, "result"), PropertyInfo(Variant::INT, "message_id")));
 
 	ADD_SIGNAL(MethodInfo("client_relationship_created_callback", PropertyInfo(Variant::INT, "user_id"), PropertyInfo(Variant::BOOL, "is_discord_relationship_update")));
 
-	ADD_SIGNAL(MethodInfo("client_relationship_deleted_callback", PropertyInfo(Variant::INT, "user_id"), PropertyInfo(Variant::BOOL, "is_discord_relationship_update")));
+	ADD_SIGNAL(MethodInfo("client_send_friend_request_callback", PropertyInfo(Variant::OBJECT, "result")));
 
-	ADD_SIGNAL(MethodInfo("client_update_relationship_callback", PropertyInfo(Variant::OBJECT, "result")));
+	ADD_SIGNAL(MethodInfo("client_end_calls_callback"));
 
-	ADD_SIGNAL(MethodInfo("client_get_discord_client_connected_user_callback", PropertyInfo(Variant::OBJECT, "result"), PropertyInfo(Variant::NIL, "user")));
+	ADD_SIGNAL(MethodInfo("client_on_status_changed", PropertyInfo(Variant::OBJECT, "status"), PropertyInfo(Variant::OBJECT, "error"), PropertyInfo(Variant::INT, "error_detail")));
+
+	ADD_SIGNAL(MethodInfo("client_update_token_callback", PropertyInfo(Variant::OBJECT, "result")));
+
+	ADD_SIGNAL(MethodInfo("client_activity_join_callback", PropertyInfo(Variant::STRING, "join_secret")));
+
+	ADD_SIGNAL(MethodInfo("client_get_current_input_device_callback", PropertyInfo(Variant::OBJECT, "device")));
+
+	ADD_SIGNAL(MethodInfo("client_set_output_device_callback", PropertyInfo(Variant::OBJECT, "result")));
+
+	ADD_SIGNAL(MethodInfo("client_message_updated_callback", PropertyInfo(Variant::INT, "message_id")));
+
+	ADD_SIGNAL(MethodInfo("client_link_or_unlink_channel_callback", PropertyInfo(Variant::OBJECT, "result")));
+
+	ADD_SIGNAL(MethodInfo("client_get_user_guilds_callback", PropertyInfo(Variant::OBJECT, "result"), PropertyInfo(Variant::ARRAY, "guilds")));
+
+	ADD_SIGNAL(MethodInfo("client_user_audio_received_callback", PropertyInfo(Variant::INT, "user_id"), PropertyInfo(Variant::INT, "data"), PropertyInfo(Variant::INT, "samples_per_channel"), PropertyInfo(Variant::INT, "sample_rate"), PropertyInfo(Variant::INT, "channels"), PropertyInfo(Variant::BOOL, "out_should_mute")));
+
+	ADD_SIGNAL(MethodInfo("client_user_audio_captured_callback", PropertyInfo(Variant::INT, "data"), PropertyInfo(Variant::INT, "samples_per_channel"), PropertyInfo(Variant::INT, "sample_rate"), PropertyInfo(Variant::INT, "channels")));
 
 	ADD_SIGNAL(MethodInfo("client_user_updated_callback", PropertyInfo(Variant::INT, "user_i")));
+
+	ADD_SIGNAL(MethodInfo("client_end_call_callback"));
+
+	ADD_SIGNAL(MethodInfo("client_get_guild_channels_callback", PropertyInfo(Variant::OBJECT, "result"), PropertyInfo(Variant::ARRAY, "guild_channels")));
+
+	ADD_SIGNAL(MethodInfo("client_authorize_device_screen_closed_callback"));
 
 	ClassDB::bind_method(D_METHOD("end_call", "channel_id"),
 			&DiscordClient::end_call);
