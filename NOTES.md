@@ -3,36 +3,6 @@ This will register any solution for problems that I had.
 
 > I'm not good with C++, so the solutions could be bad and I could be making wrong assumptions of how the language works.  
 
-## No empty constructors problem
-Some classes don't have an empty constructor, which means that we can't have a property like:  
-
-```C++
-   private:
-       discordpp::XXXXX xxxxx;
-```
-
-Because this would be the same as doing:  
-
-```C++
-   private:
-       discordpp::XXXXX xxxxx = discordpp::XXXXX();
-```
-
-They don't have empty constructor because normally their value would come from another function, for example:  
-
-```C++
-   discordpp::XXXXX xxxxx = yyyyy->CreateXXXXX();
-```
-
-To solve this, we need to make our property a pointer:  
-
-```C++
-   private:
-       discordpp::XXXXX *xxxxx;
-```
-
-Have in mind that this affect how many methods in the class work.
-
 ## Optional return problem
 Some methods from SDK can return `std::optional<T>` values.  
 They are useful to prevent users from incorrectly using a return value (for example, a not setted value).  
@@ -49,22 +19,28 @@ GDScript signature:
 Variant get_state()
 ```
 
-## Memory allocation when property is a pointer
-There is only one case that was annoying to wrap, which is the last one.  
+## TODO List
+Automatic extract informations from C files (classes, callbacks, enum...).  
 
-If you receive a reference to a `discordpp:XXXXX` object:  
-```C++
-auto x = memnew(DiscordXXXXX{ &xxxxx });
+---
+
+Careful about methods having the same name as used in Godot (`connect()` and `disconnect()` in godot is used by signals)  
+
+---
+
+Parsing type should generate more types (`std::optional<std::vector<int>>`) instead of one type
+
+---
+
+Some classes doesn't let copying:  
 ```
+   auto r = call->GetVADThreshold();
+   auto t_r = (discordpp::VADThresholdSettings *)memalloc(sizeof(discordpp::VADThresholdSettings));
+   *t_r = r;
+   ```
 
-If you receive a pointer to a `discordpp:XXXXX` object:  
-```C++
-auto x = memnew(DiscordXXXXX{ xxxxx });
+So we change to (or find another way):
 ```
-
-If you receive a copy of a `discordpp:XXXXX` object:
-```C++
-auto x1 = (discordpp::XXXXX *)memalloc(sizeof(discordpp::XXXXX));
-*x1 = CreateXXXXX();
-auto x2 = memnew(DiscordXXXXX{ x1 });
+auto t_r = (discordpp::VADThresholdSettings *)memalloc(sizeof(discordpp::VADThresholdSettings));
+*t_r = call->GetVADThreshold();
 ```

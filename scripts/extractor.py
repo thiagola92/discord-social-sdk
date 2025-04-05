@@ -1,4 +1,5 @@
 # TODO: Automatic extract informations from C files.
+# TODO: Careful about methods having the same name as used in Godot ("connect()" in godot is used by signals)
 
 CLASSES = {}
 CALLBACKS_ARGS = {}

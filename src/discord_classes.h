@@ -428,7 +428,6 @@ protected:
 
 public:
 	discordpp::Client *unwrap(); // Internal usage.
-	void _process(double delta);
 
 	void end_call(uint64_t channel_id);
 	void end_calls();
@@ -497,8 +496,8 @@ public:
 	void set_showing_chat(bool showing_chat);
 	void add_log_callback(DiscordLoggingSeverity::Enum min_severity);
 	void add_voice_log_callback(DiscordLoggingSeverity::Enum min_severity);
-	void connect();
-	void disconnect();
+	void connect2();
+	void disconnect2();
 	DiscordClientStatus::Enum get_status();
 	bool set_log_dir(String path, DiscordLoggingSeverity::Enum min_severity);
 	void set_status_changed_callback();
