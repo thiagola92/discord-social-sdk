@@ -2,7 +2,27 @@
 Wrapper around [Discord Social SDK](https://discord.com/developers/docs/discord-social-sdk/overview).  
 
 # Development
-**Note**: If something in the code is weird or doesn't make sense, try checking my [notes](NOTES.md) to understand why I did what I did.  
+This GDExtension is **all** built using Python and **nothing** should be add manually at `src`. If this is weird for you, listen to me...  
+
+All that I want is to use the SDK from GDScript, without assuming any setup from the user, which means that I can guess all the logic behind the methods wrappers:  
+
+```mermaid
+flowchart TD
+    gd_to_c[gdscript types to c types]
+    return_void{return void?}
+    call_method1["method(args)"]
+    call_method2["auto r = method(args)"]
+    c_to_gd[c type to gdscript type]
+
+    gd_to_c-->return_void
+    return_void--"yes"-->call_method1
+    return_void--"no"-->call_method2
+    call_method2-->c_to_gd
+```
+
+Knowing this I automated generating all the GDExtension source code through Python code, which is a language that I prefer to user when I don't have to care about low level/security/speed/anything.  
+
+Now that you understand why everything is done through Python, let me explain what is done through Python:  
 
 ## Prerequisites
 - [Godot](https://godotengine.org/)
@@ -36,34 +56,28 @@ Wrapper around [Discord Social SDK](https://discord.com/developers/docs/discord-
 ├── lib/
 │   └── Discord libs
 ├── scripts/
-│   └── Python utility scripts
+│   └── Python scripts
 └── src/
-    └── Project source code and headers
+    └── GDExtension source codes and headers
 ```
 
-## Setup
-Generate GDExtension API files.
-
+## Execute
 ```bash
+# Generate GDExtension API files.
 cd godot-cpp
 godot --dump-extension-api
 scons platform=linux custom_api_file=extension_api.json
 cd ..
-```
 
-## Generate Documentation
-Execute to create/update/delete XMLs with classes documentation.
+# Generate GDExtension source code.
+python3 scripts/main.py
 
-```bash
+# Generate GDExtension documentation.
 cd demo
 godot --doctool ../ --gdextension-docs
 cd ..
-```
 
-## Generate GDExtension
-Execute to generate the GDExtension.
-
-```bash
+# Generate GDExtension library.
 scons platform=linux                            # Debug
 scons platform=linux target=template_release    # Release
 ```
