@@ -147,13 +147,13 @@ void DiscordCall::set_vadthreshold(bool automatic, float threshold) {
 }
 
 void DiscordCall::_bind_methods() {
-	ADD_SIGNAL(MethodInfo("call_on_voice_state_changed", PropertyInfo(Variant::INT, "user_id")));
-
-	ADD_SIGNAL(MethodInfo("call_on_status_changed", PropertyInfo(Variant::INT, "status"), PropertyInfo(Variant::INT, "error"), PropertyInfo(Variant::INT, "error_detail")));
-
 	ADD_SIGNAL(MethodInfo("call_on_participant_changed", PropertyInfo(Variant::INT, "user_id"), PropertyInfo(Variant::BOOL, "added")));
 
 	ADD_SIGNAL(MethodInfo("call_on_speaking_status_changed", PropertyInfo(Variant::INT, "user_id"), PropertyInfo(Variant::BOOL, "is_playing_sound")));
+
+	ADD_SIGNAL(MethodInfo("call_on_voice_state_changed", PropertyInfo(Variant::INT, "user_id")));
+
+	ADD_SIGNAL(MethodInfo("call_on_status_changed", PropertyInfo(Variant::INT, "status"), PropertyInfo(Variant::INT, "error"), PropertyInfo(Variant::INT, "error_detail")));
 
 	ClassDB::bind_method(D_METHOD("get_audio_mode"),
 			&DiscordCall::get_audio_mode);

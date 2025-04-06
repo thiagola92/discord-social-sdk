@@ -44,3 +44,7 @@ So we change to (or find another way):
 auto t_r = (discordpp::VADThresholdSettings *)memalloc(sizeof(discordpp::VADThresholdSettings));
 *t_r = call->GetVADThreshold();
 ```
+
+---
+
+Decide where to put the `discordpp::RunCallbacks()`

@@ -59,7 +59,6 @@ def generate_class(class_name: str, class_methods: list[str]) -> tuple[str, str]
                 method=method,
                 class_name=class_name,
                 property_name=property_name,
-                has_empty_constructor=has_empty_constructor,
             )
         )
 

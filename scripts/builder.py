@@ -138,6 +138,10 @@ def build_signals(method: Method, class_name: str) -> str:
 
 def build_bind(method: Method, class_name: str) -> str:
     method_snake_name = to_snake_case(method.name)
+
+    if method_snake_name in RESERVED_NAMES:
+        method_snake_name += "2"
+
     params = [to_snake_case(p.name) for p in method.uncallables]
     bind_params = [method_snake_name] + params
     bind_params = [f'"{p}"' for p in bind_params]
@@ -233,9 +237,7 @@ def build_call(
     )
 
 
-def build_method(
-    method: Method, class_name: str, property_name: str, has_empty_constructor: bool
-) -> str:
+def build_method(method: Method, class_name: str, property_name: str) -> str:
     return_type = build_type(method.ret)
     method_snake_name = to_snake_case(method.name)
     params = [build_param(p) for p in method.uncallables]
