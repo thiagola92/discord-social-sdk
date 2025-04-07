@@ -22,7 +22,14 @@ flowchart TD
 
 Knowing this I automated generating all the GDExtension source code through Python code, which is a language that I prefer to user when I don't have to care about low level/security/speed/anything.  
 
-Now that you understand why everything is done through Python, let me explain what is done through Python:  
+Now that you understand why everything is done through Python, let me explain what is done through Python: Parsing headers and build source code, that's it.  
+
+```mermaid
+flowchart LR
+    Parse --> Build
+```
+
+When I say parse, I just mean scanning headers to collect informations about the SDK (it's nothing nothing fancy as a C/C++ parser).  
 
 ## Prerequisites
 - [Godot](https://godotengine.org/)
