@@ -68,34 +68,6 @@ client.AddLogCallback(
 
 Note that I don't rename methods to snake_case because this helps me avoid any **possibility** of collision with a Discord method name. For example: `Client::Connection()` with `Node.connection()`.  
 
----
-
-**C++**
-```c++
-client->SetStatusChangedCallback([client](discordpp::Client::Status status, discordpp::Client::Error error, int32_t errorDetail) {
-  std::cout << "🔄 Status changed: " << discordpp::Client::StatusToString(status) << std::endl;
-
-  if (status == discordpp::Client::Status::Ready) {
-    std::cout << "✅ Client is ready! You can now call SDK functions.\n";
-  } else if (error != discordpp::Client::Error::None) {
-    std::cerr << "❌ Connection Error: " << discordpp::Client::ErrorToString(error) << " - Details: " << errorDetail << std::endl;
-  }
-});
-```
-
-**GDScript**  
-```gdscript
-client.SetStatusChangedCallback(
-  func(status: DiscordClientStatus, error: DiscordClientError, errorDetail: int):
-    print("🔄 Status changed: ", DiscordClient.StatusToString(status))
-
-    if status == DiscordClientStatus.Ready:
-      print("✅ Client is ready! You can now call SDK functions.")
-    elif error != DiscordClientError.None:
-      print("❌ Connection Error: % - Details: %s" % [DiscordClientErrorToString(error), errorDetail])
-)
-```
-
 # Development
 This GDExtension is **all** built using Python and **nothing** should be add manually at `src`. If this is weird for you, listen to me...  
 
