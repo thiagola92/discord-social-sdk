@@ -30,6 +30,7 @@ flowchart LR
 ```
 
 When I say parse, I just mean scanning headers to collect informations about the SDK (it's nothing nothing fancy as a C/C++ parser).  
+When I say build, I mean writing the source code (`.cpp`) and headers (`.h`) files that the GDExtension will need.  
 
 ## Prerequisites
 - [Godot](https://godotengine.org/)
