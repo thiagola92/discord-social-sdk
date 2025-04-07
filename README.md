@@ -1,6 +1,73 @@
 # Discord Social SDK
 Wrapper around [Discord Social SDK](https://discord.com/developers/docs/discord-social-sdk/overview).  
 
+There almost no documentation because is very easy to translate code from the [official C++ documentation](https://discord.com/developers/docs/discord-social-sdk/getting-started/using-c++).  
+
+## Examples
+
+**C++**  
+```c++
+// Replace with your Discord Application ID
+const uint64_t APPLICATION_ID = 123456789012345678;
+
+// Create a flag to stop the application
+std::atomic<bool> running = true;
+
+// Signal handler to stop the application
+void signalHandler(int signum) {
+  running.store(false);
+}
+
+int main() {
+  std::signal(SIGINT, signalHandler);
+  std::cout << "🚀 Initializing Discord SDK...\n";
+
+  // Create our Discord Client
+  auto client = std::make_shared<discordpp::Client>();
+
+  // Keep application running to allow SDK to receive events and callbacks
+  while (running) {
+      std::this_thread::sleep_for(std::chrono::milliseconds(10));
+  }
+
+  return 0;
+}
+```
+
+**GDScript**  
+```gdscript
+# Replace with your Discord Application ID
+const APPLICATION_ID = 123456789012345678
+
+func _ready():
+    print("🚀 Initializing Discord SDK...)
+
+    # Create our Discord Client
+    var client = DiscordClient.new()
+```
+
+Godot already runs in loop (like all games), so we don't need to make a loop because we can use `_process()` if we ever need.  
+
+---
+
+**C++**  
+```c++
+client->AddLogCallback([](auto message, auto severity) {
+  std::cout << "[" << EnumToString(severity) << "] " << message << std::endl;
+}, discordpp::LoggingSeverity::Info);
+```
+
+**GDScript**  
+```gdscript
+client.AddLogCallback(
+    func(message, severity):
+        print("[%s] %s" % [Discord.EnumToString(severity), message]),
+    DiscordLoggingSeverity.Info
+)
+```
+
+Note that I don't rename methods to snake_case because this helps me avoid any **possibility** of collision with a Discord method name. For example: `Client::Connection()` with `Node.connection()`.  
+
 # Development
 This GDExtension is **all** built using Python and **nothing** should be add manually at `src`. If this is weird for you, listen to me...  
 
@@ -30,6 +97,7 @@ flowchart LR
 ```
 
 When I say parse, I just mean scanning headers to collect informations about the SDK (it's nothing nothing fancy as a C/C++ parser).  
+
 When I say build, I mean writing the source code (`.cpp`) and headers (`.h`) files that the GDExtension will need.  
 
 ## Prerequisites
