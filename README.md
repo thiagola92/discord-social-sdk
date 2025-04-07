@@ -40,10 +40,10 @@ int main() {
 const APPLICATION_ID = 123456789012345678
 
 func _ready():
-    print("🚀 Initializing Discord SDK...)
+  print("🚀 Initializing Discord SDK...)
 
-    # Create our Discord Client
-    var client = DiscordClient.new()
+  # Create our Discord Client
+  var client = DiscordClient.new()
 ```
 
 Godot already runs in loop (like all games), so we don't need to make a loop because we can use `_process()` if we ever need.  
@@ -60,13 +60,41 @@ client->AddLogCallback([](auto message, auto severity) {
 **GDScript**  
 ```gdscript
 client.AddLogCallback(
-    func(message, severity):
-        print("[%s] %s" % [Discord.EnumToString(severity), message]),
-    DiscordLoggingSeverity.Info
+  func(message, severity):
+      print("[%s] %s" % [Discord.EnumToString(severity), message]),
+  DiscordLoggingSeverity.Info
 )
 ```
 
 Note that I don't rename methods to snake_case because this helps me avoid any **possibility** of collision with a Discord method name. For example: `Client::Connection()` with `Node.connection()`.  
+
+---
+
+**C++**
+```c++
+client->SetStatusChangedCallback([client](discordpp::Client::Status status, discordpp::Client::Error error, int32_t errorDetail) {
+  std::cout << "🔄 Status changed: " << discordpp::Client::StatusToString(status) << std::endl;
+
+  if (status == discordpp::Client::Status::Ready) {
+    std::cout << "✅ Client is ready! You can now call SDK functions.\n";
+  } else if (error != discordpp::Client::Error::None) {
+    std::cerr << "❌ Connection Error: " << discordpp::Client::ErrorToString(error) << " - Details: " << errorDetail << std::endl;
+  }
+});
+```
+
+**GDScript**  
+```gdscript
+client.SetStatusChangedCallback(
+  func(status: DiscordClientStatus, error: DiscordClientError, errorDetail: int):
+    print("🔄 Status changed: ", DiscordClient.StatusToString(status))
+
+    if status == DiscordClientStatus.Ready:
+      print("✅ Client is ready! You can now call SDK functions.")
+    elif error != DiscordClientError.None:
+      print("❌ Connection Error: % - Details: %s" % [DiscordClientErrorToString(error), errorDetail])
+)
+```
 
 # Development
 This GDExtension is **all** built using Python and **nothing** should be add manually at `src`. If this is weird for you, listen to me...  
