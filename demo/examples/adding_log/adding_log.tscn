@@ -6,5 +6,3 @@
 script = ExtResource("1_yk60j")
 
 [node name="DiscordClient" type="DiscordClient" parent="."]
-
-[connection signal="client_log_callback" from="DiscordClient" to="." method="_on_discord_client_client_log_callback"]
