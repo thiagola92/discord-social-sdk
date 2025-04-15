@@ -18,14 +18,20 @@ class Translator:
     def __init__(self, tokens: list):
         self.tokens = tokens
 
-    def is_c_void(self, type1: str) -> bool:
-        return type1 in ["void"]
+    ########################################################################
+    ########################################################################
+    # Type checkers.
+    ########################################################################
+    ########################################################################
 
-    def is_c_bool(self, type1: str) -> bool:
-        return type1 in ["bool", "bool&", "bool &"]
+    def is_c_void(self, type_name: str) -> bool:
+        return type_name in ["void"]
 
-    def is_c_int(self, type1: str) -> bool:
-        return type1 in [
+    def is_c_bool(self, type_name: str) -> bool:
+        return type_name in ["bool", "bool&", "bool &"]
+
+    def is_c_int(self, type_name: str) -> bool:
+        return type_name in [
             "uint8_t",
             "int16_t const*",
             "int16_t const *",
@@ -36,11 +42,11 @@ class Translator:
             "uint64_t",
         ]
 
-    def is_c_float(self, type1: str) -> bool:
-        return type1 in ["float"]
+    def is_c_float(self, type_name: str) -> bool:
+        return type_name in ["float"]
 
-    def is_c_string(self, type1: str) -> bool:
-        return type1 in [
+    def is_c_string(self, type_name: str) -> bool:
+        return type_name in [
             "std::string",
             "std::string const",
             "static std::string",
@@ -48,23 +54,38 @@ class Translator:
             "const char *",
         ]
 
-    def is_c_opt(self, type1: str) -> bool:
-        return type1.startswith("std::optional")
+    def is_c_opt(self, type_name: str) -> bool:
+        return type_name.startswith("std::optional")
 
-    def is_c_vec(self, type1: str) -> bool:
-        return type1.startswith("std::vector")
+    def is_c_vec(self, type_name: str) -> bool:
+        return type_name.startswith("std::vector")
 
-    def is_c_map(self, type1: str) -> bool:
-        return type1.startswith("std::unordered_map")
+    def is_c_map(self, type_name: str) -> bool:
+        return type_name.startswith("std::unordered_map")
 
-    def is_c_callback(self, type1: str) -> bool:
-        if not type1.startswith("discordpp::"):
+    def is_c_callback(self, type_name: str) -> bool:
+        if not type_name.startswith("discordpp::"):
             return False
 
         for token in self.tokens:
             if isinstance(token, TokenClass):
                 for c in token.callbacks:
-                    if type1 == f"discordpp::{token.name}::{c.name}":
+                    if type_name == f"discordpp::{token.name}::{c.name}":
+                        return True
+
+        return False
+
+    def is_c_enum(self, type_name: str) -> bool:
+        if not type_name.startswith("discordpp::"):
+            return False
+
+        for token in self.tokens:
+            if isinstance(token, TokenEnum):
+                if type_name == f"discordpp::{token.name}":
+                    return True
+            elif isinstance(token, TokenClass):
+                for t in token.enums:
+                    if type_name == f"discordpp::{token.name}::{t.name}":
                         return True
 
         return False
@@ -72,7 +93,7 @@ class Translator:
     def is_c_discord(self, type1: str) -> bool:
         return type1.startswith("discordpp::")
 
-    def is_c_many(self, type1: str) -> bool:
+    def is_c_many(self, type_name: str) -> bool:
         """
         Check if this type is in reality more than one type.
 
@@ -81,41 +102,84 @@ class Translator:
         When passing "std::string, std::string" it will return True.
         """
 
-        return "," in type1
+        return "," in type_name
 
-    def get_variant_type(self, type1: str) -> str:
+    ########################################################################
+    ########################################################################
+    # String convertions.
+    ########################################################################
+    ########################################################################
+
+    def c_name_to_godot_name(self, type_name: str) -> str | None:
+        """
+        Convert C enum/object name to Godot enum/object name.
+
+        Also used used to discover if a type is enum or not because
+        it will return None if can't find the enum.
+
+        Examples:
+            Input:     discordpp::Client::Error
+            Output:    DiscordppClientError::Enum
+
+            Input:     discordpp::Client
+            Output:    DiscordppClient
+        """
+
+        if not type_name.startswith("discordpp::"):
+            return None
+
+        # Returns if find an enum with this name.
+        for token in self.tokens:
+            if isinstance(token, TokenEnum):
+                if type_name == f"discordpp::{token.name}":
+                    return f"Discordpp{token.name}::Enum"
+            elif isinstance(token, TokenClass):
+                for t in token.enums:
+                    if type_name == f"discordpp::{token.name}::{t.name}":
+                        return f"Discordpp{token.name}{t.name}::Enum"
+
+        # Otherwise a simple replace is enough.
+        return type_name.replace("discordpp::", "Discordpp")
+
+    def c_type_to_variant_type(self, type_name: str) -> str:
         """
         Get the Variant::Type expected for a specific C type.
         """
 
-        if self.is_c_void(type1):
+        if self.is_c_void(type_name):
             return "Variant::NIL"
 
-        if self.is_c_bool(type1):
+        if self.is_c_bool(type_name):
             return "Variant::BOOL"
 
-        if self.is_c_int(type1):
+        if self.is_c_int(type_name):
             return "Variant::INT"
 
-        if self.is_c_float(type1):
+        if self.is_c_float(type_name):
             return "Variant::FLOAT"
 
-        if self.is_c_string(type1):
+        if self.is_c_string(type_name):
             return "Variant::STRING"
 
-        if self.is_c_vec(type1):
+        if self.is_c_vec(type_name):
             return "Variant::ARRAY"
 
-        if self.is_c_map(type1):
+        if self.is_c_map(type_name):
             return "Variant::DICTIONARY"
 
-        if self.is_c_callback(type1):
+        if self.is_c_callback(type_name):
             return "Variant::CALLABLE"
 
-        if self.is_c_discord(type1):
+        if self.is_c_discord(type_name):
             return "Variant::OBJECT"
 
-        assert False, f'Fail to identify a good Variant type for "{type1}"'
+        assert False, f'Fail to identify a good Variant type for "{type_name}"'
+
+    ########################################################################
+    ########################################################################
+    # Data convertions (C -> Godot).
+    ########################################################################
+    ########################################################################
 
     def c_type_to_godot_type(self, token: TokenType, pointer: bool = True) -> str:
         """
@@ -157,16 +221,12 @@ class Translator:
         if self.is_c_callback(token.name):
             return "Callable"
 
-        if enum := self.c_enum_to_godot_enum(token.name):
-            return enum
+        if self.is_c_enum(token.name):
+            return self.c_name_to_godot_name(token.name)
 
         if self.is_c_discord(token.name):
-            name = token.name.removeprefix("discordpp::")
-            name = f"Discordpp{name}"
-
-            if pointer:
-                return f"{name}*"
-            return name
+            name = self.c_name_to_godot_name(token.name)
+            return f"{name}*" if pointer else name
 
         if self.is_c_many(token.name):
             # NOTE: This is a "gambiarra" because I know that
@@ -180,230 +240,123 @@ class Translator:
 
         assert False, f'Fail to convert from "{token.name}" to Godot type'
 
-    def c_enum_to_godot_enum(self, type1: str) -> str | None:
+    def c_var_to_godot_var(self, param: TokenParam, var_name: str) -> str:
         """
-        Convert C enum to Godot enum or return None if isn't an enum.
-
-        "discordpp::Client::Error" -> "DiscordppClientError::Enum"
-        """
-
-        if not type1.startswith("discordpp::"):
-            return None
-
-        for token in self.tokens:
-            if isinstance(token, TokenEnum):
-                if type1 == f"discordpp::{token.name}":
-                    return f"Discordpp{token.name}::Enum"
-            elif isinstance(token, TokenClass):
-                for t in token.enums:
-                    if type1 == f"discordpp::{token.name}::{t.name}":
-                        return f"Discordpp{token.name}{t.name}::Enum"
-
-        return None
-
-    def c_ret_to_godot_ret(self, ret_type: TokenType, call: str) -> str:
-        """
-        Return statements that convert the SDK response
-        to Godot type while returning this new value.
-
-        Used after calling SDK method, to return
-        it value to Godot. Object example:
-            auto r = (discordpp::Call *)memalloc(sizeof(discordpp::Call));
-            *r = client->StartCall(p0);
-            return memnew(DiscordppCall{ *r });
+        Returns statements that convert a variable from
+        C type to Godot type and store it value in var_name.
         """
 
-        if self.is_c_void(ret_type.name):
-            return f"{call};"
+        if self.is_c_bool(param.type.name):
+            return f"auto {var_name} = {param.name};"
 
-        if self.is_c_bool(ret_type.name):
-            return f"return {call};"
+        if self.is_c_int(param.type.name):
+            return f"auto {var_name} = {param.name};"
 
-        if self.is_c_int(ret_type.name):
-            return f"return {call};"
+        if self.is_c_float(param.type.name):
+            return f"auto {var_name} = {param.name};"
 
-        if self.is_c_float(ret_type.name):
-            return f"return {call};"
+        if self.is_c_string(param.type.name):
+            return f"auto {var_name} = String({param.name}.c_str());"
 
-        if self.is_c_string(ret_type.name):
-            return f"return String({call}.c_str());"
+        if self.is_c_opt(param.type.name):
+            return self.c_opt_to_godot_variant(param.name, param.type.subtype, var_name)
 
-        if self.is_c_opt(ret_type.name):
-            return self.c_opt_ret_to_godot_variant_ret(ret_type.subtype, call)
+        if self.is_c_vec(param.type.name):
+            return self.c_vec_ret_to_godot_array_ret(param.type.subtype, var_name)
 
-        if self.is_c_vec(ret_type.name):
-            return self.c_vec_ret_to_godot_array_ret(ret_type, call)
+        if self.is_c_map(param.type.name):
+            return self.c_map_ret_to_godot_dict_ret(param.type.subtype, var_name)
 
-        if self.is_c_map(ret_type.name):
-            return self.c_map_ret_to_godot_dict_ret(ret_type, call)
-
-        if self.is_c_callback(ret_type.name):
+        if self.is_c_callback(param.type.name):
             assert False, "Not implemented (implement if needed)"
 
-        if enum := self.c_enum_to_godot_enum(ret_type.name):
-            return f"return ({enum}){call};"
+        if self.is_c_enum(param.type.name):
+            enum = self.c_name_to_godot_name(param.type.name)
+            return f"auto {var_name} = ({enum}){param.name};"
 
-        if self.is_c_discord(ret_type.name):
-            return self.c_discord_ret_to_godot_discord_ret(ret_type, call)
+        if self.is_c_discord(param.type.name):
+            return self.c_discord_ret_to_godot_discord_ret(param.type.subtype, var_name)
 
-        assert False, f'Fail to convert return from "{ret_type.name}" to Godot type'
+        assert False, f'Fail to convert return from "{param.type.name}" to Godot type'
 
-    def c_opt_ret_to_godot_variant_ret(self, ret_type: TokenType, call: str) -> str:
+    def c_opt_to_godot_variant(
+        self,
+        param_name: str,
+        subtype: TokenType,
+        var_name: str,
+    ) -> str:
         """
         Return statements that convert the SDK response,
-        which is a std::optional, to Godot Variant type
-        while returning this new Variant.
+        which is a std::optional, to Godot Variant type.
 
         Variant can hold the same value as std::optional
         or null in case the std::optional doesn't has a value.
         """
 
-        ret_statements = None
+        convertion_statements = None
 
-        if self.is_c_bool(ret_type.name):
-            ret_statements = ["return Variant(r.value());"]
+        if self.is_c_bool(subtype.name):
+            convertion_statements = [f"{var_name} = Variant({param_name}.value());"]
 
-        if self.is_c_int(ret_type.name):
-            ret_statements = ["return Variant(r.value());"]
+        if self.is_c_int(subtype.name):
+            convertion_statements = [f"{var_name} = Variant({param_name}.value());"]
 
-        if self.is_c_float(ret_type.name):
-            ret_statements = ["return Variant(r.value());"]
+        if self.is_c_float(subtype.name):
+            convertion_statements = [f"{var_name} = Variant({param_name}.value());"]
 
-        if self.is_c_string(ret_type.name):
-            ret_statements = ["return Variant(r.value().c_str());"]
-
-        if self.is_c_opt(ret_type.name):
-            assert False, "Not implemented (implement if needed)"
-
-        if self.is_c_vec(ret_type.name):
-            assert False, "Not implemented (implement if needed)"
-
-        if self.is_c_map(ret_type.name):
-            assert False, "Not implemented (implement if needed)"
-
-        if self.is_c_callback(ret_type.name):
-            assert False, "Not implemented (implement if needed)"
-
-        if enum := self.c_enum_to_godot_enum(ret_type.name):
-            ret_statements = [f"return Variant(({enum}) r.value());"]
-
-        if self.is_c_discord(ret_type.name):
-            class_type = self.c_type_to_godot_type(ret_type, pointer=False)
-
-            ret_statements = [
-                f"auto t_r = ({ret_type.name} *)memalloc(sizeof({ret_type.name}));",
-                f"*t_r = r.value();",
-                f"return Variant(memnew({class_type}{{ t_r }}));",
+        if self.is_c_string(subtype.name):
+            convertion_statements = [
+                f"{var_name} = Variant({param_name}.value().c_str());"
             ]
 
-        ret_statements = "\n    ".join(ret_statements)
-
-        statements = [
-            f"auto r = {call};",
-            f"",
-            f"if (!r.has_value()) {{",
-            f"    return nullptr;",
-            f"}}",
-            f"",
-            f"{ret_statements}",
-        ]
-
-        statements = "\n    ".join(statements)
-
-        return statements
-
-    def c_vec_ret_to_godot_array_ret(self, vec_type: TokenType, call: str) -> str:
-        append_statements = None
-
-        if self.is_c_bool(vec_type.subtype.name):
-            append_statements = ["t_r.push_back(i_r);"]
-
-        if self.is_c_int(vec_type.subtype.name):
-            append_statements = ["t_r.push_back(i_r);"]
-
-        if self.is_c_float(vec_type.subtype.name):
-            append_statements = ["t_r.push_back(i_r);"]
-
-        if self.is_c_string(vec_type.subtype.name):
-            append_statements = ["t_r.push_back(String(i_r.c_str()));"]
-
-        if self.is_c_opt(vec_type.subtype.name):
+        if self.is_c_opt(subtype.name):
             assert False, "Not implemented (implement if needed)"
 
-        if self.is_c_vec(vec_type.subtype.name):
+        if self.is_c_vec(subtype.name):
             assert False, "Not implemented (implement if needed)"
 
-        if self.is_c_map(vec_type.subtype.name):
+        if self.is_c_map(subtype.name):
             assert False, "Not implemented (implement if needed)"
 
-        if self.is_c_callback(vec_type.subtype.name):
+        if self.is_c_callback(subtype.name):
             assert False, "Not implemented (implement if needed)"
 
-        if self.c_enum_to_godot_enum(vec_type.subtype.name):
-            assert False, "Not implemented (implement if needed)"
-
-        if self.is_c_discord(vec_type.subtype.name):
-            obj_type = self.c_type_to_godot_type(vec_type.subtype, pointer=False)
-            append_statements = [f"t_r.push_back(memnew({obj_type}{{ &i_r }}));"]
-
-        append_statements = "\n        ".join(append_statements)
-        typed_array = self.c_type_to_godot_type(vec_type, pointer=False)
-
-        statements = [
-            f"auto r = {call};",
-            f"auto t_r = {typed_array}();",
-            f"",
-            f"for (auto i_r : r) {{",
-            f"    {append_statements}",
-            f"}}",
-            f"",
-            f"return t_r;",
-        ]
-
-        statements = "\n    ".join(statements)
-
-        return statements
-
-    def c_map_ret_to_godot_dict_ret(self, map_type: TokenType, call: str) -> str:
-        set_statements = None
-
-        if self.is_c_many(map_type.subtype.name):
-            set_statements = [
-                "t_r[String(p_r.first_c_str())] = String(p_r.second.c_str());"
+        if self.is_c_enum(subtype.name):
+            enum = self.c_name_to_godot_name(subtype.name)
+            convertion_statements = [
+                f"{var_name} = Variant(({enum}) {param_name}.value());"
             ]
 
-        set_statements = "\n        ".join(set_statements)
-        typed_dict = self.c_type_to_godot_type(map_type, pointer=False)
+        if self.is_c_discord(subtype.name):
+            type_name = self.c_type_to_godot_type(subtype, pointer=False)
+
+            convertion_statements = [
+                f"auto t_{var_name} = ({subtype.name} *)memalloc(sizeof({subtype.name}));",
+                f"*t_{var_name} = {param_name}.value();",
+                f"{var_name} = Variant(memnew({type_name}{{ t_{var_name} }}));",
+            ]
+
+        convertion_statements = "\n    ".join(convertion_statements)
 
         statements = [
-            f"auto r = {call};",
-            f"auto t_r = {typed_dict}();",
+            f"Variant {var_name};",
             f"",
-            f"for (auto p_r : r) {{",
-            f"    {set_statements}",
+            f"if (!{param_name}.has_value()) {{",
+            f"    {var_name} = nullptr;",
+            f"}} else {{",
+            f"    {convertion_statements}",
             f"}}",
-            f"",
-            f"return t_r;",
         ]
 
         statements = "\n    ".join(statements)
 
         return statements
 
-    def c_discord_ret_to_godot_discord_ret(self, ret_type: TokenType, call: str) -> str:
-        godot_name = ret_type.name.removeprefix("discordpp::")
-        godot_name = godot_name.replace("::", "")
-        godot_name = f"Discordpp{godot_name}"
-
-        statements = [
-            f"auto t_r = ({ret_type.name} *)memalloc(sizeof({ret_type.name}));",
-            f"*t_r = {call};",
-            f"return memnew({godot_name} {{ t_r }});",
-        ]
-
-        statements = "\n    ".join(statements)
-
-        return statements
+    ########################################################################
+    ########################################################################
+    # Data convertions (Godot -> C).
+    ########################################################################
+    ########################################################################
 
     def godot_var_to_c_var(self, param: TokenParam, var_name: str) -> str:
         """
@@ -439,7 +392,7 @@ class Translator:
         if self.is_c_callback(param.type.name):
             assert False, "Not implemented (implement if needed)"
 
-        if self.c_enum_to_godot_enum(param.type.name):
+        if self.is_c_enum(param.type.name):
             return f"auto {var_name} = ({param.type.name}){param.name};"
 
         if self.is_c_discord(param.type.name):
@@ -458,7 +411,7 @@ class Translator:
         Variant to C type and store it value in var_name.
         """
 
-        variant_type = self.get_variant_type(type1=param.type.subtype.name)
+        variant_type = self.c_type_to_variant_type(param.type.subtype.name)
         convertion_statements = None
 
         if self.is_c_bool(param.type.subtype.name):
@@ -535,7 +488,7 @@ class Translator:
         if self.is_c_callback(param.type.subtype.name):
             assert False, "Not implemented (implement if needed)"
 
-        if self.c_enum_to_godot_enum(param.type.subtype.name):
+        if self.is_c_enum(param.type.subtype.name):
             append_statements = [f"{var_name}.append(i_{var_name});"]
 
         if self.is_c_discord(param.type.subtype.name):
@@ -568,6 +521,218 @@ class Translator:
             f"    auto v_s = v.utf8().get_data();",
             f"    {var_name}[k_s]= v_s;",
             f"}}",
+        ]
+
+        statements = "\n    ".join(statements)
+
+        return statements
+
+    ########################################################################
+    ########################################################################
+    # Return convertions.
+    ########################################################################
+    ########################################################################
+
+    def c_ret_to_godot_ret(self, ret_type: TokenType, call: str) -> str:
+        """
+        Return statements that convert the SDK response
+        to Godot type while returning this new value.
+
+        Used after calling SDK method, to return
+        it value to Godot. Object example:
+            auto r = (discordpp::Call *)memalloc(sizeof(discordpp::Call));
+            *r = client->StartCall(p0);
+            return memnew(DiscordppCall{ *r });
+        """
+
+        if self.is_c_void(ret_type.name):
+            return f"{call};"
+
+        if self.is_c_bool(ret_type.name):
+            return f"return {call};"
+
+        if self.is_c_int(ret_type.name):
+            return f"return {call};"
+
+        if self.is_c_float(ret_type.name):
+            return f"return {call};"
+
+        if self.is_c_string(ret_type.name):
+            return f"return String({call}.c_str());"
+
+        if self.is_c_opt(ret_type.name):
+            return self.c_opt_ret_to_godot_variant_ret(ret_type.subtype, call)
+
+        if self.is_c_vec(ret_type.name):
+            return self.c_vec_ret_to_godot_array_ret(ret_type, call)
+
+        if self.is_c_map(ret_type.name):
+            return self.c_map_ret_to_godot_dict_ret(ret_type, call)
+
+        if self.is_c_callback(ret_type.name):
+            assert False, "Not implemented (implement if needed)"
+
+        if self.is_c_enum(ret_type.name):
+            enum = self.c_name_to_godot_name(ret_type.name)
+            return f"return ({enum}){call};"
+
+        if self.is_c_discord(ret_type.name):
+            return self.c_discord_ret_to_godot_discord_ret(ret_type, call)
+
+        assert False, f'Fail to convert return from "{ret_type.name}" to Godot type'
+
+    def c_opt_ret_to_godot_variant_ret(self, ret_type: TokenType, call: str) -> str:
+        """
+        Return statements that convert the SDK response,
+        which is a std::optional, to Godot Variant type
+        while returning this new Variant.
+
+        Variant can hold the same value as std::optional
+        or null in case the std::optional doesn't has a value.
+        """
+
+        ret_statements = None
+
+        if self.is_c_bool(ret_type.name):
+            ret_statements = ["return Variant(r.value());"]
+
+        if self.is_c_int(ret_type.name):
+            ret_statements = ["return Variant(r.value());"]
+
+        if self.is_c_float(ret_type.name):
+            ret_statements = ["return Variant(r.value());"]
+
+        if self.is_c_string(ret_type.name):
+            ret_statements = ["return Variant(r.value().c_str());"]
+
+        if self.is_c_opt(ret_type.name):
+            assert False, "Not implemented (implement if needed)"
+
+        if self.is_c_vec(ret_type.name):
+            assert False, "Not implemented (implement if needed)"
+
+        if self.is_c_map(ret_type.name):
+            assert False, "Not implemented (implement if needed)"
+
+        if self.is_c_callback(ret_type.name):
+            assert False, "Not implemented (implement if needed)"
+
+        if self.is_c_enum(ret_type.name):
+            enum = self.c_name_to_godot_name(ret_type.name)
+            ret_statements = [f"return Variant(({enum}) r.value());"]
+
+        if self.is_c_discord(ret_type.name):
+            class_ = self.c_type_to_godot_type(ret_type, pointer=False)
+
+            ret_statements = [
+                f"auto t_r = ({ret_type.name} *)memalloc(sizeof({ret_type.name}));",
+                f"*t_r = r.value();",
+                f"return Variant(memnew({class_}{{ t_r }}));",
+            ]
+
+        ret_statements = "\n    ".join(ret_statements)
+
+        statements = [
+            f"auto r = {call};",
+            f"",
+            f"if (!r.has_value()) {{",
+            f"    return nullptr;",
+            f"}}",
+            f"",
+            f"{ret_statements}",
+        ]
+
+        statements = "\n    ".join(statements)
+
+        return statements
+
+    def c_vec_ret_to_godot_array_ret(self, vec_type: TokenType, call: str) -> str:
+        append_statements = None
+
+        if self.is_c_bool(vec_type.subtype.name):
+            append_statements = ["t_r.push_back(i_r);"]
+
+        if self.is_c_int(vec_type.subtype.name):
+            append_statements = ["t_r.push_back(i_r);"]
+
+        if self.is_c_float(vec_type.subtype.name):
+            append_statements = ["t_r.push_back(i_r);"]
+
+        if self.is_c_string(vec_type.subtype.name):
+            append_statements = ["t_r.push_back(String(i_r.c_str()));"]
+
+        if self.is_c_opt(vec_type.subtype.name):
+            assert False, "Not implemented (implement if needed)"
+
+        if self.is_c_vec(vec_type.subtype.name):
+            assert False, "Not implemented (implement if needed)"
+
+        if self.is_c_map(vec_type.subtype.name):
+            assert False, "Not implemented (implement if needed)"
+
+        if self.is_c_callback(vec_type.subtype.name):
+            assert False, "Not implemented (implement if needed)"
+
+        if self.is_c_enum(vec_type.subtype.name):
+            assert False, "Not implemented (implement if needed)"
+
+        if self.is_c_discord(vec_type.subtype.name):
+            obj_type = self.c_type_to_godot_type(vec_type.subtype, pointer=False)
+            append_statements = [f"t_r.push_back(memnew({obj_type}{{ &i_r }}));"]
+
+        append_statements = "\n        ".join(append_statements)
+        typed_array = self.c_type_to_godot_type(vec_type, pointer=False)
+
+        statements = [
+            f"auto r = {call};",
+            f"auto t_r = {typed_array}();",
+            f"",
+            f"for (auto i_r : r) {{",
+            f"    {append_statements}",
+            f"}}",
+            f"",
+            f"return t_r;",
+        ]
+
+        statements = "\n    ".join(statements)
+
+        return statements
+
+    def c_map_ret_to_godot_dict_ret(self, map_type: TokenType, call: str) -> str:
+        set_statements = None
+
+        if self.is_c_many(map_type.subtype.name):
+            set_statements = [
+                "t_r[String(p_r.first_c_str())] = String(p_r.second.c_str());"
+            ]
+
+        set_statements = "\n        ".join(set_statements)
+        typed_dict = self.c_type_to_godot_type(map_type, pointer=False)
+
+        statements = [
+            f"auto r = {call};",
+            f"auto t_r = {typed_dict}();",
+            f"",
+            f"for (auto p_r : r) {{",
+            f"    {set_statements}",
+            f"}}",
+            f"",
+            f"return t_r;",
+        ]
+
+        statements = "\n    ".join(statements)
+
+        return statements
+
+    def c_discord_ret_to_godot_discord_ret(self, ret_type: TokenType, call: str) -> str:
+        godot_name = ret_type.name.removeprefix("discordpp::")
+        godot_name = godot_name.replace("::", "")
+        godot_name = f"Discordpp{godot_name}"
+
+        statements = [
+            f"auto t_r = ({ret_type.name} *)memalloc(sizeof({ret_type.name}));",
+            f"*t_r = {call};",
+            f"return memnew({godot_name} {{ t_r }});",
         ]
 
         statements = "\n    ".join(statements)
