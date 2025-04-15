@@ -1,75 +1,66 @@
-// AUTO-GENERATED
+
 #include "discord_classes.h"
 
 using namespace godot;
 
-discordpp::AudioDevice *DiscordAudioDevice::unwrap() {
-	return audio_device;
+void DiscordppAudioDevice::Drop() {
+	obj->Drop();
 }
 
-bool DiscordAudioDevice::equals(DiscordAudioDevice *rhs) {
+bool DiscordppAudioDevice::Equals(DiscordppAudioDevice *rhs) {
 	auto p0 = *rhs->unwrap();
-	auto r = audio_device->Equals(p0);
-	return r;
+	return obj->Equals(p0);
 }
 
-String DiscordAudioDevice::id() {
-	auto r = audio_device->Id();
-	return String(r.c_str());
+String DiscordppAudioDevice::Id() {
+	return String(obj->Id().c_str());
 }
 
-void DiscordAudioDevice::set_id(String id) {
-	auto p0 = id.utf8().get_data();
-	audio_device->SetId(p0);
+void DiscordppAudioDevice::SetId(String Id) {
+	auto p0 = Id.utf8().get_data();
+	obj->SetId(p0);
 }
 
-String DiscordAudioDevice::name() {
-	auto r = audio_device->Name();
-	return String(r.c_str());
+String DiscordppAudioDevice::Name() {
+	return String(obj->Name().c_str());
 }
 
-void DiscordAudioDevice::set_name(String name) {
-	auto p0 = name.utf8().get_data();
-	audio_device->SetName(p0);
+void DiscordppAudioDevice::SetName(String Name) {
+	auto p0 = Name.utf8().get_data();
+	obj->SetName(p0);
 }
 
-bool DiscordAudioDevice::is_default() {
-	auto r = audio_device->IsDefault();
-	return r;
+bool DiscordppAudioDevice::IsDefault() {
+	return obj->IsDefault();
 }
 
-void DiscordAudioDevice::set_is_default(bool is_default) {
-	audio_device->SetIsDefault(is_default);
+void DiscordppAudioDevice::SetIsDefault(bool IsDefault) {
+	auto p0 = IsDefault;
+	obj->SetIsDefault(p0);
 }
 
-void DiscordAudioDevice::_bind_methods() {
-	ClassDB::bind_method(D_METHOD("equals", "rhs"),
-			&DiscordAudioDevice::equals);
+void DiscordppAudioDevice::_bind_methods() {
+	ClassDB::bind_method(D_METHOD("Drop"),
+			&DiscordppAudioDevice::Drop);
 
-	ClassDB::bind_method(D_METHOD("id"),
-			&DiscordAudioDevice::id);
+	ClassDB::bind_method(D_METHOD("Equals", "rhs"),
+			&DiscordppAudioDevice::Equals);
 
-	ClassDB::bind_method(D_METHOD("set_id", "id"),
-			&DiscordAudioDevice::set_id);
+	ClassDB::bind_method(D_METHOD("Id"),
+			&DiscordppAudioDevice::Id);
 
-	ClassDB::bind_method(D_METHOD("name"),
-			&DiscordAudioDevice::name);
+	ClassDB::bind_method(D_METHOD("SetId", "Id"),
+			&DiscordppAudioDevice::SetId);
 
-	ClassDB::bind_method(D_METHOD("set_name", "name"),
-			&DiscordAudioDevice::set_name);
+	ClassDB::bind_method(D_METHOD("Name"),
+			&DiscordppAudioDevice::Name);
 
-	ClassDB::bind_method(D_METHOD("is_default"),
-			&DiscordAudioDevice::is_default);
+	ClassDB::bind_method(D_METHOD("SetName", "Name"),
+			&DiscordppAudioDevice::SetName);
 
-	ClassDB::bind_method(D_METHOD("set_is_default", "is_default"),
-			&DiscordAudioDevice::set_is_default);
+	ClassDB::bind_method(D_METHOD("IsDefault"),
+			&DiscordppAudioDevice::IsDefault);
+
+	ClassDB::bind_method(D_METHOD("SetIsDefault", "IsDefault"),
+			&DiscordppAudioDevice::SetIsDefault);
 }
-
-DiscordAudioDevice::DiscordAudioDevice() {
-}
-
-DiscordAudioDevice::DiscordAudioDevice(discordpp::AudioDevice *audio_device) {
-	this->audio_device = audio_device;
-}
-
-DiscordAudioDevice::~DiscordAudioDevice() {}

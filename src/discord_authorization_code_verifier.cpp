@@ -1,53 +1,45 @@
-// AUTO-GENERATED
+
 #include "discord_classes.h"
 
 using namespace godot;
 
-discordpp::AuthorizationCodeVerifier *DiscordAuthorizationCodeVerifier::unwrap() {
-	return authorization_code_verifier;
+void DiscordppAuthorizationCodeVerifier::Drop() {
+	obj->Drop();
 }
 
-DiscordAuthorizationCodeChallenge *DiscordAuthorizationCodeVerifier::challenge() {
-	auto r = authorization_code_verifier->Challenge();
+DiscordppAuthorizationCodeChallenge *DiscordppAuthorizationCodeVerifier::Challenge() {
 	auto t_r = (discordpp::AuthorizationCodeChallenge *)memalloc(sizeof(discordpp::AuthorizationCodeChallenge));
-	*t_r = r;
-	return memnew(DiscordAuthorizationCodeChallenge{ t_r });
+	*t_r = obj->Challenge();
+	return memnew(DiscordppAuthorizationCodeChallenge{ t_r });
 }
 
-void DiscordAuthorizationCodeVerifier::set_challenge(DiscordAuthorizationCodeChallenge *challenge) {
-	auto p0 = *challenge->unwrap();
-	authorization_code_verifier->SetChallenge(p0);
+void DiscordppAuthorizationCodeVerifier::SetChallenge(DiscordppAuthorizationCodeChallenge *Challenge) {
+	auto p0 = *Challenge->unwrap();
+	obj->SetChallenge(p0);
 }
 
-String DiscordAuthorizationCodeVerifier::verifier() {
-	auto r = authorization_code_verifier->Verifier();
-	return String(r.c_str());
+String DiscordppAuthorizationCodeVerifier::Verifier() {
+	return String(obj->Verifier().c_str());
 }
 
-void DiscordAuthorizationCodeVerifier::set_verifier(String verifier) {
-	auto p0 = verifier.utf8().get_data();
-	authorization_code_verifier->SetVerifier(p0);
+void DiscordppAuthorizationCodeVerifier::SetVerifier(String Verifier) {
+	auto p0 = Verifier.utf8().get_data();
+	obj->SetVerifier(p0);
 }
 
-void DiscordAuthorizationCodeVerifier::_bind_methods() {
-	ClassDB::bind_method(D_METHOD("challenge"),
-			&DiscordAuthorizationCodeVerifier::challenge);
+void DiscordppAuthorizationCodeVerifier::_bind_methods() {
+	ClassDB::bind_method(D_METHOD("Drop"),
+			&DiscordppAuthorizationCodeVerifier::Drop);
 
-	ClassDB::bind_method(D_METHOD("set_challenge", "challenge"),
-			&DiscordAuthorizationCodeVerifier::set_challenge);
+	ClassDB::bind_method(D_METHOD("Challenge"),
+			&DiscordppAuthorizationCodeVerifier::Challenge);
 
-	ClassDB::bind_method(D_METHOD("verifier"),
-			&DiscordAuthorizationCodeVerifier::verifier);
+	ClassDB::bind_method(D_METHOD("SetChallenge", "Challenge"),
+			&DiscordppAuthorizationCodeVerifier::SetChallenge);
 
-	ClassDB::bind_method(D_METHOD("set_verifier", "verifier"),
-			&DiscordAuthorizationCodeVerifier::set_verifier);
+	ClassDB::bind_method(D_METHOD("Verifier"),
+			&DiscordppAuthorizationCodeVerifier::Verifier);
+
+	ClassDB::bind_method(D_METHOD("SetVerifier", "Verifier"),
+			&DiscordppAuthorizationCodeVerifier::SetVerifier);
 }
-
-DiscordAuthorizationCodeVerifier::DiscordAuthorizationCodeVerifier() {
-}
-
-DiscordAuthorizationCodeVerifier::DiscordAuthorizationCodeVerifier(discordpp::AuthorizationCodeVerifier *authorization_code_verifier) {
-	this->authorization_code_verifier = authorization_code_verifier;
-}
-
-DiscordAuthorizationCodeVerifier::~DiscordAuthorizationCodeVerifier() {}

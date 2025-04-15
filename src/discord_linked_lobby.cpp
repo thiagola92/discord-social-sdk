@@ -1,50 +1,43 @@
-// AUTO-GENERATED
+
 #include "discord_classes.h"
 
 using namespace godot;
 
-discordpp::LinkedLobby *DiscordLinkedLobby::unwrap() {
-	return linked_lobby;
+void DiscordppLinkedLobby::Drop() {
+	obj->Drop();
 }
 
-uint64_t DiscordLinkedLobby::application_id() {
-	auto r = linked_lobby->ApplicationId();
-	return r;
+uint64_t DiscordppLinkedLobby::ApplicationId() {
+	return obj->ApplicationId();
 }
 
-void DiscordLinkedLobby::set_application_id(uint64_t application_id) {
-	linked_lobby->SetApplicationId(application_id);
+void DiscordppLinkedLobby::SetApplicationId(uint64_t ApplicationId) {
+	auto p0 = ApplicationId;
+	obj->SetApplicationId(p0);
 }
 
-uint64_t DiscordLinkedLobby::lobby_id() {
-	auto r = linked_lobby->LobbyId();
-	return r;
+uint64_t DiscordppLinkedLobby::LobbyId() {
+	return obj->LobbyId();
 }
 
-void DiscordLinkedLobby::set_lobby_id(uint64_t lobby_id) {
-	linked_lobby->SetLobbyId(lobby_id);
+void DiscordppLinkedLobby::SetLobbyId(uint64_t LobbyId) {
+	auto p0 = LobbyId;
+	obj->SetLobbyId(p0);
 }
 
-void DiscordLinkedLobby::_bind_methods() {
-	ClassDB::bind_method(D_METHOD("application_id"),
-			&DiscordLinkedLobby::application_id);
+void DiscordppLinkedLobby::_bind_methods() {
+	ClassDB::bind_method(D_METHOD("Drop"),
+			&DiscordppLinkedLobby::Drop);
 
-	ClassDB::bind_method(D_METHOD("set_application_id", "application_id"),
-			&DiscordLinkedLobby::set_application_id);
+	ClassDB::bind_method(D_METHOD("ApplicationId"),
+			&DiscordppLinkedLobby::ApplicationId);
 
-	ClassDB::bind_method(D_METHOD("lobby_id"),
-			&DiscordLinkedLobby::lobby_id);
+	ClassDB::bind_method(D_METHOD("SetApplicationId", "ApplicationId"),
+			&DiscordppLinkedLobby::SetApplicationId);
 
-	ClassDB::bind_method(D_METHOD("set_lobby_id", "lobby_id"),
-			&DiscordLinkedLobby::set_lobby_id);
+	ClassDB::bind_method(D_METHOD("LobbyId"),
+			&DiscordppLinkedLobby::LobbyId);
+
+	ClassDB::bind_method(D_METHOD("SetLobbyId", "LobbyId"),
+			&DiscordppLinkedLobby::SetLobbyId);
 }
-
-DiscordLinkedLobby::DiscordLinkedLobby() {
-	this->linked_lobby = memnew(discordpp::LinkedLobby);
-}
-
-DiscordLinkedLobby::DiscordLinkedLobby(discordpp::LinkedLobby *linked_lobby) {
-	this->linked_lobby = linked_lobby;
-}
-
-DiscordLinkedLobby::~DiscordLinkedLobby() {}

@@ -1,65 +1,58 @@
-// AUTO-GENERATED
+
 #include "discord_classes.h"
 
 using namespace godot;
 
-discordpp::LinkedChannel *DiscordLinkedChannel::unwrap() {
-	return linked_channel;
+void DiscordppLinkedChannel::Drop() {
+	obj->Drop();
 }
 
-uint64_t DiscordLinkedChannel::id() {
-	auto r = linked_channel->Id();
-	return r;
+uint64_t DiscordppLinkedChannel::Id() {
+	return obj->Id();
 }
 
-void DiscordLinkedChannel::set_id(uint64_t id) {
-	linked_channel->SetId(id);
+void DiscordppLinkedChannel::SetId(uint64_t Id) {
+	auto p0 = Id;
+	obj->SetId(p0);
 }
 
-String DiscordLinkedChannel::name() {
-	auto r = linked_channel->Name();
-	return String(r.c_str());
+String DiscordppLinkedChannel::Name() {
+	return String(obj->Name().c_str());
 }
 
-void DiscordLinkedChannel::set_name(String name) {
-	auto p0 = name.utf8().get_data();
-	linked_channel->SetName(p0);
+void DiscordppLinkedChannel::SetName(String Name) {
+	auto p0 = Name.utf8().get_data();
+	obj->SetName(p0);
 }
 
-uint64_t DiscordLinkedChannel::guild_id() {
-	auto r = linked_channel->GuildId();
-	return r;
+uint64_t DiscordppLinkedChannel::GuildId() {
+	return obj->GuildId();
 }
 
-void DiscordLinkedChannel::set_guild_id(uint64_t guild_id) {
-	linked_channel->SetGuildId(guild_id);
+void DiscordppLinkedChannel::SetGuildId(uint64_t GuildId) {
+	auto p0 = GuildId;
+	obj->SetGuildId(p0);
 }
 
-void DiscordLinkedChannel::_bind_methods() {
-	ClassDB::bind_method(D_METHOD("id"),
-			&DiscordLinkedChannel::id);
+void DiscordppLinkedChannel::_bind_methods() {
+	ClassDB::bind_method(D_METHOD("Drop"),
+			&DiscordppLinkedChannel::Drop);
 
-	ClassDB::bind_method(D_METHOD("set_id", "id"),
-			&DiscordLinkedChannel::set_id);
+	ClassDB::bind_method(D_METHOD("Id"),
+			&DiscordppLinkedChannel::Id);
 
-	ClassDB::bind_method(D_METHOD("name"),
-			&DiscordLinkedChannel::name);
+	ClassDB::bind_method(D_METHOD("SetId", "Id"),
+			&DiscordppLinkedChannel::SetId);
 
-	ClassDB::bind_method(D_METHOD("set_name", "name"),
-			&DiscordLinkedChannel::set_name);
+	ClassDB::bind_method(D_METHOD("Name"),
+			&DiscordppLinkedChannel::Name);
 
-	ClassDB::bind_method(D_METHOD("guild_id"),
-			&DiscordLinkedChannel::guild_id);
+	ClassDB::bind_method(D_METHOD("SetName", "Name"),
+			&DiscordppLinkedChannel::SetName);
 
-	ClassDB::bind_method(D_METHOD("set_guild_id", "guild_id"),
-			&DiscordLinkedChannel::set_guild_id);
+	ClassDB::bind_method(D_METHOD("GuildId"),
+			&DiscordppLinkedChannel::GuildId);
+
+	ClassDB::bind_method(D_METHOD("SetGuildId", "GuildId"),
+			&DiscordppLinkedChannel::SetGuildId);
 }
-
-DiscordLinkedChannel::DiscordLinkedChannel() {
-}
-
-DiscordLinkedChannel::DiscordLinkedChannel(discordpp::LinkedChannel *linked_channel) {
-	this->linked_channel = linked_channel;
-}
-
-DiscordLinkedChannel::~DiscordLinkedChannel() {}

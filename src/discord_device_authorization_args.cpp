@@ -1,51 +1,43 @@
-// AUTO-GENERATED
+
 #include "discord_classes.h"
 
 using namespace godot;
 
-discordpp::DeviceAuthorizationArgs *DiscordDeviceAuthorizationArgs::unwrap() {
-	return device_authorization_args;
+void DiscordppDeviceAuthorizationArgs::Drop() {
+	obj->Drop();
 }
 
-uint64_t DiscordDeviceAuthorizationArgs::client_id() {
-	auto r = device_authorization_args->ClientId();
-	return r;
+uint64_t DiscordppDeviceAuthorizationArgs::ClientId() {
+	return obj->ClientId();
 }
 
-void DiscordDeviceAuthorizationArgs::set_client_id(uint64_t client_id) {
-	device_authorization_args->SetClientId(client_id);
+void DiscordppDeviceAuthorizationArgs::SetClientId(uint64_t ClientId) {
+	auto p0 = ClientId;
+	obj->SetClientId(p0);
 }
 
-String DiscordDeviceAuthorizationArgs::scopes() {
-	auto r = device_authorization_args->Scopes();
-	return String(r.c_str());
+String DiscordppDeviceAuthorizationArgs::Scopes() {
+	return String(obj->Scopes().c_str());
 }
 
-void DiscordDeviceAuthorizationArgs::set_scopes(String scopes) {
-	auto p0 = scopes.utf8().get_data();
-	device_authorization_args->SetScopes(p0);
+void DiscordppDeviceAuthorizationArgs::SetScopes(String Scopes) {
+	auto p0 = Scopes.utf8().get_data();
+	obj->SetScopes(p0);
 }
 
-void DiscordDeviceAuthorizationArgs::_bind_methods() {
-	ClassDB::bind_method(D_METHOD("client_id"),
-			&DiscordDeviceAuthorizationArgs::client_id);
+void DiscordppDeviceAuthorizationArgs::_bind_methods() {
+	ClassDB::bind_method(D_METHOD("Drop"),
+			&DiscordppDeviceAuthorizationArgs::Drop);
 
-	ClassDB::bind_method(D_METHOD("set_client_id", "client_id"),
-			&DiscordDeviceAuthorizationArgs::set_client_id);
+	ClassDB::bind_method(D_METHOD("ClientId"),
+			&DiscordppDeviceAuthorizationArgs::ClientId);
 
-	ClassDB::bind_method(D_METHOD("scopes"),
-			&DiscordDeviceAuthorizationArgs::scopes);
+	ClassDB::bind_method(D_METHOD("SetClientId", "ClientId"),
+			&DiscordppDeviceAuthorizationArgs::SetClientId);
 
-	ClassDB::bind_method(D_METHOD("set_scopes", "scopes"),
-			&DiscordDeviceAuthorizationArgs::set_scopes);
+	ClassDB::bind_method(D_METHOD("Scopes"),
+			&DiscordppDeviceAuthorizationArgs::Scopes);
+
+	ClassDB::bind_method(D_METHOD("SetScopes", "Scopes"),
+			&DiscordppDeviceAuthorizationArgs::SetScopes);
 }
-
-DiscordDeviceAuthorizationArgs::DiscordDeviceAuthorizationArgs() {
-	this->device_authorization_args = memnew(discordpp::DeviceAuthorizationArgs);
-}
-
-DiscordDeviceAuthorizationArgs::DiscordDeviceAuthorizationArgs(discordpp::DeviceAuthorizationArgs *device_authorization_args) {
-	this->device_authorization_args = device_authorization_args;
-}
-
-DiscordDeviceAuthorizationArgs::~DiscordDeviceAuthorizationArgs() {}

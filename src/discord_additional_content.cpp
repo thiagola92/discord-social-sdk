@@ -1,30 +1,33 @@
-// AUTO-GENERATED
+
 #include "discord_classes.h"
 
 using namespace godot;
 
-discordpp::AdditionalContent *DiscordAdditionalContent::unwrap() {
-	return additional_content;
+void DiscordppAdditionalContent::Drop() {
+	obj->Drop();
 }
 
-bool DiscordAdditionalContent::equals(DiscordAdditionalContent *rhs) {
+bool DiscordppAdditionalContent::Equals(DiscordppAdditionalContent *rhs) {
 	auto p0 = *rhs->unwrap();
-	auto r = additional_content->Equals(p0);
-	return r;
+	return obj->Equals(p0);
 }
 
-DiscordAdditionalContentType::Enum DiscordAdditionalContent::type() {
-	auto r = additional_content->Type();
-	return (DiscordAdditionalContentType::Enum)r;
-}
-
-void DiscordAdditionalContent::set_type(DiscordAdditionalContentType::Enum type) {
+String DiscordppAdditionalContent::TypeToString(DiscordppAdditionalContentType::Enum type) {
 	auto p0 = (discordpp::AdditionalContentType)type;
-	additional_content->SetType(p0);
+	return String(obj->TypeToString(p0).c_str());
 }
 
-Variant DiscordAdditionalContent::title() {
-	auto r = additional_content->Title();
+DiscordppAdditionalContentType::Enum DiscordppAdditionalContent::Type() {
+	return (DiscordppAdditionalContentType::Enum)obj->Type();
+}
+
+void DiscordppAdditionalContent::SetType(DiscordppAdditionalContentType::Enum Type) {
+	auto p0 = (discordpp::AdditionalContentType)Type;
+	obj->SetType(p0);
+}
+
+Variant DiscordppAdditionalContent::Title() {
+	auto r = obj->Title();
 
 	if (!r.has_value()) {
 		return nullptr;
@@ -33,54 +36,50 @@ Variant DiscordAdditionalContent::title() {
 	return Variant(r.value().c_str());
 }
 
-void DiscordAdditionalContent::set_title(Variant title) {
+void DiscordppAdditionalContent::SetTitle(Variant Title) {
 	std::optional<std::string> p0;
 
-	if (title.get_type() == Variant::STRING) {
-		p0 = title.stringify().utf8().get_data();
+	if (Title.get_type() == Variant::STRING) {
+		p0 = Title.stringify().utf8().get_data();
 	}
 
-	additional_content->SetTitle(p0);
+	obj->SetTitle(p0);
 }
 
-uint8_t DiscordAdditionalContent::count() {
-	auto r = additional_content->Count();
-	return r;
+uint8_t DiscordppAdditionalContent::Count() {
+	return obj->Count();
 }
 
-void DiscordAdditionalContent::set_count(uint8_t count) {
-	additional_content->SetCount(count);
+void DiscordppAdditionalContent::SetCount(uint8_t Count) {
+	auto p0 = Count;
+	obj->SetCount(p0);
 }
 
-void DiscordAdditionalContent::_bind_methods() {
-	ClassDB::bind_method(D_METHOD("equals", "rhs"),
-			&DiscordAdditionalContent::equals);
+void DiscordppAdditionalContent::_bind_methods() {
+	ClassDB::bind_method(D_METHOD("Drop"),
+			&DiscordppAdditionalContent::Drop);
 
-	ClassDB::bind_method(D_METHOD("type"),
-			&DiscordAdditionalContent::type);
+	ClassDB::bind_method(D_METHOD("Equals", "rhs"),
+			&DiscordppAdditionalContent::Equals);
 
-	ClassDB::bind_method(D_METHOD("set_type", "type"),
-			&DiscordAdditionalContent::set_type);
+	ClassDB::bind_method(D_METHOD("TypeToString", "type"),
+			&DiscordppAdditionalContent::TypeToString);
 
-	ClassDB::bind_method(D_METHOD("title"),
-			&DiscordAdditionalContent::title);
+	ClassDB::bind_method(D_METHOD("Type"),
+			&DiscordppAdditionalContent::Type);
 
-	ClassDB::bind_method(D_METHOD("set_title", "title"),
-			&DiscordAdditionalContent::set_title);
+	ClassDB::bind_method(D_METHOD("SetType", "Type"),
+			&DiscordppAdditionalContent::SetType);
 
-	ClassDB::bind_method(D_METHOD("count"),
-			&DiscordAdditionalContent::count);
+	ClassDB::bind_method(D_METHOD("Title"),
+			&DiscordppAdditionalContent::Title);
 
-	ClassDB::bind_method(D_METHOD("set_count", "count"),
-			&DiscordAdditionalContent::set_count);
+	ClassDB::bind_method(D_METHOD("SetTitle", "Title"),
+			&DiscordppAdditionalContent::SetTitle);
+
+	ClassDB::bind_method(D_METHOD("Count"),
+			&DiscordppAdditionalContent::Count);
+
+	ClassDB::bind_method(D_METHOD("SetCount", "Count"),
+			&DiscordppAdditionalContent::SetCount);
 }
-
-DiscordAdditionalContent::DiscordAdditionalContent() {
-	this->additional_content = memnew(discordpp::AdditionalContent);
-}
-
-DiscordAdditionalContent::DiscordAdditionalContent(discordpp::AdditionalContent *additional_content) {
-	this->additional_content = additional_content;
-}
-
-DiscordAdditionalContent::~DiscordAdditionalContent() {}

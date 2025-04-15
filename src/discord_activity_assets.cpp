@@ -1,14 +1,14 @@
-// AUTO-GENERATED
+
 #include "discord_classes.h"
 
 using namespace godot;
 
-discordpp::ActivityAssets *DiscordActivityAssets::unwrap() {
-	return activity_assets;
+void DiscordppActivityAssets::Drop() {
+	obj->Drop();
 }
 
-Variant DiscordActivityAssets::large_image() {
-	auto r = activity_assets->LargeImage();
+Variant DiscordppActivityAssets::LargeImage() {
+	auto r = obj->LargeImage();
 
 	if (!r.has_value()) {
 		return nullptr;
@@ -17,18 +17,18 @@ Variant DiscordActivityAssets::large_image() {
 	return Variant(r.value().c_str());
 }
 
-void DiscordActivityAssets::set_large_image(Variant large_image) {
+void DiscordppActivityAssets::SetLargeImage(Variant LargeImage) {
 	std::optional<std::string> p0;
 
-	if (large_image.get_type() == Variant::STRING) {
-		p0 = large_image.stringify().utf8().get_data();
+	if (LargeImage.get_type() == Variant::STRING) {
+		p0 = LargeImage.stringify().utf8().get_data();
 	}
 
-	activity_assets->SetLargeImage(p0);
+	obj->SetLargeImage(p0);
 }
 
-Variant DiscordActivityAssets::large_text() {
-	auto r = activity_assets->LargeText();
+Variant DiscordppActivityAssets::LargeText() {
+	auto r = obj->LargeText();
 
 	if (!r.has_value()) {
 		return nullptr;
@@ -37,18 +37,18 @@ Variant DiscordActivityAssets::large_text() {
 	return Variant(r.value().c_str());
 }
 
-void DiscordActivityAssets::set_large_text(Variant large_text) {
+void DiscordppActivityAssets::SetLargeText(Variant LargeText) {
 	std::optional<std::string> p0;
 
-	if (large_text.get_type() == Variant::STRING) {
-		p0 = large_text.stringify().utf8().get_data();
+	if (LargeText.get_type() == Variant::STRING) {
+		p0 = LargeText.stringify().utf8().get_data();
 	}
 
-	activity_assets->SetLargeText(p0);
+	obj->SetLargeText(p0);
 }
 
-Variant DiscordActivityAssets::small_image() {
-	auto r = activity_assets->SmallImage();
+Variant DiscordppActivityAssets::SmallImage() {
+	auto r = obj->SmallImage();
 
 	if (!r.has_value()) {
 		return nullptr;
@@ -57,18 +57,18 @@ Variant DiscordActivityAssets::small_image() {
 	return Variant(r.value().c_str());
 }
 
-void DiscordActivityAssets::set_small_image(Variant small_image) {
+void DiscordppActivityAssets::SetSmallImage(Variant SmallImage) {
 	std::optional<std::string> p0;
 
-	if (small_image.get_type() == Variant::STRING) {
-		p0 = small_image.stringify().utf8().get_data();
+	if (SmallImage.get_type() == Variant::STRING) {
+		p0 = SmallImage.stringify().utf8().get_data();
 	}
 
-	activity_assets->SetSmallImage(p0);
+	obj->SetSmallImage(p0);
 }
 
-Variant DiscordActivityAssets::small_text() {
-	auto r = activity_assets->SmallText();
+Variant DiscordppActivityAssets::SmallText() {
+	auto r = obj->SmallText();
 
 	if (!r.has_value()) {
 		return nullptr;
@@ -77,48 +77,41 @@ Variant DiscordActivityAssets::small_text() {
 	return Variant(r.value().c_str());
 }
 
-void DiscordActivityAssets::set_small_text(Variant small_text) {
+void DiscordppActivityAssets::SetSmallText(Variant SmallText) {
 	std::optional<std::string> p0;
 
-	if (small_text.get_type() == Variant::STRING) {
-		p0 = small_text.stringify().utf8().get_data();
+	if (SmallText.get_type() == Variant::STRING) {
+		p0 = SmallText.stringify().utf8().get_data();
 	}
 
-	activity_assets->SetSmallText(p0);
+	obj->SetSmallText(p0);
 }
 
-void DiscordActivityAssets::_bind_methods() {
-	ClassDB::bind_method(D_METHOD("large_image"),
-			&DiscordActivityAssets::large_image);
+void DiscordppActivityAssets::_bind_methods() {
+	ClassDB::bind_method(D_METHOD("Drop"),
+			&DiscordppActivityAssets::Drop);
 
-	ClassDB::bind_method(D_METHOD("set_large_image", "large_image"),
-			&DiscordActivityAssets::set_large_image);
+	ClassDB::bind_method(D_METHOD("LargeImage"),
+			&DiscordppActivityAssets::LargeImage);
 
-	ClassDB::bind_method(D_METHOD("large_text"),
-			&DiscordActivityAssets::large_text);
+	ClassDB::bind_method(D_METHOD("SetLargeImage", "LargeImage"),
+			&DiscordppActivityAssets::SetLargeImage);
 
-	ClassDB::bind_method(D_METHOD("set_large_text", "large_text"),
-			&DiscordActivityAssets::set_large_text);
+	ClassDB::bind_method(D_METHOD("LargeText"),
+			&DiscordppActivityAssets::LargeText);
 
-	ClassDB::bind_method(D_METHOD("small_image"),
-			&DiscordActivityAssets::small_image);
+	ClassDB::bind_method(D_METHOD("SetLargeText", "LargeText"),
+			&DiscordppActivityAssets::SetLargeText);
 
-	ClassDB::bind_method(D_METHOD("set_small_image", "small_image"),
-			&DiscordActivityAssets::set_small_image);
+	ClassDB::bind_method(D_METHOD("SmallImage"),
+			&DiscordppActivityAssets::SmallImage);
 
-	ClassDB::bind_method(D_METHOD("small_text"),
-			&DiscordActivityAssets::small_text);
+	ClassDB::bind_method(D_METHOD("SetSmallImage", "SmallImage"),
+			&DiscordppActivityAssets::SetSmallImage);
 
-	ClassDB::bind_method(D_METHOD("set_small_text", "small_text"),
-			&DiscordActivityAssets::set_small_text);
+	ClassDB::bind_method(D_METHOD("SmallText"),
+			&DiscordppActivityAssets::SmallText);
+
+	ClassDB::bind_method(D_METHOD("SetSmallText", "SmallText"),
+			&DiscordppActivityAssets::SetSmallText);
 }
-
-DiscordActivityAssets::DiscordActivityAssets() {
-	this->activity_assets = memnew(discordpp::ActivityAssets);
-}
-
-DiscordActivityAssets::DiscordActivityAssets(discordpp::ActivityAssets *activity_assets) {
-	this->activity_assets = activity_assets;
-}
-
-DiscordActivityAssets::~DiscordActivityAssets() {}

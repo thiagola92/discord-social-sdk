@@ -1,151 +1,140 @@
-// AUTO-GENERATED
+
 #include "discord_classes.h"
 
 using namespace godot;
 
-discordpp::ClientResult *DiscordClientResult::unwrap() {
-	return client_result;
+void DiscordppClientResult::Drop() {
+	obj->Drop();
 }
 
-String DiscordClientResult::to_string() {
-	auto r = client_result->ToString();
-	return String(r.c_str());
+String DiscordppClientResult::ToString() {
+	return String(obj->ToString().c_str());
 }
 
-DiscordErrorType::Enum DiscordClientResult::type() {
-	auto r = client_result->Type();
-	return (DiscordErrorType::Enum)r;
+DiscordppErrorType::Enum DiscordppClientResult::Type() {
+	return (DiscordppErrorType::Enum)obj->Type();
 }
 
-void DiscordClientResult::set_type(DiscordErrorType::Enum type) {
-	auto p0 = (discordpp::ErrorType)type;
-	client_result->SetType(p0);
+void DiscordppClientResult::SetType(DiscordppErrorType::Enum Type) {
+	auto p0 = (discordpp::ErrorType)Type;
+	obj->SetType(p0);
 }
 
-String DiscordClientResult::error() {
-	auto r = client_result->Error();
-	return String(r.c_str());
+String DiscordppClientResult::Error() {
+	return String(obj->Error().c_str());
 }
 
-void DiscordClientResult::set_error(String error) {
-	auto p0 = error.utf8().get_data();
-	client_result->SetError(p0);
+void DiscordppClientResult::SetError(String Error) {
+	auto p0 = Error.utf8().get_data();
+	obj->SetError(p0);
 }
 
-int32_t DiscordClientResult::error_code() {
-	auto r = client_result->ErrorCode();
-	return r;
+int32_t DiscordppClientResult::ErrorCode() {
+	return obj->ErrorCode();
 }
 
-void DiscordClientResult::set_error_code(int32_t error_code) {
-	client_result->SetErrorCode(error_code);
+void DiscordppClientResult::SetErrorCode(int32_t ErrorCode) {
+	auto p0 = ErrorCode;
+	obj->SetErrorCode(p0);
 }
 
-DiscordHttpStatusCode::Enum DiscordClientResult::status() {
-	auto r = client_result->Status();
-	return (DiscordHttpStatusCode::Enum)r;
+DiscordppHttpStatusCode::Enum DiscordppClientResult::Status() {
+	return (DiscordppHttpStatusCode::Enum)obj->Status();
 }
 
-void DiscordClientResult::set_status(DiscordHttpStatusCode::Enum status) {
-	auto p0 = (discordpp::HttpStatusCode)status;
-	client_result->SetStatus(p0);
+void DiscordppClientResult::SetStatus(DiscordppHttpStatusCode::Enum Status) {
+	auto p0 = (discordpp::HttpStatusCode)Status;
+	obj->SetStatus(p0);
 }
 
-String DiscordClientResult::response_body() {
-	auto r = client_result->ResponseBody();
-	return String(r.c_str());
+String DiscordppClientResult::ResponseBody() {
+	return String(obj->ResponseBody().c_str());
 }
 
-void DiscordClientResult::set_response_body(String response_body) {
-	auto p0 = response_body.utf8().get_data();
-	client_result->SetResponseBody(p0);
+void DiscordppClientResult::SetResponseBody(String ResponseBody) {
+	auto p0 = ResponseBody.utf8().get_data();
+	obj->SetResponseBody(p0);
 }
 
-bool DiscordClientResult::successful() {
-	auto r = client_result->Successful();
-	return r;
+bool DiscordppClientResult::Successful() {
+	return obj->Successful();
 }
 
-void DiscordClientResult::set_successful(bool successful) {
-	client_result->SetSuccessful(successful);
+void DiscordppClientResult::SetSuccessful(bool Successful) {
+	auto p0 = Successful;
+	obj->SetSuccessful(p0);
 }
 
-bool DiscordClientResult::retryable() {
-	auto r = client_result->Retryable();
-	return r;
+bool DiscordppClientResult::Retryable() {
+	return obj->Retryable();
 }
 
-void DiscordClientResult::set_retryable(bool retryable) {
-	client_result->SetRetryable(retryable);
+void DiscordppClientResult::SetRetryable(bool Retryable) {
+	auto p0 = Retryable;
+	obj->SetRetryable(p0);
 }
 
-float DiscordClientResult::retry_after() {
-	auto r = client_result->RetryAfter();
-	return r;
+float DiscordppClientResult::RetryAfter() {
+	return obj->RetryAfter();
 }
 
-void DiscordClientResult::set_retry_after(float retry_after) {
-	client_result->SetRetryAfter(retry_after);
+void DiscordppClientResult::SetRetryAfter(float RetryAfter) {
+	auto p0 = RetryAfter;
+	obj->SetRetryAfter(p0);
 }
 
-void DiscordClientResult::_bind_methods() {
-	ClassDB::bind_method(D_METHOD("to_string"),
-			&DiscordClientResult::to_string);
+void DiscordppClientResult::_bind_methods() {
+	ClassDB::bind_method(D_METHOD("Drop"),
+			&DiscordppClientResult::Drop);
 
-	ClassDB::bind_method(D_METHOD("type"),
-			&DiscordClientResult::type);
+	ClassDB::bind_method(D_METHOD("ToString"),
+			&DiscordppClientResult::ToString);
 
-	ClassDB::bind_method(D_METHOD("set_type", "type"),
-			&DiscordClientResult::set_type);
+	ClassDB::bind_method(D_METHOD("Type"),
+			&DiscordppClientResult::Type);
 
-	ClassDB::bind_method(D_METHOD("error"),
-			&DiscordClientResult::error);
+	ClassDB::bind_method(D_METHOD("SetType", "Type"),
+			&DiscordppClientResult::SetType);
 
-	ClassDB::bind_method(D_METHOD("set_error", "error"),
-			&DiscordClientResult::set_error);
+	ClassDB::bind_method(D_METHOD("Error"),
+			&DiscordppClientResult::Error);
 
-	ClassDB::bind_method(D_METHOD("error_code"),
-			&DiscordClientResult::error_code);
+	ClassDB::bind_method(D_METHOD("SetError", "Error"),
+			&DiscordppClientResult::SetError);
 
-	ClassDB::bind_method(D_METHOD("set_error_code", "error_code"),
-			&DiscordClientResult::set_error_code);
+	ClassDB::bind_method(D_METHOD("ErrorCode"),
+			&DiscordppClientResult::ErrorCode);
 
-	ClassDB::bind_method(D_METHOD("status"),
-			&DiscordClientResult::status);
+	ClassDB::bind_method(D_METHOD("SetErrorCode", "ErrorCode"),
+			&DiscordppClientResult::SetErrorCode);
 
-	ClassDB::bind_method(D_METHOD("set_status", "status"),
-			&DiscordClientResult::set_status);
+	ClassDB::bind_method(D_METHOD("Status"),
+			&DiscordppClientResult::Status);
 
-	ClassDB::bind_method(D_METHOD("response_body"),
-			&DiscordClientResult::response_body);
+	ClassDB::bind_method(D_METHOD("SetStatus", "Status"),
+			&DiscordppClientResult::SetStatus);
 
-	ClassDB::bind_method(D_METHOD("set_response_body", "response_body"),
-			&DiscordClientResult::set_response_body);
+	ClassDB::bind_method(D_METHOD("ResponseBody"),
+			&DiscordppClientResult::ResponseBody);
 
-	ClassDB::bind_method(D_METHOD("successful"),
-			&DiscordClientResult::successful);
+	ClassDB::bind_method(D_METHOD("SetResponseBody", "ResponseBody"),
+			&DiscordppClientResult::SetResponseBody);
 
-	ClassDB::bind_method(D_METHOD("set_successful", "successful"),
-			&DiscordClientResult::set_successful);
+	ClassDB::bind_method(D_METHOD("Successful"),
+			&DiscordppClientResult::Successful);
 
-	ClassDB::bind_method(D_METHOD("retryable"),
-			&DiscordClientResult::retryable);
+	ClassDB::bind_method(D_METHOD("SetSuccessful", "Successful"),
+			&DiscordppClientResult::SetSuccessful);
 
-	ClassDB::bind_method(D_METHOD("set_retryable", "retryable"),
-			&DiscordClientResult::set_retryable);
+	ClassDB::bind_method(D_METHOD("Retryable"),
+			&DiscordppClientResult::Retryable);
 
-	ClassDB::bind_method(D_METHOD("retry_after"),
-			&DiscordClientResult::retry_after);
+	ClassDB::bind_method(D_METHOD("SetRetryable", "Retryable"),
+			&DiscordppClientResult::SetRetryable);
 
-	ClassDB::bind_method(D_METHOD("set_retry_after", "retry_after"),
-			&DiscordClientResult::set_retry_after);
+	ClassDB::bind_method(D_METHOD("RetryAfter"),
+			&DiscordppClientResult::RetryAfter);
+
+	ClassDB::bind_method(D_METHOD("SetRetryAfter", "RetryAfter"),
+			&DiscordppClientResult::SetRetryAfter);
 }
-
-DiscordClientResult::DiscordClientResult() {
-}
-
-DiscordClientResult::DiscordClientResult(discordpp::ClientResult *client_result) {
-	this->client_result = client_result;
-}
-
-DiscordClientResult::~DiscordClientResult() {}

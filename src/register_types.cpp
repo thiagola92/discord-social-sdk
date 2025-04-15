@@ -1,3 +1,4 @@
+
 #include "register_types.h"
 #include "discord_classes.h"
 #include "discord_enum.h"
@@ -13,58 +14,60 @@ void initialize_module(ModuleInitializationLevel p_level) {
 		return;
 	}
 
-	GDREGISTER_RUNTIME_CLASS(DiscordActivity);
-	GDREGISTER_RUNTIME_CLASS(DiscordActivityAssets);
-	GDREGISTER_RUNTIME_CLASS(DiscordActivityInvite);
-	GDREGISTER_RUNTIME_CLASS(DiscordActivityParty);
-	GDREGISTER_RUNTIME_CLASS(DiscordActivitySecrets);
-	GDREGISTER_RUNTIME_CLASS(DiscordActivityTimestamps);
-	GDREGISTER_RUNTIME_CLASS(DiscordAdditionalContent);
-	GDREGISTER_RUNTIME_CLASS(DiscordAudioDevice);
-	GDREGISTER_RUNTIME_CLASS(DiscordAuthorizationArgs);
-	GDREGISTER_RUNTIME_CLASS(DiscordAuthorizationCodeChallenge);
-	GDREGISTER_RUNTIME_CLASS(DiscordAuthorizationCodeVerifier);
-	GDREGISTER_RUNTIME_CLASS(DiscordCall);
-	GDREGISTER_RUNTIME_CLASS(DiscordCallInfoHandle);
-	GDREGISTER_RUNTIME_CLASS(DiscordChannelHandle);
-	GDREGISTER_RUNTIME_CLASS(DiscordClient);
-	GDREGISTER_RUNTIME_CLASS(DiscordClientResult);
-	GDREGISTER_RUNTIME_CLASS(DiscordDeviceAuthorizationArgs);
-	GDREGISTER_RUNTIME_CLASS(DiscordGuildChannel);
-	GDREGISTER_RUNTIME_CLASS(DiscordGuildMinimal);
-	GDREGISTER_RUNTIME_CLASS(DiscordLinkedChannel);
-	GDREGISTER_RUNTIME_CLASS(DiscordLinkedLobby);
-	GDREGISTER_RUNTIME_CLASS(DiscordLobbyHandle);
-	GDREGISTER_RUNTIME_CLASS(DiscordLobbyMemberHandle);
-	GDREGISTER_RUNTIME_CLASS(DiscordMessageHandle);
-	GDREGISTER_RUNTIME_CLASS(DiscordRelationshipHandle);
-	GDREGISTER_RUNTIME_CLASS(DiscordUserHandle);
-	GDREGISTER_RUNTIME_CLASS(DiscordVADThresholdSettings);
-	GDREGISTER_RUNTIME_CLASS(DiscordVoiceStateHandle);
-
 	// discord_enum.h
-	GDREGISTER_ABSTRACT_CLASS(DiscordActivityActionTypes);
-	GDREGISTER_ABSTRACT_CLASS(DiscordActivityPartyPrivacy);
-	GDREGISTER_ABSTRACT_CLASS(DiscordActivityTypes);
-	GDREGISTER_ABSTRACT_CLASS(DiscordActivityGamePlatforms);
-	GDREGISTER_ABSTRACT_CLASS(DiscordErrorType);
-	GDREGISTER_ABSTRACT_CLASS(DiscordHttpStatusCode);
-	GDREGISTER_ABSTRACT_CLASS(DiscordAuthenticationCodeChallengeMethod);
-	GDREGISTER_ABSTRACT_CLASS(DiscordAdditionalContentType);
-	GDREGISTER_ABSTRACT_CLASS(DiscordCallError);
-	GDREGISTER_ABSTRACT_CLASS(DiscordAudioModeType);
-	GDREGISTER_ABSTRACT_CLASS(DiscordCallStatus);
-	GDREGISTER_ABSTRACT_CLASS(DiscordChannelType);
-	GDREGISTER_ABSTRACT_CLASS(DiscordRelationshipType);
-	GDREGISTER_ABSTRACT_CLASS(DiscordUserHandleAvatarType);
-	GDREGISTER_ABSTRACT_CLASS(DiscordStatusType);
-	GDREGISTER_ABSTRACT_CLASS(DiscordDisclosureTypes);
-	GDREGISTER_ABSTRACT_CLASS(DiscordClientError);
-	GDREGISTER_ABSTRACT_CLASS(DiscordClientStatus);
-	GDREGISTER_ABSTRACT_CLASS(DiscordClientThread);
-	GDREGISTER_ABSTRACT_CLASS(DiscordAuthorizationTokenType);
-	GDREGISTER_ABSTRACT_CLASS(DiscordAuthenticationExternalAuthType);
-	GDREGISTER_ABSTRACT_CLASS(DiscordLoggingSeverity);
+	GDREGISTER_ABSTRACT_CLASS(DiscordppActivityActionTypes);
+	GDREGISTER_ABSTRACT_CLASS(DiscordppActivityPartyPrivacy);
+	GDREGISTER_ABSTRACT_CLASS(DiscordppActivityTypes);
+	GDREGISTER_ABSTRACT_CLASS(DiscordppActivityGamePlatforms);
+	GDREGISTER_ABSTRACT_CLASS(DiscordppErrorType);
+	GDREGISTER_ABSTRACT_CLASS(DiscordppHttpStatusCode);
+	GDREGISTER_ABSTRACT_CLASS(DiscordppAuthenticationCodeChallengeMethod);
+	GDREGISTER_ABSTRACT_CLASS(DiscordppAdditionalContentType);
+	GDREGISTER_ABSTRACT_CLASS(DiscordppAudioModeType);
+	GDREGISTER_ABSTRACT_CLASS(DiscordppChannelType);
+	GDREGISTER_ABSTRACT_CLASS(DiscordppRelationshipType);
+	GDREGISTER_ABSTRACT_CLASS(DiscordppStatusType);
+	GDREGISTER_ABSTRACT_CLASS(DiscordppDisclosureTypes);
+	GDREGISTER_ABSTRACT_CLASS(DiscordppAuthorizationTokenType);
+	GDREGISTER_ABSTRACT_CLASS(DiscordppAuthenticationExternalAuthType);
+	GDREGISTER_ABSTRACT_CLASS(DiscordppLoggingSeverity);
+	GDREGISTER_ABSTRACT_CLASS(DiscordppCallError);
+	GDREGISTER_ABSTRACT_CLASS(DiscordppCallStatus);
+	GDREGISTER_ABSTRACT_CLASS(DiscordppUserHandleAvatarType);
+	GDREGISTER_ABSTRACT_CLASS(DiscordppClientError);
+	GDREGISTER_ABSTRACT_CLASS(DiscordppClientStatus);
+	GDREGISTER_ABSTRACT_CLASS(DiscordppClientThread);
+
+	// discord_classes.h
+	GDREGISTER_RUNTIME_CLASS(Discordpp);
+	GDREGISTER_RUNTIME_CLASS(DiscordppActivityInvite);
+	GDREGISTER_RUNTIME_CLASS(DiscordppActivityAssets);
+	GDREGISTER_RUNTIME_CLASS(DiscordppActivityTimestamps);
+	GDREGISTER_RUNTIME_CLASS(DiscordppActivityParty);
+	GDREGISTER_RUNTIME_CLASS(DiscordppActivitySecrets);
+	GDREGISTER_RUNTIME_CLASS(DiscordppActivity);
+	GDREGISTER_RUNTIME_CLASS(DiscordppClientResult);
+	GDREGISTER_RUNTIME_CLASS(DiscordppAuthorizationCodeChallenge);
+	GDREGISTER_RUNTIME_CLASS(DiscordppAuthorizationCodeVerifier);
+	GDREGISTER_RUNTIME_CLASS(DiscordppAuthorizationArgs);
+	GDREGISTER_RUNTIME_CLASS(DiscordppDeviceAuthorizationArgs);
+	GDREGISTER_RUNTIME_CLASS(DiscordppVoiceStateHandle);
+	GDREGISTER_RUNTIME_CLASS(DiscordppVADThresholdSettings);
+	GDREGISTER_RUNTIME_CLASS(DiscordppCall);
+	GDREGISTER_RUNTIME_CLASS(DiscordppChannelHandle);
+	GDREGISTER_RUNTIME_CLASS(DiscordppGuildMinimal);
+	GDREGISTER_RUNTIME_CLASS(DiscordppGuildChannel);
+	GDREGISTER_RUNTIME_CLASS(DiscordppLinkedLobby);
+	GDREGISTER_RUNTIME_CLASS(DiscordppLinkedChannel);
+	GDREGISTER_RUNTIME_CLASS(DiscordppRelationshipHandle);
+	GDREGISTER_RUNTIME_CLASS(DiscordppUserHandle);
+	GDREGISTER_RUNTIME_CLASS(DiscordppLobbyMemberHandle);
+	GDREGISTER_RUNTIME_CLASS(DiscordppLobbyHandle);
+	GDREGISTER_RUNTIME_CLASS(DiscordppAdditionalContent);
+	GDREGISTER_RUNTIME_CLASS(DiscordppMessageHandle);
+	GDREGISTER_RUNTIME_CLASS(DiscordppAudioDevice);
+	GDREGISTER_RUNTIME_CLASS(DiscordppClient);
+	GDREGISTER_RUNTIME_CLASS(DiscordppCallInfoHandle);
 }
 
 void uninitialize_module(ModuleInitializationLevel p_level) {

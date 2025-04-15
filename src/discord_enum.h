@@ -1,3 +1,4 @@
+
 #ifndef DISCORD_ENUM_H
 #define DISCORD_ENUM_H
 
@@ -8,283 +9,286 @@
 
 namespace godot {
 
-class DiscordActivityActionTypes : public RefCounted {
-	GDCLASS(DiscordActivityActionTypes, RefCounted)
+class DiscordppActivityActionTypes : public RefCounted {
+	GDCLASS(DiscordppActivityActionTypes, RefCounted)
 
 private:
-	DiscordActivityActionTypes(){};
-	~DiscordActivityActionTypes(){};
-
-protected:
-	static void _bind_methods() {}
-
-public:
-	enum Enum {
-		JOIN = 1,
-		JOIN_REQUEST = 5,
-	};
-};
-
-class DiscordActivityPartyPrivacy : public RefCounted {
-	GDCLASS(DiscordActivityPartyPrivacy, RefCounted)
-
-private:
-	DiscordActivityPartyPrivacy(){};
-	~DiscordActivityPartyPrivacy(){};
+	DiscordppActivityActionTypes(){};
+	~DiscordppActivityActionTypes(){};
 
 protected:
 	static void _bind_methods() {
-		BIND_ENUM_CONSTANT(PRIVATE);
-		BIND_ENUM_CONSTANT(PUBLIC);
+		BIND_ENUM_CONSTANT(Join);
+		BIND_ENUM_CONSTANT(JoinRequest);
 	}
 
 public:
 	enum Enum {
-		PRIVATE = 0,
-		PUBLIC = 1,
+		Join = 1,
+		JoinRequest = 5,
 	};
 };
 
-class DiscordActivityTypes : public RefCounted {
-	GDCLASS(DiscordActivityTypes, RefCounted)
+class DiscordppActivityPartyPrivacy : public RefCounted {
+	GDCLASS(DiscordppActivityPartyPrivacy, RefCounted)
 
 private:
-	DiscordActivityTypes(){};
-	~DiscordActivityTypes(){};
+	DiscordppActivityPartyPrivacy(){};
+	~DiscordppActivityPartyPrivacy(){};
 
 protected:
 	static void _bind_methods() {
-		BIND_ENUM_CONSTANT(PLAYING);
-		BIND_ENUM_CONSTANT(STREAMING);
-		BIND_ENUM_CONSTANT(LISTENING);
-		BIND_ENUM_CONSTANT(WATCHING);
-		BIND_ENUM_CONSTANT(CUSTOM_STATUS);
-		BIND_ENUM_CONSTANT(COMPETING);
-		BIND_ENUM_CONSTANT(HANG_STATUS);
+		BIND_ENUM_CONSTANT(Private);
+		BIND_ENUM_CONSTANT(Public);
 	}
 
 public:
 	enum Enum {
-		PLAYING = 0,
-		STREAMING = 1,
-		LISTENING = 2,
-		WATCHING = 3,
-		CUSTOM_STATUS = 4,
-		COMPETING = 5,
-		HANG_STATUS = 6,
+		Private = 0,
+		Public = 1,
 	};
 };
 
-class DiscordActivityGamePlatforms : public RefCounted {
-	GDCLASS(DiscordActivityGamePlatforms, RefCounted)
+class DiscordppActivityTypes : public RefCounted {
+	GDCLASS(DiscordppActivityTypes, RefCounted)
 
 private:
-	DiscordActivityGamePlatforms(){};
-	~DiscordActivityGamePlatforms(){};
+	DiscordppActivityTypes(){};
+	~DiscordppActivityTypes(){};
 
 protected:
 	static void _bind_methods() {
-		BIND_ENUM_CONSTANT(DESKTOP);
-		BIND_ENUM_CONSTANT(XBOX);
-		BIND_ENUM_CONSTANT(SAMSUNG);
+		BIND_ENUM_CONSTANT(Playing);
+		BIND_ENUM_CONSTANT(Streaming);
+		BIND_ENUM_CONSTANT(Listening);
+		BIND_ENUM_CONSTANT(Watching);
+		BIND_ENUM_CONSTANT(CustomStatus);
+		BIND_ENUM_CONSTANT(Competing);
+		BIND_ENUM_CONSTANT(HangStatus);
+	}
+
+public:
+	enum Enum {
+		Playing = 0,
+		Streaming = 1,
+		Listening = 2,
+		Watching = 3,
+		CustomStatus = 4,
+		Competing = 5,
+		HangStatus = 6,
+	};
+};
+
+class DiscordppActivityGamePlatforms : public RefCounted {
+	GDCLASS(DiscordppActivityGamePlatforms, RefCounted)
+
+private:
+	DiscordppActivityGamePlatforms(){};
+	~DiscordppActivityGamePlatforms(){};
+
+protected:
+	static void _bind_methods() {
+		BIND_ENUM_CONSTANT(Desktop);
+		BIND_ENUM_CONSTANT(Xbox);
+		BIND_ENUM_CONSTANT(Samsung);
 		BIND_ENUM_CONSTANT(IOS);
-		BIND_ENUM_CONSTANT(ANDROID);
-		BIND_ENUM_CONSTANT(EMBEDDED);
+		BIND_ENUM_CONSTANT(Android);
+		BIND_ENUM_CONSTANT(Embedded);
 		BIND_ENUM_CONSTANT(PS4);
 		BIND_ENUM_CONSTANT(PS5);
 	}
 
 public:
 	enum Enum {
-		DESKTOP = 1,
-		XBOX = 2,
-		SAMSUNG = 4,
+		Desktop = 1,
+		Xbox = 2,
+		Samsung = 4,
 		IOS = 8,
-		ANDROID = 16,
-		EMBEDDED = 32,
+		Android = 16,
+		Embedded = 32,
 		PS4 = 64,
 		PS5 = 128,
 	};
 };
 
-class DiscordErrorType : public Object {
-	GDCLASS(DiscordErrorType, Object)
+class DiscordppErrorType : public RefCounted {
+	GDCLASS(DiscordppErrorType, RefCounted)
 
 private:
-	DiscordErrorType(){};
-	~DiscordErrorType(){};
+	DiscordppErrorType(){};
+	~DiscordppErrorType(){};
 
 protected:
 	static void _bind_methods() {
-		BIND_ENUM_CONSTANT(NONE);
-		BIND_ENUM_CONSTANT(NETWORK_ERROR);
-		BIND_ENUM_CONSTANT(HTTP_ERROR);
-		BIND_ENUM_CONSTANT(CLIENT_NOT_READY);
-		BIND_ENUM_CONSTANT(DISABLED);
-		BIND_ENUM_CONSTANT(CLIENT_DESTROYED);
-		BIND_ENUM_CONSTANT(VALIDATION_ERROR);
-		BIND_ENUM_CONSTANT(ABORTED);
-		BIND_ENUM_CONSTANT(AUTHORIZATION_FAILED);
-		BIND_ENUM_CONSTANT(RPC_ERROR);
+		BIND_ENUM_CONSTANT(None);
+		BIND_ENUM_CONSTANT(NetworkError);
+		BIND_ENUM_CONSTANT(HTTPError);
+		BIND_ENUM_CONSTANT(ClientNotReady);
+		BIND_ENUM_CONSTANT(Disabled);
+		BIND_ENUM_CONSTANT(ClientDestroyed);
+		BIND_ENUM_CONSTANT(ValidationError);
+		BIND_ENUM_CONSTANT(Aborted);
+		BIND_ENUM_CONSTANT(AuthorizationFailed);
+		BIND_ENUM_CONSTANT(RPCError);
 	}
 
 public:
 	enum Enum {
-		NONE = 0,
-		NETWORK_ERROR = 1,
-		HTTP_ERROR = 2,
-		CLIENT_NOT_READY = 3,
-		DISABLED = 4,
-		CLIENT_DESTROYED = 5,
-		VALIDATION_ERROR = 6,
-		ABORTED = 7,
-		AUTHORIZATION_FAILED = 8,
-		RPC_ERROR = 9,
+		None = 0,
+		NetworkError = 1,
+		HTTPError = 2,
+		ClientNotReady = 3,
+		Disabled = 4,
+		ClientDestroyed = 5,
+		ValidationError = 6,
+		Aborted = 7,
+		AuthorizationFailed = 8,
+		RPCError = 9,
 	};
 };
 
-class DiscordHttpStatusCode : public RefCounted {
-	GDCLASS(DiscordHttpStatusCode, RefCounted)
+class DiscordppHttpStatusCode : public RefCounted {
+	GDCLASS(DiscordppHttpStatusCode, RefCounted)
 
 private:
-	DiscordHttpStatusCode(){};
-	~DiscordHttpStatusCode(){};
+	DiscordppHttpStatusCode(){};
+	~DiscordppHttpStatusCode(){};
 
 protected:
 	static void _bind_methods() {
-		BIND_ENUM_CONSTANT(NONE);
-		BIND_ENUM_CONSTANT(CONTINUE);
-		BIND_ENUM_CONSTANT(SWITCHING_PROTOCOLS);
-		BIND_ENUM_CONSTANT(PROCESSING);
-		BIND_ENUM_CONSTANT(EARLY_HINTS);
-		BIND_ENUM_CONSTANT(OK);
-		BIND_ENUM_CONSTANT(CREATED);
-		BIND_ENUM_CONSTANT(ACCEPTED);
-		BIND_ENUM_CONSTANT(NON_AUTHORITATIVE_INFO);
-		BIND_ENUM_CONSTANT(NO_CONTENT);
-		BIND_ENUM_CONSTANT(RESET_CONTENT);
-		BIND_ENUM_CONSTANT(PARTIAL_CONTENT);
-		BIND_ENUM_CONSTANT(MULTI_STATUS);
-		BIND_ENUM_CONSTANT(ALREADY_REPORTED);
-		BIND_ENUM_CONSTANT(IM_USED);
-		BIND_ENUM_CONSTANT(MULTIPLE_CHOICES);
-		BIND_ENUM_CONSTANT(MOVED_PERMANENTLY);
-		BIND_ENUM_CONSTANT(FOUND);
-		BIND_ENUM_CONSTANT(SEE_OTHER);
-		BIND_ENUM_CONSTANT(NOT_MODIFIED);
-		BIND_ENUM_CONSTANT(TEMPORARY_REDIRECT);
-		BIND_ENUM_CONSTANT(PERMANENT_REDIRECT);
-		BIND_ENUM_CONSTANT(BAD_REQUEST);
-		BIND_ENUM_CONSTANT(UNAUTHORIZED);
-		BIND_ENUM_CONSTANT(PAYMENT_REQUIRED);
-		BIND_ENUM_CONSTANT(FORBIDDEN);
-		BIND_ENUM_CONSTANT(NOT_FOUND);
-		BIND_ENUM_CONSTANT(METHOD_NOT_ALLOWED);
-		BIND_ENUM_CONSTANT(NOT_ACCEPTABLE);
-		BIND_ENUM_CONSTANT(PROXY_AUTH_REQUIRED);
-		BIND_ENUM_CONSTANT(REQUEST_TIMEOUT);
-		BIND_ENUM_CONSTANT(CONFLICT);
-		BIND_ENUM_CONSTANT(GONE);
-		BIND_ENUM_CONSTANT(LENGTH_REQUIRED);
-		BIND_ENUM_CONSTANT(PRECONDITION_FAILED);
-		BIND_ENUM_CONSTANT(PAYLOAD_TOO_LARGE);
-		BIND_ENUM_CONSTANT(URI_TOO_LONG);
-		BIND_ENUM_CONSTANT(UNSUPPORTED_MEDIA_TYPE);
-		BIND_ENUM_CONSTANT(RANGE_NOT_SATISFIABLE);
-		BIND_ENUM_CONSTANT(EXPECTATION_FAILED);
-		BIND_ENUM_CONSTANT(MISDIRECTED_REQUEST);
-		BIND_ENUM_CONSTANT(UNPROCESSABLE_ENTITY);
-		BIND_ENUM_CONSTANT(LOCKED);
-		BIND_ENUM_CONSTANT(FAILED_DEPENDENCY);
-		BIND_ENUM_CONSTANT(TOO_EARLY);
-		BIND_ENUM_CONSTANT(UPGRADE_REQUIRED);
-		BIND_ENUM_CONSTANT(PRECONDITION_REQUIRED);
-		BIND_ENUM_CONSTANT(TOO_MANY_REQUESTS);
-		BIND_ENUM_CONSTANT(REQUEST_HEADER_FIELDS_TOO_LARGE);
-		BIND_ENUM_CONSTANT(INTERNAL_SERVER_ERROR);
-		BIND_ENUM_CONSTANT(NOT_IMPLEMENTED);
-		BIND_ENUM_CONSTANT(BAD_GATEWAY);
-		BIND_ENUM_CONSTANT(SERVICE_UNAVAILABLE);
-		BIND_ENUM_CONSTANT(GATEWAY_TIMEOUT);
-		BIND_ENUM_CONSTANT(HTTP_VERSION_NOT_SUPPORTED);
-		BIND_ENUM_CONSTANT(VARIANT_ALSO_NEGOTIATES);
-		BIND_ENUM_CONSTANT(INSUFFICIENT_STORAGE);
-		BIND_ENUM_CONSTANT(LOOP_DETECTED);
-		BIND_ENUM_CONSTANT(NOT_EXTENDED);
-		BIND_ENUM_CONSTANT(NETWORK_AUTHORIZATION_REQUIRED);
+		BIND_ENUM_CONSTANT(None);
+		BIND_ENUM_CONSTANT(Continue);
+		BIND_ENUM_CONSTANT(SwitchingProtocols);
+		BIND_ENUM_CONSTANT(Processing);
+		BIND_ENUM_CONSTANT(EarlyHints);
+		BIND_ENUM_CONSTANT(Ok);
+		BIND_ENUM_CONSTANT(Created);
+		BIND_ENUM_CONSTANT(Accepted);
+		BIND_ENUM_CONSTANT(NonAuthoritativeInfo);
+		BIND_ENUM_CONSTANT(NoContent);
+		BIND_ENUM_CONSTANT(ResetContent);
+		BIND_ENUM_CONSTANT(PartialContent);
+		BIND_ENUM_CONSTANT(MultiStatus);
+		BIND_ENUM_CONSTANT(AlreadyReported);
+		BIND_ENUM_CONSTANT(ImUsed);
+		BIND_ENUM_CONSTANT(MultipleChoices);
+		BIND_ENUM_CONSTANT(MovedPermanently);
+		BIND_ENUM_CONSTANT(Found);
+		BIND_ENUM_CONSTANT(SeeOther);
+		BIND_ENUM_CONSTANT(NotModified);
+		BIND_ENUM_CONSTANT(TemporaryRedirect);
+		BIND_ENUM_CONSTANT(PermanentRedirect);
+		BIND_ENUM_CONSTANT(BadRequest);
+		BIND_ENUM_CONSTANT(Unauthorized);
+		BIND_ENUM_CONSTANT(PaymentRequired);
+		BIND_ENUM_CONSTANT(Forbidden);
+		BIND_ENUM_CONSTANT(NotFound);
+		BIND_ENUM_CONSTANT(MethodNotAllowed);
+		BIND_ENUM_CONSTANT(NotAcceptable);
+		BIND_ENUM_CONSTANT(ProxyAuthRequired);
+		BIND_ENUM_CONSTANT(RequestTimeout);
+		BIND_ENUM_CONSTANT(Conflict);
+		BIND_ENUM_CONSTANT(Gone);
+		BIND_ENUM_CONSTANT(LengthRequired);
+		BIND_ENUM_CONSTANT(PreconditionFailed);
+		BIND_ENUM_CONSTANT(PayloadTooLarge);
+		BIND_ENUM_CONSTANT(UriTooLong);
+		BIND_ENUM_CONSTANT(UnsupportedMediaType);
+		BIND_ENUM_CONSTANT(RangeNotSatisfiable);
+		BIND_ENUM_CONSTANT(ExpectationFailed);
+		BIND_ENUM_CONSTANT(MisdirectedRequest);
+		BIND_ENUM_CONSTANT(UnprocessableEntity);
+		BIND_ENUM_CONSTANT(Locked);
+		BIND_ENUM_CONSTANT(FailedDependency);
+		BIND_ENUM_CONSTANT(TooEarly);
+		BIND_ENUM_CONSTANT(UpgradeRequired);
+		BIND_ENUM_CONSTANT(PreconditionRequired);
+		BIND_ENUM_CONSTANT(TooManyRequests);
+		BIND_ENUM_CONSTANT(RequestHeaderFieldsTooLarge);
+		BIND_ENUM_CONSTANT(InternalServerError);
+		BIND_ENUM_CONSTANT(NotImplemented);
+		BIND_ENUM_CONSTANT(BadGateway);
+		BIND_ENUM_CONSTANT(ServiceUnavailable);
+		BIND_ENUM_CONSTANT(GatewayTimeout);
+		BIND_ENUM_CONSTANT(HttpVersionNotSupported);
+		BIND_ENUM_CONSTANT(VariantAlsoNegotiates);
+		BIND_ENUM_CONSTANT(InsufficientStorage);
+		BIND_ENUM_CONSTANT(LoopDetected);
+		BIND_ENUM_CONSTANT(NotExtended);
+		BIND_ENUM_CONSTANT(NetworkAuthorizationRequired);
 	}
 
 public:
 	enum Enum {
-		NONE = 0,
-		CONTINUE = 100,
-		SWITCHING_PROTOCOLS = 101,
-		PROCESSING = 102,
-		EARLY_HINTS = 103,
-		OK = 200,
-		CREATED = 201,
-		ACCEPTED = 202,
-		NON_AUTHORITATIVE_INFO = 203,
-		NO_CONTENT = 204,
-		RESET_CONTENT = 205,
-		PARTIAL_CONTENT = 206,
-		MULTI_STATUS = 207,
-		ALREADY_REPORTED = 208,
-		IM_USED = 209,
-		MULTIPLE_CHOICES = 300,
-		MOVED_PERMANENTLY = 301,
-		FOUND = 302,
-		SEE_OTHER = 303,
-		NOT_MODIFIED = 304,
-		TEMPORARY_REDIRECT = 307,
-		PERMANENT_REDIRECT = 308,
-		BAD_REQUEST = 400,
-		UNAUTHORIZED = 401,
-		PAYMENT_REQUIRED = 402,
-		FORBIDDEN = 403,
-		NOT_FOUND = 404,
-		METHOD_NOT_ALLOWED = 405,
-		NOT_ACCEPTABLE = 406,
-		PROXY_AUTH_REQUIRED = 407,
-		REQUEST_TIMEOUT = 408,
-		CONFLICT = 409,
-		GONE = 410,
-		LENGTH_REQUIRED = 411,
-		PRECONDITION_FAILED = 412,
-		PAYLOAD_TOO_LARGE = 413,
-		URI_TOO_LONG = 414,
-		UNSUPPORTED_MEDIA_TYPE = 415,
-		RANGE_NOT_SATISFIABLE = 416,
-		EXPECTATION_FAILED = 417,
-		MISDIRECTED_REQUEST = 421,
-		UNPROCESSABLE_ENTITY = 422,
-		LOCKED = 423,
-		FAILED_DEPENDENCY = 424,
-		TOO_EARLY = 425,
-		UPGRADE_REQUIRED = 426,
-		PRECONDITION_REQUIRED = 428,
-		TOO_MANY_REQUESTS = 429,
-		REQUEST_HEADER_FIELDS_TOO_LARGE = 431,
-		INTERNAL_SERVER_ERROR = 500,
-		NOT_IMPLEMENTED = 501,
-		BAD_GATEWAY = 502,
-		SERVICE_UNAVAILABLE = 503,
-		GATEWAY_TIMEOUT = 504,
-		HTTP_VERSION_NOT_SUPPORTED = 505,
-		VARIANT_ALSO_NEGOTIATES = 506,
-		INSUFFICIENT_STORAGE = 507,
-		LOOP_DETECTED = 508,
-		NOT_EXTENDED = 510,
-		NETWORK_AUTHORIZATION_REQUIRED = 511,
+		None = 0,
+		Continue = 100,
+		SwitchingProtocols = 101,
+		Processing = 102,
+		EarlyHints = 103,
+		Ok = 200,
+		Created = 201,
+		Accepted = 202,
+		NonAuthoritativeInfo = 203,
+		NoContent = 204,
+		ResetContent = 205,
+		PartialContent = 206,
+		MultiStatus = 207,
+		AlreadyReported = 208,
+		ImUsed = 209,
+		MultipleChoices = 300,
+		MovedPermanently = 301,
+		Found = 302,
+		SeeOther = 303,
+		NotModified = 304,
+		TemporaryRedirect = 307,
+		PermanentRedirect = 308,
+		BadRequest = 400,
+		Unauthorized = 401,
+		PaymentRequired = 402,
+		Forbidden = 403,
+		NotFound = 404,
+		MethodNotAllowed = 405,
+		NotAcceptable = 406,
+		ProxyAuthRequired = 407,
+		RequestTimeout = 408,
+		Conflict = 409,
+		Gone = 410,
+		LengthRequired = 411,
+		PreconditionFailed = 412,
+		PayloadTooLarge = 413,
+		UriTooLong = 414,
+		UnsupportedMediaType = 415,
+		RangeNotSatisfiable = 416,
+		ExpectationFailed = 417,
+		MisdirectedRequest = 421,
+		UnprocessableEntity = 422,
+		Locked = 423,
+		FailedDependency = 424,
+		TooEarly = 425,
+		UpgradeRequired = 426,
+		PreconditionRequired = 428,
+		TooManyRequests = 429,
+		RequestHeaderFieldsTooLarge = 431,
+		InternalServerError = 500,
+		NotImplemented = 501,
+		BadGateway = 502,
+		ServiceUnavailable = 503,
+		GatewayTimeout = 504,
+		HttpVersionNotSupported = 505,
+		VariantAlsoNegotiates = 506,
+		InsufficientStorage = 507,
+		LoopDetected = 508,
+		NotExtended = 510,
+		NetworkAuthorizationRequired = 511,
 	};
 };
 
-class DiscordAuthenticationCodeChallengeMethod : public RefCounted {
-	GDCLASS(DiscordAuthenticationCodeChallengeMethod, RefCounted)
+class DiscordppAuthenticationCodeChallengeMethod : public RefCounted {
+	GDCLASS(DiscordppAuthenticationCodeChallengeMethod, RefCounted)
 
 private:
-	DiscordAuthenticationCodeChallengeMethod(){};
-	~DiscordAuthenticationCodeChallengeMethod(){};
+	DiscordppAuthenticationCodeChallengeMethod(){};
+	~DiscordppAuthenticationCodeChallengeMethod(){};
 
 protected:
 	static void _bind_methods() {
@@ -297,70 +301,42 @@ public:
 	};
 };
 
-class DiscordAdditionalContentType : public RefCounted {
-	GDCLASS(DiscordAdditionalContentType, RefCounted)
+class DiscordppAdditionalContentType : public RefCounted {
+	GDCLASS(DiscordppAdditionalContentType, RefCounted)
 
 private:
-	DiscordAdditionalContentType(){};
-	~DiscordAdditionalContentType(){};
+	DiscordppAdditionalContentType(){};
+	~DiscordppAdditionalContentType(){};
 
 protected:
 	static void _bind_methods() {
-		BIND_ENUM_CONSTANT(OTHER);
-		BIND_ENUM_CONSTANT(ATTACHMENT);
-		BIND_ENUM_CONSTANT(POLL);
-		BIND_ENUM_CONSTANT(VOICE_MESSAGE);
-		BIND_ENUM_CONSTANT(THREAD);
-		BIND_ENUM_CONSTANT(EMBED);
-		BIND_ENUM_CONSTANT(STICKER);
+		BIND_ENUM_CONSTANT(Other);
+		BIND_ENUM_CONSTANT(Attachment);
+		BIND_ENUM_CONSTANT(Poll);
+		BIND_ENUM_CONSTANT(VoiceMessage);
+		BIND_ENUM_CONSTANT(Thread);
+		BIND_ENUM_CONSTANT(Embed);
+		BIND_ENUM_CONSTANT(Sticker);
 	}
 
 public:
 	enum Enum {
-		OTHER = 0,
-		ATTACHMENT = 1,
-		POLL = 2,
-		VOICE_MESSAGE = 3,
-		THREAD = 4,
-		EMBED = 5,
-		STICKER = 6,
+		Other = 0,
+		Attachment = 1,
+		Poll = 2,
+		VoiceMessage = 3,
+		Thread = 4,
+		Embed = 5,
+		Sticker = 6,
 	};
 };
 
-class DiscordCallError : public RefCounted {
-	GDCLASS(DiscordCallError, RefCounted)
+class DiscordppAudioModeType : public RefCounted {
+	GDCLASS(DiscordppAudioModeType, RefCounted)
 
 private:
-	DiscordCallError(){};
-	~DiscordCallError(){};
-
-protected:
-	static void _bind_methods() {
-		BIND_ENUM_CONSTANT(NONE);
-		BIND_ENUM_CONSTANT(SIGNALING_CONNECTION_FAILED);
-		BIND_ENUM_CONSTANT(SIGNALING_UNEXPECTED_CLOSE);
-		BIND_ENUM_CONSTANT(VOICE_CONNECTION_FAILED);
-		BIND_ENUM_CONSTANT(JOIN_TIMEOUT);
-		BIND_ENUM_CONSTANT(FORBIDDEN);
-	}
-
-public:
-	enum Enum {
-		NONE = 0,
-		SIGNALING_CONNECTION_FAILED = 1,
-		SIGNALING_UNEXPECTED_CLOSE = 2,
-		VOICE_CONNECTION_FAILED = 3,
-		JOIN_TIMEOUT = 4,
-		FORBIDDEN = 5,
-	};
-};
-
-class DiscordAudioModeType : public RefCounted {
-	GDCLASS(DiscordAudioModeType, RefCounted)
-
-private:
-	DiscordAudioModeType(){};
-	~DiscordAudioModeType(){};
+	DiscordppAudioModeType(){};
+	~DiscordppAudioModeType(){};
 
 protected:
 	static void _bind_methods() {
@@ -377,358 +353,386 @@ public:
 	};
 };
 
-class DiscordCallStatus : public RefCounted {
-	GDCLASS(DiscordCallStatus, RefCounted)
+class DiscordppChannelType : public RefCounted {
+	GDCLASS(DiscordppChannelType, RefCounted)
 
 private:
-	DiscordCallStatus(){};
-	~DiscordCallStatus(){};
+	DiscordppChannelType(){};
+	~DiscordppChannelType(){};
 
 protected:
 	static void _bind_methods() {
-		BIND_ENUM_CONSTANT(DISCONNECTED);
-		BIND_ENUM_CONSTANT(JOINING);
-		BIND_ENUM_CONSTANT(CONNECTING);
-		BIND_ENUM_CONSTANT(SIGNALING_CONNECTED);
-		BIND_ENUM_CONSTANT(CONNECTED);
-		BIND_ENUM_CONSTANT(RECONNECTING);
-		BIND_ENUM_CONSTANT(DISCONNECTING);
+		BIND_ENUM_CONSTANT(GuildText);
+		BIND_ENUM_CONSTANT(Dm);
+		BIND_ENUM_CONSTANT(GuildVoice);
+		BIND_ENUM_CONSTANT(GroupDm);
+		BIND_ENUM_CONSTANT(GuildCategory);
+		BIND_ENUM_CONSTANT(GuildNews);
+		BIND_ENUM_CONSTANT(GuildStore);
+		BIND_ENUM_CONSTANT(GuildNewsThread);
+		BIND_ENUM_CONSTANT(GuildPublicThread);
+		BIND_ENUM_CONSTANT(GuildPrivateThread);
+		BIND_ENUM_CONSTANT(GuildStageVoice);
+		BIND_ENUM_CONSTANT(GuildDirectory);
+		BIND_ENUM_CONSTANT(GuildForum);
+		BIND_ENUM_CONSTANT(GuildMedia);
+		BIND_ENUM_CONSTANT(Lobby);
+		BIND_ENUM_CONSTANT(EphemeralDm);
 	}
 
 public:
 	enum Enum {
-		DISCONNECTED = 0,
-		JOINING = 1,
-		CONNECTING = 2,
-		SIGNALING_CONNECTED = 3,
-		CONNECTED = 4,
-		RECONNECTING = 5,
-		DISCONNECTING = 6,
+		GuildText = 0,
+		Dm = 1,
+		GuildVoice = 2,
+		GroupDm = 3,
+		GuildCategory = 4,
+		GuildNews = 5,
+		GuildStore = 6,
+		GuildNewsThread = 10,
+		GuildPublicThread = 11,
+		GuildPrivateThread = 12,
+		GuildStageVoice = 13,
+		GuildDirectory = 14,
+		GuildForum = 15,
+		GuildMedia = 16,
+		Lobby = 17,
+		EphemeralDm = 18,
 	};
 };
 
-class DiscordChannelType : public RefCounted {
-	GDCLASS(DiscordChannelType, RefCounted)
+class DiscordppRelationshipType : public RefCounted {
+	GDCLASS(DiscordppRelationshipType, RefCounted)
 
 private:
-	DiscordChannelType(){};
-	~DiscordChannelType(){};
+	DiscordppRelationshipType(){};
+	~DiscordppRelationshipType(){};
 
 protected:
 	static void _bind_methods() {
-		BIND_ENUM_CONSTANT(GUILD_TEXT);
-		BIND_ENUM_CONSTANT(DM);
-		BIND_ENUM_CONSTANT(GUILD_VOICE);
-		BIND_ENUM_CONSTANT(GROUP_DM);
-		BIND_ENUM_CONSTANT(GUILD_CATEGORY);
-		BIND_ENUM_CONSTANT(GUILD_NEWS);
-		BIND_ENUM_CONSTANT(GUILD_STORE);
-		BIND_ENUM_CONSTANT(GUILD_NEWS_THREAD);
-		BIND_ENUM_CONSTANT(GUILD_PUBLIC_THREAD);
-		BIND_ENUM_CONSTANT(GUILD_PRIVATE_THREAD);
-		BIND_ENUM_CONSTANT(GUILD_STAGE_VOICE);
-		BIND_ENUM_CONSTANT(GUILD_DIRECTORY);
-		BIND_ENUM_CONSTANT(GUILD_FORUM);
-		BIND_ENUM_CONSTANT(GUILD_MEDIA);
-		BIND_ENUM_CONSTANT(LOBBY);
-		BIND_ENUM_CONSTANT(EPHEMERAL_DM);
+		BIND_ENUM_CONSTANT(None);
+		BIND_ENUM_CONSTANT(Friend);
+		BIND_ENUM_CONSTANT(Blocked);
+		BIND_ENUM_CONSTANT(PendingIncoming);
+		BIND_ENUM_CONSTANT(PendingOutgoing);
+		BIND_ENUM_CONSTANT(Implicit);
+		BIND_ENUM_CONSTANT(Suggestion);
 	}
 
 public:
 	enum Enum {
-		GUILD_TEXT = 0,
-		DM = 1,
-		GUILD_VOICE = 2,
-		GROUP_DM = 3,
-		GUILD_CATEGORY = 4,
-		GUILD_NEWS = 5,
-		GUILD_STORE = 6,
-		GUILD_NEWS_THREAD = 10,
-		GUILD_PUBLIC_THREAD = 11,
-		GUILD_PRIVATE_THREAD = 12,
-		GUILD_STAGE_VOICE = 13,
-		GUILD_DIRECTORY = 14,
-		GUILD_FORUM = 15,
-		GUILD_MEDIA = 16,
-		LOBBY = 17,
-		EPHEMERAL_DM = 18,
+		None = 0,
+		Friend = 1,
+		Blocked = 2,
+		PendingIncoming = 3,
+		PendingOutgoing = 4,
+		Implicit = 5,
+		Suggestion = 6,
 	};
 };
 
-class DiscordRelationshipType : public RefCounted {
-	GDCLASS(DiscordRelationshipType, RefCounted)
+class DiscordppStatusType : public RefCounted {
+	GDCLASS(DiscordppStatusType, RefCounted)
 
 private:
-	DiscordRelationshipType(){};
-	~DiscordRelationshipType(){};
+	DiscordppStatusType(){};
+	~DiscordppStatusType(){};
 
 protected:
 	static void _bind_methods() {
-		BIND_ENUM_CONSTANT(NONE);
-		BIND_ENUM_CONSTANT(FRIEND);
-		BIND_ENUM_CONSTANT(BLOCKED);
-		BIND_ENUM_CONSTANT(PENDING_INCOMING);
-		BIND_ENUM_CONSTANT(PENDING_OUTGOING);
-		BIND_ENUM_CONSTANT(IMPLICIT);
-		BIND_ENUM_CONSTANT(SUGGESTION);
+		BIND_ENUM_CONSTANT(Online);
+		BIND_ENUM_CONSTANT(Offline);
+		BIND_ENUM_CONSTANT(Blocked);
+		BIND_ENUM_CONSTANT(Idle);
+		BIND_ENUM_CONSTANT(Dnd);
+		BIND_ENUM_CONSTANT(Invisible);
+		BIND_ENUM_CONSTANT(Streaming);
+		BIND_ENUM_CONSTANT(Unknown);
 	}
 
 public:
 	enum Enum {
-		NONE = 0,
-		FRIEND = 1,
-		BLOCKED = 2,
-		PENDING_INCOMING = 3,
-		PENDING_OUTGOING = 4,
-		IMPLICIT = 5,
-		SUGGESTION = 6,
+		Online = 0,
+		Offline = 1,
+		Blocked = 2,
+		Idle = 3,
+		Dnd = 4,
+		Invisible = 5,
+		Streaming = 6,
+		Unknown = 7,
 	};
 };
 
-class DiscordUserHandleAvatarType : public RefCounted {
-	GDCLASS(DiscordUserHandleAvatarType, RefCounted)
+class DiscordppDisclosureTypes : public RefCounted {
+	GDCLASS(DiscordppDisclosureTypes, RefCounted)
 
 private:
-	DiscordUserHandleAvatarType(){};
-	~DiscordUserHandleAvatarType(){};
+	DiscordppDisclosureTypes(){};
+	~DiscordppDisclosureTypes(){};
 
 protected:
 	static void _bind_methods() {
-		BIND_ENUM_CONSTANT(GIF);
-		BIND_ENUM_CONSTANT(WEBP);
-		BIND_ENUM_CONSTANT(PNG);
-		BIND_ENUM_CONSTANT(JPEG);
+		BIND_ENUM_CONSTANT(MessageDataVisibleOnDiscord);
 	}
 
 public:
 	enum Enum {
-		GIF = 0,
-		WEBP = 1,
-		PNG = 2,
-		JPEG = 3,
+		MessageDataVisibleOnDiscord = 3,
 	};
 };
 
-class DiscordStatusType : public RefCounted {
-	GDCLASS(DiscordStatusType, RefCounted)
+class DiscordppAuthorizationTokenType : public RefCounted {
+	GDCLASS(DiscordppAuthorizationTokenType, RefCounted)
 
 private:
-	DiscordStatusType(){};
-	~DiscordStatusType(){};
+	DiscordppAuthorizationTokenType(){};
+	~DiscordppAuthorizationTokenType(){};
 
 protected:
 	static void _bind_methods() {
-		BIND_ENUM_CONSTANT(ONLINE);
-		BIND_ENUM_CONSTANT(OFFLINE);
-		BIND_ENUM_CONSTANT(BLOCKED);
-		BIND_ENUM_CONSTANT(IDLE);
-		BIND_ENUM_CONSTANT(DND);
-		BIND_ENUM_CONSTANT(INVISIBLE);
-		BIND_ENUM_CONSTANT(STREAMING);
-		BIND_ENUM_CONSTANT(UNKNOWN);
+		BIND_ENUM_CONSTANT(User);
+		BIND_ENUM_CONSTANT(Bearer);
 	}
 
 public:
 	enum Enum {
-		ONLINE = 0,
-		OFFLINE = 1,
-		BLOCKED = 2,
-		IDLE = 3,
-		DND = 4,
-		INVISIBLE = 5,
-		STREAMING = 6,
-		UNKNOWN = 7,
+		User = 0,
+		Bearer = 1,
 	};
 };
 
-class DiscordDisclosureTypes : public RefCounted {
-	GDCLASS(DiscordDisclosureTypes, RefCounted)
+class DiscordppAuthenticationExternalAuthType : public RefCounted {
+	GDCLASS(DiscordppAuthenticationExternalAuthType, RefCounted)
 
 private:
-	DiscordDisclosureTypes(){};
-	~DiscordDisclosureTypes(){};
-
-protected:
-	static void _bind_methods() {
-		BIND_ENUM_CONSTANT(MESSAGE_DATA_VISIBLE_ON_DISCORD);
-	}
-
-public:
-	enum Enum {
-		MESSAGE_DATA_VISIBLE_ON_DISCORD = 3,
-	};
-};
-
-class DiscordClientError : public RefCounted {
-	GDCLASS(DiscordClientError, RefCounted)
-
-private:
-	DiscordClientError(){};
-	~DiscordClientError(){};
-
-protected:
-	static void _bind_methods() {
-		BIND_ENUM_CONSTANT(NONE);
-		BIND_ENUM_CONSTANT(CONNECTION_FAILED);
-		BIND_ENUM_CONSTANT(UNEXPECTED_CLOSE);
-		BIND_ENUM_CONSTANT(CONNECTION_CANCELED);
-	}
-
-public:
-	enum Enum {
-		NONE = 0,
-		CONNECTION_FAILED = 1,
-		UNEXPECTED_CLOSE = 2,
-		CONNECTION_CANCELED = 3,
-	};
-};
-
-class DiscordClientStatus : public RefCounted {
-	GDCLASS(DiscordClientStatus, RefCounted)
-
-private:
-	DiscordClientStatus(){};
-	~DiscordClientStatus(){};
-
-protected:
-	static void _bind_methods() {
-		BIND_ENUM_CONSTANT(DISCONNECTED);
-		BIND_ENUM_CONSTANT(CONNECTING);
-		BIND_ENUM_CONSTANT(CONNECTED);
-		BIND_ENUM_CONSTANT(READY);
-		BIND_ENUM_CONSTANT(RECONNECTING);
-		BIND_ENUM_CONSTANT(DISCONNECTING);
-		BIND_ENUM_CONSTANT(HTTP_WAIT);
-	}
-
-public:
-	enum Enum {
-		DISCONNECTED = 0,
-		CONNECTING = 1,
-		CONNECTED = 2,
-		READY = 3,
-		RECONNECTING = 4,
-		DISCONNECTING = 5,
-		HTTP_WAIT = 6,
-	};
-};
-
-class DiscordClientThread : public RefCounted {
-	GDCLASS(DiscordClientThread, RefCounted)
-
-private:
-	DiscordClientThread(){};
-	~DiscordClientThread(){};
-
-protected:
-	static void _bind_methods() {
-		BIND_ENUM_CONSTANT(CLIENT);
-		BIND_ENUM_CONSTANT(VOICE);
-		BIND_ENUM_CONSTANT(NETWORK);
-	}
-
-public:
-	enum Enum {
-		CLIENT = 0,
-		VOICE = 1,
-		NETWORK = 2,
-	};
-};
-
-class DiscordAuthorizationTokenType : public RefCounted {
-	GDCLASS(DiscordAuthorizationTokenType, RefCounted)
-
-private:
-	DiscordAuthorizationTokenType(){};
-	~DiscordAuthorizationTokenType(){};
-
-protected:
-	static void _bind_methods() {
-		BIND_ENUM_CONSTANT(USER);
-		BIND_ENUM_CONSTANT(BEARER);
-	}
-
-public:
-	enum Enum {
-		USER = 0,
-		BEARER = 1,
-	};
-};
-
-class DiscordAuthenticationExternalAuthType : public RefCounted {
-	GDCLASS(DiscordAuthenticationExternalAuthType, RefCounted)
-
-private:
-	DiscordAuthenticationExternalAuthType(){};
-	~DiscordAuthenticationExternalAuthType(){};
+	DiscordppAuthenticationExternalAuthType(){};
+	~DiscordppAuthenticationExternalAuthType(){};
 
 protected:
 	static void _bind_methods() {
 		BIND_ENUM_CONSTANT(OIDC);
-		BIND_ENUM_CONSTANT(EPIC_ONLINE_SERVICES_ACCESS_TOKEN);
-		BIND_ENUM_CONSTANT(EPIC_ONLINE_SERVICES_ID_TOKEN);
-		BIND_ENUM_CONSTANT(STEAM_SESSION_TICKET);
+		BIND_ENUM_CONSTANT(EpicOnlineServicesAccessToken);
+		BIND_ENUM_CONSTANT(EpicOnlineServicesIdToken);
+		BIND_ENUM_CONSTANT(SteamSessionTicket);
 	}
 
 public:
 	enum Enum {
 		OIDC = 0,
-		EPIC_ONLINE_SERVICES_ACCESS_TOKEN = 1,
-		EPIC_ONLINE_SERVICES_ID_TOKEN = 2,
-		STEAM_SESSION_TICKET = 3,
+		EpicOnlineServicesAccessToken = 1,
+		EpicOnlineServicesIdToken = 2,
+		SteamSessionTicket = 3,
 	};
 };
 
-class DiscordLoggingSeverity : public RefCounted {
-	GDCLASS(DiscordLoggingSeverity, RefCounted)
+class DiscordppLoggingSeverity : public RefCounted {
+	GDCLASS(DiscordppLoggingSeverity, RefCounted)
 
 private:
-	DiscordLoggingSeverity(){};
-	~DiscordLoggingSeverity(){};
+	DiscordppLoggingSeverity(){};
+	~DiscordppLoggingSeverity(){};
 
 protected:
 	static void _bind_methods() {
-		BIND_ENUM_CONSTANT(VERBOSE);
-		BIND_ENUM_CONSTANT(INFO);
-		BIND_ENUM_CONSTANT(WARNING);
-		BIND_ENUM_CONSTANT(ERROR);
-		BIND_ENUM_CONSTANT(NONE);
+		BIND_ENUM_CONSTANT(Verbose);
+		BIND_ENUM_CONSTANT(Info);
+		BIND_ENUM_CONSTANT(Warning);
+		BIND_ENUM_CONSTANT(Error);
+		BIND_ENUM_CONSTANT(None);
 	}
 
 public:
 	enum Enum {
-		VERBOSE = 1,
-		INFO = 2,
-		WARNING = 3,
-		ERROR = 4,
-		NONE = 5,
+		Verbose = 1,
+		Info = 2,
+		Warning = 3,
+		Error = 4,
+		None = 5,
+	};
+};
+
+class DiscordppCallError : public RefCounted {
+	GDCLASS(DiscordppCallError, RefCounted)
+
+private:
+	DiscordppCallError(){};
+	~DiscordppCallError(){};
+
+protected:
+	static void _bind_methods() {
+		BIND_ENUM_CONSTANT(None);
+		BIND_ENUM_CONSTANT(SignalingConnectionFailed);
+		BIND_ENUM_CONSTANT(SignalingUnexpectedClose);
+		BIND_ENUM_CONSTANT(VoiceConnectionFailed);
+		BIND_ENUM_CONSTANT(JoinTimeout);
+		BIND_ENUM_CONSTANT(Forbidden);
+	}
+
+public:
+	enum Enum {
+		None = 0,
+		SignalingConnectionFailed = 1,
+		SignalingUnexpectedClose = 2,
+		VoiceConnectionFailed = 3,
+		JoinTimeout = 4,
+		Forbidden = 5,
+	};
+};
+
+class DiscordppCallStatus : public RefCounted {
+	GDCLASS(DiscordppCallStatus, RefCounted)
+
+private:
+	DiscordppCallStatus(){};
+	~DiscordppCallStatus(){};
+
+protected:
+	static void _bind_methods() {
+		BIND_ENUM_CONSTANT(Disconnected);
+		BIND_ENUM_CONSTANT(Joining);
+		BIND_ENUM_CONSTANT(Connecting);
+		BIND_ENUM_CONSTANT(SignalingConnected);
+		BIND_ENUM_CONSTANT(Connected);
+		BIND_ENUM_CONSTANT(Reconnecting);
+		BIND_ENUM_CONSTANT(Disconnecting);
+	}
+
+public:
+	enum Enum {
+		Disconnected = 0,
+		Joining = 1,
+		Connecting = 2,
+		SignalingConnected = 3,
+		Connected = 4,
+		Reconnecting = 5,
+		Disconnecting = 6,
+	};
+};
+
+class DiscordppUserHandleAvatarType : public RefCounted {
+	GDCLASS(DiscordppUserHandleAvatarType, RefCounted)
+
+private:
+	DiscordppUserHandleAvatarType(){};
+	~DiscordppUserHandleAvatarType(){};
+
+protected:
+	static void _bind_methods() {
+		BIND_ENUM_CONSTANT(Gif);
+		BIND_ENUM_CONSTANT(Webp);
+		BIND_ENUM_CONSTANT(Png);
+		BIND_ENUM_CONSTANT(Jpeg);
+	}
+
+public:
+	enum Enum {
+		Gif = 0,
+		Webp = 1,
+		Png = 2,
+		Jpeg = 3,
+	};
+};
+
+class DiscordppClientError : public RefCounted {
+	GDCLASS(DiscordppClientError, RefCounted)
+
+private:
+	DiscordppClientError(){};
+	~DiscordppClientError(){};
+
+protected:
+	static void _bind_methods() {
+		BIND_ENUM_CONSTANT(None);
+		BIND_ENUM_CONSTANT(ConnectionFailed);
+		BIND_ENUM_CONSTANT(UnexpectedClose);
+		BIND_ENUM_CONSTANT(ConnectionCanceled);
+	}
+
+public:
+	enum Enum {
+		None = 0,
+		ConnectionFailed = 1,
+		UnexpectedClose = 2,
+		ConnectionCanceled = 3,
+	};
+};
+
+class DiscordppClientStatus : public RefCounted {
+	GDCLASS(DiscordppClientStatus, RefCounted)
+
+private:
+	DiscordppClientStatus(){};
+	~DiscordppClientStatus(){};
+
+protected:
+	static void _bind_methods() {
+		BIND_ENUM_CONSTANT(Disconnected);
+		BIND_ENUM_CONSTANT(Connecting);
+		BIND_ENUM_CONSTANT(Connected);
+		BIND_ENUM_CONSTANT(Ready);
+		BIND_ENUM_CONSTANT(Reconnecting);
+		BIND_ENUM_CONSTANT(Disconnecting);
+		BIND_ENUM_CONSTANT(HttpWait);
+	}
+
+public:
+	enum Enum {
+		Disconnected = 0,
+		Connecting = 1,
+		Connected = 2,
+		Ready = 3,
+		Reconnecting = 4,
+		Disconnecting = 5,
+		HttpWait = 6,
+	};
+};
+
+class DiscordppClientThread : public RefCounted {
+	GDCLASS(DiscordppClientThread, RefCounted)
+
+private:
+	DiscordppClientThread(){};
+	~DiscordppClientThread(){};
+
+protected:
+	static void _bind_methods() {
+		BIND_ENUM_CONSTANT(Client);
+		BIND_ENUM_CONSTANT(Voice);
+		BIND_ENUM_CONSTANT(Network);
+	}
+
+public:
+	enum Enum {
+		Client = 0,
+		Voice = 1,
+		Network = 2,
 	};
 };
 
 } // namespace godot
 
 // Needed so we can bind functions.
-VARIANT_ENUM_CAST(DiscordActivityActionTypes::Enum);
-VARIANT_ENUM_CAST(DiscordActivityPartyPrivacy::Enum);
-VARIANT_ENUM_CAST(DiscordActivityTypes::Enum);
-VARIANT_ENUM_CAST(DiscordActivityGamePlatforms::Enum);
-VARIANT_ENUM_CAST(DiscordErrorType::Enum);
-VARIANT_ENUM_CAST(DiscordHttpStatusCode::Enum);
-VARIANT_ENUM_CAST(DiscordAuthenticationCodeChallengeMethod::Enum);
-VARIANT_ENUM_CAST(DiscordAdditionalContentType::Enum);
-VARIANT_ENUM_CAST(DiscordCallError::Enum);
-VARIANT_ENUM_CAST(DiscordAudioModeType::Enum);
-VARIANT_ENUM_CAST(DiscordCallStatus::Enum);
-VARIANT_ENUM_CAST(DiscordChannelType::Enum);
-VARIANT_ENUM_CAST(DiscordRelationshipType::Enum);
-VARIANT_ENUM_CAST(DiscordUserHandleAvatarType::Enum);
-VARIANT_ENUM_CAST(DiscordStatusType::Enum);
-VARIANT_ENUM_CAST(DiscordDisclosureTypes::Enum);
-VARIANT_ENUM_CAST(DiscordClientError::Enum);
-VARIANT_ENUM_CAST(DiscordClientStatus::Enum);
-VARIANT_ENUM_CAST(DiscordClientThread::Enum);
-VARIANT_ENUM_CAST(DiscordAuthorizationTokenType::Enum);
-VARIANT_ENUM_CAST(DiscordAuthenticationExternalAuthType::Enum);
-VARIANT_ENUM_CAST(DiscordLoggingSeverity::Enum);
+VARIANT_ENUM_CAST(DiscordppActivityActionTypes::Enum);
+VARIANT_ENUM_CAST(DiscordppActivityPartyPrivacy::Enum);
+VARIANT_ENUM_CAST(DiscordppActivityTypes::Enum);
+VARIANT_ENUM_CAST(DiscordppActivityGamePlatforms::Enum);
+VARIANT_ENUM_CAST(DiscordppErrorType::Enum);
+VARIANT_ENUM_CAST(DiscordppHttpStatusCode::Enum);
+VARIANT_ENUM_CAST(DiscordppAuthenticationCodeChallengeMethod::Enum);
+VARIANT_ENUM_CAST(DiscordppAdditionalContentType::Enum);
+VARIANT_ENUM_CAST(DiscordppAudioModeType::Enum);
+VARIANT_ENUM_CAST(DiscordppChannelType::Enum);
+VARIANT_ENUM_CAST(DiscordppRelationshipType::Enum);
+VARIANT_ENUM_CAST(DiscordppStatusType::Enum);
+VARIANT_ENUM_CAST(DiscordppDisclosureTypes::Enum);
+VARIANT_ENUM_CAST(DiscordppAuthorizationTokenType::Enum);
+VARIANT_ENUM_CAST(DiscordppAuthenticationExternalAuthType::Enum);
+VARIANT_ENUM_CAST(DiscordppLoggingSeverity::Enum);
+VARIANT_ENUM_CAST(DiscordppCallError::Enum);
+VARIANT_ENUM_CAST(DiscordppCallStatus::Enum);
+VARIANT_ENUM_CAST(DiscordppUserHandleAvatarType::Enum);
+VARIANT_ENUM_CAST(DiscordppClientError::Enum);
+VARIANT_ENUM_CAST(DiscordppClientStatus::Enum);
+VARIANT_ENUM_CAST(DiscordppClientThread::Enum);
 
 #endif

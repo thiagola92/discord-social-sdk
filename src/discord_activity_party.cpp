@@ -1,82 +1,73 @@
-// AUTO-GENERATED
+
 #include "discord_classes.h"
 
 using namespace godot;
 
-discordpp::ActivityParty *DiscordActivityParty::unwrap() {
-	return activity_party;
+void DiscordppActivityParty::Drop() {
+	obj->Drop();
 }
 
-String DiscordActivityParty::id() {
-	auto r = activity_party->Id();
-	return String(r.c_str());
+String DiscordppActivityParty::Id() {
+	return String(obj->Id().c_str());
 }
 
-void DiscordActivityParty::set_id(String id) {
-	auto p0 = id.utf8().get_data();
-	activity_party->SetId(p0);
+void DiscordppActivityParty::SetId(String Id) {
+	auto p0 = Id.utf8().get_data();
+	obj->SetId(p0);
 }
 
-int32_t DiscordActivityParty::current_size() {
-	auto r = activity_party->CurrentSize();
-	return r;
+int32_t DiscordppActivityParty::CurrentSize() {
+	return obj->CurrentSize();
 }
 
-void DiscordActivityParty::set_current_size(int32_t current_size) {
-	activity_party->SetCurrentSize(current_size);
+void DiscordppActivityParty::SetCurrentSize(int32_t CurrentSize) {
+	auto p0 = CurrentSize;
+	obj->SetCurrentSize(p0);
 }
 
-int32_t DiscordActivityParty::max_size() {
-	auto r = activity_party->MaxSize();
-	return r;
+int32_t DiscordppActivityParty::MaxSize() {
+	return obj->MaxSize();
 }
 
-void DiscordActivityParty::set_max_size(int32_t max_size) {
-	activity_party->SetMaxSize(max_size);
+void DiscordppActivityParty::SetMaxSize(int32_t MaxSize) {
+	auto p0 = MaxSize;
+	obj->SetMaxSize(p0);
 }
 
-DiscordActivityPartyPrivacy::Enum DiscordActivityParty::privacy() {
-	auto r = activity_party->Privacy();
-	return (DiscordActivityPartyPrivacy::Enum)r;
+DiscordppActivityPartyPrivacy::Enum DiscordppActivityParty::Privacy() {
+	return (DiscordppActivityPartyPrivacy::Enum)obj->Privacy();
 }
 
-void DiscordActivityParty::set_privacy(DiscordActivityPartyPrivacy::Enum privacy) {
-	auto p0 = (discordpp::ActivityPartyPrivacy)privacy;
-	activity_party->SetPrivacy(p0);
+void DiscordppActivityParty::SetPrivacy(DiscordppActivityPartyPrivacy::Enum Privacy) {
+	auto p0 = (discordpp::ActivityPartyPrivacy)Privacy;
+	obj->SetPrivacy(p0);
 }
 
-void DiscordActivityParty::_bind_methods() {
-	ClassDB::bind_method(D_METHOD("id"),
-			&DiscordActivityParty::id);
+void DiscordppActivityParty::_bind_methods() {
+	ClassDB::bind_method(D_METHOD("Drop"),
+			&DiscordppActivityParty::Drop);
 
-	ClassDB::bind_method(D_METHOD("set_id", "id"),
-			&DiscordActivityParty::set_id);
+	ClassDB::bind_method(D_METHOD("Id"),
+			&DiscordppActivityParty::Id);
 
-	ClassDB::bind_method(D_METHOD("current_size"),
-			&DiscordActivityParty::current_size);
+	ClassDB::bind_method(D_METHOD("SetId", "Id"),
+			&DiscordppActivityParty::SetId);
 
-	ClassDB::bind_method(D_METHOD("set_current_size", "current_size"),
-			&DiscordActivityParty::set_current_size);
+	ClassDB::bind_method(D_METHOD("CurrentSize"),
+			&DiscordppActivityParty::CurrentSize);
 
-	ClassDB::bind_method(D_METHOD("max_size"),
-			&DiscordActivityParty::max_size);
+	ClassDB::bind_method(D_METHOD("SetCurrentSize", "CurrentSize"),
+			&DiscordppActivityParty::SetCurrentSize);
 
-	ClassDB::bind_method(D_METHOD("set_max_size", "max_size"),
-			&DiscordActivityParty::set_max_size);
+	ClassDB::bind_method(D_METHOD("MaxSize"),
+			&DiscordppActivityParty::MaxSize);
 
-	ClassDB::bind_method(D_METHOD("privacy"),
-			&DiscordActivityParty::privacy);
+	ClassDB::bind_method(D_METHOD("SetMaxSize", "MaxSize"),
+			&DiscordppActivityParty::SetMaxSize);
 
-	ClassDB::bind_method(D_METHOD("set_privacy", "privacy"),
-			&DiscordActivityParty::set_privacy);
+	ClassDB::bind_method(D_METHOD("Privacy"),
+			&DiscordppActivityParty::Privacy);
+
+	ClassDB::bind_method(D_METHOD("SetPrivacy", "Privacy"),
+			&DiscordppActivityParty::SetPrivacy);
 }
-
-DiscordActivityParty::DiscordActivityParty() {
-	this->activity_party = memnew(discordpp::ActivityParty);
-}
-
-DiscordActivityParty::DiscordActivityParty(discordpp::ActivityParty *activity_party) {
-	this->activity_party = activity_party;
-}
-
-DiscordActivityParty::~DiscordActivityParty() {}

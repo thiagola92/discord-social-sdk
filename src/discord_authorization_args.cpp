@@ -1,33 +1,32 @@
-// AUTO-GENERATED
+
 #include "discord_classes.h"
 
 using namespace godot;
 
-discordpp::AuthorizationArgs *DiscordAuthorizationArgs::unwrap() {
-	return authorization_args;
+void DiscordppAuthorizationArgs::Drop() {
+	obj->Drop();
 }
 
-uint64_t DiscordAuthorizationArgs::client_id() {
-	auto r = authorization_args->ClientId();
-	return r;
+uint64_t DiscordppAuthorizationArgs::ClientId() {
+	return obj->ClientId();
 }
 
-void DiscordAuthorizationArgs::set_client_id(uint64_t client_id) {
-	authorization_args->SetClientId(client_id);
+void DiscordppAuthorizationArgs::SetClientId(uint64_t ClientId) {
+	auto p0 = ClientId;
+	obj->SetClientId(p0);
 }
 
-String DiscordAuthorizationArgs::scopes() {
-	auto r = authorization_args->Scopes();
-	return String(r.c_str());
+String DiscordppAuthorizationArgs::Scopes() {
+	return String(obj->Scopes().c_str());
 }
 
-void DiscordAuthorizationArgs::set_scopes(String scopes) {
-	auto p0 = scopes.utf8().get_data();
-	authorization_args->SetScopes(p0);
+void DiscordppAuthorizationArgs::SetScopes(String Scopes) {
+	auto p0 = Scopes.utf8().get_data();
+	obj->SetScopes(p0);
 }
 
-Variant DiscordAuthorizationArgs::state() {
-	auto r = authorization_args->State();
+Variant DiscordppAuthorizationArgs::State() {
+	auto r = obj->State();
 
 	if (!r.has_value()) {
 		return nullptr;
@@ -36,18 +35,18 @@ Variant DiscordAuthorizationArgs::state() {
 	return Variant(r.value().c_str());
 }
 
-void DiscordAuthorizationArgs::set_state(Variant state) {
+void DiscordppAuthorizationArgs::SetState(Variant State) {
 	std::optional<std::string> p0;
 
-	if (state.get_type() == Variant::STRING) {
-		p0 = state.stringify().utf8().get_data();
+	if (State.get_type() == Variant::STRING) {
+		p0 = State.stringify().utf8().get_data();
 	}
 
-	authorization_args->SetState(p0);
+	obj->SetState(p0);
 }
 
-Variant DiscordAuthorizationArgs::nonce() {
-	auto r = authorization_args->Nonce();
+Variant DiscordppAuthorizationArgs::Nonce() {
+	auto r = obj->Nonce();
 
 	if (!r.has_value()) {
 		return nullptr;
@@ -56,18 +55,18 @@ Variant DiscordAuthorizationArgs::nonce() {
 	return Variant(r.value().c_str());
 }
 
-void DiscordAuthorizationArgs::set_nonce(Variant nonce) {
+void DiscordppAuthorizationArgs::SetNonce(Variant Nonce) {
 	std::optional<std::string> p0;
 
-	if (nonce.get_type() == Variant::STRING) {
-		p0 = nonce.stringify().utf8().get_data();
+	if (Nonce.get_type() == Variant::STRING) {
+		p0 = Nonce.stringify().utf8().get_data();
 	}
 
-	authorization_args->SetNonce(p0);
+	obj->SetNonce(p0);
 }
 
-Variant DiscordAuthorizationArgs::code_challenge() {
-	auto r = authorization_args->CodeChallenge();
+Variant DiscordppAuthorizationArgs::CodeChallenge() {
+	auto r = obj->CodeChallenge();
 
 	if (!r.has_value()) {
 		return nullptr;
@@ -75,59 +74,52 @@ Variant DiscordAuthorizationArgs::code_challenge() {
 
 	auto t_r = (discordpp::AuthorizationCodeChallenge *)memalloc(sizeof(discordpp::AuthorizationCodeChallenge));
 	*t_r = r.value();
-	return Variant(memnew(DiscordAuthorizationCodeChallenge{ t_r }));
+	return Variant(memnew(DiscordppAuthorizationCodeChallenge{ t_r }));
 }
 
-void DiscordAuthorizationArgs::set_code_challenge(Variant code_challenge) {
+void DiscordppAuthorizationArgs::SetCodeChallenge(Variant CodeChallenge) {
 	std::optional<discordpp::AuthorizationCodeChallenge> p0;
 
-	if (code_challenge.get_type() == Variant::OBJECT) {
-		auto t_p0 = Object::cast_to<DiscordAuthorizationCodeChallenge>(code_challenge);
+	if (CodeChallenge.get_type() == Variant::OBJECT) {
+		auto t_p0 = Object::cast_to<DiscordppAuthorizationCodeChallenge>(CodeChallenge);
 		auto t2_p0 = t_p0->unwrap();
 		p0 = std::optional<discordpp::AuthorizationCodeChallenge>{ *t2_p0 };
 	}
 
-	authorization_args->SetCodeChallenge(p0);
+	obj->SetCodeChallenge(p0);
 }
 
-void DiscordAuthorizationArgs::_bind_methods() {
-	ClassDB::bind_method(D_METHOD("client_id"),
-			&DiscordAuthorizationArgs::client_id);
+void DiscordppAuthorizationArgs::_bind_methods() {
+	ClassDB::bind_method(D_METHOD("Drop"),
+			&DiscordppAuthorizationArgs::Drop);
 
-	ClassDB::bind_method(D_METHOD("set_client_id", "client_id"),
-			&DiscordAuthorizationArgs::set_client_id);
+	ClassDB::bind_method(D_METHOD("ClientId"),
+			&DiscordppAuthorizationArgs::ClientId);
 
-	ClassDB::bind_method(D_METHOD("scopes"),
-			&DiscordAuthorizationArgs::scopes);
+	ClassDB::bind_method(D_METHOD("SetClientId", "ClientId"),
+			&DiscordppAuthorizationArgs::SetClientId);
 
-	ClassDB::bind_method(D_METHOD("set_scopes", "scopes"),
-			&DiscordAuthorizationArgs::set_scopes);
+	ClassDB::bind_method(D_METHOD("Scopes"),
+			&DiscordppAuthorizationArgs::Scopes);
 
-	ClassDB::bind_method(D_METHOD("state"),
-			&DiscordAuthorizationArgs::state);
+	ClassDB::bind_method(D_METHOD("SetScopes", "Scopes"),
+			&DiscordppAuthorizationArgs::SetScopes);
 
-	ClassDB::bind_method(D_METHOD("set_state", "state"),
-			&DiscordAuthorizationArgs::set_state);
+	ClassDB::bind_method(D_METHOD("State"),
+			&DiscordppAuthorizationArgs::State);
 
-	ClassDB::bind_method(D_METHOD("nonce"),
-			&DiscordAuthorizationArgs::nonce);
+	ClassDB::bind_method(D_METHOD("SetState", "State"),
+			&DiscordppAuthorizationArgs::SetState);
 
-	ClassDB::bind_method(D_METHOD("set_nonce", "nonce"),
-			&DiscordAuthorizationArgs::set_nonce);
+	ClassDB::bind_method(D_METHOD("Nonce"),
+			&DiscordppAuthorizationArgs::Nonce);
 
-	ClassDB::bind_method(D_METHOD("code_challenge"),
-			&DiscordAuthorizationArgs::code_challenge);
+	ClassDB::bind_method(D_METHOD("SetNonce", "Nonce"),
+			&DiscordppAuthorizationArgs::SetNonce);
 
-	ClassDB::bind_method(D_METHOD("set_code_challenge", "code_challenge"),
-			&DiscordAuthorizationArgs::set_code_challenge);
+	ClassDB::bind_method(D_METHOD("CodeChallenge"),
+			&DiscordppAuthorizationArgs::CodeChallenge);
+
+	ClassDB::bind_method(D_METHOD("SetCodeChallenge", "CodeChallenge"),
+			&DiscordppAuthorizationArgs::SetCodeChallenge);
 }
-
-DiscordAuthorizationArgs::DiscordAuthorizationArgs() {
-	this->authorization_args = memnew(discordpp::AuthorizationArgs);
-}
-
-DiscordAuthorizationArgs::DiscordAuthorizationArgs(discordpp::AuthorizationArgs *authorization_args) {
-	this->authorization_args = authorization_args;
-}
-
-DiscordAuthorizationArgs::~DiscordAuthorizationArgs() {}

@@ -1,14 +1,14 @@
-// AUTO-GENERATED
+
 #include "discord_classes.h"
 
 using namespace godot;
 
-discordpp::UserHandle *DiscordUserHandle::unwrap() {
-	return user_handle;
+void DiscordppUserHandle::Drop() {
+	obj->Drop();
 }
 
-Variant DiscordUserHandle::avatar() {
-	auto r = user_handle->Avatar();
+Variant DiscordppUserHandle::Avatar() {
+	auto r = obj->Avatar();
 
 	if (!r.has_value()) {
 		return nullptr;
@@ -17,20 +17,23 @@ Variant DiscordUserHandle::avatar() {
 	return Variant(r.value().c_str());
 }
 
-String DiscordUserHandle::avatar_url(DiscordUserHandleAvatarType::Enum animated_type, DiscordUserHandleAvatarType::Enum static_type) {
-	auto p0 = (discordpp::UserHandle::AvatarType)animated_type;
-	auto p1 = (discordpp::UserHandle::AvatarType)static_type;
-	auto r = user_handle->AvatarUrl(p0, p1);
-	return String(r.c_str());
+String DiscordppUserHandle::AvatarTypeToString(DiscordppUserHandleAvatarType::Enum type) {
+	auto p0 = (discordpp::UserHandle::AvatarType)type;
+	return String(obj->AvatarTypeToString(p0).c_str());
 }
 
-String DiscordUserHandle::display_name() {
-	auto r = user_handle->DisplayName();
-	return String(r.c_str());
+String DiscordppUserHandle::AvatarUrl(DiscordppUserHandleAvatarType::Enum animatedType, DiscordppUserHandleAvatarType::Enum staticType) {
+	auto p0 = (discordpp::UserHandle::AvatarType)animatedType;
+	auto p1 = (discordpp::UserHandle::AvatarType)staticType;
+	return String(obj->AvatarUrl(p0, p1).c_str());
 }
 
-Variant DiscordUserHandle::game_activity() {
-	auto r = user_handle->GameActivity();
+String DiscordppUserHandle::DisplayName() {
+	return String(obj->DisplayName().c_str());
+}
+
+Variant DiscordppUserHandle::GameActivity() {
+	auto r = obj->GameActivity();
 
 	if (!r.has_value()) {
 		return nullptr;
@@ -38,11 +41,11 @@ Variant DiscordUserHandle::game_activity() {
 
 	auto t_r = (discordpp::Activity *)memalloc(sizeof(discordpp::Activity));
 	*t_r = r.value();
-	return Variant(memnew(DiscordActivity{ t_r }));
+	return Variant(memnew(DiscordppActivity{ t_r }));
 }
 
-Variant DiscordUserHandle::global_name() {
-	auto r = user_handle->GlobalName();
+Variant DiscordppUserHandle::GlobalName() {
+	auto r = obj->GlobalName();
 
 	if (!r.has_value()) {
 		return nullptr;
@@ -51,70 +54,62 @@ Variant DiscordUserHandle::global_name() {
 	return Variant(r.value().c_str());
 }
 
-uint64_t DiscordUserHandle::id() {
-	auto r = user_handle->Id();
-	return r;
+uint64_t DiscordppUserHandle::Id() {
+	return obj->Id();
 }
 
-bool DiscordUserHandle::is_provisional() {
-	auto r = user_handle->IsProvisional();
-	return r;
+bool DiscordppUserHandle::IsProvisional() {
+	return obj->IsProvisional();
 }
 
-DiscordRelationshipHandle *DiscordUserHandle::relationship() {
-	auto r = user_handle->Relationship();
+DiscordppRelationshipHandle *DiscordppUserHandle::Relationship() {
 	auto t_r = (discordpp::RelationshipHandle *)memalloc(sizeof(discordpp::RelationshipHandle));
-	*t_r = r;
-	return memnew(DiscordRelationshipHandle{ t_r });
+	*t_r = obj->Relationship();
+	return memnew(DiscordppRelationshipHandle{ t_r });
 }
 
-DiscordStatusType::Enum DiscordUserHandle::status() {
-	auto r = user_handle->Status();
-	return (DiscordStatusType::Enum)r;
+DiscordppStatusType::Enum DiscordppUserHandle::Status() {
+	return (DiscordppStatusType::Enum)obj->Status();
 }
 
-String DiscordUserHandle::username() {
-	auto r = user_handle->Username();
-	return String(r.c_str());
+String DiscordppUserHandle::Username() {
+	return String(obj->Username().c_str());
 }
 
-void DiscordUserHandle::_bind_methods() {
-	ClassDB::bind_method(D_METHOD("avatar"),
-			&DiscordUserHandle::avatar);
+void DiscordppUserHandle::_bind_methods() {
+	ClassDB::bind_method(D_METHOD("Drop"),
+			&DiscordppUserHandle::Drop);
 
-	ClassDB::bind_method(D_METHOD("avatar_url", "animated_type", "static_type"),
-			&DiscordUserHandle::avatar_url);
+	ClassDB::bind_method(D_METHOD("Avatar"),
+			&DiscordppUserHandle::Avatar);
 
-	ClassDB::bind_method(D_METHOD("display_name"),
-			&DiscordUserHandle::display_name);
+	ClassDB::bind_method(D_METHOD("AvatarTypeToString", "type"),
+			&DiscordppUserHandle::AvatarTypeToString);
 
-	ClassDB::bind_method(D_METHOD("game_activity"),
-			&DiscordUserHandle::game_activity);
+	ClassDB::bind_method(D_METHOD("AvatarUrl", "animatedType", "staticType"),
+			&DiscordppUserHandle::AvatarUrl);
 
-	ClassDB::bind_method(D_METHOD("global_name"),
-			&DiscordUserHandle::global_name);
+	ClassDB::bind_method(D_METHOD("DisplayName"),
+			&DiscordppUserHandle::DisplayName);
 
-	ClassDB::bind_method(D_METHOD("id"),
-			&DiscordUserHandle::id);
+	ClassDB::bind_method(D_METHOD("GameActivity"),
+			&DiscordppUserHandle::GameActivity);
 
-	ClassDB::bind_method(D_METHOD("is_provisional"),
-			&DiscordUserHandle::is_provisional);
+	ClassDB::bind_method(D_METHOD("GlobalName"),
+			&DiscordppUserHandle::GlobalName);
 
-	ClassDB::bind_method(D_METHOD("relationship"),
-			&DiscordUserHandle::relationship);
+	ClassDB::bind_method(D_METHOD("Id"),
+			&DiscordppUserHandle::Id);
 
-	ClassDB::bind_method(D_METHOD("status"),
-			&DiscordUserHandle::status);
+	ClassDB::bind_method(D_METHOD("IsProvisional"),
+			&DiscordppUserHandle::IsProvisional);
 
-	ClassDB::bind_method(D_METHOD("username"),
-			&DiscordUserHandle::username);
+	ClassDB::bind_method(D_METHOD("Relationship"),
+			&DiscordppUserHandle::Relationship);
+
+	ClassDB::bind_method(D_METHOD("Status"),
+			&DiscordppUserHandle::Status);
+
+	ClassDB::bind_method(D_METHOD("Username"),
+			&DiscordppUserHandle::Username);
 }
-
-DiscordUserHandle::DiscordUserHandle() {
-}
-
-DiscordUserHandle::DiscordUserHandle(discordpp::UserHandle *user_handle) {
-	this->user_handle = user_handle;
-}
-
-DiscordUserHandle::~DiscordUserHandle() {}

@@ -1,14 +1,14 @@
-// AUTO-GENERATED
+
 #include "discord_classes.h"
 
 using namespace godot;
 
-discordpp::LobbyHandle *DiscordLobbyHandle::unwrap() {
-	return lobby_handle;
+void DiscordppLobbyHandle::Drop() {
+	obj->Drop();
 }
 
-Variant DiscordLobbyHandle::get_call_info_handle() {
-	auto r = lobby_handle->GetCallInfoHandle();
+Variant DiscordppLobbyHandle::GetCallInfoHandle() {
+	auto r = obj->GetCallInfoHandle();
 
 	if (!r.has_value()) {
 		return nullptr;
@@ -16,11 +16,12 @@ Variant DiscordLobbyHandle::get_call_info_handle() {
 
 	auto t_r = (discordpp::CallInfoHandle *)memalloc(sizeof(discordpp::CallInfoHandle));
 	*t_r = r.value();
-	return Variant(memnew(DiscordCallInfoHandle{ t_r }));
+	return Variant(memnew(DiscordppCallInfoHandle{ t_r }));
 }
 
-Variant DiscordLobbyHandle::get_lobby_member_handle(uint64_t member_id) {
-	auto r = lobby_handle->GetLobbyMemberHandle(member_id);
+Variant DiscordppLobbyHandle::GetLobbyMemberHandle(uint64_t memberId) {
+	auto p0 = memberId;
+	auto r = obj->GetLobbyMemberHandle(p0);
 
 	if (!r.has_value()) {
 		return nullptr;
@@ -28,16 +29,15 @@ Variant DiscordLobbyHandle::get_lobby_member_handle(uint64_t member_id) {
 
 	auto t_r = (discordpp::LobbyMemberHandle *)memalloc(sizeof(discordpp::LobbyMemberHandle));
 	*t_r = r.value();
-	return Variant(memnew(DiscordLobbyMemberHandle{ t_r }));
+	return Variant(memnew(DiscordppLobbyMemberHandle{ t_r }));
 }
 
-uint64_t DiscordLobbyHandle::id() {
-	auto r = lobby_handle->Id();
-	return r;
+uint64_t DiscordppLobbyHandle::Id() {
+	return obj->Id();
 }
 
-Variant DiscordLobbyHandle::linked_channel() {
-	auto r = lobby_handle->LinkedChannel();
+Variant DiscordppLobbyHandle::LinkedChannel() {
+	auto r = obj->LinkedChannel();
 
 	if (!r.has_value()) {
 		return nullptr;
@@ -45,11 +45,11 @@ Variant DiscordLobbyHandle::linked_channel() {
 
 	auto t_r = (discordpp::LinkedChannel *)memalloc(sizeof(discordpp::LinkedChannel));
 	*t_r = r.value();
-	return Variant(memnew(DiscordLinkedChannel{ t_r }));
+	return Variant(memnew(DiscordppLinkedChannel{ t_r }));
 }
 
-TypedArray<uint64_t> DiscordLobbyHandle::lobby_member_ids() {
-	auto r = lobby_handle->LobbyMemberIds();
+TypedArray<uint64_t> DiscordppLobbyHandle::LobbyMemberIds() {
+	auto r = obj->LobbyMemberIds();
 	auto t_r = TypedArray<uint64_t>();
 
 	for (auto i_r : r) {
@@ -59,56 +59,50 @@ TypedArray<uint64_t> DiscordLobbyHandle::lobby_member_ids() {
 	return t_r;
 }
 
-TypedArray<DiscordLobbyMemberHandle> DiscordLobbyHandle::lobby_members() {
-	auto r = lobby_handle->LobbyMembers();
-	auto t_r = TypedArray<DiscordLobbyMemberHandle>();
+TypedArray<DiscordppLobbyMemberHandle *> DiscordppLobbyHandle::LobbyMembers() {
+	auto r = obj->LobbyMembers();
+	auto t_r = TypedArray<DiscordppLobbyMemberHandle *>();
 
 	for (auto i_r : r) {
-		t_r.push_back(memnew(DiscordLobbyMemberHandle{ &i_r }));
+		t_r.push_back(memnew(DiscordppLobbyMemberHandle{ &i_r }));
 	}
 
 	return t_r;
 }
 
-TypedDictionary<String, String> DiscordLobbyHandle::metadata() {
-	auto r = lobby_handle->Metadata();
+TypedDictionary<String, String> DiscordppLobbyHandle::Metadata() {
+	auto r = obj->Metadata();
 	auto t_r = TypedDictionary<String, String>();
 
 	for (auto p_r : r) {
-		t_r[String(p_r.first.c_str())] = String(p_r.second.c_str());
+		t_r[String(p_r.first_c_str())] = String(p_r.second.c_str());
 	}
 
 	return t_r;
 }
 
-void DiscordLobbyHandle::_bind_methods() {
-	ClassDB::bind_method(D_METHOD("get_call_info_handle"),
-			&DiscordLobbyHandle::get_call_info_handle);
+void DiscordppLobbyHandle::_bind_methods() {
+	ClassDB::bind_method(D_METHOD("Drop"),
+			&DiscordppLobbyHandle::Drop);
 
-	ClassDB::bind_method(D_METHOD("get_lobby_member_handle", "member_id"),
-			&DiscordLobbyHandle::get_lobby_member_handle);
+	ClassDB::bind_method(D_METHOD("GetCallInfoHandle"),
+			&DiscordppLobbyHandle::GetCallInfoHandle);
 
-	ClassDB::bind_method(D_METHOD("id"),
-			&DiscordLobbyHandle::id);
+	ClassDB::bind_method(D_METHOD("GetLobbyMemberHandle", "memberId"),
+			&DiscordppLobbyHandle::GetLobbyMemberHandle);
 
-	ClassDB::bind_method(D_METHOD("linked_channel"),
-			&DiscordLobbyHandle::linked_channel);
+	ClassDB::bind_method(D_METHOD("Id"),
+			&DiscordppLobbyHandle::Id);
 
-	ClassDB::bind_method(D_METHOD("lobby_member_ids"),
-			&DiscordLobbyHandle::lobby_member_ids);
+	ClassDB::bind_method(D_METHOD("LinkedChannel"),
+			&DiscordppLobbyHandle::LinkedChannel);
 
-	ClassDB::bind_method(D_METHOD("lobby_members"),
-			&DiscordLobbyHandle::lobby_members);
+	ClassDB::bind_method(D_METHOD("LobbyMemberIds"),
+			&DiscordppLobbyHandle::LobbyMemberIds);
 
-	ClassDB::bind_method(D_METHOD("metadata"),
-			&DiscordLobbyHandle::metadata);
+	ClassDB::bind_method(D_METHOD("LobbyMembers"),
+			&DiscordppLobbyHandle::LobbyMembers);
+
+	ClassDB::bind_method(D_METHOD("Metadata"),
+			&DiscordppLobbyHandle::Metadata);
 }
-
-DiscordLobbyHandle::DiscordLobbyHandle() {
-}
-
-DiscordLobbyHandle::DiscordLobbyHandle(discordpp::LobbyHandle *lobby_handle) {
-	this->lobby_handle = lobby_handle;
-}
-
-DiscordLobbyHandle::~DiscordLobbyHandle() {}

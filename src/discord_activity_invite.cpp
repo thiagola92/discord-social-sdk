@@ -1,127 +1,118 @@
-// AUTO-GENERATED
+
 #include "discord_classes.h"
 
 using namespace godot;
 
-discordpp::ActivityInvite *DiscordActivityInvite::unwrap() {
-	return activity_invite;
+void DiscordppActivityInvite::Drop() {
+	obj->Drop();
 }
 
-uint64_t DiscordActivityInvite::sender_id() {
-	auto r = activity_invite->SenderId();
-	return r;
+uint64_t DiscordppActivityInvite::SenderId() {
+	return obj->SenderId();
 }
 
-void DiscordActivityInvite::set_sender_id(uint64_t sender_id) {
-	activity_invite->SetSenderId(sender_id);
+void DiscordppActivityInvite::SetSenderId(uint64_t SenderId) {
+	auto p0 = SenderId;
+	obj->SetSenderId(p0);
 }
 
-uint64_t DiscordActivityInvite::channel_id() {
-	auto r = activity_invite->ChannelId();
-	return r;
+uint64_t DiscordppActivityInvite::ChannelId() {
+	return obj->ChannelId();
 }
 
-void DiscordActivityInvite::set_channel_id(uint64_t channel_id) {
-	activity_invite->SetChannelId(channel_id);
+void DiscordppActivityInvite::SetChannelId(uint64_t ChannelId) {
+	auto p0 = ChannelId;
+	obj->SetChannelId(p0);
 }
 
-uint64_t DiscordActivityInvite::message_id() {
-	auto r = activity_invite->MessageId();
-	return r;
+uint64_t DiscordppActivityInvite::MessageId() {
+	return obj->MessageId();
 }
 
-void DiscordActivityInvite::set_message_id(uint64_t message_id) {
-	activity_invite->SetMessageId(message_id);
+void DiscordppActivityInvite::SetMessageId(uint64_t MessageId) {
+	auto p0 = MessageId;
+	obj->SetMessageId(p0);
 }
 
-DiscordActivityActionTypes::Enum DiscordActivityInvite::type() {
-	auto r = activity_invite->Type();
-	return (DiscordActivityActionTypes::Enum)r;
+DiscordppActivityActionTypes::Enum DiscordppActivityInvite::Type() {
+	return (DiscordppActivityActionTypes::Enum)obj->Type();
 }
 
-void DiscordActivityInvite::set_type(DiscordActivityActionTypes::Enum type) {
-	auto p0 = (discordpp::ActivityActionTypes)type;
-	activity_invite->SetType(p0);
+void DiscordppActivityInvite::SetType(DiscordppActivityActionTypes::Enum Type) {
+	auto p0 = (discordpp::ActivityActionTypes)Type;
+	obj->SetType(p0);
 }
 
-uint64_t DiscordActivityInvite::application_id() {
-	auto r = activity_invite->ApplicationId();
-	return r;
+uint64_t DiscordppActivityInvite::ApplicationId() {
+	return obj->ApplicationId();
 }
 
-void DiscordActivityInvite::set_application_id(uint64_t application_id) {
-	activity_invite->SetApplicationId(application_id);
+void DiscordppActivityInvite::SetApplicationId(uint64_t ApplicationId) {
+	auto p0 = ApplicationId;
+	obj->SetApplicationId(p0);
 }
 
-String DiscordActivityInvite::party_id() {
-	auto r = activity_invite->PartyId();
-	return String(r.c_str());
+String DiscordppActivityInvite::PartyId() {
+	return String(obj->PartyId().c_str());
 }
 
-void DiscordActivityInvite::set_party_id(String party_id) {
-	auto p0 = party_id.utf8().get_data();
-	activity_invite->SetPartyId(p0);
+void DiscordppActivityInvite::SetPartyId(String PartyId) {
+	auto p0 = PartyId.utf8().get_data();
+	obj->SetPartyId(p0);
 }
 
-bool DiscordActivityInvite::is_valid() {
-	auto r = activity_invite->IsValid();
-	return r;
+bool DiscordppActivityInvite::IsValid() {
+	return obj->IsValid();
 }
 
-void DiscordActivityInvite::set_is_valid(bool is_valid) {
-	activity_invite->SetIsValid(is_valid);
+void DiscordppActivityInvite::SetIsValid(bool IsValid) {
+	auto p0 = IsValid;
+	obj->SetIsValid(p0);
 }
 
-void DiscordActivityInvite::_bind_methods() {
-	ClassDB::bind_method(D_METHOD("sender_id"),
-			&DiscordActivityInvite::sender_id);
+void DiscordppActivityInvite::_bind_methods() {
+	ClassDB::bind_method(D_METHOD("Drop"),
+			&DiscordppActivityInvite::Drop);
 
-	ClassDB::bind_method(D_METHOD("set_sender_id", "sender_id"),
-			&DiscordActivityInvite::set_sender_id);
+	ClassDB::bind_method(D_METHOD("SenderId"),
+			&DiscordppActivityInvite::SenderId);
 
-	ClassDB::bind_method(D_METHOD("channel_id"),
-			&DiscordActivityInvite::channel_id);
+	ClassDB::bind_method(D_METHOD("SetSenderId", "SenderId"),
+			&DiscordppActivityInvite::SetSenderId);
 
-	ClassDB::bind_method(D_METHOD("set_channel_id", "channel_id"),
-			&DiscordActivityInvite::set_channel_id);
+	ClassDB::bind_method(D_METHOD("ChannelId"),
+			&DiscordppActivityInvite::ChannelId);
 
-	ClassDB::bind_method(D_METHOD("message_id"),
-			&DiscordActivityInvite::message_id);
+	ClassDB::bind_method(D_METHOD("SetChannelId", "ChannelId"),
+			&DiscordppActivityInvite::SetChannelId);
 
-	ClassDB::bind_method(D_METHOD("set_message_id", "message_id"),
-			&DiscordActivityInvite::set_message_id);
+	ClassDB::bind_method(D_METHOD("MessageId"),
+			&DiscordppActivityInvite::MessageId);
 
-	ClassDB::bind_method(D_METHOD("type"),
-			&DiscordActivityInvite::type);
+	ClassDB::bind_method(D_METHOD("SetMessageId", "MessageId"),
+			&DiscordppActivityInvite::SetMessageId);
 
-	ClassDB::bind_method(D_METHOD("set_type", "type"),
-			&DiscordActivityInvite::set_type);
+	ClassDB::bind_method(D_METHOD("Type"),
+			&DiscordppActivityInvite::Type);
 
-	ClassDB::bind_method(D_METHOD("application_id"),
-			&DiscordActivityInvite::application_id);
+	ClassDB::bind_method(D_METHOD("SetType", "Type"),
+			&DiscordppActivityInvite::SetType);
 
-	ClassDB::bind_method(D_METHOD("set_application_id", "application_id"),
-			&DiscordActivityInvite::set_application_id);
+	ClassDB::bind_method(D_METHOD("ApplicationId"),
+			&DiscordppActivityInvite::ApplicationId);
 
-	ClassDB::bind_method(D_METHOD("party_id"),
-			&DiscordActivityInvite::party_id);
+	ClassDB::bind_method(D_METHOD("SetApplicationId", "ApplicationId"),
+			&DiscordppActivityInvite::SetApplicationId);
 
-	ClassDB::bind_method(D_METHOD("set_party_id", "party_id"),
-			&DiscordActivityInvite::set_party_id);
+	ClassDB::bind_method(D_METHOD("PartyId"),
+			&DiscordppActivityInvite::PartyId);
 
-	ClassDB::bind_method(D_METHOD("is_valid"),
-			&DiscordActivityInvite::is_valid);
+	ClassDB::bind_method(D_METHOD("SetPartyId", "PartyId"),
+			&DiscordppActivityInvite::SetPartyId);
 
-	ClassDB::bind_method(D_METHOD("set_is_valid", "is_valid"),
-			&DiscordActivityInvite::set_is_valid);
+	ClassDB::bind_method(D_METHOD("IsValid"),
+			&DiscordppActivityInvite::IsValid);
+
+	ClassDB::bind_method(D_METHOD("SetIsValid", "IsValid"),
+			&DiscordppActivityInvite::SetIsValid);
 }
-
-DiscordActivityInvite::DiscordActivityInvite() {
-	this->activity_invite = memnew(discordpp::ActivityInvite);
-}
-
-DiscordActivityInvite::DiscordActivityInvite(discordpp::ActivityInvite *activity_invite) {
-	this->activity_invite = activity_invite;
-}
-
-DiscordActivityInvite::~DiscordActivityInvite() {}

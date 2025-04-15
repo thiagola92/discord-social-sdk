@@ -1,40 +1,37 @@
-// AUTO-GENERATED
+
 #include "discord_classes.h"
 
 using namespace godot;
 
-discordpp::LobbyMemberHandle *DiscordLobbyMemberHandle::unwrap() {
-	return lobby_member_handle;
+void DiscordppLobbyMemberHandle::Drop() {
+	obj->Drop();
 }
 
-bool DiscordLobbyMemberHandle::can_link_lobby() {
-	auto r = lobby_member_handle->CanLinkLobby();
-	return r;
+bool DiscordppLobbyMemberHandle::CanLinkLobby() {
+	return obj->CanLinkLobby();
 }
 
-bool DiscordLobbyMemberHandle::connected() {
-	auto r = lobby_member_handle->Connected();
-	return r;
+bool DiscordppLobbyMemberHandle::Connected() {
+	return obj->Connected();
 }
 
-uint64_t DiscordLobbyMemberHandle::id() {
-	auto r = lobby_member_handle->Id();
-	return r;
+uint64_t DiscordppLobbyMemberHandle::Id() {
+	return obj->Id();
 }
 
-TypedDictionary<String, String> DiscordLobbyMemberHandle::metadata() {
-	auto r = lobby_member_handle->Metadata();
+TypedDictionary<String, String> DiscordppLobbyMemberHandle::Metadata() {
+	auto r = obj->Metadata();
 	auto t_r = TypedDictionary<String, String>();
 
 	for (auto p_r : r) {
-		t_r[String(p_r.first.c_str())] = String(p_r.second.c_str());
+		t_r[String(p_r.first_c_str())] = String(p_r.second.c_str());
 	}
 
 	return t_r;
 }
 
-Variant DiscordLobbyMemberHandle::user() {
-	auto r = lobby_member_handle->User();
+Variant DiscordppLobbyMemberHandle::User() {
+	auto r = obj->User();
 
 	if (!r.has_value()) {
 		return nullptr;
@@ -42,31 +39,25 @@ Variant DiscordLobbyMemberHandle::user() {
 
 	auto t_r = (discordpp::UserHandle *)memalloc(sizeof(discordpp::UserHandle));
 	*t_r = r.value();
-	return Variant(memnew(DiscordUserHandle{ t_r }));
+	return Variant(memnew(DiscordppUserHandle{ t_r }));
 }
 
-void DiscordLobbyMemberHandle::_bind_methods() {
-	ClassDB::bind_method(D_METHOD("can_link_lobby"),
-			&DiscordLobbyMemberHandle::can_link_lobby);
+void DiscordppLobbyMemberHandle::_bind_methods() {
+	ClassDB::bind_method(D_METHOD("Drop"),
+			&DiscordppLobbyMemberHandle::Drop);
 
-	ClassDB::bind_method(D_METHOD("connected"),
-			&DiscordLobbyMemberHandle::connected);
+	ClassDB::bind_method(D_METHOD("CanLinkLobby"),
+			&DiscordppLobbyMemberHandle::CanLinkLobby);
 
-	ClassDB::bind_method(D_METHOD("id"),
-			&DiscordLobbyMemberHandle::id);
+	ClassDB::bind_method(D_METHOD("Connected"),
+			&DiscordppLobbyMemberHandle::Connected);
 
-	ClassDB::bind_method(D_METHOD("metadata"),
-			&DiscordLobbyMemberHandle::metadata);
+	ClassDB::bind_method(D_METHOD("Id"),
+			&DiscordppLobbyMemberHandle::Id);
 
-	ClassDB::bind_method(D_METHOD("user"),
-			&DiscordLobbyMemberHandle::user);
+	ClassDB::bind_method(D_METHOD("Metadata"),
+			&DiscordppLobbyMemberHandle::Metadata);
+
+	ClassDB::bind_method(D_METHOD("User"),
+			&DiscordppLobbyMemberHandle::User);
 }
-
-DiscordLobbyMemberHandle::DiscordLobbyMemberHandle() {
-}
-
-DiscordLobbyMemberHandle::DiscordLobbyMemberHandle(discordpp::LobbyMemberHandle *lobby_member_handle) {
-	this->lobby_member_handle = lobby_member_handle;
-}
-
-DiscordLobbyMemberHandle::~DiscordLobbyMemberHandle() {}

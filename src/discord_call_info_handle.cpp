@@ -1,19 +1,18 @@
-// AUTO-GENERATED
+
 #include "discord_classes.h"
 
 using namespace godot;
 
-discordpp::CallInfoHandle *DiscordCallInfoHandle::unwrap() {
-	return call_info_handle;
+void DiscordppCallInfoHandle::Drop() {
+	obj->Drop();
 }
 
-uint64_t DiscordCallInfoHandle::channel_id() {
-	auto r = call_info_handle->ChannelId();
-	return r;
+uint64_t DiscordppCallInfoHandle::ChannelId() {
+	return obj->ChannelId();
 }
 
-TypedArray<uint64_t> DiscordCallInfoHandle::get_participants() {
-	auto r = call_info_handle->GetParticipants();
+TypedArray<uint64_t> DiscordppCallInfoHandle::GetParticipants() {
+	auto r = obj->GetParticipants();
 	auto t_r = TypedArray<uint64_t>();
 
 	for (auto i_r : r) {
@@ -23,8 +22,9 @@ TypedArray<uint64_t> DiscordCallInfoHandle::get_participants() {
 	return t_r;
 }
 
-Variant DiscordCallInfoHandle::get_voice_state_handle(uint64_t user_id) {
-	auto r = call_info_handle->GetVoiceStateHandle(user_id);
+Variant DiscordppCallInfoHandle::GetVoiceStateHandle(uint64_t userId) {
+	auto p0 = userId;
+	auto r = obj->GetVoiceStateHandle(p0);
 
 	if (!r.has_value()) {
 		return nullptr;
@@ -32,33 +32,26 @@ Variant DiscordCallInfoHandle::get_voice_state_handle(uint64_t user_id) {
 
 	auto t_r = (discordpp::VoiceStateHandle *)memalloc(sizeof(discordpp::VoiceStateHandle));
 	*t_r = r.value();
-	return Variant(memnew(DiscordVoiceStateHandle{ t_r }));
+	return Variant(memnew(DiscordppVoiceStateHandle{ t_r }));
 }
 
-uint64_t DiscordCallInfoHandle::guild_id() {
-	auto r = call_info_handle->GuildId();
-	return r;
+uint64_t DiscordppCallInfoHandle::GuildId() {
+	return obj->GuildId();
 }
 
-void DiscordCallInfoHandle::_bind_methods() {
-	ClassDB::bind_method(D_METHOD("channel_id"),
-			&DiscordCallInfoHandle::channel_id);
+void DiscordppCallInfoHandle::_bind_methods() {
+	ClassDB::bind_method(D_METHOD("Drop"),
+			&DiscordppCallInfoHandle::Drop);
 
-	ClassDB::bind_method(D_METHOD("get_participants"),
-			&DiscordCallInfoHandle::get_participants);
+	ClassDB::bind_method(D_METHOD("ChannelId"),
+			&DiscordppCallInfoHandle::ChannelId);
 
-	ClassDB::bind_method(D_METHOD("get_voice_state_handle", "user_id"),
-			&DiscordCallInfoHandle::get_voice_state_handle);
+	ClassDB::bind_method(D_METHOD("GetParticipants"),
+			&DiscordppCallInfoHandle::GetParticipants);
 
-	ClassDB::bind_method(D_METHOD("guild_id"),
-			&DiscordCallInfoHandle::guild_id);
+	ClassDB::bind_method(D_METHOD("GetVoiceStateHandle", "userId"),
+			&DiscordppCallInfoHandle::GetVoiceStateHandle);
+
+	ClassDB::bind_method(D_METHOD("GuildId"),
+			&DiscordppCallInfoHandle::GuildId);
 }
-
-DiscordCallInfoHandle::DiscordCallInfoHandle() {
-}
-
-DiscordCallInfoHandle::DiscordCallInfoHandle(discordpp::CallInfoHandle *call_info_handle) {
-	this->call_info_handle = call_info_handle;
-}
-
-DiscordCallInfoHandle::~DiscordCallInfoHandle() {}

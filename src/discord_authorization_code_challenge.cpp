@@ -1,52 +1,43 @@
-// AUTO-GENERATED
+
 #include "discord_classes.h"
 
 using namespace godot;
 
-discordpp::AuthorizationCodeChallenge *DiscordAuthorizationCodeChallenge::unwrap() {
-	return authorization_code_challenge;
+void DiscordppAuthorizationCodeChallenge::Drop() {
+	obj->Drop();
 }
 
-DiscordAuthenticationCodeChallengeMethod::Enum DiscordAuthorizationCodeChallenge::method() {
-	auto r = authorization_code_challenge->Method();
-	return (DiscordAuthenticationCodeChallengeMethod::Enum)r;
+DiscordppAuthenticationCodeChallengeMethod::Enum DiscordppAuthorizationCodeChallenge::Method() {
+	return (DiscordppAuthenticationCodeChallengeMethod::Enum)obj->Method();
 }
 
-void DiscordAuthorizationCodeChallenge::set_method(DiscordAuthenticationCodeChallengeMethod::Enum method) {
-	auto p0 = (discordpp::AuthenticationCodeChallengeMethod)method;
-	authorization_code_challenge->SetMethod(p0);
+void DiscordppAuthorizationCodeChallenge::SetMethod(DiscordppAuthenticationCodeChallengeMethod::Enum Method) {
+	auto p0 = (discordpp::AuthenticationCodeChallengeMethod)Method;
+	obj->SetMethod(p0);
 }
 
-String DiscordAuthorizationCodeChallenge::challenge() {
-	auto r = authorization_code_challenge->Challenge();
-	return String(r.c_str());
+String DiscordppAuthorizationCodeChallenge::Challenge() {
+	return String(obj->Challenge().c_str());
 }
 
-void DiscordAuthorizationCodeChallenge::set_challenge(String challenge) {
-	auto p0 = challenge.utf8().get_data();
-	authorization_code_challenge->SetChallenge(p0);
+void DiscordppAuthorizationCodeChallenge::SetChallenge(String Challenge) {
+	auto p0 = Challenge.utf8().get_data();
+	obj->SetChallenge(p0);
 }
 
-void DiscordAuthorizationCodeChallenge::_bind_methods() {
-	ClassDB::bind_method(D_METHOD("method"),
-			&DiscordAuthorizationCodeChallenge::method);
+void DiscordppAuthorizationCodeChallenge::_bind_methods() {
+	ClassDB::bind_method(D_METHOD("Drop"),
+			&DiscordppAuthorizationCodeChallenge::Drop);
 
-	ClassDB::bind_method(D_METHOD("set_method", "method"),
-			&DiscordAuthorizationCodeChallenge::set_method);
+	ClassDB::bind_method(D_METHOD("Method"),
+			&DiscordppAuthorizationCodeChallenge::Method);
 
-	ClassDB::bind_method(D_METHOD("challenge"),
-			&DiscordAuthorizationCodeChallenge::challenge);
+	ClassDB::bind_method(D_METHOD("SetMethod", "Method"),
+			&DiscordppAuthorizationCodeChallenge::SetMethod);
 
-	ClassDB::bind_method(D_METHOD("set_challenge", "challenge"),
-			&DiscordAuthorizationCodeChallenge::set_challenge);
+	ClassDB::bind_method(D_METHOD("Challenge"),
+			&DiscordppAuthorizationCodeChallenge::Challenge);
+
+	ClassDB::bind_method(D_METHOD("SetChallenge", "Challenge"),
+			&DiscordppAuthorizationCodeChallenge::SetChallenge);
 }
-
-DiscordAuthorizationCodeChallenge::DiscordAuthorizationCodeChallenge() {
-	this->authorization_code_challenge = memnew(discordpp::AuthorizationCodeChallenge);
-}
-
-DiscordAuthorizationCodeChallenge::DiscordAuthorizationCodeChallenge(discordpp::AuthorizationCodeChallenge *authorization_code_challenge) {
-	this->authorization_code_challenge = authorization_code_challenge;
-}
-
-DiscordAuthorizationCodeChallenge::~DiscordAuthorizationCodeChallenge() {}

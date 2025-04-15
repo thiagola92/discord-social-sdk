@@ -1,49 +1,43 @@
-// AUTO-GENERATED
+
 #include "discord_classes.h"
 
 using namespace godot;
 
-discordpp::VADThresholdSettings *DiscordVADThresholdSettings::unwrap() {
-	return vadthreshold_settings;
+void DiscordppVADThresholdSettings::Drop() {
+	obj->Drop();
 }
 
-float DiscordVADThresholdSettings::vad_threshold() {
-	auto r = vadthreshold_settings->VadThreshold();
-	return r;
+float DiscordppVADThresholdSettings::VadThreshold() {
+	return obj->VadThreshold();
 }
 
-void DiscordVADThresholdSettings::set_vad_threshold(float vad_threshold) {
-	vadthreshold_settings->SetVadThreshold(vad_threshold);
+void DiscordppVADThresholdSettings::SetVadThreshold(float VadThreshold) {
+	auto p0 = VadThreshold;
+	obj->SetVadThreshold(p0);
 }
 
-bool DiscordVADThresholdSettings::automatic() {
-	auto r = vadthreshold_settings->Automatic();
-	return r;
+bool DiscordppVADThresholdSettings::Automatic() {
+	return obj->Automatic();
 }
 
-void DiscordVADThresholdSettings::set_automatic(bool automatic) {
-	vadthreshold_settings->SetAutomatic(automatic);
+void DiscordppVADThresholdSettings::SetAutomatic(bool Automatic) {
+	auto p0 = Automatic;
+	obj->SetAutomatic(p0);
 }
 
-void DiscordVADThresholdSettings::_bind_methods() {
-	ClassDB::bind_method(D_METHOD("vad_threshold"),
-			&DiscordVADThresholdSettings::vad_threshold);
+void DiscordppVADThresholdSettings::_bind_methods() {
+	ClassDB::bind_method(D_METHOD("Drop"),
+			&DiscordppVADThresholdSettings::Drop);
 
-	ClassDB::bind_method(D_METHOD("set_vad_threshold", "vad_threshold"),
-			&DiscordVADThresholdSettings::set_vad_threshold);
+	ClassDB::bind_method(D_METHOD("VadThreshold"),
+			&DiscordppVADThresholdSettings::VadThreshold);
 
-	ClassDB::bind_method(D_METHOD("automatic"),
-			&DiscordVADThresholdSettings::automatic);
+	ClassDB::bind_method(D_METHOD("SetVadThreshold", "VadThreshold"),
+			&DiscordppVADThresholdSettings::SetVadThreshold);
 
-	ClassDB::bind_method(D_METHOD("set_automatic", "automatic"),
-			&DiscordVADThresholdSettings::set_automatic);
+	ClassDB::bind_method(D_METHOD("Automatic"),
+			&DiscordppVADThresholdSettings::Automatic);
+
+	ClassDB::bind_method(D_METHOD("SetAutomatic", "Automatic"),
+			&DiscordppVADThresholdSettings::SetAutomatic);
 }
-
-DiscordVADThresholdSettings::DiscordVADThresholdSettings() {
-}
-
-DiscordVADThresholdSettings::DiscordVADThresholdSettings(discordpp::VADThresholdSettings *vadthreshold_settings) {
-	this->vadthreshold_settings = vadthreshold_settings;
-}
-
-DiscordVADThresholdSettings::~DiscordVADThresholdSettings() {}

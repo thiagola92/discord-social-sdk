@@ -1,24 +1,22 @@
-// AUTO-GENERATED
+
 #include "discord_classes.h"
 
 using namespace godot;
 
-discordpp::ChannelHandle *DiscordChannelHandle::unwrap() {
-	return channel_handle;
+void DiscordppChannelHandle::Drop() {
+	obj->Drop();
 }
 
-uint64_t DiscordChannelHandle::id() {
-	auto r = channel_handle->Id();
-	return r;
+uint64_t DiscordppChannelHandle::Id() {
+	return obj->Id();
 }
 
-String DiscordChannelHandle::name() {
-	auto r = channel_handle->Name();
-	return String(r.c_str());
+String DiscordppChannelHandle::Name() {
+	return String(obj->Name().c_str());
 }
 
-TypedArray<uint64_t> DiscordChannelHandle::recipients() {
-	auto r = channel_handle->Recipients();
+TypedArray<uint64_t> DiscordppChannelHandle::Recipients() {
+	auto r = obj->Recipients();
 	auto t_r = TypedArray<uint64_t>();
 
 	for (auto i_r : r) {
@@ -28,30 +26,23 @@ TypedArray<uint64_t> DiscordChannelHandle::recipients() {
 	return t_r;
 }
 
-DiscordChannelType::Enum DiscordChannelHandle::type() {
-	auto r = channel_handle->Type();
-	return (DiscordChannelType::Enum)r;
+DiscordppChannelType::Enum DiscordppChannelHandle::Type() {
+	return (DiscordppChannelType::Enum)obj->Type();
 }
 
-void DiscordChannelHandle::_bind_methods() {
-	ClassDB::bind_method(D_METHOD("id"),
-			&DiscordChannelHandle::id);
+void DiscordppChannelHandle::_bind_methods() {
+	ClassDB::bind_method(D_METHOD("Drop"),
+			&DiscordppChannelHandle::Drop);
 
-	ClassDB::bind_method(D_METHOD("name"),
-			&DiscordChannelHandle::name);
+	ClassDB::bind_method(D_METHOD("Id"),
+			&DiscordppChannelHandle::Id);
 
-	ClassDB::bind_method(D_METHOD("recipients"),
-			&DiscordChannelHandle::recipients);
+	ClassDB::bind_method(D_METHOD("Name"),
+			&DiscordppChannelHandle::Name);
 
-	ClassDB::bind_method(D_METHOD("type"),
-			&DiscordChannelHandle::type);
+	ClassDB::bind_method(D_METHOD("Recipients"),
+			&DiscordppChannelHandle::Recipients);
+
+	ClassDB::bind_method(D_METHOD("Type"),
+			&DiscordppChannelHandle::Type);
 }
-
-DiscordChannelHandle::DiscordChannelHandle() {
-}
-
-DiscordChannelHandle::DiscordChannelHandle(discordpp::ChannelHandle *channel_handle) {
-	this->channel_handle = channel_handle;
-}
-
-DiscordChannelHandle::~DiscordChannelHandle() {}

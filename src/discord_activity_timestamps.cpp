@@ -1,50 +1,43 @@
-// AUTO-GENERATED
+
 #include "discord_classes.h"
 
 using namespace godot;
 
-discordpp::ActivityTimestamps *DiscordActivityTimestamps::unwrap() {
-	return activity_timestamps;
+void DiscordppActivityTimestamps::Drop() {
+	obj->Drop();
 }
 
-uint64_t DiscordActivityTimestamps::start() {
-	auto r = activity_timestamps->Start();
-	return r;
+uint64_t DiscordppActivityTimestamps::Start() {
+	return obj->Start();
 }
 
-void DiscordActivityTimestamps::set_start(uint64_t start) {
-	activity_timestamps->SetStart(start);
+void DiscordppActivityTimestamps::SetStart(uint64_t Start) {
+	auto p0 = Start;
+	obj->SetStart(p0);
 }
 
-uint64_t DiscordActivityTimestamps::end() {
-	auto r = activity_timestamps->End();
-	return r;
+uint64_t DiscordppActivityTimestamps::End() {
+	return obj->End();
 }
 
-void DiscordActivityTimestamps::set_end(uint64_t end) {
-	activity_timestamps->SetEnd(end);
+void DiscordppActivityTimestamps::SetEnd(uint64_t End) {
+	auto p0 = End;
+	obj->SetEnd(p0);
 }
 
-void DiscordActivityTimestamps::_bind_methods() {
-	ClassDB::bind_method(D_METHOD("start"),
-			&DiscordActivityTimestamps::start);
+void DiscordppActivityTimestamps::_bind_methods() {
+	ClassDB::bind_method(D_METHOD("Drop"),
+			&DiscordppActivityTimestamps::Drop);
 
-	ClassDB::bind_method(D_METHOD("set_start", "start"),
-			&DiscordActivityTimestamps::set_start);
+	ClassDB::bind_method(D_METHOD("Start"),
+			&DiscordppActivityTimestamps::Start);
 
-	ClassDB::bind_method(D_METHOD("end"),
-			&DiscordActivityTimestamps::end);
+	ClassDB::bind_method(D_METHOD("SetStart", "Start"),
+			&DiscordppActivityTimestamps::SetStart);
 
-	ClassDB::bind_method(D_METHOD("set_end", "end"),
-			&DiscordActivityTimestamps::set_end);
+	ClassDB::bind_method(D_METHOD("End"),
+			&DiscordppActivityTimestamps::End);
+
+	ClassDB::bind_method(D_METHOD("SetEnd", "End"),
+			&DiscordppActivityTimestamps::SetEnd);
 }
-
-DiscordActivityTimestamps::DiscordActivityTimestamps() {
-	this->activity_timestamps = memnew(discordpp::ActivityTimestamps);
-}
-
-DiscordActivityTimestamps::DiscordActivityTimestamps(discordpp::ActivityTimestamps *activity_timestamps) {
-	this->activity_timestamps = activity_timestamps;
-}
-
-DiscordActivityTimestamps::~DiscordActivityTimestamps() {}

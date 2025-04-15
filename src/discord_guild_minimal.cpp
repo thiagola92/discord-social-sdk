@@ -1,50 +1,43 @@
-// AUTO-GENERATED
+
 #include "discord_classes.h"
 
 using namespace godot;
 
-discordpp::GuildMinimal *DiscordGuildMinimal::unwrap() {
-	return guild_minimal;
+void DiscordppGuildMinimal::Drop() {
+	obj->Drop();
 }
 
-uint64_t DiscordGuildMinimal::id() {
-	auto r = guild_minimal->Id();
-	return r;
+uint64_t DiscordppGuildMinimal::Id() {
+	return obj->Id();
 }
 
-void DiscordGuildMinimal::set_id(uint64_t id) {
-	guild_minimal->SetId(id);
+void DiscordppGuildMinimal::SetId(uint64_t Id) {
+	auto p0 = Id;
+	obj->SetId(p0);
 }
 
-String DiscordGuildMinimal::name() {
-	auto r = guild_minimal->Name();
-	return String(r.c_str());
+String DiscordppGuildMinimal::Name() {
+	return String(obj->Name().c_str());
 }
 
-void DiscordGuildMinimal::set_name(String name) {
-	auto p0 = name.utf8().get_data();
-	guild_minimal->SetName(p0);
+void DiscordppGuildMinimal::SetName(String Name) {
+	auto p0 = Name.utf8().get_data();
+	obj->SetName(p0);
 }
 
-void DiscordGuildMinimal::_bind_methods() {
-	ClassDB::bind_method(D_METHOD("id"),
-			&DiscordGuildMinimal::id);
+void DiscordppGuildMinimal::_bind_methods() {
+	ClassDB::bind_method(D_METHOD("Drop"),
+			&DiscordppGuildMinimal::Drop);
 
-	ClassDB::bind_method(D_METHOD("set_id", "id"),
-			&DiscordGuildMinimal::set_id);
+	ClassDB::bind_method(D_METHOD("Id"),
+			&DiscordppGuildMinimal::Id);
 
-	ClassDB::bind_method(D_METHOD("name"),
-			&DiscordGuildMinimal::name);
+	ClassDB::bind_method(D_METHOD("SetId", "Id"),
+			&DiscordppGuildMinimal::SetId);
 
-	ClassDB::bind_method(D_METHOD("set_name", "name"),
-			&DiscordGuildMinimal::set_name);
+	ClassDB::bind_method(D_METHOD("Name"),
+			&DiscordppGuildMinimal::Name);
+
+	ClassDB::bind_method(D_METHOD("SetName", "Name"),
+			&DiscordppGuildMinimal::SetName);
 }
-
-DiscordGuildMinimal::DiscordGuildMinimal() {
-}
-
-DiscordGuildMinimal::DiscordGuildMinimal(discordpp::GuildMinimal *guild_minimal) {
-	this->guild_minimal = guild_minimal;
-}
-
-DiscordGuildMinimal::~DiscordGuildMinimal() {}

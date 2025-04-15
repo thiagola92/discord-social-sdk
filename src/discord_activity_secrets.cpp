@@ -1,36 +1,28 @@
-// AUTO-GENERATED
+
 #include "discord_classes.h"
 
 using namespace godot;
 
-discordpp::ActivitySecrets *DiscordActivitySecrets::unwrap() {
-	return activity_secrets;
+void DiscordppActivitySecrets::Drop() {
+	obj->Drop();
 }
 
-String DiscordActivitySecrets::join() {
-	auto r = activity_secrets->Join();
-	return String(r.c_str());
+String DiscordppActivitySecrets::Join() {
+	return String(obj->Join().c_str());
 }
 
-void DiscordActivitySecrets::set_join(String join) {
-	auto p0 = join.utf8().get_data();
-	activity_secrets->SetJoin(p0);
+void DiscordppActivitySecrets::SetJoin(String Join) {
+	auto p0 = Join.utf8().get_data();
+	obj->SetJoin(p0);
 }
 
-void DiscordActivitySecrets::_bind_methods() {
-	ClassDB::bind_method(D_METHOD("join"),
-			&DiscordActivitySecrets::join);
+void DiscordppActivitySecrets::_bind_methods() {
+	ClassDB::bind_method(D_METHOD("Drop"),
+			&DiscordppActivitySecrets::Drop);
 
-	ClassDB::bind_method(D_METHOD("set_join", "join"),
-			&DiscordActivitySecrets::set_join);
+	ClassDB::bind_method(D_METHOD("Join"),
+			&DiscordppActivitySecrets::Join);
+
+	ClassDB::bind_method(D_METHOD("SetJoin", "Join"),
+			&DiscordppActivitySecrets::SetJoin);
 }
-
-DiscordActivitySecrets::DiscordActivitySecrets() {
-	this->activity_secrets = memnew(discordpp::ActivitySecrets);
-}
-
-DiscordActivitySecrets::DiscordActivitySecrets(discordpp::ActivitySecrets *activity_secrets) {
-	this->activity_secrets = activity_secrets;
-}
-
-DiscordActivitySecrets::~DiscordActivitySecrets() {}

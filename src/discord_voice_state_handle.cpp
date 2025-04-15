@@ -1,35 +1,27 @@
-// AUTO-GENERATED
+
 #include "discord_classes.h"
 
 using namespace godot;
 
-discordpp::VoiceStateHandle *DiscordVoiceStateHandle::unwrap() {
-	return voice_state_handle;
+void DiscordppVoiceStateHandle::Drop() {
+	obj->Drop();
 }
 
-bool DiscordVoiceStateHandle::self_deaf() {
-	auto r = voice_state_handle->SelfDeaf();
-	return r;
+bool DiscordppVoiceStateHandle::SelfDeaf() {
+	return obj->SelfDeaf();
 }
 
-bool DiscordVoiceStateHandle::self_mute() {
-	auto r = voice_state_handle->SelfMute();
-	return r;
+bool DiscordppVoiceStateHandle::SelfMute() {
+	return obj->SelfMute();
 }
 
-void DiscordVoiceStateHandle::_bind_methods() {
-	ClassDB::bind_method(D_METHOD("self_deaf"),
-			&DiscordVoiceStateHandle::self_deaf);
+void DiscordppVoiceStateHandle::_bind_methods() {
+	ClassDB::bind_method(D_METHOD("Drop"),
+			&DiscordppVoiceStateHandle::Drop);
 
-	ClassDB::bind_method(D_METHOD("self_mute"),
-			&DiscordVoiceStateHandle::self_mute);
+	ClassDB::bind_method(D_METHOD("SelfDeaf"),
+			&DiscordppVoiceStateHandle::SelfDeaf);
+
+	ClassDB::bind_method(D_METHOD("SelfMute"),
+			&DiscordppVoiceStateHandle::SelfMute);
 }
-
-DiscordVoiceStateHandle::DiscordVoiceStateHandle() {
-}
-
-DiscordVoiceStateHandle::DiscordVoiceStateHandle(discordpp::VoiceStateHandle *voice_state_handle) {
-	this->voice_state_handle = voice_state_handle;
-}
-
-DiscordVoiceStateHandle::~DiscordVoiceStateHandle() {}

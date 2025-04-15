@@ -7,12 +7,6 @@ const APPLICATION_ID = 123
 
 
 func _ready() -> void:
-	client.add_log_callback(
-		func(m, s):
-			printt("[%s] %s" % [s, m]),
-		DiscordLoggingSeverity.VERBOSE
-	)
-	
 	# Just for testing (it's suppose to fail)
 	client.authorize(DiscordAuthorizationArgs.new())
 
