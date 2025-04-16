@@ -7,14 +7,13 @@ void DiscordppAuthorizationCodeVerifier::Drop() {
 	obj->Drop();
 }
 
-Ref<DiscordppAuthorizationCodeChallenge> DiscordppAuthorizationCodeVerifier::Challenge() {
+DiscordppAuthorizationCodeChallenge *DiscordppAuthorizationCodeVerifier::Challenge() {
 	discordpp::AuthorizationCodeChallenge *t_r = (discordpp::AuthorizationCodeChallenge *)memalloc(sizeof(discordpp::AuthorizationCodeChallenge));
 	*t_r = obj->Challenge();
-	Ref<DiscordppAuthorizationCodeChallenge> t2_r = memnew(DiscordppAuthorizationCodeChallenge{ t_r });
-	return t2_r;
+	return memnew(DiscordppAuthorizationCodeChallenge{ t_r });
 }
 
-void DiscordppAuthorizationCodeVerifier::SetChallenge(Ref<DiscordppAuthorizationCodeChallenge> Challenge) {
+void DiscordppAuthorizationCodeVerifier::SetChallenge(DiscordppAuthorizationCodeChallenge *Challenge) {
 	discordpp::AuthorizationCodeChallenge p0 = *Challenge->unwrap();
 
 	obj->SetChallenge(p0);

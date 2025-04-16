@@ -7,7 +7,7 @@ void DiscordppAudioDevice::Drop() {
 	obj->Drop();
 }
 
-bool DiscordppAudioDevice::Equals(Ref<DiscordppAudioDevice> rhs) {
+bool DiscordppAudioDevice::Equals(DiscordppAudioDevice *rhs) {
 	discordpp::AudioDevice p0 = *rhs->unwrap();
 
 	return obj->Equals(p0);

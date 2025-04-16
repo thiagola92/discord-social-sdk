@@ -63,9 +63,8 @@ void DiscordppGuildChannel::SetLinkedLobby(Variant LinkedLobby) {
 	std::optional<discordpp::LinkedLobby> p0;
 
 	if (LinkedLobby.get_type() == Variant::OBJECT) {
-		DiscordppLinkedLobby t_p0 = Object::cast_to<DiscordppLinkedLobby>(LinkedLobby);
-		auto t2_p0 = t_p0->unwrap();
-		p0 = std::optional<discordpp::LinkedLobby>{ *t2_p0 };
+		DiscordppLinkedLobby *t_p0 = Object::cast_to<DiscordppLinkedLobby>(LinkedLobby);
+		p0 = std::optional<discordpp::LinkedLobby>{ *t_p0->unwrap() };
 	}
 
 	obj->SetLinkedLobby(p0);

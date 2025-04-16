@@ -60,13 +60,12 @@ TypedArray<int64_t> DiscordppLobbyHandle::LobbyMemberIds() {
 	return t_r;
 }
 
-TypedArray<Ref<DiscordppLobbyMemberHandle>> DiscordppLobbyHandle::LobbyMembers() {
+TypedArray<DiscordppLobbyMemberHandle> DiscordppLobbyHandle::LobbyMembers() {
 	auto r = obj->LobbyMembers();
-	TypedArray<Ref<DiscordppLobbyMemberHandle>> t_r = TypedArray<Ref<DiscordppLobbyMemberHandle>>();
+	TypedArray<DiscordppLobbyMemberHandle> t_r = TypedArray<DiscordppLobbyMemberHandle>();
 
 	for (auto i : r) {
-		Ref<DiscordppLobbyMemberHandle> t2_r = memnew(DiscordppLobbyMemberHandle{ &i });
-		t_r.push_back(t2_r);
+		t_r.push_back(memnew(DiscordppLobbyMemberHandle{ &i }));
 	}
 
 	return t_r;

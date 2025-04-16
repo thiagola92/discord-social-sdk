@@ -64,11 +64,10 @@ DiscordppCallStatus::Enum DiscordppCall::GetStatus() {
 	return (DiscordppCallStatus::Enum)obj->GetStatus();
 }
 
-Ref<DiscordppVADThresholdSettings> DiscordppCall::GetVADThreshold() {
+DiscordppVADThresholdSettings *DiscordppCall::GetVADThreshold() {
 	discordpp::VADThresholdSettings *t_r = (discordpp::VADThresholdSettings *)memalloc(sizeof(discordpp::VADThresholdSettings));
 	*t_r = obj->GetVADThreshold();
-	Ref<DiscordppVADThresholdSettings> t2_r = memnew(DiscordppVADThresholdSettings{ t_r });
-	return t2_r;
+	return memnew(DiscordppVADThresholdSettings{ t_r });
 }
 
 Variant DiscordppCall::GetVoiceStateHandle(int64_t userId) {

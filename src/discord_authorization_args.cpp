@@ -83,9 +83,8 @@ void DiscordppAuthorizationArgs::SetCodeChallenge(Variant CodeChallenge) {
 	std::optional<discordpp::AuthorizationCodeChallenge> p0;
 
 	if (CodeChallenge.get_type() == Variant::OBJECT) {
-		DiscordppAuthorizationCodeChallenge t_p0 = Object::cast_to<DiscordppAuthorizationCodeChallenge>(CodeChallenge);
-		auto t2_p0 = t_p0->unwrap();
-		p0 = std::optional<discordpp::AuthorizationCodeChallenge>{ *t2_p0 };
+		DiscordppAuthorizationCodeChallenge *t_p0 = Object::cast_to<DiscordppAuthorizationCodeChallenge>(CodeChallenge);
+		p0 = std::optional<discordpp::AuthorizationCodeChallenge>{ *t_p0->unwrap() };
 	}
 
 	obj->SetCodeChallenge(p0);

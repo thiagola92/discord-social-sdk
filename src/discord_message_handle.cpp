@@ -62,9 +62,7 @@ Variant DiscordppMessageHandle::DisclosureType() {
 		return nullptr;
 	}
 
-	discordpp::DisclosureTypes *t_r = (discordpp::DisclosureTypes *)memalloc(sizeof(discordpp::DisclosureTypes));
-	*t_r = r.value();
-	return Variant(memnew(DiscordppDisclosureTypes::Enum{ t_r }));
+	return Variant((DiscordppDisclosureTypes::Enum)r.value());
 }
 
 int64_t DiscordppMessageHandle::EditedTimestamp() {

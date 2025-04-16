@@ -7,7 +7,7 @@ void DiscordppActivity::Drop() {
 	obj->Drop();
 }
 
-bool DiscordppActivity::Equals(Ref<DiscordppActivity> other) {
+bool DiscordppActivity::Equals(DiscordppActivity *other) {
 	discordpp::Activity p0 = *other->unwrap();
 
 	return obj->Equals(p0);
@@ -109,9 +109,8 @@ void DiscordppActivity::SetAssets(Variant Assets) {
 	std::optional<discordpp::ActivityAssets> p0;
 
 	if (Assets.get_type() == Variant::OBJECT) {
-		DiscordppActivityAssets t_p0 = Object::cast_to<DiscordppActivityAssets>(Assets);
-		auto t2_p0 = t_p0->unwrap();
-		p0 = std::optional<discordpp::ActivityAssets>{ *t2_p0 };
+		DiscordppActivityAssets *t_p0 = Object::cast_to<DiscordppActivityAssets>(Assets);
+		p0 = std::optional<discordpp::ActivityAssets>{ *t_p0->unwrap() };
 	}
 
 	obj->SetAssets(p0);
@@ -133,9 +132,8 @@ void DiscordppActivity::SetTimestamps(Variant Timestamps) {
 	std::optional<discordpp::ActivityTimestamps> p0;
 
 	if (Timestamps.get_type() == Variant::OBJECT) {
-		DiscordppActivityTimestamps t_p0 = Object::cast_to<DiscordppActivityTimestamps>(Timestamps);
-		auto t2_p0 = t_p0->unwrap();
-		p0 = std::optional<discordpp::ActivityTimestamps>{ *t2_p0 };
+		DiscordppActivityTimestamps *t_p0 = Object::cast_to<DiscordppActivityTimestamps>(Timestamps);
+		p0 = std::optional<discordpp::ActivityTimestamps>{ *t_p0->unwrap() };
 	}
 
 	obj->SetTimestamps(p0);
@@ -157,9 +155,8 @@ void DiscordppActivity::SetParty(Variant Party) {
 	std::optional<discordpp::ActivityParty> p0;
 
 	if (Party.get_type() == Variant::OBJECT) {
-		DiscordppActivityParty t_p0 = Object::cast_to<DiscordppActivityParty>(Party);
-		auto t2_p0 = t_p0->unwrap();
-		p0 = std::optional<discordpp::ActivityParty>{ *t2_p0 };
+		DiscordppActivityParty *t_p0 = Object::cast_to<DiscordppActivityParty>(Party);
+		p0 = std::optional<discordpp::ActivityParty>{ *t_p0->unwrap() };
 	}
 
 	obj->SetParty(p0);
@@ -181,9 +178,8 @@ void DiscordppActivity::SetSecrets(Variant Secrets) {
 	std::optional<discordpp::ActivitySecrets> p0;
 
 	if (Secrets.get_type() == Variant::OBJECT) {
-		DiscordppActivitySecrets t_p0 = Object::cast_to<DiscordppActivitySecrets>(Secrets);
-		auto t2_p0 = t_p0->unwrap();
-		p0 = std::optional<discordpp::ActivitySecrets>{ *t2_p0 };
+		DiscordppActivitySecrets *t_p0 = Object::cast_to<DiscordppActivitySecrets>(Secrets);
+		p0 = std::optional<discordpp::ActivitySecrets>{ *t_p0->unwrap() };
 	}
 
 	obj->SetSecrets(p0);

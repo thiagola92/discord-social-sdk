@@ -67,22 +67,20 @@ void DiscordppClient::EndCalls(Callable callback) {
 	});
 }
 
-Ref<DiscordppCall> DiscordppClient::GetCall(int64_t channelId) {
+DiscordppCall *DiscordppClient::GetCall(int64_t channelId) {
 	int64_t p0 = channelId;
 
 	discordpp::Call *t_r = (discordpp::Call *)memalloc(sizeof(discordpp::Call));
 	*t_r = obj->GetCall(p0);
-	Ref<DiscordppCall> t2_r = memnew(DiscordppCall{ t_r });
-	return t2_r;
+	return memnew(DiscordppCall{ t_r });
 }
 
-TypedArray<Ref<DiscordppCall>> DiscordppClient::GetCalls() {
+TypedArray<DiscordppCall> DiscordppClient::GetCalls() {
 	auto r = obj->GetCalls();
-	TypedArray<Ref<DiscordppCall>> t_r = TypedArray<Ref<DiscordppCall>>();
+	TypedArray<DiscordppCall> t_r = TypedArray<DiscordppCall>();
 
 	for (auto i : r) {
-		Ref<DiscordppCall> t2_r = memnew(DiscordppCall{ &i });
-		t_r.push_back(t2_r);
+		t_r.push_back(memnew(DiscordppCall{ &i }));
 	}
 
 	return t_r;
@@ -92,7 +90,7 @@ void DiscordppClient::GetCurrentInputDevice(Callable cb) {
 	obj->GetCurrentInputDevice([cb](auto device) {
 		discordpp::AudioDevice *t_p0 = (discordpp::AudioDevice *)memalloc(sizeof(discordpp::AudioDevice));
 		*t_p0 = device;
-		Ref<DiscordppAudioDevice> p0 = memnew(DiscordppAudioDevice{ t_p0 });
+		DiscordppAudioDevice *p0 = memnew(DiscordppAudioDevice{ t_p0 });
 
 		cb.call(p0);
 	});
@@ -102,7 +100,7 @@ void DiscordppClient::GetCurrentOutputDevice(Callable cb) {
 	obj->GetCurrentOutputDevice([cb](auto device) {
 		discordpp::AudioDevice *t_p0 = (discordpp::AudioDevice *)memalloc(sizeof(discordpp::AudioDevice));
 		*t_p0 = device;
-		Ref<DiscordppAudioDevice> p0 = memnew(DiscordppAudioDevice{ t_p0 });
+		DiscordppAudioDevice *p0 = memnew(DiscordppAudioDevice{ t_p0 });
 
 		cb.call(p0);
 	});
@@ -110,11 +108,10 @@ void DiscordppClient::GetCurrentOutputDevice(Callable cb) {
 
 void DiscordppClient::GetInputDevices(Callable cb) {
 	obj->GetInputDevices([cb](auto devices) {
-		TypedArray<Ref<DiscordppAudioDevice>> p0 = TypedArray<Ref<DiscordppAudioDevice>>();
+		TypedArray<DiscordppAudioDevice> p0 = TypedArray<DiscordppAudioDevice>();
 
 		for (auto i : devices) {
-			Ref<DiscordppAudioDevice> t = memnew(DiscordppAudioDevice{ &i });
-			p0.push_back(t);
+			p0.push_back(memnew(DiscordppAudioDevice{ &i }));
 		}
 
 		cb.call(p0);
@@ -127,11 +124,10 @@ float DiscordppClient::GetInputVolume() {
 
 void DiscordppClient::GetOutputDevices(Callable cb) {
 	obj->GetOutputDevices([cb](auto devices) {
-		TypedArray<Ref<DiscordppAudioDevice>> p0 = TypedArray<Ref<DiscordppAudioDevice>>();
+		TypedArray<DiscordppAudioDevice> p0 = TypedArray<DiscordppAudioDevice>();
 
 		for (auto i : devices) {
-			Ref<DiscordppAudioDevice> t = memnew(DiscordppAudioDevice{ &i });
-			p0.push_back(t);
+			p0.push_back(memnew(DiscordppAudioDevice{ &i }));
 		}
 
 		cb.call(p0);
@@ -158,18 +154,16 @@ void DiscordppClient::SetAutomaticGainControl(bool on) {
 
 void DiscordppClient::SetDeviceChangeCallback(Callable callback) {
 	obj->SetDeviceChangeCallback([callback](auto inputDevices, auto outputDevices) {
-		TypedArray<Ref<DiscordppAudioDevice>> p0 = TypedArray<Ref<DiscordppAudioDevice>>();
+		TypedArray<DiscordppAudioDevice> p0 = TypedArray<DiscordppAudioDevice>();
 
 		for (auto i : inputDevices) {
-			Ref<DiscordppAudioDevice> t = memnew(DiscordppAudioDevice{ &i });
-			p0.push_back(t);
+			p0.push_back(memnew(DiscordppAudioDevice{ &i }));
 		}
 
-		TypedArray<Ref<DiscordppAudioDevice>> p1 = TypedArray<Ref<DiscordppAudioDevice>>();
+		TypedArray<DiscordppAudioDevice> p1 = TypedArray<DiscordppAudioDevice>();
 
 		for (auto i : outputDevices) {
-			Ref<DiscordppAudioDevice> t = memnew(DiscordppAudioDevice{ &i });
-			p1.push_back(t);
+			p1.push_back(memnew(DiscordppAudioDevice{ &i }));
 		}
 
 		callback.call(p0, p1);
@@ -188,7 +182,7 @@ void DiscordppClient::SetInputDevice(String deviceId, Callable cb) {
 	obj->SetInputDevice(p0, [cb](auto result) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
 		cb.call(p0);
 	});
@@ -232,7 +226,7 @@ void DiscordppClient::SetOutputDevice(String deviceId, Callable cb) {
 	obj->SetOutputDevice(p0, [cb](auto result) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
 		cb.call(p0);
 	});
@@ -282,16 +276,15 @@ bool DiscordppClient::ShowAudioRoutePicker() {
 	return obj->ShowAudioRoutePicker();
 }
 
-Ref<DiscordppCall> DiscordppClient::StartCall(int64_t channelId) {
+DiscordppCall *DiscordppClient::StartCall(int64_t channelId) {
 	int64_t p0 = channelId;
 
 	discordpp::Call *t_r = (discordpp::Call *)memalloc(sizeof(discordpp::Call));
 	*t_r = obj->StartCall(p0);
-	Ref<DiscordppCall> t2_r = memnew(DiscordppCall{ t_r });
-	return t2_r;
+	return memnew(DiscordppCall{ t_r });
 }
 
-Ref<DiscordppCall> DiscordppClient::StartCallWithAudioCallbacks(int64_t lobbyId, Callable receivedCb, Callable capturedCb) {
+DiscordppCall *DiscordppClient::StartCallWithAudioCallbacks(int64_t lobbyId, Callable receivedCb, Callable capturedCb) {
 	int64_t p0 = lobbyId;
 
 	discordpp::Call *t_r = (discordpp::Call *)memalloc(sizeof(discordpp::Call));
@@ -308,8 +301,7 @@ Ref<DiscordppCall> DiscordppClient::StartCallWithAudioCallbacks(int64_t lobbyId,
     int64_t p2 = (int64_t)sampleRate;
     int64_t p3 = (int64_t)channels;
         capturedCb.call(p0, p1, p2, p3); });
-	Ref<DiscordppCall> t2_r = memnew(DiscordppCall{ t_r });
-	return t2_r;
+	return memnew(DiscordppCall{ t_r });
 }
 
 void DiscordppClient::AbortAuthorize() {
@@ -320,13 +312,13 @@ void DiscordppClient::AbortGetTokenFromDevice() {
 	obj->AbortGetTokenFromDevice();
 }
 
-void DiscordppClient::Authorize(Ref<DiscordppAuthorizationArgs> args, Callable callback) {
+void DiscordppClient::Authorize(DiscordppAuthorizationArgs *args, Callable callback) {
 	discordpp::AuthorizationArgs p0 = *args->unwrap();
 
 	obj->Authorize(p0, [callback](auto result, auto code, auto redirectUri) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
 		String p1 = String(code.c_str());
 		String p2 = String(redirectUri.c_str());
@@ -338,11 +330,10 @@ void DiscordppClient::CloseAuthorizeDeviceScreen() {
 	obj->CloseAuthorizeDeviceScreen();
 }
 
-Ref<DiscordppAuthorizationCodeVerifier> DiscordppClient::CreateAuthorizationCodeVerifier() {
+DiscordppAuthorizationCodeVerifier *DiscordppClient::CreateAuthorizationCodeVerifier() {
 	discordpp::AuthorizationCodeVerifier *t_r = (discordpp::AuthorizationCodeVerifier *)memalloc(sizeof(discordpp::AuthorizationCodeVerifier));
 	*t_r = obj->CreateAuthorizationCodeVerifier();
-	Ref<DiscordppAuthorizationCodeVerifier> t2_r = memnew(DiscordppAuthorizationCodeVerifier{ t_r });
-	return t2_r;
+	return memnew(DiscordppAuthorizationCodeVerifier{ t_r });
 }
 
 void DiscordppClient::FetchCurrentUser(DiscordppAuthorizationTokenType::Enum tokenType, String token, Callable callback) {
@@ -352,7 +343,7 @@ void DiscordppClient::FetchCurrentUser(DiscordppAuthorizationTokenType::Enum tok
 	obj->FetchCurrentUser(p0, p1, [callback](auto result, auto id, auto name) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
 		int64_t p1 = (int64_t)id;
 		String p2 = String(name.c_str());
@@ -368,7 +359,7 @@ void DiscordppClient::GetProvisionalToken(int64_t applicationId, DiscordppAuthen
 	obj->GetProvisionalToken(p0, p1, p2, [callback](auto result, auto accessToken, auto refreshToken, auto tokenType, auto expiresIn, auto scopes) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
 		String p1 = String(accessToken.c_str());
 		String p2 = String(refreshToken.c_str());
@@ -388,7 +379,7 @@ void DiscordppClient::GetToken(int64_t applicationId, String code, String codeVe
 	obj->GetToken(p0, p1, p2, p3, [callback](auto result, auto accessToken, auto refreshToken, auto tokenType, auto expiresIn, auto scopes) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
 		String p1 = String(accessToken.c_str());
 		String p2 = String(refreshToken.c_str());
@@ -399,13 +390,13 @@ void DiscordppClient::GetToken(int64_t applicationId, String code, String codeVe
 	});
 }
 
-void DiscordppClient::GetTokenFromDevice(Ref<DiscordppDeviceAuthorizationArgs> args, Callable callback) {
+void DiscordppClient::GetTokenFromDevice(DiscordppDeviceAuthorizationArgs *args, Callable callback) {
 	discordpp::DeviceAuthorizationArgs p0 = *args->unwrap();
 
 	obj->GetTokenFromDevice(p0, [callback](auto result, auto accessToken, auto refreshToken, auto tokenType, auto expiresIn, auto scopes) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
 		String p1 = String(accessToken.c_str());
 		String p2 = String(refreshToken.c_str());
@@ -416,7 +407,7 @@ void DiscordppClient::GetTokenFromDevice(Ref<DiscordppDeviceAuthorizationArgs> a
 	});
 }
 
-void DiscordppClient::GetTokenFromDeviceProvisionalMerge(Ref<DiscordppDeviceAuthorizationArgs> args, DiscordppAuthenticationExternalAuthType::Enum externalAuthType, String externalAuthToken, Callable callback) {
+void DiscordppClient::GetTokenFromDeviceProvisionalMerge(DiscordppDeviceAuthorizationArgs *args, DiscordppAuthenticationExternalAuthType::Enum externalAuthType, String externalAuthToken, Callable callback) {
 	discordpp::DeviceAuthorizationArgs p0 = *args->unwrap();
 	discordpp::AuthenticationExternalAuthType p1 = (discordpp::AuthenticationExternalAuthType)externalAuthType;
 	const char *p2 = externalAuthToken.utf8().get_data();
@@ -424,7 +415,7 @@ void DiscordppClient::GetTokenFromDeviceProvisionalMerge(Ref<DiscordppDeviceAuth
 	obj->GetTokenFromDeviceProvisionalMerge(p0, p1, p2, [callback](auto result, auto accessToken, auto refreshToken, auto tokenType, auto expiresIn, auto scopes) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
 		String p1 = String(accessToken.c_str());
 		String p2 = String(refreshToken.c_str());
@@ -446,7 +437,7 @@ void DiscordppClient::GetTokenFromProvisionalMerge(int64_t applicationId, String
 	obj->GetTokenFromProvisionalMerge(p0, p1, p2, p3, p4, p5, [callback](auto result, auto accessToken, auto refreshToken, auto tokenType, auto expiresIn, auto scopes) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
 		String p1 = String(accessToken.c_str());
 		String p2 = String(refreshToken.c_str());
@@ -481,7 +472,7 @@ void DiscordppClient::RefreshToken(int64_t applicationId, String refreshToken, C
 	obj->RefreshToken(p0, p1, [callback](auto result, auto accessToken, auto refreshToken, auto tokenType, auto expiresIn, auto scopes) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
 		String p1 = String(accessToken.c_str());
 		String p2 = String(refreshToken.c_str());
@@ -516,7 +507,7 @@ void DiscordppClient::UpdateProvisionalAccountDisplayName(String name, Callable 
 	obj->UpdateProvisionalAccountDisplayName(p0, [callback](auto result) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
 		callback.call(p0);
 	});
@@ -529,7 +520,7 @@ void DiscordppClient::UpdateToken(DiscordppAuthorizationTokenType::Enum tokenTyp
 	obj->UpdateToken(p0, p1, [callback](auto result) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
 		callback.call(p0);
 	});
@@ -548,7 +539,7 @@ void DiscordppClient::DeleteUserMessage(int64_t recipientId, int64_t messageId, 
 	obj->DeleteUserMessage(p0, p1, [cb](auto result) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
 		cb.call(p0);
 	});
@@ -562,7 +553,7 @@ void DiscordppClient::EditUserMessage(int64_t recipientId, int64_t messageId, St
 	obj->EditUserMessage(p0, p1, p2, [cb](auto result) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
 		cb.call(p0);
 	});
@@ -602,7 +593,7 @@ void DiscordppClient::OpenMessageInDiscord(int64_t messageId, Callable provision
 	obj->OpenMessageInDiscord(p0, [provisionalUserMergeRequiredCallback]() { provisionalUserMergeRequiredCallback.call(); }, [callback](auto result) {
         discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
     *t_p0 = result;
-    Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult { t_p0 });
+    DiscordppClientResult *p0 = memnew(DiscordppClientResult { t_p0 });
     
         callback.call(p0); });
 }
@@ -614,7 +605,7 @@ void DiscordppClient::SendLobbyMessage(int64_t lobbyId, String content, Callable
 	obj->SendLobbyMessage(p0, p1, [cb](auto result, auto messageId) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
 		int64_t p1 = (int64_t)messageId;
 		cb.call(p0, p1);
@@ -638,7 +629,7 @@ void DiscordppClient::SendLobbyMessageWithMetadata(int64_t lobbyId, String conte
 	obj->SendLobbyMessageWithMetadata(p0, p1, p2, [cb](auto result, auto messageId) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
 		int64_t p1 = (int64_t)messageId;
 		cb.call(p0, p1);
@@ -652,7 +643,7 @@ void DiscordppClient::SendUserMessage(int64_t recipientId, String content, Calla
 	obj->SendUserMessage(p0, p1, [cb](auto result, auto messageId) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
 		int64_t p1 = (int64_t)messageId;
 		cb.call(p0, p1);
@@ -676,7 +667,7 @@ void DiscordppClient::SendUserMessageWithMetadata(int64_t recipientId, String co
 	obj->SendUserMessageWithMetadata(p0, p1, p2, [cb](auto result, auto messageId) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
 		int64_t p1 = (int64_t)messageId;
 		cb.call(p0, p1);
@@ -774,7 +765,7 @@ void DiscordppClient::CreateOrJoinLobby(String secret, Callable callback) {
 	obj->CreateOrJoinLobby(p0, [callback](auto result, auto lobbyId) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
 		int64_t p1 = (int64_t)lobbyId;
 		callback.call(p0, p1);
@@ -807,7 +798,7 @@ void DiscordppClient::CreateOrJoinLobbyWithMetadata(String secret, TypedDictiona
 	obj->CreateOrJoinLobbyWithMetadata(p0, p1, p2, [callback](auto result, auto lobbyId) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
 		int64_t p1 = (int64_t)lobbyId;
 		callback.call(p0, p1);
@@ -820,13 +811,12 @@ void DiscordppClient::GetGuildChannels(int64_t guildId, Callable cb) {
 	obj->GetGuildChannels(p0, [cb](auto result, auto guildChannels) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
-		TypedArray<Ref<DiscordppGuildChannel>> p1 = TypedArray<Ref<DiscordppGuildChannel>>();
+		TypedArray<DiscordppGuildChannel> p1 = TypedArray<DiscordppGuildChannel>();
 
 		for (auto i : guildChannels) {
-			Ref<DiscordppGuildChannel> t = memnew(DiscordppGuildChannel{ &i });
-			p1.push_back(t);
+			p1.push_back(memnew(DiscordppGuildChannel{ &i }));
 		}
 
 		cb.call(p0, p1);
@@ -862,13 +852,12 @@ void DiscordppClient::GetUserGuilds(Callable cb) {
 	obj->GetUserGuilds([cb](auto result, auto guilds) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
-		TypedArray<Ref<DiscordppGuildMinimal>> p1 = TypedArray<Ref<DiscordppGuildMinimal>>();
+		TypedArray<DiscordppGuildMinimal> p1 = TypedArray<DiscordppGuildMinimal>();
 
 		for (auto i : guilds) {
-			Ref<DiscordppGuildMinimal> t = memnew(DiscordppGuildMinimal{ &i });
-			p1.push_back(t);
+			p1.push_back(memnew(DiscordppGuildMinimal{ &i }));
 		}
 
 		cb.call(p0, p1);
@@ -881,7 +870,7 @@ void DiscordppClient::LeaveLobby(int64_t lobbyId, Callable callback) {
 	obj->LeaveLobby(p0, [callback](auto result) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
 		callback.call(p0);
 	});
@@ -894,7 +883,7 @@ void DiscordppClient::LinkChannelToLobby(int64_t lobbyId, int64_t channelId, Cal
 	obj->LinkChannelToLobby(p0, p1, [callback](auto result) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
 		callback.call(p0);
 	});
@@ -951,19 +940,19 @@ void DiscordppClient::UnlinkChannelFromLobby(int64_t lobbyId, Callable callback)
 	obj->UnlinkChannelFromLobby(p0, [callback](auto result) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
 		callback.call(p0);
 	});
 }
 
-void DiscordppClient::AcceptActivityInvite(Ref<DiscordppActivityInvite> invite, Callable cb) {
+void DiscordppClient::AcceptActivityInvite(DiscordppActivityInvite *invite, Callable cb) {
 	discordpp::ActivityInvite p0 = *invite->unwrap();
 
 	obj->AcceptActivityInvite(p0, [cb](auto result, auto joinSecret) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
 		String p1 = String(joinSecret.c_str());
 		cb.call(p0, p1);
@@ -995,7 +984,7 @@ void DiscordppClient::SendActivityInvite(int64_t userId, String content, Callabl
 	obj->SendActivityInvite(p0, p1, [cb](auto result) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
 		cb.call(p0);
 	});
@@ -1007,19 +996,19 @@ void DiscordppClient::SendActivityJoinRequest(int64_t userId, Callable cb) {
 	obj->SendActivityJoinRequest(p0, [cb](auto result) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
 		cb.call(p0);
 	});
 }
 
-void DiscordppClient::SendActivityJoinRequestReply(Ref<DiscordppActivityInvite> invite, Callable cb) {
+void DiscordppClient::SendActivityJoinRequestReply(DiscordppActivityInvite *invite, Callable cb) {
 	discordpp::ActivityInvite p0 = *invite->unwrap();
 
 	obj->SendActivityJoinRequestReply(p0, [cb](auto result) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
 		cb.call(p0);
 	});
@@ -1029,7 +1018,7 @@ void DiscordppClient::SetActivityInviteCreatedCallback(Callable cb) {
 	obj->SetActivityInviteCreatedCallback([cb](auto invite) {
 		discordpp::ActivityInvite *t_p0 = (discordpp::ActivityInvite *)memalloc(sizeof(discordpp::ActivityInvite));
 		*t_p0 = invite;
-		Ref<DiscordppActivityInvite> p0 = memnew(DiscordppActivityInvite{ t_p0 });
+		DiscordppActivityInvite *p0 = memnew(DiscordppActivityInvite{ t_p0 });
 
 		cb.call(p0);
 	});
@@ -1039,7 +1028,7 @@ void DiscordppClient::SetActivityInviteUpdatedCallback(Callable cb) {
 	obj->SetActivityInviteUpdatedCallback([cb](auto invite) {
 		discordpp::ActivityInvite *t_p0 = (discordpp::ActivityInvite *)memalloc(sizeof(discordpp::ActivityInvite));
 		*t_p0 = invite;
-		Ref<DiscordppActivityInvite> p0 = memnew(DiscordppActivityInvite{ t_p0 });
+		DiscordppActivityInvite *p0 = memnew(DiscordppActivityInvite{ t_p0 });
 
 		cb.call(p0);
 	});
@@ -1058,19 +1047,19 @@ void DiscordppClient::SetOnlineStatus(DiscordppStatusType::Enum status, Callable
 	obj->SetOnlineStatus(p0, [callback](auto result) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
 		callback.call(p0);
 	});
 }
 
-void DiscordppClient::UpdateRichPresence(Ref<DiscordppActivity> activity, Callable cb) {
+void DiscordppClient::UpdateRichPresence(DiscordppActivity *activity, Callable cb) {
 	discordpp::Activity p0 = *activity->unwrap();
 
 	obj->UpdateRichPresence(p0, [cb](auto result) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
 		cb.call(p0);
 	});
@@ -1082,7 +1071,7 @@ void DiscordppClient::AcceptDiscordFriendRequest(int64_t userId, Callable cb) {
 	obj->AcceptDiscordFriendRequest(p0, [cb](auto result) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
 		cb.call(p0);
 	});
@@ -1094,7 +1083,7 @@ void DiscordppClient::AcceptGameFriendRequest(int64_t userId, Callable cb) {
 	obj->AcceptGameFriendRequest(p0, [cb](auto result) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
 		cb.call(p0);
 	});
@@ -1106,7 +1095,7 @@ void DiscordppClient::BlockUser(int64_t userId, Callable cb) {
 	obj->BlockUser(p0, [cb](auto result) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
 		cb.call(p0);
 	});
@@ -1118,7 +1107,7 @@ void DiscordppClient::CancelDiscordFriendRequest(int64_t userId, Callable cb) {
 	obj->CancelDiscordFriendRequest(p0, [cb](auto result) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
 		cb.call(p0);
 	});
@@ -1130,28 +1119,26 @@ void DiscordppClient::CancelGameFriendRequest(int64_t userId, Callable cb) {
 	obj->CancelGameFriendRequest(p0, [cb](auto result) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
 		cb.call(p0);
 	});
 }
 
-Ref<DiscordppRelationshipHandle> DiscordppClient::GetRelationshipHandle(int64_t userId) {
+DiscordppRelationshipHandle *DiscordppClient::GetRelationshipHandle(int64_t userId) {
 	int64_t p0 = userId;
 
 	discordpp::RelationshipHandle *t_r = (discordpp::RelationshipHandle *)memalloc(sizeof(discordpp::RelationshipHandle));
 	*t_r = obj->GetRelationshipHandle(p0);
-	Ref<DiscordppRelationshipHandle> t2_r = memnew(DiscordppRelationshipHandle{ t_r });
-	return t2_r;
+	return memnew(DiscordppRelationshipHandle{ t_r });
 }
 
-TypedArray<Ref<DiscordppRelationshipHandle>> DiscordppClient::GetRelationships() {
+TypedArray<DiscordppRelationshipHandle> DiscordppClient::GetRelationships() {
 	auto r = obj->GetRelationships();
-	TypedArray<Ref<DiscordppRelationshipHandle>> t_r = TypedArray<Ref<DiscordppRelationshipHandle>>();
+	TypedArray<DiscordppRelationshipHandle> t_r = TypedArray<DiscordppRelationshipHandle>();
 
 	for (auto i : r) {
-		Ref<DiscordppRelationshipHandle> t2_r = memnew(DiscordppRelationshipHandle{ &i });
-		t_r.push_back(t2_r);
+		t_r.push_back(memnew(DiscordppRelationshipHandle{ &i }));
 	}
 
 	return t_r;
@@ -1163,7 +1150,7 @@ void DiscordppClient::RejectDiscordFriendRequest(int64_t userId, Callable cb) {
 	obj->RejectDiscordFriendRequest(p0, [cb](auto result) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
 		cb.call(p0);
 	});
@@ -1175,7 +1162,7 @@ void DiscordppClient::RejectGameFriendRequest(int64_t userId, Callable cb) {
 	obj->RejectGameFriendRequest(p0, [cb](auto result) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
 		cb.call(p0);
 	});
@@ -1187,7 +1174,7 @@ void DiscordppClient::RemoveDiscordAndGameFriend(int64_t userId, Callable cb) {
 	obj->RemoveDiscordAndGameFriend(p0, [cb](auto result) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
 		cb.call(p0);
 	});
@@ -1199,21 +1186,20 @@ void DiscordppClient::RemoveGameFriend(int64_t userId, Callable cb) {
 	obj->RemoveGameFriend(p0, [cb](auto result) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
 		cb.call(p0);
 	});
 }
 
-TypedArray<Ref<DiscordppUserHandle>> DiscordppClient::SearchFriendsByUsername(String searchStr) {
+TypedArray<DiscordppUserHandle> DiscordppClient::SearchFriendsByUsername(String searchStr) {
 	const char *p0 = searchStr.utf8().get_data();
 
 	auto r = obj->SearchFriendsByUsername(p0);
-	TypedArray<Ref<DiscordppUserHandle>> t_r = TypedArray<Ref<DiscordppUserHandle>>();
+	TypedArray<DiscordppUserHandle> t_r = TypedArray<DiscordppUserHandle>();
 
 	for (auto i : r) {
-		Ref<DiscordppUserHandle> t2_r = memnew(DiscordppUserHandle{ &i });
-		t_r.push_back(t2_r);
+		t_r.push_back(memnew(DiscordppUserHandle{ &i }));
 	}
 
 	return t_r;
@@ -1225,7 +1211,7 @@ void DiscordppClient::SendDiscordFriendRequest(String username, Callable cb) {
 	obj->SendDiscordFriendRequest(p0, [cb](auto result) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
 		cb.call(p0);
 	});
@@ -1237,7 +1223,7 @@ void DiscordppClient::SendDiscordFriendRequestById(int64_t userId, Callable cb) 
 	obj->SendDiscordFriendRequestById(p0, [cb](auto result) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
 		cb.call(p0);
 	});
@@ -1249,7 +1235,7 @@ void DiscordppClient::SendGameFriendRequest(String username, Callable cb) {
 	obj->SendGameFriendRequest(p0, [cb](auto result) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
 		cb.call(p0);
 	});
@@ -1261,7 +1247,7 @@ void DiscordppClient::SendGameFriendRequestById(int64_t userId, Callable cb) {
 	obj->SendGameFriendRequestById(p0, [cb](auto result) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
 		cb.call(p0);
 	});
@@ -1289,17 +1275,16 @@ void DiscordppClient::UnblockUser(int64_t userId, Callable cb) {
 	obj->UnblockUser(p0, [cb](auto result) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
 		cb.call(p0);
 	});
 }
 
-Ref<DiscordppUserHandle> DiscordppClient::GetCurrentUser() {
+DiscordppUserHandle *DiscordppClient::GetCurrentUser() {
 	discordpp::UserHandle *t_r = (discordpp::UserHandle *)memalloc(sizeof(discordpp::UserHandle));
 	*t_r = obj->GetCurrentUser();
-	Ref<DiscordppUserHandle> t2_r = memnew(DiscordppUserHandle{ t_r });
-	return t2_r;
+	return memnew(DiscordppUserHandle{ t_r });
 }
 
 void DiscordppClient::GetDiscordClientConnectedUser(int64_t applicationId, Callable callback) {
@@ -1308,7 +1293,7 @@ void DiscordppClient::GetDiscordClientConnectedUser(int64_t applicationId, Calla
 	obj->GetDiscordClientConnectedUser(p0, [callback](auto result, auto user) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
 		*t_p0 = result;
-		Ref<DiscordppClientResult> p0 = memnew(DiscordppClientResult{ t_p0 });
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
 
 		Variant p1;
 
@@ -1317,8 +1302,7 @@ void DiscordppClient::GetDiscordClientConnectedUser(int64_t applicationId, Calla
 		} else {
 			discordpp::UserHandle *t = (discordpp::UserHandle *)memalloc(sizeof(discordpp::UserHandle));
 			*t = user.value();
-			Ref<DiscordppUserHandle> t2 = memnew(DiscordppUserHandle{ t });
-			p1 = Variant(t2);
+			p1 = Variant(memnew(DiscordppUserHandle{ t }));
 		}
 
 		callback.call(p0, p1);

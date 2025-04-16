@@ -7,7 +7,7 @@ void DiscordppAdditionalContent::Drop() {
 	obj->Drop();
 }
 
-bool DiscordppAdditionalContent::Equals(Ref<DiscordppAdditionalContent> rhs) {
+bool DiscordppAdditionalContent::Equals(DiscordppAdditionalContent *rhs) {
 	discordpp::AdditionalContent p0 = *rhs->unwrap();
 
 	return obj->Equals(p0);

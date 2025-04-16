@@ -64,11 +64,10 @@ bool DiscordppUserHandle::IsProvisional() {
 	return obj->IsProvisional();
 }
 
-Ref<DiscordppRelationshipHandle> DiscordppUserHandle::Relationship() {
+DiscordppRelationshipHandle *DiscordppUserHandle::Relationship() {
 	discordpp::RelationshipHandle *t_r = (discordpp::RelationshipHandle *)memalloc(sizeof(discordpp::RelationshipHandle));
 	*t_r = obj->Relationship();
-	Ref<DiscordppRelationshipHandle> t2_r = memnew(DiscordppRelationshipHandle{ t_r });
-	return t2_r;
+	return memnew(DiscordppRelationshipHandle{ t_r });
 }
 
 DiscordppStatusType::Enum DiscordppUserHandle::Status() {
