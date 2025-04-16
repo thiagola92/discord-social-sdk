@@ -309,7 +309,7 @@ class Builder:
                 continue
 
             snake_name = to_snake_case(token.name)
-            filepath = self.src.joinpath(f"discord_{snake_name}.cpp")
+            filepath = self.src.joinpath(f"discordpp_{snake_name}.cpp")
             methods = self.build_methods(token)
             binds = self.build_binds(token)
 
