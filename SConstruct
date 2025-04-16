@@ -1,6 +1,4 @@
 #!/usr/bin/env python
-import os
-import sys
 import shutil
 from pathlib import Path
 
@@ -21,7 +19,9 @@ sources = Glob("src/*.cpp")
 # Include classes XML documentation.
 if env["target"] in ["editor", "template_debug"]:
     try:
-        doc_data = env.GodotCPPDocData("src/gen/doc_data.gen.cpp", source=Glob("doc_classes/*.xml"))
+        doc_data = env.GodotCPPDocData(
+            "src/gen/doc_data.gen.cpp", source=Glob("doc_classes/*.xml")
+        )
         sources.append(doc_data)
     except AttributeError:
         print("Not including class reference as we're targeting a pre-4.3 baseline.")
@@ -51,17 +51,23 @@ if env["platform"] == "macos":
 elif env["platform"] == "ios":
     if env["ios_simulator"]:
         library = env.StaticLibrary(
-            "demo/addons/discord_social_sdk/bin/libdiscord_social_sdk.{}.{}.simulator.a".format(env["platform"], env["target"]),
+            "demo/addons/discord_social_sdk/bin/libdiscord_social_sdk.{}.{}.simulator.a".format(
+                env["platform"], env["target"]
+            ),
             source=sources,
         )
     else:
         library = env.StaticLibrary(
-            "demo/addons/discord_social_sdk/bin/libdiscord_social_sdk.{}.{}.a".format(env["platform"], env["target"]),
+            "demo/addons/discord_social_sdk/bin/libdiscord_social_sdk.{}.{}.a".format(
+                env["platform"], env["target"]
+            ),
             source=sources,
         )
 else:
     library = env.SharedLibrary(
-        "demo/addons/discord_social_sdk/bin/libdiscord_social_sdk{}{}".format(env["suffix"], env["SHLIBSUFFIX"]),
+        "demo/addons/discord_social_sdk/bin/libdiscord_social_sdk{}{}".format(
+            env["suffix"], env["SHLIBSUFFIX"]
+        ),
         source=sources,
     )
 
