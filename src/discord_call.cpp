@@ -8,7 +8,7 @@ void DiscordppCall::Drop() {
 }
 
 String DiscordppCall::ErrorToString(DiscordppCallError::Enum type) {
-	auto p0 = (discordpp::Call::Error)type;
+	discordpp::Call::Error p0 = (discordpp::Call::Error)type;
 
 	return String(obj->ErrorToString(p0).c_str());
 }
@@ -33,10 +33,10 @@ bool DiscordppCall::GetLocalMute(int64_t userId) {
 
 TypedArray<int64_t> DiscordppCall::GetParticipants() {
 	auto r = obj->GetParticipants();
-	auto t_r = TypedArray<int64_t>();
+	TypedArray<int64_t> t_r = TypedArray<int64_t>();
 
-	for (auto i_r : r) {
-		t_r.push_back(i_r);
+	for (auto i : r) {
+		t_r.push_back((int64_t)i);
 	}
 
 	return t_r;
@@ -67,7 +67,8 @@ DiscordppCallStatus::Enum DiscordppCall::GetStatus() {
 Ref<DiscordppVADThresholdSettings> DiscordppCall::GetVADThreshold() {
 	discordpp::VADThresholdSettings *t_r = (discordpp::VADThresholdSettings *)memalloc(sizeof(discordpp::VADThresholdSettings));
 	*t_r = obj->GetVADThreshold();
-	return memnew(DiscordppVADThresholdSettings{ t_r });
+	Ref<DiscordppVADThresholdSettings> t2_r = memnew(DiscordppVADThresholdSettings{ t_r });
+	return t2_r;
 }
 
 Variant DiscordppCall::GetVoiceStateHandle(int64_t userId) {
@@ -85,7 +86,7 @@ Variant DiscordppCall::GetVoiceStateHandle(int64_t userId) {
 }
 
 void DiscordppCall::SetAudioMode(DiscordppAudioModeType::Enum audioMode) {
-	auto p0 = (discordpp::AudioModeType)audioMode;
+	discordpp::AudioModeType p0 = (discordpp::AudioModeType)audioMode;
 
 	obj->SetAudioMode(p0);
 }
@@ -168,7 +169,7 @@ void DiscordppCall::SetVADThreshold(bool automatic, float threshold) {
 }
 
 String DiscordppCall::StatusToString(DiscordppCallStatus::Enum type) {
-	auto p0 = (discordpp::Call::Status)type;
+	discordpp::Call::Status p0 = (discordpp::Call::Status)type;
 
 	return String(obj->StatusToString(p0).c_str());
 }

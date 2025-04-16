@@ -16,7 +16,7 @@ DiscordppErrorType::Enum DiscordppClientResult::Type() {
 }
 
 void DiscordppClientResult::SetType(DiscordppErrorType::Enum Type) {
-	auto p0 = (discordpp::ErrorType)Type;
+	discordpp::ErrorType p0 = (discordpp::ErrorType)Type;
 
 	obj->SetType(p0);
 }
@@ -46,7 +46,7 @@ DiscordppHttpStatusCode::Enum DiscordppClientResult::Status() {
 }
 
 void DiscordppClientResult::SetStatus(DiscordppHttpStatusCode::Enum Status) {
-	auto p0 = (discordpp::HttpStatusCode)Status;
+	discordpp::HttpStatusCode p0 = (discordpp::HttpStatusCode)Status;
 
 	obj->SetStatus(p0);
 }

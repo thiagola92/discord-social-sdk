@@ -42,7 +42,7 @@ DiscordppActivityActionTypes::Enum DiscordppActivityInvite::Type() {
 }
 
 void DiscordppActivityInvite::SetType(DiscordppActivityActionTypes::Enum Type) {
-	auto p0 = (discordpp::ActivityActionTypes)Type;
+	discordpp::ActivityActionTypes p0 = (discordpp::ActivityActionTypes)Type;
 
 	obj->SetType(p0);
 }

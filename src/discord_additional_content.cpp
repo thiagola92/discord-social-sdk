@@ -8,13 +8,13 @@ void DiscordppAdditionalContent::Drop() {
 }
 
 bool DiscordppAdditionalContent::Equals(Ref<DiscordppAdditionalContent> rhs) {
-	auto p0 = *rhs->unwrap();
+	discordpp::AdditionalContent p0 = *rhs->unwrap();
 
 	return obj->Equals(p0);
 }
 
 String DiscordppAdditionalContent::TypeToString(DiscordppAdditionalContentType::Enum type) {
-	auto p0 = (discordpp::AdditionalContentType)type;
+	discordpp::AdditionalContentType p0 = (discordpp::AdditionalContentType)type;
 
 	return String(obj->TypeToString(p0).c_str());
 }
@@ -24,7 +24,7 @@ DiscordppAdditionalContentType::Enum DiscordppAdditionalContent::Type() {
 }
 
 void DiscordppAdditionalContent::SetType(DiscordppAdditionalContentType::Enum Type) {
-	auto p0 = (discordpp::AdditionalContentType)Type;
+	discordpp::AdditionalContentType p0 = (discordpp::AdditionalContentType)Type;
 
 	obj->SetType(p0);
 }

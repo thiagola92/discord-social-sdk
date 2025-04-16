@@ -17,10 +17,10 @@ String DiscordppChannelHandle::Name() {
 
 TypedArray<int64_t> DiscordppChannelHandle::Recipients() {
 	auto r = obj->Recipients();
-	auto t_r = TypedArray<int64_t>();
+	TypedArray<int64_t> t_r = TypedArray<int64_t>();
 
-	for (auto i_r : r) {
-		t_r.push_back(i_r);
+	for (auto i : r) {
+		t_r.push_back((int64_t)i);
 	}
 
 	return t_r;

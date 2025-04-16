@@ -8,7 +8,7 @@ void DiscordppActivity::Drop() {
 }
 
 bool DiscordppActivity::Equals(Ref<DiscordppActivity> other) {
-	auto p0 = *other->unwrap();
+	discordpp::Activity p0 = *other->unwrap();
 
 	return obj->Equals(p0);
 }
@@ -28,7 +28,7 @@ DiscordppActivityTypes::Enum DiscordppActivity::Type() {
 }
 
 void DiscordppActivity::SetType(DiscordppActivityTypes::Enum Type) {
-	auto p0 = (discordpp::ActivityTypes)Type;
+	discordpp::ActivityTypes p0 = (discordpp::ActivityTypes)Type;
 
 	obj->SetType(p0);
 }
@@ -194,7 +194,7 @@ DiscordppActivityGamePlatforms::Enum DiscordppActivity::SupportedPlatforms() {
 }
 
 void DiscordppActivity::SetSupportedPlatforms(DiscordppActivityGamePlatforms::Enum SupportedPlatforms) {
-	auto p0 = (discordpp::ActivityGamePlatforms)SupportedPlatforms;
+	discordpp::ActivityGamePlatforms p0 = (discordpp::ActivityGamePlatforms)SupportedPlatforms;
 
 	obj->SetSupportedPlatforms(p0);
 }

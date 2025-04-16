@@ -42,7 +42,7 @@ DiscordppActivityPartyPrivacy::Enum DiscordppActivityParty::Privacy() {
 }
 
 void DiscordppActivityParty::SetPrivacy(DiscordppActivityPartyPrivacy::Enum Privacy) {
-	auto p0 = (discordpp::ActivityPartyPrivacy)Privacy;
+	discordpp::ActivityPartyPrivacy p0 = (discordpp::ActivityPartyPrivacy)Privacy;
 
 	obj->SetPrivacy(p0);
 }

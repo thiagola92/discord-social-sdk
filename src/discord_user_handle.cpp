@@ -18,14 +18,14 @@ Variant DiscordppUserHandle::Avatar() {
 }
 
 String DiscordppUserHandle::AvatarTypeToString(DiscordppUserHandleAvatarType::Enum type) {
-	auto p0 = (discordpp::UserHandle::AvatarType)type;
+	discordpp::UserHandle::AvatarType p0 = (discordpp::UserHandle::AvatarType)type;
 
 	return String(obj->AvatarTypeToString(p0).c_str());
 }
 
 String DiscordppUserHandle::AvatarUrl(DiscordppUserHandleAvatarType::Enum animatedType, DiscordppUserHandleAvatarType::Enum staticType) {
-	auto p0 = (discordpp::UserHandle::AvatarType)animatedType;
-	auto p1 = (discordpp::UserHandle::AvatarType)staticType;
+	discordpp::UserHandle::AvatarType p0 = (discordpp::UserHandle::AvatarType)animatedType;
+	discordpp::UserHandle::AvatarType p1 = (discordpp::UserHandle::AvatarType)staticType;
 
 	return String(obj->AvatarUrl(p0, p1).c_str());
 }
@@ -67,7 +67,8 @@ bool DiscordppUserHandle::IsProvisional() {
 Ref<DiscordppRelationshipHandle> DiscordppUserHandle::Relationship() {
 	discordpp::RelationshipHandle *t_r = (discordpp::RelationshipHandle *)memalloc(sizeof(discordpp::RelationshipHandle));
 	*t_r = obj->Relationship();
-	return memnew(DiscordppRelationshipHandle{ t_r });
+	Ref<DiscordppRelationshipHandle> t2_r = memnew(DiscordppRelationshipHandle{ t_r });
+	return t2_r;
 }
 
 DiscordppStatusType::Enum DiscordppUserHandle::Status() {

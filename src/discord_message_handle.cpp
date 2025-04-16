@@ -89,7 +89,7 @@ Variant DiscordppMessageHandle::Lobby() {
 
 TypedDictionary<String, String> DiscordppMessageHandle::Metadata() {
 	auto r = obj->Metadata();
-	auto t_r = TypedDictionary<String, String>();
+	TypedDictionary<String, String> t_r = TypedDictionary<String, String>();
 
 	for (auto p_r : r) {
 		t_r[String(p_r.first.c_str())] = String(p_r.second.c_str());

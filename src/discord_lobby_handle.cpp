@@ -51,10 +51,10 @@ Variant DiscordppLobbyHandle::LinkedChannel() {
 
 TypedArray<int64_t> DiscordppLobbyHandle::LobbyMemberIds() {
 	auto r = obj->LobbyMemberIds();
-	auto t_r = TypedArray<int64_t>();
+	TypedArray<int64_t> t_r = TypedArray<int64_t>();
 
-	for (auto i_r : r) {
-		t_r.push_back(i_r);
+	for (auto i : r) {
+		t_r.push_back((int64_t)i);
 	}
 
 	return t_r;
@@ -62,10 +62,11 @@ TypedArray<int64_t> DiscordppLobbyHandle::LobbyMemberIds() {
 
 TypedArray<Ref<DiscordppLobbyMemberHandle>> DiscordppLobbyHandle::LobbyMembers() {
 	auto r = obj->LobbyMembers();
-	auto t_r = TypedArray<Ref<DiscordppLobbyMemberHandle>>();
+	TypedArray<Ref<DiscordppLobbyMemberHandle>> t_r = TypedArray<Ref<DiscordppLobbyMemberHandle>>();
 
-	for (auto i_r : r) {
-		t_r.push_back(memnew(DiscordppLobbyMemberHandle{ &i_r }));
+	for (auto i : r) {
+		Ref<DiscordppLobbyMemberHandle> t2_r = memnew(DiscordppLobbyMemberHandle{ &i });
+		t_r.push_back(t2_r);
 	}
 
 	return t_r;
@@ -73,7 +74,7 @@ TypedArray<Ref<DiscordppLobbyMemberHandle>> DiscordppLobbyHandle::LobbyMembers()
 
 TypedDictionary<String, String> DiscordppLobbyHandle::Metadata() {
 	auto r = obj->Metadata();
-	auto t_r = TypedDictionary<String, String>();
+	TypedDictionary<String, String> t_r = TypedDictionary<String, String>();
 
 	for (auto p_r : r) {
 		t_r[String(p_r.first.c_str())] = String(p_r.second.c_str());

@@ -380,7 +380,10 @@ class Translator:
 
         if self.is_c_discord(src.type.subtype.name):
             obj_type = self.c_type_to_godot_type(src.type.subtype, ref=False)
-            append_statements = [f"{dest}.push_back(memnew({obj_type}{{ &i }}));"]
+            append_statements = [
+                f"Ref<{obj_type}> t = memnew({obj_type}{{ &i }});",
+                f"{dest}.push_back(t);",
+            ]
 
         append_statements = "\n        ".join(append_statements)
         typed_array = self.c_type_to_godot_type(src.type)
@@ -411,7 +414,7 @@ class Translator:
         typed_dict = self.c_type_to_godot_type(src.type)
 
         statements = [
-            f"auto {dest} = {typed_dict}();",
+            f"{typed_dict} {dest} = {typed_dict}();",
             f"",
             f"for (auto p : {src.name}) {{",
             f"    {set_statements}",
@@ -427,9 +430,9 @@ class Translator:
         name = self.c_name_to_godot_name(src.type.name)
 
         statements = [
-            f"auto t_{dest} = ({src.type.name} *)memalloc(sizeof({src.type.name}));",
+            f"{src.type.name} *t_{dest} = ({src.type.name} *)memalloc(sizeof({src.type.name}));",
             f"*t_{dest} = {src.name};",
-            f"auto {dest} = memnew({name} {{ t_{dest} }});",
+            f"Ref<{name}> {dest} = memnew({name} {{ t_{dest} }});",
             f"",
         ]
 
@@ -478,10 +481,10 @@ class Translator:
             assert False, "Not implemented (implement if needed)"
 
         if self.is_c_enum(param.type.name):
-            return f"auto {var_name} = ({param.type.name}){param.name};"
+            return f"{param.type.name} {var_name} = ({param.type.name}){param.name};"
 
         if self.is_c_discord(param.type.name):
-            return f"auto {var_name} = *{param.name}->unwrap();"
+            return f"{param.type.name} {var_name} = *{param.name}->unwrap();"
 
         if self.is_c_many(param.type.name):
             assert False, "Not implemented (implement if needed)"
@@ -735,16 +738,16 @@ class Translator:
         append_statements = None
 
         if self.is_c_bool(vec_type.subtype.name):
-            append_statements = ["t_r.push_back(i_r);"]
+            append_statements = ["t_r.push_back(i);"]
 
         if self.is_c_int(vec_type.subtype.name):
-            append_statements = ["t_r.push_back(i_r);"]
+            append_statements = ["t_r.push_back((int64_t)i);"]
 
         if self.is_c_float(vec_type.subtype.name):
-            append_statements = ["t_r.push_back(i_r);"]
+            append_statements = ["t_r.push_back((float)i);"]
 
         if self.is_c_string(vec_type.subtype.name):
-            append_statements = ["t_r.push_back(String(i_r.c_str()));"]
+            append_statements = ["t_r.push_back(String(i.c_str()));"]
 
         if self.is_c_opt(vec_type.subtype.name):
             assert False, "Not implemented (implement if needed)"
@@ -763,16 +766,19 @@ class Translator:
 
         if self.is_c_discord(vec_type.subtype.name):
             obj_type = self.c_type_to_godot_type(vec_type.subtype, ref=False)
-            append_statements = [f"t_r.push_back(memnew({obj_type}{{ &i_r }}));"]
+            append_statements = [
+                f"Ref<{obj_type}> t2_r = memnew({obj_type}{{ &i }});",
+                f"t_r.push_back(t2_r);",
+            ]
 
         append_statements = "\n        ".join(append_statements)
         typed_array = self.c_type_to_godot_type(vec_type)
 
         statements = [
             f"auto r = {call};",
-            f"auto t_r = {typed_array}();",
+            f"{typed_array} t_r = {typed_array}();",
             f"",
-            f"for (auto i_r : r) {{",
+            f"for (auto i : r) {{",
             f"    {append_statements}",
             f"}}",
             f"",
@@ -796,7 +802,7 @@ class Translator:
 
         statements = [
             f"auto r = {call};",
-            f"auto t_r = {typed_dict}();",
+            f"{typed_dict} t_r = {typed_dict}();",
             f"",
             f"for (auto p_r : r) {{",
             f"    {set_statements}",
@@ -810,14 +816,13 @@ class Translator:
         return statements
 
     def c_discord_ret_to_godot_discord_ret(self, ret_type: TokenType, call: str) -> str:
-        godot_name = ret_type.name.removeprefix("discordpp::")
-        godot_name = godot_name.replace("::", "")
-        godot_name = f"Discordpp{godot_name}"
+        name = self.c_name_to_godot_name(ret_type.name)
 
         statements = [
             f"{ret_type.name} *t_r = ({ret_type.name} *)memalloc(sizeof({ret_type.name}));",
             f"*t_r = {call};",
-            f"return memnew({godot_name} {{ t_r }});",
+            f"Ref<{name}> t2_r = memnew({name} {{ t_r }});",
+            f"return t2_r;",
         ]
 
         statements = "\n    ".join(statements)
