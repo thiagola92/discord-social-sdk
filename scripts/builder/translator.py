@@ -244,6 +244,10 @@ class Translator:
         """
         Returns statements that convert a variable from
         C type to Godot type and store it value in dest.
+
+        Mostly used for lambda expressions from callbacks,
+        because it receives C variables and we need to
+        convert to Godot before passing to a Callable.
         """
 
         if self.is_c_bool(src.type.name):
@@ -281,11 +285,9 @@ class Translator:
 
     def c_opt_to_godot_variant(self, src: TokenParam, dest: str) -> str:
         """
-        Return statements that convert the SDK response,
-        which is a std::optional, to Godot Variant type.
-
-        Variant can hold the same value as std::optional
-        or null in case the std::optional doesn't has a value.
+        Branch of c_var_to_godot_var().
+            from:   std::optional<>
+            to:     Variant
         """
 
         # It's intentional to cause error if no condition match.
@@ -347,6 +349,12 @@ class Translator:
         return statements
 
     def c_vec_to_godot_array(self, src: TokenParam, dest: str) -> str:
+        """
+        Branch of c_var_to_godot_var().
+            from:   std::vector<>
+            to:     TypedArray<>
+        """
+
         # It's intentional to cause error if no condition match.
         append_statements = None
 
@@ -400,6 +408,12 @@ class Translator:
         return statements
 
     def c_map_to_godot_dict(self, src: TokenParam, dest: str) -> str:
+        """
+        Branch of c_var_to_godot_var().
+            from:   std::vector<>
+            to:     TypedArray<>
+        """
+
         # It's intentional to cause error if no condition match.
         set_statements = None
 
@@ -425,6 +439,12 @@ class Translator:
         return statements
 
     def c_discord_to_godot_discord(self, src: TokenParam, dest: str) -> str:
+        """
+        Branch of c_var_to_godot_var().
+            from:   discordpp::Class
+            to:     DiscordppClass
+        """
+
         name = self.c_name_to_godot_name(src.type.name)
 
         statements = [
@@ -444,10 +464,14 @@ class Translator:
     ########################################################################
     ########################################################################
 
-    def godot_var_to_c_var(self, param: TokenParam, var_name: str) -> str:
+    def godot_var_to_c_var(self, param: TokenParam, dest: str) -> str:
         """
         Returns statements that convert a variable from
-        Godot type to C type and store it value in var_name.
+        Godot type to C type and store it value in dest.
+
+        Mostly used at the start of functions,
+        because it receives Godot variables and we need to
+        convert to C before passing to a SDK method.
 
         We will be using a TokenParam, which holds a C type instead
         of a Godot type, but there is no problem because we can
@@ -455,34 +479,34 @@ class Translator:
         """
 
         if self.is_c_bool(param.type.name):
-            return f"bool {var_name} = {param.name};"
+            return f"bool {dest} = {param.name};"
 
         elif self.is_c_int(param.type.name):
-            return f"int64_t {var_name} = {param.name};"
+            return f"int64_t {dest} = {param.name};"
 
         elif self.is_c_float(param.type.name):
-            return f"float {var_name} = {param.name};"
+            return f"float {dest} = {param.name};"
 
         elif self.is_c_string(param.type.name):
-            return f"const char *{var_name} = {param.name}.utf8().get_data();"
+            return f"const char *{dest} = {param.name}.utf8().get_data();"
 
         elif self.is_c_opt(param.type.name):
-            return self.godot_variant_to_c_opt(param, var_name)
+            return self.godot_variant_to_c_opt(param, dest)
 
         elif self.is_c_vec(param.type.name):
-            return self.godot_array_to_c_vec(param, var_name)
+            return self.godot_array_to_c_vec(param, dest)
 
         elif self.is_c_map(param.type.name):
-            return self.godot_dict_to_c_map(param, var_name)
+            return self.godot_dict_to_c_map(param, dest)
 
         elif self.is_c_callback(param.type.name):
             assert False, "Not implemented (implement if needed)"
 
         elif self.is_c_enum(param.type.name):
-            return f"{param.type.name} {var_name} = ({param.type.name}){param.name};"
+            return f"{param.type.name} {dest} = ({param.type.name}){param.name};"
 
         elif self.is_c_discord(param.type.name):
-            return f"{param.type.name} {var_name} = *{param.name}->unwrap();"
+            return f"{param.type.name} {dest} = *{param.name}->unwrap();"
 
         elif self.is_c_many(param.type.name):
             assert False, "Not implemented (implement if needed)"
@@ -491,27 +515,28 @@ class Translator:
             f'Fail to convert Godot variable "{param.type.name}" to C variable'
         )
 
-    def godot_variant_to_c_opt(self, param: TokenParam, var_name: str) -> str:
+    def godot_variant_to_c_opt(self, param: TokenParam, dest: str) -> str:
         """
-        Returns statements that convert a variable from
-        Variant to C type and store it value in var_name.
+        Branch of godot_var_to_c_var().
+            from:   Variant
+            to:     std::optional<>
         """
 
         variant_type = self.c_type_to_variant_type(param.type.subtype.name)
         convertion_statements = None
 
         if self.is_c_bool(param.type.subtype.name):
-            convertion_statements = [f"{var_name} = {param.name};"]
+            convertion_statements = [f"{dest} = {param.name};"]
 
         elif self.is_c_int(param.type.subtype.name):
-            convertion_statements = [f"{var_name} = {param.name};"]
+            convertion_statements = [f"{dest} = {param.name};"]
 
         elif self.is_c_float(param.type.subtype.name):
-            convertion_statements = [f"{var_name} = {param.name};"]
+            convertion_statements = [f"{dest} = {param.name};"]
 
         elif self.is_c_string(param.type.subtype.name):
             convertion_statements = [
-                f"{var_name} = {param.name}.stringify().utf8().get_data();"
+                f"{dest} = {param.name}.stringify().utf8().get_data();"
             ]
 
         elif self.is_c_vec(param.type.subtype.name):
@@ -527,14 +552,14 @@ class Translator:
             class_type = self.c_type_to_godot_type(param.type.subtype, False)
 
             convertion_statements = [
-                f"{class_type} *t_{var_name} = Object::cast_to<{class_type}>({param.name});",
-                f"{var_name} = std::optional<{param.type.subtype.name}>{{ *t_{var_name}->unwrap() }};",
+                f"{class_type} *t_{dest} = Object::cast_to<{class_type}>({param.name});",
+                f"{dest} = std::optional<{param.type.subtype.name}>{{ *t_{dest}->unwrap() }};",
             ]
 
         convertion_statements = "\n        ".join(convertion_statements)
 
         statements = [
-            f"std::optional<{param.type.subtype.name}> {var_name};",
+            f"std::optional<{param.type.subtype.name}> {dest};",
             f"",
             f"if ({param.name}.get_type() == {variant_type}) {{",
             f"    {convertion_statements}",
@@ -546,20 +571,26 @@ class Translator:
 
         return statements
 
-    def godot_array_to_c_vec(self, param: TokenParam, var_name: str) -> str:
+    def godot_array_to_c_vec(self, param: TokenParam, dest: str) -> str:
+        """
+        Branch of godot_var_to_c_var().
+            from:   TypedArray<>
+            to:     std::vector<>
+        """
+
         append_statements = None
 
         if self.is_c_bool(param.type.subtype.name):
-            append_statements = [f"{var_name}.append(i_{var_name});"]
+            append_statements = [f"{dest}.append(i_{dest});"]
 
         elif self.is_c_int(param.type.subtype.name):
-            append_statements = [f"{var_name}.append(i_{var_name});"]
+            append_statements = [f"{dest}.append(i_{dest});"]
 
         elif self.is_c_float(param.type.subtype.name):
-            append_statements = [f"{var_name}.append(i_{var_name});"]
+            append_statements = [f"{dest}.append(i_{dest});"]
 
         elif self.is_c_string(param.type.subtype.name):
-            append_statements = [f"{var_name}.append(i_{var_name}.utf8().get_data());"]
+            append_statements = [f"{dest}.append(i_{dest}.utf8().get_data());"]
 
         elif self.is_c_opt(param.type.subtype.name):
             assert False, "Not implemented (implement if needed)"
@@ -574,17 +605,17 @@ class Translator:
             assert False, "Not implemented (implement if needed)"
 
         elif self.is_c_enum(param.type.subtype.name):
-            append_statements = [f"{var_name}.append(i_{var_name});"]
+            append_statements = [f"{dest}.append(i_{dest});"]
 
         elif self.is_c_discord(param.type.subtype.name):
-            append_statements = [f"{var_name}.append(i_{var_name}->unwrap());"]
+            append_statements = [f"{dest}.append(i_{dest}->unwrap());"]
 
         append_statements = "\n        ".join(append_statements)
 
         statements = [
-            f"std::vector<{param.type.subtype.name}> {var_name} = std::vector<{param.type.subtype.name}>();",
+            f"std::vector<{param.type.subtype.name}> {dest} = std::vector<{param.type.subtype.name}>();",
             f"",
-            f"for (auto i_{var_name} : {param.name}) {{",
+            f"for (auto i_{dest} : {param.name}) {{",
             f"    {append_statements}",
             f"}}",
         ]
@@ -593,18 +624,24 @@ class Translator:
 
         return ""
 
-    def godot_dict_to_c_map(self, param: TokenParam, var_name: str) -> str:
+    def godot_dict_to_c_map(self, param: TokenParam, dest: str) -> str:
+        """
+        Branch of godot_var_to_c_var().
+            from:   TypedDictionary<>
+            to:     std::unordered_map<>
+        """
+
         statements = [
             # NOTE: This is a "gambiarra" because I know that we only works with std::string maps.
-            f"std::unordered_map<std::string, std::string> {var_name} = std::unordered_map<std::string, std::string>();",
-            f"auto k_{var_name} = {param.name}.keys();",
+            f"std::unordered_map<std::string, std::string> {dest} = std::unordered_map<std::string, std::string>();",
+            f"auto k_{dest} = {param.name}.keys();",
             f"",
-            f"for (int i = 0; i < k_{var_name}.size(); i++) {{",
-            f"    auto k = k_{var_name}[i];",
+            f"for (int i = 0; i < k_{dest}.size(); i++) {{",
+            f"    auto k = k_{dest}[i];",
             f"    auto v = {param.name}[k];",
             f"    auto k_s = k.stringify().utf8().get_data();",
             f"    auto v_s = v.stringify().utf8().get_data();",
-            f"    {var_name}[k_s]= v_s;",
+            f"    {dest}[k_s]= v_s;",
             f"}}",
         ]
 
@@ -627,7 +664,7 @@ class Translator:
         it value to Godot. Object example:
             discordpp::Call *r = (discordpp::Call *)memalloc(sizeof(discordpp::Call));
             *r = client->StartCall(p0);
-            return memnew(DiscordppCall{ *r });
+            return memnew(DiscordppCall{ r });
         """
 
         if self.is_c_void(ret_type.name):
@@ -668,12 +705,9 @@ class Translator:
 
     def c_opt_ret_to_godot_variant_ret(self, ret_type: TokenType, call: str) -> str:
         """
-        Return statements that convert the SDK response,
-        which is a std::optional, to Godot Variant type
-        while returning this new Variant.
-
-        Variant can hold the same value as std::optional
-        or null in case the std::optional doesn't has a value.
+        Branch of c_ret_to_godot_ret().
+            from:       std::optional<>
+            return:     Variant
         """
 
         ret_statements = None
@@ -732,6 +766,11 @@ class Translator:
         return statements
 
     def c_vec_ret_to_godot_array_ret(self, vec_type: TokenType, call: str) -> str:
+        """
+        Branch of c_ret_to_godot_ret().
+            from:       std::vector<>
+            return:     TypedArray<>
+        """
         append_statements = None
 
         if self.is_c_bool(vec_type.subtype.name):
@@ -786,6 +825,12 @@ class Translator:
         return statements
 
     def c_map_ret_to_godot_dict_ret(self, map_type: TokenType, call: str) -> str:
+        """
+        Branch of c_ret_to_godot_ret().
+            from:       std::unordered_map<>
+            return:     TypedDictionary<>
+        """
+
         set_statements = None
 
         if self.is_c_many(map_type.subtype.name):
@@ -812,6 +857,12 @@ class Translator:
         return statements
 
     def c_discord_ret_to_godot_discord_ret(self, ret_type: TokenType, call: str) -> str:
+        """
+        Branch of c_ret_to_godot_ret().
+            from:       discordpp::Class
+            return:     DiscordppClass
+        """
+
         name = self.c_name_to_godot_name(ret_type.name)
 
         statements = [
