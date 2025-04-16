@@ -12,7 +12,8 @@ int64_t DiscordppGuildChannel::Id() {
 }
 
 void DiscordppGuildChannel::SetId(int64_t Id) {
-	auto p0 = Id;
+	int64_t p0 = Id;
+
 	obj->SetId(p0);
 }
 
@@ -21,7 +22,8 @@ String DiscordppGuildChannel::Name() {
 }
 
 void DiscordppGuildChannel::SetName(String Name) {
-	auto p0 = Name.utf8().get_data();
+	const char *p0 = Name.utf8().get_data();
+
 	obj->SetName(p0);
 }
 
@@ -30,7 +32,8 @@ bool DiscordppGuildChannel::IsLinkable() {
 }
 
 void DiscordppGuildChannel::SetIsLinkable(bool IsLinkable) {
-	auto p0 = IsLinkable;
+	bool p0 = IsLinkable;
+
 	obj->SetIsLinkable(p0);
 }
 
@@ -39,7 +42,8 @@ bool DiscordppGuildChannel::IsViewableAndWriteableByAllMembers() {
 }
 
 void DiscordppGuildChannel::SetIsViewableAndWriteableByAllMembers(bool IsViewableAndWriteableByAllMembers) {
-	auto p0 = IsViewableAndWriteableByAllMembers;
+	bool p0 = IsViewableAndWriteableByAllMembers;
+
 	obj->SetIsViewableAndWriteableByAllMembers(p0);
 }
 
@@ -50,7 +54,7 @@ Variant DiscordppGuildChannel::LinkedLobby() {
 		return nullptr;
 	}
 
-	auto t_r = (discordpp::LinkedLobby *)memalloc(sizeof(discordpp::LinkedLobby));
+	discordpp::LinkedLobby *t_r = (discordpp::LinkedLobby *)memalloc(sizeof(discordpp::LinkedLobby));
 	*t_r = r.value();
 	return Variant(memnew(DiscordppLinkedLobby{ t_r }));
 }
@@ -59,7 +63,7 @@ void DiscordppGuildChannel::SetLinkedLobby(Variant LinkedLobby) {
 	std::optional<discordpp::LinkedLobby> p0;
 
 	if (LinkedLobby.get_type() == Variant::OBJECT) {
-		auto t_p0 = Object::cast_to<DiscordppLinkedLobby>(LinkedLobby);
+		DiscordppLinkedLobby t_p0 = Object::cast_to<DiscordppLinkedLobby>(LinkedLobby);
 		auto t2_p0 = t_p0->unwrap();
 		p0 = std::optional<discordpp::LinkedLobby>{ *t2_p0 };
 	}

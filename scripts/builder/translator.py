@@ -181,14 +181,14 @@ class Translator:
     ########################################################################
     ########################################################################
 
-    def c_type_to_godot_type(self, token: TokenType, pointer: bool = True) -> str:
+    def c_type_to_godot_type(self, token: TokenType, ref: bool = True) -> str:
         """
         Return the Godot type that would be equivalent to this C type.
 
         Very useful when building the Godot methods signature, it tell us
         which return type and params type Godot will use for them.
 
-        The pointer parameter is useful for cases outside of
+        The ref parameter is useful for cases outside of
         method signature, where you may need it response raw.
         """
 
@@ -211,11 +211,11 @@ class Translator:
             return "Variant"
 
         if self.is_c_vec(token.name):
-            subtype = self.c_type_to_godot_type(token.subtype, False)
+            subtype = self.c_type_to_godot_type(token.subtype, ref)
             return f"TypedArray<{subtype}>"
 
         if self.is_c_map(token.name):
-            subtype = self.c_type_to_godot_type(token.subtype, False)
+            subtype = self.c_type_to_godot_type(token.subtype, ref)
             return f"TypedDictionary<{subtype}>"
 
         if self.is_c_callback(token.name):
@@ -226,7 +226,7 @@ class Translator:
 
         if self.is_c_discord(token.name):
             name = self.c_name_to_godot_name(token.name)
-            return f"{name}*" if pointer else name
+            return f"Ref<{name}>" if ref else name
 
         if self.is_c_many(token.name):
             # NOTE: This is a "gambiarra" because I know that
@@ -247,16 +247,16 @@ class Translator:
         """
 
         if self.is_c_bool(src.type.name):
-            return f"auto {dest} = (bool){src.name};"
+            return f"bool {dest} = {src.name};"
 
         if self.is_c_int(src.type.name):
-            return f"auto {dest} = (int64_t){src.name};"
+            return f"int64_t {dest} = (int64_t){src.name};"
 
         if self.is_c_float(src.type.name):
-            return f"auto {dest} = (float){src.name};"
+            return f"float {dest} = (float){src.name};"
 
         if self.is_c_string(src.type.name):
-            return f"auto {dest} = String({src.name}.c_str());"
+            return f"String {dest} = String({src.name}.c_str());"
 
         if self.is_c_opt(src.type.name):
             return self.c_opt_to_godot_variant(src, dest)
@@ -272,7 +272,7 @@ class Translator:
 
         if self.is_c_enum(src.type.name):
             enum = self.c_name_to_godot_name(src.type.name)
-            return f"auto {dest} = ({enum}){src.name};"
+            return f"{enum} {dest} = ({enum}){src.name};"
 
         if self.is_c_discord(src.type.name):
             return self.c_discord_to_godot_discord(src, dest)
@@ -292,7 +292,7 @@ class Translator:
         convertion_statements = None
 
         if self.is_c_bool(src.type.subtype.name):
-            convertion_statements = [f"{dest} = Variant((bool){src.name}.value());"]
+            convertion_statements = [f"{dest} = Variant({src.name}.value());"]
 
         if self.is_c_int(src.type.subtype.name):
             convertion_statements = [f"{dest} = Variant((int64_t){src.name}.value());"]
@@ -320,12 +320,13 @@ class Translator:
             convertion_statements = [f"{dest} = Variant(({enum}) {src.name}.value());"]
 
         if self.is_c_discord(src.type.subtype.name):
-            type_name = self.c_type_to_godot_type(src.type.subtype, pointer=False)
+            type_name = self.c_type_to_godot_type(src.type.subtype, ref=False)
 
             convertion_statements = [
-                f"auto t = ({src.type.subtype.name} *)memalloc(sizeof({src.type.subtype.name}));",
+                f"{src.type.subtype.name} * t = ({src.type.subtype.name} *)memalloc(sizeof({src.type.subtype.name}));",
                 f"*t = {src.name}.value();",
-                f"{dest} = Variant(memnew({type_name}{{ t }}));",
+                f"Ref<{type_name}> t2 = memnew({type_name}{{ t }});",
+                f"{dest} = Variant(t2);",
                 f"",
             ]
 
@@ -351,7 +352,7 @@ class Translator:
         append_statements = None
 
         if self.is_c_bool(src.type.subtype.name):
-            append_statements = [f"{dest}.push_back((bool)i);"]
+            append_statements = [f"{dest}.push_back(i);"]
 
         if self.is_c_int(src.type.subtype.name):
             append_statements = [f"{dest}.push_back((int64_t)i);"]
@@ -378,14 +379,14 @@ class Translator:
             assert False, "Not implemented (implement if needed)"
 
         if self.is_c_discord(src.type.subtype.name):
-            obj_type = self.c_type_to_godot_type(src.type.subtype, pointer=False)
+            obj_type = self.c_type_to_godot_type(src.type.subtype, ref=False)
             append_statements = [f"{dest}.push_back(memnew({obj_type}{{ &i }}));"]
 
         append_statements = "\n        ".join(append_statements)
         typed_array = self.c_type_to_godot_type(src.type)
 
         statements = [
-            f"auto {dest} = {typed_array}();",
+            f"{typed_array} {dest} = {typed_array}();",
             f"",
             f"for (auto i : {src.name}) {{",
             f"    {append_statements}",
@@ -453,16 +454,16 @@ class Translator:
         """
 
         if self.is_c_bool(param.type.name):
-            return f"auto {var_name} = {param.name};"
+            return f"bool {var_name} = {param.name};"
 
         if self.is_c_int(param.type.name):
-            return f"auto {var_name} = {param.name};"
+            return f"int64_t {var_name} = {param.name};"
 
         if self.is_c_float(param.type.name):
-            return f"auto {var_name} = {param.name};"
+            return f"float {var_name} = {param.name};"
 
         if self.is_c_string(param.type.name):
-            return f"auto {var_name} = {param.name}.utf8().get_data();"
+            return f"const char *{var_name} = {param.name}.utf8().get_data();"
 
         if self.is_c_opt(param.type.name):
             return self.godot_variant_to_c_opt(param, var_name)
@@ -525,7 +526,7 @@ class Translator:
             class_type = self.c_type_to_godot_type(param.type.subtype, False)
 
             convertion_statements = [
-                f"auto t_{var_name} = Object::cast_to<{class_type}>({param.name});",
+                f"{class_type} t_{var_name} = Object::cast_to<{class_type}>({param.name});",
                 f"auto t2_{var_name} = t_{var_name}->unwrap();",
                 f"{var_name} = std::optional<{param.type.subtype.name}>{{ *t2_{var_name} }};",
             ]
@@ -581,7 +582,7 @@ class Translator:
         append_statements = "\n        ".join(append_statements)
 
         statements = [
-            f"auto {var_name} = std::vector<{param.type.subtype.name}>();",
+            f"std::vector<{param.type.subtype.name}> {var_name} = std::vector<{param.type.subtype.name}>();",
             f"",
             f"for (auto i_{var_name} : {param.name}) {{",
             f"    {append_statements}",
@@ -595,7 +596,7 @@ class Translator:
     def godot_dict_to_c_map(self, param: TokenParam, var_name: str) -> str:
         statements = [
             # NOTE: This is a "gambiarra" because I know that we only works with std::string maps.
-            f"auto {var_name} = std::unordered_map<std::string, std::string>();",
+            f"std::unordered_map<std::string, std::string> {var_name} = std::unordered_map<std::string, std::string>();",
             f"auto k_{var_name} = {param.name}.keys();",
             f"",
             f"for (int i = 0; i < k_{var_name}.size(); i++) {{",
@@ -624,7 +625,7 @@ class Translator:
 
         Used after calling SDK method, to return
         it value to Godot. Object example:
-            auto r = (discordpp::Call *)memalloc(sizeof(discordpp::Call));
+            discordpp::Call *r = (discordpp::Call *)memalloc(sizeof(discordpp::Call));
             *r = client->StartCall(p0);
             return memnew(DiscordppCall{ *r });
         """
@@ -706,10 +707,10 @@ class Translator:
             ret_statements = [f"return Variant(({enum}) r.value());"]
 
         if self.is_c_discord(ret_type.name):
-            class_ = self.c_type_to_godot_type(ret_type, pointer=False)
+            class_ = self.c_type_to_godot_type(ret_type, ref=False)
 
             ret_statements = [
-                f"auto t_r = ({ret_type.name} *)memalloc(sizeof({ret_type.name}));",
+                f"{ret_type.name} *t_r = ({ret_type.name} *)memalloc(sizeof({ret_type.name}));",
                 f"*t_r = r.value();",
                 f"return Variant(memnew({class_}{{ t_r }}));",
             ]
@@ -761,7 +762,7 @@ class Translator:
             assert False, "Not implemented (implement if needed)"
 
         if self.is_c_discord(vec_type.subtype.name):
-            obj_type = self.c_type_to_godot_type(vec_type.subtype, pointer=False)
+            obj_type = self.c_type_to_godot_type(vec_type.subtype, ref=False)
             append_statements = [f"t_r.push_back(memnew({obj_type}{{ &i_r }}));"]
 
         append_statements = "\n        ".join(append_statements)
@@ -814,7 +815,7 @@ class Translator:
         godot_name = f"Discordpp{godot_name}"
 
         statements = [
-            f"auto t_r = ({ret_type.name} *)memalloc(sizeof({ret_type.name}));",
+            f"{ret_type.name} *t_r = ({ret_type.name} *)memalloc(sizeof({ret_type.name}));",
             f"*t_r = {call};",
             f"return memnew({godot_name} {{ t_r }});",
         ]

@@ -17,6 +17,7 @@ DiscordppErrorType::Enum DiscordppClientResult::Type() {
 
 void DiscordppClientResult::SetType(DiscordppErrorType::Enum Type) {
 	auto p0 = (discordpp::ErrorType)Type;
+
 	obj->SetType(p0);
 }
 
@@ -25,7 +26,8 @@ String DiscordppClientResult::Error() {
 }
 
 void DiscordppClientResult::SetError(String Error) {
-	auto p0 = Error.utf8().get_data();
+	const char *p0 = Error.utf8().get_data();
+
 	obj->SetError(p0);
 }
 
@@ -34,7 +36,8 @@ int64_t DiscordppClientResult::ErrorCode() {
 }
 
 void DiscordppClientResult::SetErrorCode(int64_t ErrorCode) {
-	auto p0 = ErrorCode;
+	int64_t p0 = ErrorCode;
+
 	obj->SetErrorCode(p0);
 }
 
@@ -44,6 +47,7 @@ DiscordppHttpStatusCode::Enum DiscordppClientResult::Status() {
 
 void DiscordppClientResult::SetStatus(DiscordppHttpStatusCode::Enum Status) {
 	auto p0 = (discordpp::HttpStatusCode)Status;
+
 	obj->SetStatus(p0);
 }
 
@@ -52,7 +56,8 @@ String DiscordppClientResult::ResponseBody() {
 }
 
 void DiscordppClientResult::SetResponseBody(String ResponseBody) {
-	auto p0 = ResponseBody.utf8().get_data();
+	const char *p0 = ResponseBody.utf8().get_data();
+
 	obj->SetResponseBody(p0);
 }
 
@@ -61,7 +66,8 @@ bool DiscordppClientResult::Successful() {
 }
 
 void DiscordppClientResult::SetSuccessful(bool Successful) {
-	auto p0 = Successful;
+	bool p0 = Successful;
+
 	obj->SetSuccessful(p0);
 }
 
@@ -70,7 +76,8 @@ bool DiscordppClientResult::Retryable() {
 }
 
 void DiscordppClientResult::SetRetryable(bool Retryable) {
-	auto p0 = Retryable;
+	bool p0 = Retryable;
+
 	obj->SetRetryable(p0);
 }
 
@@ -79,7 +86,8 @@ float DiscordppClientResult::RetryAfter() {
 }
 
 void DiscordppClientResult::SetRetryAfter(float RetryAfter) {
-	auto p0 = RetryAfter;
+	float p0 = RetryAfter;
+
 	obj->SetRetryAfter(p0);
 }
 

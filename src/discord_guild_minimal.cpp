@@ -12,7 +12,8 @@ int64_t DiscordppGuildMinimal::Id() {
 }
 
 void DiscordppGuildMinimal::SetId(int64_t Id) {
-	auto p0 = Id;
+	int64_t p0 = Id;
+
 	obj->SetId(p0);
 }
 
@@ -21,7 +22,8 @@ String DiscordppGuildMinimal::Name() {
 }
 
 void DiscordppGuildMinimal::SetName(String Name) {
-	auto p0 = Name.utf8().get_data();
+	const char *p0 = Name.utf8().get_data();
+
 	obj->SetName(p0);
 }
 

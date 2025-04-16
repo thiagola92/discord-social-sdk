@@ -7,14 +7,15 @@ void DiscordppAuthorizationCodeVerifier::Drop() {
 	obj->Drop();
 }
 
-DiscordppAuthorizationCodeChallenge *DiscordppAuthorizationCodeVerifier::Challenge() {
-	auto t_r = (discordpp::AuthorizationCodeChallenge *)memalloc(sizeof(discordpp::AuthorizationCodeChallenge));
+Ref<DiscordppAuthorizationCodeChallenge> DiscordppAuthorizationCodeVerifier::Challenge() {
+	discordpp::AuthorizationCodeChallenge *t_r = (discordpp::AuthorizationCodeChallenge *)memalloc(sizeof(discordpp::AuthorizationCodeChallenge));
 	*t_r = obj->Challenge();
 	return memnew(DiscordppAuthorizationCodeChallenge{ t_r });
 }
 
-void DiscordppAuthorizationCodeVerifier::SetChallenge(DiscordppAuthorizationCodeChallenge *Challenge) {
+void DiscordppAuthorizationCodeVerifier::SetChallenge(Ref<DiscordppAuthorizationCodeChallenge> Challenge) {
 	auto p0 = *Challenge->unwrap();
+
 	obj->SetChallenge(p0);
 }
 
@@ -23,7 +24,8 @@ String DiscordppAuthorizationCodeVerifier::Verifier() {
 }
 
 void DiscordppAuthorizationCodeVerifier::SetVerifier(String Verifier) {
-	auto p0 = Verifier.utf8().get_data();
+	const char *p0 = Verifier.utf8().get_data();
+
 	obj->SetVerifier(p0);
 }
 

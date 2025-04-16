@@ -12,7 +12,8 @@ String DiscordppActivityParty::Id() {
 }
 
 void DiscordppActivityParty::SetId(String Id) {
-	auto p0 = Id.utf8().get_data();
+	const char *p0 = Id.utf8().get_data();
+
 	obj->SetId(p0);
 }
 
@@ -21,7 +22,8 @@ int64_t DiscordppActivityParty::CurrentSize() {
 }
 
 void DiscordppActivityParty::SetCurrentSize(int64_t CurrentSize) {
-	auto p0 = CurrentSize;
+	int64_t p0 = CurrentSize;
+
 	obj->SetCurrentSize(p0);
 }
 
@@ -30,7 +32,8 @@ int64_t DiscordppActivityParty::MaxSize() {
 }
 
 void DiscordppActivityParty::SetMaxSize(int64_t MaxSize) {
-	auto p0 = MaxSize;
+	int64_t p0 = MaxSize;
+
 	obj->SetMaxSize(p0);
 }
 
@@ -40,6 +43,7 @@ DiscordppActivityPartyPrivacy::Enum DiscordppActivityParty::Privacy() {
 
 void DiscordppActivityParty::SetPrivacy(DiscordppActivityPartyPrivacy::Enum Privacy) {
 	auto p0 = (discordpp::ActivityPartyPrivacy)Privacy;
+
 	obj->SetPrivacy(p0);
 }
 

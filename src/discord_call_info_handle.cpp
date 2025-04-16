@@ -23,14 +23,15 @@ TypedArray<int64_t> DiscordppCallInfoHandle::GetParticipants() {
 }
 
 Variant DiscordppCallInfoHandle::GetVoiceStateHandle(int64_t userId) {
-	auto p0 = userId;
+	int64_t p0 = userId;
+
 	auto r = obj->GetVoiceStateHandle(p0);
 
 	if (!r.has_value()) {
 		return nullptr;
 	}
 
-	auto t_r = (discordpp::VoiceStateHandle *)memalloc(sizeof(discordpp::VoiceStateHandle));
+	discordpp::VoiceStateHandle *t_r = (discordpp::VoiceStateHandle *)memalloc(sizeof(discordpp::VoiceStateHandle));
 	*t_r = r.value();
 	return Variant(memnew(DiscordppVoiceStateHandle{ t_r }));
 }

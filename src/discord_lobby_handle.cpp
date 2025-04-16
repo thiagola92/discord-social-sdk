@@ -1,6 +1,5 @@
 
 #include "discord_classes.h"
-#include "godot_cpp/classes/ref.hpp"
 
 using namespace godot;
 
@@ -15,20 +14,21 @@ Variant DiscordppLobbyHandle::GetCallInfoHandle() {
 		return nullptr;
 	}
 
-	auto t_r = (discordpp::CallInfoHandle *)memalloc(sizeof(discordpp::CallInfoHandle));
+	discordpp::CallInfoHandle *t_r = (discordpp::CallInfoHandle *)memalloc(sizeof(discordpp::CallInfoHandle));
 	*t_r = r.value();
 	return Variant(memnew(DiscordppCallInfoHandle{ t_r }));
 }
 
 Variant DiscordppLobbyHandle::GetLobbyMemberHandle(int64_t memberId) {
-	auto p0 = memberId;
+	int64_t p0 = memberId;
+
 	auto r = obj->GetLobbyMemberHandle(p0);
 
 	if (!r.has_value()) {
 		return nullptr;
 	}
 
-	auto t_r = (discordpp::LobbyMemberHandle *)memalloc(sizeof(discordpp::LobbyMemberHandle));
+	discordpp::LobbyMemberHandle *t_r = (discordpp::LobbyMemberHandle *)memalloc(sizeof(discordpp::LobbyMemberHandle));
 	*t_r = r.value();
 	return Variant(memnew(DiscordppLobbyMemberHandle{ t_r }));
 }
@@ -44,7 +44,7 @@ Variant DiscordppLobbyHandle::LinkedChannel() {
 		return nullptr;
 	}
 
-	auto t_r = (discordpp::LinkedChannel *)memalloc(sizeof(discordpp::LinkedChannel));
+	discordpp::LinkedChannel *t_r = (discordpp::LinkedChannel *)memalloc(sizeof(discordpp::LinkedChannel));
 	*t_r = r.value();
 	return Variant(memnew(DiscordppLinkedChannel{ t_r }));
 }
@@ -60,13 +60,12 @@ TypedArray<int64_t> DiscordppLobbyHandle::LobbyMemberIds() {
 	return t_r;
 }
 
-TypedArray<DiscordppLobbyMemberHandle> DiscordppLobbyHandle::LobbyMembers() {
+TypedArray<Ref<DiscordppLobbyMemberHandle>> DiscordppLobbyHandle::LobbyMembers() {
 	auto r = obj->LobbyMembers();
-	auto t_r = TypedArray<DiscordppLobbyMemberHandle>();
+	auto t_r = TypedArray<Ref<DiscordppLobbyMemberHandle>>();
 
 	for (auto i_r : r) {
-		Ref<DiscordppLobbyMemberHandle> x = memnew(DiscordppLobbyMemberHandle{ &i_r });
-		t_r.push_back(x);
+		t_r.push_back(memnew(DiscordppLobbyMemberHandle{ &i_r }));
 	}
 
 	return t_r;

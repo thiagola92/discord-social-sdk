@@ -270,7 +270,7 @@ public:
 	}
 
 	void Drop();
-	bool Equals(DiscordppActivity *other);
+	bool Equals(Ref<DiscordppActivity> other);
 	String Name();
 	void SetName(String Name);
 	DiscordppActivityTypes::Enum Type();
@@ -394,8 +394,8 @@ public:
 	}
 
 	void Drop();
-	DiscordppAuthorizationCodeChallenge *Challenge();
-	void SetChallenge(DiscordppAuthorizationCodeChallenge *Challenge);
+	Ref<DiscordppAuthorizationCodeChallenge> Challenge();
+	void SetChallenge(Ref<DiscordppAuthorizationCodeChallenge> Challenge);
 	String Verifier();
 	void SetVerifier(String Verifier);
 
@@ -560,7 +560,7 @@ public:
 	bool GetSelfDeaf();
 	bool GetSelfMute();
 	DiscordppCallStatus::Enum GetStatus();
-	DiscordppVADThresholdSettings *GetVADThreshold();
+	Ref<DiscordppVADThresholdSettings> GetVADThreshold();
 	Variant GetVoiceStateHandle(int64_t userId);
 	void SetAudioMode(DiscordppAudioModeType::Enum audioMode);
 	void SetLocalMute(int64_t userId, bool mute);
@@ -793,7 +793,7 @@ public:
 	Variant GlobalName();
 	int64_t Id();
 	bool IsProvisional();
-	DiscordppRelationshipHandle *Relationship();
+	Ref<DiscordppRelationshipHandle> Relationship();
 	DiscordppStatusType::Enum Status();
 	String Username();
 
@@ -856,7 +856,7 @@ public:
 	int64_t Id();
 	Variant LinkedChannel();
 	TypedArray<int64_t> LobbyMemberIds();
-	TypedArray<DiscordppLobbyMemberHandle> LobbyMembers();
+	TypedArray<Ref<DiscordppLobbyMemberHandle>> LobbyMembers();
 	TypedDictionary<String, String> Metadata();
 
 	DiscordppLobbyHandle(discordpp::LobbyHandle *obj) {
@@ -882,7 +882,7 @@ public:
 	}
 
 	void Drop();
-	bool Equals(DiscordppAdditionalContent *rhs);
+	bool Equals(Ref<DiscordppAdditionalContent> rhs);
 	String TypeToString(DiscordppAdditionalContentType::Enum type);
 	DiscordppAdditionalContentType::Enum Type();
 	void SetType(DiscordppAdditionalContentType::Enum Type);
@@ -960,7 +960,7 @@ public:
 	}
 
 	void Drop();
-	bool Equals(DiscordppAudioDevice *rhs);
+	bool Equals(Ref<DiscordppAudioDevice> rhs);
 	String Id();
 	void SetId(String Id);
 	String Name();
@@ -1003,8 +1003,8 @@ public:
 	String ThreadToString(DiscordppClientThread::Enum type);
 	void EndCall(int64_t channelId, Callable callback);
 	void EndCalls(Callable callback);
-	DiscordppCall *GetCall(int64_t channelId);
-	TypedArray<DiscordppCall> GetCalls();
+	Ref<DiscordppCall> GetCall(int64_t channelId);
+	TypedArray<Ref<DiscordppCall>> GetCalls();
 	void GetCurrentInputDevice(Callable cb);
 	void GetCurrentOutputDevice(Callable cb);
 	void GetInputDevices(Callable cb);
@@ -1030,18 +1030,18 @@ public:
 	void SetThreadPriority(DiscordppClientThread::Enum thread, int64_t priority);
 	void SetVoiceParticipantChangedCallback(Callable cb);
 	bool ShowAudioRoutePicker();
-	DiscordppCall *StartCall(int64_t channelId);
-	DiscordppCall *StartCallWithAudioCallbacks(int64_t lobbyId, Callable receivedCb, Callable capturedCb);
+	Ref<DiscordppCall> StartCall(int64_t channelId);
+	Ref<DiscordppCall> StartCallWithAudioCallbacks(int64_t lobbyId, Callable receivedCb, Callable capturedCb);
 	void AbortAuthorize();
 	void AbortGetTokenFromDevice();
-	void Authorize(DiscordppAuthorizationArgs *args, Callable callback);
+	void Authorize(Ref<DiscordppAuthorizationArgs> args, Callable callback);
 	void CloseAuthorizeDeviceScreen();
-	DiscordppAuthorizationCodeVerifier *CreateAuthorizationCodeVerifier();
+	Ref<DiscordppAuthorizationCodeVerifier> CreateAuthorizationCodeVerifier();
 	void FetchCurrentUser(DiscordppAuthorizationTokenType::Enum tokenType, String token, Callable callback);
 	void GetProvisionalToken(int64_t applicationId, DiscordppAuthenticationExternalAuthType::Enum externalAuthType, String externalAuthToken, Callable callback);
 	void GetToken(int64_t applicationId, String code, String codeVerifier, String redirectUri, Callable callback);
-	void GetTokenFromDevice(DiscordppDeviceAuthorizationArgs *args, Callable callback);
-	void GetTokenFromDeviceProvisionalMerge(DiscordppDeviceAuthorizationArgs *args, DiscordppAuthenticationExternalAuthType::Enum externalAuthType, String externalAuthToken, Callable callback);
+	void GetTokenFromDevice(Ref<DiscordppDeviceAuthorizationArgs> args, Callable callback);
+	void GetTokenFromDeviceProvisionalMerge(Ref<DiscordppDeviceAuthorizationArgs> args, DiscordppAuthenticationExternalAuthType::Enum externalAuthType, String externalAuthToken, Callable callback);
 	void GetTokenFromProvisionalMerge(int64_t applicationId, String code, String codeVerifier, String redirectUri, DiscordppAuthenticationExternalAuthType::Enum externalAuthType, String externalAuthToken, Callable callback);
 	bool IsAuthenticated();
 	void OpenAuthorizeDeviceScreen(int64_t clientId, String userCode);
@@ -1089,30 +1089,30 @@ public:
 	void SetLobbyMemberUpdatedCallback(Callable cb);
 	void SetLobbyUpdatedCallback(Callable cb);
 	void UnlinkChannelFromLobby(int64_t lobbyId, Callable callback);
-	void AcceptActivityInvite(DiscordppActivityInvite *invite, Callable cb);
+	void AcceptActivityInvite(Ref<DiscordppActivityInvite> invite, Callable cb);
 	void ClearRichPresence();
 	bool RegisterLaunchCommand(int64_t applicationId, String command);
 	bool RegisterLaunchSteamApplication(int64_t applicationId, int64_t steamAppId);
 	void SendActivityInvite(int64_t userId, String content, Callable cb);
 	void SendActivityJoinRequest(int64_t userId, Callable cb);
-	void SendActivityJoinRequestReply(DiscordppActivityInvite *invite, Callable cb);
+	void SendActivityJoinRequestReply(Ref<DiscordppActivityInvite> invite, Callable cb);
 	void SetActivityInviteCreatedCallback(Callable cb);
 	void SetActivityInviteUpdatedCallback(Callable cb);
 	void SetActivityJoinCallback(Callable cb);
 	void SetOnlineStatus(DiscordppStatusType::Enum status, Callable callback);
-	void UpdateRichPresence(DiscordppActivity *activity, Callable cb);
+	void UpdateRichPresence(Ref<DiscordppActivity> activity, Callable cb);
 	void AcceptDiscordFriendRequest(int64_t userId, Callable cb);
 	void AcceptGameFriendRequest(int64_t userId, Callable cb);
 	void BlockUser(int64_t userId, Callable cb);
 	void CancelDiscordFriendRequest(int64_t userId, Callable cb);
 	void CancelGameFriendRequest(int64_t userId, Callable cb);
-	DiscordppRelationshipHandle *GetRelationshipHandle(int64_t userId);
-	TypedArray<DiscordppRelationshipHandle> GetRelationships();
+	Ref<DiscordppRelationshipHandle> GetRelationshipHandle(int64_t userId);
+	TypedArray<Ref<DiscordppRelationshipHandle>> GetRelationships();
 	void RejectDiscordFriendRequest(int64_t userId, Callable cb);
 	void RejectGameFriendRequest(int64_t userId, Callable cb);
 	void RemoveDiscordAndGameFriend(int64_t userId, Callable cb);
 	void RemoveGameFriend(int64_t userId, Callable cb);
-	TypedArray<DiscordppUserHandle> SearchFriendsByUsername(String searchStr);
+	TypedArray<Ref<DiscordppUserHandle>> SearchFriendsByUsername(String searchStr);
 	void SendDiscordFriendRequest(String username, Callable cb);
 	void SendDiscordFriendRequestById(int64_t userId, Callable cb);
 	void SendGameFriendRequest(String username, Callable cb);
@@ -1120,7 +1120,7 @@ public:
 	void SetRelationshipCreatedCallback(Callable cb);
 	void SetRelationshipDeletedCallback(Callable cb);
 	void UnblockUser(int64_t userId, Callable cb);
-	DiscordppUserHandle *GetCurrentUser();
+	Ref<DiscordppUserHandle> GetCurrentUser();
 	void GetDiscordClientConnectedUser(int64_t applicationId, Callable callback);
 	Variant GetUser(int64_t userId);
 	void SetUserUpdatedCallback(Callable cb);

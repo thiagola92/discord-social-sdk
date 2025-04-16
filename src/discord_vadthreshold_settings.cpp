@@ -12,7 +12,8 @@ float DiscordppVADThresholdSettings::VadThreshold() {
 }
 
 void DiscordppVADThresholdSettings::SetVadThreshold(float VadThreshold) {
-	auto p0 = VadThreshold;
+	float p0 = VadThreshold;
+
 	obj->SetVadThreshold(p0);
 }
 
@@ -21,7 +22,8 @@ bool DiscordppVADThresholdSettings::Automatic() {
 }
 
 void DiscordppVADThresholdSettings::SetAutomatic(bool Automatic) {
-	auto p0 = Automatic;
+	bool p0 = Automatic;
+
 	obj->SetAutomatic(p0);
 }
 

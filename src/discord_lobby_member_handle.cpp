@@ -37,7 +37,7 @@ Variant DiscordppLobbyMemberHandle::User() {
 		return nullptr;
 	}
 
-	auto t_r = (discordpp::UserHandle *)memalloc(sizeof(discordpp::UserHandle));
+	discordpp::UserHandle *t_r = (discordpp::UserHandle *)memalloc(sizeof(discordpp::UserHandle));
 	*t_r = r.value();
 	return Variant(memnew(DiscordppUserHandle{ t_r }));
 }

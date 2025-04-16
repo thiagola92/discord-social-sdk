@@ -7,8 +7,9 @@ void DiscordppAudioDevice::Drop() {
 	obj->Drop();
 }
 
-bool DiscordppAudioDevice::Equals(DiscordppAudioDevice *rhs) {
+bool DiscordppAudioDevice::Equals(Ref<DiscordppAudioDevice> rhs) {
 	auto p0 = *rhs->unwrap();
+
 	return obj->Equals(p0);
 }
 
@@ -17,7 +18,8 @@ String DiscordppAudioDevice::Id() {
 }
 
 void DiscordppAudioDevice::SetId(String Id) {
-	auto p0 = Id.utf8().get_data();
+	const char *p0 = Id.utf8().get_data();
+
 	obj->SetId(p0);
 }
 
@@ -26,7 +28,8 @@ String DiscordppAudioDevice::Name() {
 }
 
 void DiscordppAudioDevice::SetName(String Name) {
-	auto p0 = Name.utf8().get_data();
+	const char *p0 = Name.utf8().get_data();
+
 	obj->SetName(p0);
 }
 
@@ -35,7 +38,8 @@ bool DiscordppAudioDevice::IsDefault() {
 }
 
 void DiscordppAudioDevice::SetIsDefault(bool IsDefault) {
-	auto p0 = IsDefault;
+	bool p0 = IsDefault;
+
 	obj->SetIsDefault(p0);
 }
 

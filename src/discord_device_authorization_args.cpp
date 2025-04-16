@@ -12,7 +12,8 @@ int64_t DiscordppDeviceAuthorizationArgs::ClientId() {
 }
 
 void DiscordppDeviceAuthorizationArgs::SetClientId(int64_t ClientId) {
-	auto p0 = ClientId;
+	int64_t p0 = ClientId;
+
 	obj->SetClientId(p0);
 }
 
@@ -21,7 +22,8 @@ String DiscordppDeviceAuthorizationArgs::Scopes() {
 }
 
 void DiscordppDeviceAuthorizationArgs::SetScopes(String Scopes) {
-	auto p0 = Scopes.utf8().get_data();
+	const char *p0 = Scopes.utf8().get_data();
+
 	obj->SetScopes(p0);
 }
 

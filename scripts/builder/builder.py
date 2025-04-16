@@ -367,6 +367,7 @@ class Builder:
 
         # Third step.
         ret_statements = self.translator.c_ret_to_godot_ret(function.ret, call)
+        statements.append("\n")
         statements.append(ret_statements)
 
         statements = "\n    ".join(statements)

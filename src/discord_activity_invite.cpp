@@ -12,7 +12,8 @@ int64_t DiscordppActivityInvite::SenderId() {
 }
 
 void DiscordppActivityInvite::SetSenderId(int64_t SenderId) {
-	auto p0 = SenderId;
+	int64_t p0 = SenderId;
+
 	obj->SetSenderId(p0);
 }
 
@@ -21,7 +22,8 @@ int64_t DiscordppActivityInvite::ChannelId() {
 }
 
 void DiscordppActivityInvite::SetChannelId(int64_t ChannelId) {
-	auto p0 = ChannelId;
+	int64_t p0 = ChannelId;
+
 	obj->SetChannelId(p0);
 }
 
@@ -30,7 +32,8 @@ int64_t DiscordppActivityInvite::MessageId() {
 }
 
 void DiscordppActivityInvite::SetMessageId(int64_t MessageId) {
-	auto p0 = MessageId;
+	int64_t p0 = MessageId;
+
 	obj->SetMessageId(p0);
 }
 
@@ -40,6 +43,7 @@ DiscordppActivityActionTypes::Enum DiscordppActivityInvite::Type() {
 
 void DiscordppActivityInvite::SetType(DiscordppActivityActionTypes::Enum Type) {
 	auto p0 = (discordpp::ActivityActionTypes)Type;
+
 	obj->SetType(p0);
 }
 
@@ -48,7 +52,8 @@ int64_t DiscordppActivityInvite::ApplicationId() {
 }
 
 void DiscordppActivityInvite::SetApplicationId(int64_t ApplicationId) {
-	auto p0 = ApplicationId;
+	int64_t p0 = ApplicationId;
+
 	obj->SetApplicationId(p0);
 }
 
@@ -57,7 +62,8 @@ String DiscordppActivityInvite::PartyId() {
 }
 
 void DiscordppActivityInvite::SetPartyId(String PartyId) {
-	auto p0 = PartyId.utf8().get_data();
+	const char *p0 = PartyId.utf8().get_data();
+
 	obj->SetPartyId(p0);
 }
 
@@ -66,7 +72,8 @@ bool DiscordppActivityInvite::IsValid() {
 }
 
 void DiscordppActivityInvite::SetIsValid(bool IsValid) {
-	auto p0 = IsValid;
+	bool p0 = IsValid;
+
 	obj->SetIsValid(p0);
 }
 

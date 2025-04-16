@@ -14,7 +14,7 @@ Variant DiscordppMessageHandle::AdditionalContent() {
 		return nullptr;
 	}
 
-	auto t_r = (discordpp::AdditionalContent *)memalloc(sizeof(discordpp::AdditionalContent));
+	discordpp::AdditionalContent *t_r = (discordpp::AdditionalContent *)memalloc(sizeof(discordpp::AdditionalContent));
 	*t_r = r.value();
 	return Variant(memnew(DiscordppAdditionalContent{ t_r }));
 }
@@ -26,7 +26,7 @@ Variant DiscordppMessageHandle::Author() {
 		return nullptr;
 	}
 
-	auto t_r = (discordpp::UserHandle *)memalloc(sizeof(discordpp::UserHandle));
+	discordpp::UserHandle *t_r = (discordpp::UserHandle *)memalloc(sizeof(discordpp::UserHandle));
 	*t_r = r.value();
 	return Variant(memnew(DiscordppUserHandle{ t_r }));
 }
@@ -42,7 +42,7 @@ Variant DiscordppMessageHandle::Channel() {
 		return nullptr;
 	}
 
-	auto t_r = (discordpp::ChannelHandle *)memalloc(sizeof(discordpp::ChannelHandle));
+	discordpp::ChannelHandle *t_r = (discordpp::ChannelHandle *)memalloc(sizeof(discordpp::ChannelHandle));
 	*t_r = r.value();
 	return Variant(memnew(DiscordppChannelHandle{ t_r }));
 }
@@ -62,7 +62,7 @@ Variant DiscordppMessageHandle::DisclosureType() {
 		return nullptr;
 	}
 
-	auto t_r = (discordpp::DisclosureTypes *)memalloc(sizeof(discordpp::DisclosureTypes));
+	discordpp::DisclosureTypes *t_r = (discordpp::DisclosureTypes *)memalloc(sizeof(discordpp::DisclosureTypes));
 	*t_r = r.value();
 	return Variant(memnew(DiscordppDisclosureTypes::Enum{ t_r }));
 }
@@ -82,7 +82,7 @@ Variant DiscordppMessageHandle::Lobby() {
 		return nullptr;
 	}
 
-	auto t_r = (discordpp::LobbyHandle *)memalloc(sizeof(discordpp::LobbyHandle));
+	discordpp::LobbyHandle *t_r = (discordpp::LobbyHandle *)memalloc(sizeof(discordpp::LobbyHandle));
 	*t_r = r.value();
 	return Variant(memnew(DiscordppLobbyHandle{ t_r }));
 }
@@ -109,7 +109,7 @@ Variant DiscordppMessageHandle::Recipient() {
 		return nullptr;
 	}
 
-	auto t_r = (discordpp::UserHandle *)memalloc(sizeof(discordpp::UserHandle));
+	discordpp::UserHandle *t_r = (discordpp::UserHandle *)memalloc(sizeof(discordpp::UserHandle));
 	*t_r = r.value();
 	return Variant(memnew(DiscordppUserHandle{ t_r }));
 }

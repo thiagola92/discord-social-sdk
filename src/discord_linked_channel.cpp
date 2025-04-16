@@ -12,7 +12,8 @@ int64_t DiscordppLinkedChannel::Id() {
 }
 
 void DiscordppLinkedChannel::SetId(int64_t Id) {
-	auto p0 = Id;
+	int64_t p0 = Id;
+
 	obj->SetId(p0);
 }
 
@@ -21,7 +22,8 @@ String DiscordppLinkedChannel::Name() {
 }
 
 void DiscordppLinkedChannel::SetName(String Name) {
-	auto p0 = Name.utf8().get_data();
+	const char *p0 = Name.utf8().get_data();
+
 	obj->SetName(p0);
 }
 
@@ -30,7 +32,8 @@ int64_t DiscordppLinkedChannel::GuildId() {
 }
 
 void DiscordppLinkedChannel::SetGuildId(int64_t GuildId) {
-	auto p0 = GuildId;
+	int64_t p0 = GuildId;
+
 	obj->SetGuildId(p0);
 }
 

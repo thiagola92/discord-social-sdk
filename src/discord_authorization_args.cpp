@@ -12,7 +12,8 @@ int64_t DiscordppAuthorizationArgs::ClientId() {
 }
 
 void DiscordppAuthorizationArgs::SetClientId(int64_t ClientId) {
-	auto p0 = ClientId;
+	int64_t p0 = ClientId;
+
 	obj->SetClientId(p0);
 }
 
@@ -21,7 +22,8 @@ String DiscordppAuthorizationArgs::Scopes() {
 }
 
 void DiscordppAuthorizationArgs::SetScopes(String Scopes) {
-	auto p0 = Scopes.utf8().get_data();
+	const char *p0 = Scopes.utf8().get_data();
+
 	obj->SetScopes(p0);
 }
 
@@ -72,7 +74,7 @@ Variant DiscordppAuthorizationArgs::CodeChallenge() {
 		return nullptr;
 	}
 
-	auto t_r = (discordpp::AuthorizationCodeChallenge *)memalloc(sizeof(discordpp::AuthorizationCodeChallenge));
+	discordpp::AuthorizationCodeChallenge *t_r = (discordpp::AuthorizationCodeChallenge *)memalloc(sizeof(discordpp::AuthorizationCodeChallenge));
 	*t_r = r.value();
 	return Variant(memnew(DiscordppAuthorizationCodeChallenge{ t_r }));
 }
@@ -81,7 +83,7 @@ void DiscordppAuthorizationArgs::SetCodeChallenge(Variant CodeChallenge) {
 	std::optional<discordpp::AuthorizationCodeChallenge> p0;
 
 	if (CodeChallenge.get_type() == Variant::OBJECT) {
-		auto t_p0 = Object::cast_to<DiscordppAuthorizationCodeChallenge>(CodeChallenge);
+		DiscordppAuthorizationCodeChallenge t_p0 = Object::cast_to<DiscordppAuthorizationCodeChallenge>(CodeChallenge);
 		auto t2_p0 = t_p0->unwrap();
 		p0 = std::optional<discordpp::AuthorizationCodeChallenge>{ *t2_p0 };
 	}

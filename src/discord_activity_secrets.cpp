@@ -12,7 +12,8 @@ String DiscordppActivitySecrets::Join() {
 }
 
 void DiscordppActivitySecrets::SetJoin(String Join) {
-	auto p0 = Join.utf8().get_data();
+	const char *p0 = Join.utf8().get_data();
+
 	obj->SetJoin(p0);
 }
 

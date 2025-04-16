@@ -13,6 +13,7 @@ DiscordppAuthenticationCodeChallengeMethod::Enum DiscordppAuthorizationCodeChall
 
 void DiscordppAuthorizationCodeChallenge::SetMethod(DiscordppAuthenticationCodeChallengeMethod::Enum Method) {
 	auto p0 = (discordpp::AuthenticationCodeChallengeMethod)Method;
+
 	obj->SetMethod(p0);
 }
 
@@ -21,7 +22,8 @@ String DiscordppAuthorizationCodeChallenge::Challenge() {
 }
 
 void DiscordppAuthorizationCodeChallenge::SetChallenge(String Challenge) {
-	auto p0 = Challenge.utf8().get_data();
+	const char *p0 = Challenge.utf8().get_data();
+
 	obj->SetChallenge(p0);
 }
 

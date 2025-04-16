@@ -12,7 +12,8 @@ int64_t DiscordppActivityTimestamps::Start() {
 }
 
 void DiscordppActivityTimestamps::SetStart(int64_t Start) {
-	auto p0 = Start;
+	int64_t p0 = Start;
+
 	obj->SetStart(p0);
 }
 
@@ -21,7 +22,8 @@ int64_t DiscordppActivityTimestamps::End() {
 }
 
 void DiscordppActivityTimestamps::SetEnd(int64_t End) {
-	auto p0 = End;
+	int64_t p0 = End;
+
 	obj->SetEnd(p0);
 }
 

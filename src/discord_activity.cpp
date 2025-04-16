@@ -7,8 +7,9 @@ void DiscordppActivity::Drop() {
 	obj->Drop();
 }
 
-bool DiscordppActivity::Equals(DiscordppActivity *other) {
+bool DiscordppActivity::Equals(Ref<DiscordppActivity> other) {
 	auto p0 = *other->unwrap();
+
 	return obj->Equals(p0);
 }
 
@@ -17,7 +18,8 @@ String DiscordppActivity::Name() {
 }
 
 void DiscordppActivity::SetName(String Name) {
-	auto p0 = Name.utf8().get_data();
+	const char *p0 = Name.utf8().get_data();
+
 	obj->SetName(p0);
 }
 
@@ -27,6 +29,7 @@ DiscordppActivityTypes::Enum DiscordppActivity::Type() {
 
 void DiscordppActivity::SetType(DiscordppActivityTypes::Enum Type) {
 	auto p0 = (discordpp::ActivityTypes)Type;
+
 	obj->SetType(p0);
 }
 
@@ -97,7 +100,7 @@ Variant DiscordppActivity::Assets() {
 		return nullptr;
 	}
 
-	auto t_r = (discordpp::ActivityAssets *)memalloc(sizeof(discordpp::ActivityAssets));
+	discordpp::ActivityAssets *t_r = (discordpp::ActivityAssets *)memalloc(sizeof(discordpp::ActivityAssets));
 	*t_r = r.value();
 	return Variant(memnew(DiscordppActivityAssets{ t_r }));
 }
@@ -106,7 +109,7 @@ void DiscordppActivity::SetAssets(Variant Assets) {
 	std::optional<discordpp::ActivityAssets> p0;
 
 	if (Assets.get_type() == Variant::OBJECT) {
-		auto t_p0 = Object::cast_to<DiscordppActivityAssets>(Assets);
+		DiscordppActivityAssets t_p0 = Object::cast_to<DiscordppActivityAssets>(Assets);
 		auto t2_p0 = t_p0->unwrap();
 		p0 = std::optional<discordpp::ActivityAssets>{ *t2_p0 };
 	}
@@ -121,7 +124,7 @@ Variant DiscordppActivity::Timestamps() {
 		return nullptr;
 	}
 
-	auto t_r = (discordpp::ActivityTimestamps *)memalloc(sizeof(discordpp::ActivityTimestamps));
+	discordpp::ActivityTimestamps *t_r = (discordpp::ActivityTimestamps *)memalloc(sizeof(discordpp::ActivityTimestamps));
 	*t_r = r.value();
 	return Variant(memnew(DiscordppActivityTimestamps{ t_r }));
 }
@@ -130,7 +133,7 @@ void DiscordppActivity::SetTimestamps(Variant Timestamps) {
 	std::optional<discordpp::ActivityTimestamps> p0;
 
 	if (Timestamps.get_type() == Variant::OBJECT) {
-		auto t_p0 = Object::cast_to<DiscordppActivityTimestamps>(Timestamps);
+		DiscordppActivityTimestamps t_p0 = Object::cast_to<DiscordppActivityTimestamps>(Timestamps);
 		auto t2_p0 = t_p0->unwrap();
 		p0 = std::optional<discordpp::ActivityTimestamps>{ *t2_p0 };
 	}
@@ -145,7 +148,7 @@ Variant DiscordppActivity::Party() {
 		return nullptr;
 	}
 
-	auto t_r = (discordpp::ActivityParty *)memalloc(sizeof(discordpp::ActivityParty));
+	discordpp::ActivityParty *t_r = (discordpp::ActivityParty *)memalloc(sizeof(discordpp::ActivityParty));
 	*t_r = r.value();
 	return Variant(memnew(DiscordppActivityParty{ t_r }));
 }
@@ -154,7 +157,7 @@ void DiscordppActivity::SetParty(Variant Party) {
 	std::optional<discordpp::ActivityParty> p0;
 
 	if (Party.get_type() == Variant::OBJECT) {
-		auto t_p0 = Object::cast_to<DiscordppActivityParty>(Party);
+		DiscordppActivityParty t_p0 = Object::cast_to<DiscordppActivityParty>(Party);
 		auto t2_p0 = t_p0->unwrap();
 		p0 = std::optional<discordpp::ActivityParty>{ *t2_p0 };
 	}
@@ -169,7 +172,7 @@ Variant DiscordppActivity::Secrets() {
 		return nullptr;
 	}
 
-	auto t_r = (discordpp::ActivitySecrets *)memalloc(sizeof(discordpp::ActivitySecrets));
+	discordpp::ActivitySecrets *t_r = (discordpp::ActivitySecrets *)memalloc(sizeof(discordpp::ActivitySecrets));
 	*t_r = r.value();
 	return Variant(memnew(DiscordppActivitySecrets{ t_r }));
 }
@@ -178,7 +181,7 @@ void DiscordppActivity::SetSecrets(Variant Secrets) {
 	std::optional<discordpp::ActivitySecrets> p0;
 
 	if (Secrets.get_type() == Variant::OBJECT) {
-		auto t_p0 = Object::cast_to<DiscordppActivitySecrets>(Secrets);
+		DiscordppActivitySecrets t_p0 = Object::cast_to<DiscordppActivitySecrets>(Secrets);
 		auto t2_p0 = t_p0->unwrap();
 		p0 = std::optional<discordpp::ActivitySecrets>{ *t2_p0 };
 	}
@@ -192,6 +195,7 @@ DiscordppActivityGamePlatforms::Enum DiscordppActivity::SupportedPlatforms() {
 
 void DiscordppActivity::SetSupportedPlatforms(DiscordppActivityGamePlatforms::Enum SupportedPlatforms) {
 	auto p0 = (discordpp::ActivityGamePlatforms)SupportedPlatforms;
+
 	obj->SetSupportedPlatforms(p0);
 }
 

@@ -7,13 +7,15 @@ void DiscordppAdditionalContent::Drop() {
 	obj->Drop();
 }
 
-bool DiscordppAdditionalContent::Equals(DiscordppAdditionalContent *rhs) {
+bool DiscordppAdditionalContent::Equals(Ref<DiscordppAdditionalContent> rhs) {
 	auto p0 = *rhs->unwrap();
+
 	return obj->Equals(p0);
 }
 
 String DiscordppAdditionalContent::TypeToString(DiscordppAdditionalContentType::Enum type) {
 	auto p0 = (discordpp::AdditionalContentType)type;
+
 	return String(obj->TypeToString(p0).c_str());
 }
 
@@ -23,6 +25,7 @@ DiscordppAdditionalContentType::Enum DiscordppAdditionalContent::Type() {
 
 void DiscordppAdditionalContent::SetType(DiscordppAdditionalContentType::Enum Type) {
 	auto p0 = (discordpp::AdditionalContentType)Type;
+
 	obj->SetType(p0);
 }
 
@@ -51,7 +54,8 @@ int64_t DiscordppAdditionalContent::Count() {
 }
 
 void DiscordppAdditionalContent::SetCount(int64_t Count) {
-	auto p0 = Count;
+	int64_t p0 = Count;
+
 	obj->SetCount(p0);
 }
 

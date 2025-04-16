@@ -12,7 +12,8 @@ int64_t DiscordppLinkedLobby::ApplicationId() {
 }
 
 void DiscordppLinkedLobby::SetApplicationId(int64_t ApplicationId) {
-	auto p0 = ApplicationId;
+	int64_t p0 = ApplicationId;
+
 	obj->SetApplicationId(p0);
 }
 
@@ -21,7 +22,8 @@ int64_t DiscordppLinkedLobby::LobbyId() {
 }
 
 void DiscordppLinkedLobby::SetLobbyId(int64_t LobbyId) {
-	auto p0 = LobbyId;
+	int64_t p0 = LobbyId;
+
 	obj->SetLobbyId(p0);
 }
 
