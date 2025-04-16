@@ -7,20 +7,20 @@ void DiscordppActivityTimestamps::Drop() {
 	obj->Drop();
 }
 
-uint64_t DiscordppActivityTimestamps::Start() {
+int64_t DiscordppActivityTimestamps::Start() {
 	return obj->Start();
 }
 
-void DiscordppActivityTimestamps::SetStart(uint64_t Start) {
+void DiscordppActivityTimestamps::SetStart(int64_t Start) {
 	auto p0 = Start;
 	obj->SetStart(p0);
 }
 
-uint64_t DiscordppActivityTimestamps::End() {
+int64_t DiscordppActivityTimestamps::End() {
 	return obj->End();
 }
 
-void DiscordppActivityTimestamps::SetEnd(uint64_t End) {
+void DiscordppActivityTimestamps::SetEnd(int64_t End) {
 	auto p0 = End;
 	obj->SetEnd(p0);
 }

@@ -7,7 +7,7 @@ void DiscordppChannelHandle::Drop() {
 	obj->Drop();
 }
 
-uint64_t DiscordppChannelHandle::Id() {
+int64_t DiscordppChannelHandle::Id() {
 	return obj->Id();
 }
 
@@ -15,9 +15,9 @@ String DiscordppChannelHandle::Name() {
 	return String(obj->Name().c_str());
 }
 
-TypedArray<uint64_t> DiscordppChannelHandle::Recipients() {
+TypedArray<int64_t> DiscordppChannelHandle::Recipients() {
 	auto r = obj->Recipients();
-	auto t_r = TypedArray<uint64_t>();
+	auto t_r = TypedArray<int64_t>();
 
 	for (auto i_r : r) {
 		t_r.push_back(i_r);

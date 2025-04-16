@@ -7,11 +7,11 @@ void DiscordppGuildChannel::Drop() {
 	obj->Drop();
 }
 
-uint64_t DiscordppGuildChannel::Id() {
+int64_t DiscordppGuildChannel::Id() {
 	return obj->Id();
 }
 
-void DiscordppGuildChannel::SetId(uint64_t Id) {
+void DiscordppGuildChannel::SetId(int64_t Id) {
 	auto p0 = Id;
 	obj->SetId(p0);
 }

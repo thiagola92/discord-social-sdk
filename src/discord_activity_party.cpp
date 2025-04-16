@@ -16,20 +16,20 @@ void DiscordppActivityParty::SetId(String Id) {
 	obj->SetId(p0);
 }
 
-int32_t DiscordppActivityParty::CurrentSize() {
+int64_t DiscordppActivityParty::CurrentSize() {
 	return obj->CurrentSize();
 }
 
-void DiscordppActivityParty::SetCurrentSize(int32_t CurrentSize) {
+void DiscordppActivityParty::SetCurrentSize(int64_t CurrentSize) {
 	auto p0 = CurrentSize;
 	obj->SetCurrentSize(p0);
 }
 
-int32_t DiscordppActivityParty::MaxSize() {
+int64_t DiscordppActivityParty::MaxSize() {
 	return obj->MaxSize();
 }
 
-void DiscordppActivityParty::SetMaxSize(int32_t MaxSize) {
+void DiscordppActivityParty::SetMaxSize(int64_t MaxSize) {
 	auto p0 = MaxSize;
 	obj->SetMaxSize(p0);
 }

@@ -7,29 +7,29 @@ void DiscordppActivityInvite::Drop() {
 	obj->Drop();
 }
 
-uint64_t DiscordppActivityInvite::SenderId() {
+int64_t DiscordppActivityInvite::SenderId() {
 	return obj->SenderId();
 }
 
-void DiscordppActivityInvite::SetSenderId(uint64_t SenderId) {
+void DiscordppActivityInvite::SetSenderId(int64_t SenderId) {
 	auto p0 = SenderId;
 	obj->SetSenderId(p0);
 }
 
-uint64_t DiscordppActivityInvite::ChannelId() {
+int64_t DiscordppActivityInvite::ChannelId() {
 	return obj->ChannelId();
 }
 
-void DiscordppActivityInvite::SetChannelId(uint64_t ChannelId) {
+void DiscordppActivityInvite::SetChannelId(int64_t ChannelId) {
 	auto p0 = ChannelId;
 	obj->SetChannelId(p0);
 }
 
-uint64_t DiscordppActivityInvite::MessageId() {
+int64_t DiscordppActivityInvite::MessageId() {
 	return obj->MessageId();
 }
 
-void DiscordppActivityInvite::SetMessageId(uint64_t MessageId) {
+void DiscordppActivityInvite::SetMessageId(int64_t MessageId) {
 	auto p0 = MessageId;
 	obj->SetMessageId(p0);
 }
@@ -43,11 +43,11 @@ void DiscordppActivityInvite::SetType(DiscordppActivityActionTypes::Enum Type) {
 	obj->SetType(p0);
 }
 
-uint64_t DiscordppActivityInvite::ApplicationId() {
+int64_t DiscordppActivityInvite::ApplicationId() {
 	return obj->ApplicationId();
 }
 
-void DiscordppActivityInvite::SetApplicationId(uint64_t ApplicationId) {
+void DiscordppActivityInvite::SetApplicationId(int64_t ApplicationId) {
 	auto p0 = ApplicationId;
 	obj->SetApplicationId(p0);
 }

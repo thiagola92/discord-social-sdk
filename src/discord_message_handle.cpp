@@ -31,7 +31,7 @@ Variant DiscordppMessageHandle::Author() {
 	return Variant(memnew(DiscordppUserHandle{ t_r }));
 }
 
-uint64_t DiscordppMessageHandle::AuthorId() {
+int64_t DiscordppMessageHandle::AuthorId() {
 	return obj->AuthorId();
 }
 
@@ -47,7 +47,7 @@ Variant DiscordppMessageHandle::Channel() {
 	return Variant(memnew(DiscordppChannelHandle{ t_r }));
 }
 
-uint64_t DiscordppMessageHandle::ChannelId() {
+int64_t DiscordppMessageHandle::ChannelId() {
 	return obj->ChannelId();
 }
 
@@ -67,11 +67,11 @@ Variant DiscordppMessageHandle::DisclosureType() {
 	return Variant(memnew(DiscordppDisclosureTypes::Enum{ t_r }));
 }
 
-uint64_t DiscordppMessageHandle::EditedTimestamp() {
+int64_t DiscordppMessageHandle::EditedTimestamp() {
 	return obj->EditedTimestamp();
 }
 
-uint64_t DiscordppMessageHandle::Id() {
+int64_t DiscordppMessageHandle::Id() {
 	return obj->Id();
 }
 
@@ -114,7 +114,7 @@ Variant DiscordppMessageHandle::Recipient() {
 	return Variant(memnew(DiscordppUserHandle{ t_r }));
 }
 
-uint64_t DiscordppMessageHandle::RecipientId() {
+int64_t DiscordppMessageHandle::RecipientId() {
 	return obj->RecipientId();
 }
 
@@ -122,7 +122,7 @@ bool DiscordppMessageHandle::SentFromGame() {
 	return obj->SentFromGame();
 }
 
-uint64_t DiscordppMessageHandle::SentTimestamp() {
+int64_t DiscordppMessageHandle::SentTimestamp() {
 	return obj->SentTimestamp();
 }
 

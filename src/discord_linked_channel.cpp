@@ -7,11 +7,11 @@ void DiscordppLinkedChannel::Drop() {
 	obj->Drop();
 }
 
-uint64_t DiscordppLinkedChannel::Id() {
+int64_t DiscordppLinkedChannel::Id() {
 	return obj->Id();
 }
 
-void DiscordppLinkedChannel::SetId(uint64_t Id) {
+void DiscordppLinkedChannel::SetId(int64_t Id) {
 	auto p0 = Id;
 	obj->SetId(p0);
 }
@@ -25,11 +25,11 @@ void DiscordppLinkedChannel::SetName(String Name) {
 	obj->SetName(p0);
 }
 
-uint64_t DiscordppLinkedChannel::GuildId() {
+int64_t DiscordppLinkedChannel::GuildId() {
 	return obj->GuildId();
 }
 
-void DiscordppLinkedChannel::SetGuildId(uint64_t GuildId) {
+void DiscordppLinkedChannel::SetGuildId(int64_t GuildId) {
 	auto p0 = GuildId;
 	obj->SetGuildId(p0);
 }

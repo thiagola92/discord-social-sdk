@@ -16,22 +16,22 @@ DiscordppAudioModeType::Enum DiscordppCall::GetAudioMode() {
 	return (DiscordppAudioModeType::Enum)obj->GetAudioMode();
 }
 
-uint64_t DiscordppCall::GetChannelId() {
+int64_t DiscordppCall::GetChannelId() {
 	return obj->GetChannelId();
 }
 
-uint64_t DiscordppCall::GetGuildId() {
+int64_t DiscordppCall::GetGuildId() {
 	return obj->GetGuildId();
 }
 
-bool DiscordppCall::GetLocalMute(uint64_t userId) {
+bool DiscordppCall::GetLocalMute(int64_t userId) {
 	auto p0 = userId;
 	return obj->GetLocalMute(p0);
 }
 
-TypedArray<uint64_t> DiscordppCall::GetParticipants() {
+TypedArray<int64_t> DiscordppCall::GetParticipants() {
 	auto r = obj->GetParticipants();
-	auto t_r = TypedArray<uint64_t>();
+	auto t_r = TypedArray<int64_t>();
 
 	for (auto i_r : r) {
 		t_r.push_back(i_r);
@@ -40,7 +40,7 @@ TypedArray<uint64_t> DiscordppCall::GetParticipants() {
 	return t_r;
 }
 
-float DiscordppCall::GetParticipantVolume(uint64_t userId) {
+float DiscordppCall::GetParticipantVolume(int64_t userId) {
 	auto p0 = userId;
 	return obj->GetParticipantVolume(p0);
 }
@@ -67,7 +67,7 @@ DiscordppVADThresholdSettings *DiscordppCall::GetVADThreshold() {
 	return memnew(DiscordppVADThresholdSettings{ t_r });
 }
 
-Variant DiscordppCall::GetVoiceStateHandle(uint64_t userId) {
+Variant DiscordppCall::GetVoiceStateHandle(int64_t userId) {
 	auto p0 = userId;
 	auto r = obj->GetVoiceStateHandle(p0);
 
@@ -85,7 +85,7 @@ void DiscordppCall::SetAudioMode(DiscordppAudioModeType::Enum audioMode) {
 	obj->SetAudioMode(p0);
 }
 
-void DiscordppCall::SetLocalMute(uint64_t userId, bool mute) {
+void DiscordppCall::SetLocalMute(int64_t userId, bool mute) {
 	auto p0 = userId;
 	auto p1 = mute;
 	obj->SetLocalMute(p0, p1);
@@ -93,20 +93,20 @@ void DiscordppCall::SetLocalMute(uint64_t userId, bool mute) {
 
 void DiscordppCall::SetOnVoiceStateChangedCallback(Callable cb) {
 	obj->SetOnVoiceStateChangedCallback([cb](auto userId) {
-		auto p0 = userId;
+		auto p0 = (int64_t)userId;
 		cb.call(p0);
 	});
 }
 
 void DiscordppCall::SetParticipantChangedCallback(Callable cb) {
 	obj->SetParticipantChangedCallback([cb](auto userId, auto added) {
-		auto p0 = userId;
-		auto p1 = added;
+		auto p0 = (int64_t)userId;
+		auto p1 = (bool)added;
 		cb.call(p0, p1);
 	});
 }
 
-void DiscordppCall::SetParticipantVolume(uint64_t userId, float volume) {
+void DiscordppCall::SetParticipantVolume(int64_t userId, float volume) {
 	auto p0 = userId;
 	auto p1 = volume;
 	obj->SetParticipantVolume(p0, p1);
@@ -117,7 +117,7 @@ void DiscordppCall::SetPTTActive(bool active) {
 	obj->SetPTTActive(p0);
 }
 
-void DiscordppCall::SetPTTReleaseDelay(uint32_t releaseDelayMs) {
+void DiscordppCall::SetPTTReleaseDelay(int64_t releaseDelayMs) {
 	auto p0 = releaseDelayMs;
 	obj->SetPTTReleaseDelay(p0);
 }
@@ -134,17 +134,17 @@ void DiscordppCall::SetSelfMute(bool mute) {
 
 void DiscordppCall::SetSpeakingStatusChangedCallback(Callable cb) {
 	obj->SetSpeakingStatusChangedCallback([cb](auto userId, auto isPlayingSound) {
-		auto p0 = userId;
-		auto p1 = isPlayingSound;
+		auto p0 = (int64_t)userId;
+		auto p1 = (bool)isPlayingSound;
 		cb.call(p0, p1);
 	});
 }
 
 void DiscordppCall::SetStatusChangedCallback(Callable cb) {
 	obj->SetStatusChangedCallback([cb](auto status, auto error, auto errorDetail) {
-		auto p0 = (discordpp::Call::Status)status;
-		auto p1 = (discordpp::Call::Error)error;
-		auto p2 = errorDetail;
+		auto p0 = (DiscordppCallStatus::Enum)status;
+		auto p1 = (DiscordppCallError::Enum)error;
+		auto p2 = (int64_t)errorDetail;
 		cb.call(p0, p1, p2);
 	});
 }

@@ -54,7 +54,7 @@ Variant DiscordppUserHandle::GlobalName() {
 	return Variant(r.value().c_str());
 }
 
-uint64_t DiscordppUserHandle::Id() {
+int64_t DiscordppUserHandle::Id() {
 	return obj->Id();
 }
 

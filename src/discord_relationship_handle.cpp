@@ -15,7 +15,7 @@ DiscordppRelationshipType::Enum DiscordppRelationshipHandle::GameRelationshipTyp
 	return (DiscordppRelationshipType::Enum)obj->GameRelationshipType();
 }
 
-uint64_t DiscordppRelationshipHandle::Id() {
+int64_t DiscordppRelationshipHandle::Id() {
 	return obj->Id();
 }
 

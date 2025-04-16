@@ -7,20 +7,20 @@ void DiscordppLinkedLobby::Drop() {
 	obj->Drop();
 }
 
-uint64_t DiscordppLinkedLobby::ApplicationId() {
+int64_t DiscordppLinkedLobby::ApplicationId() {
 	return obj->ApplicationId();
 }
 
-void DiscordppLinkedLobby::SetApplicationId(uint64_t ApplicationId) {
+void DiscordppLinkedLobby::SetApplicationId(int64_t ApplicationId) {
 	auto p0 = ApplicationId;
 	obj->SetApplicationId(p0);
 }
 
-uint64_t DiscordppLinkedLobby::LobbyId() {
+int64_t DiscordppLinkedLobby::LobbyId() {
 	return obj->LobbyId();
 }
 
-void DiscordppLinkedLobby::SetLobbyId(uint64_t LobbyId) {
+void DiscordppLinkedLobby::SetLobbyId(int64_t LobbyId) {
 	auto p0 = LobbyId;
 	obj->SetLobbyId(p0);
 }

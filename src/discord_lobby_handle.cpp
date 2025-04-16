@@ -19,7 +19,7 @@ Variant DiscordppLobbyHandle::GetCallInfoHandle() {
 	return Variant(memnew(DiscordppCallInfoHandle{ t_r }));
 }
 
-Variant DiscordppLobbyHandle::GetLobbyMemberHandle(uint64_t memberId) {
+Variant DiscordppLobbyHandle::GetLobbyMemberHandle(int64_t memberId) {
 	auto p0 = memberId;
 	auto r = obj->GetLobbyMemberHandle(p0);
 
@@ -32,7 +32,7 @@ Variant DiscordppLobbyHandle::GetLobbyMemberHandle(uint64_t memberId) {
 	return Variant(memnew(DiscordppLobbyMemberHandle{ t_r }));
 }
 
-uint64_t DiscordppLobbyHandle::Id() {
+int64_t DiscordppLobbyHandle::Id() {
 	return obj->Id();
 }
 
@@ -48,9 +48,9 @@ Variant DiscordppLobbyHandle::LinkedChannel() {
 	return Variant(memnew(DiscordppLinkedChannel{ t_r }));
 }
 
-TypedArray<uint64_t> DiscordppLobbyHandle::LobbyMemberIds() {
+TypedArray<int64_t> DiscordppLobbyHandle::LobbyMemberIds() {
 	auto r = obj->LobbyMemberIds();
-	auto t_r = TypedArray<uint64_t>();
+	auto t_r = TypedArray<int64_t>();
 
 	for (auto i_r : r) {
 		t_r.push_back(i_r);

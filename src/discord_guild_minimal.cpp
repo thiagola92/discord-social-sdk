@@ -7,11 +7,11 @@ void DiscordppGuildMinimal::Drop() {
 	obj->Drop();
 }
 
-uint64_t DiscordppGuildMinimal::Id() {
+int64_t DiscordppGuildMinimal::Id() {
 	return obj->Id();
 }
 
-void DiscordppGuildMinimal::SetId(uint64_t Id) {
+void DiscordppGuildMinimal::SetId(int64_t Id) {
 	auto p0 = Id;
 	obj->SetId(p0);
 }

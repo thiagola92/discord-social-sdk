@@ -7,11 +7,11 @@ void DiscordppAuthorizationArgs::Drop() {
 	obj->Drop();
 }
 
-uint64_t DiscordppAuthorizationArgs::ClientId() {
+int64_t DiscordppAuthorizationArgs::ClientId() {
 	return obj->ClientId();
 }
 
-void DiscordppAuthorizationArgs::SetClientId(uint64_t ClientId) {
+void DiscordppAuthorizationArgs::SetClientId(int64_t ClientId) {
 	auto p0 = ClientId;
 	obj->SetClientId(p0);
 }

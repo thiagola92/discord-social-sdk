@@ -7,13 +7,13 @@ void DiscordppCallInfoHandle::Drop() {
 	obj->Drop();
 }
 
-uint64_t DiscordppCallInfoHandle::ChannelId() {
+int64_t DiscordppCallInfoHandle::ChannelId() {
 	return obj->ChannelId();
 }
 
-TypedArray<uint64_t> DiscordppCallInfoHandle::GetParticipants() {
+TypedArray<int64_t> DiscordppCallInfoHandle::GetParticipants() {
 	auto r = obj->GetParticipants();
-	auto t_r = TypedArray<uint64_t>();
+	auto t_r = TypedArray<int64_t>();
 
 	for (auto i_r : r) {
 		t_r.push_back(i_r);
@@ -22,7 +22,7 @@ TypedArray<uint64_t> DiscordppCallInfoHandle::GetParticipants() {
 	return t_r;
 }
 
-Variant DiscordppCallInfoHandle::GetVoiceStateHandle(uint64_t userId) {
+Variant DiscordppCallInfoHandle::GetVoiceStateHandle(int64_t userId) {
 	auto p0 = userId;
 	auto r = obj->GetVoiceStateHandle(p0);
 
@@ -35,7 +35,7 @@ Variant DiscordppCallInfoHandle::GetVoiceStateHandle(uint64_t userId) {
 	return Variant(memnew(DiscordppVoiceStateHandle{ t_r }));
 }
 
-uint64_t DiscordppCallInfoHandle::GuildId() {
+int64_t DiscordppCallInfoHandle::GuildId() {
 	return obj->GuildId();
 }
 

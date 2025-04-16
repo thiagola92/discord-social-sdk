@@ -29,11 +29,11 @@ void DiscordppClientResult::SetError(String Error) {
 	obj->SetError(p0);
 }
 
-int32_t DiscordppClientResult::ErrorCode() {
+int64_t DiscordppClientResult::ErrorCode() {
 	return obj->ErrorCode();
 }
 
-void DiscordppClientResult::SetErrorCode(int32_t ErrorCode) {
+void DiscordppClientResult::SetErrorCode(int64_t ErrorCode) {
 	auto p0 = ErrorCode;
 	obj->SetErrorCode(p0);
 }

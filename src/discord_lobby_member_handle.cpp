@@ -15,7 +15,7 @@ bool DiscordppLobbyMemberHandle::Connected() {
 	return obj->Connected();
 }
 
-uint64_t DiscordppLobbyMemberHandle::Id() {
+int64_t DiscordppLobbyMemberHandle::Id() {
 	return obj->Id();
 }
 

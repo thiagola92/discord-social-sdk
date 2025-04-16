@@ -46,11 +46,11 @@ void DiscordppAdditionalContent::SetTitle(Variant Title) {
 	obj->SetTitle(p0);
 }
 
-uint8_t DiscordppAdditionalContent::Count() {
+int64_t DiscordppAdditionalContent::Count() {
 	return obj->Count();
 }
 
-void DiscordppAdditionalContent::SetCount(uint8_t Count) {
+void DiscordppAdditionalContent::SetCount(int64_t Count) {
 	auto p0 = Count;
 	obj->SetCount(p0);
 }

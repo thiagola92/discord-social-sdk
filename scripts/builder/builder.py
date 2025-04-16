@@ -429,8 +429,8 @@ class Builder:
 
         for i, p in enumerate(callback.params):
             params.append(f"auto {p.name}")
-            # statement = self.translator.godot_var_to_c_var(p, f"p{i}")
-            # statements.append(statement)
+            statement = self.translator.c_var_to_godot_var(p, f"p{i}")
+            statements.append(statement)
             args.append(f"p{i}")
 
         params = ", ".join(params)
