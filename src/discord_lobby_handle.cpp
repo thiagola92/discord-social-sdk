@@ -1,5 +1,6 @@
 
 #include "discord_classes.h"
+#include "godot_cpp/classes/ref.hpp"
 
 using namespace godot;
 
@@ -59,12 +60,13 @@ TypedArray<int64_t> DiscordppLobbyHandle::LobbyMemberIds() {
 	return t_r;
 }
 
-TypedArray<DiscordppLobbyMemberHandle *> DiscordppLobbyHandle::LobbyMembers() {
+TypedArray<DiscordppLobbyMemberHandle> DiscordppLobbyHandle::LobbyMembers() {
 	auto r = obj->LobbyMembers();
-	auto t_r = TypedArray<DiscordppLobbyMemberHandle *>();
+	auto t_r = TypedArray<DiscordppLobbyMemberHandle>();
 
 	for (auto i_r : r) {
-		t_r.push_back(memnew(DiscordppLobbyMemberHandle{ &i_r }));
+		Ref<DiscordppLobbyMemberHandle> x = memnew(DiscordppLobbyMemberHandle{ &i_r });
+		t_r.push_back(x);
 	}
 
 	return t_r;
@@ -75,7 +77,7 @@ TypedDictionary<String, String> DiscordppLobbyHandle::Metadata() {
 	auto t_r = TypedDictionary<String, String>();
 
 	for (auto p_r : r) {
-		t_r[String(p_r.first_c_str())] = String(p_r.second.c_str());
+		t_r[String(p_r.first.c_str())] = String(p_r.second.c_str());
 	}
 
 	return t_r;

@@ -70,9 +70,9 @@ DiscordppCall *DiscordppClient::GetCall(int64_t channelId) {
 	return memnew(DiscordppCall{ t_r });
 }
 
-TypedArray<DiscordppCall *> DiscordppClient::GetCalls() {
+TypedArray<DiscordppCall> DiscordppClient::GetCalls() {
 	auto r = obj->GetCalls();
-	auto t_r = TypedArray<DiscordppCall *>();
+	auto t_r = TypedArray<DiscordppCall>();
 
 	for (auto i_r : r) {
 		t_r.push_back(memnew(DiscordppCall{ &i_r }));
@@ -103,7 +103,7 @@ void DiscordppClient::GetCurrentOutputDevice(Callable cb) {
 
 void DiscordppClient::GetInputDevices(Callable cb) {
 	obj->GetInputDevices([cb](auto devices) {
-		auto p0 = TypedArray<DiscordppAudioDevice *>();
+		auto p0 = TypedArray<DiscordppAudioDevice>();
 
 		for (auto i : devices) {
 			p0.push_back(memnew(DiscordppAudioDevice{ &i }));
@@ -119,7 +119,7 @@ float DiscordppClient::GetInputVolume() {
 
 void DiscordppClient::GetOutputDevices(Callable cb) {
 	obj->GetOutputDevices([cb](auto devices) {
-		auto p0 = TypedArray<DiscordppAudioDevice *>();
+		auto p0 = TypedArray<DiscordppAudioDevice>();
 
 		for (auto i : devices) {
 			p0.push_back(memnew(DiscordppAudioDevice{ &i }));
@@ -148,13 +148,13 @@ void DiscordppClient::SetAutomaticGainControl(bool on) {
 
 void DiscordppClient::SetDeviceChangeCallback(Callable callback) {
 	obj->SetDeviceChangeCallback([callback](auto inputDevices, auto outputDevices) {
-		auto p0 = TypedArray<DiscordppAudioDevice *>();
+		auto p0 = TypedArray<DiscordppAudioDevice>();
 
 		for (auto i : inputDevices) {
 			p0.push_back(memnew(DiscordppAudioDevice{ &i }));
 		}
 
-		auto p1 = TypedArray<DiscordppAudioDevice *>();
+		auto p1 = TypedArray<DiscordppAudioDevice>();
 
 		for (auto i : outputDevices) {
 			p1.push_back(memnew(DiscordppAudioDevice{ &i }));
@@ -762,7 +762,7 @@ void DiscordppClient::GetGuildChannels(int64_t guildId, Callable cb) {
 		*t_p0 = result;
 		auto p0 = memnew(DiscordppClientResult{ t_p0 });
 
-		auto p1 = TypedArray<DiscordppGuildChannel *>();
+		auto p1 = TypedArray<DiscordppGuildChannel>();
 
 		for (auto i : guildChannels) {
 			p1.push_back(memnew(DiscordppGuildChannel{ &i }));
@@ -802,7 +802,7 @@ void DiscordppClient::GetUserGuilds(Callable cb) {
 		*t_p0 = result;
 		auto p0 = memnew(DiscordppClientResult{ t_p0 });
 
-		auto p1 = TypedArray<DiscordppGuildMinimal *>();
+		auto p1 = TypedArray<DiscordppGuildMinimal>();
 
 		for (auto i : guilds) {
 			p1.push_back(memnew(DiscordppGuildMinimal{ &i }));
@@ -1064,9 +1064,9 @@ DiscordppRelationshipHandle *DiscordppClient::GetRelationshipHandle(int64_t user
 	return memnew(DiscordppRelationshipHandle{ t_r });
 }
 
-TypedArray<DiscordppRelationshipHandle *> DiscordppClient::GetRelationships() {
+TypedArray<DiscordppRelationshipHandle> DiscordppClient::GetRelationships() {
 	auto r = obj->GetRelationships();
-	auto t_r = TypedArray<DiscordppRelationshipHandle *>();
+	auto t_r = TypedArray<DiscordppRelationshipHandle>();
 
 	for (auto i_r : r) {
 		t_r.push_back(memnew(DiscordppRelationshipHandle{ &i_r }));
@@ -1119,10 +1119,10 @@ void DiscordppClient::RemoveGameFriend(int64_t userId, Callable cb) {
 	});
 }
 
-TypedArray<DiscordppUserHandle *> DiscordppClient::SearchFriendsByUsername(String searchStr) {
+TypedArray<DiscordppUserHandle> DiscordppClient::SearchFriendsByUsername(String searchStr) {
 	auto p0 = searchStr.utf8().get_data();
 	auto r = obj->SearchFriendsByUsername(p0);
-	auto t_r = TypedArray<DiscordppUserHandle *>();
+	auto t_r = TypedArray<DiscordppUserHandle>();
 
 	for (auto i_r : r) {
 		t_r.push_back(memnew(DiscordppUserHandle{ &i_r }));

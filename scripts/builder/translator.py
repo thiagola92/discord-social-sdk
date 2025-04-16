@@ -211,11 +211,11 @@ class Translator:
             return "Variant"
 
         if self.is_c_vec(token.name):
-            subtype = self.c_type_to_godot_type(token.subtype)
+            subtype = self.c_type_to_godot_type(token.subtype, False)
             return f"TypedArray<{subtype}>"
 
         if self.is_c_map(token.name):
-            subtype = self.c_type_to_godot_type(token.subtype)
+            subtype = self.c_type_to_godot_type(token.subtype, False)
             return f"TypedDictionary<{subtype}>"
 
         if self.is_c_callback(token.name):
@@ -382,7 +382,7 @@ class Translator:
             append_statements = [f"{dest}.push_back(memnew({obj_type}{{ &i }}));"]
 
         append_statements = "\n        ".join(append_statements)
-        typed_array = self.c_type_to_godot_type(src.type, pointer=False)
+        typed_array = self.c_type_to_godot_type(src.type)
 
         statements = [
             f"auto {dest} = {typed_array}();",
@@ -403,11 +403,11 @@ class Translator:
 
         if self.is_c_many(src.type.subtype.name):
             set_statements = [
-                "t_r[String(p.first_c_str())] = String(p.second.c_str());"
+                "t_r[String(p.first.c_str())] = String(p.second.c_str());"
             ]
 
         set_statements = "\n        ".join(set_statements)
-        typed_dict = self.c_type_to_godot_type(src.type, pointer=False)
+        typed_dict = self.c_type_to_godot_type(src.type)
 
         statements = [
             f"auto {dest} = {typed_dict}();",
@@ -765,7 +765,7 @@ class Translator:
             append_statements = [f"t_r.push_back(memnew({obj_type}{{ &i_r }}));"]
 
         append_statements = "\n        ".join(append_statements)
-        typed_array = self.c_type_to_godot_type(vec_type, pointer=False)
+        typed_array = self.c_type_to_godot_type(vec_type)
 
         statements = [
             f"auto r = {call};",
@@ -787,11 +787,11 @@ class Translator:
 
         if self.is_c_many(map_type.subtype.name):
             set_statements = [
-                "t_r[String(p_r.first_c_str())] = String(p_r.second.c_str());"
+                "t_r[String(p_r.first.c_str())] = String(p_r.second.c_str());"
             ]
 
         set_statements = "\n        ".join(set_statements)
-        typed_dict = self.c_type_to_godot_type(map_type, pointer=False)
+        typed_dict = self.c_type_to_godot_type(map_type)
 
         statements = [
             f"auto r = {call};",

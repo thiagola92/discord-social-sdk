@@ -856,7 +856,7 @@ public:
 	int64_t Id();
 	Variant LinkedChannel();
 	TypedArray<int64_t> LobbyMemberIds();
-	TypedArray<DiscordppLobbyMemberHandle *> LobbyMembers();
+	TypedArray<DiscordppLobbyMemberHandle> LobbyMembers();
 	TypedDictionary<String, String> Metadata();
 
 	DiscordppLobbyHandle(discordpp::LobbyHandle *obj) {
@@ -1004,7 +1004,7 @@ public:
 	void EndCall(int64_t channelId, Callable callback);
 	void EndCalls(Callable callback);
 	DiscordppCall *GetCall(int64_t channelId);
-	TypedArray<DiscordppCall *> GetCalls();
+	TypedArray<DiscordppCall> GetCalls();
 	void GetCurrentInputDevice(Callable cb);
 	void GetCurrentOutputDevice(Callable cb);
 	void GetInputDevices(Callable cb);
@@ -1107,12 +1107,12 @@ public:
 	void CancelDiscordFriendRequest(int64_t userId, Callable cb);
 	void CancelGameFriendRequest(int64_t userId, Callable cb);
 	DiscordppRelationshipHandle *GetRelationshipHandle(int64_t userId);
-	TypedArray<DiscordppRelationshipHandle *> GetRelationships();
+	TypedArray<DiscordppRelationshipHandle> GetRelationships();
 	void RejectDiscordFriendRequest(int64_t userId, Callable cb);
 	void RejectGameFriendRequest(int64_t userId, Callable cb);
 	void RemoveDiscordAndGameFriend(int64_t userId, Callable cb);
 	void RemoveGameFriend(int64_t userId, Callable cb);
-	TypedArray<DiscordppUserHandle *> SearchFriendsByUsername(String searchStr);
+	TypedArray<DiscordppUserHandle> SearchFriendsByUsername(String searchStr);
 	void SendDiscordFriendRequest(String username, Callable cb);
 	void SendDiscordFriendRequestById(int64_t userId, Callable cb);
 	void SendGameFriendRequest(String username, Callable cb);

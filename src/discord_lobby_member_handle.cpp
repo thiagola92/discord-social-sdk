@@ -24,7 +24,7 @@ TypedDictionary<String, String> DiscordppLobbyMemberHandle::Metadata() {
 	auto t_r = TypedDictionary<String, String>();
 
 	for (auto p_r : r) {
-		t_r[String(p_r.first_c_str())] = String(p_r.second.c_str());
+		t_r[String(p_r.first.c_str())] = String(p_r.second.c_str());
 	}
 
 	return t_r;
