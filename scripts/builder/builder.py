@@ -175,7 +175,7 @@ class Builder:
         declarations = [get_class_declaration(c.name) for c in classes]
         declarations = [
             get_class_declaration("")
-        ] + declarations  # An extra to force Discord class creation.
+        ] + declarations  # An extra to force Discordpp class creation.
 
         declarations = "\n".join(declarations)
         definitions = self.build_definitions(classes=classes)
@@ -246,7 +246,7 @@ class Builder:
         return definitions
 
     def build_definition_global(self) -> str:
-        """Build definition for class Discord which holds global functions."""
+        """Build definition for class Discordpp which holds global functions."""
 
         # Get informations.
         functions: list[TokenFunction] = []
@@ -310,20 +310,25 @@ class Builder:
 
             snake_name = to_snake_case(token.name)
             filepath = self.src.joinpath(f"discordpp_{snake_name}.cpp")
-            methods = self.build_methods(token)
-            binds = self.build_binds(token)
-
-            content = get_discord_class_cpp(
-                class_name=token.name,
-                methods=methods,
-                binds=binds,
-            )
+            content = self.build_class(token)
 
             filepath.write_text(content)
 
             clang_format(filepath)
 
         return
+
+    def build_class(self, token: TokenClass) -> str:
+        methods = self.build_methods(token)
+        binds = self.build_binds(token)
+
+        content = get_discord_class_cpp(
+            class_name=token.name,
+            methods=methods,
+            binds=binds,
+        )
+
+        return content
 
     def build_methods(self, class_: TokenClass) -> str:
         """Build all methods from one class."""
