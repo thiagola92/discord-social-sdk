@@ -310,10 +310,19 @@ class Builder:
 
             clang_format(filepath)
 
+        global_functions = [t for t in self.tokens if isinstance(t, TokenFunction)]
+        fake_token = TokenClass("", [], [], [], global_functions)
+        filepath = self.src.joinpath(f"discordpp.cpp")
+        content = self.build_class(fake_token)
+
+        filepath.write_text(content)
+
+        clang_format(filepath)
+
         return
 
-    def build_class(self, token: TokenClass) -> str:
-        methods = self.build_methods(token)
+    def build_class(self, token: TokenClass, is_global: bool = False) -> str:
+        methods = self.build_methods(token, is_global)
         binds = self.build_binds(token)
 
         content = get_discord_class_cpp(
@@ -324,21 +333,26 @@ class Builder:
 
         return content
 
-    def build_methods(self, class_: TokenClass) -> str:
+    def build_methods(self, class_: TokenClass, is_global: bool) -> str:
         """Build all methods from one class."""
 
         methods = []
         functions_names = get_functions_names(class_.functions)
 
         for function, name in functions_names.items():
-            methods.append(self.build_method(class_, function, name))
+            method = self.build_method(class_, function, name, is_global)
+            methods.append(method)
 
         methods = "\n".join(methods)
 
         return methods
 
     def build_method(
-        self, class_: TokenClass, function: TokenFunction, name: str
+        self,
+        class_: TokenClass,
+        function: TokenFunction,
+        name: str,
+        is_global: bool,
     ) -> str:
         """
         Build one method from the class. This is the main
@@ -365,7 +379,7 @@ class Builder:
             statements.append(statement)
 
         # Second step.
-        call = self.build_call(class_, function)
+        call = self.build_call(class_, function, is_global)
 
         # Third step.
         ret_statements = self.translator.c_ret_to_godot_ret(function.ret, call)
@@ -384,7 +398,12 @@ class Builder:
 
         return method
 
-    def build_call(self, class_: TokenClass, function: TokenFunction) -> str:
+    def build_call(
+        self,
+        class_: TokenClass,
+        function: TokenFunction,
+        is_global: bool,
+    ) -> str:
         """
         Build the call for SDK method. Example:
             client->GetChannelHandle(p0);
@@ -405,7 +424,11 @@ class Builder:
                 params.append(f"p{i}")
 
         params = ", ".join(params)
-        call = f"obj->{function.name}({params})"
+
+        if is_global:
+            call = f"discordpp::{function.name}({params})"
+        else:
+            call = f"obj->{function.name}({params})"
 
         return call
 
