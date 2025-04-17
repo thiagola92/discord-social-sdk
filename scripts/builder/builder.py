@@ -5,7 +5,7 @@ from helper import clang_format, to_snake_case
 from parser.tokens import TokenEnum, TokenClass, TokenFunction, TokenParam
 from pathlib import Path
 from builder.translator import Translator
-from builder.util import get_overloadings
+from builder.util import get_functions_names
 
 from template.file import (
     get_register_types_h,
@@ -255,19 +255,13 @@ class Builder:
             if isinstance(token, TokenFunction):
                 functions.append(token)
 
-        overloadings = get_overloadings(functions)
+        functions_names = get_functions_names(functions)
 
         # Build content.
         methods = []
 
-        for function in functions:
+        for function, name in functions_names.items():
             ret = self.translator.c_type_to_godot_type(function.ret)
-
-            if function in overloadings:
-                name = overloadings[function]
-            else:
-                name = function.name
-
             params = self.build_params(function.params)
 
             method = get_function_declaration(
@@ -334,15 +328,18 @@ class Builder:
         """Build all methods from one class."""
 
         methods = []
+        functions_names = get_functions_names(class_.functions)
 
-        for function in class_.functions:
-            methods.append(self.build_method(class_, function))
+        for function, name in functions_names.items():
+            methods.append(self.build_method(class_, function, name))
 
         methods = "\n".join(methods)
 
         return methods
 
-    def build_method(self, class_: TokenClass, function: TokenFunction) -> str:
+    def build_method(
+        self, class_: TokenClass, function: TokenFunction, name: str
+    ) -> str:
         """
         Build one method from the class. This is the main
         logic from this GDExtension.
@@ -380,7 +377,7 @@ class Builder:
         method = get_method(
             ret=ret,
             class_name=class_.name,
-            method=function.name,
+            method=name,
             params=params,
             statements=statements,
         )

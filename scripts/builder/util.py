@@ -52,9 +52,7 @@
 from parser.tokens import TokenFunction
 
 
-def get_overloadings(functions: list[TokenFunction]) -> dict[TokenFunction, str]:
-    functions.sort(key=lambda t: str(t))
-
+def get_functions_names(functions: list[TokenFunction]) -> dict[TokenFunction, str]:
     # Count how many overloading a function has.
     counter: dict[str, int] = {}
 
@@ -64,15 +62,21 @@ def get_overloadings(functions: list[TokenFunction]) -> dict[TokenFunction, str]
         else:
             counter[function.name] = 0
 
-    counter = {k: v for k, v in counter.items() if v > 0}
-
     # Set overloadings names.
-    overloadings = {}
+    functions_names = {}
 
-    for function in reversed(functions):
+    for function in functions:
+        if counter[function.name] == 0:
+            functions_names[function] = function.name
+            del counter[function.name]
+
+    # Only sort for the overloadeds.
+    sorted_functions = sorted(functions, key=lambda t: str(t))
+
+    for function in reversed(sorted_functions):
         if function.name in counter:
             number = counter[function.name]
-            overloadings[function] = f"{function.name}{number}"
+            functions_names[function] = f"{function.name}{number}"
             counter[function.name] -= 1
 
-    return overloadings
+    return functions_names
