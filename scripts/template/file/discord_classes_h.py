@@ -3,7 +3,7 @@ def get_discord_classes_h(declarations: str, definitions: str) -> str:
 #ifndef DISCORD_CLASSES_H
 #define DISCORD_CLASSES_H
 
-#include "discord_enum.h"
+#include "discordpp_enum.h"
 #include "discordpp.h"
 #include "godot_cpp/classes/node.hpp"
 #include "godot_cpp/classes/ref_counted.hpp"

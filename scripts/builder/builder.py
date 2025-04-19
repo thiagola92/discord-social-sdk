@@ -111,7 +111,7 @@ class Builder:
         clang_format(filepath)
 
     def build_discord_enum_h(self):
-        filepath = self.src.joinpath("discord_enum.h")
+        filepath = self.src.joinpath("discordpp_enum.h")
 
         # Get information.
         tokens: dict[str, TokenEnum] = {}
@@ -162,7 +162,7 @@ class Builder:
         clang_format(filepath)
 
     def build_discord_classes_h(self):
-        filepath = self.src.joinpath("discord_classes.h")
+        filepath = self.src.joinpath("discordpp_classes.h")
 
         # Get informations.
         classes: list[TokenClass] = []

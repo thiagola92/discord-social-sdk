@@ -1,8 +1,8 @@
 def get_register_types_cpp(runtime_macros: str, abstract_macros: str) -> str:
     return f"""
 #include "register_types.h"
-#include "discord_classes.h"
-#include "discord_enum.h"
+#include "discordpp_classes.h"
+#include "discordpp_enum.h"
 #include "gdextension_interface.h"
 #include "godot_cpp/core/class_db.hpp"
 #include "godot_cpp/core/defs.hpp"
@@ -15,10 +15,10 @@ void initialize_module(ModuleInitializationLevel p_level) {{
 		return;
 	}}
 
-	// discord_enum.h
+	// discordpp_enum.h
     {abstract_macros}
 
-	// discord_classes.h
+	// discordpp_classes.h
     {runtime_macros}
 }}
 

@@ -1,7 +1,7 @@
 
 #include "register_types.h"
-#include "discord_classes.h"
-#include "discord_enum.h"
+#include "discordpp_classes.h"
+#include "discordpp_enum.h"
 #include "gdextension_interface.h"
 #include "godot_cpp/core/class_db.hpp"
 #include "godot_cpp/core/defs.hpp"
@@ -14,7 +14,7 @@ void initialize_module(ModuleInitializationLevel p_level) {
 		return;
 	}
 
-	// discord_enum.h
+	// discordpp_enum.h
 	GDREGISTER_ABSTRACT_CLASS(DiscordppActivityActionTypes);
 	GDREGISTER_ABSTRACT_CLASS(DiscordppActivityPartyPrivacy);
 	GDREGISTER_ABSTRACT_CLASS(DiscordppActivityTypes);
@@ -38,7 +38,7 @@ void initialize_module(ModuleInitializationLevel p_level) {
 	GDREGISTER_ABSTRACT_CLASS(DiscordppClientStatus);
 	GDREGISTER_ABSTRACT_CLASS(DiscordppClientThread);
 
-	// discord_classes.h
+	// discordpp_classes.h
 	GDREGISTER_RUNTIME_CLASS(Discordpp);
 	GDREGISTER_RUNTIME_CLASS(DiscordppActivityInvite);
 	GDREGISTER_RUNTIME_CLASS(DiscordppActivityAssets);
