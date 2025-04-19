@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="DiscordppHttpStatusCode" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<constants>
+		<constant name="None" value="0" enum="Enum">
+		</constant>
+		<constant name="Continue" value="100" enum="Enum">
+		</constant>
+		<constant name="SwitchingProtocols" value="101" enum="Enum">
+		</constant>
+		<constant name="Processing" value="102" enum="Enum">
+		</constant>
+		<constant name="EarlyHints" value="103" enum="Enum">
+		</constant>
+		<constant name="Ok" value="200" enum="Enum">
+		</constant>
+		<constant name="Created" value="201" enum="Enum">
+		</constant>
+		<constant name="Accepted" value="202" enum="Enum">
+		</constant>
+		<constant name="NonAuthoritativeInfo" value="203" enum="Enum">
+		</constant>
+		<constant name="NoContent" value="204" enum="Enum">
+		</constant>
+		<constant name="ResetContent" value="205" enum="Enum">
+		</constant>
+		<constant name="PartialContent" value="206" enum="Enum">
+		</constant>
+		<constant name="MultiStatus" value="207" enum="Enum">
+		</constant>
+		<constant name="AlreadyReported" value="208" enum="Enum">
+		</constant>
+		<constant name="ImUsed" value="209" enum="Enum">
+		</constant>
+		<constant name="MultipleChoices" value="300" enum="Enum">
+		</constant>
+		<constant name="MovedPermanently" value="301" enum="Enum">
+		</constant>
+		<constant name="Found" value="302" enum="Enum">
+		</constant>
+		<constant name="SeeOther" value="303" enum="Enum">
+		</constant>
+		<constant name="NotModified" value="304" enum="Enum">
+		</constant>
+		<constant name="TemporaryRedirect" value="307" enum="Enum">
+		</constant>
+		<constant name="PermanentRedirect" value="308" enum="Enum">
+		</constant>
+		<constant name="BadRequest" value="400" enum="Enum">
+		</constant>
+		<constant name="Unauthorized" value="401" enum="Enum">
+		</constant>
+		<constant name="PaymentRequired" value="402" enum="Enum">
+		</constant>
+		<constant name="Forbidden" value="403" enum="Enum">
+		</constant>
+		<constant name="NotFound" value="404" enum="Enum">
+		</constant>
+		<constant name="MethodNotAllowed" value="405" enum="Enum">
+		</constant>
+		<constant name="NotAcceptable" value="406" enum="Enum">
+		</constant>
+		<constant name="ProxyAuthRequired" value="407" enum="Enum">
+		</constant>
+		<constant name="RequestTimeout" value="408" enum="Enum">
+		</constant>
+		<constant name="Conflict" value="409" enum="Enum">
+		</constant>
+		<constant name="Gone" value="410" enum="Enum">
+		</constant>
+		<constant name="LengthRequired" value="411" enum="Enum">
+		</constant>
+		<constant name="PreconditionFailed" value="412" enum="Enum">
+		</constant>
+		<constant name="PayloadTooLarge" value="413" enum="Enum">
+		</constant>
+		<constant name="UriTooLong" value="414" enum="Enum">
+		</constant>
+		<constant name="UnsupportedMediaType" value="415" enum="Enum">
+		</constant>
+		<constant name="RangeNotSatisfiable" value="416" enum="Enum">
+		</constant>
+		<constant name="ExpectationFailed" value="417" enum="Enum">
+		</constant>
+		<constant name="MisdirectedRequest" value="421" enum="Enum">
+		</constant>
+		<constant name="UnprocessableEntity" value="422" enum="Enum">
+		</constant>
+		<constant name="Locked" value="423" enum="Enum">
+		</constant>
+		<constant name="FailedDependency" value="424" enum="Enum">
+		</constant>
+		<constant name="TooEarly" value="425" enum="Enum">
+		</constant>
+		<constant name="UpgradeRequired" value="426" enum="Enum">
+		</constant>
+		<constant name="PreconditionRequired" value="428" enum="Enum">
+		</constant>
+		<constant name="TooManyRequests" value="429" enum="Enum">
+		</constant>
+		<constant name="RequestHeaderFieldsTooLarge" value="431" enum="Enum">
+		</constant>
+		<constant name="InternalServerError" value="500" enum="Enum">
+		</constant>
+		<constant name="NotImplemented" value="501" enum="Enum">
+		</constant>
+		<constant name="BadGateway" value="502" enum="Enum">
+		</constant>
+		<constant name="ServiceUnavailable" value="503" enum="Enum">
+		</constant>
+		<constant name="GatewayTimeout" value="504" enum="Enum">
+		</constant>
+		<constant name="HttpVersionNotSupported" value="505" enum="Enum">
+		</constant>
+		<constant name="VariantAlsoNegotiates" value="506" enum="Enum">
+		</constant>
+		<constant name="InsufficientStorage" value="507" enum="Enum">
+		</constant>
+		<constant name="LoopDetected" value="508" enum="Enum">
+		</constant>
+		<constant name="NotExtended" value="510" enum="Enum">
+		</constant>
+		<constant name="NetworkAuthorizationRequired" value="511" enum="Enum">
+		</constant>
+	</constants>
+</class>

@@ -23,7 +23,7 @@ class Parser:
                 case "enum":
                     tokens.append(self.parse_enum())
                 case "inline":
-                    tokens.append(self.parse_function())
+                    tokens.append(self.parse_function(True))
                 case "class":
                     tokens.append(self.parse_class())
 
@@ -207,7 +207,7 @@ class Parser:
 
         return params
 
-    def parse_function(self) -> TokenFunction | None:
+    def parse_function(self, static: bool = False) -> TokenFunction | None:
         text = self.get_text_before("(")
 
         if text is None:
@@ -226,6 +226,7 @@ class Parser:
             ret=ret,
             name=name,
             params=params,
+            static=static,
         )
 
     def parse_callback(self) -> TokenCallback | None:

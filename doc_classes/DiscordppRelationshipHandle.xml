@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="DiscordppRelationshipHandle" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="DiscordRelationshipType">
+			<return type="int" enum="DiscordppRelationshipType.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="Drop">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="GameRelationshipType">
+			<return type="int" enum="DiscordppRelationshipType.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="Id">
+			<return type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="User">
+			<return type="Variant" />
+			<description>
+			</description>
+		</method>
+	</methods>
+</class>

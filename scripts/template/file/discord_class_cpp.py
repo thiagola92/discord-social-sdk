@@ -4,7 +4,7 @@ def get_discord_class_cpp(
     binds: str,
 ) -> str:
     return f"""
-#include "discord_classes.h"
+#include "discordpp_classes.h"
 
 using namespace godot;
 

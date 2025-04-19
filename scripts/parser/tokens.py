@@ -114,11 +114,19 @@ class TokenFunction:
     ret: TokenType
     name: str
     params: list[TokenParam]
+    static: bool
 
-    def __init__(self, ret: TokenType, name: str, params: list[TokenParam]):
+    def __init__(
+        self,
+        ret: TokenType,
+        name: str,
+        params: list[TokenParam],
+        static: bool,
+    ):
         self.ret = ret
         self.name = name
         self.params = params
+        self.static = static
 
     def __str__(self):
         params = ", ".join([str(p) for p in self.params])

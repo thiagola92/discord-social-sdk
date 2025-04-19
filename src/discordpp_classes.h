@@ -51,29 +51,29 @@ protected:
 	static void _bind_methods();
 
 public:
-	void RunCallbacks();
-	String EnumToString21(DiscordppUserHandleAvatarType::Enum value);
-	String EnumToString20(DiscordppStatusType::Enum value);
-	String EnumToString19(DiscordppRelationshipType::Enum value);
-	String EnumToString18(DiscordppLoggingSeverity::Enum value);
-	String EnumToString17(DiscordppHttpStatusCode::Enum value);
-	String EnumToString16(DiscordppErrorType::Enum value);
-	String EnumToString15(DiscordppDisclosureTypes::Enum value);
-	String EnumToString14(DiscordppClientThread::Enum value);
-	String EnumToString13(DiscordppClientStatus::Enum value);
-	String EnumToString12(DiscordppClientError::Enum value);
-	String EnumToString11(DiscordppChannelType::Enum value);
-	String EnumToString10(DiscordppCallStatus::Enum value);
-	String EnumToString9(DiscordppCallError::Enum value);
-	String EnumToString8(DiscordppAuthorizationTokenType::Enum value);
-	String EnumToString7(DiscordppAuthenticationExternalAuthType::Enum value);
-	String EnumToString6(DiscordppAuthenticationCodeChallengeMethod::Enum value);
-	String EnumToString5(DiscordppAudioModeType::Enum value);
-	String EnumToString4(DiscordppAdditionalContentType::Enum value);
-	String EnumToString3(DiscordppActivityTypes::Enum value);
-	String EnumToString2(DiscordppActivityPartyPrivacy::Enum value);
-	String EnumToString1(DiscordppActivityGamePlatforms::Enum value);
-	String EnumToString0(DiscordppActivityActionTypes::Enum value);
+	static void RunCallbacks();
+	static String EnumToString21(DiscordppUserHandleAvatarType::Enum value);
+	static String EnumToString20(DiscordppStatusType::Enum value);
+	static String EnumToString19(DiscordppRelationshipType::Enum value);
+	static String EnumToString18(DiscordppLoggingSeverity::Enum value);
+	static String EnumToString17(DiscordppHttpStatusCode::Enum value);
+	static String EnumToString16(DiscordppErrorType::Enum value);
+	static String EnumToString15(DiscordppDisclosureTypes::Enum value);
+	static String EnumToString14(DiscordppClientThread::Enum value);
+	static String EnumToString13(DiscordppClientStatus::Enum value);
+	static String EnumToString12(DiscordppClientError::Enum value);
+	static String EnumToString11(DiscordppChannelType::Enum value);
+	static String EnumToString10(DiscordppCallStatus::Enum value);
+	static String EnumToString9(DiscordppCallError::Enum value);
+	static String EnumToString8(DiscordppAuthorizationTokenType::Enum value);
+	static String EnumToString7(DiscordppAuthenticationExternalAuthType::Enum value);
+	static String EnumToString6(DiscordppAuthenticationCodeChallengeMethod::Enum value);
+	static String EnumToString5(DiscordppAudioModeType::Enum value);
+	static String EnumToString4(DiscordppAdditionalContentType::Enum value);
+	static String EnumToString3(DiscordppActivityTypes::Enum value);
+	static String EnumToString2(DiscordppActivityPartyPrivacy::Enum value);
+	static String EnumToString1(DiscordppActivityGamePlatforms::Enum value);
+	static String EnumToString0(DiscordppActivityActionTypes::Enum value);
 
 	~Discordpp() {}
 };

@@ -37,9 +37,9 @@ void initialize_module(ModuleInitializationLevel p_level) {
 	GDREGISTER_ABSTRACT_CLASS(DiscordppClientError);
 	GDREGISTER_ABSTRACT_CLASS(DiscordppClientStatus);
 	GDREGISTER_ABSTRACT_CLASS(DiscordppClientThread);
+	GDREGISTER_ABSTRACT_CLASS(Discordpp);
 
 	// discordpp_classes.h
-	GDREGISTER_RUNTIME_CLASS(Discordpp);
 	GDREGISTER_RUNTIME_CLASS(DiscordppActivityInvite);
 	GDREGISTER_RUNTIME_CLASS(DiscordppActivityAssets);
 	GDREGISTER_RUNTIME_CLASS(DiscordppActivityTimestamps);

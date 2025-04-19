@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="DiscordppRelationshipType" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<constants>
+		<constant name="None" value="0" enum="Enum">
+		</constant>
+		<constant name="Friend" value="1" enum="Enum">
+		</constant>
+		<constant name="Blocked" value="2" enum="Enum">
+		</constant>
+		<constant name="PendingIncoming" value="3" enum="Enum">
+		</constant>
+		<constant name="PendingOutgoing" value="4" enum="Enum">
+		</constant>
+		<constant name="Implicit" value="5" enum="Enum">
+		</constant>
+		<constant name="Suggestion" value="6" enum="Enum">
+		</constant>
+	</constants>
+</class>

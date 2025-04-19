@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="DiscordppAuthorizationArgs" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="ClientId">
+			<return type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="CodeChallenge">
+			<return type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="Drop">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="Nonce">
+			<return type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="Scopes">
+			<return type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="SetClientId">
+			<return type="void" />
+			<param index="0" name="ClientId" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="SetCodeChallenge">
+			<return type="void" />
+			<param index="0" name="CodeChallenge" type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="SetNonce">
+			<return type="void" />
+			<param index="0" name="Nonce" type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="SetScopes">
+			<return type="void" />
+			<param index="0" name="Scopes" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="SetState">
+			<return type="void" />
+			<param index="0" name="State" type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="State">
+			<return type="Variant" />
+			<description>
+			</description>
+		</method>
+	</methods>
+</class>

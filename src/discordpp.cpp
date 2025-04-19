@@ -1,5 +1,5 @@
 
-#include "discord_classes.h"
+#include "discordpp_classes.h"
 
 using namespace godot;
 
@@ -140,72 +140,72 @@ String Discordpp::EnumToString0(DiscordppActivityActionTypes::Enum value) {
 }
 
 void Discordpp::_bind_methods() {
-	ClassDB::bind_method(D_METHOD("RunCallbacks"),
+	ClassDB::bind_static_method("Discordpp", D_METHOD("RunCallbacks"),
 			&Discordpp::RunCallbacks);
 
-	ClassDB::bind_method(D_METHOD("EnumToString21", "value"),
+	ClassDB::bind_static_method("Discordpp", D_METHOD("EnumToString21", "value"),
 			&Discordpp::EnumToString21);
 
-	ClassDB::bind_method(D_METHOD("EnumToString20", "value"),
+	ClassDB::bind_static_method("Discordpp", D_METHOD("EnumToString20", "value"),
 			&Discordpp::EnumToString20);
 
-	ClassDB::bind_method(D_METHOD("EnumToString19", "value"),
+	ClassDB::bind_static_method("Discordpp", D_METHOD("EnumToString19", "value"),
 			&Discordpp::EnumToString19);
 
-	ClassDB::bind_method(D_METHOD("EnumToString18", "value"),
+	ClassDB::bind_static_method("Discordpp", D_METHOD("EnumToString18", "value"),
 			&Discordpp::EnumToString18);
 
-	ClassDB::bind_method(D_METHOD("EnumToString17", "value"),
+	ClassDB::bind_static_method("Discordpp", D_METHOD("EnumToString17", "value"),
 			&Discordpp::EnumToString17);
 
-	ClassDB::bind_method(D_METHOD("EnumToString16", "value"),
+	ClassDB::bind_static_method("Discordpp", D_METHOD("EnumToString16", "value"),
 			&Discordpp::EnumToString16);
 
-	ClassDB::bind_method(D_METHOD("EnumToString15", "value"),
+	ClassDB::bind_static_method("Discordpp", D_METHOD("EnumToString15", "value"),
 			&Discordpp::EnumToString15);
 
-	ClassDB::bind_method(D_METHOD("EnumToString14", "value"),
+	ClassDB::bind_static_method("Discordpp", D_METHOD("EnumToString14", "value"),
 			&Discordpp::EnumToString14);
 
-	ClassDB::bind_method(D_METHOD("EnumToString13", "value"),
+	ClassDB::bind_static_method("Discordpp", D_METHOD("EnumToString13", "value"),
 			&Discordpp::EnumToString13);
 
-	ClassDB::bind_method(D_METHOD("EnumToString12", "value"),
+	ClassDB::bind_static_method("Discordpp", D_METHOD("EnumToString12", "value"),
 			&Discordpp::EnumToString12);
 
-	ClassDB::bind_method(D_METHOD("EnumToString11", "value"),
+	ClassDB::bind_static_method("Discordpp", D_METHOD("EnumToString11", "value"),
 			&Discordpp::EnumToString11);
 
-	ClassDB::bind_method(D_METHOD("EnumToString10", "value"),
+	ClassDB::bind_static_method("Discordpp", D_METHOD("EnumToString10", "value"),
 			&Discordpp::EnumToString10);
 
-	ClassDB::bind_method(D_METHOD("EnumToString9", "value"),
+	ClassDB::bind_static_method("Discordpp", D_METHOD("EnumToString9", "value"),
 			&Discordpp::EnumToString9);
 
-	ClassDB::bind_method(D_METHOD("EnumToString8", "value"),
+	ClassDB::bind_static_method("Discordpp", D_METHOD("EnumToString8", "value"),
 			&Discordpp::EnumToString8);
 
-	ClassDB::bind_method(D_METHOD("EnumToString7", "value"),
+	ClassDB::bind_static_method("Discordpp", D_METHOD("EnumToString7", "value"),
 			&Discordpp::EnumToString7);
 
-	ClassDB::bind_method(D_METHOD("EnumToString6", "value"),
+	ClassDB::bind_static_method("Discordpp", D_METHOD("EnumToString6", "value"),
 			&Discordpp::EnumToString6);
 
-	ClassDB::bind_method(D_METHOD("EnumToString5", "value"),
+	ClassDB::bind_static_method("Discordpp", D_METHOD("EnumToString5", "value"),
 			&Discordpp::EnumToString5);
 
-	ClassDB::bind_method(D_METHOD("EnumToString4", "value"),
+	ClassDB::bind_static_method("Discordpp", D_METHOD("EnumToString4", "value"),
 			&Discordpp::EnumToString4);
 
-	ClassDB::bind_method(D_METHOD("EnumToString3", "value"),
+	ClassDB::bind_static_method("Discordpp", D_METHOD("EnumToString3", "value"),
 			&Discordpp::EnumToString3);
 
-	ClassDB::bind_method(D_METHOD("EnumToString2", "value"),
+	ClassDB::bind_static_method("Discordpp", D_METHOD("EnumToString2", "value"),
 			&Discordpp::EnumToString2);
 
-	ClassDB::bind_method(D_METHOD("EnumToString1", "value"),
+	ClassDB::bind_static_method("Discordpp", D_METHOD("EnumToString1", "value"),
 			&Discordpp::EnumToString1);
 
-	ClassDB::bind_method(D_METHOD("EnumToString0", "value"),
+	ClassDB::bind_static_method("Discordpp", D_METHOD("EnumToString0", "value"),
 			&Discordpp::EnumToString0);
 }

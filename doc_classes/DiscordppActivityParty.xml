@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="DiscordppActivityParty" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="CurrentSize">
+			<return type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="Drop">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="Id">
+			<return type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="MaxSize">
+			<return type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="Privacy">
+			<return type="int" enum="DiscordppActivityPartyPrivacy.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="SetCurrentSize">
+			<return type="void" />
+			<param index="0" name="CurrentSize" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="SetId">
+			<return type="void" />
+			<param index="0" name="Id" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="SetMaxSize">
+			<return type="void" />
+			<param index="0" name="MaxSize" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="SetPrivacy">
+			<return type="void" />
+			<param index="0" name="Privacy" type="int" enum="DiscordppActivityPartyPrivacy.Enum" />
+			<description>
+			</description>
+		</method>
+	</methods>
+</class>

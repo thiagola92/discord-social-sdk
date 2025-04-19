@@ -19,4 +19,4 @@ from .discord_classes_h.function_declaration import get_function_declaration
 
 # discord_class_cpp
 from .discord_class_cpp.method import get_method
-from .discord_class_cpp.method_bind import get_method_bind
+from .discord_class_cpp.method_bind import get_method_bind, get_static_method_bind

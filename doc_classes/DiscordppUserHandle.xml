@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="DiscordppUserHandle" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="Avatar">
+			<return type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="AvatarTypeToString">
+			<return type="String" />
+			<param index="0" name="type" type="int" enum="DiscordppUserHandleAvatarType.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="AvatarUrl">
+			<return type="String" />
+			<param index="0" name="animatedType" type="int" enum="DiscordppUserHandleAvatarType.Enum" />
+			<param index="1" name="staticType" type="int" enum="DiscordppUserHandleAvatarType.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="DisplayName">
+			<return type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="Drop">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="GameActivity">
+			<return type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="GlobalName">
+			<return type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="Id">
+			<return type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="IsProvisional">
+			<return type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="Relationship">
+			<return type="DiscordppRelationshipHandle" />
+			<description>
+			</description>
+		</method>
+		<method name="Status">
+			<return type="int" enum="DiscordppStatusType.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="Username">
+			<return type="String" />
+			<description>
+			</description>
+		</method>
+	</methods>
+</class>

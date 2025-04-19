@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="DiscordppActivityInvite" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="ApplicationId">
+			<return type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="ChannelId">
+			<return type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="Drop">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="IsValid">
+			<return type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="MessageId">
+			<return type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="PartyId">
+			<return type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="SenderId">
+			<return type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="SetApplicationId">
+			<return type="void" />
+			<param index="0" name="ApplicationId" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="SetChannelId">
+			<return type="void" />
+			<param index="0" name="ChannelId" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="SetIsValid">
+			<return type="void" />
+			<param index="0" name="IsValid" type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="SetMessageId">
+			<return type="void" />
+			<param index="0" name="MessageId" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="SetPartyId">
+			<return type="void" />
+			<param index="0" name="PartyId" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="SetSenderId">
+			<return type="void" />
+			<param index="0" name="SenderId" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="SetType">
+			<return type="void" />
+			<param index="0" name="Type" type="int" enum="DiscordppActivityActionTypes.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="Type">
+			<return type="int" enum="DiscordppActivityActionTypes.Enum" />
+			<description>
+			</description>
+		</method>
+	</methods>
+</class>

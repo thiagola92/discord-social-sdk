@@ -1,5 +1,5 @@
 
-#include "discord_classes.h"
+#include "discordpp_classes.h"
 
 using namespace godot;
 

@@ -34,6 +34,7 @@ from template.code import (
     # discord_classe_cpp
     get_method,
     get_method_bind,
+    get_static_method_bind,
 )
 
 
@@ -82,7 +83,7 @@ class Builder:
 
         # Get information.
         enums = []
-        classes = [""]  # An extra to represent Discord class.
+        classes = []
 
         for token in self.tokens:
             if isinstance(token, TokenEnum):
@@ -96,6 +97,9 @@ class Builder:
 
         # Build content.
         abstract_macros = [get_abstract_macro(e) for e in enums]
+        abstract_macros.append(
+            get_abstract_macro("")
+        )  # An extra to represent global Discordpp class.
         abstract_macros = "\n    ".join(abstract_macros)
 
         runtime_macros = [get_runtime_macro(c) for c in classes]
@@ -218,11 +222,16 @@ class Builder:
             methods = []
 
             for function in class_.functions:
+                modifier = "static " if function.static else ""
                 ret = self.translator.c_type_to_godot_type(function.ret)
                 name = function.name
                 params = self.build_params(function.params)
+                
+                if function.static:
+                    ret = f"static {ret}"
 
                 method = get_function_declaration(
+                    modifier=modifier,
                     ret=ret,
                     name=name,
                     params=params,
@@ -261,10 +270,12 @@ class Builder:
         methods = []
 
         for function, name in functions_names.items():
+            modifier = "static " if function.static else ""
             ret = self.translator.c_type_to_godot_type(function.ret)
             params = self.build_params(function.params)
 
             method = get_function_declaration(
+                modifier=modifier,
                 ret=ret,
                 name=name,
                 params=params,
@@ -487,7 +498,12 @@ class Builder:
             params = [f'"{p.name}"' for p in function.params]
             params = ", ".join(params)
             params = f", {params}" if params else ""
-            bind = get_method_bind(name, class_.name, params)
+
+            if function.static:
+                bind = get_static_method_bind(name, class_.name, params)
+            else:
+                bind = get_method_bind(name, class_.name, params)
+
             binds.append(bind)
 
         binds = "\n".join(binds)

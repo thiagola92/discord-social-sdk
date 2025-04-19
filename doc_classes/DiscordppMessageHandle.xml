@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="DiscordppMessageHandle" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="AdditionalContent">
+			<return type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="Author">
+			<return type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="AuthorId">
+			<return type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="Channel">
+			<return type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="ChannelId">
+			<return type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="Content">
+			<return type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="DisclosureType">
+			<return type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="Drop">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="EditedTimestamp">
+			<return type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="Id">
+			<return type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="Lobby">
+			<return type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="Metadata">
+			<return type="Dictionary[String, String]" />
+			<description>
+			</description>
+		</method>
+		<method name="RawContent">
+			<return type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="Recipient">
+			<return type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="RecipientId">
+			<return type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="SentFromGame">
+			<return type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="SentTimestamp">
+			<return type="int" />
+			<description>
+			</description>
+		</method>
+	</methods>
+</class>

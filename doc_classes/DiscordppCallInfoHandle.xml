@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="DiscordppCallInfoHandle" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="ChannelId">
+			<return type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="Drop">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="GetParticipants">
+			<return type="int[]" />
+			<description>
+			</description>
+		</method>
+		<method name="GetVoiceStateHandle">
+			<return type="Variant" />
+			<param index="0" name="userId" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="GuildId">
+			<return type="int" />
+			<description>
+			</description>
+		</method>
+	</methods>
+</class>

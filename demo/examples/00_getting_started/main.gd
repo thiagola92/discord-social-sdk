@@ -29,3 +29,14 @@ func _ready() -> void:
 					error, errorDetail
 				])
 	)
+	
+	var args := DiscordppAuthorizationArgs.new()
+	
+	client.Authorize(args,
+		func(result, code, redirectUri):
+			print("Here")
+	)
+
+
+func _process(_delta: float) -> void:
+	Discordpp.RunCallbacks()
