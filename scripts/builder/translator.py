@@ -51,6 +51,10 @@ class Translator:
             "std::string const",
             "static std::string",
             "std::string const &",
+        ]
+
+    def is_c_char_array(self, type_name: str) -> bool:
+        return type_name in [
             "const char *",
         ]
 
@@ -207,6 +211,9 @@ class Translator:
         elif self.is_c_string(token.name):
             return "String"
 
+        elif self.is_c_char_array(token.name):
+            return f"String"
+
         elif self.is_c_opt(token.name):
             return "Variant"
 
@@ -262,6 +269,9 @@ class Translator:
         elif self.is_c_string(src.type.name):
             return f"String {dest} = String({src.name}.c_str());"
 
+        elif self.is_c_char_array(src.type.name):
+            return f"String {dest} = String({src.name});"
+
         elif self.is_c_opt(src.type.name):
             return self.c_opt_to_godot_variant(src, dest)
 
@@ -304,6 +314,9 @@ class Translator:
 
         elif self.is_c_string(src.type.subtype.name):
             convertion_statements = [f"{dest} = Variant({src.name}.value().c_str());"]
+
+        elif self.is_c_char_array(src.type.name):
+            convertion_statements = [f"{dest} = Variant({src.name}.value());"]
 
         elif self.is_c_opt(src.type.subtype.name):
             assert False, "Not implemented (implement if needed)"
@@ -488,6 +501,9 @@ class Translator:
             return f"float {dest} = {param.name};"
 
         elif self.is_c_string(param.type.name):
+            return f"const char *{dest} = {param.name}.utf8().get_data();"
+
+        elif self.is_c_char_array(param.type.name):
             return f"const char *{dest} = {param.name}.utf8().get_data();"
 
         elif self.is_c_opt(param.type.name):
@@ -681,6 +697,9 @@ class Translator:
 
         elif self.is_c_string(ret_type.name):
             return f"return String({call}.c_str());"
+
+        elif self.is_c_char_array(ret_type.name):
+            return f"return String({call});"
 
         elif self.is_c_opt(ret_type.name):
             return self.c_opt_ret_to_godot_variant_ret(ret_type.subtype, call)

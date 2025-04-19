@@ -313,7 +313,7 @@ class Builder:
         global_functions = [t for t in self.tokens if isinstance(t, TokenFunction)]
         fake_token = TokenClass("", [], [], [], global_functions)
         filepath = self.src.joinpath(f"discordpp.cpp")
-        content = self.build_class(fake_token)
+        content = self.build_class(fake_token, is_global=True)
 
         filepath.write_text(content)
 
@@ -481,12 +481,13 @@ class Builder:
         Responsible for letting it visible for Godot users.
         """
         binds = []
+        functions_names = get_functions_names(class_.functions)
 
-        for function in class_.functions:
+        for function, name in functions_names.items():
             params = [f'"{p.name}"' for p in function.params]
             params = ", ".join(params)
             params = f", {params}" if params else ""
-            bind = get_method_bind(function.name, class_.name, params)
+            bind = get_method_bind(name, class_.name, params)
             binds.append(bind)
 
         binds = "\n".join(binds)
