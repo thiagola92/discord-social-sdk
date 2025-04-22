@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<class name="DiscordppClient" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordppClient" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
 	</brief_description>
 	<description>
@@ -22,6 +22,10 @@
 			<param index="0" name="invite" type="DiscordppActivityInvite" />
 			<param index="1" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult, joinSecret: String)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="AcceptDiscordFriendRequest">
@@ -29,6 +33,10 @@
 			<param index="0" name="userId" type="int" />
 			<param index="1" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="AcceptGameFriendRequest">
@@ -36,6 +44,10 @@
 			<param index="0" name="userId" type="int" />
 			<param index="1" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="AddLogCallback">
@@ -43,6 +55,10 @@
 			<param index="0" name="callback" type="Callable" />
 			<param index="1" name="minSeverity" type="int" enum="DiscordppLoggingSeverity.Enum" />
 			<description>
+				Where [code]callback[/code] signature is:
+				[codeblock]
+				func(message: String, severity: DiscordppLoggingSeverity.Enum)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="AddVoiceLogCallback">
@@ -50,6 +66,10 @@
 			<param index="0" name="callback" type="Callable" />
 			<param index="1" name="minSeverity" type="int" enum="DiscordppLoggingSeverity.Enum" />
 			<description>
+				Where [code]callback[/code] signature is:
+				[codeblock]
+				func(message: String, severity: DiscordppLoggingSeverity.Enum)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="Authorize">
@@ -57,6 +77,10 @@
 			<param index="0" name="args" type="DiscordppAuthorizationArgs" />
 			<param index="1" name="callback" type="Callable" />
 			<description>
+				Where [code]callback[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult, code: String, redirectUri: String)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="BlockUser">
@@ -64,6 +88,10 @@
 			<param index="0" name="userId" type="int" />
 			<param index="1" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="CanOpenMessageInDiscord">
@@ -77,6 +105,10 @@
 			<param index="0" name="userId" type="int" />
 			<param index="1" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="CancelGameFriendRequest">
@@ -84,6 +116,10 @@
 			<param index="0" name="userId" type="int" />
 			<param index="1" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="ClearRichPresence">
@@ -111,6 +147,10 @@
 			<param index="0" name="secret" type="String" />
 			<param index="1" name="callback" type="Callable" />
 			<description>
+				Where [code]callback[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult, lobbyId: int)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="CreateOrJoinLobbyWithMetadata">
@@ -120,6 +160,10 @@
 			<param index="2" name="memberMetadata" type="Dictionary[String, String]" />
 			<param index="3" name="callback" type="Callable" />
 			<description>
+				Where [code]callback[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult, lobbyId: int)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="DeleteUserMessage">
@@ -128,6 +172,10 @@
 			<param index="1" name="messageId" type="int" />
 			<param index="2" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="Disconnect">
@@ -147,6 +195,10 @@
 			<param index="2" name="content" type="String" />
 			<param index="3" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="EndCall">
@@ -154,12 +206,20 @@
 			<param index="0" name="channelId" type="int" />
 			<param index="1" name="callback" type="Callable" />
 			<description>
+				Where [code]callback[/code] signature is:
+				[codeblock]
+				func()
+				[/codeblock]
 			</description>
 		</method>
 		<method name="EndCalls">
 			<return type="void" />
 			<param index="0" name="callback" type="Callable" />
 			<description>
+				Where [code]callback[/code] signature is:
+				[codeblock]
+				func()
+				[/codeblock]
 			</description>
 		</method>
 		<method name="ErrorToString" qualifiers="static">
@@ -174,6 +234,10 @@
 			<param index="1" name="token" type="String" />
 			<param index="2" name="callback" type="Callable" />
 			<description>
+				Where [code]callback[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult, id: int, name: String)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="GetCall">
@@ -197,12 +261,20 @@
 			<return type="void" />
 			<param index="0" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(device: DiscordppAudioDevice)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="GetCurrentOutputDevice">
 			<return type="void" />
 			<param index="0" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(device: DiscordppAudioDevice)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="GetCurrentUser">
@@ -230,6 +302,10 @@
 			<param index="0" name="applicationId" type="int" />
 			<param index="1" name="callback" type="Callable" />
 			<description>
+				Where [code]callback[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult, user: Variant)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="GetGuildChannels">
@@ -237,12 +313,20 @@
 			<param index="0" name="guildId" type="int" />
 			<param index="1" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult, guildChannels: TypedArray[DiscordppGuildChannel])
+				[/codeblock]
 			</description>
 		</method>
 		<method name="GetInputDevices">
 			<return type="void" />
 			<param index="0" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(devices: TypedArray[DiscordppAudioDevice])
+				[/codeblock]
 			</description>
 		</method>
 		<method name="GetInputVolume">
@@ -271,6 +355,10 @@
 			<return type="void" />
 			<param index="0" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(devices: TypedArray[DiscordppAudioDevice])
+				[/codeblock]
 			</description>
 		</method>
 		<method name="GetOutputVolume">
@@ -285,6 +373,10 @@
 			<param index="2" name="externalAuthToken" type="String" />
 			<param index="3" name="callback" type="Callable" />
 			<description>
+				Where [code]callback[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult, accessToken: String, refreshToken: String, tokenType: DiscordppAuthorizationTokenType.Enum, expiresIn: int, scopes: String)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="GetRelationshipHandle">
@@ -321,6 +413,10 @@
 			<param index="3" name="redirectUri" type="String" />
 			<param index="4" name="callback" type="Callable" />
 			<description>
+				Where [code]callback[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult, accessToken: String, refreshToken: String, tokenType: DiscordppAuthorizationTokenType.Enum, expiresIn: int, scopes: String)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="GetTokenFromDevice">
@@ -328,6 +424,10 @@
 			<param index="0" name="args" type="DiscordppDeviceAuthorizationArgs" />
 			<param index="1" name="callback" type="Callable" />
 			<description>
+				Where [code]callback[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult, accessToken: String, refreshToken: String, tokenType: DiscordppAuthorizationTokenType.Enum, expiresIn: int, scopes: String)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="GetTokenFromDeviceProvisionalMerge">
@@ -337,6 +437,10 @@
 			<param index="2" name="externalAuthToken" type="String" />
 			<param index="3" name="callback" type="Callable" />
 			<description>
+				Where [code]callback[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult, accessToken: String, refreshToken: String, tokenType: DiscordppAuthorizationTokenType.Enum, expiresIn: int, scopes: String)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="GetTokenFromProvisionalMerge">
@@ -349,6 +453,10 @@
 			<param index="5" name="externalAuthToken" type="String" />
 			<param index="6" name="callback" type="Callable" />
 			<description>
+				Where [code]callback[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult, accessToken: String, refreshToken: String, tokenType: DiscordppAuthorizationTokenType.Enum, expiresIn: int, scopes: String)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="GetUser">
@@ -361,6 +469,10 @@
 			<return type="void" />
 			<param index="0" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult, guilds: TypedArray[DiscordppGuildMinimal])
+				[/codeblock]
 			</description>
 		</method>
 		<method name="GetVersionHash" qualifiers="static">
@@ -393,6 +505,10 @@
 			<param index="0" name="lobbyId" type="int" />
 			<param index="1" name="callback" type="Callable" />
 			<description>
+				Where [code]callback[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="LinkChannelToLobby">
@@ -401,6 +517,10 @@
 			<param index="1" name="channelId" type="int" />
 			<param index="2" name="callback" type="Callable" />
 			<description>
+				Where [code]callback[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="OpenAuthorizeDeviceScreen">
@@ -416,6 +536,10 @@
 			<param index="1" name="provisionalUserMergeRequiredCallback" type="Callable" />
 			<param index="2" name="callback" type="Callable" />
 			<description>
+				Where [code]callback[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="ProvisionalUserMergeCompleted">
@@ -430,6 +554,10 @@
 			<param index="1" name="refreshToken" type="String" />
 			<param index="2" name="callback" type="Callable" />
 			<description>
+				Where [code]callback[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult, accessToken: String, refreshToken: String, tokenType: DiscordppAuthorizationTokenType.Enum, expiresIn: int, scopes: String)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="RegisterLaunchCommand">
@@ -451,6 +579,10 @@
 			<param index="0" name="userId" type="int" />
 			<param index="1" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="RejectGameFriendRequest">
@@ -458,6 +590,10 @@
 			<param index="0" name="userId" type="int" />
 			<param index="1" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="RemoveDiscordAndGameFriend">
@@ -465,6 +601,10 @@
 			<param index="0" name="userId" type="int" />
 			<param index="1" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="RemoveGameFriend">
@@ -472,6 +612,10 @@
 			<param index="0" name="userId" type="int" />
 			<param index="1" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="SearchFriendsByUsername">
@@ -486,6 +630,10 @@
 			<param index="1" name="content" type="String" />
 			<param index="2" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="SendActivityJoinRequest">
@@ -493,6 +641,10 @@
 			<param index="0" name="userId" type="int" />
 			<param index="1" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="SendActivityJoinRequestReply">
@@ -500,6 +652,10 @@
 			<param index="0" name="invite" type="DiscordppActivityInvite" />
 			<param index="1" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="SendDiscordFriendRequest">
@@ -507,6 +663,10 @@
 			<param index="0" name="username" type="String" />
 			<param index="1" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="SendDiscordFriendRequestById">
@@ -514,6 +674,10 @@
 			<param index="0" name="userId" type="int" />
 			<param index="1" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="SendGameFriendRequest">
@@ -521,6 +685,10 @@
 			<param index="0" name="username" type="String" />
 			<param index="1" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="SendGameFriendRequestById">
@@ -528,6 +696,10 @@
 			<param index="0" name="userId" type="int" />
 			<param index="1" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="SendLobbyMessage">
@@ -536,6 +708,10 @@
 			<param index="1" name="content" type="String" />
 			<param index="2" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult, messageId: int)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="SendLobbyMessageWithMetadata">
@@ -545,6 +721,10 @@
 			<param index="2" name="metadata" type="Dictionary[String, String]" />
 			<param index="3" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult, messageId: int)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="SendUserMessage">
@@ -553,6 +733,10 @@
 			<param index="1" name="content" type="String" />
 			<param index="2" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult, messageId: int)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="SendUserMessageWithMetadata">
@@ -562,30 +746,50 @@
 			<param index="2" name="metadata" type="Dictionary[String, String]" />
 			<param index="3" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult, messageId: int)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="SetActivityInviteCreatedCallback">
 			<return type="void" />
 			<param index="0" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(invite: DiscordppActivityInvite)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="SetActivityInviteUpdatedCallback">
 			<return type="void" />
 			<param index="0" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(invite: DiscordppActivityInvite)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="SetActivityJoinCallback">
 			<return type="void" />
 			<param index="0" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(joinSecret: String)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="SetAuthorizeDeviceScreenClosedCallback">
 			<return type="void" />
 			<param index="0" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func()
+				[/codeblock]
 			</description>
 		</method>
 		<method name="SetAutomaticGainControl">
@@ -598,6 +802,10 @@
 			<return type="void" />
 			<param index="0" name="callback" type="Callable" />
 			<description>
+				Where [code]callback[/code] signature is:
+				[codeblock]
+				func(inputDevices: TypedArray[DiscordppAudioDevice], outputDevices: TypedArray[DiscordppAudioDevice])
+				[/codeblock]
 			</description>
 		</method>
 		<method name="SetEchoCancellation">
@@ -617,6 +825,10 @@
 			<param index="0" name="deviceId" type="String" />
 			<param index="1" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="SetInputVolume">
@@ -629,36 +841,60 @@
 			<return type="void" />
 			<param index="0" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(lobbyId: int)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="SetLobbyDeletedCallback">
 			<return type="void" />
 			<param index="0" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(lobbyId: int)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="SetLobbyMemberAddedCallback">
 			<return type="void" />
 			<param index="0" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(lobbyId: int, memberId: int)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="SetLobbyMemberRemovedCallback">
 			<return type="void" />
 			<param index="0" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(lobbyId: int, memberId: int)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="SetLobbyMemberUpdatedCallback">
 			<return type="void" />
 			<param index="0" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(lobbyId: int, memberId: int)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="SetLobbyUpdatedCallback">
 			<return type="void" />
 			<param index="0" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(lobbyId: int)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="SetLogDir">
@@ -672,24 +908,40 @@
 			<return type="void" />
 			<param index="0" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(messageId: int)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="SetMessageDeletedCallback">
 			<return type="void" />
 			<param index="0" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(messageId: int, channelId: int)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="SetMessageUpdatedCallback">
 			<return type="void" />
 			<param index="0" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(messageId: int)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="SetNoAudioInputCallback">
 			<return type="void" />
 			<param index="0" name="callback" type="Callable" />
 			<description>
+				Where [code]callback[/code] signature is:
+				[codeblock]
+				func(inputDetected: bool)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="SetNoAudioInputThreshold">
@@ -709,6 +961,10 @@
 			<param index="0" name="status" type="int" enum="DiscordppStatusType.Enum" />
 			<param index="1" name="callback" type="Callable" />
 			<description>
+				Where [code]callback[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="SetOpusHardwareCoding">
@@ -723,6 +979,10 @@
 			<param index="0" name="deviceId" type="String" />
 			<param index="1" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="SetOutputVolume">
@@ -735,12 +995,20 @@
 			<return type="void" />
 			<param index="0" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(userId: int, isDiscordRelationshipUpdate: bool)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="SetRelationshipDeletedCallback">
 			<return type="void" />
 			<param index="0" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(userId: int, isDiscordRelationshipUpdate: bool)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="SetSelfDeafAll">
@@ -771,6 +1039,10 @@
 			<return type="void" />
 			<param index="0" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(status: DiscordppClientStatus.Enum, error: DiscordppClientError.Enum, errorDetail: int)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="SetThreadPriority">
@@ -784,12 +1056,20 @@
 			<return type="void" />
 			<param index="0" name="callback" type="Callable" />
 			<description>
+				Where [code]callback[/code] signature is:
+				[codeblock]
+				func()
+				[/codeblock]
 			</description>
 		</method>
 		<method name="SetUserUpdatedCallback">
 			<return type="void" />
 			<param index="0" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(userId: int)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="SetVoiceLogDir">
@@ -803,6 +1083,10 @@
 			<return type="void" />
 			<param index="0" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(lobbyId: int, memberId: int, added: bool)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="ShowAudioRoutePicker">
@@ -822,6 +1106,10 @@
 			<param index="1" name="receivedCb" type="Callable" />
 			<param index="2" name="capturedCb" type="Callable" />
 			<description>
+				Where [code]capturedCb[/code] signature is:
+				[codeblock]
+				func(data: int, samplesPerChannel: int, sampleRate: int, channels: int)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="StatusToString" qualifiers="static">
@@ -841,6 +1129,10 @@
 			<param index="0" name="userId" type="int" />
 			<param index="1" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="UnlinkChannelFromLobby">
@@ -848,6 +1140,10 @@
 			<param index="0" name="lobbyId" type="int" />
 			<param index="1" name="callback" type="Callable" />
 			<description>
+				Where [code]callback[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="UpdateProvisionalAccountDisplayName">
@@ -855,6 +1151,10 @@
 			<param index="0" name="name" type="String" />
 			<param index="1" name="callback" type="Callable" />
 			<description>
+				Where [code]callback[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="UpdateRichPresence">
@@ -862,6 +1162,10 @@
 			<param index="0" name="activity" type="DiscordppActivity" />
 			<param index="1" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="UpdateToken">
@@ -870,6 +1174,10 @@
 			<param index="1" name="token" type="String" />
 			<param index="2" name="callback" type="Callable" />
 			<description>
+				Where [code]callback[/code] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult)
+				[/codeblock]
 			</description>
 		</method>
 	</methods>

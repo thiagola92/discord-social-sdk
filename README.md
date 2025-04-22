@@ -125,6 +125,9 @@ cd demo
 godot --doctool ../ --gdextension-docs
 cd ..
 
+# Rerun to update GDExtension documentation.
+python3 scripts/main.py
+
 # Generate GDExtension library.
 scons platform=linux                            # Debug
 scons platform=linux target=template_release    # Release

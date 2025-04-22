@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<class name="DiscordppCall" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordppCall" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
 	</brief_description>
 	<description>
@@ -98,6 +98,10 @@
 			<return type="void" />
 			<param index="0" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(userId: int)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="SetPTTActive">
@@ -116,6 +120,10 @@
 			<return type="void" />
 			<param index="0" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(userId: int, added: bool)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="SetParticipantVolume">
@@ -141,12 +149,20 @@
 			<return type="void" />
 			<param index="0" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(userId: int, isPlayingSound: bool)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="SetStatusChangedCallback">
 			<return type="void" />
 			<param index="0" name="cb" type="Callable" />
 			<description>
+				Where [code]cb[/code] signature is:
+				[codeblock]
+				func(status: DiscordppCallStatus.Enum, error: DiscordppCallError.Enum, errorDetail: int)
+				[/codeblock]
 			</description>
 		</method>
 		<method name="SetVADThreshold">
