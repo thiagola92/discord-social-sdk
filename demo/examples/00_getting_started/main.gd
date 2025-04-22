@@ -2,13 +2,13 @@ extends Control
 
 
 # Replace with your Discord Application ID
-const APPLICATION_ID = 123
+var APPLICATION_ID = DotEnv.read_int("APPLICATION_ID")
 
 # Create our Discord Client
 var client := DiscordppClient.new()
 
 func _ready() -> void:
-	print("🚀 Initializing Discord SDK...\n")
+	print("🚀 Initializing Discord SDK...")
 	
 	client.AddLogCallback(
 		func(message: String, severity: DiscordppLoggingSeverity.Enum):
@@ -30,11 +30,18 @@ func _ready() -> void:
 				])
 	)
 	
+	var code_verifier = client.CreateAuthorizationCodeVerifier()
+	
 	var args := DiscordppAuthorizationArgs.new()
+	args.SetClientId(APPLICATION_ID)
+	args.SetScopes(DiscordppClient.GetDefaultPresenceScopes())
+	args.SetCodeChallenge(code_verifier.Challenge())
 	
 	client.Authorize(args,
-		func(result, code, redirectUri):
-			print("Here")
+		func(result: DiscordppClientResult, code, redirectUri):
+			print(result)
+			print(code)
+			print(redirectUri)
 	)
 
 
