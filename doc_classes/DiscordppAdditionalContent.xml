@@ -51,7 +51,7 @@
 			<description>
 			</description>
 		</method>
-		<method name="TypeToString">
+		<method name="TypeToString" qualifiers="static">
 			<return type="String" />
 			<param index="0" name="type" type="int" enum="DiscordppAdditionalContentType.Enum" />
 			<description>

@@ -12,7 +12,7 @@
 			<description>
 			</description>
 		</method>
-		<method name="ErrorToString">
+		<method name="ErrorToString" qualifiers="static">
 			<return type="String" />
 			<param index="0" name="type" type="int" enum="DiscordppCallError.Enum" />
 			<description>
@@ -156,7 +156,7 @@
 			<description>
 			</description>
 		</method>
-		<method name="StatusToString">
+		<method name="StatusToString" qualifiers="static">
 			<return type="String" />
 			<param index="0" name="type" type="int" enum="DiscordppCallStatus.Enum" />
 			<description>

@@ -162,7 +162,7 @@
 			<description>
 			</description>
 		</method>
-		<method name="ErrorToString">
+		<method name="ErrorToString" qualifiers="static">
 			<return type="String" />
 			<param index="0" name="type" type="int" enum="DiscordppClientError.Enum" />
 			<description>
@@ -210,17 +210,17 @@
 			<description>
 			</description>
 		</method>
-		<method name="GetDefaultAudioDeviceId">
+		<method name="GetDefaultAudioDeviceId" qualifiers="static">
 			<return type="String" />
 			<description>
 			</description>
 		</method>
-		<method name="GetDefaultCommunicationScopes">
+		<method name="GetDefaultCommunicationScopes" qualifiers="static">
 			<return type="String" />
 			<description>
 			</description>
 		</method>
-		<method name="GetDefaultPresenceScopes">
+		<method name="GetDefaultPresenceScopes" qualifiers="static">
 			<return type="String" />
 			<description>
 			</description>
@@ -363,22 +363,22 @@
 			<description>
 			</description>
 		</method>
-		<method name="GetVersionHash">
+		<method name="GetVersionHash" qualifiers="static">
 			<return type="String" />
 			<description>
 			</description>
 		</method>
-		<method name="GetVersionMajor">
+		<method name="GetVersionMajor" qualifiers="static">
 			<return type="int" />
 			<description>
 			</description>
 		</method>
-		<method name="GetVersionMinor">
+		<method name="GetVersionMinor" qualifiers="static">
 			<return type="int" />
 			<description>
 			</description>
 		</method>
-		<method name="GetVersionPatch">
+		<method name="GetVersionPatch" qualifiers="static">
 			<return type="int" />
 			<description>
 			</description>
@@ -824,13 +824,13 @@
 			<description>
 			</description>
 		</method>
-		<method name="StatusToString">
+		<method name="StatusToString" qualifiers="static">
 			<return type="String" />
 			<param index="0" name="type" type="int" enum="DiscordppClientStatus.Enum" />
 			<description>
 			</description>
 		</method>
-		<method name="ThreadToString">
+		<method name="ThreadToString" qualifiers="static">
 			<return type="String" />
 			<param index="0" name="type" type="int" enum="DiscordppClientThread.Enum" />
 			<description>

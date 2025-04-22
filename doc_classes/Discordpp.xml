@@ -7,139 +7,139 @@
 	<tutorials>
 	</tutorials>
 	<methods>
-		<method name="EnumToString0">
+		<method name="EnumToString0" qualifiers="static">
 			<return type="String" />
 			<param index="0" name="value" type="int" enum="DiscordppActivityActionTypes.Enum" />
 			<description>
 			</description>
 		</method>
-		<method name="EnumToString1">
+		<method name="EnumToString1" qualifiers="static">
 			<return type="String" />
 			<param index="0" name="value" type="int" enum="DiscordppActivityGamePlatforms.Enum" />
 			<description>
 			</description>
 		</method>
-		<method name="EnumToString2">
+		<method name="EnumToString2" qualifiers="static">
 			<return type="String" />
 			<param index="0" name="value" type="int" enum="DiscordppActivityPartyPrivacy.Enum" />
 			<description>
 			</description>
 		</method>
-		<method name="EnumToString3">
+		<method name="EnumToString3" qualifiers="static">
 			<return type="String" />
 			<param index="0" name="value" type="int" enum="DiscordppActivityTypes.Enum" />
 			<description>
 			</description>
 		</method>
-		<method name="EnumToString4">
+		<method name="EnumToString4" qualifiers="static">
 			<return type="String" />
 			<param index="0" name="value" type="int" enum="DiscordppAdditionalContentType.Enum" />
 			<description>
 			</description>
 		</method>
-		<method name="EnumToString5">
+		<method name="EnumToString5" qualifiers="static">
 			<return type="String" />
 			<param index="0" name="value" type="int" enum="DiscordppAudioModeType.Enum" />
 			<description>
 			</description>
 		</method>
-		<method name="EnumToString6">
+		<method name="EnumToString6" qualifiers="static">
 			<return type="String" />
 			<param index="0" name="value" type="int" enum="DiscordppAuthenticationCodeChallengeMethod.Enum" />
 			<description>
 			</description>
 		</method>
-		<method name="EnumToString7">
+		<method name="EnumToString7" qualifiers="static">
 			<return type="String" />
 			<param index="0" name="value" type="int" enum="DiscordppAuthenticationExternalAuthType.Enum" />
 			<description>
 			</description>
 		</method>
-		<method name="EnumToString8">
+		<method name="EnumToString8" qualifiers="static">
 			<return type="String" />
 			<param index="0" name="value" type="int" enum="DiscordppAuthorizationTokenType.Enum" />
 			<description>
 			</description>
 		</method>
-		<method name="EnumToString9">
+		<method name="EnumToString9" qualifiers="static">
 			<return type="String" />
 			<param index="0" name="value" type="int" enum="DiscordppCallError.Enum" />
 			<description>
 			</description>
 		</method>
-		<method name="EnumToString10">
+		<method name="EnumToString10" qualifiers="static">
 			<return type="String" />
 			<param index="0" name="value" type="int" enum="DiscordppCallStatus.Enum" />
 			<description>
 			</description>
 		</method>
-		<method name="EnumToString11">
+		<method name="EnumToString11" qualifiers="static">
 			<return type="String" />
 			<param index="0" name="value" type="int" enum="DiscordppChannelType.Enum" />
 			<description>
 			</description>
 		</method>
-		<method name="EnumToString12">
+		<method name="EnumToString12" qualifiers="static">
 			<return type="String" />
 			<param index="0" name="value" type="int" enum="DiscordppClientError.Enum" />
 			<description>
 			</description>
 		</method>
-		<method name="EnumToString13">
+		<method name="EnumToString13" qualifiers="static">
 			<return type="String" />
 			<param index="0" name="value" type="int" enum="DiscordppClientStatus.Enum" />
 			<description>
 			</description>
 		</method>
-		<method name="EnumToString14">
+		<method name="EnumToString14" qualifiers="static">
 			<return type="String" />
 			<param index="0" name="value" type="int" enum="DiscordppClientThread.Enum" />
 			<description>
 			</description>
 		</method>
-		<method name="EnumToString15">
+		<method name="EnumToString15" qualifiers="static">
 			<return type="String" />
 			<param index="0" name="value" type="int" enum="DiscordppDisclosureTypes.Enum" />
 			<description>
 			</description>
 		</method>
-		<method name="EnumToString16">
+		<method name="EnumToString16" qualifiers="static">
 			<return type="String" />
 			<param index="0" name="value" type="int" enum="DiscordppErrorType.Enum" />
 			<description>
 			</description>
 		</method>
-		<method name="EnumToString17">
+		<method name="EnumToString17" qualifiers="static">
 			<return type="String" />
 			<param index="0" name="value" type="int" enum="DiscordppHttpStatusCode.Enum" />
 			<description>
 			</description>
 		</method>
-		<method name="EnumToString18">
+		<method name="EnumToString18" qualifiers="static">
 			<return type="String" />
 			<param index="0" name="value" type="int" enum="DiscordppLoggingSeverity.Enum" />
 			<description>
 			</description>
 		</method>
-		<method name="EnumToString19">
+		<method name="EnumToString19" qualifiers="static">
 			<return type="String" />
 			<param index="0" name="value" type="int" enum="DiscordppRelationshipType.Enum" />
 			<description>
 			</description>
 		</method>
-		<method name="EnumToString20">
+		<method name="EnumToString20" qualifiers="static">
 			<return type="String" />
 			<param index="0" name="value" type="int" enum="DiscordppStatusType.Enum" />
 			<description>
 			</description>
 		</method>
-		<method name="EnumToString21">
+		<method name="EnumToString21" qualifiers="static">
 			<return type="String" />
 			<param index="0" name="value" type="int" enum="DiscordppUserHandleAvatarType.Enum" />
 			<description>
 			</description>
 		</method>
-		<method name="RunCallbacks">
+		<method name="RunCallbacks" qualifiers="static">
 			<return type="void" />
 			<description>
 			</description>

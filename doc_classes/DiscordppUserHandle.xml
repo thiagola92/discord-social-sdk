@@ -12,7 +12,7 @@
 			<description>
 			</description>
 		</method>
-		<method name="AvatarTypeToString">
+		<method name="AvatarTypeToString" qualifiers="static">
 			<return type="String" />
 			<param index="0" name="type" type="int" enum="DiscordppUserHandleAvatarType.Enum" />
 			<description>
