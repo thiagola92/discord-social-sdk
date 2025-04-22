@@ -43,8 +43,8 @@ All that I want is to use the SDK from GDScript, without assuming any setup from
 flowchart TD
     gd_to_c[gdscript types to c types]
     return_void{return void?}
-    call_method1["method(args)"]
-    call_method2["auto r = method(args)"]
+    call_method1["<pre>method(args)</pre>"]
+    call_method2["<pre>auto r = method(args)</pre>"]
     c_to_gd[c type to gdscript type]
 
     gd_to_c-->return_void
@@ -59,11 +59,13 @@ Now that you understand why everything is done through Python, let me explain wh
 - Clean headers
 - Parse headers
 - Build source code
+- Document details
 
 ```mermaid
 flowchart LR
     Clean --> Parse
     Parse --> Build
+    Build --> Document
 ```
 
 **Clean**: Remove unnecessary informations from headers. We are not a C/C++ compiler, so we don't need many lines from the headers and this makes our parser job easier.  
@@ -71,6 +73,8 @@ flowchart LR
 **Parse**: Scan headers to collect useful informations for us. This is closer to be a tokenizer + parser but built together because this is much easier than a scanning a complete programming language.  
 
 **Build**: Build our GDExtension source code (writing `.cpp` and `.h` files in `src/`).  
+
+**Document**: Update the generated XML documentation from Godot (files in `doc_classes/`) with some details to help.  
 
 ## Prerequisites
 - [Godot](https://godotengine.org/)
