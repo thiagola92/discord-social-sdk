@@ -38,11 +38,11 @@ class DocTranslator(Translator):
 
         elif self.is_c_vec(token.name):
             subtype = self.c_type_to_godot_type(token.subtype, False)
-            return f"TypedArray[{subtype}]"
+            return f"Array[{subtype}]"
 
         elif self.is_c_map(token.name):
             subtype = self.c_type_to_godot_type(token.subtype, False)
-            return f"TypedDictionary[{subtype}]"
+            return f"Dictionary[{subtype}]"
 
         elif self.is_c_callback(token.name):
             return "Callable"

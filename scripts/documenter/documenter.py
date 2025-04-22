@@ -2,7 +2,7 @@ from pathlib import Path
 from xml.etree import ElementTree
 from xml.etree.ElementTree import Element
 from parser.parser import TokenFunction, TokenClass
-from documenter.translator import DocTranslator
+from documenter.doc_translator import DocTranslator
 from template.xml import get_callback, get_xml_version
 
 

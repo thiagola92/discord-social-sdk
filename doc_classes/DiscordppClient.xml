@@ -315,7 +315,7 @@
 			<description>
 				Where [code]cb[/code] signature is:
 				[codeblock]
-				func(result: DiscordppClientResult, guildChannels: TypedArray[DiscordppGuildChannel])
+				func(result: DiscordppClientResult, guildChannels: Array[DiscordppGuildChannel])
 				[/codeblock]
 			</description>
 		</method>
@@ -325,7 +325,7 @@
 			<description>
 				Where [code]cb[/code] signature is:
 				[codeblock]
-				func(devices: TypedArray[DiscordppAudioDevice])
+				func(devices: Array[DiscordppAudioDevice])
 				[/codeblock]
 			</description>
 		</method>
@@ -357,7 +357,7 @@
 			<description>
 				Where [code]cb[/code] signature is:
 				[codeblock]
-				func(devices: TypedArray[DiscordppAudioDevice])
+				func(devices: Array[DiscordppAudioDevice])
 				[/codeblock]
 			</description>
 		</method>
@@ -471,7 +471,7 @@
 			<description>
 				Where [code]cb[/code] signature is:
 				[codeblock]
-				func(result: DiscordppClientResult, guilds: TypedArray[DiscordppGuildMinimal])
+				func(result: DiscordppClientResult, guilds: Array[DiscordppGuildMinimal])
 				[/codeblock]
 			</description>
 		</method>
@@ -804,7 +804,7 @@
 			<description>
 				Where [code]callback[/code] signature is:
 				[codeblock]
-				func(inputDevices: TypedArray[DiscordppAudioDevice], outputDevices: TypedArray[DiscordppAudioDevice])
+				func(inputDevices: Array[DiscordppAudioDevice], outputDevices: Array[DiscordppAudioDevice])
 				[/codeblock]
 			</description>
 		</method>

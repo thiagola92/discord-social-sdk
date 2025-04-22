@@ -38,7 +38,7 @@ func _ready() -> void:
 	args.SetCodeChallenge(code_verifier.Challenge())
 	
 	client.Authorize(args,
-		func(result: DiscordppClientResult, code, redirectUri):
+		func(result: DiscordppClientResult, code: String, redirectUri: String):
 			print(result)
 			print(code)
 			print(redirectUri)
