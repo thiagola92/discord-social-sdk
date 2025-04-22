@@ -3,7 +3,8 @@ import subprocess
 
 
 def to_snake_case(string: str) -> str:
-    """Convert string to snake_case"""
+    """Convert string to snake_case."""
+
     new_string = ""
     can_add_underscore = False
 
@@ -21,6 +22,14 @@ def to_snake_case(string: str) -> str:
 
 
 def clang_format(filepath: str) -> None:
+    """
+    Format file.
+
+    Requires:
+        - clang-format installed
+        - ".clang-format" file at the root of project
+    """
+
     process = subprocess.run(
         ["clang-format", "--style=file:.clang-format", filepath], capture_output=True
     )

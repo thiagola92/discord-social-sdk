@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="DiscordppErrorType" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<constants>
+		<constant name="None" value="0" enum="Enum">
+		</constant>
+		<constant name="NetworkError" value="1" enum="Enum">
+		</constant>
+		<constant name="HTTPError" value="2" enum="Enum">
+		</constant>
+		<constant name="ClientNotReady" value="3" enum="Enum">
+		</constant>
+		<constant name="Disabled" value="4" enum="Enum">
+		</constant>
+		<constant name="ClientDestroyed" value="5" enum="Enum">
+		</constant>
+		<constant name="ValidationError" value="6" enum="Enum">
+		</constant>
+		<constant name="Aborted" value="7" enum="Enum">
+		</constant>
+		<constant name="AuthorizationFailed" value="8" enum="Enum">
+		</constant>
+		<constant name="RPCError" value="9" enum="Enum">
+		</constant>
+	</constants>
+</class>

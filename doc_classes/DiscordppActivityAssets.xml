@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="DiscordppActivityAssets" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="Drop">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="LargeImage">
+			<return type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="LargeText">
+			<return type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="SetLargeImage">
+			<return type="void" />
+			<param index="0" name="LargeImage" type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="SetLargeText">
+			<return type="void" />
+			<param index="0" name="LargeText" type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="SetSmallImage">
+			<return type="void" />
+			<param index="0" name="SmallImage" type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="SetSmallText">
+			<return type="void" />
+			<param index="0" name="SmallText" type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="SmallImage">
+			<return type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="SmallText">
+			<return type="Variant" />
+			<description>
+			</description>
+		</method>
+	</methods>
+</class>

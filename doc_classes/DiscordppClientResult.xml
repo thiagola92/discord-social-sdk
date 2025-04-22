@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="DiscordppClientResult" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="Drop">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="Error">
+			<return type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="ErrorCode">
+			<return type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="ResponseBody">
+			<return type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="RetryAfter">
+			<return type="float" />
+			<description>
+			</description>
+		</method>
+		<method name="Retryable">
+			<return type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="SetError">
+			<return type="void" />
+			<param index="0" name="Error" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="SetErrorCode">
+			<return type="void" />
+			<param index="0" name="ErrorCode" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="SetResponseBody">
+			<return type="void" />
+			<param index="0" name="ResponseBody" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="SetRetryAfter">
+			<return type="void" />
+			<param index="0" name="RetryAfter" type="float" />
+			<description>
+			</description>
+		</method>
+		<method name="SetRetryable">
+			<return type="void" />
+			<param index="0" name="Retryable" type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="SetStatus">
+			<return type="void" />
+			<param index="0" name="Status" type="int" enum="DiscordppHttpStatusCode.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="SetSuccessful">
+			<return type="void" />
+			<param index="0" name="Successful" type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="SetType">
+			<return type="void" />
+			<param index="0" name="Type" type="int" enum="DiscordppErrorType.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="Status">
+			<return type="int" enum="DiscordppHttpStatusCode.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="Successful">
+			<return type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="ToString">
+			<return type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="Type">
+			<return type="int" enum="DiscordppErrorType.Enum" />
+			<description>
+			</description>
+		</method>
+	</methods>
+</class>

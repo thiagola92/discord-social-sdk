@@ -1,0 +1,876 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="DiscordppClient" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="AbortAuthorize">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="AbortGetTokenFromDevice">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="AcceptActivityInvite">
+			<return type="void" />
+			<param index="0" name="invite" type="DiscordppActivityInvite" />
+			<param index="1" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="AcceptDiscordFriendRequest">
+			<return type="void" />
+			<param index="0" name="userId" type="int" />
+			<param index="1" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="AcceptGameFriendRequest">
+			<return type="void" />
+			<param index="0" name="userId" type="int" />
+			<param index="1" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="AddLogCallback">
+			<return type="void" />
+			<param index="0" name="callback" type="Callable" />
+			<param index="1" name="minSeverity" type="int" enum="DiscordppLoggingSeverity.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="AddVoiceLogCallback">
+			<return type="void" />
+			<param index="0" name="callback" type="Callable" />
+			<param index="1" name="minSeverity" type="int" enum="DiscordppLoggingSeverity.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="Authorize">
+			<return type="void" />
+			<param index="0" name="args" type="DiscordppAuthorizationArgs" />
+			<param index="1" name="callback" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="BlockUser">
+			<return type="void" />
+			<param index="0" name="userId" type="int" />
+			<param index="1" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="CanOpenMessageInDiscord">
+			<return type="bool" />
+			<param index="0" name="messageId" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="CancelDiscordFriendRequest">
+			<return type="void" />
+			<param index="0" name="userId" type="int" />
+			<param index="1" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="CancelGameFriendRequest">
+			<return type="void" />
+			<param index="0" name="userId" type="int" />
+			<param index="1" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="ClearRichPresence">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="CloseAuthorizeDeviceScreen">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="Connect">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="CreateAuthorizationCodeVerifier">
+			<return type="DiscordppAuthorizationCodeVerifier" />
+			<description>
+			</description>
+		</method>
+		<method name="CreateOrJoinLobby">
+			<return type="void" />
+			<param index="0" name="secret" type="String" />
+			<param index="1" name="callback" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="CreateOrJoinLobbyWithMetadata">
+			<return type="void" />
+			<param index="0" name="secret" type="String" />
+			<param index="1" name="lobbyMetadata" type="Dictionary[String, String]" />
+			<param index="2" name="memberMetadata" type="Dictionary[String, String]" />
+			<param index="3" name="callback" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="DeleteUserMessage">
+			<return type="void" />
+			<param index="0" name="recipientId" type="int" />
+			<param index="1" name="messageId" type="int" />
+			<param index="2" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="Disconnect">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="Drop">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="EditUserMessage">
+			<return type="void" />
+			<param index="0" name="recipientId" type="int" />
+			<param index="1" name="messageId" type="int" />
+			<param index="2" name="content" type="String" />
+			<param index="3" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="EndCall">
+			<return type="void" />
+			<param index="0" name="channelId" type="int" />
+			<param index="1" name="callback" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="EndCalls">
+			<return type="void" />
+			<param index="0" name="callback" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="ErrorToString">
+			<return type="String" />
+			<param index="0" name="type" type="int" enum="DiscordppClientError.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="FetchCurrentUser">
+			<return type="void" />
+			<param index="0" name="tokenType" type="int" enum="DiscordppAuthorizationTokenType.Enum" />
+			<param index="1" name="token" type="String" />
+			<param index="2" name="callback" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="GetCall">
+			<return type="DiscordppCall" />
+			<param index="0" name="channelId" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="GetCalls">
+			<return type="DiscordppCall[]" />
+			<description>
+			</description>
+		</method>
+		<method name="GetChannelHandle">
+			<return type="Variant" />
+			<param index="0" name="channelId" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="GetCurrentInputDevice">
+			<return type="void" />
+			<param index="0" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="GetCurrentOutputDevice">
+			<return type="void" />
+			<param index="0" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="GetCurrentUser">
+			<return type="DiscordppUserHandle" />
+			<description>
+			</description>
+		</method>
+		<method name="GetDefaultAudioDeviceId">
+			<return type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="GetDefaultCommunicationScopes">
+			<return type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="GetDefaultPresenceScopes">
+			<return type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="GetDiscordClientConnectedUser">
+			<return type="void" />
+			<param index="0" name="applicationId" type="int" />
+			<param index="1" name="callback" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="GetGuildChannels">
+			<return type="void" />
+			<param index="0" name="guildId" type="int" />
+			<param index="1" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="GetInputDevices">
+			<return type="void" />
+			<param index="0" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="GetInputVolume">
+			<return type="float" />
+			<description>
+			</description>
+		</method>
+		<method name="GetLobbyHandle">
+			<return type="Variant" />
+			<param index="0" name="lobbyId" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="GetLobbyIds">
+			<return type="int[]" />
+			<description>
+			</description>
+		</method>
+		<method name="GetMessageHandle">
+			<return type="Variant" />
+			<param index="0" name="messageId" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="GetOutputDevices">
+			<return type="void" />
+			<param index="0" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="GetOutputVolume">
+			<return type="float" />
+			<description>
+			</description>
+		</method>
+		<method name="GetProvisionalToken">
+			<return type="void" />
+			<param index="0" name="applicationId" type="int" />
+			<param index="1" name="externalAuthType" type="int" enum="DiscordppAuthenticationExternalAuthType.Enum" />
+			<param index="2" name="externalAuthToken" type="String" />
+			<param index="3" name="callback" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="GetRelationshipHandle">
+			<return type="DiscordppRelationshipHandle" />
+			<param index="0" name="userId" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="GetRelationships">
+			<return type="DiscordppRelationshipHandle[]" />
+			<description>
+			</description>
+		</method>
+		<method name="GetSelfDeafAll">
+			<return type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="GetSelfMuteAll">
+			<return type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="GetStatus">
+			<return type="int" enum="DiscordppClientStatus.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="GetToken">
+			<return type="void" />
+			<param index="0" name="applicationId" type="int" />
+			<param index="1" name="code" type="String" />
+			<param index="2" name="codeVerifier" type="String" />
+			<param index="3" name="redirectUri" type="String" />
+			<param index="4" name="callback" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="GetTokenFromDevice">
+			<return type="void" />
+			<param index="0" name="args" type="DiscordppDeviceAuthorizationArgs" />
+			<param index="1" name="callback" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="GetTokenFromDeviceProvisionalMerge">
+			<return type="void" />
+			<param index="0" name="args" type="DiscordppDeviceAuthorizationArgs" />
+			<param index="1" name="externalAuthType" type="int" enum="DiscordppAuthenticationExternalAuthType.Enum" />
+			<param index="2" name="externalAuthToken" type="String" />
+			<param index="3" name="callback" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="GetTokenFromProvisionalMerge">
+			<return type="void" />
+			<param index="0" name="applicationId" type="int" />
+			<param index="1" name="code" type="String" />
+			<param index="2" name="codeVerifier" type="String" />
+			<param index="3" name="redirectUri" type="String" />
+			<param index="4" name="externalAuthType" type="int" enum="DiscordppAuthenticationExternalAuthType.Enum" />
+			<param index="5" name="externalAuthToken" type="String" />
+			<param index="6" name="callback" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="GetUser">
+			<return type="Variant" />
+			<param index="0" name="userId" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="GetUserGuilds">
+			<return type="void" />
+			<param index="0" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="GetVersionHash">
+			<return type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="GetVersionMajor">
+			<return type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="GetVersionMinor">
+			<return type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="GetVersionPatch">
+			<return type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="IsAuthenticated">
+			<return type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="LeaveLobby">
+			<return type="void" />
+			<param index="0" name="lobbyId" type="int" />
+			<param index="1" name="callback" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="LinkChannelToLobby">
+			<return type="void" />
+			<param index="0" name="lobbyId" type="int" />
+			<param index="1" name="channelId" type="int" />
+			<param index="2" name="callback" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="OpenAuthorizeDeviceScreen">
+			<return type="void" />
+			<param index="0" name="clientId" type="int" />
+			<param index="1" name="userCode" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="OpenMessageInDiscord">
+			<return type="void" />
+			<param index="0" name="messageId" type="int" />
+			<param index="1" name="provisionalUserMergeRequiredCallback" type="Callable" />
+			<param index="2" name="callback" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="ProvisionalUserMergeCompleted">
+			<return type="void" />
+			<param index="0" name="success" type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="RefreshToken">
+			<return type="void" />
+			<param index="0" name="applicationId" type="int" />
+			<param index="1" name="refreshToken" type="String" />
+			<param index="2" name="callback" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="RegisterLaunchCommand">
+			<return type="bool" />
+			<param index="0" name="applicationId" type="int" />
+			<param index="1" name="command" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="RegisterLaunchSteamApplication">
+			<return type="bool" />
+			<param index="0" name="applicationId" type="int" />
+			<param index="1" name="steamAppId" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="RejectDiscordFriendRequest">
+			<return type="void" />
+			<param index="0" name="userId" type="int" />
+			<param index="1" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="RejectGameFriendRequest">
+			<return type="void" />
+			<param index="0" name="userId" type="int" />
+			<param index="1" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="RemoveDiscordAndGameFriend">
+			<return type="void" />
+			<param index="0" name="userId" type="int" />
+			<param index="1" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="RemoveGameFriend">
+			<return type="void" />
+			<param index="0" name="userId" type="int" />
+			<param index="1" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="SearchFriendsByUsername">
+			<return type="DiscordppUserHandle[]" />
+			<param index="0" name="searchStr" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="SendActivityInvite">
+			<return type="void" />
+			<param index="0" name="userId" type="int" />
+			<param index="1" name="content" type="String" />
+			<param index="2" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="SendActivityJoinRequest">
+			<return type="void" />
+			<param index="0" name="userId" type="int" />
+			<param index="1" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="SendActivityJoinRequestReply">
+			<return type="void" />
+			<param index="0" name="invite" type="DiscordppActivityInvite" />
+			<param index="1" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="SendDiscordFriendRequest">
+			<return type="void" />
+			<param index="0" name="username" type="String" />
+			<param index="1" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="SendDiscordFriendRequestById">
+			<return type="void" />
+			<param index="0" name="userId" type="int" />
+			<param index="1" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="SendGameFriendRequest">
+			<return type="void" />
+			<param index="0" name="username" type="String" />
+			<param index="1" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="SendGameFriendRequestById">
+			<return type="void" />
+			<param index="0" name="userId" type="int" />
+			<param index="1" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="SendLobbyMessage">
+			<return type="void" />
+			<param index="0" name="lobbyId" type="int" />
+			<param index="1" name="content" type="String" />
+			<param index="2" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="SendLobbyMessageWithMetadata">
+			<return type="void" />
+			<param index="0" name="lobbyId" type="int" />
+			<param index="1" name="content" type="String" />
+			<param index="2" name="metadata" type="Dictionary[String, String]" />
+			<param index="3" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="SendUserMessage">
+			<return type="void" />
+			<param index="0" name="recipientId" type="int" />
+			<param index="1" name="content" type="String" />
+			<param index="2" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="SendUserMessageWithMetadata">
+			<return type="void" />
+			<param index="0" name="recipientId" type="int" />
+			<param index="1" name="content" type="String" />
+			<param index="2" name="metadata" type="Dictionary[String, String]" />
+			<param index="3" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="SetActivityInviteCreatedCallback">
+			<return type="void" />
+			<param index="0" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="SetActivityInviteUpdatedCallback">
+			<return type="void" />
+			<param index="0" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="SetActivityJoinCallback">
+			<return type="void" />
+			<param index="0" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="SetAuthorizeDeviceScreenClosedCallback">
+			<return type="void" />
+			<param index="0" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="SetAutomaticGainControl">
+			<return type="void" />
+			<param index="0" name="on" type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="SetDeviceChangeCallback">
+			<return type="void" />
+			<param index="0" name="callback" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="SetEchoCancellation">
+			<return type="void" />
+			<param index="0" name="on" type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="SetGameWindowPid">
+			<return type="void" />
+			<param index="0" name="pid" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="SetInputDevice">
+			<return type="void" />
+			<param index="0" name="deviceId" type="String" />
+			<param index="1" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="SetInputVolume">
+			<return type="void" />
+			<param index="0" name="inputVolume" type="float" />
+			<description>
+			</description>
+		</method>
+		<method name="SetLobbyCreatedCallback">
+			<return type="void" />
+			<param index="0" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="SetLobbyDeletedCallback">
+			<return type="void" />
+			<param index="0" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="SetLobbyMemberAddedCallback">
+			<return type="void" />
+			<param index="0" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="SetLobbyMemberRemovedCallback">
+			<return type="void" />
+			<param index="0" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="SetLobbyMemberUpdatedCallback">
+			<return type="void" />
+			<param index="0" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="SetLobbyUpdatedCallback">
+			<return type="void" />
+			<param index="0" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="SetLogDir">
+			<return type="bool" />
+			<param index="0" name="path" type="String" />
+			<param index="1" name="minSeverity" type="int" enum="DiscordppLoggingSeverity.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="SetMessageCreatedCallback">
+			<return type="void" />
+			<param index="0" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="SetMessageDeletedCallback">
+			<return type="void" />
+			<param index="0" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="SetMessageUpdatedCallback">
+			<return type="void" />
+			<param index="0" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="SetNoAudioInputCallback">
+			<return type="void" />
+			<param index="0" name="callback" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="SetNoAudioInputThreshold">
+			<return type="void" />
+			<param index="0" name="dBFSThreshold" type="float" />
+			<description>
+			</description>
+		</method>
+		<method name="SetNoiseSuppression">
+			<return type="void" />
+			<param index="0" name="on" type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="SetOnlineStatus">
+			<return type="void" />
+			<param index="0" name="status" type="int" enum="DiscordppStatusType.Enum" />
+			<param index="1" name="callback" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="SetOpusHardwareCoding">
+			<return type="void" />
+			<param index="0" name="encode" type="bool" />
+			<param index="1" name="decode" type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="SetOutputDevice">
+			<return type="void" />
+			<param index="0" name="deviceId" type="String" />
+			<param index="1" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="SetOutputVolume">
+			<return type="void" />
+			<param index="0" name="outputVolume" type="float" />
+			<description>
+			</description>
+		</method>
+		<method name="SetRelationshipCreatedCallback">
+			<return type="void" />
+			<param index="0" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="SetRelationshipDeletedCallback">
+			<return type="void" />
+			<param index="0" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="SetSelfDeafAll">
+			<return type="void" />
+			<param index="0" name="deaf" type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="SetSelfMuteAll">
+			<return type="void" />
+			<param index="0" name="mute" type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="SetShowingChat">
+			<return type="void" />
+			<param index="0" name="showingChat" type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="SetSpeakerMode">
+			<return type="bool" />
+			<param index="0" name="speakerMode" type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="SetStatusChangedCallback">
+			<return type="void" />
+			<param index="0" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="SetThreadPriority">
+			<return type="void" />
+			<param index="0" name="thread" type="int" enum="DiscordppClientThread.Enum" />
+			<param index="1" name="priority" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="SetTokenExpirationCallback">
+			<return type="void" />
+			<param index="0" name="callback" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="SetUserUpdatedCallback">
+			<return type="void" />
+			<param index="0" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="SetVoiceLogDir">
+			<return type="void" />
+			<param index="0" name="path" type="String" />
+			<param index="1" name="minSeverity" type="int" enum="DiscordppLoggingSeverity.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="SetVoiceParticipantChangedCallback">
+			<return type="void" />
+			<param index="0" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="ShowAudioRoutePicker">
+			<return type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="StartCall">
+			<return type="DiscordppCall" />
+			<param index="0" name="channelId" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="StartCallWithAudioCallbacks">
+			<return type="DiscordppCall" />
+			<param index="0" name="lobbyId" type="int" />
+			<param index="1" name="receivedCb" type="Callable" />
+			<param index="2" name="capturedCb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="StatusToString">
+			<return type="String" />
+			<param index="0" name="type" type="int" enum="DiscordppClientStatus.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="ThreadToString">
+			<return type="String" />
+			<param index="0" name="type" type="int" enum="DiscordppClientThread.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="UnblockUser">
+			<return type="void" />
+			<param index="0" name="userId" type="int" />
+			<param index="1" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="UnlinkChannelFromLobby">
+			<return type="void" />
+			<param index="0" name="lobbyId" type="int" />
+			<param index="1" name="callback" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="UpdateProvisionalAccountDisplayName">
+			<return type="void" />
+			<param index="0" name="name" type="String" />
+			<param index="1" name="callback" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="UpdateRichPresence">
+			<return type="void" />
+			<param index="0" name="activity" type="DiscordppActivity" />
+			<param index="1" name="cb" type="Callable" />
+			<description>
+			</description>
+		</method>
+		<method name="UpdateToken">
+			<return type="void" />
+			<param index="0" name="tokenType" type="int" enum="DiscordppAuthorizationTokenType.Enum" />
+			<param index="1" name="token" type="String" />
+			<param index="2" name="callback" type="Callable" />
+			<description>
+			</description>
+		</method>
+	</methods>
+</class>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="Discordpp" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="EnumToString0">
+			<return type="String" />
+			<param index="0" name="value" type="int" enum="DiscordppActivityActionTypes.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="EnumToString1">
+			<return type="String" />
+			<param index="0" name="value" type="int" enum="DiscordppActivityGamePlatforms.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="EnumToString2">
+			<return type="String" />
+			<param index="0" name="value" type="int" enum="DiscordppActivityPartyPrivacy.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="EnumToString3">
+			<return type="String" />
+			<param index="0" name="value" type="int" enum="DiscordppActivityTypes.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="EnumToString4">
+			<return type="String" />
+			<param index="0" name="value" type="int" enum="DiscordppAdditionalContentType.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="EnumToString5">
+			<return type="String" />
+			<param index="0" name="value" type="int" enum="DiscordppAudioModeType.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="EnumToString6">
+			<return type="String" />
+			<param index="0" name="value" type="int" enum="DiscordppAuthenticationCodeChallengeMethod.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="EnumToString7">
+			<return type="String" />
+			<param index="0" name="value" type="int" enum="DiscordppAuthenticationExternalAuthType.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="EnumToString8">
+			<return type="String" />
+			<param index="0" name="value" type="int" enum="DiscordppAuthorizationTokenType.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="EnumToString9">
+			<return type="String" />
+			<param index="0" name="value" type="int" enum="DiscordppCallError.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="EnumToString10">
+			<return type="String" />
+			<param index="0" name="value" type="int" enum="DiscordppCallStatus.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="EnumToString11">
+			<return type="String" />
+			<param index="0" name="value" type="int" enum="DiscordppChannelType.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="EnumToString12">
+			<return type="String" />
+			<param index="0" name="value" type="int" enum="DiscordppClientError.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="EnumToString13">
+			<return type="String" />
+			<param index="0" name="value" type="int" enum="DiscordppClientStatus.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="EnumToString14">
+			<return type="String" />
+			<param index="0" name="value" type="int" enum="DiscordppClientThread.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="EnumToString15">
+			<return type="String" />
+			<param index="0" name="value" type="int" enum="DiscordppDisclosureTypes.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="EnumToString16">
+			<return type="String" />
+			<param index="0" name="value" type="int" enum="DiscordppErrorType.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="EnumToString17">
+			<return type="String" />
+			<param index="0" name="value" type="int" enum="DiscordppHttpStatusCode.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="EnumToString18">
+			<return type="String" />
+			<param index="0" name="value" type="int" enum="DiscordppLoggingSeverity.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="EnumToString19">
+			<return type="String" />
+			<param index="0" name="value" type="int" enum="DiscordppRelationshipType.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="EnumToString20">
+			<return type="String" />
+			<param index="0" name="value" type="int" enum="DiscordppStatusType.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="EnumToString21">
+			<return type="String" />
+			<param index="0" name="value" type="int" enum="DiscordppUserHandleAvatarType.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="RunCallbacks">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+	</methods>
+</class>

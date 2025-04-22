@@ -1,31 +1,30 @@
-from generator import generate_class, clear_classes
-from extractor import get_classes
-from template_file import header_
+from cleaner.cleaner import clean_content
+from parser.parser import Parser
+from helper import clang_format
 from pathlib import Path
+from builder.builder import Builder
+
+
+DISCORDPP_PATH = "include/discordpp.h"
+SRC_DIR = "src/"
+
+# Used for visualization of each step.
+TEMP_DIR = "scripts/temporary"
+STEP0 = f"{TEMP_DIR}/0_discordpp.h"
+STEP1 = f"{TEMP_DIR}/1_discordpp.txt"
 
 
 if __name__ == "__main__":
-    clear_classes()
+    Path(SRC_DIR).mkdir(exist_ok=True)
+    Path(TEMP_DIR).mkdir(exist_ok=True)
 
-    classes = list(get_classes().keys())
-    classes.sort()
+    clang_format(DISCORDPP_PATH)
 
-    classes_registrations = ""
-    classes_declarations = ""
-    classes_definitions = ""
+    discordpp_content = Path(DISCORDPP_PATH).read_text()
+    discordpp_content = clean_content(discordpp_content)
+    Path(STEP0).write_text(discordpp_content)
 
-    for class_name in classes:
-        class_methods = get_classes()[class_name]
-        class_registration, classes_definition = generate_class(
-            class_name, class_methods
-        )
+    tokens = Parser(discordpp_content).start()
+    Path(STEP1).write_text("\n".join([str(t) for t in tokens]))
 
-        # Increase strings to print later.
-        classes_registrations += class_registration
-        classes_declarations += f"class Discord{class_name};\n"
-        classes_definitions += classes_definition
-
-    classes_header = Path("src/discord_classes.h")
-    classes_header.write_text(header_(classes_declarations, classes_definitions))
-
-    print(f"########## CLASSES_REGISTRATIONS ##########\n\n{classes_registrations}")
+    Builder(src_dir=SRC_DIR, tokens=tokens).build_files()

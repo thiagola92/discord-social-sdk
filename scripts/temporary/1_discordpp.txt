@@ -1,0 +1,1012 @@
+
+enum DiscordObjectState {
+    Invalid: 0,
+    Owned: 1,
+}
+
+static func RunCallbacks() -> void
+
+enum ActivityActionTypes {
+    Join:  1,
+    JoinRequest:  5,
+}
+
+
+enum ActivityPartyPrivacy {
+    Private:  0,
+    Public:  1,
+}
+
+
+enum ActivityTypes {
+    Playing:  0,
+    Streaming:  1,
+    Listening:  2,
+    Watching:  3,
+    CustomStatus:  4,
+    Competing:  5,
+    HangStatus:  6,
+}
+
+
+enum ActivityGamePlatforms {
+    Desktop:  1,
+    Xbox:  2,
+    Samsung:  4,
+    IOS:  8,
+    Android:  16,
+    Embedded:  32,
+    PS4:  64,
+    PS5:  128,
+}
+
+
+enum ErrorType {
+    None:  0,
+    NetworkError:  1,
+    HTTPError:  2,
+    ClientNotReady:  3,
+    Disabled:  4,
+    ClientDestroyed:  5,
+    ValidationError:  6,
+    Aborted:  7,
+    AuthorizationFailed:  8,
+    RPCError:  9,
+}
+
+
+enum HttpStatusCode {
+    None:  0,
+    Continue:  100,
+    SwitchingProtocols:  101,
+    Processing:  102,
+    EarlyHints:  103,
+    Ok:  200,
+    Created:  201,
+    Accepted:  202,
+    NonAuthoritativeInfo:  203,
+    NoContent:  204,
+    ResetContent:  205,
+    PartialContent:  206,
+    MultiStatus:  207,
+    AlreadyReported:  208,
+    ImUsed:  209,
+    MultipleChoices:  300,
+    MovedPermanently:  301,
+    Found:  302,
+    SeeOther:  303,
+    NotModified:  304,
+    TemporaryRedirect:  307,
+    PermanentRedirect:  308,
+    BadRequest:  400,
+    Unauthorized:  401,
+    PaymentRequired:  402,
+    Forbidden:  403,
+    NotFound:  404,
+    MethodNotAllowed:  405,
+    NotAcceptable:  406,
+    ProxyAuthRequired:  407,
+    RequestTimeout:  408,
+    Conflict:  409,
+    Gone:  410,
+    LengthRequired:  411,
+    PreconditionFailed:  412,
+    PayloadTooLarge:  413,
+    UriTooLong:  414,
+    UnsupportedMediaType:  415,
+    RangeNotSatisfiable:  416,
+    ExpectationFailed:  417,
+    MisdirectedRequest:  421,
+    UnprocessableEntity:  422,
+    Locked:  423,
+    FailedDependency:  424,
+    TooEarly:  425,
+    UpgradeRequired:  426,
+    PreconditionRequired:  428,
+    TooManyRequests:  429,
+    RequestHeaderFieldsTooLarge:  431,
+    InternalServerError:  500,
+    NotImplemented:  501,
+    BadGateway:  502,
+    ServiceUnavailable:  503,
+    GatewayTimeout:  504,
+    HttpVersionNotSupported:  505,
+    VariantAlsoNegotiates:  506,
+    InsufficientStorage:  507,
+    LoopDetected:  508,
+    NotExtended:  510,
+    NetworkAuthorizationRequired:  511,
+}
+
+
+enum AuthenticationCodeChallengeMethod {
+    S256:  0,
+}
+
+
+enum AdditionalContentType {
+    Other:  0,
+    Attachment:  1,
+    Poll:  2,
+    VoiceMessage:  3,
+    Thread:  4,
+    Embed:  5,
+    Sticker:  6,
+}
+
+
+enum AudioModeType {
+    MODE_UNINIT:  0,
+    MODE_VAD:  1,
+    MODE_PTT:  2,
+}
+
+
+enum ChannelType {
+    GuildText:  0,
+    Dm:  1,
+    GuildVoice:  2,
+    GroupDm:  3,
+    GuildCategory:  4,
+    GuildNews:  5,
+    GuildStore:  6,
+    GuildNewsThread:  10,
+    GuildPublicThread:  11,
+    GuildPrivateThread:  12,
+    GuildStageVoice:  13,
+    GuildDirectory:  14,
+    GuildForum:  15,
+    GuildMedia:  16,
+    Lobby:  17,
+    EphemeralDm:  18,
+}
+
+
+enum RelationshipType {
+    None:  0,
+    Friend:  1,
+    Blocked:  2,
+    PendingIncoming:  3,
+    PendingOutgoing:  4,
+    Implicit:  5,
+    Suggestion:  6,
+}
+
+
+enum StatusType {
+    Online:  0,
+    Offline:  1,
+    Blocked:  2,
+    Idle:  3,
+    Dnd:  4,
+    Invisible:  5,
+    Streaming:  6,
+    Unknown:  7,
+}
+
+
+enum DisclosureTypes {
+    MessageDataVisibleOnDiscord:  3,
+}
+
+
+enum AuthorizationTokenType {
+    User:  0,
+    Bearer:  1,
+}
+
+
+enum AuthenticationExternalAuthType {
+    OIDC:  0,
+    EpicOnlineServicesAccessToken:  1,
+    EpicOnlineServicesIdToken:  2,
+    SteamSessionTicket:  3,
+}
+
+
+enum LoggingSeverity {
+    Verbose:  1,
+    Info:  2,
+    Warning:  3,
+    Error:  4,
+    None:  5,
+}
+
+
+class ActivityInvite {
+
+-----
+
+-----
+constructor (const ActivityInvite & rhs) 
+constructor () 
+-----
+func Drop() -> void
+func SenderId() -> uint64_t
+func SetSenderId(uint64_t SenderId) -> void
+func ChannelId() -> uint64_t
+func SetChannelId(uint64_t ChannelId) -> void
+func MessageId() -> uint64_t
+func SetMessageId(uint64_t MessageId) -> void
+func Type() -> discordpp::ActivityActionTypes
+func SetType(discordpp::ActivityActionTypes Type) -> void
+func ApplicationId() -> uint64_t
+func SetApplicationId(uint64_t ApplicationId) -> void
+func PartyId() -> std::string
+func SetPartyId(std::string PartyId) -> void
+func IsValid() -> bool
+func SetIsValid(bool IsValid) -> void
+}
+
+
+class ActivityAssets {
+
+-----
+
+-----
+constructor (const ActivityAssets & arg0) 
+constructor () 
+-----
+func Drop() -> void
+func LargeImage() -> std::optional<std::string>
+func SetLargeImage(std::optional<std::string> LargeImage) -> void
+func LargeText() -> std::optional<std::string>
+func SetLargeText(std::optional<std::string> LargeText) -> void
+func SmallImage() -> std::optional<std::string>
+func SetSmallImage(std::optional<std::string> SmallImage) -> void
+func SmallText() -> std::optional<std::string>
+func SetSmallText(std::optional<std::string> SmallText) -> void
+}
+
+
+class ActivityTimestamps {
+
+-----
+
+-----
+constructor (const ActivityTimestamps & arg0) 
+constructor () 
+-----
+func Drop() -> void
+func Start() -> uint64_t
+func SetStart(uint64_t Start) -> void
+func End() -> uint64_t
+func SetEnd(uint64_t End) -> void
+}
+
+
+class ActivityParty {
+
+-----
+
+-----
+constructor (const ActivityParty & arg0) 
+constructor () 
+-----
+func Drop() -> void
+func Id() -> std::string
+func SetId(std::string Id) -> void
+func CurrentSize() -> int32_t
+func SetCurrentSize(int32_t CurrentSize) -> void
+func MaxSize() -> int32_t
+func SetMaxSize(int32_t MaxSize) -> void
+func Privacy() -> discordpp::ActivityPartyPrivacy
+func SetPrivacy(discordpp::ActivityPartyPrivacy Privacy) -> void
+}
+
+
+class ActivitySecrets {
+
+-----
+
+-----
+constructor (const ActivitySecrets & arg0) 
+constructor () 
+-----
+func Drop() -> void
+func Join() -> std::string
+func SetJoin(std::string Join) -> void
+}
+
+
+class Activity {
+
+-----
+
+-----
+constructor (const Activity & arg0) 
+constructor () 
+-----
+func Drop() -> void
+func Equals(discordpp::Activity other) -> bool
+func Name() -> std::string
+func SetName(std::string Name) -> void
+func Type() -> discordpp::ActivityTypes
+func SetType(discordpp::ActivityTypes Type) -> void
+func State() -> std::optional<std::string>
+func SetState(std::optional<std::string> State) -> void
+func Details() -> std::optional<std::string>
+func SetDetails(std::optional<std::string> Details) -> void
+func ApplicationId() -> std::optional<uint64_t>
+func SetApplicationId(std::optional<uint64_t> ApplicationId) -> void
+func Assets() -> std::optional<discordpp::ActivityAssets>
+func SetAssets(std::optional<discordpp::ActivityAssets> Assets) -> void
+func Timestamps() -> std::optional<discordpp::ActivityTimestamps>
+func SetTimestamps(std::optional<discordpp::ActivityTimestamps> Timestamps) -> void
+func Party() -> std::optional<discordpp::ActivityParty>
+func SetParty(std::optional<discordpp::ActivityParty> Party) -> void
+func Secrets() -> std::optional<discordpp::ActivitySecrets>
+func SetSecrets(std::optional<discordpp::ActivitySecrets> Secrets) -> void
+func SupportedPlatforms() -> discordpp::ActivityGamePlatforms
+func SetSupportedPlatforms(discordpp::ActivityGamePlatforms SupportedPlatforms) -> void
+}
+
+
+class ClientResult {
+
+-----
+
+-----
+constructor (const ClientResult & arg0) 
+-----
+func Drop() -> void
+func ToString() -> std::string
+func Type() -> discordpp::ErrorType
+func SetType(discordpp::ErrorType Type) -> void
+func Error() -> std::string
+func SetError(std::string Error) -> void
+func ErrorCode() -> int32_t
+func SetErrorCode(int32_t ErrorCode) -> void
+func Status() -> discordpp::HttpStatusCode
+func SetStatus(discordpp::HttpStatusCode Status) -> void
+func ResponseBody() -> std::string
+func SetResponseBody(std::string ResponseBody) -> void
+func Successful() -> bool
+func SetSuccessful(bool Successful) -> void
+func Retryable() -> bool
+func SetRetryable(bool Retryable) -> void
+func RetryAfter() -> float
+func SetRetryAfter(float RetryAfter) -> void
+}
+
+
+class AuthorizationCodeChallenge {
+
+-----
+
+-----
+constructor (const AuthorizationCodeChallenge & arg0) 
+constructor () 
+-----
+func Drop() -> void
+func Method() -> discordpp::AuthenticationCodeChallengeMethod
+func SetMethod(discordpp::AuthenticationCodeChallengeMethod Method) -> void
+func Challenge() -> std::string
+func SetChallenge(std::string Challenge) -> void
+}
+
+
+class AuthorizationCodeVerifier {
+
+-----
+
+-----
+constructor (const AuthorizationCodeVerifier & arg0) 
+-----
+func Drop() -> void
+func Challenge() -> discordpp::AuthorizationCodeChallenge
+func SetChallenge(discordpp::AuthorizationCodeChallenge Challenge) -> void
+func Verifier() -> std::string
+func SetVerifier(std::string Verifier) -> void
+}
+
+
+class AuthorizationArgs {
+
+-----
+
+-----
+constructor (const AuthorizationArgs & arg0) 
+constructor () 
+-----
+func Drop() -> void
+func ClientId() -> uint64_t
+func SetClientId(uint64_t ClientId) -> void
+func Scopes() -> std::string
+func SetScopes(std::string Scopes) -> void
+func State() -> std::optional<std::string>
+func SetState(std::optional<std::string> State) -> void
+func Nonce() -> std::optional<std::string>
+func SetNonce(std::optional<std::string> Nonce) -> void
+func CodeChallenge() -> std::optional<discordpp::AuthorizationCodeChallenge>
+func SetCodeChallenge(std::optional<discordpp::AuthorizationCodeChallenge> CodeChallenge) -> void
+}
+
+
+class DeviceAuthorizationArgs {
+
+-----
+
+-----
+constructor (const DeviceAuthorizationArgs & arg0) 
+constructor () 
+-----
+func Drop() -> void
+func ClientId() -> uint64_t
+func SetClientId(uint64_t ClientId) -> void
+func Scopes() -> std::string
+func SetScopes(std::string Scopes) -> void
+}
+
+
+class VoiceStateHandle {
+
+-----
+
+-----
+constructor (const VoiceStateHandle & other) 
+-----
+func Drop() -> void
+func SelfDeaf() -> bool
+func SelfMute() -> bool
+}
+
+
+class VADThresholdSettings {
+
+-----
+
+-----
+constructor ( const VADThresholdSettings &) deleted
+-----
+func Drop() -> void
+func VadThreshold() -> float
+func SetVadThreshold(float VadThreshold) -> void
+func Automatic() -> bool
+func SetAutomatic(bool Automatic) -> void
+}
+
+
+class Call {
+
+enum Error {
+    None:  0,
+    SignalingConnectionFailed:  1,
+    SignalingUnexpectedClose:  2,
+    VoiceConnectionFailed:  3,
+    JoinTimeout:  4,
+    Forbidden:  5,
+}
+
+enum Status {
+    Disconnected:  0,
+    Joining:  1,
+    Connecting:  2,
+    SignalingConnected:  3,
+    Connected:  4,
+    Reconnecting:  5,
+    Disconnecting:  6,
+}
+
+-----
+callback OnVoiceStateChanged(uint64_t userId)
+callback OnParticipantChanged(uint64_t userId, bool added)
+callback OnSpeakingStatusChanged(uint64_t userId, bool isPlayingSound)
+callback OnStatusChanged(discordpp::Call::Status status, discordpp::Call::Error error, int32_t errorDetail)
+-----
+constructor (const Call & other) 
+-----
+func Drop() -> void
+static func ErrorToString(discordpp::Call::Error type) -> std::string
+func GetAudioMode() -> discordpp::AudioModeType
+func GetChannelId() -> uint64_t
+func GetGuildId() -> uint64_t
+func GetLocalMute(uint64_t userId) -> bool
+func GetParticipants() -> std::vector<uint64_t>
+func GetParticipantVolume(uint64_t userId) -> float
+func GetPTTActive() -> bool
+func GetSelfDeaf() -> bool
+func GetSelfMute() -> bool
+func GetStatus() -> discordpp::Call::Status
+func GetVADThreshold() -> discordpp::VADThresholdSettings
+func GetVoiceStateHandle(uint64_t userId) -> std::optional<discordpp::VoiceStateHandle>
+func SetAudioMode(discordpp::AudioModeType audioMode) -> void
+func SetLocalMute(uint64_t userId, bool mute) -> void
+func SetOnVoiceStateChangedCallback(discordpp::Call::OnVoiceStateChanged cb) -> void
+func SetParticipantChangedCallback(discordpp::Call::OnParticipantChanged cb) -> void
+func SetParticipantVolume(uint64_t userId, float volume) -> void
+func SetPTTActive(bool active) -> void
+func SetPTTReleaseDelay(uint32_t releaseDelayMs) -> void
+func SetSelfDeaf(bool deaf) -> void
+func SetSelfMute(bool mute) -> void
+func SetSpeakingStatusChangedCallback(discordpp::Call::OnSpeakingStatusChanged cb) -> void
+func SetStatusChangedCallback(discordpp::Call::OnStatusChanged cb) -> void
+func SetVADThreshold(bool automatic, float threshold) -> void
+static func StatusToString(discordpp::Call::Status type) -> std::string
+}
+
+
+class ChannelHandle {
+
+-----
+
+-----
+constructor (const ChannelHandle & other) 
+-----
+func Drop() -> void
+func Id() -> uint64_t
+func Name() -> std::string
+func Recipients() -> std::vector<uint64_t>
+func Type() -> discordpp::ChannelType
+}
+
+
+class GuildMinimal {
+
+-----
+
+-----
+constructor (const GuildMinimal & arg0) 
+-----
+func Drop() -> void
+func Id() -> uint64_t
+func SetId(uint64_t Id) -> void
+func Name() -> std::string
+func SetName(std::string Name) -> void
+}
+
+
+class GuildChannel {
+
+-----
+
+-----
+constructor (const GuildChannel & arg0) 
+-----
+func Drop() -> void
+func Id() -> uint64_t
+func SetId(uint64_t Id) -> void
+func Name() -> std::string
+func SetName(std::string Name) -> void
+func IsLinkable() -> bool
+func SetIsLinkable(bool IsLinkable) -> void
+func IsViewableAndWriteableByAllMembers() -> bool
+func SetIsViewableAndWriteableByAllMembers(bool IsViewableAndWriteableByAllMembers) -> void
+func LinkedLobby() -> std::optional<discordpp::LinkedLobby>
+func SetLinkedLobby(std::optional<discordpp::LinkedLobby> LinkedLobby) -> void
+}
+
+
+class LinkedLobby {
+
+-----
+
+-----
+constructor (const LinkedLobby & arg0) 
+constructor () 
+-----
+func Drop() -> void
+func ApplicationId() -> uint64_t
+func SetApplicationId(uint64_t ApplicationId) -> void
+func LobbyId() -> uint64_t
+func SetLobbyId(uint64_t LobbyId) -> void
+}
+
+
+class LinkedChannel {
+
+-----
+
+-----
+constructor (const LinkedChannel & arg0) 
+-----
+func Drop() -> void
+func Id() -> uint64_t
+func SetId(uint64_t Id) -> void
+func Name() -> std::string
+func SetName(std::string Name) -> void
+func GuildId() -> uint64_t
+func SetGuildId(uint64_t GuildId) -> void
+}
+
+
+class RelationshipHandle {
+
+-----
+
+-----
+constructor (const RelationshipHandle & other) 
+-----
+func Drop() -> void
+func DiscordRelationshipType() -> discordpp::RelationshipType
+func GameRelationshipType() -> discordpp::RelationshipType
+func Id() -> uint64_t
+func User() -> std::optional<discordpp::UserHandle>
+}
+
+
+class UserHandle {
+
+enum AvatarType {
+    Gif:  0,
+    Webp:  1,
+    Png:  2,
+    Jpeg:  3,
+}
+
+-----
+
+-----
+constructor (const UserHandle & arg0) 
+-----
+func Drop() -> void
+func Avatar() -> std::optional<std::string>
+static func AvatarTypeToString(discordpp::UserHandle::AvatarType type) -> std::string
+func AvatarUrl(discordpp::UserHandle::AvatarType animatedType, discordpp::UserHandle::AvatarType staticType) -> std::string
+func DisplayName() -> std::string
+func GameActivity() -> std::optional<discordpp::Activity>
+func GlobalName() -> std::optional<std::string>
+func Id() -> uint64_t
+func IsProvisional() -> bool
+func Relationship() -> discordpp::RelationshipHandle
+func Status() -> discordpp::StatusType
+func Username() -> std::string
+}
+
+
+class LobbyMemberHandle {
+
+-----
+
+-----
+constructor (const LobbyMemberHandle & other) 
+-----
+func Drop() -> void
+func CanLinkLobby() -> bool
+func Connected() -> bool
+func Id() -> uint64_t
+func Metadata() -> std::unordered_map<std::string, std::string>
+func User() -> std::optional<discordpp::UserHandle>
+}
+
+
+class LobbyHandle {
+
+-----
+
+-----
+constructor (const LobbyHandle & other) 
+-----
+func Drop() -> void
+func GetCallInfoHandle() -> std::optional<discordpp::CallInfoHandle>
+func GetLobbyMemberHandle(uint64_t memberId) -> std::optional<discordpp::LobbyMemberHandle>
+func Id() -> uint64_t
+func LinkedChannel() -> std::optional<discordpp::LinkedChannel>
+func LobbyMemberIds() -> std::vector<uint64_t>
+func LobbyMembers() -> std::vector<discordpp::LobbyMemberHandle>
+func Metadata() -> std::unordered_map<std::string, std::string>
+}
+
+
+class AdditionalContent {
+
+-----
+
+-----
+constructor (const AdditionalContent & arg0) 
+constructor () 
+-----
+func Drop() -> void
+func Equals(discordpp::AdditionalContent rhs) -> bool
+static func TypeToString(discordpp::AdditionalContentType type) -> std::string
+func Type() -> discordpp::AdditionalContentType
+func SetType(discordpp::AdditionalContentType Type) -> void
+func Title() -> std::optional<std::string>
+func SetTitle(std::optional<std::string> Title) -> void
+func Count() -> uint8_t
+func SetCount(uint8_t Count) -> void
+}
+
+
+class MessageHandle {
+
+-----
+
+-----
+constructor (const MessageHandle & other) 
+-----
+func Drop() -> void
+func AdditionalContent() -> std::optional<discordpp::AdditionalContent>
+func Author() -> std::optional<discordpp::UserHandle>
+func AuthorId() -> uint64_t
+func Channel() -> std::optional<discordpp::ChannelHandle>
+func ChannelId() -> uint64_t
+func Content() -> std::string
+func DisclosureType() -> std::optional<discordpp::DisclosureTypes>
+func EditedTimestamp() -> uint64_t
+func Id() -> uint64_t
+func Lobby() -> std::optional<discordpp::LobbyHandle>
+func Metadata() -> std::unordered_map<std::string, std::string>
+func RawContent() -> std::string
+func Recipient() -> std::optional<discordpp::UserHandle>
+func RecipientId() -> uint64_t
+func SentFromGame() -> bool
+func SentTimestamp() -> uint64_t
+}
+
+
+class AudioDevice {
+
+-----
+
+-----
+constructor (const AudioDevice & arg0) 
+-----
+func Drop() -> void
+func Equals(discordpp::AudioDevice rhs) -> bool
+func Id() -> std::string
+func SetId(std::string Id) -> void
+func Name() -> std::string
+func SetName(std::string Name) -> void
+func IsDefault() -> bool
+func SetIsDefault(bool IsDefault) -> void
+}
+
+
+class Client {
+
+enum Error {
+    None:  0,
+    ConnectionFailed:  1,
+    UnexpectedClose:  2,
+    ConnectionCanceled:  3,
+}
+
+enum Status {
+    Disconnected:  0,
+    Connecting:  1,
+    Connected:  2,
+    Ready:  3,
+    Reconnecting:  4,
+    Disconnecting:  5,
+    HttpWait:  6,
+}
+
+enum Thread {
+    Client:  0,
+    Voice:  1,
+    Network:  2,
+}
+
+-----
+callback EndCallCallback()
+callback EndCallsCallback()
+callback GetCurrentInputDeviceCallback(discordpp::AudioDevice device)
+callback GetCurrentOutputDeviceCallback(discordpp::AudioDevice device)
+callback GetInputDevicesCallback(std::vector<discordpp::AudioDevice> devices)
+callback GetOutputDevicesCallback(std::vector<discordpp::AudioDevice> devices)
+callback DeviceChangeCallback(std::vector<discordpp::AudioDevice> inputDevices, std::vector<discordpp::AudioDevice> outputDevices)
+callback SetInputDeviceCallback(discordpp::ClientResult result)
+callback NoAudioInputCallback(bool inputDetected)
+callback SetOutputDeviceCallback(discordpp::ClientResult result)
+callback VoiceParticipantChangedCallback(uint64_t lobbyId, uint64_t memberId, bool added)
+callback UserAudioReceivedCallback(uint64_t userId, int16_t const * data, uint64_t samplesPerChannel, int32_t sampleRate, uint64_t channels, bool & outShouldMute)
+callback UserAudioCapturedCallback(int16_t const * data, uint64_t samplesPerChannel, int32_t sampleRate, uint64_t channels)
+callback AuthorizationCallback(discordpp::ClientResult result, std::string code, std::string redirectUri)
+callback FetchCurrentUserCallback(discordpp::ClientResult result, uint64_t id, std::string name)
+callback TokenExchangeCallback(discordpp::ClientResult result, std::string accessToken, std::string refreshToken, discordpp::AuthorizationTokenType tokenType, int32_t expiresIn, std::string scopes)
+callback AuthorizeDeviceScreenClosedCallback()
+callback TokenExpirationCallback()
+callback UpdateProvisionalAccountDisplayNameCallback(discordpp::ClientResult result)
+callback UpdateTokenCallback(discordpp::ClientResult result)
+callback DeleteUserMessageCallback(discordpp::ClientResult result)
+callback EditUserMessageCallback(discordpp::ClientResult result)
+callback ProvisionalUserMergeRequiredCallback()
+callback OpenMessageInDiscordCallback(discordpp::ClientResult result)
+callback SendUserMessageCallback(discordpp::ClientResult result, uint64_t messageId)
+callback MessageCreatedCallback(uint64_t messageId)
+callback MessageDeletedCallback(uint64_t messageId, uint64_t channelId)
+callback MessageUpdatedCallback(uint64_t messageId)
+callback LogCallback(std::string message, discordpp::LoggingSeverity severity)
+callback OnStatusChanged(discordpp::Client::Status status, discordpp::Client::Error error, int32_t errorDetail)
+callback CreateOrJoinLobbyCallback(discordpp::ClientResult result, uint64_t lobbyId)
+callback GetGuildChannelsCallback(discordpp::ClientResult result, std::vector<discordpp::GuildChannel> guildChannels)
+callback GetUserGuildsCallback(discordpp::ClientResult result, std::vector<discordpp::GuildMinimal> guilds)
+callback LeaveLobbyCallback(discordpp::ClientResult result)
+callback LinkOrUnlinkChannelCallback(discordpp::ClientResult result)
+callback LobbyCreatedCallback(uint64_t lobbyId)
+callback LobbyDeletedCallback(uint64_t lobbyId)
+callback LobbyMemberAddedCallback(uint64_t lobbyId, uint64_t memberId)
+callback LobbyMemberRemovedCallback(uint64_t lobbyId, uint64_t memberId)
+callback LobbyMemberUpdatedCallback(uint64_t lobbyId, uint64_t memberId)
+callback LobbyUpdatedCallback(uint64_t lobbyId)
+callback AcceptActivityInviteCallback(discordpp::ClientResult result, std::string joinSecret)
+callback SendActivityInviteCallback(discordpp::ClientResult result)
+callback ActivityInviteCallback(discordpp::ActivityInvite invite)
+callback ActivityJoinCallback(std::string joinSecret)
+callback UpdateStatusCallback(discordpp::ClientResult result)
+callback UpdateRichPresenceCallback(discordpp::ClientResult result)
+callback UpdateRelationshipCallback(discordpp::ClientResult result)
+callback SendFriendRequestCallback(discordpp::ClientResult result)
+callback RelationshipCreatedCallback(uint64_t userId, bool isDiscordRelationshipUpdate)
+callback RelationshipDeletedCallback(uint64_t userId, bool isDiscordRelationshipUpdate)
+callback GetDiscordClientConnectedUserCallback(discordpp::ClientResult result, std::optional<discordpp::UserHandle> user)
+callback UserUpdatedCallback(uint64_t userId)
+-----
+constructor ( const Client &) deleted
+constructor () 
+constructor (std::string apiBase, std::string webBase) 
+-----
+func Drop() -> void
+static func ErrorToString(discordpp::Client::Error type) -> std::string
+static func GetDefaultAudioDeviceId() -> std::string
+static func GetDefaultCommunicationScopes() -> std::string
+static func GetDefaultPresenceScopes() -> std::string
+static func GetVersionHash() -> std::string
+static func GetVersionMajor() -> int32_t
+static func GetVersionMinor() -> int32_t
+static func GetVersionPatch() -> int32_t
+static func StatusToString(discordpp::Client::Status type) -> std::string
+static func ThreadToString(discordpp::Client::Thread type) -> std::string
+func EndCall(uint64_t channelId, discordpp::Client::EndCallCallback callback) -> void
+func EndCalls(discordpp::Client::EndCallsCallback callback) -> void
+func GetCall(uint64_t channelId) -> discordpp::Call
+func GetCalls() -> std::vector<discordpp::Call>
+func GetCurrentInputDevice(discordpp::Client::GetCurrentInputDeviceCallback cb) -> void
+func GetCurrentOutputDevice(discordpp::Client::GetCurrentOutputDeviceCallback cb) -> void
+func GetInputDevices(discordpp::Client::GetInputDevicesCallback cb) -> void
+func GetInputVolume() -> float
+func GetOutputDevices(discordpp::Client::GetOutputDevicesCallback cb) -> void
+func GetOutputVolume() -> float
+func GetSelfDeafAll() -> bool
+func GetSelfMuteAll() -> bool
+func SetAutomaticGainControl(bool on) -> void
+func SetDeviceChangeCallback(discordpp::Client::DeviceChangeCallback callback) -> void
+func SetEchoCancellation(bool on) -> void
+func SetInputDevice(std::string deviceId, discordpp::Client::SetInputDeviceCallback cb) -> void
+func SetInputVolume(float inputVolume) -> void
+func SetNoAudioInputCallback(discordpp::Client::NoAudioInputCallback callback) -> void
+func SetNoAudioInputThreshold(float dBFSThreshold) -> void
+func SetNoiseSuppression(bool on) -> void
+func SetOpusHardwareCoding(bool encode, bool decode) -> void
+func SetOutputDevice(std::string deviceId, discordpp::Client::SetOutputDeviceCallback cb) -> void
+func SetOutputVolume(float outputVolume) -> void
+func SetSelfDeafAll(bool deaf) -> void
+func SetSelfMuteAll(bool mute) -> void
+func SetSpeakerMode(bool speakerMode) -> bool
+func SetThreadPriority(discordpp::Client::Thread thread, int32_t priority) -> void
+func SetVoiceParticipantChangedCallback(discordpp::Client::VoiceParticipantChangedCallback cb) -> void
+func ShowAudioRoutePicker() -> bool
+func StartCall(uint64_t channelId) -> discordpp::Call
+func StartCallWithAudioCallbacks(uint64_t lobbyId, discordpp::Client::UserAudioReceivedCallback receivedCb, discordpp::Client::UserAudioCapturedCallback capturedCb) -> discordpp::Call
+func AbortAuthorize() -> void
+func AbortGetTokenFromDevice() -> void
+func Authorize(discordpp::AuthorizationArgs args, discordpp::Client::AuthorizationCallback callback) -> void
+func CloseAuthorizeDeviceScreen() -> void
+func CreateAuthorizationCodeVerifier() -> discordpp::AuthorizationCodeVerifier
+func FetchCurrentUser(discordpp::AuthorizationTokenType tokenType, std::string const & token, discordpp::Client::FetchCurrentUserCallback callback) -> void
+func GetProvisionalToken(uint64_t applicationId, discordpp::AuthenticationExternalAuthType externalAuthType, std::string const & externalAuthToken, discordpp::Client::TokenExchangeCallback callback) -> void
+func GetToken(uint64_t applicationId, std::string const & code, std::string const & codeVerifier, std::string const & redirectUri, discordpp::Client::TokenExchangeCallback callback) -> void
+func GetTokenFromDevice(discordpp::DeviceAuthorizationArgs args, discordpp::Client::TokenExchangeCallback callback) -> void
+func GetTokenFromDeviceProvisionalMerge(discordpp::DeviceAuthorizationArgs args, discordpp::AuthenticationExternalAuthType externalAuthType, std::string const & externalAuthToken, discordpp::Client::TokenExchangeCallback callback) -> void
+func GetTokenFromProvisionalMerge(uint64_t applicationId, std::string const & code, std::string const & codeVerifier, std::string const & redirectUri, discordpp::AuthenticationExternalAuthType externalAuthType, std::string const & externalAuthToken, discordpp::Client::TokenExchangeCallback callback) -> void
+func IsAuthenticated() -> bool
+func OpenAuthorizeDeviceScreen(uint64_t clientId, std::string const & userCode) -> void
+func ProvisionalUserMergeCompleted(bool success) -> void
+func RefreshToken(uint64_t applicationId, std::string const & refreshToken, discordpp::Client::TokenExchangeCallback callback) -> void
+func SetAuthorizeDeviceScreenClosedCallback(discordpp::Client::AuthorizeDeviceScreenClosedCallback cb) -> void
+func SetGameWindowPid(int32_t pid) -> void
+func SetTokenExpirationCallback(discordpp::Client::TokenExpirationCallback callback) -> void
+func UpdateProvisionalAccountDisplayName(std::string const & name, discordpp::Client::UpdateProvisionalAccountDisplayNameCallback callback) -> void
+func UpdateToken(discordpp::AuthorizationTokenType tokenType, std::string token, discordpp::Client::UpdateTokenCallback callback) -> void
+func CanOpenMessageInDiscord(uint64_t messageId) -> bool
+func DeleteUserMessage(uint64_t recipientId, uint64_t messageId, discordpp::Client::DeleteUserMessageCallback cb) -> void
+func EditUserMessage(uint64_t recipientId, uint64_t messageId, std::string const & content, discordpp::Client::EditUserMessageCallback cb) -> void
+func GetChannelHandle(uint64_t channelId) -> std::optional<discordpp::ChannelHandle>
+func GetMessageHandle(uint64_t messageId) -> std::optional<discordpp::MessageHandle>
+func OpenMessageInDiscord(uint64_t messageId, discordpp::Client::ProvisionalUserMergeRequiredCallback provisionalUserMergeRequiredCallback, discordpp::Client::OpenMessageInDiscordCallback callback) -> void
+func SendLobbyMessage(uint64_t lobbyId, std::string const & content, discordpp::Client::SendUserMessageCallback cb) -> void
+func SendLobbyMessageWithMetadata(uint64_t lobbyId, std::string const & content, std::unordered_map<std::string, std::string> metadata, discordpp::Client::SendUserMessageCallback cb) -> void
+func SendUserMessage(uint64_t recipientId, std::string const & content, discordpp::Client::SendUserMessageCallback cb) -> void
+func SendUserMessageWithMetadata(uint64_t recipientId, std::string const & content, std::unordered_map<std::string, std::string> metadata, discordpp::Client::SendUserMessageCallback cb) -> void
+func SetMessageCreatedCallback(discordpp::Client::MessageCreatedCallback cb) -> void
+func SetMessageDeletedCallback(discordpp::Client::MessageDeletedCallback cb) -> void
+func SetMessageUpdatedCallback(discordpp::Client::MessageUpdatedCallback cb) -> void
+func SetShowingChat(bool showingChat) -> void
+func AddLogCallback(discordpp::Client::LogCallback callback, discordpp::LoggingSeverity minSeverity) -> void
+func AddVoiceLogCallback(discordpp::Client::LogCallback callback, discordpp::LoggingSeverity minSeverity) -> void
+func Connect() -> void
+func Disconnect() -> void
+func GetStatus() -> discordpp::Client::Status
+func SetLogDir(std::string const & path, discordpp::LoggingSeverity minSeverity) -> bool
+func SetStatusChangedCallback(discordpp::Client::OnStatusChanged cb) -> void
+func SetVoiceLogDir(std::string const & path, discordpp::LoggingSeverity minSeverity) -> void
+func CreateOrJoinLobby(std::string const & secret, discordpp::Client::CreateOrJoinLobbyCallback callback) -> void
+func CreateOrJoinLobbyWithMetadata(std::string const & secret, std::unordered_map<std::string, std::string> lobbyMetadata, std::unordered_map<std::string, std::string> memberMetadata, discordpp::Client::CreateOrJoinLobbyCallback callback) -> void
+func GetGuildChannels(uint64_t guildId, discordpp::Client::GetGuildChannelsCallback cb) -> void
+func GetLobbyHandle(uint64_t lobbyId) -> std::optional<discordpp::LobbyHandle>
+func GetLobbyIds() -> std::vector<uint64_t>
+func GetUserGuilds(discordpp::Client::GetUserGuildsCallback cb) -> void
+func LeaveLobby(uint64_t lobbyId, discordpp::Client::LeaveLobbyCallback callback) -> void
+func LinkChannelToLobby(uint64_t lobbyId, uint64_t channelId, discordpp::Client::LinkOrUnlinkChannelCallback callback) -> void
+func SetLobbyCreatedCallback(discordpp::Client::LobbyCreatedCallback cb) -> void
+func SetLobbyDeletedCallback(discordpp::Client::LobbyDeletedCallback cb) -> void
+func SetLobbyMemberAddedCallback(discordpp::Client::LobbyMemberAddedCallback cb) -> void
+func SetLobbyMemberRemovedCallback(discordpp::Client::LobbyMemberRemovedCallback cb) -> void
+func SetLobbyMemberUpdatedCallback(discordpp::Client::LobbyMemberUpdatedCallback cb) -> void
+func SetLobbyUpdatedCallback(discordpp::Client::LobbyUpdatedCallback cb) -> void
+func UnlinkChannelFromLobby(uint64_t lobbyId, discordpp::Client::LinkOrUnlinkChannelCallback callback) -> void
+func AcceptActivityInvite(discordpp::ActivityInvite invite, discordpp::Client::AcceptActivityInviteCallback cb) -> void
+func ClearRichPresence() -> void
+func RegisterLaunchCommand(uint64_t applicationId, std::string command) -> bool
+func RegisterLaunchSteamApplication(uint64_t applicationId, uint32_t steamAppId) -> bool
+func SendActivityInvite(uint64_t userId, std::string const & content, discordpp::Client::SendActivityInviteCallback cb) -> void
+func SendActivityJoinRequest(uint64_t userId, discordpp::Client::SendActivityInviteCallback cb) -> void
+func SendActivityJoinRequestReply(discordpp::ActivityInvite invite, discordpp::Client::SendActivityInviteCallback cb) -> void
+func SetActivityInviteCreatedCallback(discordpp::Client::ActivityInviteCallback cb) -> void
+func SetActivityInviteUpdatedCallback(discordpp::Client::ActivityInviteCallback cb) -> void
+func SetActivityJoinCallback(discordpp::Client::ActivityJoinCallback cb) -> void
+func SetOnlineStatus(discordpp::StatusType status, discordpp::Client::UpdateStatusCallback callback) -> void
+func UpdateRichPresence(discordpp::Activity activity, discordpp::Client::UpdateRichPresenceCallback cb) -> void
+func AcceptDiscordFriendRequest(uint64_t userId, discordpp::Client::UpdateRelationshipCallback cb) -> void
+func AcceptGameFriendRequest(uint64_t userId, discordpp::Client::UpdateRelationshipCallback cb) -> void
+func BlockUser(uint64_t userId, discordpp::Client::UpdateRelationshipCallback cb) -> void
+func CancelDiscordFriendRequest(uint64_t userId, discordpp::Client::UpdateRelationshipCallback cb) -> void
+func CancelGameFriendRequest(uint64_t userId, discordpp::Client::UpdateRelationshipCallback cb) -> void
+func GetRelationshipHandle(uint64_t userId) -> discordpp::RelationshipHandle
+func GetRelationships() -> std::vector<discordpp::RelationshipHandle>
+func RejectDiscordFriendRequest(uint64_t userId, discordpp::Client::UpdateRelationshipCallback cb) -> void
+func RejectGameFriendRequest(uint64_t userId, discordpp::Client::UpdateRelationshipCallback cb) -> void
+func RemoveDiscordAndGameFriend(uint64_t userId, discordpp::Client::UpdateRelationshipCallback cb) -> void
+func RemoveGameFriend(uint64_t userId, discordpp::Client::UpdateRelationshipCallback cb) -> void
+func SearchFriendsByUsername(std::string searchStr) -> std::vector<discordpp::UserHandle>
+func SendDiscordFriendRequest(std::string const & username, discordpp::Client::SendFriendRequestCallback cb) -> void
+func SendDiscordFriendRequestById(uint64_t userId, discordpp::Client::UpdateRelationshipCallback cb) -> void
+func SendGameFriendRequest(std::string const & username, discordpp::Client::SendFriendRequestCallback cb) -> void
+func SendGameFriendRequestById(uint64_t userId, discordpp::Client::UpdateRelationshipCallback cb) -> void
+func SetRelationshipCreatedCallback(discordpp::Client::RelationshipCreatedCallback cb) -> void
+func SetRelationshipDeletedCallback(discordpp::Client::RelationshipDeletedCallback cb) -> void
+func UnblockUser(uint64_t userId, discordpp::Client::UpdateRelationshipCallback cb) -> void
+func GetCurrentUser() -> discordpp::UserHandle
+func GetDiscordClientConnectedUser(uint64_t applicationId, discordpp::Client::GetDiscordClientConnectedUserCallback callback) -> void
+func GetUser(uint64_t userId) -> std::optional<discordpp::UserHandle>
+func SetUserUpdatedCallback(discordpp::Client::UserUpdatedCallback cb) -> void
+}
+
+
+class CallInfoHandle {
+
+-----
+
+-----
+constructor (const CallInfoHandle & other) 
+-----
+func Drop() -> void
+func ChannelId() -> uint64_t
+func GetParticipants() -> std::vector<uint64_t>
+func GetVoiceStateHandle(uint64_t userId) -> std::optional<discordpp::VoiceStateHandle>
+func GuildId() -> uint64_t
+}
+
+static func EnumToString(discordpp::ActivityActionTypes value) -> const char *
+static func EnumToString(discordpp::ActivityPartyPrivacy value) -> const char *
+static func EnumToString(discordpp::ActivityTypes value) -> const char *
+static func EnumToString(discordpp::ActivityGamePlatforms value) -> const char *
+static func EnumToString(discordpp::ErrorType value) -> const char *
+static func EnumToString(discordpp::HttpStatusCode value) -> const char *
+static func EnumToString(discordpp::AuthenticationCodeChallengeMethod value) -> const char *
+static func EnumToString(discordpp::AdditionalContentType value) -> const char *
+static func EnumToString(discordpp::Call::Error value) -> const char *
+static func EnumToString(discordpp::AudioModeType value) -> const char *
+static func EnumToString(discordpp::Call::Status value) -> const char *
+static func EnumToString(discordpp::ChannelType value) -> const char *
+static func EnumToString(discordpp::RelationshipType value) -> const char *
+static func EnumToString(discordpp::UserHandle::AvatarType value) -> const char *
+static func EnumToString(discordpp::StatusType value) -> const char *
+static func EnumToString(discordpp::DisclosureTypes value) -> const char *
+static func EnumToString(discordpp::Client::Error value) -> const char *
+static func EnumToString(discordpp::Client::Status value) -> const char *
+static func EnumToString(discordpp::Client::Thread value) -> const char *
+static func EnumToString(discordpp::AuthorizationTokenType value) -> const char *
+static func EnumToString(discordpp::AuthenticationExternalAuthType value) -> const char *
+static func EnumToString(discordpp::LoggingSeverity value) -> const char *

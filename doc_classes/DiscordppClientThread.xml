@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="DiscordppClientThread" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<constants>
+		<constant name="Client" value="0" enum="Enum">
+		</constant>
+		<constant name="Voice" value="1" enum="Enum">
+		</constant>
+		<constant name="Network" value="2" enum="Enum">
+		</constant>
+	</constants>
+</class>
