@@ -226,9 +226,6 @@ class Builder:
                 ret = self.translator.c_type_to_godot_type(function.ret)
                 name = function.name
                 params = self.build_params(function.params)
-                
-                if function.static:
-                    ret = f"static {ret}"
 
                 method = get_function_declaration(
                     modifier=modifier,
@@ -321,10 +318,11 @@ class Builder:
 
             clang_format(filepath)
 
+        # Build a fake class to be used as global.
         global_functions = [t for t in self.tokens if isinstance(t, TokenFunction)]
         fake_token = TokenClass("", [], [], [], global_functions)
         filepath = self.src.joinpath(f"discordpp.cpp")
-        content = self.build_class(fake_token, is_global=True)
+        content = self.build_class(fake_token, static=True)
 
         filepath.write_text(content)
 
@@ -332,8 +330,8 @@ class Builder:
 
         return
 
-    def build_class(self, token: TokenClass, is_global: bool = False) -> str:
-        methods = self.build_methods(token, is_global)
+    def build_class(self, token: TokenClass, static: bool = False) -> str:
+        methods = self.build_methods(token, static)
         binds = self.build_binds(token)
 
         content = get_discord_class_cpp(
@@ -344,14 +342,16 @@ class Builder:
 
         return content
 
-    def build_methods(self, class_: TokenClass, is_global: bool) -> str:
+    def build_methods(self, class_: TokenClass, static: bool) -> str:
         """Build all methods from one class."""
 
         methods = []
         functions_names = get_functions_names(class_.functions)
 
         for function, name in functions_names.items():
-            method = self.build_method(class_, function, name, is_global)
+            s = static or function.static
+
+            method = self.build_method(class_, function, name, s)
             methods.append(method)
 
         methods = "\n".join(methods)
@@ -363,7 +363,7 @@ class Builder:
         class_: TokenClass,
         function: TokenFunction,
         name: str,
-        is_global: bool,
+        static: bool,
     ) -> str:
         """
         Build one method from the class. This is the main
@@ -390,7 +390,7 @@ class Builder:
             statements.append(statement)
 
         # Second step.
-        call = self.build_call(class_, function, is_global)
+        call = self.build_call(class_, function, static)
 
         # Third step.
         ret_statements = self.translator.c_ret_to_godot_ret(function.ret, call)
@@ -413,7 +413,7 @@ class Builder:
         self,
         class_: TokenClass,
         function: TokenFunction,
-        is_global: bool,
+        static: bool,
     ) -> str:
         """
         Build the call for SDK method. Example:
@@ -436,8 +436,9 @@ class Builder:
 
         params = ", ".join(params)
 
-        if is_global:
-            call = f"discordpp::{function.name}({params})"
+        if static:
+            class_name = f"{class_.name}::" if class_.name else ""
+            call = f"discordpp::{class_name}{function.name}({params})"
         else:
             call = f"obj->{function.name}({params})"
 

@@ -23,7 +23,7 @@ class Parser:
                 case "enum":
                     tokens.append(self.parse_enum())
                 case "inline":
-                    tokens.append(self.parse_function(True))
+                    tokens.append(self.parse_function(static=True))
                 case "class":
                     tokens.append(self.parse_class())
 
@@ -305,6 +305,9 @@ class Parser:
             elif statement.startswith("explicit "):
                 parser.read_until_find(["explicit"])
                 constructors.append(parser.parse_constructor())
+            elif statement.startswith("static "):
+                parser.read_until_find(["static"])
+                functions.append(parser.parse_function(static=True))
             else:
                 functions.append(parser.parse_function())
 

@@ -4,7 +4,7 @@ enum DiscordObjectState {
     Owned: 1,
 }
 
-func RunCallbacks() -> void
+static func RunCallbacks() -> void
 
 enum ActivityActionTypes {
     Join:  1,
@@ -497,7 +497,7 @@ callback OnStatusChanged(discordpp::Call::Status status, discordpp::Call::Error 
 constructor (const Call & other) 
 -----
 func Drop() -> void
-func ErrorToString(discordpp::Call::Error type) -> static std::string
+static func ErrorToString(discordpp::Call::Error type) -> std::string
 func GetAudioMode() -> discordpp::AudioModeType
 func GetChannelId() -> uint64_t
 func GetGuildId() -> uint64_t
@@ -522,7 +522,7 @@ func SetSelfMute(bool mute) -> void
 func SetSpeakingStatusChangedCallback(discordpp::Call::OnSpeakingStatusChanged cb) -> void
 func SetStatusChangedCallback(discordpp::Call::OnStatusChanged cb) -> void
 func SetVADThreshold(bool automatic, float threshold) -> void
-func StatusToString(discordpp::Call::Status type) -> static std::string
+static func StatusToString(discordpp::Call::Status type) -> std::string
 }
 
 
@@ -641,7 +641,7 @@ constructor (const UserHandle & arg0)
 -----
 func Drop() -> void
 func Avatar() -> std::optional<std::string>
-func AvatarTypeToString(discordpp::UserHandle::AvatarType type) -> static std::string
+static func AvatarTypeToString(discordpp::UserHandle::AvatarType type) -> std::string
 func AvatarUrl(discordpp::UserHandle::AvatarType animatedType, discordpp::UserHandle::AvatarType staticType) -> std::string
 func DisplayName() -> std::string
 func GameActivity() -> std::optional<discordpp::Activity>
@@ -698,7 +698,7 @@ constructor ()
 -----
 func Drop() -> void
 func Equals(discordpp::AdditionalContent rhs) -> bool
-func TypeToString(discordpp::AdditionalContentType type) -> static std::string
+static func TypeToString(discordpp::AdditionalContentType type) -> std::string
 func Type() -> discordpp::AdditionalContentType
 func SetType(discordpp::AdditionalContentType Type) -> void
 func Title() -> std::optional<std::string>
@@ -838,16 +838,16 @@ constructor ()
 constructor (std::string apiBase, std::string webBase) 
 -----
 func Drop() -> void
-func ErrorToString(discordpp::Client::Error type) -> static std::string
-func GetDefaultAudioDeviceId() -> static std::string
-func GetDefaultCommunicationScopes() -> static std::string
-func GetDefaultPresenceScopes() -> static std::string
-func GetVersionHash() -> static std::string
-func GetVersionMajor() -> static int32_t
-func GetVersionMinor() -> static int32_t
-func GetVersionPatch() -> static int32_t
-func StatusToString(discordpp::Client::Status type) -> static std::string
-func ThreadToString(discordpp::Client::Thread type) -> static std::string
+static func ErrorToString(discordpp::Client::Error type) -> std::string
+static func GetDefaultAudioDeviceId() -> std::string
+static func GetDefaultCommunicationScopes() -> std::string
+static func GetDefaultPresenceScopes() -> std::string
+static func GetVersionHash() -> std::string
+static func GetVersionMajor() -> int32_t
+static func GetVersionMinor() -> int32_t
+static func GetVersionPatch() -> int32_t
+static func StatusToString(discordpp::Client::Status type) -> std::string
+static func ThreadToString(discordpp::Client::Thread type) -> std::string
 func EndCall(uint64_t channelId, discordpp::Client::EndCallCallback callback) -> void
 func EndCalls(discordpp::Client::EndCallsCallback callback) -> void
 func GetCall(uint64_t channelId) -> discordpp::Call
@@ -988,25 +988,25 @@ func GetVoiceStateHandle(uint64_t userId) -> std::optional<discordpp::VoiceState
 func GuildId() -> uint64_t
 }
 
-func EnumToString(discordpp::ActivityActionTypes value) -> const char *
-func EnumToString(discordpp::ActivityPartyPrivacy value) -> const char *
-func EnumToString(discordpp::ActivityTypes value) -> const char *
-func EnumToString(discordpp::ActivityGamePlatforms value) -> const char *
-func EnumToString(discordpp::ErrorType value) -> const char *
-func EnumToString(discordpp::HttpStatusCode value) -> const char *
-func EnumToString(discordpp::AuthenticationCodeChallengeMethod value) -> const char *
-func EnumToString(discordpp::AdditionalContentType value) -> const char *
-func EnumToString(discordpp::Call::Error value) -> const char *
-func EnumToString(discordpp::AudioModeType value) -> const char *
-func EnumToString(discordpp::Call::Status value) -> const char *
-func EnumToString(discordpp::ChannelType value) -> const char *
-func EnumToString(discordpp::RelationshipType value) -> const char *
-func EnumToString(discordpp::UserHandle::AvatarType value) -> const char *
-func EnumToString(discordpp::StatusType value) -> const char *
-func EnumToString(discordpp::DisclosureTypes value) -> const char *
-func EnumToString(discordpp::Client::Error value) -> const char *
-func EnumToString(discordpp::Client::Status value) -> const char *
-func EnumToString(discordpp::Client::Thread value) -> const char *
-func EnumToString(discordpp::AuthorizationTokenType value) -> const char *
-func EnumToString(discordpp::AuthenticationExternalAuthType value) -> const char *
-func EnumToString(discordpp::LoggingSeverity value) -> const char *
+static func EnumToString(discordpp::ActivityActionTypes value) -> const char *
+static func EnumToString(discordpp::ActivityPartyPrivacy value) -> const char *
+static func EnumToString(discordpp::ActivityTypes value) -> const char *
+static func EnumToString(discordpp::ActivityGamePlatforms value) -> const char *
+static func EnumToString(discordpp::ErrorType value) -> const char *
+static func EnumToString(discordpp::HttpStatusCode value) -> const char *
+static func EnumToString(discordpp::AuthenticationCodeChallengeMethod value) -> const char *
+static func EnumToString(discordpp::AdditionalContentType value) -> const char *
+static func EnumToString(discordpp::Call::Error value) -> const char *
+static func EnumToString(discordpp::AudioModeType value) -> const char *
+static func EnumToString(discordpp::Call::Status value) -> const char *
+static func EnumToString(discordpp::ChannelType value) -> const char *
+static func EnumToString(discordpp::RelationshipType value) -> const char *
+static func EnumToString(discordpp::UserHandle::AvatarType value) -> const char *
+static func EnumToString(discordpp::StatusType value) -> const char *
+static func EnumToString(discordpp::DisclosureTypes value) -> const char *
+static func EnumToString(discordpp::Client::Error value) -> const char *
+static func EnumToString(discordpp::Client::Status value) -> const char *
+static func EnumToString(discordpp::Client::Thread value) -> const char *
+static func EnumToString(discordpp::AuthorizationTokenType value) -> const char *
+static func EnumToString(discordpp::AuthenticationExternalAuthType value) -> const char *
+static func EnumToString(discordpp::LoggingSeverity value) -> const char *

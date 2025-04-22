@@ -10,47 +10,47 @@ void DiscordppClient::Drop() {
 String DiscordppClient::ErrorToString(DiscordppClientError::Enum type) {
 	discordpp::Client::Error p0 = (discordpp::Client::Error)type;
 
-	return String(obj->ErrorToString(p0).c_str());
+	return String(discordpp::Client::ErrorToString(p0).c_str());
 }
 
 String DiscordppClient::GetDefaultAudioDeviceId() {
-	return String(obj->GetDefaultAudioDeviceId().c_str());
+	return String(discordpp::Client::GetDefaultAudioDeviceId().c_str());
 }
 
 String DiscordppClient::GetDefaultCommunicationScopes() {
-	return String(obj->GetDefaultCommunicationScopes().c_str());
+	return String(discordpp::Client::GetDefaultCommunicationScopes().c_str());
 }
 
 String DiscordppClient::GetDefaultPresenceScopes() {
-	return String(obj->GetDefaultPresenceScopes().c_str());
+	return String(discordpp::Client::GetDefaultPresenceScopes().c_str());
 }
 
 String DiscordppClient::GetVersionHash() {
-	return String(obj->GetVersionHash().c_str());
+	return String(discordpp::Client::GetVersionHash().c_str());
 }
 
 int64_t DiscordppClient::GetVersionMajor() {
-	return obj->GetVersionMajor();
+	return discordpp::Client::GetVersionMajor();
 }
 
 int64_t DiscordppClient::GetVersionMinor() {
-	return obj->GetVersionMinor();
+	return discordpp::Client::GetVersionMinor();
 }
 
 int64_t DiscordppClient::GetVersionPatch() {
-	return obj->GetVersionPatch();
+	return discordpp::Client::GetVersionPatch();
 }
 
 String DiscordppClient::StatusToString(DiscordppClientStatus::Enum type) {
 	discordpp::Client::Status p0 = (discordpp::Client::Status)type;
 
-	return String(obj->StatusToString(p0).c_str());
+	return String(discordpp::Client::StatusToString(p0).c_str());
 }
 
 String DiscordppClient::ThreadToString(DiscordppClientThread::Enum type) {
 	discordpp::Client::Thread p0 = (discordpp::Client::Thread)type;
 
-	return String(obj->ThreadToString(p0).c_str());
+	return String(discordpp::Client::ThreadToString(p0).c_str());
 }
 
 void DiscordppClient::EndCall(int64_t channelId, Callable callback) {
@@ -1334,34 +1334,34 @@ void DiscordppClient::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("Drop"),
 			&DiscordppClient::Drop);
 
-	ClassDB::bind_method(D_METHOD("ErrorToString", "type"),
+	ClassDB::bind_static_method("DiscordppClient", D_METHOD("ErrorToString", "type"),
 			&DiscordppClient::ErrorToString);
 
-	ClassDB::bind_method(D_METHOD("GetDefaultAudioDeviceId"),
+	ClassDB::bind_static_method("DiscordppClient", D_METHOD("GetDefaultAudioDeviceId"),
 			&DiscordppClient::GetDefaultAudioDeviceId);
 
-	ClassDB::bind_method(D_METHOD("GetDefaultCommunicationScopes"),
+	ClassDB::bind_static_method("DiscordppClient", D_METHOD("GetDefaultCommunicationScopes"),
 			&DiscordppClient::GetDefaultCommunicationScopes);
 
-	ClassDB::bind_method(D_METHOD("GetDefaultPresenceScopes"),
+	ClassDB::bind_static_method("DiscordppClient", D_METHOD("GetDefaultPresenceScopes"),
 			&DiscordppClient::GetDefaultPresenceScopes);
 
-	ClassDB::bind_method(D_METHOD("GetVersionHash"),
+	ClassDB::bind_static_method("DiscordppClient", D_METHOD("GetVersionHash"),
 			&DiscordppClient::GetVersionHash);
 
-	ClassDB::bind_method(D_METHOD("GetVersionMajor"),
+	ClassDB::bind_static_method("DiscordppClient", D_METHOD("GetVersionMajor"),
 			&DiscordppClient::GetVersionMajor);
 
-	ClassDB::bind_method(D_METHOD("GetVersionMinor"),
+	ClassDB::bind_static_method("DiscordppClient", D_METHOD("GetVersionMinor"),
 			&DiscordppClient::GetVersionMinor);
 
-	ClassDB::bind_method(D_METHOD("GetVersionPatch"),
+	ClassDB::bind_static_method("DiscordppClient", D_METHOD("GetVersionPatch"),
 			&DiscordppClient::GetVersionPatch);
 
-	ClassDB::bind_method(D_METHOD("StatusToString", "type"),
+	ClassDB::bind_static_method("DiscordppClient", D_METHOD("StatusToString", "type"),
 			&DiscordppClient::StatusToString);
 
-	ClassDB::bind_method(D_METHOD("ThreadToString", "type"),
+	ClassDB::bind_static_method("DiscordppClient", D_METHOD("ThreadToString", "type"),
 			&DiscordppClient::ThreadToString);
 
 	ClassDB::bind_method(D_METHOD("EndCall", "channelId", "callback"),

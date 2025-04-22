@@ -10,7 +10,7 @@ void DiscordppCall::Drop() {
 String DiscordppCall::ErrorToString(DiscordppCallError::Enum type) {
 	discordpp::Call::Error p0 = (discordpp::Call::Error)type;
 
-	return String(obj->ErrorToString(p0).c_str());
+	return String(discordpp::Call::ErrorToString(p0).c_str());
 }
 
 DiscordppAudioModeType::Enum DiscordppCall::GetAudioMode() {
@@ -170,14 +170,14 @@ void DiscordppCall::SetVADThreshold(bool automatic, float threshold) {
 String DiscordppCall::StatusToString(DiscordppCallStatus::Enum type) {
 	discordpp::Call::Status p0 = (discordpp::Call::Status)type;
 
-	return String(obj->StatusToString(p0).c_str());
+	return String(discordpp::Call::StatusToString(p0).c_str());
 }
 
 void DiscordppCall::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("Drop"),
 			&DiscordppCall::Drop);
 
-	ClassDB::bind_method(D_METHOD("ErrorToString", "type"),
+	ClassDB::bind_static_method("DiscordppCall", D_METHOD("ErrorToString", "type"),
 			&DiscordppCall::ErrorToString);
 
 	ClassDB::bind_method(D_METHOD("GetAudioMode"),
@@ -252,6 +252,6 @@ void DiscordppCall::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("SetVADThreshold", "automatic", "threshold"),
 			&DiscordppCall::SetVADThreshold);
 
-	ClassDB::bind_method(D_METHOD("StatusToString", "type"),
+	ClassDB::bind_static_method("DiscordppCall", D_METHOD("StatusToString", "type"),
 			&DiscordppCall::StatusToString);
 }

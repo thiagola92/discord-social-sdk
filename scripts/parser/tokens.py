@@ -114,7 +114,7 @@ class TokenFunction:
     ret: TokenType
     name: str
     params: list[TokenParam]
-    static: bool
+    static: bool = False
 
     def __init__(
         self,
@@ -130,7 +130,8 @@ class TokenFunction:
 
     def __str__(self):
         params = ", ".join([str(p) for p in self.params])
-        return f"func {self.name}({params}) -> {str(self.ret)}"
+        modifier = "static " if self.static else ""
+        return f"{modifier}func {self.name}({params}) -> {str(self.ret)}"
 
 
 class TokenClass:

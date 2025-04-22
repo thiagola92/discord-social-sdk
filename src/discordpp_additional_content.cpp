@@ -16,7 +16,7 @@ bool DiscordppAdditionalContent::Equals(DiscordppAdditionalContent *rhs) {
 String DiscordppAdditionalContent::TypeToString(DiscordppAdditionalContentType::Enum type) {
 	discordpp::AdditionalContentType p0 = (discordpp::AdditionalContentType)type;
 
-	return String(obj->TypeToString(p0).c_str());
+	return String(discordpp::AdditionalContent::TypeToString(p0).c_str());
 }
 
 DiscordppAdditionalContentType::Enum DiscordppAdditionalContent::Type() {
@@ -66,7 +66,7 @@ void DiscordppAdditionalContent::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("Equals", "rhs"),
 			&DiscordppAdditionalContent::Equals);
 
-	ClassDB::bind_method(D_METHOD("TypeToString", "type"),
+	ClassDB::bind_static_method("DiscordppAdditionalContent", D_METHOD("TypeToString", "type"),
 			&DiscordppAdditionalContent::TypeToString);
 
 	ClassDB::bind_method(D_METHOD("Type"),

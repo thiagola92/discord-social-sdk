@@ -549,7 +549,7 @@ public:
 	}
 
 	void Drop();
-	String ErrorToString(DiscordppCallError::Enum type);
+	static String ErrorToString(DiscordppCallError::Enum type);
 	DiscordppAudioModeType::Enum GetAudioMode();
 	int64_t GetChannelId();
 	int64_t GetGuildId();
@@ -574,7 +574,7 @@ public:
 	void SetSpeakingStatusChangedCallback(Callable cb);
 	void SetStatusChangedCallback(Callable cb);
 	void SetVADThreshold(bool automatic, float threshold);
-	String StatusToString(DiscordppCallStatus::Enum type);
+	static String StatusToString(DiscordppCallStatus::Enum type);
 
 	DiscordppCall(discordpp::Call *obj) {
 		this->obj = obj;
@@ -786,7 +786,7 @@ public:
 
 	void Drop();
 	Variant Avatar();
-	String AvatarTypeToString(DiscordppUserHandleAvatarType::Enum type);
+	static String AvatarTypeToString(DiscordppUserHandleAvatarType::Enum type);
 	String AvatarUrl(DiscordppUserHandleAvatarType::Enum animatedType, DiscordppUserHandleAvatarType::Enum staticType);
 	String DisplayName();
 	Variant GameActivity();
@@ -883,7 +883,7 @@ public:
 
 	void Drop();
 	bool Equals(DiscordppAdditionalContent *rhs);
-	String TypeToString(DiscordppAdditionalContentType::Enum type);
+	static String TypeToString(DiscordppAdditionalContentType::Enum type);
 	DiscordppAdditionalContentType::Enum Type();
 	void SetType(DiscordppAdditionalContentType::Enum Type);
 	Variant Title();
@@ -991,16 +991,16 @@ public:
 	}
 
 	void Drop();
-	String ErrorToString(DiscordppClientError::Enum type);
-	String GetDefaultAudioDeviceId();
-	String GetDefaultCommunicationScopes();
-	String GetDefaultPresenceScopes();
-	String GetVersionHash();
-	int64_t GetVersionMajor();
-	int64_t GetVersionMinor();
-	int64_t GetVersionPatch();
-	String StatusToString(DiscordppClientStatus::Enum type);
-	String ThreadToString(DiscordppClientThread::Enum type);
+	static String ErrorToString(DiscordppClientError::Enum type);
+	static String GetDefaultAudioDeviceId();
+	static String GetDefaultCommunicationScopes();
+	static String GetDefaultPresenceScopes();
+	static String GetVersionHash();
+	static int64_t GetVersionMajor();
+	static int64_t GetVersionMinor();
+	static int64_t GetVersionPatch();
+	static String StatusToString(DiscordppClientStatus::Enum type);
+	static String ThreadToString(DiscordppClientThread::Enum type);
 	void EndCall(int64_t channelId, Callable callback);
 	void EndCalls(Callable callback);
 	DiscordppCall *GetCall(int64_t channelId);

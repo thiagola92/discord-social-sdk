@@ -20,7 +20,7 @@ Variant DiscordppUserHandle::Avatar() {
 String DiscordppUserHandle::AvatarTypeToString(DiscordppUserHandleAvatarType::Enum type) {
 	discordpp::UserHandle::AvatarType p0 = (discordpp::UserHandle::AvatarType)type;
 
-	return String(obj->AvatarTypeToString(p0).c_str());
+	return String(discordpp::UserHandle::AvatarTypeToString(p0).c_str());
 }
 
 String DiscordppUserHandle::AvatarUrl(DiscordppUserHandleAvatarType::Enum animatedType, DiscordppUserHandleAvatarType::Enum staticType) {
@@ -85,7 +85,7 @@ void DiscordppUserHandle::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("Avatar"),
 			&DiscordppUserHandle::Avatar);
 
-	ClassDB::bind_method(D_METHOD("AvatarTypeToString", "type"),
+	ClassDB::bind_static_method("DiscordppUserHandle", D_METHOD("AvatarTypeToString", "type"),
 			&DiscordppUserHandle::AvatarTypeToString);
 
 	ClassDB::bind_method(D_METHOD("AvatarUrl", "animatedType", "staticType"),
