@@ -201,7 +201,7 @@ scons platform=linux target=template_release    # Release
 # Generate addons dir for the Asset Library.
 rm -rf addons
 mkdir addons/discord_social_sdk
-cp -r demo/addons/discord_social_sdk addons/discord_social_sdk
+cp -r demo/addons/discord_social_sdk addons
 ```
 
 # References
