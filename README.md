@@ -94,7 +94,7 @@ func _process(_delta: float) -> void:
 
 > Why exists many functions like `Discordpp.EnumToString0()`, `Discordpp.EnumToString1()`, `Discordpp.EnumToString2()`, etc?  
 
-Godot doesn't support [function overloading](https://www.w3schools.com/cpp/cpp_function_overloading.asp), so I just made one function for each option.  
+GDScript doesn't support [function overloading](https://www.w3schools.com/cpp/cpp_function_overloading.asp), so I just made one function for each option.  
 
 # Development
 This GDExtension is **all** built using Python and **nothing** should be add manually at `src`. If this is weird for you, listen to me...  
