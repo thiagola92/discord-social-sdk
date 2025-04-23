@@ -1,11 +1,10 @@
 extends Control
 
 
-# Replace with your Discord Application ID
-var APPLICATION_ID = DotEnv.read_int("APPLICATION_ID")
+const APPLICATION_ID = 1349146942634065960
 
-# Create our Discord Client
 var client := DiscordppClient.new()
+
 
 func _ready() -> void:
 	print("🚀 Initializing Discord SDK...")
@@ -22,6 +21,21 @@ func _ready() -> void:
 			
 			if status == DiscordppClientStatus.Ready:
 				print("✅ Client is ready! You can now call SDK functions.")
+				print("👥 Friends Count: %s" % client.GetRelationships().size())
+				
+				var activity := DiscordppActivity.new()
+				activity.SetType(DiscordppActivityTypes.Playing)
+				activity.SetState("In Competitive Match")
+				activity.SetDetails("Rank: Diamond II")
+				
+				client.UpdateRichPresence(activity,
+					func(result: DiscordppClientResult):
+						if result.Successful():
+							print("🎮 Rich Presence updated successfully!")
+						else:
+							print("❌ Rich Presence update failed")
+				)
+				
 			elif error != DiscordppClientError.None:
 				print("❌ Connection Error: %s - Details: %s" % [error, errorDetail])
 	)
@@ -45,11 +59,7 @@ func _ready() -> void:
 				print(">>>> code_verifier.Verifier():", code_verifier.Verifier(), "<<<<")
 				print(">>>> redirectUri:", redirectUri, "<<<<")
 				
-				client.GetToken(
-					APPLICATION_ID,
-					code,
-					code_verifier.Verifier(),
-					redirectUri,
+				client.GetToken(APPLICATION_ID, code, code_verifier.Verifier(), redirectUri,
 					func(
 						result: DiscordppClientResult,
 						accessToken: String,

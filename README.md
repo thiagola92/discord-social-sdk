@@ -1,36 +1,98 @@
 # Discord Social SDK
 Wrapper around [Discord Social SDK](https://discord.com/developers/docs/discord-social-sdk/overview).  
 
-Is suppose to be a close one-to-one with the C++ SDK, so looking at the [official C++ documentation](https://discord.com/developers/docs/discord-social-sdk/getting-started/using-c++) is recommended to understand how the SDK works.  
-
 # Usage
+Is suppose to be a close one-to-one with the C++ SDK, so looking at the C++ [*Getting Started*](https://discord.com/developers/docs/discord-social-sdk/getting-started/using-c++) is recommended to understand how the SDK works.  
 
-I will include some examples but I don't intend to replicate the C++ documentation, you should be able to translate after reading some examples.  
+Here is the final code from *Getting Started* but using this extension:  
 
-## Examples
-
-**GDScript**  
 ```gdscript
-# Replace with your Discord Application ID
-const APPLICATION_ID = 123456789012345678
+extends Node
 
-var client: DiscordppClient = DiscordppClient.new()
+
+# Replace with your Discord Application ID
+const APPLICATION_ID = 1349146942634065960
+
+var client := DiscordppClient.new()
+
 
 func _ready() -> void:
     print("🚀 Initializing Discord SDK...")
-
+    
     client.AddLogCallback(
-        func(message, severity):
-            print("[%s] %s" % [Discordpp.EnumToString18(severity), message]),
+        func(message: String, severity: DiscordppLoggingSeverity.Enum):
+            print("[%s] %s" % [severity, message]),
         DiscordppLoggingSeverity.Info
+    )
+    
+    client.SetStatusChangedCallback(
+        func(status: DiscordppClientStatus.Enum, error: DiscordppClientError.Enum, errorDetail: int):
+            print("🔄 Status changed: %s" % status)
+            
+            if status == DiscordppClientStatus.Ready:
+                print("✅ Client is ready! You can now call SDK functions.")
+                print("👥 Friends Count: %s" % client.GetRelationships().size())
+                
+                var activity := DiscordppActivity.new()
+                activity.SetType(DiscordppActivityTypes.Playing)
+                activity.SetState("In Competitive Match")
+                activity.SetDetails("Rank: Diamond II")
+                
+                client.UpdateRichPresence(activity,
+                    func(result: DiscordppClientResult):
+                        if result.Successful():
+                            print("🎮 Rich Presence updated successfully!")
+                        else:
+                            print("❌ Rich Presence update failed")
+                )
+                
+            elif error != DiscordppClientError.None:
+                print("❌ Connection Error: %s - Details: %s" % [error, errorDetail])
+    )
+    
+    var code_verifier = client.CreateAuthorizationCodeVerifier()
+    
+    var args := DiscordppAuthorizationArgs.new()
+    args.SetClientId(APPLICATION_ID)
+    args.SetScopes(DiscordppClient.GetDefaultPresenceScopes())
+    args.SetCodeChallenge(code_verifier.Challenge())
+    
+    client.Authorize(args,
+        func(result: DiscordppClientResult, code: String, redirectUri: String):
+            if not result.Successful():
+                print("❌ Authentication Error: %s" % result.Error())
+            else:
+                print("✅ Authorization successful! Getting access token...")
+                
+                client.GetToken(APPLICATION_ID, code, code_verifier.Verifier(), redirectUri,
+                    func(
+                        result: DiscordppClientResult,
+                        accessToken: String,
+                        refreshToken: String,
+                        tokenType: DiscordppAuthorizationTokenType.Enum,
+                        expiresIn: int,
+                        scopes: String
+                    ):
+                        pass
+                        print("🔓 Access token received! Establishing connection...")
+                        
+                        client.UpdateToken(
+                            DiscordppAuthorizationTokenType.Bearer,
+                            accessToken,
+                            func(result: DiscordppClientResult):
+                                if result.Successful():
+                                    print("🔑 Token updated, connecting to Discord...")
+                                    client.Connect()
+                        )
+                )
     )
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
     Discordpp.RunCallbacks()
 ```
 
-> Why function `Discordpp.EnumToString18()` has a weird name?  
+> Why exists many functions like `Discordpp.EnumToString0()`, `Discordpp.EnumToString1()`, `Discordpp.EnumToString2()`, etc?  
 
 Godot doesn't support [function overloading](https://www.w3schools.com/cpp/cpp_function_overloading.asp), so I just made one function for each option.  
 
