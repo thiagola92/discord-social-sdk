@@ -1,3 +1,5 @@
+> **Note**: I'm from Brazil and I'm looking for job, feel free to contact me 🤣
+
 # Discord Social SDK
 Wrapper around [Discord Social SDK](https://discord.com/developers/docs/discord-social-sdk/overview).  
 
