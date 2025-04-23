@@ -3,7 +3,7 @@ from xml.etree import ElementTree
 from xml.etree.ElementTree import Element
 from parser.parser import TokenFunction, TokenClass
 from documenter.doc_translator import DocTranslator
-from template.xml import get_callback, get_xml_version
+from template.xml import get_callback, get_xml_version, get_class_reference
 
 
 class Documenter:
@@ -65,11 +65,17 @@ class Documenter:
         class_element = tree.getroot()
 
         # Update XML.
+        self.add_reference_link(class_element, class_)
         self.add_callbacks_signatures(class_element, class_)
 
         # Save XML.
         tree.write(file)
         file.write_text(get_xml_version() + file.read_text() + "\n")
+
+    def add_reference_link(self, class_element: Element, class_: TokenClass):
+        reference = get_class_reference(class_.name)
+        description_element = class_element.find("description")
+        description_element.text = reference
 
     def add_callbacks_signatures(self, class_element: Element, class_: TokenClass):
         if not class_.callbacks:

@@ -213,7 +213,7 @@ class Translator:
             return "String"
 
         elif self.is_c_char_array(token.name):
-            return f"String"
+            return "String"
 
         elif self.is_c_opt(token.name):
             return "Variant"
