@@ -62,7 +62,7 @@ String DiscordppActivityInvite::PartyId() {
 }
 
 void DiscordppActivityInvite::SetPartyId(String PartyId) {
-	const char *p0 = PartyId.utf8().get_data();
+	std::string p0 = std::string(PartyId.utf8().get_data());
 
 	obj->SetPartyId(p0);
 }
@@ -72,7 +72,7 @@ String DiscordppActivityInvite::SessionId() {
 }
 
 void DiscordppActivityInvite::SetSessionId(String SessionId) {
-	const char *p0 = SessionId.utf8().get_data();
+	std::string p0 = std::string(SessionId.utf8().get_data());
 
 	obj->SetSessionId(p0);
 }

@@ -18,7 +18,7 @@ String DiscordppAudioDevice::Id() {
 }
 
 void DiscordppAudioDevice::SetId(String Id) {
-	const char *p0 = Id.utf8().get_data();
+	std::string p0 = std::string(Id.utf8().get_data());
 
 	obj->SetId(p0);
 }
@@ -28,7 +28,7 @@ String DiscordppAudioDevice::Name() {
 }
 
 void DiscordppAudioDevice::SetName(String Name) {
-	const char *p0 = Name.utf8().get_data();
+	std::string p0 = std::string(Name.utf8().get_data());
 
 	obj->SetName(p0);
 }

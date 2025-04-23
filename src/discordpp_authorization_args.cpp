@@ -22,7 +22,7 @@ String DiscordppAuthorizationArgs::Scopes() {
 }
 
 void DiscordppAuthorizationArgs::SetScopes(String Scopes) {
-	const char *p0 = Scopes.utf8().get_data();
+	std::string p0 = std::string(Scopes.utf8().get_data());
 
 	obj->SetScopes(p0);
 }

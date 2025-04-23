@@ -181,7 +181,7 @@ void DiscordppClient::SetEchoCancellation(bool on) {
 }
 
 void DiscordppClient::SetInputDevice(String deviceId, Callable cb) {
-	const char *p0 = deviceId.utf8().get_data();
+	std::string p0 = std::string(deviceId.utf8().get_data());
 
 	obj->SetInputDevice(p0, [cb](auto result) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
@@ -225,7 +225,7 @@ void DiscordppClient::SetOpusHardwareCoding(bool encode, bool decode) {
 }
 
 void DiscordppClient::SetOutputDevice(String deviceId, Callable cb) {
-	const char *p0 = deviceId.utf8().get_data();
+	std::string p0 = std::string(deviceId.utf8().get_data());
 
 	obj->SetOutputDevice(p0, [cb](auto result) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
@@ -342,7 +342,7 @@ DiscordppAuthorizationCodeVerifier *DiscordppClient::CreateAuthorizationCodeVeri
 
 void DiscordppClient::FetchCurrentUser(DiscordppAuthorizationTokenType::Enum tokenType, String token, Callable callback) {
 	discordpp::AuthorizationTokenType p0 = (discordpp::AuthorizationTokenType)tokenType;
-	const char *p1 = token.utf8().get_data();
+	std::string p1 = std::string(token.utf8().get_data());
 
 	obj->FetchCurrentUser(p0, p1, [callback](auto result, auto id, auto name) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
@@ -358,7 +358,7 @@ void DiscordppClient::FetchCurrentUser(DiscordppAuthorizationTokenType::Enum tok
 void DiscordppClient::GetProvisionalToken(int64_t applicationId, DiscordppAuthenticationExternalAuthType::Enum externalAuthType, String externalAuthToken, Callable callback) {
 	int64_t p0 = applicationId;
 	discordpp::AuthenticationExternalAuthType p1 = (discordpp::AuthenticationExternalAuthType)externalAuthType;
-	const char *p2 = externalAuthToken.utf8().get_data();
+	std::string p2 = std::string(externalAuthToken.utf8().get_data());
 
 	obj->GetProvisionalToken(p0, p1, p2, [callback](auto result, auto accessToken, auto refreshToken, auto tokenType, auto expiresIn, auto scopes) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
@@ -376,9 +376,9 @@ void DiscordppClient::GetProvisionalToken(int64_t applicationId, DiscordppAuthen
 
 void DiscordppClient::GetToken(int64_t applicationId, String code, String codeVerifier, String redirectUri, Callable callback) {
 	int64_t p0 = applicationId;
-	const char *p1 = code.utf8().get_data();
-	const char *p2 = codeVerifier.utf8().get_data();
-	const char *p3 = redirectUri.utf8().get_data();
+	std::string p1 = std::string(code.utf8().get_data());
+	std::string p2 = std::string(codeVerifier.utf8().get_data());
+	std::string p3 = std::string(redirectUri.utf8().get_data());
 
 	obj->GetToken(p0, p1, p2, p3, [callback](auto result, auto accessToken, auto refreshToken, auto tokenType, auto expiresIn, auto scopes) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
@@ -414,7 +414,7 @@ void DiscordppClient::GetTokenFromDevice(DiscordppDeviceAuthorizationArgs *args,
 void DiscordppClient::GetTokenFromDeviceProvisionalMerge(DiscordppDeviceAuthorizationArgs *args, DiscordppAuthenticationExternalAuthType::Enum externalAuthType, String externalAuthToken, Callable callback) {
 	discordpp::DeviceAuthorizationArgs p0 = *args->unwrap();
 	discordpp::AuthenticationExternalAuthType p1 = (discordpp::AuthenticationExternalAuthType)externalAuthType;
-	const char *p2 = externalAuthToken.utf8().get_data();
+	std::string p2 = std::string(externalAuthToken.utf8().get_data());
 
 	obj->GetTokenFromDeviceProvisionalMerge(p0, p1, p2, [callback](auto result, auto accessToken, auto refreshToken, auto tokenType, auto expiresIn, auto scopes) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
@@ -432,11 +432,11 @@ void DiscordppClient::GetTokenFromDeviceProvisionalMerge(DiscordppDeviceAuthoriz
 
 void DiscordppClient::GetTokenFromProvisionalMerge(int64_t applicationId, String code, String codeVerifier, String redirectUri, DiscordppAuthenticationExternalAuthType::Enum externalAuthType, String externalAuthToken, Callable callback) {
 	int64_t p0 = applicationId;
-	const char *p1 = code.utf8().get_data();
-	const char *p2 = codeVerifier.utf8().get_data();
-	const char *p3 = redirectUri.utf8().get_data();
+	std::string p1 = std::string(code.utf8().get_data());
+	std::string p2 = std::string(codeVerifier.utf8().get_data());
+	std::string p3 = std::string(redirectUri.utf8().get_data());
 	discordpp::AuthenticationExternalAuthType p4 = (discordpp::AuthenticationExternalAuthType)externalAuthType;
-	const char *p5 = externalAuthToken.utf8().get_data();
+	std::string p5 = std::string(externalAuthToken.utf8().get_data());
 
 	obj->GetTokenFromProvisionalMerge(p0, p1, p2, p3, p4, p5, [callback](auto result, auto accessToken, auto refreshToken, auto tokenType, auto expiresIn, auto scopes) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
@@ -458,7 +458,7 @@ bool DiscordppClient::IsAuthenticated() {
 
 void DiscordppClient::OpenAuthorizeDeviceScreen(int64_t clientId, String userCode) {
 	int64_t p0 = clientId;
-	const char *p1 = userCode.utf8().get_data();
+	std::string p1 = std::string(userCode.utf8().get_data());
 
 	obj->OpenAuthorizeDeviceScreen(p0, p1);
 }
@@ -471,7 +471,7 @@ void DiscordppClient::ProvisionalUserMergeCompleted(bool success) {
 
 void DiscordppClient::RefreshToken(int64_t applicationId, String refreshToken, Callable callback) {
 	int64_t p0 = applicationId;
-	const char *p1 = refreshToken.utf8().get_data();
+	std::string p1 = std::string(refreshToken.utf8().get_data());
 
 	obj->RefreshToken(p0, p1, [callback](auto result, auto accessToken, auto refreshToken, auto tokenType, auto expiresIn, auto scopes) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
@@ -506,7 +506,7 @@ void DiscordppClient::SetTokenExpirationCallback(Callable callback) {
 }
 
 void DiscordppClient::UpdateProvisionalAccountDisplayName(String name, Callable callback) {
-	const char *p0 = name.utf8().get_data();
+	std::string p0 = std::string(name.utf8().get_data());
 
 	obj->UpdateProvisionalAccountDisplayName(p0, [callback](auto result) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
@@ -519,7 +519,7 @@ void DiscordppClient::UpdateProvisionalAccountDisplayName(String name, Callable 
 
 void DiscordppClient::UpdateToken(DiscordppAuthorizationTokenType::Enum tokenType, String token, Callable callback) {
 	discordpp::AuthorizationTokenType p0 = (discordpp::AuthorizationTokenType)tokenType;
-	const char *p1 = token.utf8().get_data();
+	std::string p1 = std::string(token.utf8().get_data());
 
 	obj->UpdateToken(p0, p1, [callback](auto result) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
@@ -552,7 +552,7 @@ void DiscordppClient::DeleteUserMessage(int64_t recipientId, int64_t messageId, 
 void DiscordppClient::EditUserMessage(int64_t recipientId, int64_t messageId, String content, Callable cb) {
 	int64_t p0 = recipientId;
 	int64_t p1 = messageId;
-	const char *p2 = content.utf8().get_data();
+	std::string p2 = std::string(content.utf8().get_data());
 
 	obj->EditUserMessage(p0, p1, p2, [cb](auto result) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
@@ -604,7 +604,7 @@ void DiscordppClient::OpenMessageInDiscord(int64_t messageId, Callable provision
 
 void DiscordppClient::SendLobbyMessage(int64_t lobbyId, String content, Callable cb) {
 	int64_t p0 = lobbyId;
-	const char *p1 = content.utf8().get_data();
+	std::string p1 = std::string(content.utf8().get_data());
 
 	obj->SendLobbyMessage(p0, p1, [cb](auto result, auto messageId) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
@@ -618,7 +618,7 @@ void DiscordppClient::SendLobbyMessage(int64_t lobbyId, String content, Callable
 
 void DiscordppClient::SendLobbyMessageWithMetadata(int64_t lobbyId, String content, TypedDictionary<String, String> metadata, Callable cb) {
 	int64_t p0 = lobbyId;
-	const char *p1 = content.utf8().get_data();
+	std::string p1 = std::string(content.utf8().get_data());
 	std::unordered_map<std::string, std::string> p2 = std::unordered_map<std::string, std::string>();
 	auto k_p2 = metadata.keys();
 
@@ -642,7 +642,7 @@ void DiscordppClient::SendLobbyMessageWithMetadata(int64_t lobbyId, String conte
 
 void DiscordppClient::SendUserMessage(int64_t recipientId, String content, Callable cb) {
 	int64_t p0 = recipientId;
-	const char *p1 = content.utf8().get_data();
+	std::string p1 = std::string(content.utf8().get_data());
 
 	obj->SendUserMessage(p0, p1, [cb](auto result, auto messageId) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
@@ -656,7 +656,7 @@ void DiscordppClient::SendUserMessage(int64_t recipientId, String content, Calla
 
 void DiscordppClient::SendUserMessageWithMetadata(int64_t recipientId, String content, TypedDictionary<String, String> metadata, Callable cb) {
 	int64_t p0 = recipientId;
-	const char *p1 = content.utf8().get_data();
+	std::string p1 = std::string(content.utf8().get_data());
 	std::unordered_map<std::string, std::string> p2 = std::unordered_map<std::string, std::string>();
 	auto k_p2 = metadata.keys();
 
@@ -747,7 +747,7 @@ void DiscordppClient::SetApplicationId(int64_t applicationId) {
 }
 
 bool DiscordppClient::SetLogDir(String path, DiscordppLoggingSeverity::Enum minSeverity) {
-	const char *p0 = path.utf8().get_data();
+	std::string p0 = std::string(path.utf8().get_data());
 	discordpp::LoggingSeverity p1 = (discordpp::LoggingSeverity)minSeverity;
 
 	return obj->SetLogDir(p0, p1);
@@ -763,14 +763,14 @@ void DiscordppClient::SetStatusChangedCallback(Callable cb) {
 }
 
 void DiscordppClient::SetVoiceLogDir(String path, DiscordppLoggingSeverity::Enum minSeverity) {
-	const char *p0 = path.utf8().get_data();
+	std::string p0 = std::string(path.utf8().get_data());
 	discordpp::LoggingSeverity p1 = (discordpp::LoggingSeverity)minSeverity;
 
 	obj->SetVoiceLogDir(p0, p1);
 }
 
 void DiscordppClient::CreateOrJoinLobby(String secret, Callable callback) {
-	const char *p0 = secret.utf8().get_data();
+	std::string p0 = std::string(secret.utf8().get_data());
 
 	obj->CreateOrJoinLobby(p0, [callback](auto result, auto lobbyId) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
@@ -783,7 +783,7 @@ void DiscordppClient::CreateOrJoinLobby(String secret, Callable callback) {
 }
 
 void DiscordppClient::CreateOrJoinLobbyWithMetadata(String secret, TypedDictionary<String, String> lobbyMetadata, TypedDictionary<String, String> memberMetadata, Callable callback) {
-	const char *p0 = secret.utf8().get_data();
+	std::string p0 = std::string(secret.utf8().get_data());
 	std::unordered_map<std::string, std::string> p1 = std::unordered_map<std::string, std::string>();
 	auto k_p1 = lobbyMetadata.keys();
 
@@ -975,7 +975,7 @@ void DiscordppClient::ClearRichPresence() {
 
 bool DiscordppClient::RegisterLaunchCommand(int64_t applicationId, String command) {
 	int64_t p0 = applicationId;
-	const char *p1 = command.utf8().get_data();
+	std::string p1 = std::string(command.utf8().get_data());
 
 	return obj->RegisterLaunchCommand(p0, p1);
 }
@@ -989,7 +989,7 @@ bool DiscordppClient::RegisterLaunchSteamApplication(int64_t applicationId, int6
 
 void DiscordppClient::SendActivityInvite(int64_t userId, String content, Callable cb) {
 	int64_t p0 = userId;
-	const char *p1 = content.utf8().get_data();
+	std::string p1 = std::string(content.utf8().get_data());
 
 	obj->SendActivityInvite(p0, p1, [cb](auto result) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
@@ -1203,7 +1203,7 @@ void DiscordppClient::RemoveGameFriend(int64_t userId, Callable cb) {
 }
 
 TypedArray<DiscordppUserHandle> DiscordppClient::SearchFriendsByUsername(String searchStr) {
-	const char *p0 = searchStr.utf8().get_data();
+	std::string p0 = std::string(searchStr.utf8().get_data());
 
 	auto r = obj->SearchFriendsByUsername(p0);
 	TypedArray<DiscordppUserHandle> t_r = TypedArray<DiscordppUserHandle>();
@@ -1216,7 +1216,7 @@ TypedArray<DiscordppUserHandle> DiscordppClient::SearchFriendsByUsername(String 
 }
 
 void DiscordppClient::SendDiscordFriendRequest(String username, Callable cb) {
-	const char *p0 = username.utf8().get_data();
+	std::string p0 = std::string(username.utf8().get_data());
 
 	obj->SendDiscordFriendRequest(p0, [cb](auto result) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));
@@ -1240,7 +1240,7 @@ void DiscordppClient::SendDiscordFriendRequestById(int64_t userId, Callable cb) 
 }
 
 void DiscordppClient::SendGameFriendRequest(String username, Callable cb) {
-	const char *p0 = username.utf8().get_data();
+	std::string p0 = std::string(username.utf8().get_data());
 
 	obj->SendGameFriendRequest(p0, [cb](auto result) {
 		discordpp::ClientResult *t_p0 = (discordpp::ClientResult *)memalloc(sizeof(discordpp::ClientResult));

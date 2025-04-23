@@ -502,10 +502,10 @@ class Translator:
             return f"float {dest} = {param.name};"
 
         elif self.is_c_string(param.type.name):
-            return f"const char *{dest} = {param.name}.utf8().get_data();"
+            return f"std::string {dest} = std::string({param.name}.utf8().get_data());"
 
         elif self.is_c_char_array(param.type.name):
-            return f"const char *{dest} = {param.name}.utf8().get_data();"
+            return f"std::string {dest} = std::string({param.name}.utf8().get_data());"
 
         elif self.is_c_opt(param.type.name):
             return self.godot_variant_to_c_opt(param, dest)

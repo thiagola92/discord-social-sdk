@@ -22,7 +22,7 @@ String DiscordppLinkedChannel::Name() {
 }
 
 void DiscordppLinkedChannel::SetName(String Name) {
-	const char *p0 = Name.utf8().get_data();
+	std::string p0 = std::string(Name.utf8().get_data());
 
 	obj->SetName(p0);
 }

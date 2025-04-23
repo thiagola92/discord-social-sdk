@@ -22,7 +22,7 @@ String DiscordppAuthorizationCodeChallenge::Challenge() {
 }
 
 void DiscordppAuthorizationCodeChallenge::SetChallenge(String Challenge) {
-	const char *p0 = Challenge.utf8().get_data();
+	std::string p0 = std::string(Challenge.utf8().get_data());
 
 	obj->SetChallenge(p0);
 }

@@ -26,7 +26,7 @@ String DiscordppClientResult::Error() {
 }
 
 void DiscordppClientResult::SetError(String Error) {
-	const char *p0 = Error.utf8().get_data();
+	std::string p0 = std::string(Error.utf8().get_data());
 
 	obj->SetError(p0);
 }
@@ -56,7 +56,7 @@ String DiscordppClientResult::ResponseBody() {
 }
 
 void DiscordppClientResult::SetResponseBody(String ResponseBody) {
-	const char *p0 = ResponseBody.utf8().get_data();
+	std::string p0 = std::string(ResponseBody.utf8().get_data());
 
 	obj->SetResponseBody(p0);
 }

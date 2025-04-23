@@ -12,7 +12,7 @@ String DiscordppActivityParty::Id() {
 }
 
 void DiscordppActivityParty::SetId(String Id) {
-	const char *p0 = Id.utf8().get_data();
+	std::string p0 = std::string(Id.utf8().get_data());
 
 	obj->SetId(p0);
 }

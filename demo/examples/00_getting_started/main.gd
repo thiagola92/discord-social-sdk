@@ -40,14 +40,35 @@ func _ready() -> void:
 			else:
 				print("✅ Authorization successful! Getting access token...")
 				
-				print(">>>> CODE:", code, "<<<<")
-				client.GetToken(APPLICATION_ID, code, code_verifier.Verifier(), redirectUri,
-					func(result: DiscordppClientResult, accessToken: String, refreshToken: String, tokenType: DiscordppAuthorizationTokenType.Enum, expiresIn: int, scopes: String):
+				print(">>>> APPLICATION_ID:", APPLICATION_ID, "<<<<")
+				print(">>>> code:", code, "<<<<")
+				print(">>>> code_verifier.Verifier():", code_verifier.Verifier(), "<<<<")
+				print(">>>> redirectUri:", redirectUri, "<<<<")
+				
+				client.GetToken(
+					APPLICATION_ID,
+					code,
+					code_verifier.Verifier(),
+					redirectUri,
+					func(
+						result: DiscordppClientResult,
+						accessToken: String,
+						refreshToken: String,
+						tokenType: DiscordppAuthorizationTokenType.Enum,
+						expiresIn: int,
+						scopes: String
+					):
+						pass
 						print("🔓 Access token received! Establishing connection...")
 						
-						print(">>>> RESULT:", result.Successful(), "<<<<")
-						print(">>>> ACCESS_TOKEN:", accessToken, "<<<<")
-						client.UpdateToken(DiscordppAuthorizationTokenType.Bearer, accessToken,
+						print(">>>> result:", result.Successful(), "<<<<")
+						print(">>>> accessToken:", accessToken, "<<<<")
+						print(">>>> refreshToken:", refreshToken, "<<<<")
+						print(">>>> scopes:", scopes, "<<<<")
+						
+						client.UpdateToken(
+							DiscordppAuthorizationTokenType.Bearer,
+							accessToken,
 							func(result: DiscordppClientResult):
 								if result.Successful():
 									print("🔑 Token updated, connecting to Discord...")

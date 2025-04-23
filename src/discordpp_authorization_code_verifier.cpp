@@ -24,7 +24,7 @@ String DiscordppAuthorizationCodeVerifier::Verifier() {
 }
 
 void DiscordppAuthorizationCodeVerifier::SetVerifier(String Verifier) {
-	const char *p0 = Verifier.utf8().get_data();
+	std::string p0 = std::string(Verifier.utf8().get_data());
 
 	obj->SetVerifier(p0);
 }

@@ -12,7 +12,7 @@ String DiscordppActivitySecrets::Join() {
 }
 
 void DiscordppActivitySecrets::SetJoin(String Join) {
-	const char *p0 = Join.utf8().get_data();
+	std::string p0 = std::string(Join.utf8().get_data());
 
 	obj->SetJoin(p0);
 }
