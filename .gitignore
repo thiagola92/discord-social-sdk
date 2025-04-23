@@ -6,6 +6,24 @@
 *.dbg
 *.xcframework
 
+####################### Godot #######################
+
+# Godot 4+ specific ignores
+.godot/
+
+# Godot-specific ignores
+.import/
+export.cfg
+export_credentials.cfg
+
+# Imported translations (automatically generated from CSV files)
+*.translation
+
+# Mono-specific ignores
+.mono/
+data_*/
+mono_crash.*.json
+
 ####################### SCons #######################
 
 # for projects that use SCons for building: http://http://www.scons.org/
