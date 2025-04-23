@@ -106,6 +106,8 @@ public:
 	void SetApplicationId(int64_t ApplicationId);
 	String PartyId();
 	void SetPartyId(String PartyId);
+	String SessionId();
+	void SetSessionId(String SessionId);
 	bool IsValid();
 	void SetIsValid(bool IsValid);
 
@@ -557,6 +559,7 @@ public:
 	TypedArray<int64_t> GetParticipants();
 	float GetParticipantVolume(int64_t userId);
 	bool GetPTTActive();
+	int64_t GetPTTReleaseDelay();
 	bool GetSelfDeaf();
 	bool GetSelfMute();
 	DiscordppCallStatus::Enum GetStatus();
@@ -992,6 +995,7 @@ public:
 
 	void Drop();
 	static String ErrorToString(DiscordppClientError::Enum type);
+	int64_t GetApplicationId();
 	static String GetDefaultAudioDeviceId();
 	static String GetDefaultCommunicationScopes();
 	static String GetDefaultPresenceScopes();
@@ -1071,6 +1075,7 @@ public:
 	void Connect();
 	void Disconnect();
 	DiscordppClientStatus::Enum GetStatus();
+	void SetApplicationId(int64_t applicationId);
 	bool SetLogDir(String path, DiscordppLoggingSeverity::Enum minSeverity);
 	void SetStatusChangedCallback(Callable cb);
 	void SetVoiceLogDir(String path, DiscordppLoggingSeverity::Enum minSeverity);

@@ -569,6 +569,9 @@ enum class AuthenticationExternalAuthType {
 
 	/// \brief SteamSessionTicket
 	SteamSessionTicket = 3,
+
+	/// \brief UnityServicesIdToken
+	UnityServicesIdToken = 4,
 };
 
 /// \brief Enum that represents the various log levels supported by the SDK.
@@ -684,6 +687,11 @@ public:
 	std::string PartyId() const;
 	/// Setter for ActivityInvite::PartyId.
 	void SetPartyId(std::string PartyId);
+
+	/// \brief The session id of the user who sent the invite.
+	std::string SessionId() const;
+	/// Setter for ActivityInvite::SessionId.
+	void SetSessionId(std::string SessionId);
 
 	/// \brief Whether or not this invite is currently joinable. An invite becomes invalid if it was
 	/// sent more than 6 hours ago or if the sender is no longer playing the game the invite is for.
@@ -1437,7 +1445,8 @@ public:
 	void Drop();
 	/// \endcond
 
-	/// \brief The Discord application ID for your game.
+	/// \brief Optional. The Discord application ID for your game. Defaults to the value set by
+	/// Client::SetApplicationId.
 	uint64_t ClientId() const;
 	/// Setter for AuthorizationArgs::ClientId.
 	void SetClientId(uint64_t ClientId);
@@ -1521,7 +1530,8 @@ public:
 	void Drop();
 	/// \endcond
 
-	/// \brief The Discord application ID for your game.
+	/// \brief Optional. The Discord application ID for your game. Defaults to the value set by
+	/// Client::SetApplicationId.
 	uint64_t ClientId() const;
 	/// Setter for DeviceAuthorizationArgs::ClientId.
 	void SetClientId(uint64_t ClientId);
@@ -1758,6 +1768,10 @@ public:
 	/// \brief Returns whether push to talk is currently active, meaning the user is currently
 	/// pressing their configured push to talk key.
 	bool GetPTTActive();
+
+	/// \brief Returns the time that PTT is active after the user releases the PTT key and
+	/// SetPTTActive(false) is called.
+	uint32_t GetPTTReleaseDelay();
 
 	/// \brief Returns whether the current user is deafened.
 	bool GetSelfDeaf();
@@ -2945,16 +2959,20 @@ public:
 			std::function<void(uint64_t lobbyId, uint64_t memberId, bool added)>;
 
 	/// \brief Callback function for Client::StartCallWithAudioCallbacks.
+	///
+	/// The audio samples in `data` can be modified in-place to achieve simple DSP effects.
 	using UserAudioReceivedCallback = std::function<void(uint64_t userId,
-			int16_t const *data,
+			int16_t *data,
 			uint64_t samplesPerChannel,
 			int32_t sampleRate,
 			uint64_t channels,
 			bool &outShouldMute)>;
 
 	/// \brief Callback function for Client::StartCallWithAudioCallbacks.
+	///
+	/// The audio samples in `data` can be modified in-place to achieve simple DSP effects.
 	using UserAudioCapturedCallback = std::function<
-			void(int16_t const *data, uint64_t samplesPerChannel, int32_t sampleRate, uint64_t channels)>;
+			void(int16_t *data, uint64_t samplesPerChannel, int32_t sampleRate, uint64_t channels)>;
 
 	/// \brief Callback invoked when the Authorize function completes.
 	///
@@ -3141,6 +3159,12 @@ public:
 
 	/// \brief Converts the Error enum to a string.
 	static std::string ErrorToString(discordpp::Client::Error type);
+
+	/// \brief This function is used to get the application ID for the client. This is used to
+	/// identify the application to the Discord client. This is used for things like
+	/// authentication, rich presence, and activity invites when *not* connected with
+	/// Client::Connect. When calling Client::Connect, the application ID is set automatically
+	uint64_t GetApplicationId();
 
 	/// \brief Returns the ID of the system default audio device if the user has not explicitly
 	/// chosen one.
@@ -3350,6 +3374,8 @@ public:
 	/// in your Info.plist. VoiceBuildPostProcessor in the sample demonstrates how to do this
 	/// automatically in your Unity build process.
 	///
+	/// On macOS, you should set the NSMicrophoneUsageDescription key in your Info.plist.
+	///
 	/// Returns null if the user is already in the given voice channel.
 	discordpp::Call StartCall(uint64_t channelId);
 
@@ -3358,9 +3384,17 @@ public:
 	/// The audio received callback is invoked whenever incoming audio is received in a call. If
 	/// the developer sets outShouldMute to true during the callback, the audio data will be muted
 	/// after the callback is invoked, which is useful if the developer is utilizing the incoming
-	/// audio and playing it through their own audio engine or playback.
+	/// audio and playing it through their own audio engine or playback. The audio samples
+	/// in `data` can be modified in-place for simple DSP effects.
+	///
 	/// The audio captured callback is invoked whenever local audio is captured before it is
 	/// processed and transmitted which may be useful for voice moderation, etc.
+	///
+	/// On iOS, your application is responsible for enabling the appropriate background audio mode
+	/// in your Info.plist. VoiceBuildPostProcessor in the sample demonstrates how to do this
+	/// automatically in your Unity build process.
+	///
+	/// On macOS, you should set the NSMicrophoneUsageDescription key in your Info.plist.
 	///
 	/// Returns null if the user is already in the given voice channel.
 	discordpp::Call StartCallWithAudioCallbacks(
@@ -3939,6 +3973,12 @@ public:
 	/// the possible values.
 	discordpp::Client::Status GetStatus() const;
 
+	/// \brief This function is used to set the application ID for the client. This is used to
+	/// identify the application to the Discord client. This is used for things like
+	/// authentication, rich presence, and activity invites when *not* connected with
+	/// Client::Connect. When calling Client::Connect, the application ID is set automatically
+	void SetApplicationId(uint64_t applicationId);
+
 	/// \brief Causes logs generated by the SDK to be written to disk in the specified directory.
 	///
 	/// This function explicitly excludes most logs for voice and webrtc activity since those are
@@ -4132,8 +4172,18 @@ public:
 	/// be able to be launched for them. Returns true if the command was successfully registered,
 	/// false otherwise.
 	///
+	/// On Windows and Linux, this command should be a path to an executable. It also supports any
+	/// launch parameters that may be needed, like
+	/// "C:\path\to my\game.exe" --full-screen --no-hax
 	/// If you pass an empty string in for the command, the SDK will register the current running
-	/// executable.
+	/// executable. To launch the game from a custom protocol like my-awesome-game://, pass that in
+	/// as an argument of the executable that should be launched by that protocol. For example,
+	/// "C:\path\to my\game.exe" my-awesome-game://
+	///
+	/// On macOS, due to the way Discord registers executables, your game needs to be bundled for
+	/// this command to work. That means it should be a .app. You can pass a custom protocol like
+	/// my-awesome-game:// as the custom command, but *not* a path to an executable. If you pass an
+	/// empty string in for the command, the SDK will register the current running bundle, if any.
 	bool RegisterLaunchCommand(uint64_t applicationId, std::string command);
 
 	/// \brief When a user accepts an activity invite for your game within the Discord client,
@@ -4206,6 +4256,10 @@ public:
 	/// You should use rich presence so that other users on Discord know this user is playing a game
 	/// and you can include some hints of what they are playing such as a character name or map
 	/// name. Rich presence also enables Discord game invites to work too!
+	///
+	/// Note: On Desktop, rich presence can be set before calling Client::Connect, but it will be
+	/// cleared if the Client connects. When Client is not connected, this sets the rich presence in
+	/// the current user's Discord client when available.
 	///
 	/// See the docs on the Activity struct for more details.
 	///
@@ -4949,6 +5003,8 @@ inline const char *EnumToString(discordpp::AuthenticationExternalAuthType value)
 			return "EpicOnlineServicesIdToken";
 		case discordpp::AuthenticationExternalAuthType::SteamSessionTicket:
 			return "SteamSessionTicket";
+		case discordpp::AuthenticationExternalAuthType::UnityServicesIdToken:
+			return "UnityServicesIdToken";
 		default:
 			return "unknown";
 	}
@@ -5169,6 +5225,20 @@ void ActivityInvite::SetPartyId(std::string PartyId) {
 	assert(state_ == DiscordObjectState::Owned);
 	Discord_String PartyId__str{ (uint8_t *)(PartyId.data()), PartyId.size() };
 	Discord_ActivityInvite_SetPartyId(&instance_, PartyId__str);
+}
+std::string ActivityInvite::SessionId() const {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_String returnValueNative__;
+	Discord_ActivityInvite_SessionId(&instance_, &returnValueNative__);
+	std::string returnValue__(reinterpret_cast<char *>(returnValueNative__.ptr),
+			returnValueNative__.size);
+	Discord_Free(returnValueNative__.ptr);
+	return returnValue__;
+}
+void ActivityInvite::SetSessionId(std::string SessionId) {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_String SessionId__str{ (uint8_t *)(SessionId.data()), SessionId.size() };
+	Discord_ActivityInvite_SetSessionId(&instance_, SessionId__str);
 }
 bool ActivityInvite::IsValid() const {
 	assert(state_ == DiscordObjectState::Owned);
@@ -6597,6 +6667,12 @@ bool Call::GetPTTActive() {
 	assert(state_ == DiscordObjectState::Owned);
 	bool returnValue__;
 	returnValue__ = Discord_Call_GetPTTActive(&instance_);
+	return returnValue__;
+}
+uint32_t Call::GetPTTReleaseDelay() {
+	assert(state_ == DiscordObjectState::Owned);
+	uint32_t returnValue__;
+	returnValue__ = Discord_Call_GetPTTReleaseDelay(&instance_);
 	return returnValue__;
 }
 bool Call::GetSelfDeaf() {
@@ -8092,6 +8168,12 @@ std::string Client::ErrorToString(discordpp::Client::Error type) {
 	Discord_Free(returnValueNative__.ptr);
 	return returnValue__;
 }
+uint64_t Client::GetApplicationId() {
+	assert(state_ == DiscordObjectState::Owned);
+	uint64_t returnValue__;
+	returnValue__ = Discord_Client_GetApplicationId(&instance_);
+	return returnValue__;
+}
 std::string Client::GetDefaultAudioDeviceId() {
 	Discord_String returnValueNative__;
 	Discord_Client_GetDefaultAudioDeviceId(&returnValueNative__);
@@ -9100,6 +9182,10 @@ discordpp::Client::Status Client::GetStatus() const {
 	Discord_Client_Status returnValue__;
 	returnValue__ = Discord_Client_GetStatus(&instance_);
 	return static_cast<discordpp::Client::Status>(returnValue__);
+}
+void Client::SetApplicationId(uint64_t applicationId) {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_Client_SetApplicationId(&instance_, applicationId);
 }
 bool Client::SetLogDir(std::string const &path, discordpp::LoggingSeverity minSeverity) {
 	assert(state_ == DiscordObjectState::Owned);

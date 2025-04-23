@@ -13,6 +13,10 @@ String DiscordppClient::ErrorToString(DiscordppClientError::Enum type) {
 	return String(discordpp::Client::ErrorToString(p0).c_str());
 }
 
+int64_t DiscordppClient::GetApplicationId() {
+	return obj->GetApplicationId();
+}
+
 String DiscordppClient::GetDefaultAudioDeviceId() {
 	return String(discordpp::Client::GetDefaultAudioDeviceId().c_str());
 }
@@ -736,6 +740,12 @@ DiscordppClientStatus::Enum DiscordppClient::GetStatus() {
 	return (DiscordppClientStatus::Enum)obj->GetStatus();
 }
 
+void DiscordppClient::SetApplicationId(int64_t applicationId) {
+	int64_t p0 = applicationId;
+
+	obj->SetApplicationId(p0);
+}
+
 bool DiscordppClient::SetLogDir(String path, DiscordppLoggingSeverity::Enum minSeverity) {
 	const char *p0 = path.utf8().get_data();
 	discordpp::LoggingSeverity p1 = (discordpp::LoggingSeverity)minSeverity;
@@ -1337,6 +1347,9 @@ void DiscordppClient::_bind_methods() {
 	ClassDB::bind_static_method("DiscordppClient", D_METHOD("ErrorToString", "type"),
 			&DiscordppClient::ErrorToString);
 
+	ClassDB::bind_method(D_METHOD("GetApplicationId"),
+			&DiscordppClient::GetApplicationId);
+
 	ClassDB::bind_static_method("DiscordppClient", D_METHOD("GetDefaultAudioDeviceId"),
 			&DiscordppClient::GetDefaultAudioDeviceId);
 
@@ -1573,6 +1586,9 @@ void DiscordppClient::_bind_methods() {
 
 	ClassDB::bind_method(D_METHOD("GetStatus"),
 			&DiscordppClient::GetStatus);
+
+	ClassDB::bind_method(D_METHOD("SetApplicationId", "applicationId"),
+			&DiscordppClient::SetApplicationId);
 
 	ClassDB::bind_method(D_METHOD("SetLogDir", "path", "minSeverity"),
 			&DiscordppClient::SetLogDir);

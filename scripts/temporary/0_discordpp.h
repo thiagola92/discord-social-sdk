@@ -328,6 +328,8 @@ enum class AuthenticationExternalAuthType {
 	EpicOnlineServicesIdToken = 2,
 
 	SteamSessionTicket = 3,
+
+	UnityServicesIdToken = 4,
 };
 
 enum class LoggingSeverity {
@@ -369,6 +371,9 @@ class ActivityInvite {
 
 	std::string PartyId() const;
 	void SetPartyId(std::string PartyId);
+
+	std::string SessionId() const;
+	void SetSessionId(std::string SessionId);
 
 	bool IsValid() const;
 	void SetIsValid(bool IsValid);
@@ -682,6 +687,8 @@ class Call {
 	float GetParticipantVolume(uint64_t userId);
 
 	bool GetPTTActive();
+
+	uint32_t GetPTTReleaseDelay();
 
 	bool GetSelfDeaf();
 
@@ -1052,14 +1059,14 @@ class Client {
 			std::function<void(uint64_t lobbyId, uint64_t memberId, bool added)>;
 
 	using UserAudioReceivedCallback = std::function<void(uint64_t userId,
-			int16_t const *data,
+			int16_t *data,
 			uint64_t samplesPerChannel,
 			int32_t sampleRate,
 			uint64_t channels,
 			bool &outShouldMute)>;
 
 	using UserAudioCapturedCallback = std::function<
-			void(int16_t const *data, uint64_t samplesPerChannel, int32_t sampleRate, uint64_t channels)>;
+			void(int16_t *data, uint64_t samplesPerChannel, int32_t sampleRate, uint64_t channels)>;
 
 	using AuthorizationCallback = std::function<
 			void(discordpp::ClientResult result, std::string code, std::string redirectUri)>;
@@ -1170,6 +1177,8 @@ class Client {
 	void Drop();
 
 	static std::string ErrorToString(discordpp::Client::Error type);
+
+	uint64_t GetApplicationId();
 
 	static std::string GetDefaultAudioDeviceId();
 
@@ -1383,6 +1392,8 @@ class Client {
 	void Disconnect();
 
 	discordpp::Client::Status GetStatus() const;
+
+	void SetApplicationId(uint64_t applicationId);
 
 	bool SetLogDir(std::string const &path, discordpp::LoggingSeverity minSeverity);
 
@@ -1994,6 +2005,8 @@ inline const char *EnumToString(discordpp::AuthenticationExternalAuthType value)
 			return "EpicOnlineServicesIdToken";
 		case discordpp::AuthenticationExternalAuthType::SteamSessionTicket:
 			return "SteamSessionTicket";
+		case discordpp::AuthenticationExternalAuthType::UnityServicesIdToken:
+			return "UnityServicesIdToken";
 		default:
 			return "unknown";
 	}

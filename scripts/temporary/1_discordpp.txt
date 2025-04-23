@@ -201,6 +201,7 @@ enum AuthenticationExternalAuthType {
     EpicOnlineServicesAccessToken:  1,
     EpicOnlineServicesIdToken:  2,
     SteamSessionTicket:  3,
+    UnityServicesIdToken:  4,
 }
 
 
@@ -234,6 +235,8 @@ func ApplicationId() -> uint64_t
 func SetApplicationId(uint64_t ApplicationId) -> void
 func PartyId() -> std::string
 func SetPartyId(std::string PartyId) -> void
+func SessionId() -> std::string
+func SetSessionId(std::string SessionId) -> void
 func IsValid() -> bool
 func SetIsValid(bool IsValid) -> void
 }
@@ -505,6 +508,7 @@ func GetLocalMute(uint64_t userId) -> bool
 func GetParticipants() -> std::vector<uint64_t>
 func GetParticipantVolume(uint64_t userId) -> float
 func GetPTTActive() -> bool
+func GetPTTReleaseDelay() -> uint32_t
 func GetSelfDeaf() -> bool
 func GetSelfMute() -> bool
 func GetStatus() -> discordpp::Call::Status
@@ -790,8 +794,8 @@ callback SetInputDeviceCallback(discordpp::ClientResult result)
 callback NoAudioInputCallback(bool inputDetected)
 callback SetOutputDeviceCallback(discordpp::ClientResult result)
 callback VoiceParticipantChangedCallback(uint64_t lobbyId, uint64_t memberId, bool added)
-callback UserAudioReceivedCallback(uint64_t userId, int16_t const * data, uint64_t samplesPerChannel, int32_t sampleRate, uint64_t channels, bool & outShouldMute)
-callback UserAudioCapturedCallback(int16_t const * data, uint64_t samplesPerChannel, int32_t sampleRate, uint64_t channels)
+callback UserAudioReceivedCallback(uint64_t userId, int16_t * data, uint64_t samplesPerChannel, int32_t sampleRate, uint64_t channels, bool & outShouldMute)
+callback UserAudioCapturedCallback(int16_t * data, uint64_t samplesPerChannel, int32_t sampleRate, uint64_t channels)
 callback AuthorizationCallback(discordpp::ClientResult result, std::string code, std::string redirectUri)
 callback FetchCurrentUserCallback(discordpp::ClientResult result, uint64_t id, std::string name)
 callback TokenExchangeCallback(discordpp::ClientResult result, std::string accessToken, std::string refreshToken, discordpp::AuthorizationTokenType tokenType, int32_t expiresIn, std::string scopes)
@@ -839,6 +843,7 @@ constructor (std::string apiBase, std::string webBase)
 -----
 func Drop() -> void
 static func ErrorToString(discordpp::Client::Error type) -> std::string
+func GetApplicationId() -> uint64_t
 static func GetDefaultAudioDeviceId() -> std::string
 static func GetDefaultCommunicationScopes() -> std::string
 static func GetDefaultPresenceScopes() -> std::string
@@ -918,6 +923,7 @@ func AddVoiceLogCallback(discordpp::Client::LogCallback callback, discordpp::Log
 func Connect() -> void
 func Disconnect() -> void
 func GetStatus() -> discordpp::Client::Status
+func SetApplicationId(uint64_t applicationId) -> void
 func SetLogDir(std::string const & path, discordpp::LoggingSeverity minSeverity) -> bool
 func SetStatusChangedCallback(discordpp::Client::OnStatusChanged cb) -> void
 func SetVoiceLogDir(std::string const & path, discordpp::LoggingSeverity minSeverity) -> void

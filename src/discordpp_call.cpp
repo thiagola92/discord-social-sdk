@@ -52,6 +52,10 @@ bool DiscordppCall::GetPTTActive() {
 	return obj->GetPTTActive();
 }
 
+int64_t DiscordppCall::GetPTTReleaseDelay() {
+	return obj->GetPTTReleaseDelay();
+}
+
 bool DiscordppCall::GetSelfDeaf() {
 	return obj->GetSelfDeaf();
 }
@@ -200,6 +204,9 @@ void DiscordppCall::_bind_methods() {
 
 	ClassDB::bind_method(D_METHOD("GetPTTActive"),
 			&DiscordppCall::GetPTTActive);
+
+	ClassDB::bind_method(D_METHOD("GetPTTReleaseDelay"),
+			&DiscordppCall::GetPTTReleaseDelay);
 
 	ClassDB::bind_method(D_METHOD("GetSelfDeaf"),
 			&DiscordppCall::GetSelfDeaf);

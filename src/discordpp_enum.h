@@ -514,6 +514,7 @@ protected:
 		BIND_ENUM_CONSTANT(EpicOnlineServicesAccessToken);
 		BIND_ENUM_CONSTANT(EpicOnlineServicesIdToken);
 		BIND_ENUM_CONSTANT(SteamSessionTicket);
+		BIND_ENUM_CONSTANT(UnityServicesIdToken);
 	}
 
 public:
@@ -522,6 +523,7 @@ public:
 		EpicOnlineServicesAccessToken = 1,
 		EpicOnlineServicesIdToken = 2,
 		SteamSessionTicket = 3,
+		UnityServicesIdToken = 4,
 	};
 };
 

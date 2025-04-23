@@ -67,6 +67,16 @@ void DiscordppActivityInvite::SetPartyId(String PartyId) {
 	obj->SetPartyId(p0);
 }
 
+String DiscordppActivityInvite::SessionId() {
+	return String(obj->SessionId().c_str());
+}
+
+void DiscordppActivityInvite::SetSessionId(String SessionId) {
+	const char *p0 = SessionId.utf8().get_data();
+
+	obj->SetSessionId(p0);
+}
+
 bool DiscordppActivityInvite::IsValid() {
 	return obj->IsValid();
 }
@@ -116,6 +126,12 @@ void DiscordppActivityInvite::_bind_methods() {
 
 	ClassDB::bind_method(D_METHOD("SetPartyId", "PartyId"),
 			&DiscordppActivityInvite::SetPartyId);
+
+	ClassDB::bind_method(D_METHOD("SessionId"),
+			&DiscordppActivityInvite::SessionId);
+
+	ClassDB::bind_method(D_METHOD("SetSessionId", "SessionId"),
+			&DiscordppActivityInvite::SetSessionId);
 
 	ClassDB::bind_method(D_METHOD("IsValid"),
 			&DiscordppActivityInvite::IsValid);

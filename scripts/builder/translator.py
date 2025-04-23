@@ -33,11 +33,12 @@ class Translator:
     def is_c_int(self, type_name: str) -> bool:
         return type_name in [
             "uint8_t",
+            "int16_t *",
             "int16_t const*",
             "int16_t const *",
             "int32_t",
-            "uint32_t",
             "static int32_t",
+            "uint32_t",
             "int64_t",
             "uint64_t",
         ]
