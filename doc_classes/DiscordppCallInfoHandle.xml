@@ -27,6 +27,7 @@
 			<return type="Variant" />
 			<param index="0" name="userId" type="int" />
 			<description>
+				Returns [DiscordppVoiceStateHandle] or [code]null[/code].
 			</description>
 		</method>
 		<method name="GuildId">

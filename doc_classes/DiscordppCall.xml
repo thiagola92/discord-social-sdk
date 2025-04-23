@@ -80,6 +80,7 @@
 			<return type="Variant" />
 			<param index="0" name="userId" type="int" />
 			<description>
+				Returns [DiscordppVoiceStateHandle] or [code]null[/code].
 			</description>
 		</method>
 		<method name="SetAudioMode">
@@ -99,7 +100,8 @@
 			<return type="void" />
 			<param index="0" name="cb" type="Callable" />
 			<description>
-				Where [code]cb[/code] signature is:
+			
+				Where [param cb] signature is:
 				[codeblock]
 				func(userId: int)
 				[/codeblock]
@@ -121,7 +123,8 @@
 			<return type="void" />
 			<param index="0" name="cb" type="Callable" />
 			<description>
-				Where [code]cb[/code] signature is:
+			
+				Where [param cb] signature is:
 				[codeblock]
 				func(userId: int, added: bool)
 				[/codeblock]
@@ -150,7 +153,8 @@
 			<return type="void" />
 			<param index="0" name="cb" type="Callable" />
 			<description>
-				Where [code]cb[/code] signature is:
+			
+				Where [param cb] signature is:
 				[codeblock]
 				func(userId: int, isPlayingSound: bool)
 				[/codeblock]
@@ -160,7 +164,8 @@
 			<return type="void" />
 			<param index="0" name="cb" type="Callable" />
 			<description>
-				Where [code]cb[/code] signature is:
+			
+				Where [param cb] signature is:
 				[codeblock]
 				func(status: DiscordppCallStatus.Enum, error: DiscordppCallError.Enum, errorDetail: int)
 				[/codeblock]

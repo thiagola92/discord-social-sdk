@@ -16,11 +16,13 @@
 		<method name="LargeImage">
 			<return type="Variant" />
 			<description>
+				Returns [String] or [code]null[/code].
 			</description>
 		</method>
 		<method name="LargeText">
 			<return type="Variant" />
 			<description>
+				Returns [String] or [code]null[/code].
 			</description>
 		</method>
 		<method name="SetLargeImage">
@@ -50,11 +52,13 @@
 		<method name="SmallImage">
 			<return type="Variant" />
 			<description>
+				Returns [String] or [code]null[/code].
 			</description>
 		</method>
 		<method name="SmallText">
 			<return type="Variant" />
 			<description>
+				Returns [String] or [code]null[/code].
 			</description>
 		</method>
 	</methods>

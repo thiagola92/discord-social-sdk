@@ -3,7 +3,12 @@ from xml.etree import ElementTree
 from xml.etree.ElementTree import Element
 from parser.parser import TokenFunction, TokenClass
 from documenter.doc_translator import DocTranslator
-from template.xml import get_callback, get_xml_version, get_class_reference
+from template.xml import (
+    get_callback_param,
+    get_xml_version,
+    get_class_reference,
+    get_variant_return,
+)
 
 
 class Documenter:
@@ -65,12 +70,22 @@ class Documenter:
         class_element = tree.getroot()
 
         # Update XML.
+        self.clear_class(class_element, class_)
         self.add_reference_link(class_element, class_)
         self.add_callbacks_signatures(class_element, class_)
+        self.add_return_variant(class_element, class_)
 
         # Save XML.
         tree.write(file)
         file.write_text(get_xml_version() + file.read_text() + "\n")
+
+    def clear_class(self, class_element: Element, class_: TokenClass):
+        description_ele = class_element.find("description")
+        description_ele.text = "\n\t"
+
+        for method_ele in class_element.find("methods"):
+            description_ele = method_ele.find("description")
+            description_ele.text = "\n\t\t\t"
 
     def add_reference_link(self, class_element: Element, class_: TokenClass):
         reference = get_class_reference(class_.name)
@@ -94,9 +109,18 @@ class Documenter:
                     params = []
 
                     for p in cb.params:
-                        godot_type = self.translator.c_type_to_gdscript_type(p.type)
-                        params.append(f"{p.name}: {godot_type}")
+                        gdscript_type = self.translator.c_type_to_gdscript_type(p.type)
+                        params.append(f"{p.name}: {gdscript_type}")
 
                     params = ", ".join(params)
-                    content = get_callback(param_name=param.name, params=params)
-                    element.text = content
+                    content = get_callback_param(param_name=param.name, params=params)
+                    element.text += content
+
+    def add_return_variant(self, class_element: Element, class_: TokenClass):
+        for function in class_.functions:
+            if self.translator.is_c_opt(function.ret.name):
+                element = self.get_method_element(class_element, function.name)
+                element = element.find("description")
+                bbcode = self.translator.c_type_to_bbcode(function.ret.subtype)
+                content = get_variant_return(bbcode)
+                element.text += content

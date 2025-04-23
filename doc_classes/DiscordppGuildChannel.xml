@@ -31,6 +31,7 @@
 		<method name="LinkedLobby">
 			<return type="Variant" />
 			<description>
+				Returns [DiscordppLinkedLobby] or [code]null[/code].
 			</description>
 		</method>
 		<method name="Name">

@@ -16,12 +16,14 @@
 		<method name="GetCallInfoHandle">
 			<return type="Variant" />
 			<description>
+				Returns [DiscordppCallInfoHandle] or [code]null[/code].
 			</description>
 		</method>
 		<method name="GetLobbyMemberHandle">
 			<return type="Variant" />
 			<param index="0" name="memberId" type="int" />
 			<description>
+				Returns [DiscordppLobbyMemberHandle] or [code]null[/code].
 			</description>
 		</method>
 		<method name="Id">
@@ -32,6 +34,7 @@
 		<method name="LinkedChannel">
 			<return type="Variant" />
 			<description>
+				Returns [DiscordppLinkedChannel] or [code]null[/code].
 			</description>
 		</method>
 		<method name="LobbyMemberIds">

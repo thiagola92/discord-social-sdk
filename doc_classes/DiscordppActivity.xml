@@ -11,16 +11,19 @@
 		<method name="ApplicationId">
 			<return type="Variant" />
 			<description>
+				Returns [int] or [code]null[/code].
 			</description>
 		</method>
 		<method name="Assets">
 			<return type="Variant" />
 			<description>
+				Returns [DiscordppActivityAssets] or [code]null[/code].
 			</description>
 		</method>
 		<method name="Details">
 			<return type="Variant" />
 			<description>
+				Returns [String] or [code]null[/code].
 			</description>
 		</method>
 		<method name="Drop">
@@ -42,11 +45,13 @@
 		<method name="Party">
 			<return type="Variant" />
 			<description>
+				Returns [DiscordppActivityParty] or [code]null[/code].
 			</description>
 		</method>
 		<method name="Secrets">
 			<return type="Variant" />
 			<description>
+				Returns [DiscordppActivitySecrets] or [code]null[/code].
 			</description>
 		</method>
 		<method name="SetApplicationId">
@@ -112,6 +117,7 @@
 		<method name="State">
 			<return type="Variant" />
 			<description>
+				Returns [String] or [code]null[/code].
 			</description>
 		</method>
 		<method name="SupportedPlatforms">
@@ -122,6 +128,7 @@
 		<method name="Timestamps">
 			<return type="Variant" />
 			<description>
+				Returns [DiscordppActivityTimestamps] or [code]null[/code].
 			</description>
 		</method>
 		<method name="Type">

@@ -11,6 +11,7 @@
 		<method name="Avatar">
 			<return type="Variant" />
 			<description>
+				Returns [String] or [code]null[/code].
 			</description>
 		</method>
 		<method name="AvatarTypeToString" qualifiers="static">
@@ -39,11 +40,13 @@
 		<method name="GameActivity">
 			<return type="Variant" />
 			<description>
+				Returns [DiscordppActivity] or [code]null[/code].
 			</description>
 		</method>
 		<method name="GlobalName">
 			<return type="Variant" />
 			<description>
+				Returns [String] or [code]null[/code].
 			</description>
 		</method>
 		<method name="Id">

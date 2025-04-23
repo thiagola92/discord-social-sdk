@@ -63,4 +63,47 @@ class DocTranslator(Translator):
             types = ", ".join(types)
             return types
 
-        assert False, f'Fail to convert from "{token.name}" to Godot type'
+        assert False, f'Fail to convert from "{token.name}" to GDScript type'
+
+    def c_type_to_bbcode(self, token: TokenType) -> str:
+        if self.is_c_void(token.name):
+            return "[code]void[/code]"
+
+        elif self.is_c_bool(token.name):
+            return "[bool]"
+
+        elif self.is_c_int(token.name):
+            return "[int]"
+
+        elif self.is_c_float(token.name):
+            return "[float]"
+
+        elif self.is_c_string(token.name):
+            return "[String]"
+
+        elif self.is_c_char_array(token.name):
+            return "[String]"
+
+        elif self.is_c_opt(token.name):
+            return "[Variant]"
+
+        elif self.is_c_vec(token.name):
+            subtype = self.c_type_to_bbcode(token.subtype)
+            return f"[Array][lb]{subtype}[rb]"
+
+        elif self.is_c_map(token.name):
+            subtype = self.c_type_to_bbcode(token.subtype)
+            return f"[Dictionary][lb]{subtype}[rb]"
+
+        elif self.is_c_callback(token.name):
+            return "[Callable]"
+
+        elif self.is_c_enum(token.name):
+            name = self.c_name_to_godot_name(token.name).replace("::", ".")
+            return f"[enum {name}.Enum]"
+
+        elif self.is_c_discord(token.name):
+            name = self.c_name_to_godot_name(token.name)
+            return f"[{name}]"
+
+        assert False, f'Fail to convert from "{token.name}" to BBCode'

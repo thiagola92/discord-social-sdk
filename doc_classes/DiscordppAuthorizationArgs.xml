@@ -16,6 +16,7 @@
 		<method name="CodeChallenge">
 			<return type="Variant" />
 			<description>
+				Returns [DiscordppAuthorizationCodeChallenge] or [code]null[/code].
 			</description>
 		</method>
 		<method name="Drop">
@@ -26,6 +27,7 @@
 		<method name="Nonce">
 			<return type="Variant" />
 			<description>
+				Returns [String] or [code]null[/code].
 			</description>
 		</method>
 		<method name="Scopes">
@@ -66,6 +68,7 @@
 		<method name="State">
 			<return type="Variant" />
 			<description>
+				Returns [String] or [code]null[/code].
 			</description>
 		</method>
 	</methods>

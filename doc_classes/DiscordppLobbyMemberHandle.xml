@@ -36,6 +36,7 @@
 		<method name="User">
 			<return type="Variant" />
 			<description>
+				Returns [DiscordppUserHandle] or [code]null[/code].
 			</description>
 		</method>
 	</methods>

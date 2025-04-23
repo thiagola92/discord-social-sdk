@@ -45,6 +45,7 @@
 		<method name="Title">
 			<return type="Variant" />
 			<description>
+				Returns [String] or [code]null[/code].
 			</description>
 		</method>
 		<method name="Type">

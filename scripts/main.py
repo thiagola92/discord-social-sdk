@@ -1,5 +1,3 @@
-import sys
-
 from cleaner.cleaner import clean_content
 from parser.parser import Parser
 from helper import clang_format
