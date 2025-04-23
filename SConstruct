@@ -33,12 +33,20 @@ if env["target"] == "template_release":
     env.Append(LIBPATH=["lib/release/"])
 
     for f in Path("lib/release/").glob("*"):
-        shutil.copy(f.absolute(), destination_dir.absolute())
+        if f.is_file():
+            shutil.copy(f.absolute(), destination_dir.absolute())
+        elif f.is_dir():
+            d = destination_dir.absolute().joinpath(f.name)
+            shutil.copytree(f.absolute(), d, dirs_exist_ok=True)
 else:
     env.Append(LIBPATH=["lib/debug/"])
 
     for f in Path("lib/debug/").glob("*"):
-        shutil.copy(f.absolute(), destination_dir.absolute())
+        if f.is_file():
+            shutil.copy(f.absolute(), destination_dir.absolute())
+        elif f.is_dir():
+            d = destination_dir.absolute().joinpath(f.name)
+            shutil.copytree(f.absolute(), d, dirs_exist_ok=True)
 
 # Generate library.
 if env["platform"] == "macos":

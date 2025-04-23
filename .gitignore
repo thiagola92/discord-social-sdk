@@ -1,10 +1,10 @@
 # Unknown
 *.os
 
-# Files from lib/debug and lib/release that are not below.
+# Files/Dirs from lib/debug and lib/release that are not below.
 *.aar
 *.dbg
-lib/release/discord_partner_sdk.xcframework
+*.xcframework
 
 ####################### SCons #######################
 
