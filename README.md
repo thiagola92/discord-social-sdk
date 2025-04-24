@@ -209,6 +209,8 @@ python3 scripts/main.py
 # Generate GDExtension library.
 scons platform=linux                            # Debug
 scons platform=linux target=template_release    # Release
+scons platform=windows                            # Debug
+scons platform=windows target=template_release    # Release
 
 # Generate addons dir for the Asset Library.
 rm -rf addons
