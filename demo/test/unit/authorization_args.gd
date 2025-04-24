@@ -1,7 +1,7 @@
-extends GdUnitTestSuite
+extends Node
 
 
-func test_default_values() -> void:
+func test_default_values(_client: DiscordppClient) -> void:
 	var args := DiscordppAuthorizationArgs.new()
 	
 	assert(args.ClientId() == 0)
@@ -11,7 +11,7 @@ func test_default_values() -> void:
 	assert(args.CodeChallenge() == null)
 
 
-func test_set_valid_values() -> void:
+func test_set_valid_values(_client: DiscordppClient) -> void:
 	var args := DiscordppAuthorizationArgs.new()
 	var client_id := 123
 	var scope := "openid sdk.social_layer_presence"

@@ -63,7 +63,6 @@ func _ready() -> void:
 						expiresIn: int,
 						scopes: String
 					):
-						pass
 						print("🔓 Access token received! Establishing connection...")
 						
 						client.UpdateToken(

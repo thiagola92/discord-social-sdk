@@ -5,7 +5,7 @@ extends RefCounted
 static func read(name: String) -> String:
 	var text = FileAccess.get_file_as_string("../.env")
 	
-	if text == null:
+	if text == "":
 		push_error("Create a .env file with APPLICATION_ID")
 	
 	var lines = text.split("\n")
