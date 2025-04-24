@@ -147,13 +147,17 @@ flowchart LR
 **Document**: Update the generated XML documentation from Godot (files in `doc_classes/`) with some details to help.  
 
 ## Prerequisites
+I'm using Ubuntu, please adapt this list to your operating system.  
+
 - [Godot](https://godotengine.org/)
 - [SCons](https://scons.org/)
-    - Debian/Ubuntu: `sudo apt install scons`
+    - `sudo apt install scons`
+- [Mingw-w64](https://www.mingw-w64.org/)
+    - `sudo apt install mingw-w64`
 - [Python](https://www.python.org/) >=3.12
-    - Included in Debian
+    - Included by default
 - Clang format
-    - Debian: `sudo apt install clang-format`
+    - `sudo apt install clang-format`
     - [VSCode](https://marketplace.visualstudio.com/items?itemName=xaver.clang-format)
 - Discord Social SDK in `lib/` directory
     - [Download the Discord SDK for C++](https://discord.com/developers/docs/discord-social-sdk/getting-started/using-c++#step-4-download-the-discord-sdk-for-c++)
