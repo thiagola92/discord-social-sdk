@@ -94,9 +94,15 @@ func _process(_delta: float) -> void:
     Discordpp.RunCallbacks()
 ```
 
+## Questions
+
 > Why exists many functions like `Discordpp.EnumToString0()`, `Discordpp.EnumToString1()`, `Discordpp.EnumToString2()`, etc?  
 
 GDScript doesn't support [function overloading](https://www.w3schools.com/cpp/cpp_function_overloading.asp), so I just made one function for each option.  
+
+> Why some functions return [`Variant`](https://docs.godotengine.org/en/stable/classes/class_variant.html)?  
+
+GDScript doesn't has an alternative to [`std::optional<T>`](https://en.cppreference.com/w/cpp/utility/optional), so we just return a Variant which can hold a `null` or an actual value.  
 
 # Development
 This GDExtension is **all** built using Python and **nothing** should be add manually at `src`. If this is weird for you, listen to me...  
