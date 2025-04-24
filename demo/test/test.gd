@@ -38,7 +38,7 @@ func test_script(filename: String) -> void:
 		
 		if method_name.begins_with("test_"):
 			print(filename, " -> ", method_name, "()")
-			node.call(method_name, client)
+			await node.call(method_name, client)
 
 
 func _process(_delta: float) -> void:

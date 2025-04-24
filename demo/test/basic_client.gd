@@ -2,6 +2,9 @@ class_name BasicClient
 extends RefCounted
 
 
+# DANGER: Calling DotEnv.read_int("APPLICATION_ID") right before
+# client.CreateAuthorizationCodeVerifier() cause it to crash.
+# I need to investigate...
 static var APPLICATION_ID := DotEnv.read_int("APPLICATION_ID")
 
 
