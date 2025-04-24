@@ -3,6 +3,12 @@
 # Discord Social SDK
 Wrapper around [Discord Social SDK](https://discord.com/developers/docs/discord-social-sdk/overview).  
 
+<div align="center">
+
+![Logo](demo/addons/discord_social_sdk/icons/discord_social_sdk.svg)  
+
+</div>
+
 # Usage
 Is suppose to be a close one-to-one with the C++ SDK, so looking at the C++ [*Getting Started*](https://discord.com/developers/docs/discord-social-sdk/getting-started/using-c++) is recommended to understand how the SDK works.  
 
