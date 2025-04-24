@@ -1,11 +1,3 @@
-# Unknown
-*.os
-
-# Files/Dirs from lib/debug and lib/release that are not below.
-*.aar
-*.dbg
-*.xcframework
-
 ####################### Godot #######################
 
 # Godot 4+ specific ignores
@@ -298,3 +290,16 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+####################### Project specific #######################
+
+# Unknown
+*.os
+
+# Libs that are not above.
+*.aar
+*.dbg
+*.xcframework
+
+# Maintain lib directory.
+!lib/.gitkeep

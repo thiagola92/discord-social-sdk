@@ -159,14 +159,14 @@ I'm using Ubuntu, please adapt this list to your operating system.
 - Clang format
     - `sudo apt install clang-format`
     - [VSCode](https://marketplace.visualstudio.com/items?itemName=xaver.clang-format)
-- Discord Social SDK in `lib/` directory
-    - [Download the Discord SDK for C++](https://discord.com/developers/docs/discord-social-sdk/getting-started/using-c++#step-4-download-the-discord-sdk-for-c++)
-        - SDK Version: **1.0.7445**
-    - Extract files from:
-        - `discord_social_sdk/lib/debug/` to `lib/debug/`
-        - `discord_social_sdk/bin/debug/` to `lib/debug/`
-        - `discord_social_sdk/lib/release/` to `lib/release/`
-        - `discord_social_sdk/bin/release/` to `lib/release/`
+- [Discord SDK for C++](https://discord.com/developers/docs/discord-social-sdk/getting-started/using-c++#step-4-download-the-discord-sdk-for-c++)
+    - Unzip libs in `lib/` directory and headers in `include/` directory
+        - Supposing that the repository `discord-social-sdk` and `DiscordSocialSdk.zip` are on the same directory:
+            - `unzip DiscordSocialSdk.zip -d /tmp/`
+            - `cp -r /tmp/discord_social_sdk/lib/release/* discord-social-sdk/lib/`
+            - `cp -r /tmp/discord_social_sdk/bin/release/* discord-social-sdk/lib/`
+            - `cp -r /tmp/discord_social_sdk/include/* discord-social-sdk/include/`
+            - `rm -rf /tmp/discord_social_sdk`
 
 ## Tree
 ```
