@@ -303,3 +303,6 @@ cython_debug/
 
 # Maintain lib directory.
 !lib/.gitkeep
+
+# ZIP for Godot Asset Library.
+discord_social_sdk.zip

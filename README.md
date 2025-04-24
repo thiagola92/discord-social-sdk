@@ -215,10 +215,10 @@ scons platform=linux target=template_release    # Release
 scons platform=windows                            # Debug
 scons platform=windows target=template_release    # Release
 
-# Generate addons dir for the Asset Library.
-rm -rf addons
-mkdir addons/discord_social_sdk
-cp -r demo/addons/discord_social_sdk addons
+# Generate ZIP file for the Asset Library.
+cd demo
+zip -r ../discord_social_sdk.zip addons/discord_social_sdk/**
+cd ..
 ```
 
 # References
