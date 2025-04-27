@@ -11,7 +11,7 @@ func _ready() -> void:
 	
 	client.AddLogCallback(
 		func(message: String, severity: DiscordppLoggingSeverity.Enum):
-			print("[%s] %s" % [severity, message]),
+			print("[%s] %s" % [Discordpp.EnumToString18(severity), message]),
 		DiscordppLoggingSeverity.Info
 	)
 	
@@ -58,10 +58,10 @@ func _ready() -> void:
 					func(
 						result: DiscordppClientResult,
 						accessToken: String,
-						refreshToken: String,
-						tokenType: DiscordppAuthorizationTokenType.Enum,
-						expiresIn: int,
-						scopes: String
+						_refreshToken: String,
+						_tokenType: DiscordppAuthorizationTokenType.Enum,
+						_expiresIn: int,
+						_scopes: String
 					):
 						print("🔓 Access token received! Establishing connection...")
 						
