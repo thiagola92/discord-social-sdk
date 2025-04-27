@@ -65,7 +65,9 @@ TypedArray<DiscordppLobbyMemberHandle> DiscordppLobbyHandle::LobbyMembers() {
 	TypedArray<DiscordppLobbyMemberHandle> t_r = TypedArray<DiscordppLobbyMemberHandle>();
 
 	for (auto i : r) {
-		t_r.push_back(memnew(DiscordppLobbyMemberHandle{ &i }));
+		discordpp::LobbyMemberHandle *t_i = (discordpp::LobbyMemberHandle *)memalloc(sizeof(discordpp::LobbyMemberHandle));
+		*t_i = i;
+		t_r.push_back(memnew(DiscordppLobbyMemberHandle{ t_i }));
 	}
 
 	return t_r;

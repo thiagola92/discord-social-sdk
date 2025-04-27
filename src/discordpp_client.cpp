@@ -84,7 +84,9 @@ TypedArray<DiscordppCall> DiscordppClient::GetCalls() {
 	TypedArray<DiscordppCall> t_r = TypedArray<DiscordppCall>();
 
 	for (auto i : r) {
-		t_r.push_back(memnew(DiscordppCall{ &i }));
+		discordpp::Call *t_i = (discordpp::Call *)memalloc(sizeof(discordpp::Call));
+		*t_i = i;
+		t_r.push_back(memnew(DiscordppCall{ t_i }));
 	}
 
 	return t_r;
@@ -115,7 +117,9 @@ void DiscordppClient::GetInputDevices(Callable cb) {
 		TypedArray<DiscordppAudioDevice> p0 = TypedArray<DiscordppAudioDevice>();
 
 		for (auto i : devices) {
-			p0.push_back(memnew(DiscordppAudioDevice{ &i }));
+			discordpp::AudioDevice *t_i = (discordpp::AudioDevice *)memalloc(sizeof(discordpp::AudioDevice));
+			*t_i = i;
+			p0.push_back(memnew(DiscordppAudioDevice{ t_i }));
 		}
 
 		cb.call(p0);
@@ -131,7 +135,9 @@ void DiscordppClient::GetOutputDevices(Callable cb) {
 		TypedArray<DiscordppAudioDevice> p0 = TypedArray<DiscordppAudioDevice>();
 
 		for (auto i : devices) {
-			p0.push_back(memnew(DiscordppAudioDevice{ &i }));
+			discordpp::AudioDevice *t_i = (discordpp::AudioDevice *)memalloc(sizeof(discordpp::AudioDevice));
+			*t_i = i;
+			p0.push_back(memnew(DiscordppAudioDevice{ t_i }));
 		}
 
 		cb.call(p0);
@@ -161,13 +167,17 @@ void DiscordppClient::SetDeviceChangeCallback(Callable callback) {
 		TypedArray<DiscordppAudioDevice> p0 = TypedArray<DiscordppAudioDevice>();
 
 		for (auto i : inputDevices) {
-			p0.push_back(memnew(DiscordppAudioDevice{ &i }));
+			discordpp::AudioDevice *t_i = (discordpp::AudioDevice *)memalloc(sizeof(discordpp::AudioDevice));
+			*t_i = i;
+			p0.push_back(memnew(DiscordppAudioDevice{ t_i }));
 		}
 
 		TypedArray<DiscordppAudioDevice> p1 = TypedArray<DiscordppAudioDevice>();
 
 		for (auto i : outputDevices) {
-			p1.push_back(memnew(DiscordppAudioDevice{ &i }));
+			discordpp::AudioDevice *t_i = (discordpp::AudioDevice *)memalloc(sizeof(discordpp::AudioDevice));
+			*t_i = i;
+			p1.push_back(memnew(DiscordppAudioDevice{ t_i }));
 		}
 
 		callback.call(p0, p1);
@@ -826,7 +836,9 @@ void DiscordppClient::GetGuildChannels(int64_t guildId, Callable cb) {
 		TypedArray<DiscordppGuildChannel> p1 = TypedArray<DiscordppGuildChannel>();
 
 		for (auto i : guildChannels) {
-			p1.push_back(memnew(DiscordppGuildChannel{ &i }));
+			discordpp::GuildChannel *t_i = (discordpp::GuildChannel *)memalloc(sizeof(discordpp::GuildChannel));
+			*t_i = i;
+			p1.push_back(memnew(DiscordppGuildChannel{ t_i }));
 		}
 
 		cb.call(p0, p1);
@@ -867,7 +879,9 @@ void DiscordppClient::GetUserGuilds(Callable cb) {
 		TypedArray<DiscordppGuildMinimal> p1 = TypedArray<DiscordppGuildMinimal>();
 
 		for (auto i : guilds) {
-			p1.push_back(memnew(DiscordppGuildMinimal{ &i }));
+			discordpp::GuildMinimal *t_i = (discordpp::GuildMinimal *)memalloc(sizeof(discordpp::GuildMinimal));
+			*t_i = i;
+			p1.push_back(memnew(DiscordppGuildMinimal{ t_i }));
 		}
 
 		cb.call(p0, p1);
@@ -1148,7 +1162,9 @@ TypedArray<DiscordppRelationshipHandle> DiscordppClient::GetRelationships() {
 	TypedArray<DiscordppRelationshipHandle> t_r = TypedArray<DiscordppRelationshipHandle>();
 
 	for (auto i : r) {
-		t_r.push_back(memnew(DiscordppRelationshipHandle{ &i }));
+		discordpp::RelationshipHandle *t_i = (discordpp::RelationshipHandle *)memalloc(sizeof(discordpp::RelationshipHandle));
+		*t_i = i;
+		t_r.push_back(memnew(DiscordppRelationshipHandle{ t_i }));
 	}
 
 	return t_r;
@@ -1209,7 +1225,9 @@ TypedArray<DiscordppUserHandle> DiscordppClient::SearchFriendsByUsername(String 
 	TypedArray<DiscordppUserHandle> t_r = TypedArray<DiscordppUserHandle>();
 
 	for (auto i : r) {
-		t_r.push_back(memnew(DiscordppUserHandle{ &i }));
+		discordpp::UserHandle *t_i = (discordpp::UserHandle *)memalloc(sizeof(discordpp::UserHandle));
+		*t_i = i;
+		t_r.push_back(memnew(DiscordppUserHandle{ t_i }));
 	}
 
 	return t_r;

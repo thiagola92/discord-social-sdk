@@ -9,6 +9,7 @@ class Discordpp{class_name} : public RefCounted {{
 	GDCLASS(Discordpp{class_name}, RefCounted)
 
 private:
+	bool owned = false;
 	discordpp::{class_name} *obj;
 	{private_constructors}
 protected:
@@ -27,7 +28,11 @@ public:
         this->obj = obj;
     }}
 
-	~Discordpp{class_name}() {{}}
+	~Discordpp{class_name}() {{
+		if (this->owned == true) {{
+			memdelete(this->obj);
+        }}
+    }}
 }};
 """
 

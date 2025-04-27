@@ -82,6 +82,7 @@ class DiscordppActivityInvite : public RefCounted {
 	GDCLASS(DiscordppActivityInvite, RefCounted)
 
 private:
+	bool owned = false;
 	discordpp::ActivityInvite *obj;
 
 protected:
@@ -113,19 +114,25 @@ public:
 
 	DiscordppActivityInvite() {
 		this->obj = memnew(discordpp::ActivityInvite);
+		this->owned = true;
 	}
 
 	DiscordppActivityInvite(discordpp::ActivityInvite *obj) {
 		this->obj = obj;
 	}
 
-	~DiscordppActivityInvite() {}
+	~DiscordppActivityInvite() {
+		if (this->owned == true) {
+			memdelete(this->obj);
+		}
+	}
 };
 
 class DiscordppActivityAssets : public RefCounted {
 	GDCLASS(DiscordppActivityAssets, RefCounted)
 
 private:
+	bool owned = false;
 	discordpp::ActivityAssets *obj;
 
 protected:
@@ -149,19 +156,25 @@ public:
 
 	DiscordppActivityAssets() {
 		this->obj = memnew(discordpp::ActivityAssets);
+		this->owned = true;
 	}
 
 	DiscordppActivityAssets(discordpp::ActivityAssets *obj) {
 		this->obj = obj;
 	}
 
-	~DiscordppActivityAssets() {}
+	~DiscordppActivityAssets() {
+		if (this->owned == true) {
+			memdelete(this->obj);
+		}
+	}
 };
 
 class DiscordppActivityTimestamps : public RefCounted {
 	GDCLASS(DiscordppActivityTimestamps, RefCounted)
 
 private:
+	bool owned = false;
 	discordpp::ActivityTimestamps *obj;
 
 protected:
@@ -181,19 +194,25 @@ public:
 
 	DiscordppActivityTimestamps() {
 		this->obj = memnew(discordpp::ActivityTimestamps);
+		this->owned = true;
 	}
 
 	DiscordppActivityTimestamps(discordpp::ActivityTimestamps *obj) {
 		this->obj = obj;
 	}
 
-	~DiscordppActivityTimestamps() {}
+	~DiscordppActivityTimestamps() {
+		if (this->owned == true) {
+			memdelete(this->obj);
+		}
+	}
 };
 
 class DiscordppActivityParty : public RefCounted {
 	GDCLASS(DiscordppActivityParty, RefCounted)
 
 private:
+	bool owned = false;
 	discordpp::ActivityParty *obj;
 
 protected:
@@ -217,19 +236,25 @@ public:
 
 	DiscordppActivityParty() {
 		this->obj = memnew(discordpp::ActivityParty);
+		this->owned = true;
 	}
 
 	DiscordppActivityParty(discordpp::ActivityParty *obj) {
 		this->obj = obj;
 	}
 
-	~DiscordppActivityParty() {}
+	~DiscordppActivityParty() {
+		if (this->owned == true) {
+			memdelete(this->obj);
+		}
+	}
 };
 
 class DiscordppActivitySecrets : public RefCounted {
 	GDCLASS(DiscordppActivitySecrets, RefCounted)
 
 private:
+	bool owned = false;
 	discordpp::ActivitySecrets *obj;
 
 protected:
@@ -247,19 +272,25 @@ public:
 
 	DiscordppActivitySecrets() {
 		this->obj = memnew(discordpp::ActivitySecrets);
+		this->owned = true;
 	}
 
 	DiscordppActivitySecrets(discordpp::ActivitySecrets *obj) {
 		this->obj = obj;
 	}
 
-	~DiscordppActivitySecrets() {}
+	~DiscordppActivitySecrets() {
+		if (this->owned == true) {
+			memdelete(this->obj);
+		}
+	}
 };
 
 class DiscordppActivity : public RefCounted {
 	GDCLASS(DiscordppActivity, RefCounted)
 
 private:
+	bool owned = false;
 	discordpp::Activity *obj;
 
 protected:
@@ -296,19 +327,25 @@ public:
 
 	DiscordppActivity() {
 		this->obj = memnew(discordpp::Activity);
+		this->owned = true;
 	}
 
 	DiscordppActivity(discordpp::Activity *obj) {
 		this->obj = obj;
 	}
 
-	~DiscordppActivity() {}
+	~DiscordppActivity() {
+		if (this->owned == true) {
+			memdelete(this->obj);
+		}
+	}
 };
 
 class DiscordppClientResult : public RefCounted {
 	GDCLASS(DiscordppClientResult, RefCounted)
 
 private:
+	bool owned = false;
 	discordpp::ClientResult *obj;
 	DiscordppClientResult() {}
 
@@ -344,13 +381,18 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppClientResult() {}
+	~DiscordppClientResult() {
+		if (this->owned == true) {
+			memdelete(this->obj);
+		}
+	}
 };
 
 class DiscordppAuthorizationCodeChallenge : public RefCounted {
 	GDCLASS(DiscordppAuthorizationCodeChallenge, RefCounted)
 
 private:
+	bool owned = false;
 	discordpp::AuthorizationCodeChallenge *obj;
 
 protected:
@@ -370,19 +412,25 @@ public:
 
 	DiscordppAuthorizationCodeChallenge() {
 		this->obj = memnew(discordpp::AuthorizationCodeChallenge);
+		this->owned = true;
 	}
 
 	DiscordppAuthorizationCodeChallenge(discordpp::AuthorizationCodeChallenge *obj) {
 		this->obj = obj;
 	}
 
-	~DiscordppAuthorizationCodeChallenge() {}
+	~DiscordppAuthorizationCodeChallenge() {
+		if (this->owned == true) {
+			memdelete(this->obj);
+		}
+	}
 };
 
 class DiscordppAuthorizationCodeVerifier : public RefCounted {
 	GDCLASS(DiscordppAuthorizationCodeVerifier, RefCounted)
 
 private:
+	bool owned = false;
 	discordpp::AuthorizationCodeVerifier *obj;
 	DiscordppAuthorizationCodeVerifier() {}
 
@@ -405,13 +453,18 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppAuthorizationCodeVerifier() {}
+	~DiscordppAuthorizationCodeVerifier() {
+		if (this->owned == true) {
+			memdelete(this->obj);
+		}
+	}
 };
 
 class DiscordppAuthorizationArgs : public RefCounted {
 	GDCLASS(DiscordppAuthorizationArgs, RefCounted)
 
 private:
+	bool owned = false;
 	discordpp::AuthorizationArgs *obj;
 
 protected:
@@ -437,19 +490,25 @@ public:
 
 	DiscordppAuthorizationArgs() {
 		this->obj = memnew(discordpp::AuthorizationArgs);
+		this->owned = true;
 	}
 
 	DiscordppAuthorizationArgs(discordpp::AuthorizationArgs *obj) {
 		this->obj = obj;
 	}
 
-	~DiscordppAuthorizationArgs() {}
+	~DiscordppAuthorizationArgs() {
+		if (this->owned == true) {
+			memdelete(this->obj);
+		}
+	}
 };
 
 class DiscordppDeviceAuthorizationArgs : public RefCounted {
 	GDCLASS(DiscordppDeviceAuthorizationArgs, RefCounted)
 
 private:
+	bool owned = false;
 	discordpp::DeviceAuthorizationArgs *obj;
 
 protected:
@@ -469,19 +528,25 @@ public:
 
 	DiscordppDeviceAuthorizationArgs() {
 		this->obj = memnew(discordpp::DeviceAuthorizationArgs);
+		this->owned = true;
 	}
 
 	DiscordppDeviceAuthorizationArgs(discordpp::DeviceAuthorizationArgs *obj) {
 		this->obj = obj;
 	}
 
-	~DiscordppDeviceAuthorizationArgs() {}
+	~DiscordppDeviceAuthorizationArgs() {
+		if (this->owned == true) {
+			memdelete(this->obj);
+		}
+	}
 };
 
 class DiscordppVoiceStateHandle : public RefCounted {
 	GDCLASS(DiscordppVoiceStateHandle, RefCounted)
 
 private:
+	bool owned = false;
 	discordpp::VoiceStateHandle *obj;
 	DiscordppVoiceStateHandle() {}
 
@@ -502,13 +567,18 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppVoiceStateHandle() {}
+	~DiscordppVoiceStateHandle() {
+		if (this->owned == true) {
+			memdelete(this->obj);
+		}
+	}
 };
 
 class DiscordppVADThresholdSettings : public RefCounted {
 	GDCLASS(DiscordppVADThresholdSettings, RefCounted)
 
 private:
+	bool owned = false;
 	discordpp::VADThresholdSettings *obj;
 	DiscordppVADThresholdSettings() {}
 
@@ -531,13 +601,18 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppVADThresholdSettings() {}
+	~DiscordppVADThresholdSettings() {
+		if (this->owned == true) {
+			memdelete(this->obj);
+		}
+	}
 };
 
 class DiscordppCall : public RefCounted {
 	GDCLASS(DiscordppCall, RefCounted)
 
 private:
+	bool owned = false;
 	discordpp::Call *obj;
 	DiscordppCall() {}
 
@@ -583,13 +658,18 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppCall() {}
+	~DiscordppCall() {
+		if (this->owned == true) {
+			memdelete(this->obj);
+		}
+	}
 };
 
 class DiscordppChannelHandle : public RefCounted {
 	GDCLASS(DiscordppChannelHandle, RefCounted)
 
 private:
+	bool owned = false;
 	discordpp::ChannelHandle *obj;
 	DiscordppChannelHandle() {}
 
@@ -612,13 +692,18 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppChannelHandle() {}
+	~DiscordppChannelHandle() {
+		if (this->owned == true) {
+			memdelete(this->obj);
+		}
+	}
 };
 
 class DiscordppGuildMinimal : public RefCounted {
 	GDCLASS(DiscordppGuildMinimal, RefCounted)
 
 private:
+	bool owned = false;
 	discordpp::GuildMinimal *obj;
 	DiscordppGuildMinimal() {}
 
@@ -641,13 +726,18 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppGuildMinimal() {}
+	~DiscordppGuildMinimal() {
+		if (this->owned == true) {
+			memdelete(this->obj);
+		}
+	}
 };
 
 class DiscordppGuildChannel : public RefCounted {
 	GDCLASS(DiscordppGuildChannel, RefCounted)
 
 private:
+	bool owned = false;
 	discordpp::GuildChannel *obj;
 	DiscordppGuildChannel() {}
 
@@ -676,13 +766,18 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppGuildChannel() {}
+	~DiscordppGuildChannel() {
+		if (this->owned == true) {
+			memdelete(this->obj);
+		}
+	}
 };
 
 class DiscordppLinkedLobby : public RefCounted {
 	GDCLASS(DiscordppLinkedLobby, RefCounted)
 
 private:
+	bool owned = false;
 	discordpp::LinkedLobby *obj;
 
 protected:
@@ -702,19 +797,25 @@ public:
 
 	DiscordppLinkedLobby() {
 		this->obj = memnew(discordpp::LinkedLobby);
+		this->owned = true;
 	}
 
 	DiscordppLinkedLobby(discordpp::LinkedLobby *obj) {
 		this->obj = obj;
 	}
 
-	~DiscordppLinkedLobby() {}
+	~DiscordppLinkedLobby() {
+		if (this->owned == true) {
+			memdelete(this->obj);
+		}
+	}
 };
 
 class DiscordppLinkedChannel : public RefCounted {
 	GDCLASS(DiscordppLinkedChannel, RefCounted)
 
 private:
+	bool owned = false;
 	discordpp::LinkedChannel *obj;
 	DiscordppLinkedChannel() {}
 
@@ -739,13 +840,18 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppLinkedChannel() {}
+	~DiscordppLinkedChannel() {
+		if (this->owned == true) {
+			memdelete(this->obj);
+		}
+	}
 };
 
 class DiscordppRelationshipHandle : public RefCounted {
 	GDCLASS(DiscordppRelationshipHandle, RefCounted)
 
 private:
+	bool owned = false;
 	discordpp::RelationshipHandle *obj;
 	DiscordppRelationshipHandle() {}
 
@@ -768,13 +874,18 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppRelationshipHandle() {}
+	~DiscordppRelationshipHandle() {
+		if (this->owned == true) {
+			memdelete(this->obj);
+		}
+	}
 };
 
 class DiscordppUserHandle : public RefCounted {
 	GDCLASS(DiscordppUserHandle, RefCounted)
 
 private:
+	bool owned = false;
 	discordpp::UserHandle *obj;
 	DiscordppUserHandle() {}
 
@@ -804,13 +915,18 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppUserHandle() {}
+	~DiscordppUserHandle() {
+		if (this->owned == true) {
+			memdelete(this->obj);
+		}
+	}
 };
 
 class DiscordppLobbyMemberHandle : public RefCounted {
 	GDCLASS(DiscordppLobbyMemberHandle, RefCounted)
 
 private:
+	bool owned = false;
 	discordpp::LobbyMemberHandle *obj;
 	DiscordppLobbyMemberHandle() {}
 
@@ -834,13 +950,18 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppLobbyMemberHandle() {}
+	~DiscordppLobbyMemberHandle() {
+		if (this->owned == true) {
+			memdelete(this->obj);
+		}
+	}
 };
 
 class DiscordppLobbyHandle : public RefCounted {
 	GDCLASS(DiscordppLobbyHandle, RefCounted)
 
 private:
+	bool owned = false;
 	discordpp::LobbyHandle *obj;
 	DiscordppLobbyHandle() {}
 
@@ -866,13 +987,18 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppLobbyHandle() {}
+	~DiscordppLobbyHandle() {
+		if (this->owned == true) {
+			memdelete(this->obj);
+		}
+	}
 };
 
 class DiscordppAdditionalContent : public RefCounted {
 	GDCLASS(DiscordppAdditionalContent, RefCounted)
 
 private:
+	bool owned = false;
 	discordpp::AdditionalContent *obj;
 
 protected:
@@ -896,19 +1022,25 @@ public:
 
 	DiscordppAdditionalContent() {
 		this->obj = memnew(discordpp::AdditionalContent);
+		this->owned = true;
 	}
 
 	DiscordppAdditionalContent(discordpp::AdditionalContent *obj) {
 		this->obj = obj;
 	}
 
-	~DiscordppAdditionalContent() {}
+	~DiscordppAdditionalContent() {
+		if (this->owned == true) {
+			memdelete(this->obj);
+		}
+	}
 };
 
 class DiscordppMessageHandle : public RefCounted {
 	GDCLASS(DiscordppMessageHandle, RefCounted)
 
 private:
+	bool owned = false;
 	discordpp::MessageHandle *obj;
 	DiscordppMessageHandle() {}
 
@@ -943,13 +1075,18 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppMessageHandle() {}
+	~DiscordppMessageHandle() {
+		if (this->owned == true) {
+			memdelete(this->obj);
+		}
+	}
 };
 
 class DiscordppAudioDevice : public RefCounted {
 	GDCLASS(DiscordppAudioDevice, RefCounted)
 
 private:
+	bool owned = false;
 	discordpp::AudioDevice *obj;
 	DiscordppAudioDevice() {}
 
@@ -975,13 +1112,18 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppAudioDevice() {}
+	~DiscordppAudioDevice() {
+		if (this->owned == true) {
+			memdelete(this->obj);
+		}
+	}
 };
 
 class DiscordppClient : public RefCounted {
 	GDCLASS(DiscordppClient, RefCounted)
 
 private:
+	bool owned = false;
 	discordpp::Client *obj;
 
 protected:
@@ -1132,19 +1274,25 @@ public:
 
 	DiscordppClient() {
 		this->obj = memnew(discordpp::Client);
+		this->owned = true;
 	}
 
 	DiscordppClient(discordpp::Client *obj) {
 		this->obj = obj;
 	}
 
-	~DiscordppClient() {}
+	~DiscordppClient() {
+		if (this->owned == true) {
+			memdelete(this->obj);
+		}
+	}
 };
 
 class DiscordppCallInfoHandle : public RefCounted {
 	GDCLASS(DiscordppCallInfoHandle, RefCounted)
 
 private:
+	bool owned = false;
 	discordpp::CallInfoHandle *obj;
 	DiscordppCallInfoHandle() {}
 
@@ -1167,7 +1315,11 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppCallInfoHandle() {}
+	~DiscordppCallInfoHandle() {
+		if (this->owned == true) {
+			memdelete(this->obj);
+		}
+	}
 };
 
 } //namespace godot

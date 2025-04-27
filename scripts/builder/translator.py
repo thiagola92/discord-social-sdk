@@ -402,7 +402,9 @@ class Translator:
         elif self.is_c_discord(src.type.subtype.name):
             obj_type = self.c_type_to_godot_type(src.type.subtype, False)
             append_statements = [
-                f"{dest}.push_back(memnew({obj_type}{{ &i }}));",
+                f"{src.type.subtype.name} *t_i = ({src.type.subtype.name} *)memalloc(sizeof({src.type.subtype.name}));",
+                f"*t_i = i;",
+                f"{dest}.push_back(memnew({obj_type}{{ t_i }}));",
             ]
 
         append_statements = "\n        ".join(append_statements)
@@ -823,7 +825,9 @@ class Translator:
         elif self.is_c_discord(vec_type.subtype.name):
             obj_type = self.c_type_to_godot_type(vec_type.subtype, False)
             append_statements = [
-                f"t_r.push_back(memnew({obj_type}{{ &i }}));",
+                f"{vec_type.subtype.name} *t_i = ({vec_type.subtype.name} *)memalloc(sizeof({vec_type.subtype.name}));",
+                f"*t_i = i;",
+                f"t_r.push_back(memnew({obj_type}{{ t_i }}));",
             ]
 
         append_statements = "\n        ".join(append_statements)
