@@ -1,7 +1,9 @@
 extends Control
 
 
-var APPLICATION_ID = 1349146942634065960
+# ATTENTION: Replace DotEnv.read_int("APPLICATION_ID") with your application ID.
+# This only exist so I don't accidentally use my ID.
+var APPLICATION_ID: int = DotEnv.read_int("APPLICATION_ID")
 
 var client := DiscordppClient.new()
 

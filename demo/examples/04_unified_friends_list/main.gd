@@ -1,7 +1,9 @@
 extends Control
 
 
-var APPLICATION_ID = DotEnv.read_int("APPLICATION_ID")
+# ATTENTION: Replace DotEnv.read_int("APPLICATION_ID") with your application ID.
+# This only exist so I don't accidentally use my ID.
+var APPLICATION_ID: int = DotEnv.read_int("APPLICATION_ID")
 
 var client := DiscordppClient.new()
 
@@ -38,6 +40,12 @@ func _ready() -> void:
 				print("❌ Connection Error: %s - Details: %s" % [
 					DiscordppClient.ErrorToString(error), errorDetail
 				])
+	)
+	
+	client.SetUserUpdatedCallback(
+		func(userId: int):
+			print("👤 User updated: %s" % userId)
+			display_friends_list2()
 	)
 	
 	client.Authorize(
@@ -162,17 +170,17 @@ func display_friends_list2() -> void:
 		online.sort()
 		offline.sort()
 		
-		# Display "Online - GameTitle" Friends
-		print("\n=== Online - GameTitle (%s) ===" % in_game.size())
-		for s in in_game:
-			print(s)
-		
-		# Display "Online - Elsewhere" Friends
-		print("\n=== Online - Elsewhere (%s) ===" % online.size())
-		for s in online:
-			print(s)
-		
-		# Display "Offline" Friends
-		print("\n=== Offline (%s) ===" % offline.size())
-		for s in offline:
-			print(s)
+	# Display "Online - GameTitle" Friends
+	print("\n=== Online - GameTitle (%s) ===" % in_game.size())
+	for s in in_game:
+		print(s)
+	
+	# Display "Online - Elsewhere" Friends
+	print("\n=== Online - Elsewhere (%s) ===" % online.size())
+	for s in online:
+		print(s)
+	
+	# Display "Offline" Friends
+	print("\n=== Offline (%s) ===" % offline.size())
+	for s in offline:
+		print(s)
