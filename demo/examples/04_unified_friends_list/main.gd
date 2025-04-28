@@ -48,6 +48,22 @@ func _ready() -> void:
 			display_friends_list2()
 	)
 	
+	client.SetRelationshipCreatedCallback(
+		func(userId: int, _isDiscordRelationshipUpdate: bool):
+			var user = client.GetUser(userId)
+			
+			if user != null:
+				user = user as DiscordppUserHandle
+				print("🤝 Relationship created: %s" % user.DisplayName())
+				display_friends_list2()
+	)
+	
+	client.SetRelationshipDeletedCallback(
+		func(userId: int, _isDiscordRelationshipUpdate: bool):
+			print("🔥 Relationship deleted: %s" % userId)
+			display_friends_list2()
+	)
+	
 	client.Authorize(
 		args,
 		func(result: DiscordppClientResult, code: String, redirectUri: String):
@@ -63,10 +79,10 @@ func _ready() -> void:
 				func(
 					result: DiscordppClientResult,
 					accessToken: String,
-					refreshToken: String,
-					tokenType: DiscordppAuthorizationTokenType.Enum,
-					expiresIn: int,
-					scopes: String
+					_refreshToken: String,
+					_tokenType: DiscordppAuthorizationTokenType.Enum,
+					_expiresIn: int,
+					_scopes: String
 				):
 					if not result.Successful():
 						print("❌ Get Token Error: %s" % result.Error())
