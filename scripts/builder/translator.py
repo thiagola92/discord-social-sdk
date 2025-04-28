@@ -678,7 +678,8 @@ class Translator:
 
         Used after calling SDK method, to return
         it value to Godot. Object example:
-            discordpp::Call *t_r = memnew(discordpp::Call(client->StartCall(p0)));
+            auto r = client->StartCall(p0);
+            discordpp::Call *t_r = memnew(discordpp::Call(std::move(r)));
             return memnew(DiscordppCall{ t_r });
         """
 
