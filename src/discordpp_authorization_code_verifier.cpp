@@ -9,7 +9,7 @@ void DiscordppAuthorizationCodeVerifier::Drop() {
 
 DiscordppAuthorizationCodeChallenge *DiscordppAuthorizationCodeVerifier::Challenge() {
 	discordpp::AuthorizationCodeChallenge r = obj->Challenge();
-	discordpp::AuthorizationCodeChallenge *t_r = memnew(discordpp::AuthorizationCodeChallenge(r));
+	discordpp::AuthorizationCodeChallenge *t_r = memnew(discordpp::AuthorizationCodeChallenge(std::move(r)));
 	return memnew(DiscordppAuthorizationCodeChallenge{ t_r });
 }
 

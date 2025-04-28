@@ -41,7 +41,7 @@ Variant DiscordppUserHandle::GameActivity() {
 		return nullptr;
 	}
 
-	discordpp::Activity *t_r = memnew(discordpp::Activity(r.value()));
+	discordpp::Activity *t_r = memnew(discordpp::Activity(std::move(r.value())));
 	return Variant(memnew(DiscordppActivity{ t_r }));
 }
 
@@ -65,7 +65,7 @@ bool DiscordppUserHandle::IsProvisional() {
 
 DiscordppRelationshipHandle *DiscordppUserHandle::Relationship() {
 	discordpp::RelationshipHandle r = obj->Relationship();
-	discordpp::RelationshipHandle *t_r = memnew(discordpp::RelationshipHandle(r));
+	discordpp::RelationshipHandle *t_r = memnew(discordpp::RelationshipHandle(std::move(r)));
 	return memnew(DiscordppRelationshipHandle{ t_r });
 }
 

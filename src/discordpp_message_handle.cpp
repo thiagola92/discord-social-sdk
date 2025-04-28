@@ -14,7 +14,7 @@ Variant DiscordppMessageHandle::AdditionalContent() {
 		return nullptr;
 	}
 
-	discordpp::AdditionalContent *t_r = memnew(discordpp::AdditionalContent(r.value()));
+	discordpp::AdditionalContent *t_r = memnew(discordpp::AdditionalContent(std::move(r.value())));
 	return Variant(memnew(DiscordppAdditionalContent{ t_r }));
 }
 
@@ -25,7 +25,7 @@ Variant DiscordppMessageHandle::Author() {
 		return nullptr;
 	}
 
-	discordpp::UserHandle *t_r = memnew(discordpp::UserHandle(r.value()));
+	discordpp::UserHandle *t_r = memnew(discordpp::UserHandle(std::move(r.value())));
 	return Variant(memnew(DiscordppUserHandle{ t_r }));
 }
 
@@ -40,7 +40,7 @@ Variant DiscordppMessageHandle::Channel() {
 		return nullptr;
 	}
 
-	discordpp::ChannelHandle *t_r = memnew(discordpp::ChannelHandle(r.value()));
+	discordpp::ChannelHandle *t_r = memnew(discordpp::ChannelHandle(std::move(r.value())));
 	return Variant(memnew(DiscordppChannelHandle{ t_r }));
 }
 
@@ -77,7 +77,7 @@ Variant DiscordppMessageHandle::Lobby() {
 		return nullptr;
 	}
 
-	discordpp::LobbyHandle *t_r = memnew(discordpp::LobbyHandle(r.value()));
+	discordpp::LobbyHandle *t_r = memnew(discordpp::LobbyHandle(std::move(r.value())));
 	return Variant(memnew(DiscordppLobbyHandle{ t_r }));
 }
 
@@ -103,7 +103,7 @@ Variant DiscordppMessageHandle::Recipient() {
 		return nullptr;
 	}
 
-	discordpp::UserHandle *t_r = memnew(discordpp::UserHandle(r.value()));
+	discordpp::UserHandle *t_r = memnew(discordpp::UserHandle(std::move(r.value())));
 	return Variant(memnew(DiscordppUserHandle{ t_r }));
 }
 

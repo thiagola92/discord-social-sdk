@@ -37,7 +37,7 @@ Variant DiscordppLobbyMemberHandle::User() {
 		return nullptr;
 	}
 
-	discordpp::UserHandle *t_r = memnew(discordpp::UserHandle(r.value()));
+	discordpp::UserHandle *t_r = memnew(discordpp::UserHandle(std::move(r.value())));
 	return Variant(memnew(DiscordppUserHandle{ t_r }));
 }
 

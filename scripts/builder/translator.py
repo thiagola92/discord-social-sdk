@@ -339,7 +339,7 @@ class Translator:
             type_name = self.c_type_to_godot_type(src.type.subtype, False)
 
             convertion_statements = [
-                f"{src.type.subtype.name} *t = memnew({src.type.subtype.name}({src.name}.value()));",
+                f"{src.type.subtype.name} *t = memnew({src.type.subtype.name}(std::move({src.name}.value())));",
                 # f"{src.type.subtype.name} * t = ({src.type.subtype.name} *)memalloc(sizeof({src.type.subtype.name}));",
                 # f"*t = {src.name}.value();",
                 f"{dest} = Variant(memnew({type_name}{{ t }}));",
@@ -403,7 +403,7 @@ class Translator:
         elif self.is_c_discord(src.type.subtype.name):
             obj_type = self.c_type_to_godot_type(src.type.subtype, False)
             append_statements = [
-                f"{src.type.subtype.name} *t_i = memnew({src.type.subtype.name}(i));",
+                f"{src.type.subtype.name} *t_i = memnew({src.type.subtype.name}(std::move(i)));",
                 # f"{src.type.subtype.name} *t_i = ({src.type.subtype.name} *)memalloc(sizeof({src.type.subtype.name}));",
                 # f"*t_i = i;",
                 f"{dest}.push_back(memnew({obj_type}{{ t_i }}));",
@@ -466,7 +466,7 @@ class Translator:
         name = self.c_name_to_godot_name(src.type.name)
 
         statements = [
-            f"{src.type.name} *t_{dest} = memnew({src.type.name}({src.name}));",
+            f"{src.type.name} *t_{dest} = memnew({src.type.name}(std::move({src.name})));",
             # f"{src.type.name} *t_{dest} = ({src.type.name} *)memalloc(sizeof({src.type.name}));",
             # f"*t_{dest} = {src.name};",
             f"{name} *{dest} = memnew({name} {{ t_{dest} }});",
@@ -768,7 +768,7 @@ class Translator:
             class_ = self.c_type_to_godot_type(ret_type, False)
 
             ret_statements = [
-                f"{ret_type.name} *t_r = memnew({ret_type.name}(r.value()));",
+                f"{ret_type.name} *t_r = memnew({ret_type.name}(std::move(r.value())));",
                 # f"{ret_type.name} *t_r = ({ret_type.name} *)memalloc(sizeof({ret_type.name}));",
                 # f"*t_r = r.value();",
                 f"return Variant(memnew({class_}{{ t_r }}));",
@@ -828,7 +828,7 @@ class Translator:
         elif self.is_c_discord(vec_type.subtype.name):
             obj_type = self.c_type_to_godot_type(vec_type.subtype, False)
             append_statements = [
-                f"{vec_type.subtype.name} *t_i = memnew({vec_type.subtype.name}(i));",
+                f"{vec_type.subtype.name} *t_i = memnew({vec_type.subtype.name}(std::move(i)));",
                 # f"{vec_type.subtype.name} *t_i = ({vec_type.subtype.name} *)memalloc(sizeof({vec_type.subtype.name}));",
                 # f"*t_i = i;",
                 f"t_r.push_back(memnew({obj_type}{{ t_i }}));",
@@ -895,7 +895,7 @@ class Translator:
 
         statements = [
             f"{ret_type.name} r = {call};",
-            f"{ret_type.name} *t_r = memnew({ret_type.name}(r));",
+            f"{ret_type.name} *t_r = memnew({ret_type.name}(std::move(r)));",
             # f"{ret_type.name} *t_r = ({ret_type.name} *)memalloc(sizeof({ret_type.name}));",
             # f"*t_r = {call};",
             f"return memnew({name} {{ t_r }});",
