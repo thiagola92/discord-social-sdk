@@ -54,8 +54,7 @@ Variant DiscordppGuildChannel::LinkedLobby() {
 		return nullptr;
 	}
 
-	discordpp::LinkedLobby *t_r = (discordpp::LinkedLobby *)memalloc(sizeof(discordpp::LinkedLobby));
-	*t_r = r.value();
+	discordpp::LinkedLobby *t_r = memnew(discordpp::LinkedLobby(r.value()));
 	return Variant(memnew(DiscordppLinkedLobby{ t_r }));
 }
 

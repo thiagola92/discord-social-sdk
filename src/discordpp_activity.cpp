@@ -100,8 +100,7 @@ Variant DiscordppActivity::Assets() {
 		return nullptr;
 	}
 
-	discordpp::ActivityAssets *t_r = (discordpp::ActivityAssets *)memalloc(sizeof(discordpp::ActivityAssets));
-	*t_r = r.value();
+	discordpp::ActivityAssets *t_r = memnew(discordpp::ActivityAssets(r.value()));
 	return Variant(memnew(DiscordppActivityAssets{ t_r }));
 }
 
@@ -123,8 +122,7 @@ Variant DiscordppActivity::Timestamps() {
 		return nullptr;
 	}
 
-	discordpp::ActivityTimestamps *t_r = (discordpp::ActivityTimestamps *)memalloc(sizeof(discordpp::ActivityTimestamps));
-	*t_r = r.value();
+	discordpp::ActivityTimestamps *t_r = memnew(discordpp::ActivityTimestamps(r.value()));
 	return Variant(memnew(DiscordppActivityTimestamps{ t_r }));
 }
 
@@ -146,8 +144,7 @@ Variant DiscordppActivity::Party() {
 		return nullptr;
 	}
 
-	discordpp::ActivityParty *t_r = (discordpp::ActivityParty *)memalloc(sizeof(discordpp::ActivityParty));
-	*t_r = r.value();
+	discordpp::ActivityParty *t_r = memnew(discordpp::ActivityParty(r.value()));
 	return Variant(memnew(DiscordppActivityParty{ t_r }));
 }
 
@@ -169,8 +166,7 @@ Variant DiscordppActivity::Secrets() {
 		return nullptr;
 	}
 
-	discordpp::ActivitySecrets *t_r = (discordpp::ActivitySecrets *)memalloc(sizeof(discordpp::ActivitySecrets));
-	*t_r = r.value();
+	discordpp::ActivitySecrets *t_r = memnew(discordpp::ActivitySecrets(r.value()));
 	return Variant(memnew(DiscordppActivitySecrets{ t_r }));
 }
 

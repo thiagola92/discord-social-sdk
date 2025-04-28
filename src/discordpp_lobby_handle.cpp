@@ -14,8 +14,7 @@ Variant DiscordppLobbyHandle::GetCallInfoHandle() {
 		return nullptr;
 	}
 
-	discordpp::CallInfoHandle *t_r = (discordpp::CallInfoHandle *)memalloc(sizeof(discordpp::CallInfoHandle));
-	*t_r = r.value();
+	discordpp::CallInfoHandle *t_r = memnew(discordpp::CallInfoHandle(r.value()));
 	return Variant(memnew(DiscordppCallInfoHandle{ t_r }));
 }
 
@@ -28,8 +27,7 @@ Variant DiscordppLobbyHandle::GetLobbyMemberHandle(int64_t memberId) {
 		return nullptr;
 	}
 
-	discordpp::LobbyMemberHandle *t_r = (discordpp::LobbyMemberHandle *)memalloc(sizeof(discordpp::LobbyMemberHandle));
-	*t_r = r.value();
+	discordpp::LobbyMemberHandle *t_r = memnew(discordpp::LobbyMemberHandle(r.value()));
 	return Variant(memnew(DiscordppLobbyMemberHandle{ t_r }));
 }
 
@@ -44,8 +42,7 @@ Variant DiscordppLobbyHandle::LinkedChannel() {
 		return nullptr;
 	}
 
-	discordpp::LinkedChannel *t_r = (discordpp::LinkedChannel *)memalloc(sizeof(discordpp::LinkedChannel));
-	*t_r = r.value();
+	discordpp::LinkedChannel *t_r = memnew(discordpp::LinkedChannel(r.value()));
 	return Variant(memnew(DiscordppLinkedChannel{ t_r }));
 }
 
@@ -65,8 +62,7 @@ TypedArray<DiscordppLobbyMemberHandle> DiscordppLobbyHandle::LobbyMembers() {
 	TypedArray<DiscordppLobbyMemberHandle> t_r = TypedArray<DiscordppLobbyMemberHandle>();
 
 	for (auto i : r) {
-		discordpp::LobbyMemberHandle *t_i = (discordpp::LobbyMemberHandle *)memalloc(sizeof(discordpp::LobbyMemberHandle));
-		*t_i = i;
+		discordpp::LobbyMemberHandle *t_i = memnew(discordpp::LobbyMemberHandle(i));
 		t_r.push_back(memnew(DiscordppLobbyMemberHandle{ t_i }));
 	}
 

@@ -82,7 +82,6 @@ class DiscordppActivityInvite : public RefCounted {
 	GDCLASS(DiscordppActivityInvite, RefCounted)
 
 private:
-	bool owned = false;
 	discordpp::ActivityInvite *obj;
 
 protected:
@@ -114,17 +113,18 @@ public:
 
 	DiscordppActivityInvite() {
 		this->obj = memnew(discordpp::ActivityInvite);
-		this->owned = true;
 	}
 
 	DiscordppActivityInvite(discordpp::ActivityInvite *obj) {
 		this->obj = obj;
 	}
 
+	//DiscordppActivityInvite(discordpp::ActivityInvite &&obj) : obj(std::move(obj)) {
+
+	//}
+
 	~DiscordppActivityInvite() {
-		if (this->owned == true) {
-			memdelete(this->obj);
-		}
+		memdelete(this->obj);
 	}
 };
 
@@ -132,7 +132,6 @@ class DiscordppActivityAssets : public RefCounted {
 	GDCLASS(DiscordppActivityAssets, RefCounted)
 
 private:
-	bool owned = false;
 	discordpp::ActivityAssets *obj;
 
 protected:
@@ -156,17 +155,18 @@ public:
 
 	DiscordppActivityAssets() {
 		this->obj = memnew(discordpp::ActivityAssets);
-		this->owned = true;
 	}
 
 	DiscordppActivityAssets(discordpp::ActivityAssets *obj) {
 		this->obj = obj;
 	}
 
+	//DiscordppActivityAssets(discordpp::ActivityAssets &&obj) : obj(std::move(obj)) {
+
+	//}
+
 	~DiscordppActivityAssets() {
-		if (this->owned == true) {
-			memdelete(this->obj);
-		}
+		memdelete(this->obj);
 	}
 };
 
@@ -174,7 +174,6 @@ class DiscordppActivityTimestamps : public RefCounted {
 	GDCLASS(DiscordppActivityTimestamps, RefCounted)
 
 private:
-	bool owned = false;
 	discordpp::ActivityTimestamps *obj;
 
 protected:
@@ -194,17 +193,18 @@ public:
 
 	DiscordppActivityTimestamps() {
 		this->obj = memnew(discordpp::ActivityTimestamps);
-		this->owned = true;
 	}
 
 	DiscordppActivityTimestamps(discordpp::ActivityTimestamps *obj) {
 		this->obj = obj;
 	}
 
+	//DiscordppActivityTimestamps(discordpp::ActivityTimestamps &&obj) : obj(std::move(obj)) {
+
+	//}
+
 	~DiscordppActivityTimestamps() {
-		if (this->owned == true) {
-			memdelete(this->obj);
-		}
+		memdelete(this->obj);
 	}
 };
 
@@ -212,7 +212,6 @@ class DiscordppActivityParty : public RefCounted {
 	GDCLASS(DiscordppActivityParty, RefCounted)
 
 private:
-	bool owned = false;
 	discordpp::ActivityParty *obj;
 
 protected:
@@ -236,17 +235,18 @@ public:
 
 	DiscordppActivityParty() {
 		this->obj = memnew(discordpp::ActivityParty);
-		this->owned = true;
 	}
 
 	DiscordppActivityParty(discordpp::ActivityParty *obj) {
 		this->obj = obj;
 	}
 
+	//DiscordppActivityParty(discordpp::ActivityParty &&obj) : obj(std::move(obj)) {
+
+	//}
+
 	~DiscordppActivityParty() {
-		if (this->owned == true) {
-			memdelete(this->obj);
-		}
+		memdelete(this->obj);
 	}
 };
 
@@ -254,7 +254,6 @@ class DiscordppActivitySecrets : public RefCounted {
 	GDCLASS(DiscordppActivitySecrets, RefCounted)
 
 private:
-	bool owned = false;
 	discordpp::ActivitySecrets *obj;
 
 protected:
@@ -272,17 +271,18 @@ public:
 
 	DiscordppActivitySecrets() {
 		this->obj = memnew(discordpp::ActivitySecrets);
-		this->owned = true;
 	}
 
 	DiscordppActivitySecrets(discordpp::ActivitySecrets *obj) {
 		this->obj = obj;
 	}
 
+	//DiscordppActivitySecrets(discordpp::ActivitySecrets &&obj) : obj(std::move(obj)) {
+
+	//}
+
 	~DiscordppActivitySecrets() {
-		if (this->owned == true) {
-			memdelete(this->obj);
-		}
+		memdelete(this->obj);
 	}
 };
 
@@ -290,7 +290,6 @@ class DiscordppActivity : public RefCounted {
 	GDCLASS(DiscordppActivity, RefCounted)
 
 private:
-	bool owned = false;
 	discordpp::Activity *obj;
 
 protected:
@@ -327,17 +326,18 @@ public:
 
 	DiscordppActivity() {
 		this->obj = memnew(discordpp::Activity);
-		this->owned = true;
 	}
 
 	DiscordppActivity(discordpp::Activity *obj) {
 		this->obj = obj;
 	}
 
+	//DiscordppActivity(discordpp::Activity &&obj) : obj(std::move(obj)) {
+
+	//}
+
 	~DiscordppActivity() {
-		if (this->owned == true) {
-			memdelete(this->obj);
-		}
+		memdelete(this->obj);
 	}
 };
 
@@ -345,7 +345,6 @@ class DiscordppClientResult : public RefCounted {
 	GDCLASS(DiscordppClientResult, RefCounted)
 
 private:
-	bool owned = false;
 	discordpp::ClientResult *obj;
 	DiscordppClientResult() {}
 
@@ -381,10 +380,12 @@ public:
 		this->obj = obj;
 	}
 
+	//DiscordppClientResult(discordpp::ClientResult &&obj) : obj(std::move(obj)) {
+
+	//}
+
 	~DiscordppClientResult() {
-		if (this->owned == true) {
-			memdelete(this->obj);
-		}
+		memdelete(this->obj);
 	}
 };
 
@@ -392,7 +393,6 @@ class DiscordppAuthorizationCodeChallenge : public RefCounted {
 	GDCLASS(DiscordppAuthorizationCodeChallenge, RefCounted)
 
 private:
-	bool owned = false;
 	discordpp::AuthorizationCodeChallenge *obj;
 
 protected:
@@ -412,17 +412,18 @@ public:
 
 	DiscordppAuthorizationCodeChallenge() {
 		this->obj = memnew(discordpp::AuthorizationCodeChallenge);
-		this->owned = true;
 	}
 
 	DiscordppAuthorizationCodeChallenge(discordpp::AuthorizationCodeChallenge *obj) {
 		this->obj = obj;
 	}
 
+	//DiscordppAuthorizationCodeChallenge(discordpp::AuthorizationCodeChallenge &&obj) : obj(std::move(obj)) {
+
+	//}
+
 	~DiscordppAuthorizationCodeChallenge() {
-		if (this->owned == true) {
-			memdelete(this->obj);
-		}
+		memdelete(this->obj);
 	}
 };
 
@@ -430,7 +431,6 @@ class DiscordppAuthorizationCodeVerifier : public RefCounted {
 	GDCLASS(DiscordppAuthorizationCodeVerifier, RefCounted)
 
 private:
-	bool owned = false;
 	discordpp::AuthorizationCodeVerifier *obj;
 	DiscordppAuthorizationCodeVerifier() {}
 
@@ -453,10 +453,12 @@ public:
 		this->obj = obj;
 	}
 
+	//DiscordppAuthorizationCodeVerifier(discordpp::AuthorizationCodeVerifier &&obj) : obj(std::move(obj)) {
+
+	//}
+
 	~DiscordppAuthorizationCodeVerifier() {
-		if (this->owned == true) {
-			memdelete(this->obj);
-		}
+		memdelete(this->obj);
 	}
 };
 
@@ -464,7 +466,6 @@ class DiscordppAuthorizationArgs : public RefCounted {
 	GDCLASS(DiscordppAuthorizationArgs, RefCounted)
 
 private:
-	bool owned = false;
 	discordpp::AuthorizationArgs *obj;
 
 protected:
@@ -490,17 +491,18 @@ public:
 
 	DiscordppAuthorizationArgs() {
 		this->obj = memnew(discordpp::AuthorizationArgs);
-		this->owned = true;
 	}
 
 	DiscordppAuthorizationArgs(discordpp::AuthorizationArgs *obj) {
 		this->obj = obj;
 	}
 
+	//DiscordppAuthorizationArgs(discordpp::AuthorizationArgs &&obj) : obj(std::move(obj)) {
+
+	//}
+
 	~DiscordppAuthorizationArgs() {
-		if (this->owned == true) {
-			memdelete(this->obj);
-		}
+		memdelete(this->obj);
 	}
 };
 
@@ -508,7 +510,6 @@ class DiscordppDeviceAuthorizationArgs : public RefCounted {
 	GDCLASS(DiscordppDeviceAuthorizationArgs, RefCounted)
 
 private:
-	bool owned = false;
 	discordpp::DeviceAuthorizationArgs *obj;
 
 protected:
@@ -528,17 +529,18 @@ public:
 
 	DiscordppDeviceAuthorizationArgs() {
 		this->obj = memnew(discordpp::DeviceAuthorizationArgs);
-		this->owned = true;
 	}
 
 	DiscordppDeviceAuthorizationArgs(discordpp::DeviceAuthorizationArgs *obj) {
 		this->obj = obj;
 	}
 
+	//DiscordppDeviceAuthorizationArgs(discordpp::DeviceAuthorizationArgs &&obj) : obj(std::move(obj)) {
+
+	//}
+
 	~DiscordppDeviceAuthorizationArgs() {
-		if (this->owned == true) {
-			memdelete(this->obj);
-		}
+		memdelete(this->obj);
 	}
 };
 
@@ -546,7 +548,6 @@ class DiscordppVoiceStateHandle : public RefCounted {
 	GDCLASS(DiscordppVoiceStateHandle, RefCounted)
 
 private:
-	bool owned = false;
 	discordpp::VoiceStateHandle *obj;
 	DiscordppVoiceStateHandle() {}
 
@@ -567,10 +568,12 @@ public:
 		this->obj = obj;
 	}
 
+	//DiscordppVoiceStateHandle(discordpp::VoiceStateHandle &&obj) : obj(std::move(obj)) {
+
+	//}
+
 	~DiscordppVoiceStateHandle() {
-		if (this->owned == true) {
-			memdelete(this->obj);
-		}
+		memdelete(this->obj);
 	}
 };
 
@@ -578,7 +581,6 @@ class DiscordppVADThresholdSettings : public RefCounted {
 	GDCLASS(DiscordppVADThresholdSettings, RefCounted)
 
 private:
-	bool owned = false;
 	discordpp::VADThresholdSettings *obj;
 	DiscordppVADThresholdSettings() {}
 
@@ -601,10 +603,12 @@ public:
 		this->obj = obj;
 	}
 
+	//DiscordppVADThresholdSettings(discordpp::VADThresholdSettings &&obj) : obj(std::move(obj)) {
+
+	//}
+
 	~DiscordppVADThresholdSettings() {
-		if (this->owned == true) {
-			memdelete(this->obj);
-		}
+		memdelete(this->obj);
 	}
 };
 
@@ -612,7 +616,6 @@ class DiscordppCall : public RefCounted {
 	GDCLASS(DiscordppCall, RefCounted)
 
 private:
-	bool owned = false;
 	discordpp::Call *obj;
 	DiscordppCall() {}
 
@@ -658,10 +661,12 @@ public:
 		this->obj = obj;
 	}
 
+	//DiscordppCall(discordpp::Call &&obj) : obj(std::move(obj)) {
+
+	//}
+
 	~DiscordppCall() {
-		if (this->owned == true) {
-			memdelete(this->obj);
-		}
+		memdelete(this->obj);
 	}
 };
 
@@ -669,7 +674,6 @@ class DiscordppChannelHandle : public RefCounted {
 	GDCLASS(DiscordppChannelHandle, RefCounted)
 
 private:
-	bool owned = false;
 	discordpp::ChannelHandle *obj;
 	DiscordppChannelHandle() {}
 
@@ -692,10 +696,12 @@ public:
 		this->obj = obj;
 	}
 
+	//DiscordppChannelHandle(discordpp::ChannelHandle &&obj) : obj(std::move(obj)) {
+
+	//}
+
 	~DiscordppChannelHandle() {
-		if (this->owned == true) {
-			memdelete(this->obj);
-		}
+		memdelete(this->obj);
 	}
 };
 
@@ -703,7 +709,6 @@ class DiscordppGuildMinimal : public RefCounted {
 	GDCLASS(DiscordppGuildMinimal, RefCounted)
 
 private:
-	bool owned = false;
 	discordpp::GuildMinimal *obj;
 	DiscordppGuildMinimal() {}
 
@@ -726,10 +731,12 @@ public:
 		this->obj = obj;
 	}
 
+	//DiscordppGuildMinimal(discordpp::GuildMinimal &&obj) : obj(std::move(obj)) {
+
+	//}
+
 	~DiscordppGuildMinimal() {
-		if (this->owned == true) {
-			memdelete(this->obj);
-		}
+		memdelete(this->obj);
 	}
 };
 
@@ -737,7 +744,6 @@ class DiscordppGuildChannel : public RefCounted {
 	GDCLASS(DiscordppGuildChannel, RefCounted)
 
 private:
-	bool owned = false;
 	discordpp::GuildChannel *obj;
 	DiscordppGuildChannel() {}
 
@@ -766,10 +772,12 @@ public:
 		this->obj = obj;
 	}
 
+	//DiscordppGuildChannel(discordpp::GuildChannel &&obj) : obj(std::move(obj)) {
+
+	//}
+
 	~DiscordppGuildChannel() {
-		if (this->owned == true) {
-			memdelete(this->obj);
-		}
+		memdelete(this->obj);
 	}
 };
 
@@ -777,7 +785,6 @@ class DiscordppLinkedLobby : public RefCounted {
 	GDCLASS(DiscordppLinkedLobby, RefCounted)
 
 private:
-	bool owned = false;
 	discordpp::LinkedLobby *obj;
 
 protected:
@@ -797,17 +804,18 @@ public:
 
 	DiscordppLinkedLobby() {
 		this->obj = memnew(discordpp::LinkedLobby);
-		this->owned = true;
 	}
 
 	DiscordppLinkedLobby(discordpp::LinkedLobby *obj) {
 		this->obj = obj;
 	}
 
+	//DiscordppLinkedLobby(discordpp::LinkedLobby &&obj) : obj(std::move(obj)) {
+
+	//}
+
 	~DiscordppLinkedLobby() {
-		if (this->owned == true) {
-			memdelete(this->obj);
-		}
+		memdelete(this->obj);
 	}
 };
 
@@ -815,7 +823,6 @@ class DiscordppLinkedChannel : public RefCounted {
 	GDCLASS(DiscordppLinkedChannel, RefCounted)
 
 private:
-	bool owned = false;
 	discordpp::LinkedChannel *obj;
 	DiscordppLinkedChannel() {}
 
@@ -840,10 +847,12 @@ public:
 		this->obj = obj;
 	}
 
+	//DiscordppLinkedChannel(discordpp::LinkedChannel &&obj) : obj(std::move(obj)) {
+
+	//}
+
 	~DiscordppLinkedChannel() {
-		if (this->owned == true) {
-			memdelete(this->obj);
-		}
+		memdelete(this->obj);
 	}
 };
 
@@ -851,7 +860,6 @@ class DiscordppRelationshipHandle : public RefCounted {
 	GDCLASS(DiscordppRelationshipHandle, RefCounted)
 
 private:
-	bool owned = false;
 	discordpp::RelationshipHandle *obj;
 	DiscordppRelationshipHandle() {}
 
@@ -874,10 +882,12 @@ public:
 		this->obj = obj;
 	}
 
+	//DiscordppRelationshipHandle(discordpp::RelationshipHandle &&obj) : obj(std::move(obj)) {
+
+	//}
+
 	~DiscordppRelationshipHandle() {
-		if (this->owned == true) {
-			memdelete(this->obj);
-		}
+		memdelete(this->obj);
 	}
 };
 
@@ -885,7 +895,6 @@ class DiscordppUserHandle : public RefCounted {
 	GDCLASS(DiscordppUserHandle, RefCounted)
 
 private:
-	bool owned = false;
 	discordpp::UserHandle *obj;
 	DiscordppUserHandle() {}
 
@@ -915,10 +924,12 @@ public:
 		this->obj = obj;
 	}
 
+	//DiscordppUserHandle(discordpp::UserHandle &&obj) : obj(std::move(obj)) {
+
+	//}
+
 	~DiscordppUserHandle() {
-		if (this->owned == true) {
-			memdelete(this->obj);
-		}
+		memdelete(this->obj);
 	}
 };
 
@@ -926,7 +937,6 @@ class DiscordppLobbyMemberHandle : public RefCounted {
 	GDCLASS(DiscordppLobbyMemberHandle, RefCounted)
 
 private:
-	bool owned = false;
 	discordpp::LobbyMemberHandle *obj;
 	DiscordppLobbyMemberHandle() {}
 
@@ -950,10 +960,12 @@ public:
 		this->obj = obj;
 	}
 
+	//DiscordppLobbyMemberHandle(discordpp::LobbyMemberHandle &&obj) : obj(std::move(obj)) {
+
+	//}
+
 	~DiscordppLobbyMemberHandle() {
-		if (this->owned == true) {
-			memdelete(this->obj);
-		}
+		memdelete(this->obj);
 	}
 };
 
@@ -961,7 +973,6 @@ class DiscordppLobbyHandle : public RefCounted {
 	GDCLASS(DiscordppLobbyHandle, RefCounted)
 
 private:
-	bool owned = false;
 	discordpp::LobbyHandle *obj;
 	DiscordppLobbyHandle() {}
 
@@ -987,10 +998,12 @@ public:
 		this->obj = obj;
 	}
 
+	//DiscordppLobbyHandle(discordpp::LobbyHandle &&obj) : obj(std::move(obj)) {
+
+	//}
+
 	~DiscordppLobbyHandle() {
-		if (this->owned == true) {
-			memdelete(this->obj);
-		}
+		memdelete(this->obj);
 	}
 };
 
@@ -998,7 +1011,6 @@ class DiscordppAdditionalContent : public RefCounted {
 	GDCLASS(DiscordppAdditionalContent, RefCounted)
 
 private:
-	bool owned = false;
 	discordpp::AdditionalContent *obj;
 
 protected:
@@ -1022,17 +1034,18 @@ public:
 
 	DiscordppAdditionalContent() {
 		this->obj = memnew(discordpp::AdditionalContent);
-		this->owned = true;
 	}
 
 	DiscordppAdditionalContent(discordpp::AdditionalContent *obj) {
 		this->obj = obj;
 	}
 
+	//DiscordppAdditionalContent(discordpp::AdditionalContent &&obj) : obj(std::move(obj)) {
+
+	//}
+
 	~DiscordppAdditionalContent() {
-		if (this->owned == true) {
-			memdelete(this->obj);
-		}
+		memdelete(this->obj);
 	}
 };
 
@@ -1040,7 +1053,6 @@ class DiscordppMessageHandle : public RefCounted {
 	GDCLASS(DiscordppMessageHandle, RefCounted)
 
 private:
-	bool owned = false;
 	discordpp::MessageHandle *obj;
 	DiscordppMessageHandle() {}
 
@@ -1075,10 +1087,12 @@ public:
 		this->obj = obj;
 	}
 
+	//DiscordppMessageHandle(discordpp::MessageHandle &&obj) : obj(std::move(obj)) {
+
+	//}
+
 	~DiscordppMessageHandle() {
-		if (this->owned == true) {
-			memdelete(this->obj);
-		}
+		memdelete(this->obj);
 	}
 };
 
@@ -1086,7 +1100,6 @@ class DiscordppAudioDevice : public RefCounted {
 	GDCLASS(DiscordppAudioDevice, RefCounted)
 
 private:
-	bool owned = false;
 	discordpp::AudioDevice *obj;
 	DiscordppAudioDevice() {}
 
@@ -1112,10 +1125,12 @@ public:
 		this->obj = obj;
 	}
 
+	//DiscordppAudioDevice(discordpp::AudioDevice &&obj) : obj(std::move(obj)) {
+
+	//}
+
 	~DiscordppAudioDevice() {
-		if (this->owned == true) {
-			memdelete(this->obj);
-		}
+		memdelete(this->obj);
 	}
 };
 
@@ -1123,7 +1138,6 @@ class DiscordppClient : public RefCounted {
 	GDCLASS(DiscordppClient, RefCounted)
 
 private:
-	bool owned = false;
 	discordpp::Client *obj;
 
 protected:
@@ -1274,17 +1288,18 @@ public:
 
 	DiscordppClient() {
 		this->obj = memnew(discordpp::Client);
-		this->owned = true;
 	}
 
 	DiscordppClient(discordpp::Client *obj) {
 		this->obj = obj;
 	}
 
+	//DiscordppClient(discordpp::Client &&obj) : obj(std::move(obj)) {
+
+	//}
+
 	~DiscordppClient() {
-		if (this->owned == true) {
-			memdelete(this->obj);
-		}
+		memdelete(this->obj);
 	}
 };
 
@@ -1292,7 +1307,6 @@ class DiscordppCallInfoHandle : public RefCounted {
 	GDCLASS(DiscordppCallInfoHandle, RefCounted)
 
 private:
-	bool owned = false;
 	discordpp::CallInfoHandle *obj;
 	DiscordppCallInfoHandle() {}
 
@@ -1315,10 +1329,12 @@ public:
 		this->obj = obj;
 	}
 
+	//DiscordppCallInfoHandle(discordpp::CallInfoHandle &&obj) : obj(std::move(obj)) {
+
+	//}
+
 	~DiscordppCallInfoHandle() {
-		if (this->owned == true) {
-			memdelete(this->obj);
-		}
+		memdelete(this->obj);
 	}
 };
 

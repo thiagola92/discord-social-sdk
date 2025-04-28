@@ -31,8 +31,7 @@ Variant DiscordppCallInfoHandle::GetVoiceStateHandle(int64_t userId) {
 		return nullptr;
 	}
 
-	discordpp::VoiceStateHandle *t_r = (discordpp::VoiceStateHandle *)memalloc(sizeof(discordpp::VoiceStateHandle));
-	*t_r = r.value();
+	discordpp::VoiceStateHandle *t_r = memnew(discordpp::VoiceStateHandle(r.value()));
 	return Variant(memnew(DiscordppVoiceStateHandle{ t_r }));
 }
 

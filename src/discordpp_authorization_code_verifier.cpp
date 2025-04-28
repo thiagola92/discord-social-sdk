@@ -8,8 +8,8 @@ void DiscordppAuthorizationCodeVerifier::Drop() {
 }
 
 DiscordppAuthorizationCodeChallenge *DiscordppAuthorizationCodeVerifier::Challenge() {
-	discordpp::AuthorizationCodeChallenge *t_r = (discordpp::AuthorizationCodeChallenge *)memalloc(sizeof(discordpp::AuthorizationCodeChallenge));
-	*t_r = obj->Challenge();
+	discordpp::AuthorizationCodeChallenge r = obj->Challenge();
+	discordpp::AuthorizationCodeChallenge *t_r = memnew(discordpp::AuthorizationCodeChallenge(r));
 	return memnew(DiscordppAuthorizationCodeChallenge{ t_r });
 }
 

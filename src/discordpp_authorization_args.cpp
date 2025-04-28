@@ -74,8 +74,7 @@ Variant DiscordppAuthorizationArgs::CodeChallenge() {
 		return nullptr;
 	}
 
-	discordpp::AuthorizationCodeChallenge *t_r = (discordpp::AuthorizationCodeChallenge *)memalloc(sizeof(discordpp::AuthorizationCodeChallenge));
-	*t_r = r.value();
+	discordpp::AuthorizationCodeChallenge *t_r = memnew(discordpp::AuthorizationCodeChallenge(r.value()));
 	return Variant(memnew(DiscordppAuthorizationCodeChallenge{ t_r }));
 }
 
