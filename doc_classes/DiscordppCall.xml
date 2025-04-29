@@ -45,6 +45,11 @@
 			<description>
 			</description>
 		</method>
+		<method name="GetPTTReleaseDelay">
+			<return type="int" />
+			<description>
+			</description>
+		</method>
 		<method name="GetParticipantVolume">
 			<return type="float" />
 			<param index="0" name="userId" type="int" />

@@ -43,6 +43,11 @@
 			<description>
 			</description>
 		</method>
+		<method name="SessionId">
+			<return type="String" />
+			<description>
+			</description>
+		</method>
 		<method name="SetApplicationId">
 			<return type="void" />
 			<param index="0" name="ApplicationId" type="int" />
@@ -76,6 +81,12 @@
 		<method name="SetSenderId">
 			<return type="void" />
 			<param index="0" name="SenderId" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="SetSessionId">
+			<return type="void" />
+			<param index="0" name="SessionId" type="String" />
 			<description>
 			</description>
 		</method>

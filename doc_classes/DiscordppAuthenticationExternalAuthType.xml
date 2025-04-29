@@ -15,5 +15,7 @@
 		</constant>
 		<constant name="SteamSessionTicket" value="3" enum="Enum">
 		</constant>
+		<constant name="UnityServicesIdToken" value="4" enum="Enum">
+		</constant>
 	</constants>
 </class>

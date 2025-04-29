@@ -257,6 +257,11 @@
 				[/codeblock]
 			</description>
 		</method>
+		<method name="GetApplicationId">
+			<return type="int" />
+			<description>
+			</description>
+		</method>
 		<method name="GetCall">
 			<return type="DiscordppCall" />
 			<param index="0" name="channelId" type="int" />
@@ -840,6 +845,12 @@
 				[codeblock]
 				func(joinSecret: String)
 				[/codeblock]
+			</description>
+		</method>
+		<method name="SetApplicationId">
+			<return type="void" />
+			<param index="0" name="applicationId" type="int" />
+			<description>
 			</description>
 		</method>
 		<method name="SetAuthorizeDeviceScreenClosedCallback">
