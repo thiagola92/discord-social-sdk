@@ -15,13 +15,6 @@ func _ready() -> void:
 	args.SetScopes(DiscordppClient.GetDefaultPresenceScopes())
 	args.SetCodeChallenge(code_verifier.Challenge())
 	
-	# NOTE: Remove this
-	client.AddLogCallback(
-		func(message: String, severity: DiscordppLoggingSeverity.Enum):
-			print("[%s] %s" % [Discordpp.EnumToString18(severity), message]),
-		DiscordppLoggingSeverity.Info
-	)
-	
 	client.SetStatusChangedCallback(
 		func(
 			status: DiscordppClientStatus.Enum,
@@ -177,6 +170,8 @@ func display_friends_list2() -> void:
 			string += " (Provisional)"
 		
 		# Categorize based on status
+		if user.GameActivity():
+			in_game.append("🟣 " + string)
 		if user.Status() != DiscordppStatusType.Offline:
 			online.append("🟢 " + string)
 		else:
