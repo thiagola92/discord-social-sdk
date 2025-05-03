@@ -5,7 +5,7 @@ Wrapper around [Discord Social SDK](https://discord.com/developers/docs/discord-
 
 <div align="center">
 
-![Logo](demo/addons/discord_social_sdk/icons/discord_social_sdk.svg)  
+![Logo](demo/assets/discord_social_sdk.svg)  
 
 </div>
 
@@ -197,6 +197,8 @@ I'm using Ubuntu, please adapt this list to your operating system.
 │   └── Discord headers
 ├── lib/
 │   └── Discord libs
+├── others/
+│   └── Python scripts
 ├── scripts/
 │   └── Python scripts
 └── src/

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://duaibqtv44d3x"
-path="res://.godot/imported/discord_social_sdk.svg-0add5521f3e0eb4136884d6f9a1870f2.ctex"
+uid="uid://bxoo7lohutig5"
+path="res://.godot/imported/discord_social_sdk.png-3031d63cce58bad4a01b99ed8d363cc1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/discord_social_sdk/icons/discord_social_sdk.svg"
-dest_files=["res://.godot/imported/discord_social_sdk.svg-0add5521f3e0eb4136884d6f9a1870f2.ctex"]
+source_file="res://assets/discord_social_sdk.png"
+dest_files=["res://.godot/imported/discord_social_sdk.png-3031d63cce58bad4a01b99ed8d363cc1.ctex"]
 
 [params]
 
@@ -32,6 +32,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false
