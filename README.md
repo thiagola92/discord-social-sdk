@@ -100,6 +100,15 @@ func _process(_delta: float) -> void:
     Discordpp.RunCallbacks()
 ```
 
+## Installation
+- Download latest release
+- Extract addons directory from ZIP
+- Move addons directory to your project directory
+    - If your project already have an addons directory, copy addons/discord_social_sdk to your project addons
+
+## Examples
+Directory [discord-social-sdk/demo/examples](https://github.com/thiagola92/discord-social-sdk/tree/main/demo/examples) contains many examples (they are convertions from the [official C++ documentation](https://discord.com/developers/docs/discord-social-sdk/development-guides)).  
+
 ## Questions
 
 > Why some functions return [`Variant`](https://docs.godotengine.org/en/stable/classes/class_variant.html)?  
