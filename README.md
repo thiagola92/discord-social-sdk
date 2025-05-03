@@ -123,8 +123,8 @@ GDScript doesn't support [function overloading](https://www.w3schools.com/cpp/cp
 
 I made this decision to avoid solving conflict between methods names because, as mentioned above, GDScript doesn't support function overloading.  
 
-**Example**: [`discordpp:Client`](https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1Client.html#a873a844c7c4c72e9e693419bb3e290aa) has `Connect()` and [`Object`](https://docs.godotengine.org/en/4.4/classes/class_object.html#class-object-method-connect) has `connect()`. If I were to snake_case the `discordpp:Client` method, I would need to find another name for it.   
-
+**Example**: [`discordpp:Client`](https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1Client.html#a873a844c7c4c72e9e693419bb3e290aa) has `Connect()` and [`Object`](https://docs.godotengine.org/en/4.4/classes/class_object.html#class-object-method-connect) has `connect()`.  
+If I were to snake_case the `discordpp:Client` method, I would need to find another name for it.   
 
 # Development
 This GDExtension is **all** built using Python and **nothing** should be add manually at `src`. If this is weird for you, listen to me...  
