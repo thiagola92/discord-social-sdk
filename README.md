@@ -9,6 +9,12 @@ Wrapper around [Discord Social SDK](https://discord.com/developers/docs/discord-
 
 </div>
 
+> [!IMPORTANT]
+> Only **Linux (x86_64)** and **Windows** builds at the moment.
+> 
+> If you want to request other build, make an [issue](https://github.com/thiagola92/discord-social-sdk/issues).  
+> If you already knows how to build other, feel free to make a [pull request](https://github.com/thiagola92/discord-social-sdk/pulls).  
+
 # Usage
 Is suppose to be a close one-to-one with the C++ SDK, so looking at the C++ [*Getting Started*](https://discord.com/developers/docs/discord-social-sdk/getting-started/using-c++) is recommended to understand how the SDK works.  
 
