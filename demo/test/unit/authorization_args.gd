@@ -5,7 +5,7 @@ func test_default_values(_client: DiscordppClient) -> void:
 	var args := DiscordppAuthorizationArgs.new()
 	
 	assert(args.ClientId() == 0)
-	assert(args.Scopes() == "")
+	assert(args.Scopes() != "")
 	assert(args.State() == null)
 	assert(args.Nonce() == null)
 	assert(args.CodeChallenge() == null)

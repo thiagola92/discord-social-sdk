@@ -1,3 +1,4 @@
+## Stupid test framework.
 extends Node
 
 
@@ -9,8 +10,6 @@ func _ready() -> void:
 
 
 func test_dir(dirname: String) -> void:
-	print(dirname)
-	
 	var dir = DirAccess.open(dirname)
 	
 	for f in dir.get_files():
@@ -26,8 +25,6 @@ func test_file(filename: String) -> void:
 
 
 func test_script(filename: String) -> void:
-	print(filename)
-	
 	var script: Script = load(filename)
 	var node: Node = script.new()
 	
@@ -35,10 +32,9 @@ func test_script(filename: String) -> void:
 	
 	for method in node.get_method_list():
 		var method_name: String = method["name"]
-		
 		if method_name.begins_with("test_"):
-			print(filename, " -> ", method_name, "()")
 			await node.call(method_name, client)
+			print(filename, " -> ", method_name, "()")
 
 
 func _process(_delta: float) -> void:
