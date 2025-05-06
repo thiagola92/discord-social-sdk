@@ -107,10 +107,16 @@ func _process(_delta: float) -> void:
 ```
 
 ## Installation
-- Download latest release
-- Extract addons directory from ZIP
-- Move addons directory to your project directory
-    - If your project already have an addons directory, copy addons/discord_social_sdk to your project addons
+It's available in [Godot Asset Library](
+https://godotengine.org/asset-library/asset/3988), so you can search and install through Godot.
+
+**Alternative**:  
+- Go to [releases](https://github.com/thiagola92/discord-social-sdk/releases) from Github
+- Download latest release ZIP
+- Extract `addons` directory from ZIP
+    - It will be inside a `demo` directory
+- Move `addons` directory to your project directory
+    - If your project already have an `addons` directory, copy `addons/discord_social_sdk` to your project `addons`
 
 ## Examples
 Directory [discord-social-sdk/demo/examples](https://github.com/thiagola92/discord-social-sdk/tree/main/demo/examples) contains many examples (they are convertions from the [official C++ documentation](https://discord.com/developers/docs/discord-social-sdk/development-guides)).  
@@ -246,9 +252,7 @@ scons platform=windows                            # Debug
 scons platform=windows target=template_release    # Release
 
 # Generate ZIP file for the Asset Library.
-cd demo
-zip -r ../discord_social_sdk.zip addons/discord_social_sdk/**
-cd ..
+zip -r discord_social_sdk.zip demo/addons/discord_social_sdk/**
 ```
 
 # References
