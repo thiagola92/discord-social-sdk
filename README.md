@@ -118,7 +118,56 @@ https://godotengine.org/asset-library/asset/3988), so you can search and install
     - If your project already have an `addons` directory, copy `addons/discord_social_sdk` to your project `addons`
 
 ## Examples
-Directory [discord-social-sdk/demo/examples](https://github.com/thiagola92/discord-social-sdk/tree/main/demo/examples) contains many examples (they are convertions from the [official C++ documentation](https://discord.com/developers/docs/discord-social-sdk/development-guides)).  
+Directory [discord-social-sdk/demo/examples](https://github.com/thiagola92/discord-social-sdk/tree/main/demo/examples) contains many examples.  
+
+Examples in this repository will be mostly convertions from the [official C++ documentation](https://discord.com/developers/docs/discord-social-sdk/development-guides), so I do recommend you to adapt to your like. For example, we don't need to use lambda functions everywhere:  
+
+```gdscript
+func _ready() -> void:
+    # ...
+    client.Authorize(args, _on_authorization_result.bind(code_verifier))
+
+
+func _on_authorization_result(
+    result: DiscordppClientResult,
+    code: String,
+    redirectUri: String,
+    code_verifier: DiscordppAuthorizationCodeVerifier
+):
+    if not result.Successful():
+        print("❌ Authentication Error: %s" % result.Error())
+    else:
+        print("✅ Authorization successful! Getting access token...")
+        client.GetToken(APPLICATION_ID, code, code_verifier.Verifier(), redirectUri, _on_token_result)
+
+
+func _on_token_result(
+    result: DiscordppClientResult,
+    accessToken: String,
+    refreshToken: String,
+    tokenType: DiscordppAuthorizationTokenType.Enum,
+    expiresIn: int,
+    scopes: String
+):
+    print("🔓 Access token received! Establishing connection...")
+    client.UpdateToken(DiscordppAuthorizationTokenType.Bearer, accessToken, _on_token_update)
+
+
+func _on_token_update(result: DiscordppClientResult):
+    if result.Successful():
+        print("🔑 Token updated, connecting to Discord...")
+        client.Connect()
+```
+
+Instead of running `Discordpp.RunCallbacks()` every frame, you could use a timer which would reduce the frequence which your code stop to run callbacks.  
+
+```gdscript
+var timer = Timer.new()
+timer.wait_time = 1
+timer.autostart = true
+timer.timeout.connect(func(): Discordpp.RunCallbacks())
+get_tree().root.add_child.call_deferred(timer)
+```
 
 ## Questions
 
