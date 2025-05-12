@@ -26,9 +26,43 @@ android.debug.arm64 = "res://addons/discord_social_sdk/bin/android/libdiscord_so
 android.release.arm64 = "res://addons/discord_social_sdk/bin/android/libdiscord_social_sdk.android.template_release.arm64.so"
 
 [dependencies]
+windows.debug.x86_32 = {
+    "res://addons/discord_social_sdk/bin/windows/discord_partner_sdk.dll": "",
+    "res://addons/discord_social_sdk/bin/windows/discord_partner_sdk.lib": "",
+}
+windows.release.x86_32 = {
+    "res://addons/discord_social_sdk/bin/windows/discord_partner_sdk.dll": "",
+    "res://addons/discord_social_sdk/bin/windows/discord_partner_sdk.lib": "",
+}
+windows.debug.x86_64 = {
+    "res://addons/discord_social_sdk/bin/windows/discord_partner_sdk.dll": "",
+    "res://addons/discord_social_sdk/bin/windows/discord_partner_sdk.lib": "",
+}
+windows.release.x86_64 = {
+    "res://addons/discord_social_sdk/bin/windows/discord_partner_sdk.dll": "",
+    "res://addons/discord_social_sdk/bin/windows/discord_partner_sdk.lib": "",
+}
+linux.debug.x86_64 = {
+    "res://addons/discord_social_sdk/bin/linux/libdiscord_partner_sdk.so": "",
+}
+linux.release.x86_64 = {
+    "res://addons/discord_social_sdk/bin/linux/libdiscord_partner_sdk.so": "",
+}
+linux.debug.arm64 = {
+    "res://addons/discord_social_sdk/bin/linux/libdiscord_partner_sdk.so": "",
+}
+linux.release.arm64 = {
+    "res://addons/discord_social_sdk/bin/linux/libdiscord_partner_sdk.so": "",
+}
+linux.debug.rv64 = {
+    "res://addons/discord_social_sdk/bin/linux/libdiscord_partner_sdk.so": "",
+}
+linux.release.rv64 = {
+    "res://addons/discord_social_sdk/bin/linux/libdiscord_partner_sdk.so": "",
+}
 ios.debug = {
-    "res://addons/discord_social_sdk/bin/ios/libgodot-cpp.ios.template_debug.xcframework": ""
+    "res://addons/discord_social_sdk/bin/ios/libgodot-cpp.ios.template_debug.xcframework": "",
 }
 ios.release = {
-    "res://addons/discord_social_sdk/bin/ios/libgodot-cpp.ios.template_release.xcframework": ""
+    "res://addons/discord_social_sdk/bin/ios/libgodot-cpp.ios.template_release.xcframework": "",
 }
