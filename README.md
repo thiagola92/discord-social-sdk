@@ -268,8 +268,6 @@ I'm using Ubuntu, please adapt this list to your operating system.
 │   └── Discord headers
 ├── lib/
 │   └── Discord libs
-├── others/
-│   └── Python scripts
 ├── scripts/
 │   └── Python scripts
 └── src/
