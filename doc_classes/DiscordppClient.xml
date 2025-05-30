@@ -570,6 +570,17 @@
 			<description>
 			</description>
 		</method>
+		<method name="OpenConnectedGamesSettingsInDiscord">
+			<return type="void" />
+			<param index="0" name="callback" type="Callable" />
+			<description>
+			
+				Where [param callback] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult)
+				[/codeblock]
+			</description>
+		</method>
 		<method name="OpenMessageInDiscord">
 			<return type="void" />
 			<param index="0" name="messageId" type="int" />

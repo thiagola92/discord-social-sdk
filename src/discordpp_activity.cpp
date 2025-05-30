@@ -7,10 +7,28 @@ void DiscordppActivity::Drop() {
 	obj->Drop();
 }
 
+void DiscordppActivity::AddButton(DiscordppActivityButton *button) {
+	discordpp::ActivityButton p0 = *button->unwrap();
+
+	obj->AddButton(p0);
+}
+
 bool DiscordppActivity::Equals(DiscordppActivity *other) {
 	discordpp::Activity p0 = *other->unwrap();
 
 	return obj->Equals(p0);
+}
+
+TypedArray<DiscordppActivityButton> DiscordppActivity::GetButtons() {
+	auto r = obj->GetButtons();
+	TypedArray<DiscordppActivityButton> t_r = TypedArray<DiscordppActivityButton>();
+
+	for (auto i : r) {
+		discordpp::ActivityButton *t_i = memnew(discordpp::ActivityButton(std::move(i)));
+		t_r.push_back(memnew(DiscordppActivityButton{ t_i }));
+	}
+
+	return t_r;
 }
 
 String DiscordppActivity::Name() {
@@ -195,8 +213,14 @@ void DiscordppActivity::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("Drop"),
 			&DiscordppActivity::Drop);
 
+	ClassDB::bind_method(D_METHOD("AddButton", "button"),
+			&DiscordppActivity::AddButton);
+
 	ClassDB::bind_method(D_METHOD("Equals", "other"),
 			&DiscordppActivity::Equals);
+
+	ClassDB::bind_method(D_METHOD("GetButtons"),
+			&DiscordppActivity::GetButtons);
 
 	ClassDB::bind_method(D_METHOD("Name"),
 			&DiscordppActivity::Name);

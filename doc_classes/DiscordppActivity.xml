@@ -8,6 +8,12 @@
 	<tutorials>
 	</tutorials>
 	<methods>
+		<method name="AddButton">
+			<return type="void" />
+			<param index="0" name="button" type="DiscordppActivityButton" />
+			<description>
+			</description>
+		</method>
 		<method name="ApplicationId">
 			<return type="Variant" />
 			<description>
@@ -34,6 +40,11 @@
 		<method name="Equals">
 			<return type="bool" />
 			<param index="0" name="other" type="DiscordppActivity" />
+			<description>
+			</description>
+		</method>
+		<method name="GetButtons">
+			<return type="DiscordppActivityButton[]" />
 			<description>
 			</description>
 		</method>

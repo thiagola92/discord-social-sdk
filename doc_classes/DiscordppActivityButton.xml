@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordppActivityButton" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+        Reference: [url]https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1ActivityButton.html[/url]
+    </description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="Drop">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="Label">
+			<return type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="SetLabel">
+			<return type="void" />
+			<param index="0" name="Label" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="SetUrl">
+			<return type="void" />
+			<param index="0" name="Url" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="Url">
+			<return type="String" />
+			<description>
+			</description>
+		</method>
+	</methods>
+</class>

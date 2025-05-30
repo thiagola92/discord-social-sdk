@@ -45,6 +45,7 @@ void initialize_module(ModuleInitializationLevel p_level) {
 	GDREGISTER_RUNTIME_CLASS(DiscordppActivityTimestamps);
 	GDREGISTER_RUNTIME_CLASS(DiscordppActivityParty);
 	GDREGISTER_RUNTIME_CLASS(DiscordppActivitySecrets);
+	GDREGISTER_RUNTIME_CLASS(DiscordppActivityButton);
 	GDREGISTER_RUNTIME_CLASS(DiscordppActivity);
 	GDREGISTER_RUNTIME_CLASS(DiscordppClientResult);
 	GDREGISTER_RUNTIME_CLASS(DiscordppAuthorizationCodeChallenge);

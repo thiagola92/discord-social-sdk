@@ -597,6 +597,7 @@ class ActivityAssets;
 class ActivityTimestamps;
 class ActivityParty;
 class ActivitySecrets;
+class ActivityButton;
 class Activity;
 class ClientResult;
 class AuthorizationCodeChallenge;
@@ -940,6 +941,52 @@ public:
 	void SetJoin(std::string Join);
 };
 
+/// \brief \see Activity
+class ActivityButton {
+	/// \cond
+	mutable Discord_ActivityButton instance_{};
+	DiscordObjectState state_ = DiscordObjectState::Invalid;
+	/// \endcond
+
+public:
+	/// \cond
+	Discord_ActivityButton *instance() const { return &instance_; }
+	/// \endcond
+	/// \cond
+	explicit ActivityButton(Discord_ActivityButton instance, DiscordObjectState state);
+	~ActivityButton();
+	/// \endcond
+	/// Move constructor for ActivityButton
+	ActivityButton(ActivityButton &&other) noexcept;
+	/// Move assignment operator for ActivityButton
+	ActivityButton &operator=(ActivityButton &&other) noexcept;
+	/// Uninitialized instance of ActivityButton
+	static const ActivityButton nullobj;
+	/// Returns true if the instance contains a valid object
+	operator bool() const { return state_ != DiscordObjectState::Invalid; }
+
+	/// Copy constructor for ActivityButton
+	ActivityButton(const ActivityButton &arg0);
+	/// Copy assignment operator for ActivityButton
+	ActivityButton &operator=(const ActivityButton &arg0);
+
+	explicit ActivityButton();
+
+	/// \cond
+	void Drop();
+	/// \endcond
+
+	/// \brief The label of the button.
+	std::string Label() const;
+	/// Setter for ActivityButton::Label.
+	void SetLabel(std::string Label);
+
+	/// \brief The url of the button.
+	std::string Url() const;
+	/// Setter for ActivityButton::Url.
+	void SetUrl(std::string Url);
+};
+
 /// \brief An Activity represents one "thing" a user is doing on Discord and is part of their rich
 /// presence.
 ///
@@ -974,6 +1021,17 @@ public:
 ///
 ///
 /// \image html "rich_presence.png" "Rich presence field diagram" width=1070px
+///
+/// You can also specify up to two custom buttons to display on the rich presence.
+/// These buttons will open the URL in the user's default browser.
+///
+/// \code
+///     discordpp::ActivityButton button;
+///     button.SetLabel("Button 1");
+///     button.SetUrl("https://example.com");
+///     activity.AddButton(button);
+/// \endcode
+///
 ///
 /// ## Invites / Joinable Activities
 /// Other users can be invited to join the current player's activity (or request to join it too),
@@ -1142,8 +1200,14 @@ public:
 	void Drop();
 	/// \endcond
 
+	/// \brief Adds a custom button to the rich presence
+	void AddButton(discordpp::ActivityButton button);
+
 	/// \brief Compares each field of the Activity struct for equality.
 	bool Equals(discordpp::Activity other) const;
+
+	/// \brief Returns the custom buttons for the rich presence
+	std::vector<discordpp::ActivityButton> GetButtons() const;
 
 	/// \brief The name of the game or application that the activity is associated with.
 	///
@@ -2452,7 +2516,7 @@ public:
 /// where a lobby does need to be "rebuilt" if everyone is offline for an extended period.
 ///
 /// # Membership Limits
-/// Lobbies may have a maximum of 1,000 members, and each user may be in a maximum of 100 lobbies
+/// Lobbies may have a maximum of 1,000 members, and each user may be in a maximum of 200 lobbies
 /// per game.
 ///
 /// ## Audio
@@ -3040,6 +3104,10 @@ public:
 	using LogCallback =
 			std::function<void(std::string message, discordpp::LoggingSeverity severity)>;
 
+	/// \brief Callback function for when Client::OpenConnectedGamesSettingsInDiscord completes.
+	using OpenConnectedGamesSettingsInDiscordCallback =
+			std::function<void(discordpp::ClientResult result)>;
+
 	/// \brief Callback function for Client::SetStatusChangedCallback.
 	///
 	/// errorDetail will usually be one of the error code described here:
@@ -3112,12 +3180,17 @@ public:
 	/// Client::SendGameFriendRequest.
 	using SendFriendRequestCallback = std::function<void(discordpp::ClientResult result)>;
 
-	/// \brief Callback function for Client::SetRelationshipCreatedCallback, and
-	/// Client::SetRelationshipDeletedCallback.
+	/// \brief Callback function for Client::SetRelationshipCreatedCallback.
+	///
+	/// `isDiscordRelationshipUpdate` will be true if the relationship created with the `userId` is
+	/// a Discord relationship, and false if it's an in-game relationship.
 	using RelationshipCreatedCallback =
 			std::function<void(uint64_t userId, bool isDiscordRelationshipUpdate)>;
 
-	/// \brief Callback function for Client::SetRelationshipDeletedCallback
+	/// \brief Callback function for Client::SetRelationshipDeletedCallback.
+	///
+	/// `isDiscordRelationshipUpdate` will be true if the relationship deleted with the `userId` is
+	/// a Discord relationship, and false if it's an in-game relationship.
 	using RelationshipDeletedCallback =
 			std::function<void(uint64_t userId, bool isDiscordRelationshipUpdate)>;
 
@@ -3972,6 +4045,16 @@ public:
 	/// \brief Returns the current status of the client, see the Status enum for an explanation of
 	/// the possible values.
 	discordpp::Client::Status GetStatus() const;
+
+	/// \brief Opens the Connected Games settings in the Discord client, which is where
+	/// users can manage their settings related to games using the Discord Social SDK.
+	///
+	/// If the client isn't connected or the user is a provisional account, this function does
+	/// nothing.
+	///
+	/// It is always a no-op for console platforms.
+	void OpenConnectedGamesSettingsInDiscord(
+			discordpp::Client::OpenConnectedGamesSettingsInDiscordCallback callback);
 
 	/// \brief This function is used to set the application ID for the client. This is used to
 	/// identify the application to the Discord client. This is used for things like
@@ -5662,6 +5745,94 @@ void ActivitySecrets::SetJoin(std::string Join) {
 	Discord_String Join__str{ (uint8_t *)(Join.data()), Join.size() };
 	Discord_ActivitySecrets_SetJoin(&instance_, Join__str);
 }
+const ActivityButton ActivityButton::nullobj{ {}, DiscordObjectState::Invalid };
+ActivityButton::~ActivityButton() {
+	if (state_ == DiscordObjectState::Owned) {
+		Drop();
+		state_ = DiscordObjectState::Invalid;
+	}
+}
+ActivityButton::ActivityButton(ActivityButton &&other) noexcept
+		:
+		instance_(other.instance_), state_(other.state_) {
+	other.state_ = DiscordObjectState::Invalid;
+}
+ActivityButton &ActivityButton::operator=(ActivityButton &&other) noexcept {
+	if (this != &other) {
+		if (state_ == DiscordObjectState::Owned) {
+			Drop();
+		}
+		instance_ = other.instance_;
+		state_ = other.state_;
+		other.state_ = DiscordObjectState::Invalid;
+	}
+	return *this;
+}
+ActivityButton::ActivityButton(const ActivityButton &arg0) :
+		instance_{}, state_(DiscordObjectState::Invalid) {
+	if (arg0.state_ == DiscordObjectState::Owned) {
+		Discord_ActivityButton_Clone(&instance_, arg0.instance());
+
+		state_ = DiscordObjectState::Owned;
+	}
+}
+ActivityButton &ActivityButton::operator=(const ActivityButton &arg0) {
+	if (this != &arg0) {
+		if (state_ == DiscordObjectState::Owned) {
+			Drop();
+			state_ = DiscordObjectState::Invalid;
+		}
+		if (arg0.state_ == DiscordObjectState::Owned) {
+			Discord_ActivityButton_Clone(&instance_, arg0.instance());
+
+			state_ = DiscordObjectState::Owned;
+		}
+	}
+	return *this;
+}
+ActivityButton::ActivityButton(Discord_ActivityButton instance, DiscordObjectState state) :
+		instance_(instance), state_(state) {
+}
+ActivityButton::ActivityButton() {
+	assert(state_ == DiscordObjectState::Invalid);
+	Discord_ActivityButton_Init(&instance_);
+	state_ = DiscordObjectState::Owned;
+}
+void ActivityButton::Drop() {
+	if (state_ != DiscordObjectState::Owned) {
+		return;
+	}
+	Discord_ActivityButton_Drop(&instance_);
+	state_ = DiscordObjectState::Invalid;
+}
+std::string ActivityButton::Label() const {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_String returnValueNative__;
+	Discord_ActivityButton_Label(&instance_, &returnValueNative__);
+	std::string returnValue__(reinterpret_cast<char *>(returnValueNative__.ptr),
+			returnValueNative__.size);
+	Discord_Free(returnValueNative__.ptr);
+	return returnValue__;
+}
+void ActivityButton::SetLabel(std::string Label) {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_String Label__str{ (uint8_t *)(Label.data()), Label.size() };
+	Discord_ActivityButton_SetLabel(&instance_, Label__str);
+}
+std::string ActivityButton::Url() const {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_String returnValueNative__;
+	Discord_ActivityButton_Url(&instance_, &returnValueNative__);
+	std::string returnValue__(reinterpret_cast<char *>(returnValueNative__.ptr),
+			returnValueNative__.size);
+	Discord_Free(returnValueNative__.ptr);
+	return returnValue__;
+}
+void ActivityButton::SetUrl(std::string Url) {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_String Url__str{ (uint8_t *)(Url.data()), Url.size() };
+	Discord_ActivityButton_SetUrl(&instance_, Url__str);
+}
 const Activity Activity::nullobj{ {}, DiscordObjectState::Invalid };
 Activity::~Activity() {
 	if (state_ == DiscordObjectState::Owned) {
@@ -5722,10 +5893,26 @@ void Activity::Drop() {
 	Discord_Activity_Drop(&instance_);
 	state_ = DiscordObjectState::Invalid;
 }
+void Activity::AddButton(discordpp::ActivityButton button) {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_Activity_AddButton(&instance_, button.instance());
+}
 bool Activity::Equals(discordpp::Activity other) const {
 	assert(state_ == DiscordObjectState::Owned);
 	bool returnValue__;
 	returnValue__ = Discord_Activity_Equals(&instance_, other.instance());
+	return returnValue__;
+}
+std::vector<discordpp::ActivityButton> Activity::GetButtons() const {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_ActivityButtonSpan returnValueNative__;
+	Discord_Activity_GetButtons(&instance_, &returnValueNative__);
+	std::vector<discordpp::ActivityButton> returnValue__;
+	returnValue__.reserve(returnValueNative__.size);
+	for (size_t i__ = 0; i__ < returnValueNative__.size; ++i__) {
+		returnValue__.emplace_back(returnValueNative__.ptr[i__], DiscordObjectState::Owned);
+	}
+	Discord_Free(returnValueNative__.ptr);
 	return returnValue__;
 }
 std::string Activity::Name() const {
@@ -9182,6 +9369,20 @@ discordpp::Client::Status Client::GetStatus() const {
 	Discord_Client_Status returnValue__;
 	returnValue__ = Discord_Client_GetStatus(&instance_);
 	return static_cast<discordpp::Client::Status>(returnValue__);
+}
+void Client::OpenConnectedGamesSettingsInDiscord(
+		discordpp::Client::OpenConnectedGamesSettingsInDiscordCallback callback) {
+	assert(state_ == DiscordObjectState::Owned);
+	using Tcallback__UserData = TDelegateUserData<std::remove_reference_t<decltype(callback)>>;
+	auto callback__userData = new Tcallback__UserData(callback);
+	Discord_Client_OpenConnectedGamesSettingsInDiscordCallback callback__native =
+			[](auto result, void *userData__) {
+				auto userData__typed = static_cast<Tcallback__UserData *>(userData__);
+				discordpp::ClientResult result__obj(*result, DiscordObjectState::Owned);
+				userData__typed->delegate(std::move(result__obj));
+			};
+	Discord_Client_OpenConnectedGamesSettingsInDiscord(
+			&instance_, callback__native, Tcallback__UserData::Free, callback__userData);
 }
 void Client::SetApplicationId(uint64_t applicationId) {
 	assert(state_ == DiscordObjectState::Owned);

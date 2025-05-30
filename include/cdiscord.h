@@ -313,6 +313,7 @@ typedef struct Discord_ActivityAssets Discord_ActivityAssets;
 typedef struct Discord_ActivityTimestamps Discord_ActivityTimestamps;
 typedef struct Discord_ActivityParty Discord_ActivityParty;
 typedef struct Discord_ActivitySecrets Discord_ActivitySecrets;
+typedef struct Discord_ActivityButton Discord_ActivityButton;
 typedef struct Discord_Activity Discord_Activity;
 typedef struct Discord_ClientResult Discord_ClientResult;
 typedef struct Discord_AuthorizationCodeChallenge Discord_AuthorizationCodeChallenge;
@@ -340,6 +341,10 @@ typedef struct Discord_String {
     uint8_t* ptr;
     size_t size;
 } Discord_String;
+typedef struct Discord_ActivityButtonSpan {
+    Discord_ActivityButton* ptr;
+    size_t size;
+} Discord_ActivityButtonSpan;
 typedef struct Discord_UInt64Span {
     uint64_t* ptr;
     size_t size;
@@ -453,6 +458,9 @@ typedef void (*Discord_Client_MessageUpdatedCallback)(uint64_t messageId, void* 
 typedef void (*Discord_Client_LogCallback)(Discord_String message,
                                            Discord_LoggingSeverity severity,
                                            void* userData);
+typedef void (*Discord_Client_OpenConnectedGamesSettingsInDiscordCallback)(
+  Discord_ClientResult* result,
+  void* userData);
 typedef void (*Discord_Client_OnStatusChanged)(Discord_Client_Status status,
                                                Discord_Client_Error error,
                                                int32_t errorDetail,
@@ -603,6 +611,21 @@ void DISCORD_API Discord_ActivitySecrets_SetJoin(Discord_ActivitySecrets* self,
                                                  Discord_String value);
 void DISCORD_API Discord_ActivitySecrets_Join(Discord_ActivitySecrets* self,
                                               Discord_String* returnValue);
+struct Discord_ActivityButton {
+    void* opaque;
+};
+
+void DISCORD_API Discord_ActivityButton_Init(Discord_ActivityButton* self);
+void DISCORD_API Discord_ActivityButton_Drop(Discord_ActivityButton* self);
+void DISCORD_API Discord_ActivityButton_Clone(Discord_ActivityButton* self,
+                                              Discord_ActivityButton const* arg0);
+void DISCORD_API Discord_ActivityButton_SetLabel(Discord_ActivityButton* self,
+                                                 Discord_String value);
+void DISCORD_API Discord_ActivityButton_Label(Discord_ActivityButton* self,
+                                              Discord_String* returnValue);
+void DISCORD_API Discord_ActivityButton_SetUrl(Discord_ActivityButton* self, Discord_String value);
+void DISCORD_API Discord_ActivityButton_Url(Discord_ActivityButton* self,
+                                            Discord_String* returnValue);
 struct Discord_Activity {
     void* opaque;
 };
@@ -610,7 +633,11 @@ struct Discord_Activity {
 void DISCORD_API Discord_Activity_Init(Discord_Activity* self);
 void DISCORD_API Discord_Activity_Drop(Discord_Activity* self);
 void DISCORD_API Discord_Activity_Clone(Discord_Activity* self, Discord_Activity const* arg0);
+void DISCORD_API Discord_Activity_AddButton(Discord_Activity* self,
+                                            Discord_ActivityButton const* button);
 bool DISCORD_API Discord_Activity_Equals(Discord_Activity* self, Discord_Activity const* other);
+void DISCORD_API Discord_Activity_GetButtons(Discord_Activity* self,
+                                             Discord_ActivityButtonSpan* returnValue);
 void DISCORD_API Discord_Activity_SetName(Discord_Activity* self, Discord_String value);
 void DISCORD_API Discord_Activity_Name(Discord_Activity* self, Discord_String* returnValue);
 void DISCORD_API Discord_Activity_SetType(Discord_Activity* self, Discord_ActivityTypes value);
@@ -1322,6 +1349,11 @@ void DISCORD_API Discord_Client_AddVoiceLogCallback(Discord_Client* self,
 void DISCORD_API Discord_Client_Connect(Discord_Client* self);
 void DISCORD_API Discord_Client_Disconnect(Discord_Client* self);
 Discord_Client_Status DISCORD_API Discord_Client_GetStatus(Discord_Client* self);
+void DISCORD_API Discord_Client_OpenConnectedGamesSettingsInDiscord(
+  Discord_Client* self,
+  Discord_Client_OpenConnectedGamesSettingsInDiscordCallback callback,
+  Discord_FreeFn callback__userDataFree,
+  void* callback__userData);
 void DISCORD_API Discord_Client_SetApplicationId(Discord_Client* self, uint64_t applicationId);
 bool DISCORD_API Discord_Client_SetLogDir(Discord_Client* self,
                                           Discord_String path,

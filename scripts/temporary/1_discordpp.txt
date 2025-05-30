@@ -312,6 +312,22 @@ func SetJoin(std::string Join) -> void
 }
 
 
+class ActivityButton {
+
+-----
+
+-----
+constructor (const ActivityButton & arg0) 
+constructor () 
+-----
+func Drop() -> void
+func Label() -> std::string
+func SetLabel(std::string Label) -> void
+func Url() -> std::string
+func SetUrl(std::string Url) -> void
+}
+
+
 class Activity {
 
 -----
@@ -321,7 +337,9 @@ constructor (const Activity & arg0)
 constructor () 
 -----
 func Drop() -> void
+func AddButton(discordpp::ActivityButton button) -> void
 func Equals(discordpp::Activity other) -> bool
+func GetButtons() -> std::vector<discordpp::ActivityButton>
 func Name() -> std::string
 func SetName(std::string Name) -> void
 func Type() -> discordpp::ActivityTypes
@@ -812,6 +830,7 @@ callback MessageCreatedCallback(uint64_t messageId)
 callback MessageDeletedCallback(uint64_t messageId, uint64_t channelId)
 callback MessageUpdatedCallback(uint64_t messageId)
 callback LogCallback(std::string message, discordpp::LoggingSeverity severity)
+callback OpenConnectedGamesSettingsInDiscordCallback(discordpp::ClientResult result)
 callback OnStatusChanged(discordpp::Client::Status status, discordpp::Client::Error error, int32_t errorDetail)
 callback CreateOrJoinLobbyCallback(discordpp::ClientResult result, uint64_t lobbyId)
 callback GetGuildChannelsCallback(discordpp::ClientResult result, std::vector<discordpp::GuildChannel> guildChannels)
@@ -923,6 +942,7 @@ func AddVoiceLogCallback(discordpp::Client::LogCallback callback, discordpp::Log
 func Connect() -> void
 func Disconnect() -> void
 func GetStatus() -> discordpp::Client::Status
+func OpenConnectedGamesSettingsInDiscord(discordpp::Client::OpenConnectedGamesSettingsInDiscordCallback callback) -> void
 func SetApplicationId(uint64_t applicationId) -> void
 func SetLogDir(std::string const & path, discordpp::LoggingSeverity minSeverity) -> bool
 func SetStatusChangedCallback(discordpp::Client::OnStatusChanged cb) -> void

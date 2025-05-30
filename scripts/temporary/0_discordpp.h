@@ -452,6 +452,22 @@ class ActivitySecrets {
 	void SetJoin(std::string Join);
 };
 
+class ActivityButton {
+
+
+	ActivityButton(const ActivityButton &arg0);
+
+	explicit ActivityButton();
+
+	void Drop();
+
+	std::string Label() const;
+	void SetLabel(std::string Label);
+
+	std::string Url() const;
+	void SetUrl(std::string Url);
+};
+
 class Activity {
 
 
@@ -461,7 +477,11 @@ class Activity {
 
 	void Drop();
 
+	void AddButton(discordpp::ActivityButton button);
+
 	bool Equals(discordpp::Activity other) const;
+
+	std::vector<discordpp::ActivityButton> GetButtons() const;
 
 	std::string Name() const;
 	void SetName(std::string Name);
@@ -1110,6 +1130,9 @@ class Client {
 	using LogCallback =
 			std::function<void(std::string message, discordpp::LoggingSeverity severity)>;
 
+	using OpenConnectedGamesSettingsInDiscordCallback =
+			std::function<void(discordpp::ClientResult result)>;
+
 	using OnStatusChanged = std::function<
 			void(discordpp::Client::Status status, discordpp::Client::Error error, int32_t errorDetail)>;
 
@@ -1392,6 +1415,9 @@ class Client {
 	void Disconnect();
 
 	discordpp::Client::Status GetStatus() const;
+
+	void OpenConnectedGamesSettingsInDiscord(
+			discordpp::Client::OpenConnectedGamesSettingsInDiscordCallback callback);
 
 	void SetApplicationId(uint64_t applicationId);
 

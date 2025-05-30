@@ -722,6 +722,15 @@ DiscordppClientStatus::Enum DiscordppClient::GetStatus() {
 	return (DiscordppClientStatus::Enum)obj->GetStatus();
 }
 
+void DiscordppClient::OpenConnectedGamesSettingsInDiscord(Callable callback) {
+	obj->OpenConnectedGamesSettingsInDiscord([callback](auto result) {
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
+
+		callback.call(p0);
+	});
+}
+
 void DiscordppClient::SetApplicationId(int64_t applicationId) {
 	int64_t p0 = applicationId;
 
@@ -1539,6 +1548,9 @@ void DiscordppClient::_bind_methods() {
 
 	ClassDB::bind_method(D_METHOD("GetStatus"),
 			&DiscordppClient::GetStatus);
+
+	ClassDB::bind_method(D_METHOD("OpenConnectedGamesSettingsInDiscord", "callback"),
+			&DiscordppClient::OpenConnectedGamesSettingsInDiscord);
 
 	ClassDB::bind_method(D_METHOD("SetApplicationId", "applicationId"),
 			&DiscordppClient::SetApplicationId);

@@ -17,6 +17,7 @@ class DiscordppActivityAssets;
 class DiscordppActivityTimestamps;
 class DiscordppActivityParty;
 class DiscordppActivitySecrets;
+class DiscordppActivityButton;
 class DiscordppActivity;
 class DiscordppClientResult;
 class DiscordppAuthorizationCodeChallenge;
@@ -286,6 +287,44 @@ public:
 	}
 };
 
+class DiscordppActivityButton : public RefCounted {
+	GDCLASS(DiscordppActivityButton, RefCounted)
+
+private:
+	discordpp::ActivityButton *obj;
+
+protected:
+	static void _bind_methods();
+
+public:
+	// Internal usage.
+	discordpp::ActivityButton *unwrap() {
+		return obj;
+	}
+
+	void Drop();
+	String Label();
+	void SetLabel(String Label);
+	String Url();
+	void SetUrl(String Url);
+
+	DiscordppActivityButton() {
+		this->obj = memnew(discordpp::ActivityButton);
+	}
+
+	DiscordppActivityButton(discordpp::ActivityButton *obj) {
+		this->obj = obj;
+	}
+
+	//DiscordppActivityButton(discordpp::ActivityButton &&obj) : obj(std::move(obj)) {
+
+	//}
+
+	~DiscordppActivityButton() {
+		memdelete(this->obj);
+	}
+};
+
 class DiscordppActivity : public RefCounted {
 	GDCLASS(DiscordppActivity, RefCounted)
 
@@ -302,7 +341,9 @@ public:
 	}
 
 	void Drop();
+	void AddButton(DiscordppActivityButton *button);
 	bool Equals(DiscordppActivity *other);
+	TypedArray<DiscordppActivityButton> GetButtons();
 	String Name();
 	void SetName(String Name);
 	DiscordppActivityTypes::Enum Type();
@@ -1231,6 +1272,7 @@ public:
 	void Connect();
 	void Disconnect();
 	DiscordppClientStatus::Enum GetStatus();
+	void OpenConnectedGamesSettingsInDiscord(Callable callback);
 	void SetApplicationId(int64_t applicationId);
 	bool SetLogDir(String path, DiscordppLoggingSeverity::Enum minSeverity);
 	void SetStatusChangedCallback(Callable cb);
