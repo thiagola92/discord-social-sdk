@@ -276,6 +276,10 @@ I'm using Ubuntu, please adapt this list to your operating system.
 
 ## Execute
 ```bash
+# Clear files generated during previous execution.
+rm -rf doc_classes
+rm -rf src
+
 # Generate GDExtension API files.
 cd godot-cpp
 godot --dump-extension-api
