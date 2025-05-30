@@ -35,4 +35,5 @@ if __name__ == "__main__":
     Builder(src_dir=SRC_DIR, tokens=tokens).build_files()
 
     # Documenter.
-    Documenter(doc_dir=DOC_DIR, tokens=tokens).update_docs()
+    if Path(DOC_DIR).exists():
+        Documenter(doc_dir=DOC_DIR, tokens=tokens).update_docs()
