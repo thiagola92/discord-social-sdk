@@ -244,16 +244,6 @@ I'm using Ubuntu, please adapt this list to your operating system.
     - `sudo apt install clang-format`
     - [VSCode](https://marketplace.visualstudio.com/items?itemName=xaver.clang-format)
 - [Discord SDK for C++](https://discord.com/developers/docs/discord-social-sdk/getting-started/using-c++#step-4-download-the-discord-sdk-for-c++)
-    - Unzip libs in `lib/` directory and headers in `include/` directory
-        - ```bash
-          # Assuming that repository discord-social-sdk and DiscordSocialSdk*.zip are in the same directory
-          # and that there is only one SDK zip in this directory.
-          unzip DiscordSocialSdk*.zip -d /tmp/
-          cp -r /tmp/discord_social_sdk/lib/release/* discord-social-sdk/lib/
-          cp -r /tmp/discord_social_sdk/bin/release/* discord-social-sdk/lib/
-          cp -r /tmp/discord_social_sdk/include/* discord-social-sdk/include/
-          rm -rf /tmp/discord_social_sdk
-          ```
 
 ## Tree
 ```
@@ -274,8 +264,16 @@ I'm using Ubuntu, please adapt this list to your operating system.
     └── GDExtension source codes and headers
 ```
 
-## Execute
+## Step by step
 ```bash
+# Unzip libraries and headers to correct directories.  
+# Assuming that repository "discord-social-sdk" and "DiscordSocialSdk*.zip" are in the same directory.
+unzip DiscordSocialSdk*.zip -d /tmp/
+cp -r /tmp/discord_social_sdk/lib/release/* discord-social-sdk/lib/
+cp -r /tmp/discord_social_sdk/bin/release/* discord-social-sdk/lib/
+cp -r /tmp/discord_social_sdk/include/* discord-social-sdk/include/
+rm -rf /tmp/discord_social_sdk
+
 # Making sure that headers are formatted.
 clang-format -i --style=file:.clang-format include/cdiscord.h
 clang-format -i --style=file:.clang-format include/discordpp.h
@@ -299,6 +297,9 @@ scons platform=linux target=template_release    # Release
 scons platform=windows                            # Debug
 scons platform=windows target=template_release    # Release
 
+# Open project, at least once, to be able to generate GDExtension documentation.
+godot ./demo/project.godot
+
 # Generate GDExtension documentation.
 cd demo
 godot --doctool ../ --gdextension-docs
@@ -312,7 +313,7 @@ zip -r discord_social_sdk.zip demo/addons/discord_social_sdk/**
 ```
 
 > [!WARNING]
-> Make sure that your Godot version and the `godot-cpp` repository match.  
+> Make sure that Godot version match with `godot-cpp` repository.  
 
 # References
 - [Discord Social SDK Overview](https://discord.com/developers/docs/discord-social-sdk/overview)
