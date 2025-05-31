@@ -276,6 +276,10 @@ I'm using Ubuntu, please adapt this list to your operating system.
 
 ## Execute
 ```bash
+# Making sure that headers are formatted.
+clang-format -i --style=file:.clang-format include/cdiscord.h
+clang-format -i --style=file:.clang-format include/discordpp.h
+
 # Clear files generated during previous execution.
 rm -rf doc_classes
 rm -rf src
