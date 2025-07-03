@@ -122,8 +122,8 @@ func display_friends_list() -> void:
 		# Whether the relationship is for a friend, a friend request, or because the user is blocked:
 		# For a friends list you'll want to filter out blocked users
 		# And likely display friend requests in a different section
-		string += " DiscordRelationshipType: %s" % Discordpp.EnumToString19(relationship.DiscordRelationshipType())
-		string += " GameRelationshipType: %s" % Discordpp.EnumToString19(relationship.GameRelationshipType())
+		string += " DiscordRelationshipType: %s" % Discordpp.EnumToString22(relationship.DiscordRelationshipType())
+		string += " GameRelationshipType: %s" % Discordpp.EnumToString22(relationship.GameRelationshipType())
 		
 		# Whether the user is online/offline/etc:
 		string += " IsOnlineAnywhere: %s" % (user.Status() != DiscordppStatusType.Offline)
