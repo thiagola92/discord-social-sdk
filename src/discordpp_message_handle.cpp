@@ -18,6 +18,16 @@ Variant DiscordppMessageHandle::AdditionalContent() {
 	return Variant(memnew(DiscordppAdditionalContent{ t_r }));
 }
 
+Variant DiscordppMessageHandle::ApplicationId() {
+	auto r = obj->ApplicationId();
+
+	if (!r.has_value()) {
+		return nullptr;
+	}
+
+	return Variant(r.value());
+}
+
 Variant DiscordppMessageHandle::Author() {
 	auto r = obj->Author();
 
@@ -125,6 +135,9 @@ void DiscordppMessageHandle::_bind_methods() {
 
 	ClassDB::bind_method(D_METHOD("AdditionalContent"),
 			&DiscordppMessageHandle::AdditionalContent);
+
+	ClassDB::bind_method(D_METHOD("ApplicationId"),
+			&DiscordppMessageHandle::ApplicationId);
 
 	ClassDB::bind_method(D_METHOD("Author"),
 			&DiscordppMessageHandle::Author);

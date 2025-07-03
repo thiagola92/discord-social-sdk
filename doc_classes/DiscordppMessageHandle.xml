@@ -14,6 +14,12 @@
 				Returns [DiscordppAdditionalContent] or [code]null[/code].
 			</description>
 		</method>
+		<method name="ApplicationId">
+			<return type="Variant" />
+			<description>
+				Returns [int] or [code]null[/code].
+			</description>
+		</method>
 		<method name="Author">
 			<return type="Variant" />
 			<description>
@@ -44,7 +50,7 @@
 		<method name="DisclosureType">
 			<return type="Variant" />
 			<description>
-				Returns [enum DiscordppDisclosureTypes.Enum.Enum] or [code]null[/code].
+				Returns [enum DiscordppDisclosureTypes.Enum] or [code]null[/code].
 			</description>
 		</method>
 		<method name="Drop">

@@ -24,6 +24,12 @@
 			<description>
 			</description>
 		</method>
+		<method name="IntegrationType">
+			<return type="Variant" />
+			<description>
+				Returns [enum DiscordppIntegrationType.Enum] or [code]null[/code].
+			</description>
+		</method>
 		<method name="Nonce">
 			<return type="Variant" />
 			<description>
@@ -44,6 +50,12 @@
 		<method name="SetCodeChallenge">
 			<return type="void" />
 			<param index="0" name="CodeChallenge" type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="SetIntegrationType">
+			<return type="void" />
+			<param index="0" name="IntegrationType" type="Variant" />
 			<description>
 			</description>
 		</method>

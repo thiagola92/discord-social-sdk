@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordppClientCreateOptions" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+        Reference: [url]https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1ClientCreateOptions.html[/url]
+    </description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="ApiBase">
+			<return type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="Drop">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="ExperimentalAudioSystem">
+			<return type="int" enum="DiscordppAudioSystem.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="SetApiBase">
+			<return type="void" />
+			<param index="0" name="ApiBase" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="SetExperimentalAudioSystem">
+			<return type="void" />
+			<param index="0" name="ExperimentalAudioSystem" type="int" enum="DiscordppAudioSystem.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="SetWebBase">
+			<return type="void" />
+			<param index="0" name="WebBase" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="WebBase">
+			<return type="String" />
+			<description>
+			</description>
+		</method>
+	</methods>
+</class>

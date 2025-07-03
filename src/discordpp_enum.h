@@ -13,8 +13,8 @@ class DiscordppActivityActionTypes : public RefCounted {
 	GDCLASS(DiscordppActivityActionTypes, RefCounted)
 
 private:
-	DiscordppActivityActionTypes(){};
-	~DiscordppActivityActionTypes(){};
+	DiscordppActivityActionTypes() {}
+	~DiscordppActivityActionTypes() {}
 
 protected:
 	static void _bind_methods() {
@@ -33,8 +33,8 @@ class DiscordppActivityPartyPrivacy : public RefCounted {
 	GDCLASS(DiscordppActivityPartyPrivacy, RefCounted)
 
 private:
-	DiscordppActivityPartyPrivacy(){};
-	~DiscordppActivityPartyPrivacy(){};
+	DiscordppActivityPartyPrivacy() {}
+	~DiscordppActivityPartyPrivacy() {}
 
 protected:
 	static void _bind_methods() {
@@ -53,8 +53,8 @@ class DiscordppActivityTypes : public RefCounted {
 	GDCLASS(DiscordppActivityTypes, RefCounted)
 
 private:
-	DiscordppActivityTypes(){};
-	~DiscordppActivityTypes(){};
+	DiscordppActivityTypes() {}
+	~DiscordppActivityTypes() {}
 
 protected:
 	static void _bind_methods() {
@@ -83,8 +83,8 @@ class DiscordppActivityGamePlatforms : public RefCounted {
 	GDCLASS(DiscordppActivityGamePlatforms, RefCounted)
 
 private:
-	DiscordppActivityGamePlatforms(){};
-	~DiscordppActivityGamePlatforms(){};
+	DiscordppActivityGamePlatforms() {}
+	~DiscordppActivityGamePlatforms() {}
 
 protected:
 	static void _bind_methods() {
@@ -115,8 +115,8 @@ class DiscordppErrorType : public RefCounted {
 	GDCLASS(DiscordppErrorType, RefCounted)
 
 private:
-	DiscordppErrorType(){};
-	~DiscordppErrorType(){};
+	DiscordppErrorType() {}
+	~DiscordppErrorType() {}
 
 protected:
 	static void _bind_methods() {
@@ -151,8 +151,8 @@ class DiscordppHttpStatusCode : public RefCounted {
 	GDCLASS(DiscordppHttpStatusCode, RefCounted)
 
 private:
-	DiscordppHttpStatusCode(){};
-	~DiscordppHttpStatusCode(){};
+	DiscordppHttpStatusCode() {}
+	~DiscordppHttpStatusCode() {}
 
 protected:
 	static void _bind_methods() {
@@ -287,8 +287,8 @@ class DiscordppAuthenticationCodeChallengeMethod : public RefCounted {
 	GDCLASS(DiscordppAuthenticationCodeChallengeMethod, RefCounted)
 
 private:
-	DiscordppAuthenticationCodeChallengeMethod(){};
-	~DiscordppAuthenticationCodeChallengeMethod(){};
+	DiscordppAuthenticationCodeChallengeMethod() {}
+	~DiscordppAuthenticationCodeChallengeMethod() {}
 
 protected:
 	static void _bind_methods() {
@@ -301,12 +301,32 @@ public:
 	};
 };
 
+class DiscordppIntegrationType : public RefCounted {
+	GDCLASS(DiscordppIntegrationType, RefCounted)
+
+private:
+	DiscordppIntegrationType() {}
+	~DiscordppIntegrationType() {}
+
+protected:
+	static void _bind_methods() {
+		BIND_ENUM_CONSTANT(GuildInstall);
+		BIND_ENUM_CONSTANT(UserInstall);
+	}
+
+public:
+	enum Enum {
+		GuildInstall = 0,
+		UserInstall = 1,
+	};
+};
+
 class DiscordppAdditionalContentType : public RefCounted {
 	GDCLASS(DiscordppAdditionalContentType, RefCounted)
 
 private:
-	DiscordppAdditionalContentType(){};
-	~DiscordppAdditionalContentType(){};
+	DiscordppAdditionalContentType() {}
+	~DiscordppAdditionalContentType() {}
 
 protected:
 	static void _bind_methods() {
@@ -331,12 +351,32 @@ public:
 	};
 };
 
+class DiscordppAudioSystem : public RefCounted {
+	GDCLASS(DiscordppAudioSystem, RefCounted)
+
+private:
+	DiscordppAudioSystem() {}
+	~DiscordppAudioSystem() {}
+
+protected:
+	static void _bind_methods() {
+		BIND_ENUM_CONSTANT(Standard);
+		BIND_ENUM_CONSTANT(Game);
+	}
+
+public:
+	enum Enum {
+		Standard = 0,
+		Game = 1,
+	};
+};
+
 class DiscordppAudioModeType : public RefCounted {
 	GDCLASS(DiscordppAudioModeType, RefCounted)
 
 private:
-	DiscordppAudioModeType(){};
-	~DiscordppAudioModeType(){};
+	DiscordppAudioModeType() {}
+	~DiscordppAudioModeType() {}
 
 protected:
 	static void _bind_methods() {
@@ -357,8 +397,8 @@ class DiscordppChannelType : public RefCounted {
 	GDCLASS(DiscordppChannelType, RefCounted)
 
 private:
-	DiscordppChannelType(){};
-	~DiscordppChannelType(){};
+	DiscordppChannelType() {}
+	~DiscordppChannelType() {}
 
 protected:
 	static void _bind_methods() {
@@ -405,8 +445,8 @@ class DiscordppRelationshipType : public RefCounted {
 	GDCLASS(DiscordppRelationshipType, RefCounted)
 
 private:
-	DiscordppRelationshipType(){};
-	~DiscordppRelationshipType(){};
+	DiscordppRelationshipType() {}
+	~DiscordppRelationshipType() {}
 
 protected:
 	static void _bind_methods() {
@@ -435,8 +475,8 @@ class DiscordppStatusType : public RefCounted {
 	GDCLASS(DiscordppStatusType, RefCounted)
 
 private:
-	DiscordppStatusType(){};
-	~DiscordppStatusType(){};
+	DiscordppStatusType() {}
+	~DiscordppStatusType() {}
 
 protected:
 	static void _bind_methods() {
@@ -467,8 +507,8 @@ class DiscordppDisclosureTypes : public RefCounted {
 	GDCLASS(DiscordppDisclosureTypes, RefCounted)
 
 private:
-	DiscordppDisclosureTypes(){};
-	~DiscordppDisclosureTypes(){};
+	DiscordppDisclosureTypes() {}
+	~DiscordppDisclosureTypes() {}
 
 protected:
 	static void _bind_methods() {
@@ -485,8 +525,8 @@ class DiscordppAuthorizationTokenType : public RefCounted {
 	GDCLASS(DiscordppAuthorizationTokenType, RefCounted)
 
 private:
-	DiscordppAuthorizationTokenType(){};
-	~DiscordppAuthorizationTokenType(){};
+	DiscordppAuthorizationTokenType() {}
+	~DiscordppAuthorizationTokenType() {}
 
 protected:
 	static void _bind_methods() {
@@ -505,8 +545,8 @@ class DiscordppAuthenticationExternalAuthType : public RefCounted {
 	GDCLASS(DiscordppAuthenticationExternalAuthType, RefCounted)
 
 private:
-	DiscordppAuthenticationExternalAuthType(){};
-	~DiscordppAuthenticationExternalAuthType(){};
+	DiscordppAuthenticationExternalAuthType() {}
+	~DiscordppAuthenticationExternalAuthType() {}
 
 protected:
 	static void _bind_methods() {
@@ -531,8 +571,8 @@ class DiscordppLoggingSeverity : public RefCounted {
 	GDCLASS(DiscordppLoggingSeverity, RefCounted)
 
 private:
-	DiscordppLoggingSeverity(){};
-	~DiscordppLoggingSeverity(){};
+	DiscordppLoggingSeverity() {}
+	~DiscordppLoggingSeverity() {}
 
 protected:
 	static void _bind_methods() {
@@ -553,12 +593,34 @@ public:
 	};
 };
 
+class DiscordppRelationshipGroupType : public RefCounted {
+	GDCLASS(DiscordppRelationshipGroupType, RefCounted)
+
+private:
+	DiscordppRelationshipGroupType() {}
+	~DiscordppRelationshipGroupType() {}
+
+protected:
+	static void _bind_methods() {
+		BIND_ENUM_CONSTANT(OnlinePlayingGame);
+		BIND_ENUM_CONSTANT(OnlineElsewhere);
+		BIND_ENUM_CONSTANT(Offline);
+	}
+
+public:
+	enum Enum {
+		OnlinePlayingGame = 0,
+		OnlineElsewhere = 1,
+		Offline = 2,
+	};
+};
+
 class DiscordppCallError : public RefCounted {
 	GDCLASS(DiscordppCallError, RefCounted)
 
 private:
-	DiscordppCallError(){};
-	~DiscordppCallError(){};
+	DiscordppCallError() {}
+	~DiscordppCallError() {}
 
 protected:
 	static void _bind_methods() {
@@ -585,8 +647,8 @@ class DiscordppCallStatus : public RefCounted {
 	GDCLASS(DiscordppCallStatus, RefCounted)
 
 private:
-	DiscordppCallStatus(){};
-	~DiscordppCallStatus(){};
+	DiscordppCallStatus() {}
+	~DiscordppCallStatus() {}
 
 protected:
 	static void _bind_methods() {
@@ -615,8 +677,8 @@ class DiscordppUserHandleAvatarType : public RefCounted {
 	GDCLASS(DiscordppUserHandleAvatarType, RefCounted)
 
 private:
-	DiscordppUserHandleAvatarType(){};
-	~DiscordppUserHandleAvatarType(){};
+	DiscordppUserHandleAvatarType() {}
+	~DiscordppUserHandleAvatarType() {}
 
 protected:
 	static void _bind_methods() {
@@ -639,8 +701,8 @@ class DiscordppClientError : public RefCounted {
 	GDCLASS(DiscordppClientError, RefCounted)
 
 private:
-	DiscordppClientError(){};
-	~DiscordppClientError(){};
+	DiscordppClientError() {}
+	~DiscordppClientError() {}
 
 protected:
 	static void _bind_methods() {
@@ -663,8 +725,8 @@ class DiscordppClientStatus : public RefCounted {
 	GDCLASS(DiscordppClientStatus, RefCounted)
 
 private:
-	DiscordppClientStatus(){};
-	~DiscordppClientStatus(){};
+	DiscordppClientStatus() {}
+	~DiscordppClientStatus() {}
 
 protected:
 	static void _bind_methods() {
@@ -693,8 +755,8 @@ class DiscordppClientThread : public RefCounted {
 	GDCLASS(DiscordppClientThread, RefCounted)
 
 private:
-	DiscordppClientThread(){};
-	~DiscordppClientThread(){};
+	DiscordppClientThread() {}
+	~DiscordppClientThread() {}
 
 protected:
 	static void _bind_methods() {
@@ -721,7 +783,9 @@ VARIANT_ENUM_CAST(DiscordppActivityGamePlatforms::Enum);
 VARIANT_ENUM_CAST(DiscordppErrorType::Enum);
 VARIANT_ENUM_CAST(DiscordppHttpStatusCode::Enum);
 VARIANT_ENUM_CAST(DiscordppAuthenticationCodeChallengeMethod::Enum);
+VARIANT_ENUM_CAST(DiscordppIntegrationType::Enum);
 VARIANT_ENUM_CAST(DiscordppAdditionalContentType::Enum);
+VARIANT_ENUM_CAST(DiscordppAudioSystem::Enum);
 VARIANT_ENUM_CAST(DiscordppAudioModeType::Enum);
 VARIANT_ENUM_CAST(DiscordppChannelType::Enum);
 VARIANT_ENUM_CAST(DiscordppRelationshipType::Enum);
@@ -730,6 +794,7 @@ VARIANT_ENUM_CAST(DiscordppDisclosureTypes::Enum);
 VARIANT_ENUM_CAST(DiscordppAuthorizationTokenType::Enum);
 VARIANT_ENUM_CAST(DiscordppAuthenticationExternalAuthType::Enum);
 VARIANT_ENUM_CAST(DiscordppLoggingSeverity::Enum);
+VARIANT_ENUM_CAST(DiscordppRelationshipGroupType::Enum);
 VARIANT_ENUM_CAST(DiscordppCallError::Enum);
 VARIANT_ENUM_CAST(DiscordppCallStatus::Enum);
 VARIANT_ENUM_CAST(DiscordppUserHandleAvatarType::Enum);

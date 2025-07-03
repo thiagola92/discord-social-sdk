@@ -111,6 +111,26 @@ void DiscordppActivity::SetApplicationId(Variant ApplicationId) {
 	obj->SetApplicationId(p0);
 }
 
+Variant DiscordppActivity::ParentApplicationId() {
+	auto r = obj->ParentApplicationId();
+
+	if (!r.has_value()) {
+		return nullptr;
+	}
+
+	return Variant(r.value());
+}
+
+void DiscordppActivity::SetParentApplicationId(Variant ParentApplicationId) {
+	std::optional<uint64_t> p0;
+
+	if (ParentApplicationId.get_type() == Variant::INT) {
+		p0 = ParentApplicationId;
+	}
+
+	obj->SetParentApplicationId(p0);
+}
+
 Variant DiscordppActivity::Assets() {
 	auto r = obj->Assets();
 
@@ -251,6 +271,12 @@ void DiscordppActivity::_bind_methods() {
 
 	ClassDB::bind_method(D_METHOD("SetApplicationId", "ApplicationId"),
 			&DiscordppActivity::SetApplicationId);
+
+	ClassDB::bind_method(D_METHOD("ParentApplicationId"),
+			&DiscordppActivity::ParentApplicationId);
+
+	ClassDB::bind_method(D_METHOD("SetParentApplicationId", "ParentApplicationId"),
+			&DiscordppActivity::SetParentApplicationId);
 
 	ClassDB::bind_method(D_METHOD("Assets"),
 			&DiscordppActivity::Assets);

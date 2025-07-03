@@ -244,6 +244,19 @@
 			<description>
 			</description>
 		</method>
+		<method name="ExchangeChildToken">
+			<return type="void" />
+			<param index="0" name="parentApplicationToken" type="String" />
+			<param index="1" name="childApplicationId" type="int" />
+			<param index="2" name="callback" type="Callable" />
+			<description>
+			
+				Where [param callback] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult, accessToken: String, tokenType: DiscordppAuthorizationTokenType.Enum, expiresIn: int, scopes: String)
+				[/codeblock]
+			</description>
+		</method>
 		<method name="FetchCurrentUser">
 			<return type="void" />
 			<param index="0" name="tokenType" type="int" enum="DiscordppAuthorizationTokenType.Enum" />
@@ -374,6 +387,19 @@
 			<description>
 			</description>
 		</method>
+		<method name="GetLobbyMessagesWithLimit">
+			<return type="void" />
+			<param index="0" name="lobbyId" type="int" />
+			<param index="1" name="limit" type="int" />
+			<param index="2" name="cb" type="Callable" />
+			<description>
+			
+				Where [param cb] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult, messages: Array[DiscordppMessageHandle])
+				[/codeblock]
+			</description>
+		</method>
 		<method name="GetMessageHandle">
 			<return type="Variant" />
 			<param index="0" name="messageId" type="int" />
@@ -419,6 +445,12 @@
 		</method>
 		<method name="GetRelationships">
 			<return type="DiscordppRelationshipHandle[]" />
+			<description>
+			</description>
+		</method>
+		<method name="GetRelationshipsByGroup">
+			<return type="DiscordppRelationshipHandle[]" />
+			<param index="0" name="groupType" type="int" enum="DiscordppRelationshipGroupType.Enum" />
 			<description>
 			</description>
 		</method>
@@ -680,6 +712,19 @@
 				[/codeblock]
 			</description>
 		</method>
+		<method name="RevokeToken">
+			<return type="void" />
+			<param index="0" name="applicationId" type="int" />
+			<param index="1" name="token" type="String" />
+			<param index="2" name="callback" type="Callable" />
+			<description>
+			
+				Where [param callback] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult)
+				[/codeblock]
+			</description>
+		</method>
 		<method name="SearchFriendsByUsername">
 			<return type="DiscordppUserHandle[]" />
 			<param index="0" name="searchStr" type="String" />
@@ -858,6 +903,12 @@
 				[/codeblock]
 			</description>
 		</method>
+		<method name="SetAecDump">
+			<return type="void" />
+			<param index="0" name="on" type="bool" />
+			<description>
+			</description>
+		</method>
 		<method name="SetApplicationId">
 			<return type="void" />
 			<param index="0" name="applicationId" type="int" />
@@ -898,9 +949,21 @@
 			<description>
 			</description>
 		</method>
+		<method name="SetEngineManagedAudioSession">
+			<return type="void" />
+			<param index="0" name="isEngineManaged" type="bool" />
+			<description>
+			</description>
+		</method>
 		<method name="SetGameWindowPid">
 			<return type="void" />
 			<param index="0" name="pid" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="SetHttpRequestTimeout">
+			<return type="void" />
+			<param index="0" name="httpTimeoutInMilliseconds" type="int" />
 			<description>
 			</description>
 		</method>
@@ -1110,6 +1173,17 @@
 				[/codeblock]
 			</description>
 		</method>
+		<method name="SetRelationshipGroupsUpdatedCallback">
+			<return type="void" />
+			<param index="0" name="cb" type="Callable" />
+			<description>
+			
+				Where [param cb] signature is:
+				[codeblock]
+				func(userId: int)
+				[/codeblock]
+			</description>
+		</method>
 		<method name="SetSelfDeafAll">
 			<return type="void" />
 			<param index="0" name="deaf" type="bool" />
@@ -1249,6 +1323,20 @@
 			<return type="void" />
 			<param index="0" name="lobbyId" type="int" />
 			<param index="1" name="callback" type="Callable" />
+			<description>
+			
+				Where [param callback] signature is:
+				[codeblock]
+				func(result: DiscordppClientResult)
+				[/codeblock]
+			</description>
+		</method>
+		<method name="UnmergeIntoProvisionalAccount">
+			<return type="void" />
+			<param index="0" name="applicationId" type="int" />
+			<param index="1" name="externalAuthType" type="int" enum="DiscordppAuthenticationExternalAuthType.Enum" />
+			<param index="2" name="externalAuthToken" type="String" />
+			<param index="3" name="callback" type="Callable" />
 			<description>
 			
 				Where [param callback] signature is:

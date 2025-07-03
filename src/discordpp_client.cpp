@@ -45,6 +45,12 @@ int64_t DiscordppClient::GetVersionPatch() {
 	return discordpp::Client::GetVersionPatch();
 }
 
+void DiscordppClient::SetHttpRequestTimeout(int64_t httpTimeoutInMilliseconds) {
+	int64_t p0 = httpTimeoutInMilliseconds;
+
+	obj->SetHttpRequestTimeout(p0);
+}
+
 String DiscordppClient::StatusToString(DiscordppClientStatus::Enum type) {
 	discordpp::Client::Status p0 = (discordpp::Client::Status)type;
 
@@ -151,6 +157,12 @@ bool DiscordppClient::GetSelfMuteAll() {
 	return obj->GetSelfMuteAll();
 }
 
+void DiscordppClient::SetAecDump(bool on) {
+	bool p0 = on;
+
+	obj->SetAecDump(p0);
+}
+
 void DiscordppClient::SetAutomaticGainControl(bool on) {
 	bool p0 = on;
 
@@ -181,6 +193,12 @@ void DiscordppClient::SetEchoCancellation(bool on) {
 	bool p0 = on;
 
 	obj->SetEchoCancellation(p0);
+}
+
+void DiscordppClient::SetEngineManagedAudioSession(bool isEngineManaged) {
+	bool p0 = isEngineManaged;
+
+	obj->SetEngineManagedAudioSession(p0);
 }
 
 void DiscordppClient::SetInputDevice(String deviceId, Callable cb) {
@@ -340,6 +358,22 @@ DiscordppAuthorizationCodeVerifier *DiscordppClient::CreateAuthorizationCodeVeri
 	return memnew(DiscordppAuthorizationCodeVerifier{ t_r });
 }
 
+void DiscordppClient::ExchangeChildToken(String parentApplicationToken, int64_t childApplicationId, Callable callback) {
+	std::string p0 = std::string(parentApplicationToken.utf8().get_data());
+	int64_t p1 = childApplicationId;
+
+	obj->ExchangeChildToken(p0, p1, [callback](auto result, auto accessToken, auto tokenType, auto expiresIn, auto scopes) {
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
+
+		String p1 = String(accessToken.c_str());
+		DiscordppAuthorizationTokenType::Enum p2 = (DiscordppAuthorizationTokenType::Enum)tokenType;
+		int64_t p3 = (int64_t)expiresIn;
+		String p4 = String(scopes.c_str());
+		callback.call(p0, p1, p2, p3, p4);
+	});
+}
+
 void DiscordppClient::FetchCurrentUser(DiscordppAuthorizationTokenType::Enum tokenType, String token, Callable callback) {
 	discordpp::AuthorizationTokenType p0 = (discordpp::AuthorizationTokenType)tokenType;
 	std::string p1 = std::string(token.utf8().get_data());
@@ -480,6 +514,18 @@ void DiscordppClient::RefreshToken(int64_t applicationId, String refreshToken, C
 	});
 }
 
+void DiscordppClient::RevokeToken(int64_t applicationId, String token, Callable callback) {
+	int64_t p0 = applicationId;
+	std::string p1 = std::string(token.utf8().get_data());
+
+	obj->RevokeToken(p0, p1, [callback](auto result) {
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
+
+		callback.call(p0);
+	});
+}
+
 void DiscordppClient::SetAuthorizeDeviceScreenClosedCallback(Callable cb) {
 	obj->SetAuthorizeDeviceScreenClosedCallback([cb]() {
 		cb.call();
@@ -495,6 +541,19 @@ void DiscordppClient::SetGameWindowPid(int64_t pid) {
 void DiscordppClient::SetTokenExpirationCallback(Callable callback) {
 	obj->SetTokenExpirationCallback([callback]() {
 		callback.call();
+	});
+}
+
+void DiscordppClient::UnmergeIntoProvisionalAccount(int64_t applicationId, DiscordppAuthenticationExternalAuthType::Enum externalAuthType, String externalAuthToken, Callable callback) {
+	int64_t p0 = applicationId;
+	discordpp::AuthenticationExternalAuthType p1 = (discordpp::AuthenticationExternalAuthType)externalAuthType;
+	std::string p2 = std::string(externalAuthToken.utf8().get_data());
+
+	obj->UnmergeIntoProvisionalAccount(p0, p1, p2, [callback](auto result) {
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
+
+		callback.call(p0);
 	});
 }
 
@@ -563,6 +622,25 @@ Variant DiscordppClient::GetChannelHandle(int64_t channelId) {
 
 	discordpp::ChannelHandle *t_r = memnew(discordpp::ChannelHandle(std::move(r.value())));
 	return Variant(memnew(DiscordppChannelHandle{ t_r }));
+}
+
+void DiscordppClient::GetLobbyMessagesWithLimit(int64_t lobbyId, int64_t limit, Callable cb) {
+	int64_t p0 = lobbyId;
+	int64_t p1 = limit;
+
+	obj->GetLobbyMessagesWithLimit(p0, p1, [cb](auto result, auto messages) {
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
+
+		TypedArray<DiscordppMessageHandle> p1 = TypedArray<DiscordppMessageHandle>();
+
+		for (auto i : messages) {
+			discordpp::MessageHandle *t_i = memnew(discordpp::MessageHandle(std::move(i)));
+			p1.push_back(memnew(DiscordppMessageHandle{ t_i }));
+		}
+
+		cb.call(p0, p1);
+	});
 }
 
 Variant DiscordppClient::GetMessageHandle(int64_t messageId) {
@@ -1127,6 +1205,20 @@ TypedArray<DiscordppRelationshipHandle> DiscordppClient::GetRelationships() {
 	return t_r;
 }
 
+TypedArray<DiscordppRelationshipHandle> DiscordppClient::GetRelationshipsByGroup(DiscordppRelationshipGroupType::Enum groupType) {
+	discordpp::RelationshipGroupType p0 = (discordpp::RelationshipGroupType)groupType;
+
+	auto r = obj->GetRelationshipsByGroup(p0);
+	TypedArray<DiscordppRelationshipHandle> t_r = TypedArray<DiscordppRelationshipHandle>();
+
+	for (auto i : r) {
+		discordpp::RelationshipHandle *t_i = memnew(discordpp::RelationshipHandle(std::move(i)));
+		t_r.push_back(memnew(DiscordppRelationshipHandle{ t_i }));
+	}
+
+	return t_r;
+}
+
 void DiscordppClient::RejectDiscordFriendRequest(int64_t userId, Callable cb) {
 	int64_t p0 = userId;
 
@@ -1295,6 +1387,13 @@ Variant DiscordppClient::GetUser(int64_t userId) {
 	return Variant(memnew(DiscordppUserHandle{ t_r }));
 }
 
+void DiscordppClient::SetRelationshipGroupsUpdatedCallback(Callable cb) {
+	obj->SetRelationshipGroupsUpdatedCallback([cb](auto userId) {
+		int64_t p0 = (int64_t)userId;
+		cb.call(p0);
+	});
+}
+
 void DiscordppClient::SetUserUpdatedCallback(Callable cb) {
 	obj->SetUserUpdatedCallback([cb](auto userId) {
 		int64_t p0 = (int64_t)userId;
@@ -1332,6 +1431,9 @@ void DiscordppClient::_bind_methods() {
 
 	ClassDB::bind_static_method("DiscordppClient", D_METHOD("GetVersionPatch"),
 			&DiscordppClient::GetVersionPatch);
+
+	ClassDB::bind_method(D_METHOD("SetHttpRequestTimeout", "httpTimeoutInMilliseconds"),
+			&DiscordppClient::SetHttpRequestTimeout);
 
 	ClassDB::bind_static_method("DiscordppClient", D_METHOD("StatusToString", "type"),
 			&DiscordppClient::StatusToString);
@@ -1375,6 +1477,9 @@ void DiscordppClient::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("GetSelfMuteAll"),
 			&DiscordppClient::GetSelfMuteAll);
 
+	ClassDB::bind_method(D_METHOD("SetAecDump", "on"),
+			&DiscordppClient::SetAecDump);
+
 	ClassDB::bind_method(D_METHOD("SetAutomaticGainControl", "on"),
 			&DiscordppClient::SetAutomaticGainControl);
 
@@ -1383,6 +1488,9 @@ void DiscordppClient::_bind_methods() {
 
 	ClassDB::bind_method(D_METHOD("SetEchoCancellation", "on"),
 			&DiscordppClient::SetEchoCancellation);
+
+	ClassDB::bind_method(D_METHOD("SetEngineManagedAudioSession", "isEngineManaged"),
+			&DiscordppClient::SetEngineManagedAudioSession);
 
 	ClassDB::bind_method(D_METHOD("SetInputDevice", "deviceId", "cb"),
 			&DiscordppClient::SetInputDevice);
@@ -1447,6 +1555,9 @@ void DiscordppClient::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("CreateAuthorizationCodeVerifier"),
 			&DiscordppClient::CreateAuthorizationCodeVerifier);
 
+	ClassDB::bind_method(D_METHOD("ExchangeChildToken", "parentApplicationToken", "childApplicationId", "callback"),
+			&DiscordppClient::ExchangeChildToken);
+
 	ClassDB::bind_method(D_METHOD("FetchCurrentUser", "tokenType", "token", "callback"),
 			&DiscordppClient::FetchCurrentUser);
 
@@ -1477,6 +1588,9 @@ void DiscordppClient::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("RefreshToken", "applicationId", "refreshToken", "callback"),
 			&DiscordppClient::RefreshToken);
 
+	ClassDB::bind_method(D_METHOD("RevokeToken", "applicationId", "token", "callback"),
+			&DiscordppClient::RevokeToken);
+
 	ClassDB::bind_method(D_METHOD("SetAuthorizeDeviceScreenClosedCallback", "cb"),
 			&DiscordppClient::SetAuthorizeDeviceScreenClosedCallback);
 
@@ -1485,6 +1599,9 @@ void DiscordppClient::_bind_methods() {
 
 	ClassDB::bind_method(D_METHOD("SetTokenExpirationCallback", "callback"),
 			&DiscordppClient::SetTokenExpirationCallback);
+
+	ClassDB::bind_method(D_METHOD("UnmergeIntoProvisionalAccount", "applicationId", "externalAuthType", "externalAuthToken", "callback"),
+			&DiscordppClient::UnmergeIntoProvisionalAccount);
 
 	ClassDB::bind_method(D_METHOD("UpdateProvisionalAccountDisplayName", "name", "callback"),
 			&DiscordppClient::UpdateProvisionalAccountDisplayName);
@@ -1503,6 +1620,9 @@ void DiscordppClient::_bind_methods() {
 
 	ClassDB::bind_method(D_METHOD("GetChannelHandle", "channelId"),
 			&DiscordppClient::GetChannelHandle);
+
+	ClassDB::bind_method(D_METHOD("GetLobbyMessagesWithLimit", "lobbyId", "limit", "cb"),
+			&DiscordppClient::GetLobbyMessagesWithLimit);
 
 	ClassDB::bind_method(D_METHOD("GetMessageHandle", "messageId"),
 			&DiscordppClient::GetMessageHandle);
@@ -1666,6 +1786,9 @@ void DiscordppClient::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("GetRelationships"),
 			&DiscordppClient::GetRelationships);
 
+	ClassDB::bind_method(D_METHOD("GetRelationshipsByGroup", "groupType"),
+			&DiscordppClient::GetRelationshipsByGroup);
+
 	ClassDB::bind_method(D_METHOD("RejectDiscordFriendRequest", "userId", "cb"),
 			&DiscordppClient::RejectDiscordFriendRequest);
 
@@ -1710,6 +1833,9 @@ void DiscordppClient::_bind_methods() {
 
 	ClassDB::bind_method(D_METHOD("GetUser", "userId"),
 			&DiscordppClient::GetUser);
+
+	ClassDB::bind_method(D_METHOD("SetRelationshipGroupsUpdatedCallback", "cb"),
+			&DiscordppClient::SetRelationshipGroupsUpdatedCallback);
 
 	ClassDB::bind_method(D_METHOD("SetUserUpdatedCallback", "cb"),
 			&DiscordppClient::SetUserUpdatedCallback);

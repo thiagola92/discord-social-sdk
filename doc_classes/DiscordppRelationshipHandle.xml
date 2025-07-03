@@ -28,6 +28,11 @@
 			<description>
 			</description>
 		</method>
+		<method name="IsSpamRequest">
+			<return type="bool" />
+			<description>
+			</description>
+		</method>
 		<method name="User">
 			<return type="Variant" />
 			<description>

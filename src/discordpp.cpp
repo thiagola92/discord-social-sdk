@@ -7,98 +7,116 @@ void Discordpp::RunCallbacks() {
 	discordpp::RunCallbacks();
 }
 
-String Discordpp::EnumToString21(DiscordppUserHandleAvatarType::Enum value) {
+String Discordpp::EnumToString24(DiscordppUserHandleAvatarType::Enum value) {
 	discordpp::UserHandle::AvatarType p0 = (discordpp::UserHandle::AvatarType)value;
 
 	return String(discordpp::EnumToString(p0));
 }
 
-String Discordpp::EnumToString20(DiscordppStatusType::Enum value) {
+String Discordpp::EnumToString23(DiscordppStatusType::Enum value) {
 	discordpp::StatusType p0 = (discordpp::StatusType)value;
 
 	return String(discordpp::EnumToString(p0));
 }
 
-String Discordpp::EnumToString19(DiscordppRelationshipType::Enum value) {
+String Discordpp::EnumToString22(DiscordppRelationshipType::Enum value) {
 	discordpp::RelationshipType p0 = (discordpp::RelationshipType)value;
 
 	return String(discordpp::EnumToString(p0));
 }
 
-String Discordpp::EnumToString18(DiscordppLoggingSeverity::Enum value) {
+String Discordpp::EnumToString21(DiscordppRelationshipGroupType::Enum value) {
+	discordpp::RelationshipGroupType p0 = (discordpp::RelationshipGroupType)value;
+
+	return String(discordpp::EnumToString(p0));
+}
+
+String Discordpp::EnumToString20(DiscordppLoggingSeverity::Enum value) {
 	discordpp::LoggingSeverity p0 = (discordpp::LoggingSeverity)value;
 
 	return String(discordpp::EnumToString(p0));
 }
 
-String Discordpp::EnumToString17(DiscordppHttpStatusCode::Enum value) {
+String Discordpp::EnumToString19(DiscordppIntegrationType::Enum value) {
+	discordpp::IntegrationType p0 = (discordpp::IntegrationType)value;
+
+	return String(discordpp::EnumToString(p0));
+}
+
+String Discordpp::EnumToString18(DiscordppHttpStatusCode::Enum value) {
 	discordpp::HttpStatusCode p0 = (discordpp::HttpStatusCode)value;
 
 	return String(discordpp::EnumToString(p0));
 }
 
-String Discordpp::EnumToString16(DiscordppErrorType::Enum value) {
+String Discordpp::EnumToString17(DiscordppErrorType::Enum value) {
 	discordpp::ErrorType p0 = (discordpp::ErrorType)value;
 
 	return String(discordpp::EnumToString(p0));
 }
 
-String Discordpp::EnumToString15(DiscordppDisclosureTypes::Enum value) {
+String Discordpp::EnumToString16(DiscordppDisclosureTypes::Enum value) {
 	discordpp::DisclosureTypes p0 = (discordpp::DisclosureTypes)value;
 
 	return String(discordpp::EnumToString(p0));
 }
 
-String Discordpp::EnumToString14(DiscordppClientThread::Enum value) {
+String Discordpp::EnumToString15(DiscordppClientThread::Enum value) {
 	discordpp::Client::Thread p0 = (discordpp::Client::Thread)value;
 
 	return String(discordpp::EnumToString(p0));
 }
 
-String Discordpp::EnumToString13(DiscordppClientStatus::Enum value) {
+String Discordpp::EnumToString14(DiscordppClientStatus::Enum value) {
 	discordpp::Client::Status p0 = (discordpp::Client::Status)value;
 
 	return String(discordpp::EnumToString(p0));
 }
 
-String Discordpp::EnumToString12(DiscordppClientError::Enum value) {
+String Discordpp::EnumToString13(DiscordppClientError::Enum value) {
 	discordpp::Client::Error p0 = (discordpp::Client::Error)value;
 
 	return String(discordpp::EnumToString(p0));
 }
 
-String Discordpp::EnumToString11(DiscordppChannelType::Enum value) {
+String Discordpp::EnumToString12(DiscordppChannelType::Enum value) {
 	discordpp::ChannelType p0 = (discordpp::ChannelType)value;
 
 	return String(discordpp::EnumToString(p0));
 }
 
-String Discordpp::EnumToString10(DiscordppCallStatus::Enum value) {
+String Discordpp::EnumToString11(DiscordppCallStatus::Enum value) {
 	discordpp::Call::Status p0 = (discordpp::Call::Status)value;
 
 	return String(discordpp::EnumToString(p0));
 }
 
-String Discordpp::EnumToString9(DiscordppCallError::Enum value) {
+String Discordpp::EnumToString10(DiscordppCallError::Enum value) {
 	discordpp::Call::Error p0 = (discordpp::Call::Error)value;
 
 	return String(discordpp::EnumToString(p0));
 }
 
-String Discordpp::EnumToString8(DiscordppAuthorizationTokenType::Enum value) {
+String Discordpp::EnumToString9(DiscordppAuthorizationTokenType::Enum value) {
 	discordpp::AuthorizationTokenType p0 = (discordpp::AuthorizationTokenType)value;
 
 	return String(discordpp::EnumToString(p0));
 }
 
-String Discordpp::EnumToString7(DiscordppAuthenticationExternalAuthType::Enum value) {
+String Discordpp::EnumToString8(DiscordppAuthenticationExternalAuthType::Enum value) {
 	discordpp::AuthenticationExternalAuthType p0 = (discordpp::AuthenticationExternalAuthType)value;
 
 	return String(discordpp::EnumToString(p0));
 }
 
-String Discordpp::EnumToString6(DiscordppAuthenticationCodeChallengeMethod::Enum value) {
+String Discordpp::EnumToString7(DiscordppAuthenticationCodeChallengeMethod::Enum value) {
 	discordpp::AuthenticationCodeChallengeMethod p0 = (discordpp::AuthenticationCodeChallengeMethod)value;
+
+	return String(discordpp::EnumToString(p0));
+}
+
+String Discordpp::EnumToString6(DiscordppAudioSystem::Enum value) {
+	discordpp::AudioSystem p0 = (discordpp::AudioSystem)value;
 
 	return String(discordpp::EnumToString(p0));
 }
@@ -142,6 +160,15 @@ String Discordpp::EnumToString0(DiscordppActivityActionTypes::Enum value) {
 void Discordpp::_bind_methods() {
 	ClassDB::bind_static_method("Discordpp", D_METHOD("RunCallbacks"),
 			&Discordpp::RunCallbacks);
+
+	ClassDB::bind_static_method("Discordpp", D_METHOD("EnumToString24", "value"),
+			&Discordpp::EnumToString24);
+
+	ClassDB::bind_static_method("Discordpp", D_METHOD("EnumToString23", "value"),
+			&Discordpp::EnumToString23);
+
+	ClassDB::bind_static_method("Discordpp", D_METHOD("EnumToString22", "value"),
+			&Discordpp::EnumToString22);
 
 	ClassDB::bind_static_method("Discordpp", D_METHOD("EnumToString21", "value"),
 			&Discordpp::EnumToString21);

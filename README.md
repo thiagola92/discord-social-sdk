@@ -309,6 +309,12 @@ cd ..
 # Rerun to update GDExtension documentation.
 python3 scripts/main.py
 
+# Rerun to link GDExtension documentation.
+scons platform=linux                            # Debug
+scons platform=linux target=template_release    # Release
+scons platform=windows                            # Debug
+scons platform=windows target=template_release    # Release
+
 # Generate ZIP file for the Asset Library.
 zip -r discord_social_sdk.zip demo/addons/discord_social_sdk/**
 ```

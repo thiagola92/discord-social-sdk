@@ -19,6 +19,10 @@ int64_t DiscordppRelationshipHandle::Id() {
 	return obj->Id();
 }
 
+bool DiscordppRelationshipHandle::IsSpamRequest() {
+	return obj->IsSpamRequest();
+}
+
 Variant DiscordppRelationshipHandle::User() {
 	auto r = obj->User();
 
@@ -42,6 +46,9 @@ void DiscordppRelationshipHandle::_bind_methods() {
 
 	ClassDB::bind_method(D_METHOD("Id"),
 			&DiscordppRelationshipHandle::Id);
+
+	ClassDB::bind_method(D_METHOD("IsSpamRequest"),
+			&DiscordppRelationshipHandle::IsSpamRequest);
 
 	ClassDB::bind_method(D_METHOD("User"),
 			&DiscordppRelationshipHandle::User);

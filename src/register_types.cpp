@@ -22,7 +22,9 @@ void initialize_module(ModuleInitializationLevel p_level) {
 	GDREGISTER_ABSTRACT_CLASS(DiscordppErrorType);
 	GDREGISTER_ABSTRACT_CLASS(DiscordppHttpStatusCode);
 	GDREGISTER_ABSTRACT_CLASS(DiscordppAuthenticationCodeChallengeMethod);
+	GDREGISTER_ABSTRACT_CLASS(DiscordppIntegrationType);
 	GDREGISTER_ABSTRACT_CLASS(DiscordppAdditionalContentType);
+	GDREGISTER_ABSTRACT_CLASS(DiscordppAudioSystem);
 	GDREGISTER_ABSTRACT_CLASS(DiscordppAudioModeType);
 	GDREGISTER_ABSTRACT_CLASS(DiscordppChannelType);
 	GDREGISTER_ABSTRACT_CLASS(DiscordppRelationshipType);
@@ -31,6 +33,7 @@ void initialize_module(ModuleInitializationLevel p_level) {
 	GDREGISTER_ABSTRACT_CLASS(DiscordppAuthorizationTokenType);
 	GDREGISTER_ABSTRACT_CLASS(DiscordppAuthenticationExternalAuthType);
 	GDREGISTER_ABSTRACT_CLASS(DiscordppLoggingSeverity);
+	GDREGISTER_ABSTRACT_CLASS(DiscordppRelationshipGroupType);
 	GDREGISTER_ABSTRACT_CLASS(DiscordppCallError);
 	GDREGISTER_ABSTRACT_CLASS(DiscordppCallStatus);
 	GDREGISTER_ABSTRACT_CLASS(DiscordppUserHandleAvatarType);
@@ -67,6 +70,7 @@ void initialize_module(ModuleInitializationLevel p_level) {
 	GDREGISTER_RUNTIME_CLASS(DiscordppAdditionalContent);
 	GDREGISTER_RUNTIME_CLASS(DiscordppMessageHandle);
 	GDREGISTER_RUNTIME_CLASS(DiscordppAudioDevice);
+	GDREGISTER_RUNTIME_CLASS(DiscordppClientCreateOptions);
 	GDREGISTER_RUNTIME_CLASS(DiscordppClient);
 	GDREGISTER_RUNTIME_CLASS(DiscordppCallInfoHandle);
 }

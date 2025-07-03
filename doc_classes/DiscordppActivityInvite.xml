@@ -33,6 +33,11 @@
 			<description>
 			</description>
 		</method>
+		<method name="ParentApplicationId">
+			<return type="int" />
+			<description>
+			</description>
+		</method>
 		<method name="PartyId">
 			<return type="String" />
 			<description>
@@ -69,6 +74,12 @@
 		<method name="SetMessageId">
 			<return type="void" />
 			<param index="0" name="MessageId" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="SetParentApplicationId">
+			<return type="void" />
+			<param index="0" name="ParentApplicationId" type="int" />
 			<description>
 			</description>
 		</method>

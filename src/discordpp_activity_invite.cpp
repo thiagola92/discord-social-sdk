@@ -57,6 +57,16 @@ void DiscordppActivityInvite::SetApplicationId(int64_t ApplicationId) {
 	obj->SetApplicationId(p0);
 }
 
+int64_t DiscordppActivityInvite::ParentApplicationId() {
+	return obj->ParentApplicationId();
+}
+
+void DiscordppActivityInvite::SetParentApplicationId(int64_t ParentApplicationId) {
+	int64_t p0 = ParentApplicationId;
+
+	obj->SetParentApplicationId(p0);
+}
+
 String DiscordppActivityInvite::PartyId() {
 	return String(obj->PartyId().c_str());
 }
@@ -120,6 +130,12 @@ void DiscordppActivityInvite::_bind_methods() {
 
 	ClassDB::bind_method(D_METHOD("SetApplicationId", "ApplicationId"),
 			&DiscordppActivityInvite::SetApplicationId);
+
+	ClassDB::bind_method(D_METHOD("ParentApplicationId"),
+			&DiscordppActivityInvite::ParentApplicationId);
+
+	ClassDB::bind_method(D_METHOD("SetParentApplicationId", "ParentApplicationId"),
+			&DiscordppActivityInvite::SetParentApplicationId);
 
 	ClassDB::bind_method(D_METHOD("PartyId"),
 			&DiscordppActivityInvite::PartyId);

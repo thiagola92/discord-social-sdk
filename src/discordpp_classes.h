@@ -39,6 +39,7 @@ class DiscordppLobbyHandle;
 class DiscordppAdditionalContent;
 class DiscordppMessageHandle;
 class DiscordppAudioDevice;
+class DiscordppClientCreateOptions;
 class DiscordppClient;
 class DiscordppCallInfoHandle;
 
@@ -53,22 +54,25 @@ protected:
 
 public:
 	static void RunCallbacks();
-	static String EnumToString21(DiscordppUserHandleAvatarType::Enum value);
-	static String EnumToString20(DiscordppStatusType::Enum value);
-	static String EnumToString19(DiscordppRelationshipType::Enum value);
-	static String EnumToString18(DiscordppLoggingSeverity::Enum value);
-	static String EnumToString17(DiscordppHttpStatusCode::Enum value);
-	static String EnumToString16(DiscordppErrorType::Enum value);
-	static String EnumToString15(DiscordppDisclosureTypes::Enum value);
-	static String EnumToString14(DiscordppClientThread::Enum value);
-	static String EnumToString13(DiscordppClientStatus::Enum value);
-	static String EnumToString12(DiscordppClientError::Enum value);
-	static String EnumToString11(DiscordppChannelType::Enum value);
-	static String EnumToString10(DiscordppCallStatus::Enum value);
-	static String EnumToString9(DiscordppCallError::Enum value);
-	static String EnumToString8(DiscordppAuthorizationTokenType::Enum value);
-	static String EnumToString7(DiscordppAuthenticationExternalAuthType::Enum value);
-	static String EnumToString6(DiscordppAuthenticationCodeChallengeMethod::Enum value);
+	static String EnumToString24(DiscordppUserHandleAvatarType::Enum value);
+	static String EnumToString23(DiscordppStatusType::Enum value);
+	static String EnumToString22(DiscordppRelationshipType::Enum value);
+	static String EnumToString21(DiscordppRelationshipGroupType::Enum value);
+	static String EnumToString20(DiscordppLoggingSeverity::Enum value);
+	static String EnumToString19(DiscordppIntegrationType::Enum value);
+	static String EnumToString18(DiscordppHttpStatusCode::Enum value);
+	static String EnumToString17(DiscordppErrorType::Enum value);
+	static String EnumToString16(DiscordppDisclosureTypes::Enum value);
+	static String EnumToString15(DiscordppClientThread::Enum value);
+	static String EnumToString14(DiscordppClientStatus::Enum value);
+	static String EnumToString13(DiscordppClientError::Enum value);
+	static String EnumToString12(DiscordppChannelType::Enum value);
+	static String EnumToString11(DiscordppCallStatus::Enum value);
+	static String EnumToString10(DiscordppCallError::Enum value);
+	static String EnumToString9(DiscordppAuthorizationTokenType::Enum value);
+	static String EnumToString8(DiscordppAuthenticationExternalAuthType::Enum value);
+	static String EnumToString7(DiscordppAuthenticationCodeChallengeMethod::Enum value);
+	static String EnumToString6(DiscordppAudioSystem::Enum value);
 	static String EnumToString5(DiscordppAudioModeType::Enum value);
 	static String EnumToString4(DiscordppAdditionalContentType::Enum value);
 	static String EnumToString3(DiscordppActivityTypes::Enum value);
@@ -105,6 +109,8 @@ public:
 	void SetType(DiscordppActivityActionTypes::Enum Type);
 	int64_t ApplicationId();
 	void SetApplicationId(int64_t ApplicationId);
+	int64_t ParentApplicationId();
+	void SetParentApplicationId(int64_t ParentApplicationId);
 	String PartyId();
 	void SetPartyId(String PartyId);
 	String SessionId();
@@ -354,6 +360,8 @@ public:
 	void SetDetails(Variant Details);
 	Variant ApplicationId();
 	void SetApplicationId(Variant ApplicationId);
+	Variant ParentApplicationId();
+	void SetParentApplicationId(Variant ParentApplicationId);
 	Variant Assets();
 	void SetAssets(Variant Assets);
 	Variant Timestamps();
@@ -529,6 +537,8 @@ public:
 	void SetNonce(Variant Nonce);
 	Variant CodeChallenge();
 	void SetCodeChallenge(Variant CodeChallenge);
+	Variant IntegrationType();
+	void SetIntegrationType(Variant IntegrationType);
 
 	DiscordppAuthorizationArgs() {
 		this->obj = memnew(discordpp::AuthorizationArgs);
@@ -917,6 +927,7 @@ public:
 	DiscordppRelationshipType::Enum DiscordRelationshipType();
 	DiscordppRelationshipType::Enum GameRelationshipType();
 	int64_t Id();
+	bool IsSpamRequest();
 	Variant User();
 
 	DiscordppRelationshipHandle(discordpp::RelationshipHandle *obj) {
@@ -1108,6 +1119,7 @@ public:
 
 	void Drop();
 	Variant AdditionalContent();
+	Variant ApplicationId();
 	Variant Author();
 	int64_t AuthorId();
 	Variant Channel();
@@ -1175,6 +1187,46 @@ public:
 	}
 };
 
+class DiscordppClientCreateOptions : public RefCounted {
+	GDCLASS(DiscordppClientCreateOptions, RefCounted)
+
+private:
+	discordpp::ClientCreateOptions *obj;
+
+protected:
+	static void _bind_methods();
+
+public:
+	// Internal usage.
+	discordpp::ClientCreateOptions *unwrap() {
+		return obj;
+	}
+
+	void Drop();
+	String WebBase();
+	void SetWebBase(String WebBase);
+	String ApiBase();
+	void SetApiBase(String ApiBase);
+	DiscordppAudioSystem::Enum ExperimentalAudioSystem();
+	void SetExperimentalAudioSystem(DiscordppAudioSystem::Enum ExperimentalAudioSystem);
+
+	DiscordppClientCreateOptions() {
+		this->obj = memnew(discordpp::ClientCreateOptions);
+	}
+
+	DiscordppClientCreateOptions(discordpp::ClientCreateOptions *obj) {
+		this->obj = obj;
+	}
+
+	//DiscordppClientCreateOptions(discordpp::ClientCreateOptions &&obj) : obj(std::move(obj)) {
+
+	//}
+
+	~DiscordppClientCreateOptions() {
+		memdelete(this->obj);
+	}
+};
+
 class DiscordppClient : public RefCounted {
 	GDCLASS(DiscordppClient, RefCounted)
 
@@ -1200,6 +1252,7 @@ public:
 	static int64_t GetVersionMajor();
 	static int64_t GetVersionMinor();
 	static int64_t GetVersionPatch();
+	void SetHttpRequestTimeout(int64_t httpTimeoutInMilliseconds);
 	static String StatusToString(DiscordppClientStatus::Enum type);
 	static String ThreadToString(DiscordppClientThread::Enum type);
 	void EndCall(int64_t channelId, Callable callback);
@@ -1214,9 +1267,11 @@ public:
 	float GetOutputVolume();
 	bool GetSelfDeafAll();
 	bool GetSelfMuteAll();
+	void SetAecDump(bool on);
 	void SetAutomaticGainControl(bool on);
 	void SetDeviceChangeCallback(Callable callback);
 	void SetEchoCancellation(bool on);
+	void SetEngineManagedAudioSession(bool isEngineManaged);
 	void SetInputDevice(String deviceId, Callable cb);
 	void SetInputVolume(float inputVolume);
 	void SetNoAudioInputCallback(Callable callback);
@@ -1238,6 +1293,7 @@ public:
 	void Authorize(DiscordppAuthorizationArgs *args, Callable callback);
 	void CloseAuthorizeDeviceScreen();
 	DiscordppAuthorizationCodeVerifier *CreateAuthorizationCodeVerifier();
+	void ExchangeChildToken(String parentApplicationToken, int64_t childApplicationId, Callable callback);
 	void FetchCurrentUser(DiscordppAuthorizationTokenType::Enum tokenType, String token, Callable callback);
 	void GetProvisionalToken(int64_t applicationId, DiscordppAuthenticationExternalAuthType::Enum externalAuthType, String externalAuthToken, Callable callback);
 	void GetToken(int64_t applicationId, String code, String codeVerifier, String redirectUri, Callable callback);
@@ -1248,15 +1304,18 @@ public:
 	void OpenAuthorizeDeviceScreen(int64_t clientId, String userCode);
 	void ProvisionalUserMergeCompleted(bool success);
 	void RefreshToken(int64_t applicationId, String refreshToken, Callable callback);
+	void RevokeToken(int64_t applicationId, String token, Callable callback);
 	void SetAuthorizeDeviceScreenClosedCallback(Callable cb);
 	void SetGameWindowPid(int64_t pid);
 	void SetTokenExpirationCallback(Callable callback);
+	void UnmergeIntoProvisionalAccount(int64_t applicationId, DiscordppAuthenticationExternalAuthType::Enum externalAuthType, String externalAuthToken, Callable callback);
 	void UpdateProvisionalAccountDisplayName(String name, Callable callback);
 	void UpdateToken(DiscordppAuthorizationTokenType::Enum tokenType, String token, Callable callback);
 	bool CanOpenMessageInDiscord(int64_t messageId);
 	void DeleteUserMessage(int64_t recipientId, int64_t messageId, Callable cb);
 	void EditUserMessage(int64_t recipientId, int64_t messageId, String content, Callable cb);
 	Variant GetChannelHandle(int64_t channelId);
+	void GetLobbyMessagesWithLimit(int64_t lobbyId, int64_t limit, Callable cb);
 	Variant GetMessageHandle(int64_t messageId);
 	void OpenMessageInDiscord(int64_t messageId, Callable provisionalUserMergeRequiredCallback, Callable callback);
 	void SendLobbyMessage(int64_t lobbyId, String content, Callable cb);
@@ -1311,6 +1370,7 @@ public:
 	void CancelGameFriendRequest(int64_t userId, Callable cb);
 	DiscordppRelationshipHandle *GetRelationshipHandle(int64_t userId);
 	TypedArray<DiscordppRelationshipHandle> GetRelationships();
+	TypedArray<DiscordppRelationshipHandle> GetRelationshipsByGroup(DiscordppRelationshipGroupType::Enum groupType);
 	void RejectDiscordFriendRequest(int64_t userId, Callable cb);
 	void RejectGameFriendRequest(int64_t userId, Callable cb);
 	void RemoveDiscordAndGameFriend(int64_t userId, Callable cb);
@@ -1326,6 +1386,7 @@ public:
 	DiscordppUserHandle *GetCurrentUser();
 	void GetDiscordClientConnectedUser(int64_t applicationId, Callable callback);
 	Variant GetUser(int64_t userId);
+	void SetRelationshipGroupsUpdatedCallback(Callable cb);
 	void SetUserUpdatedCallback(Callable cb);
 
 	DiscordppClient() {

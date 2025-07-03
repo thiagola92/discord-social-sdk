@@ -53,6 +53,12 @@
 			<description>
 			</description>
 		</method>
+		<method name="ParentApplicationId">
+			<return type="Variant" />
+			<description>
+				Returns [int] or [code]null[/code].
+			</description>
+		</method>
 		<method name="Party">
 			<return type="Variant" />
 			<description>
@@ -86,6 +92,12 @@
 		<method name="SetName">
 			<return type="void" />
 			<param index="0" name="Name" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="SetParentApplicationId">
+			<return type="void" />
+			<param index="0" name="ParentApplicationId" type="Variant" />
 			<description>
 			</description>
 		</method>

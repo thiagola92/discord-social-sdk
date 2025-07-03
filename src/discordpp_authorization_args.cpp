@@ -89,6 +89,26 @@ void DiscordppAuthorizationArgs::SetCodeChallenge(Variant CodeChallenge) {
 	obj->SetCodeChallenge(p0);
 }
 
+Variant DiscordppAuthorizationArgs::IntegrationType() {
+	auto r = obj->IntegrationType();
+
+	if (!r.has_value()) {
+		return nullptr;
+	}
+
+	return Variant((DiscordppIntegrationType::Enum)r.value());
+}
+
+void DiscordppAuthorizationArgs::SetIntegrationType(Variant IntegrationType) {
+	std::optional<discordpp::IntegrationType> p0;
+
+	if (IntegrationType.get_type() == Variant::INT) {
+		p0 = std::optional<discordpp::IntegrationType>{ (discordpp::IntegrationType)(uint64_t)IntegrationType };
+	}
+
+	obj->SetIntegrationType(p0);
+}
+
 void DiscordppAuthorizationArgs::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("Drop"),
 			&DiscordppAuthorizationArgs::Drop);
@@ -122,4 +142,10 @@ void DiscordppAuthorizationArgs::_bind_methods() {
 
 	ClassDB::bind_method(D_METHOD("SetCodeChallenge", "CodeChallenge"),
 			&DiscordppAuthorizationArgs::SetCodeChallenge);
+
+	ClassDB::bind_method(D_METHOD("IntegrationType"),
+			&DiscordppAuthorizationArgs::IntegrationType);
+
+	ClassDB::bind_method(D_METHOD("SetIntegrationType", "IntegrationType"),
+			&DiscordppAuthorizationArgs::SetIntegrationType);
 }
