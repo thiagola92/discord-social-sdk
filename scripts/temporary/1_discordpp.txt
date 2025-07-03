@@ -124,6 +124,12 @@ enum AuthenticationCodeChallengeMethod {
 }
 
 
+enum IntegrationType {
+    GuildInstall:  0,
+    UserInstall:  1,
+}
+
+
 enum AdditionalContentType {
     Other:  0,
     Attachment:  1,
@@ -132,6 +138,12 @@ enum AdditionalContentType {
     Thread:  4,
     Embed:  5,
     Sticker:  6,
+}
+
+
+enum AudioSystem {
+    Standard:  0,
+    Game:  1,
 }
 
 
@@ -214,6 +226,13 @@ enum LoggingSeverity {
 }
 
 
+enum RelationshipGroupType {
+    OnlinePlayingGame:  0,
+    OnlineElsewhere:  1,
+    Offline:  2,
+}
+
+
 class ActivityInvite {
 
 -----
@@ -233,6 +252,8 @@ func Type() -> discordpp::ActivityActionTypes
 func SetType(discordpp::ActivityActionTypes Type) -> void
 func ApplicationId() -> uint64_t
 func SetApplicationId(uint64_t ApplicationId) -> void
+func ParentApplicationId() -> uint64_t
+func SetParentApplicationId(uint64_t ParentApplicationId) -> void
 func PartyId() -> std::string
 func SetPartyId(std::string PartyId) -> void
 func SessionId() -> std::string
@@ -350,6 +371,8 @@ func Details() -> std::optional<std::string>
 func SetDetails(std::optional<std::string> Details) -> void
 func ApplicationId() -> std::optional<uint64_t>
 func SetApplicationId(std::optional<uint64_t> ApplicationId) -> void
+func ParentApplicationId() -> std::optional<uint64_t>
+func SetParentApplicationId(std::optional<uint64_t> ParentApplicationId) -> void
 func Assets() -> std::optional<discordpp::ActivityAssets>
 func SetAssets(std::optional<discordpp::ActivityAssets> Assets) -> void
 func Timestamps() -> std::optional<discordpp::ActivityTimestamps>
@@ -441,6 +464,8 @@ func Nonce() -> std::optional<std::string>
 func SetNonce(std::optional<std::string> Nonce) -> void
 func CodeChallenge() -> std::optional<discordpp::AuthorizationCodeChallenge>
 func SetCodeChallenge(std::optional<discordpp::AuthorizationCodeChallenge> CodeChallenge) -> void
+func IntegrationType() -> std::optional<discordpp::IntegrationType>
+func SetIntegrationType(std::optional<discordpp::IntegrationType> IntegrationType) -> void
 }
 
 
@@ -643,6 +668,7 @@ func Drop() -> void
 func DiscordRelationshipType() -> discordpp::RelationshipType
 func GameRelationshipType() -> discordpp::RelationshipType
 func Id() -> uint64_t
+func IsSpamRequest() -> bool
 func User() -> std::optional<discordpp::UserHandle>
 }
 
@@ -739,6 +765,7 @@ constructor (const MessageHandle & other)
 -----
 func Drop() -> void
 func AdditionalContent() -> std::optional<discordpp::AdditionalContent>
+func ApplicationId() -> std::optional<uint64_t>
 func Author() -> std::optional<discordpp::UserHandle>
 func AuthorId() -> uint64_t
 func Channel() -> std::optional<discordpp::ChannelHandle>
@@ -772,6 +799,24 @@ func Name() -> std::string
 func SetName(std::string Name) -> void
 func IsDefault() -> bool
 func SetIsDefault(bool IsDefault) -> void
+}
+
+
+class ClientCreateOptions {
+
+-----
+
+-----
+constructor (const ClientCreateOptions & arg0) 
+constructor () 
+-----
+func Drop() -> void
+func WebBase() -> std::string
+func SetWebBase(std::string WebBase) -> void
+func ApiBase() -> std::string
+func SetApiBase(std::string ApiBase) -> void
+func ExperimentalAudioSystem() -> discordpp::AudioSystem
+func SetExperimentalAudioSystem(discordpp::AudioSystem ExperimentalAudioSystem) -> void
 }
 
 
@@ -815,14 +860,18 @@ callback VoiceParticipantChangedCallback(uint64_t lobbyId, uint64_t memberId, bo
 callback UserAudioReceivedCallback(uint64_t userId, int16_t * data, uint64_t samplesPerChannel, int32_t sampleRate, uint64_t channels, bool & outShouldMute)
 callback UserAudioCapturedCallback(int16_t * data, uint64_t samplesPerChannel, int32_t sampleRate, uint64_t channels)
 callback AuthorizationCallback(discordpp::ClientResult result, std::string code, std::string redirectUri)
+callback ExchangeChildTokenCallback(discordpp::ClientResult result, std::string accessToken, discordpp::AuthorizationTokenType tokenType, int32_t expiresIn, std::string scopes)
 callback FetchCurrentUserCallback(discordpp::ClientResult result, uint64_t id, std::string name)
 callback TokenExchangeCallback(discordpp::ClientResult result, std::string accessToken, std::string refreshToken, discordpp::AuthorizationTokenType tokenType, int32_t expiresIn, std::string scopes)
+callback RevokeTokenCallback(discordpp::ClientResult result)
 callback AuthorizeDeviceScreenClosedCallback()
 callback TokenExpirationCallback()
+callback UnmergeIntoProvisionalAccountCallback(discordpp::ClientResult result)
 callback UpdateProvisionalAccountDisplayNameCallback(discordpp::ClientResult result)
 callback UpdateTokenCallback(discordpp::ClientResult result)
 callback DeleteUserMessageCallback(discordpp::ClientResult result)
 callback EditUserMessageCallback(discordpp::ClientResult result)
+callback GetLobbyMessagesCallback(discordpp::ClientResult result, std::vector<discordpp::MessageHandle> messages)
 callback ProvisionalUserMergeRequiredCallback()
 callback OpenMessageInDiscordCallback(discordpp::ClientResult result)
 callback SendUserMessageCallback(discordpp::ClientResult result, uint64_t messageId)
@@ -854,11 +903,13 @@ callback SendFriendRequestCallback(discordpp::ClientResult result)
 callback RelationshipCreatedCallback(uint64_t userId, bool isDiscordRelationshipUpdate)
 callback RelationshipDeletedCallback(uint64_t userId, bool isDiscordRelationshipUpdate)
 callback GetDiscordClientConnectedUserCallback(discordpp::ClientResult result, std::optional<discordpp::UserHandle> user)
+callback RelationshipGroupsUpdatedCallback(uint64_t userId)
 callback UserUpdatedCallback(uint64_t userId)
 -----
 constructor ( const Client &) deleted
 constructor () 
 constructor (std::string apiBase, std::string webBase) 
+constructor (discordpp::ClientCreateOptions options) 
 -----
 func Drop() -> void
 static func ErrorToString(discordpp::Client::Error type) -> std::string
@@ -870,6 +921,7 @@ static func GetVersionHash() -> std::string
 static func GetVersionMajor() -> int32_t
 static func GetVersionMinor() -> int32_t
 static func GetVersionPatch() -> int32_t
+func SetHttpRequestTimeout(int32_t httpTimeoutInMilliseconds) -> void
 static func StatusToString(discordpp::Client::Status type) -> std::string
 static func ThreadToString(discordpp::Client::Thread type) -> std::string
 func EndCall(uint64_t channelId, discordpp::Client::EndCallCallback callback) -> void
@@ -884,9 +936,11 @@ func GetOutputDevices(discordpp::Client::GetOutputDevicesCallback cb) -> void
 func GetOutputVolume() -> float
 func GetSelfDeafAll() -> bool
 func GetSelfMuteAll() -> bool
+func SetAecDump(bool on) -> void
 func SetAutomaticGainControl(bool on) -> void
 func SetDeviceChangeCallback(discordpp::Client::DeviceChangeCallback callback) -> void
 func SetEchoCancellation(bool on) -> void
+func SetEngineManagedAudioSession(bool isEngineManaged) -> void
 func SetInputDevice(std::string deviceId, discordpp::Client::SetInputDeviceCallback cb) -> void
 func SetInputVolume(float inputVolume) -> void
 func SetNoAudioInputCallback(discordpp::Client::NoAudioInputCallback callback) -> void
@@ -908,6 +962,7 @@ func AbortGetTokenFromDevice() -> void
 func Authorize(discordpp::AuthorizationArgs args, discordpp::Client::AuthorizationCallback callback) -> void
 func CloseAuthorizeDeviceScreen() -> void
 func CreateAuthorizationCodeVerifier() -> discordpp::AuthorizationCodeVerifier
+func ExchangeChildToken(std::string const & parentApplicationToken, uint64_t childApplicationId, discordpp::Client::ExchangeChildTokenCallback callback) -> void
 func FetchCurrentUser(discordpp::AuthorizationTokenType tokenType, std::string const & token, discordpp::Client::FetchCurrentUserCallback callback) -> void
 func GetProvisionalToken(uint64_t applicationId, discordpp::AuthenticationExternalAuthType externalAuthType, std::string const & externalAuthToken, discordpp::Client::TokenExchangeCallback callback) -> void
 func GetToken(uint64_t applicationId, std::string const & code, std::string const & codeVerifier, std::string const & redirectUri, discordpp::Client::TokenExchangeCallback callback) -> void
@@ -918,15 +973,18 @@ func IsAuthenticated() -> bool
 func OpenAuthorizeDeviceScreen(uint64_t clientId, std::string const & userCode) -> void
 func ProvisionalUserMergeCompleted(bool success) -> void
 func RefreshToken(uint64_t applicationId, std::string const & refreshToken, discordpp::Client::TokenExchangeCallback callback) -> void
+func RevokeToken(uint64_t applicationId, std::string const & token, discordpp::Client::RevokeTokenCallback callback) -> void
 func SetAuthorizeDeviceScreenClosedCallback(discordpp::Client::AuthorizeDeviceScreenClosedCallback cb) -> void
 func SetGameWindowPid(int32_t pid) -> void
 func SetTokenExpirationCallback(discordpp::Client::TokenExpirationCallback callback) -> void
+func UnmergeIntoProvisionalAccount(uint64_t applicationId, discordpp::AuthenticationExternalAuthType externalAuthType, std::string const & externalAuthToken, discordpp::Client::UnmergeIntoProvisionalAccountCallback callback) -> void
 func UpdateProvisionalAccountDisplayName(std::string const & name, discordpp::Client::UpdateProvisionalAccountDisplayNameCallback callback) -> void
 func UpdateToken(discordpp::AuthorizationTokenType tokenType, std::string token, discordpp::Client::UpdateTokenCallback callback) -> void
 func CanOpenMessageInDiscord(uint64_t messageId) -> bool
 func DeleteUserMessage(uint64_t recipientId, uint64_t messageId, discordpp::Client::DeleteUserMessageCallback cb) -> void
 func EditUserMessage(uint64_t recipientId, uint64_t messageId, std::string const & content, discordpp::Client::EditUserMessageCallback cb) -> void
 func GetChannelHandle(uint64_t channelId) -> std::optional<discordpp::ChannelHandle>
+func GetLobbyMessagesWithLimit(uint64_t lobbyId, int32_t limit, discordpp::Client::GetLobbyMessagesCallback cb) -> void
 func GetMessageHandle(uint64_t messageId) -> std::optional<discordpp::MessageHandle>
 func OpenMessageInDiscord(uint64_t messageId, discordpp::Client::ProvisionalUserMergeRequiredCallback provisionalUserMergeRequiredCallback, discordpp::Client::OpenMessageInDiscordCallback callback) -> void
 func SendLobbyMessage(uint64_t lobbyId, std::string const & content, discordpp::Client::SendUserMessageCallback cb) -> void
@@ -981,6 +1039,7 @@ func CancelDiscordFriendRequest(uint64_t userId, discordpp::Client::UpdateRelati
 func CancelGameFriendRequest(uint64_t userId, discordpp::Client::UpdateRelationshipCallback cb) -> void
 func GetRelationshipHandle(uint64_t userId) -> discordpp::RelationshipHandle
 func GetRelationships() -> std::vector<discordpp::RelationshipHandle>
+func GetRelationshipsByGroup(discordpp::RelationshipGroupType groupType) -> std::vector<discordpp::RelationshipHandle>
 func RejectDiscordFriendRequest(uint64_t userId, discordpp::Client::UpdateRelationshipCallback cb) -> void
 func RejectGameFriendRequest(uint64_t userId, discordpp::Client::UpdateRelationshipCallback cb) -> void
 func RemoveDiscordAndGameFriend(uint64_t userId, discordpp::Client::UpdateRelationshipCallback cb) -> void
@@ -996,6 +1055,7 @@ func UnblockUser(uint64_t userId, discordpp::Client::UpdateRelationshipCallback 
 func GetCurrentUser() -> discordpp::UserHandle
 func GetDiscordClientConnectedUser(uint64_t applicationId, discordpp::Client::GetDiscordClientConnectedUserCallback callback) -> void
 func GetUser(uint64_t userId) -> std::optional<discordpp::UserHandle>
+func SetRelationshipGroupsUpdatedCallback(discordpp::Client::RelationshipGroupsUpdatedCallback cb) -> void
 func SetUserUpdatedCallback(discordpp::Client::UserUpdatedCallback cb) -> void
 }
 
@@ -1021,7 +1081,9 @@ static func EnumToString(discordpp::ActivityGamePlatforms value) -> const char *
 static func EnumToString(discordpp::ErrorType value) -> const char *
 static func EnumToString(discordpp::HttpStatusCode value) -> const char *
 static func EnumToString(discordpp::AuthenticationCodeChallengeMethod value) -> const char *
+static func EnumToString(discordpp::IntegrationType value) -> const char *
 static func EnumToString(discordpp::AdditionalContentType value) -> const char *
+static func EnumToString(discordpp::AudioSystem value) -> const char *
 static func EnumToString(discordpp::Call::Error value) -> const char *
 static func EnumToString(discordpp::AudioModeType value) -> const char *
 static func EnumToString(discordpp::Call::Status value) -> const char *
@@ -1036,3 +1098,4 @@ static func EnumToString(discordpp::Client::Thread value) -> const char *
 static func EnumToString(discordpp::AuthorizationTokenType value) -> const char *
 static func EnumToString(discordpp::AuthenticationExternalAuthType value) -> const char *
 static func EnumToString(discordpp::LoggingSeverity value) -> const char *
+static func EnumToString(discordpp::RelationshipGroupType value) -> const char *

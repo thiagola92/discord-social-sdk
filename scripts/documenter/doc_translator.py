@@ -100,7 +100,7 @@ class DocTranslator(Translator):
 
         elif self.is_c_enum(token.name):
             name = self.c_name_to_godot_name(token.name).replace("::", ".")
-            return f"[enum {name}.Enum]"
+            return f"[enum {name}]"
 
         elif self.is_c_discord(token.name):
             name = self.c_name_to_godot_name(token.name)

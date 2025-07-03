@@ -175,6 +175,9 @@ class Translator:
         elif self.is_c_callback(type_name):
             return "Variant::CALLABLE"
 
+        elif self.is_c_enum(type_name):
+            return "Variant::INT"
+
         elif self.is_c_discord(type_name):
             return "Variant::OBJECT"
 
@@ -563,6 +566,11 @@ class Translator:
 
         elif self.is_c_callback(param.type.subtype.name):
             assert False, "Not implemented (implement if needed)"
+
+        elif self.is_c_enum(param.type.subtype.name):
+            convertion_statements = [
+                f"{dest} = std::optional<{param.type.subtype.name}>{{ ({param.type.subtype.name})(uint64_t){param.name} }};",
+            ]
 
         elif self.is_c_discord(param.type.subtype.name):
             class_type = self.c_type_to_godot_type(param.type.subtype, False)

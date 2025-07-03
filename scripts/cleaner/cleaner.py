@@ -93,6 +93,9 @@ def clean_content(content: str) -> str:
         if temp.startswith("operator bool()"):
             continue
 
+        if temp.startswith("[[deprecated"):
+            continue
+
         new_content.append(line)
 
     return "\n".join(new_content)

@@ -210,6 +210,13 @@ enum class AuthenticationCodeChallengeMethod {
 	S256 = 0,
 };
 
+enum class IntegrationType {
+
+	GuildInstall = 0,
+
+	UserInstall = 1,
+};
+
 enum class AdditionalContentType {
 
 	Other = 0,
@@ -225,6 +232,13 @@ enum class AdditionalContentType {
 	Embed = 5,
 
 	Sticker = 6,
+};
+
+enum class AudioSystem {
+
+	Standard = 0,
+
+	Game = 1,
 };
 
 enum class AudioModeType {
@@ -345,6 +359,15 @@ enum class LoggingSeverity {
 	None = 5,
 };
 
+enum class RelationshipGroupType {
+
+	OnlinePlayingGame = 0,
+
+	OnlineElsewhere = 1,
+
+	Offline = 2,
+};
+
 class ActivityInvite {
 
 
@@ -368,6 +391,9 @@ class ActivityInvite {
 
 	uint64_t ApplicationId() const;
 	void SetApplicationId(uint64_t ApplicationId);
+
+	uint64_t ParentApplicationId() const;
+	void SetParentApplicationId(uint64_t ParentApplicationId);
 
 	std::string PartyId() const;
 	void SetPartyId(std::string PartyId);
@@ -498,6 +524,9 @@ class Activity {
 	std::optional<uint64_t> ApplicationId() const;
 	void SetApplicationId(std::optional<uint64_t> ApplicationId);
 
+	std::optional<uint64_t> ParentApplicationId() const;
+	void SetParentApplicationId(std::optional<uint64_t> ParentApplicationId);
+
 	std::optional<discordpp::ActivityAssets> Assets() const;
 	void SetAssets(std::optional<discordpp::ActivityAssets> Assets);
 
@@ -601,6 +630,9 @@ class AuthorizationArgs {
 
 	std::optional<discordpp::AuthorizationCodeChallenge> CodeChallenge() const;
 	void SetCodeChallenge(std::optional<discordpp::AuthorizationCodeChallenge> CodeChallenge);
+
+	std::optional<discordpp::IntegrationType> IntegrationType() const;
+	void SetIntegrationType(std::optional<discordpp::IntegrationType> IntegrationType);
 };
 
 class DeviceAuthorizationArgs {
@@ -846,6 +878,8 @@ class RelationshipHandle {
 
 	uint64_t Id() const;
 
+	bool IsSpamRequest() const;
+
 	std::optional<discordpp::UserHandle> User() const;
 };
 
@@ -962,6 +996,8 @@ class MessageHandle {
 
 	std::optional<discordpp::AdditionalContent> AdditionalContent() const;
 
+	std::optional<uint64_t> ApplicationId() const;
+
 	std::optional<discordpp::UserHandle> Author() const;
 
 	uint64_t AuthorId() const;
@@ -1010,6 +1046,25 @@ class AudioDevice {
 
 	bool IsDefault() const;
 	void SetIsDefault(bool IsDefault);
+};
+
+class ClientCreateOptions {
+
+
+	ClientCreateOptions(const ClientCreateOptions &arg0);
+
+	explicit ClientCreateOptions();
+
+	void Drop();
+
+	std::string WebBase() const;
+	void SetWebBase(std::string WebBase);
+
+	std::string ApiBase() const;
+	void SetApiBase(std::string ApiBase);
+
+	discordpp::AudioSystem ExperimentalAudioSystem() const;
+	void SetExperimentalAudioSystem(discordpp::AudioSystem ExperimentalAudioSystem);
 };
 
 class Client {
@@ -1091,6 +1146,13 @@ class Client {
 	using AuthorizationCallback = std::function<
 			void(discordpp::ClientResult result, std::string code, std::string redirectUri)>;
 
+	using ExchangeChildTokenCallback =
+			std::function<void(discordpp::ClientResult result,
+					std::string accessToken,
+					discordpp::AuthorizationTokenType tokenType,
+					int32_t expiresIn,
+					std::string scopes)>;
+
 	using FetchCurrentUserCallback =
 			std::function<void(discordpp::ClientResult result, uint64_t id, std::string name)>;
 
@@ -1101,9 +1163,14 @@ class Client {
 			int32_t expiresIn,
 			std::string scopes)>;
 
+	using RevokeTokenCallback = std::function<void(discordpp::ClientResult result)>;
+
 	using AuthorizeDeviceScreenClosedCallback = std::function<void()>;
 
 	using TokenExpirationCallback = std::function<void()>;
+
+	using UnmergeIntoProvisionalAccountCallback =
+			std::function<void(discordpp::ClientResult result)>;
 
 	using UpdateProvisionalAccountDisplayNameCallback =
 			std::function<void(discordpp::ClientResult result)>;
@@ -1113,6 +1180,10 @@ class Client {
 	using DeleteUserMessageCallback = std::function<void(discordpp::ClientResult result)>;
 
 	using EditUserMessageCallback = std::function<void(discordpp::ClientResult result)>;
+
+	using GetLobbyMessagesCallback =
+			std::function<void(discordpp::ClientResult result,
+					std::vector<discordpp::MessageHandle> messages)>;
 
 	using ProvisionalUserMergeRequiredCallback = std::function<void()>;
 
@@ -1189,6 +1260,8 @@ class Client {
 			std::function<void(discordpp::ClientResult result,
 					std::optional<discordpp::UserHandle> user)>;
 
+	using RelationshipGroupsUpdatedCallback = std::function<void(uint64_t userId)>;
+
 	using UserUpdatedCallback = std::function<void(uint64_t userId)>;
 
 	Client(const Client &) = delete;
@@ -1196,6 +1269,8 @@ class Client {
 	explicit Client();
 
 	explicit Client(std::string apiBase, std::string webBase);
+
+	explicit Client(discordpp::ClientCreateOptions options);
 
 	void Drop();
 
@@ -1216,6 +1291,8 @@ class Client {
 	static int32_t GetVersionMinor();
 
 	static int32_t GetVersionPatch();
+
+	void SetHttpRequestTimeout(int32_t httpTimeoutInMilliseconds);
 
 	static std::string StatusToString(discordpp::Client::Status type);
 
@@ -1246,11 +1323,15 @@ class Client {
 
 	bool GetSelfMuteAll() const;
 
+	void SetAecDump(bool on);
+
 	void SetAutomaticGainControl(bool on);
 
 	void SetDeviceChangeCallback(discordpp::Client::DeviceChangeCallback callback);
 
 	void SetEchoCancellation(bool on);
+
+	void SetEngineManagedAudioSession(bool isEngineManaged);
 
 	void SetInputDevice(std::string deviceId, discordpp::Client::SetInputDeviceCallback cb);
 
@@ -1299,6 +1380,10 @@ class Client {
 
 	discordpp::AuthorizationCodeVerifier CreateAuthorizationCodeVerifier();
 
+	void ExchangeChildToken(std::string const &parentApplicationToken,
+			uint64_t childApplicationId,
+			discordpp::Client::ExchangeChildTokenCallback callback);
+
 	void FetchCurrentUser(discordpp::AuthorizationTokenType tokenType,
 			std::string const &token,
 			discordpp::Client::FetchCurrentUserCallback callback);
@@ -1341,12 +1426,22 @@ class Client {
 			std::string const &refreshToken,
 			discordpp::Client::TokenExchangeCallback callback);
 
+	void RevokeToken(uint64_t applicationId,
+			std::string const &token,
+			discordpp::Client::RevokeTokenCallback callback);
+
 	void SetAuthorizeDeviceScreenClosedCallback(
 			discordpp::Client::AuthorizeDeviceScreenClosedCallback cb);
 
 	void SetGameWindowPid(int32_t pid);
 
 	void SetTokenExpirationCallback(discordpp::Client::TokenExpirationCallback callback);
+
+	void UnmergeIntoProvisionalAccount(
+			uint64_t applicationId,
+			discordpp::AuthenticationExternalAuthType externalAuthType,
+			std::string const &externalAuthToken,
+			discordpp::Client::UnmergeIntoProvisionalAccountCallback callback);
 
 	void UpdateProvisionalAccountDisplayName(
 			std::string const &name,
@@ -1369,6 +1464,10 @@ class Client {
 			discordpp::Client::EditUserMessageCallback cb);
 
 	std::optional<discordpp::ChannelHandle> GetChannelHandle(uint64_t channelId) const;
+
+	void GetLobbyMessagesWithLimit(uint64_t lobbyId,
+			int32_t limit,
+			discordpp::Client::GetLobbyMessagesCallback cb);
 
 	std::optional<discordpp::MessageHandle> GetMessageHandle(uint64_t messageId) const;
 
@@ -1514,6 +1613,9 @@ class Client {
 
 	std::vector<discordpp::RelationshipHandle> GetRelationships() const;
 
+	std::vector<discordpp::RelationshipHandle> GetRelationshipsByGroup(
+			discordpp::RelationshipGroupType groupType) const;
+
 	void RejectDiscordFriendRequest(uint64_t userId,
 			discordpp::Client::UpdateRelationshipCallback cb);
 
@@ -1552,6 +1654,9 @@ class Client {
 			discordpp::Client::GetDiscordClientConnectedUserCallback callback) const;
 
 	std::optional<discordpp::UserHandle> GetUser(uint64_t userId) const;
+
+	void SetRelationshipGroupsUpdatedCallback(
+			discordpp::Client::RelationshipGroupsUpdatedCallback cb);
 
 	void SetUserUpdatedCallback(discordpp::Client::UserUpdatedCallback cb);
 };
@@ -1793,6 +1898,16 @@ inline const char *EnumToString(discordpp::AuthenticationCodeChallengeMethod val
 			return "unknown";
 	}
 }
+inline const char *EnumToString(discordpp::IntegrationType value) {
+	switch (value) {
+		case discordpp::IntegrationType::GuildInstall:
+			return "GuildInstall";
+		case discordpp::IntegrationType::UserInstall:
+			return "UserInstall";
+		default:
+			return "unknown";
+	}
+}
 inline const char *EnumToString(discordpp::AdditionalContentType value) {
 	switch (value) {
 		case discordpp::AdditionalContentType::Other:
@@ -1809,6 +1924,16 @@ inline const char *EnumToString(discordpp::AdditionalContentType value) {
 			return "Embed";
 		case discordpp::AdditionalContentType::Sticker:
 			return "Sticker";
+		default:
+			return "unknown";
+	}
+}
+inline const char *EnumToString(discordpp::AudioSystem value) {
+	switch (value) {
+		case discordpp::AudioSystem::Standard:
+			return "Standard";
+		case discordpp::AudioSystem::Game:
+			return "Game";
 		default:
 			return "unknown";
 	}
@@ -2049,6 +2174,18 @@ inline const char *EnumToString(discordpp::LoggingSeverity value) {
 			return "Error";
 		case discordpp::LoggingSeverity::None:
 			return "None";
+		default:
+			return "unknown";
+	}
+}
+inline const char *EnumToString(discordpp::RelationshipGroupType value) {
+	switch (value) {
+		case discordpp::RelationshipGroupType::OnlinePlayingGame:
+			return "OnlinePlayingGame";
+		case discordpp::RelationshipGroupType::OnlineElsewhere:
+			return "OnlineElsewhere";
+		case discordpp::RelationshipGroupType::Offline:
+			return "Offline";
 		default:
 			return "unknown";
 	}
