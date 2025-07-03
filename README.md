@@ -273,6 +273,7 @@ cp -r /tmp/discord_social_sdk/lib/release/* discord-social-sdk/lib/
 cp -r /tmp/discord_social_sdk/bin/release/* discord-social-sdk/lib/
 cp -r /tmp/discord_social_sdk/include/* discord-social-sdk/include/
 rm -rf /tmp/discord_social_sdk
+cd discord-social-sdk
 
 # Making sure that headers are formatted.
 clang-format -i --style=file:.clang-format include/cdiscord.h
