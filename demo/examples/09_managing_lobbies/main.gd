@@ -15,7 +15,7 @@ func _ready() -> void:
 	var code_verifier := client.CreateAuthorizationCodeVerifier()
 	var args = DiscordppAuthorizationArgs.new()
 	args.SetClientId(APPLICATION_ID)
-	args.SetScopes(DiscordppClient.GetDefaultPresenceScopes())
+	args.SetScopes(DiscordppClient.GetDefaultCommunicationScopes())
 	args.SetCodeChallenge(code_verifier.Challenge())
 	
 	client.SetMessageCreatedCallback(
