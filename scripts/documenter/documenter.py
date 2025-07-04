@@ -5,8 +5,9 @@ from parser.parser import TokenFunction, TokenClass
 from documenter.doc_translator import DocTranslator
 from template.xml import (
     get_callback_param,
-    get_xml_version,
+    get_version,
     get_class_reference,
+    get_variant_param,
     get_variant_return,
 )
 
@@ -55,7 +56,7 @@ class Documenter:
     def update_docs(self):
         for token in self.tokens:
             if isinstance(token, TokenFunction):
-                pass
+                pass  # TODO
             elif isinstance(token, TokenClass):
                 self.update_class(token)
 
@@ -71,13 +72,14 @@ class Documenter:
 
         # Update XML.
         self.clear_class(class_element, class_)
-        self.add_reference_link(class_element, class_)
-        self.add_callbacks_signatures(class_element, class_)
-        self.add_return_variant(class_element, class_)
+        self.add_class_reference(class_element, class_)
+        self.add_variant_param(class_element, class_)
+        self.add_callback_param(class_element, class_)
+        self.add_variant_return(class_element, class_)
 
         # Save XML.
         tree.write(file)
-        file.write_text(get_xml_version() + file.read_text() + "\n")
+        file.write_text(get_version() + file.read_text() + "\n")
 
     def clear_class(self, class_element: Element, class_: TokenClass):
         description_ele = class_element.find("description")
@@ -87,12 +89,22 @@ class Documenter:
             description_ele = method_ele.find("description")
             description_ele.text = "\n\t\t\t"
 
-    def add_reference_link(self, class_element: Element, class_: TokenClass):
+    def add_class_reference(self, class_element: Element, class_: TokenClass):
         reference = get_class_reference(class_.name)
         description_element = class_element.find("description")
         description_element.text = reference
 
-    def add_callbacks_signatures(self, class_element: Element, class_: TokenClass):
+    def add_variant_param(self, class_element: Element, class_: TokenClass):
+        for function in class_.functions:
+            for param in function.params:
+                if self.translator.is_c_opt(param.type.name):
+                    element = self.get_method_element(class_element, function.name)
+                    element = element.find("description")
+                    bbcode = self.translator.c_type_to_bbcode(param.type.subtype)
+                    content = get_variant_param(param.name, bbcode)
+                    element.text += content
+
+    def add_callback_param(self, class_element: Element, class_: TokenClass):
         if not class_.callbacks:
             return
 
@@ -116,7 +128,7 @@ class Documenter:
                     content = get_callback_param(param_name=param.name, params=params)
                     element.text += content
 
-    def add_return_variant(self, class_element: Element, class_: TokenClass):
+    def add_variant_return(self, class_element: Element, class_: TokenClass):
         for function in class_.functions:
             if self.translator.is_c_opt(function.ret.name):
                 element = self.get_method_element(class_element, function.name)

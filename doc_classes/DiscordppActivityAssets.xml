@@ -29,24 +29,28 @@
 			<return type="void" />
 			<param index="0" name="LargeImage" type="Variant" />
 			<description>
+				Where [param LargeImage] is [String] or [code]null[/code].
 			</description>
 		</method>
 		<method name="SetLargeText">
 			<return type="void" />
 			<param index="0" name="LargeText" type="Variant" />
 			<description>
+				Where [param LargeText] is [String] or [code]null[/code].
 			</description>
 		</method>
 		<method name="SetSmallImage">
 			<return type="void" />
 			<param index="0" name="SmallImage" type="Variant" />
 			<description>
+				Where [param SmallImage] is [String] or [code]null[/code].
 			</description>
 		</method>
 		<method name="SetSmallText">
 			<return type="void" />
 			<param index="0" name="SmallText" type="Variant" />
 			<description>
+				Where [param SmallText] is [String] or [code]null[/code].
 			</description>
 		</method>
 		<method name="SmallImage">

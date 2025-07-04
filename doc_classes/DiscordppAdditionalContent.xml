@@ -34,6 +34,7 @@
 			<return type="void" />
 			<param index="0" name="Title" type="Variant" />
 			<description>
+				Where [param Title] is [String] or [code]null[/code].
 			</description>
 		</method>
 		<method name="SetType">

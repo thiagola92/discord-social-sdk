@@ -75,18 +75,21 @@
 			<return type="void" />
 			<param index="0" name="ApplicationId" type="Variant" />
 			<description>
+				Where [param ApplicationId] is [int] or [code]null[/code].
 			</description>
 		</method>
 		<method name="SetAssets">
 			<return type="void" />
 			<param index="0" name="Assets" type="Variant" />
 			<description>
+				Where [param Assets] is [DiscordppActivityAssets] or [code]null[/code].
 			</description>
 		</method>
 		<method name="SetDetails">
 			<return type="void" />
 			<param index="0" name="Details" type="Variant" />
 			<description>
+				Where [param Details] is [String] or [code]null[/code].
 			</description>
 		</method>
 		<method name="SetName">
@@ -99,24 +102,28 @@
 			<return type="void" />
 			<param index="0" name="ParentApplicationId" type="Variant" />
 			<description>
+				Where [param ParentApplicationId] is [int] or [code]null[/code].
 			</description>
 		</method>
 		<method name="SetParty">
 			<return type="void" />
 			<param index="0" name="Party" type="Variant" />
 			<description>
+				Where [param Party] is [DiscordppActivityParty] or [code]null[/code].
 			</description>
 		</method>
 		<method name="SetSecrets">
 			<return type="void" />
 			<param index="0" name="Secrets" type="Variant" />
 			<description>
+				Where [param Secrets] is [DiscordppActivitySecrets] or [code]null[/code].
 			</description>
 		</method>
 		<method name="SetState">
 			<return type="void" />
 			<param index="0" name="State" type="Variant" />
 			<description>
+				Where [param State] is [String] or [code]null[/code].
 			</description>
 		</method>
 		<method name="SetSupportedPlatforms">
@@ -129,6 +136,7 @@
 			<return type="void" />
 			<param index="0" name="Timestamps" type="Variant" />
 			<description>
+				Where [param Timestamps] is [DiscordppActivityTimestamps] or [code]null[/code].
 			</description>
 		</method>
 		<method name="SetType">

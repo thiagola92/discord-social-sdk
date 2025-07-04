@@ -61,6 +61,7 @@
 			<return type="void" />
 			<param index="0" name="LinkedLobby" type="Variant" />
 			<description>
+				Where [param LinkedLobby] is [DiscordppLinkedLobby] or [code]null[/code].
 			</description>
 		</method>
 		<method name="SetName">

@@ -51,18 +51,21 @@
 			<return type="void" />
 			<param index="0" name="CodeChallenge" type="Variant" />
 			<description>
+				Where [param CodeChallenge] is [DiscordppAuthorizationCodeChallenge] or [code]null[/code].
 			</description>
 		</method>
 		<method name="SetIntegrationType">
 			<return type="void" />
 			<param index="0" name="IntegrationType" type="Variant" />
 			<description>
+				Where [param IntegrationType] is [enum DiscordppIntegrationType.Enum] or [code]null[/code].
 			</description>
 		</method>
 		<method name="SetNonce">
 			<return type="void" />
 			<param index="0" name="Nonce" type="Variant" />
 			<description>
+				Where [param Nonce] is [String] or [code]null[/code].
 			</description>
 		</method>
 		<method name="SetScopes">
@@ -75,6 +78,7 @@
 			<return type="void" />
 			<param index="0" name="State" type="Variant" />
 			<description>
+				Where [param State] is [String] or [code]null[/code].
 			</description>
 		</method>
 		<method name="State">
