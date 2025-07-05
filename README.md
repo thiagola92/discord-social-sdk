@@ -177,6 +177,8 @@ get_tree().root.add_child.call_deferred(timer)
 
 GDScript doesn't has an alternative to [`std::optional<T>`](https://en.cppreference.com/w/cpp/utility/optional), so we just return a Variant which can hold a `null` or an actual value.  
 
+Note: I wiil create a class `Optional` if Godot documentation start giving support to make something like `Optional[T]`.  
+
 > Why exists many functions like `Discordpp.EnumToString0()`, `Discordpp.EnumToString1()`, `Discordpp.EnumToString2()`, ...?  
 
 GDScript doesn't support [function overloading](https://www.w3schools.com/cpp/cpp_function_overloading.asp), so I just made one function for each option.  
