@@ -1,7 +1,7 @@
 # Normalize line endings for all files that Git considers text files.
 * text=auto eol=lf
 
-# Only include the addons/discord_social_sdk folder when downloading from the Asset Library.
+# Only include the demo/addons/discord_social_sdk folder when downloading from the Asset Library.
 /**        			export-ignore
-/addons/discord_social_sdk	!export-ignore
-/addons/discord_social_sdk/**	!export-ignore
+demo/addons/discord_social_sdk	!export-ignore
+demo/addons/discord_social_sdk/**	!export-ignore
