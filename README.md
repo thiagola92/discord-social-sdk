@@ -268,14 +268,12 @@ I'm using Ubuntu, please adapt this list to your operating system.
 
 ## Step by step
 ```bash
-# Unzip libraries and headers to correct directories.  
-# Assuming that repository "discord-social-sdk" and "DiscordSocialSdk*.zip" are in the same directory.
+# Unzip libraries and headers to correct directories.
 unzip DiscordSocialSdk*.zip -d /tmp/
-cp -r /tmp/discord_social_sdk/lib/release/* discord-social-sdk/lib/
-cp -r /tmp/discord_social_sdk/bin/release/* discord-social-sdk/lib/
-cp -r /tmp/discord_social_sdk/include/* discord-social-sdk/include/
+cp -r /tmp/discord_social_sdk/lib/release/* lib/
+cp -r /tmp/discord_social_sdk/bin/release/* lib/
+cp -r /tmp/discord_social_sdk/include/* include/
 rm -rf /tmp/discord_social_sdk
-cd discord-social-sdk
 
 # Making sure that headers are formatted.
 clang-format -i --style=file:.clang-format include/cdiscord.h
