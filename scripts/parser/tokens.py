@@ -174,3 +174,12 @@ class {self.name} {{
 {functions}
 }}
 """
+
+
+class TokenDocstring:
+    """Used to represent a docstring."""
+
+    text: str
+
+    def __init__(self, text: str):
+        self.text = text

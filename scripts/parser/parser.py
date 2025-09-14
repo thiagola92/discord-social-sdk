@@ -6,6 +6,7 @@ from parser.tokens import (
     TokenFunction,
     TokenCallback,
     TokenClass,
+    TokenDocstring,
 )
 
 
@@ -16,7 +17,7 @@ class Parser:
 
     def start(self) -> list[TokenEnum | TokenFunction | TokenClass]:
         tokens = []
-        string_matched = self.read_until_find(["enum", "inline", "class"])
+        string_matched = self.read_until_find(["enum", "inline", "class", "///"])
 
         while string_matched:
             match string_matched:
@@ -26,6 +27,8 @@ class Parser:
                     tokens.append(self.parse_function(static=True))
                 case "class":
                     tokens.append(self.parse_class())
+                case "///":
+                    tokens.append(self.parse_docstring())
 
             string_matched = self.read_until_find(["enum", "inline", "class"])
 
@@ -318,3 +321,6 @@ class Parser:
             constructors=constructors,
             functions=functions,
         )
+
+    def parse_docstring(self) -> TokenDocstring:
+        return TokenDocstring(text=self.get_text_before("\n").strip())
