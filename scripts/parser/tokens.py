@@ -174,3 +174,9 @@ class {self.name} {{
 {functions}
 }}
 """
+
+
+class TokenDocstring:
+    """Used to represent a docstring."""
+
+    text: str
