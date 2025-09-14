@@ -109,6 +109,26 @@ void DiscordppAuthorizationArgs::SetIntegrationType(Variant IntegrationType) {
 	obj->SetIntegrationType(p0);
 }
 
+Variant DiscordppAuthorizationArgs::CustomSchemeParam() {
+	auto r = obj->CustomSchemeParam();
+
+	if (!r.has_value()) {
+		return nullptr;
+	}
+
+	return Variant(r.value().c_str());
+}
+
+void DiscordppAuthorizationArgs::SetCustomSchemeParam(Variant CustomSchemeParam) {
+	std::optional<std::string> p0;
+
+	if (CustomSchemeParam.get_type() == Variant::STRING) {
+		p0 = CustomSchemeParam.stringify().utf8().get_data();
+	}
+
+	obj->SetCustomSchemeParam(p0);
+}
+
 void DiscordppAuthorizationArgs::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("Drop"),
 			&DiscordppAuthorizationArgs::Drop);
@@ -148,4 +168,10 @@ void DiscordppAuthorizationArgs::_bind_methods() {
 
 	ClassDB::bind_method(D_METHOD("SetIntegrationType", "IntegrationType"),
 			&DiscordppAuthorizationArgs::SetIntegrationType);
+
+	ClassDB::bind_method(D_METHOD("CustomSchemeParam"),
+			&DiscordppAuthorizationArgs::CustomSchemeParam);
+
+	ClassDB::bind_method(D_METHOD("SetCustomSchemeParam", "CustomSchemeParam"),
+			&DiscordppAuthorizationArgs::SetCustomSchemeParam);
 }

@@ -25,6 +25,12 @@
 				Returns [String] or [code]null[/code].
 			</description>
 		</method>
+		<method name="LargeUrl">
+			<return type="Variant" />
+			<description>
+				Returns [String] or [code]null[/code].
+			</description>
+		</method>
 		<method name="SetLargeImage">
 			<return type="void" />
 			<param index="0" name="LargeImage" type="Variant" />
@@ -37,6 +43,13 @@
 			<param index="0" name="LargeText" type="Variant" />
 			<description>
 				Where [param LargeText] is [String] or [code]null[/code].
+			</description>
+		</method>
+		<method name="SetLargeUrl">
+			<return type="void" />
+			<param index="0" name="LargeUrl" type="Variant" />
+			<description>
+				Where [param LargeUrl] is [String] or [code]null[/code].
 			</description>
 		</method>
 		<method name="SetSmallImage">
@@ -53,6 +66,13 @@
 				Where [param SmallText] is [String] or [code]null[/code].
 			</description>
 		</method>
+		<method name="SetSmallUrl">
+			<return type="void" />
+			<param index="0" name="SmallUrl" type="Variant" />
+			<description>
+				Where [param SmallUrl] is [String] or [code]null[/code].
+			</description>
+		</method>
 		<method name="SmallImage">
 			<return type="Variant" />
 			<description>
@@ -60,6 +80,12 @@
 			</description>
 		</method>
 		<method name="SmallText">
+			<return type="Variant" />
+			<description>
+				Returns [String] or [code]null[/code].
+			</description>
+		</method>
+		<method name="SmallUrl">
 			<return type="Variant" />
 			<description>
 				Returns [String] or [code]null[/code].

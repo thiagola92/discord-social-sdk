@@ -51,6 +51,26 @@ void DiscordppActivity::SetType(DiscordppActivityTypes::Enum Type) {
 	obj->SetType(p0);
 }
 
+Variant DiscordppActivity::StatusDisplayType() {
+	auto r = obj->StatusDisplayType();
+
+	if (!r.has_value()) {
+		return nullptr;
+	}
+
+	return Variant((DiscordppStatusDisplayTypes::Enum)r.value());
+}
+
+void DiscordppActivity::SetStatusDisplayType(Variant StatusDisplayType) {
+	std::optional<discordpp::StatusDisplayTypes> p0;
+
+	if (StatusDisplayType.get_type() == Variant::INT) {
+		p0 = std::optional<discordpp::StatusDisplayTypes>{ (discordpp::StatusDisplayTypes)(uint64_t)StatusDisplayType };
+	}
+
+	obj->SetStatusDisplayType(p0);
+}
+
 Variant DiscordppActivity::State() {
 	auto r = obj->State();
 
@@ -71,6 +91,26 @@ void DiscordppActivity::SetState(Variant State) {
 	obj->SetState(p0);
 }
 
+Variant DiscordppActivity::StateUrl() {
+	auto r = obj->StateUrl();
+
+	if (!r.has_value()) {
+		return nullptr;
+	}
+
+	return Variant(r.value().c_str());
+}
+
+void DiscordppActivity::SetStateUrl(Variant StateUrl) {
+	std::optional<std::string> p0;
+
+	if (StateUrl.get_type() == Variant::STRING) {
+		p0 = StateUrl.stringify().utf8().get_data();
+	}
+
+	obj->SetStateUrl(p0);
+}
+
 Variant DiscordppActivity::Details() {
 	auto r = obj->Details();
 
@@ -89,6 +129,26 @@ void DiscordppActivity::SetDetails(Variant Details) {
 	}
 
 	obj->SetDetails(p0);
+}
+
+Variant DiscordppActivity::DetailsUrl() {
+	auto r = obj->DetailsUrl();
+
+	if (!r.has_value()) {
+		return nullptr;
+	}
+
+	return Variant(r.value().c_str());
+}
+
+void DiscordppActivity::SetDetailsUrl(Variant DetailsUrl) {
+	std::optional<std::string> p0;
+
+	if (DetailsUrl.get_type() == Variant::STRING) {
+		p0 = DetailsUrl.stringify().utf8().get_data();
+	}
+
+	obj->SetDetailsUrl(p0);
 }
 
 Variant DiscordppActivity::ApplicationId() {
@@ -254,17 +314,35 @@ void DiscordppActivity::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("SetType", "Type"),
 			&DiscordppActivity::SetType);
 
+	ClassDB::bind_method(D_METHOD("StatusDisplayType"),
+			&DiscordppActivity::StatusDisplayType);
+
+	ClassDB::bind_method(D_METHOD("SetStatusDisplayType", "StatusDisplayType"),
+			&DiscordppActivity::SetStatusDisplayType);
+
 	ClassDB::bind_method(D_METHOD("State"),
 			&DiscordppActivity::State);
 
 	ClassDB::bind_method(D_METHOD("SetState", "State"),
 			&DiscordppActivity::SetState);
 
+	ClassDB::bind_method(D_METHOD("StateUrl"),
+			&DiscordppActivity::StateUrl);
+
+	ClassDB::bind_method(D_METHOD("SetStateUrl", "StateUrl"),
+			&DiscordppActivity::SetStateUrl);
+
 	ClassDB::bind_method(D_METHOD("Details"),
 			&DiscordppActivity::Details);
 
 	ClassDB::bind_method(D_METHOD("SetDetails", "Details"),
 			&DiscordppActivity::SetDetails);
+
+	ClassDB::bind_method(D_METHOD("DetailsUrl"),
+			&DiscordppActivity::DetailsUrl);
+
+	ClassDB::bind_method(D_METHOD("SetDetailsUrl", "DetailsUrl"),
+			&DiscordppActivity::SetDetailsUrl);
 
 	ClassDB::bind_method(D_METHOD("ApplicationId"),
 			&DiscordppActivity::ApplicationId);

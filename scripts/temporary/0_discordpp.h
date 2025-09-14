@@ -40,6 +40,15 @@ enum class ActivityTypes {
 	HangStatus = 6,
 };
 
+enum class StatusDisplayTypes {
+
+	Name = 0,
+
+	State = 1,
+
+	Details = 2,
+};
+
 enum class ActivityGamePlatforms {
 
 	Desktop = 1,
@@ -420,11 +429,17 @@ class ActivityAssets {
 	std::optional<std::string> LargeText() const;
 	void SetLargeText(std::optional<std::string> LargeText);
 
+	std::optional<std::string> LargeUrl() const;
+	void SetLargeUrl(std::optional<std::string> LargeUrl);
+
 	std::optional<std::string> SmallImage() const;
 	void SetSmallImage(std::optional<std::string> SmallImage);
 
 	std::optional<std::string> SmallText() const;
 	void SetSmallText(std::optional<std::string> SmallText);
+
+	std::optional<std::string> SmallUrl() const;
+	void SetSmallUrl(std::optional<std::string> SmallUrl);
 };
 
 class ActivityTimestamps {
@@ -515,11 +530,20 @@ class Activity {
 	discordpp::ActivityTypes Type() const;
 	void SetType(discordpp::ActivityTypes Type);
 
+	std::optional<discordpp::StatusDisplayTypes> StatusDisplayType() const;
+	void SetStatusDisplayType(std::optional<discordpp::StatusDisplayTypes> StatusDisplayType);
+
 	std::optional<std::string> State() const;
 	void SetState(std::optional<std::string> State);
 
+	std::optional<std::string> StateUrl() const;
+	void SetStateUrl(std::optional<std::string> StateUrl);
+
 	std::optional<std::string> Details() const;
 	void SetDetails(std::optional<std::string> Details);
+
+	std::optional<std::string> DetailsUrl() const;
+	void SetDetailsUrl(std::optional<std::string> DetailsUrl);
 
 	std::optional<uint64_t> ApplicationId() const;
 	void SetApplicationId(std::optional<uint64_t> ApplicationId);
@@ -633,6 +657,9 @@ class AuthorizationArgs {
 
 	std::optional<discordpp::IntegrationType> IntegrationType() const;
 	void SetIntegrationType(std::optional<discordpp::IntegrationType> IntegrationType);
+
+	std::optional<std::string> CustomSchemeParam() const;
+	void SetCustomSchemeParam(std::optional<std::string> CustomSchemeParam);
 };
 
 class DeviceAuthorizationArgs {
@@ -1048,6 +1075,18 @@ class AudioDevice {
 	void SetIsDefault(bool IsDefault);
 };
 
+class UserMessageSummary {
+
+
+	UserMessageSummary(const UserMessageSummary &arg0);
+
+	void Drop();
+
+	uint64_t LastMessageId() const;
+
+	uint64_t UserId() const;
+};
+
 class ClientCreateOptions {
 
 
@@ -1065,6 +1104,10 @@ class ClientCreateOptions {
 
 	discordpp::AudioSystem ExperimentalAudioSystem() const;
 	void SetExperimentalAudioSystem(discordpp::AudioSystem ExperimentalAudioSystem);
+
+	bool ExperimentalAndroidPreventCommsForBluetooth() const;
+	void SetExperimentalAndroidPreventCommsForBluetooth(
+			bool ExperimentalAndroidPreventCommsForBluetooth);
 };
 
 class Client {
@@ -1185,6 +1228,14 @@ class Client {
 			std::function<void(discordpp::ClientResult result,
 					std::vector<discordpp::MessageHandle> messages)>;
 
+	using UserMessageSummariesCallback =
+			std::function<void(discordpp::ClientResult result,
+					std::vector<discordpp::UserMessageSummary> summaries)>;
+
+	using UserMessagesWithLimitCallback =
+			std::function<void(discordpp::ClientResult result,
+					std::vector<discordpp::MessageHandle> messages)>;
+
 	using ProvisionalUserMergeRequiredCallback = std::function<void()>;
 
 	using OpenMessageInDiscordCallback = std::function<void(discordpp::ClientResult result)>;
@@ -1217,6 +1268,9 @@ class Client {
 	using GetUserGuildsCallback = std::function<void(discordpp::ClientResult result,
 			std::vector<discordpp::GuildMinimal> guilds)>;
 
+	using JoinLinkedLobbyGuildCallback =
+			std::function<void(discordpp::ClientResult result, std::string inviteUrl)>;
+
 	using LeaveLobbyCallback = std::function<void(discordpp::ClientResult result)>;
 
 	using LinkOrUnlinkChannelCallback = std::function<void(discordpp::ClientResult result)>;
@@ -1241,6 +1295,9 @@ class Client {
 	using ActivityInviteCallback = std::function<void(discordpp::ActivityInvite invite)>;
 
 	using ActivityJoinCallback = std::function<void(std::string joinSecret)>;
+
+	using ActivityJoinWithApplicationCallback =
+			std::function<void(uint64_t applicationId, std::string joinSecret)>;
 
 	using UpdateStatusCallback = std::function<void(discordpp::ClientResult result)>;
 
@@ -1471,6 +1528,12 @@ class Client {
 
 	std::optional<discordpp::MessageHandle> GetMessageHandle(uint64_t messageId) const;
 
+	void GetUserMessageSummaries(discordpp::Client::UserMessageSummariesCallback cb);
+
+	void GetUserMessagesWithLimit(uint64_t recipientId,
+			int32_t limit,
+			discordpp::Client::UserMessagesWithLimitCallback cb);
+
 	void OpenMessageInDiscord(
 			uint64_t messageId,
 			discordpp::Client::ProvisionalUserMergeRequiredCallback provisionalUserMergeRequiredCallback,
@@ -1544,6 +1607,11 @@ class Client {
 
 	void GetUserGuilds(discordpp::Client::GetUserGuildsCallback cb);
 
+	void JoinLinkedLobbyGuild(
+			uint64_t lobbyId,
+			discordpp::Client::ProvisionalUserMergeRequiredCallback provisionalUserMergeRequiredCallback,
+			discordpp::Client::JoinLinkedLobbyGuildCallback callback);
+
 	void LeaveLobby(uint64_t lobbyId, discordpp::Client::LeaveLobbyCallback callback);
 
 	void LinkChannelToLobby(uint64_t lobbyId,
@@ -1589,6 +1657,9 @@ class Client {
 	void SetActivityInviteUpdatedCallback(discordpp::Client::ActivityInviteCallback cb);
 
 	void SetActivityJoinCallback(discordpp::Client::ActivityJoinCallback cb);
+
+	void SetActivityJoinWithApplicationCallback(
+			discordpp::Client::ActivityJoinWithApplicationCallback cb);
 
 	void SetOnlineStatus(discordpp::StatusType status,
 			discordpp::Client::UpdateStatusCallback callback);
@@ -1648,6 +1719,8 @@ class Client {
 
 
 	discordpp::UserHandle GetCurrentUser() const;
+
+	std::optional<discordpp::UserHandle> GetCurrentUserV2() const;
 
 	void GetDiscordClientConnectedUser(
 			uint64_t applicationId,
@@ -1712,6 +1785,18 @@ inline const char *EnumToString(discordpp::ActivityTypes value) {
 			return "Competing";
 		case discordpp::ActivityTypes::HangStatus:
 			return "HangStatus";
+		default:
+			return "unknown";
+	}
+}
+inline const char *EnumToString(discordpp::StatusDisplayTypes value) {
+	switch (value) {
+		case discordpp::StatusDisplayTypes::Name:
+			return "Name";
+		case discordpp::StatusDisplayTypes::State:
+			return "State";
+		case discordpp::StatusDisplayTypes::Details:
+			return "Details";
 		default:
 			return "unknown";
 	}

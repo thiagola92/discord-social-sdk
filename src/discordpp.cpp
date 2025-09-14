@@ -7,14 +7,20 @@ void Discordpp::RunCallbacks() {
 	discordpp::RunCallbacks();
 }
 
-String Discordpp::EnumToString24(DiscordppUserHandleAvatarType::Enum value) {
+String Discordpp::EnumToString25(DiscordppUserHandleAvatarType::Enum value) {
 	discordpp::UserHandle::AvatarType p0 = (discordpp::UserHandle::AvatarType)value;
 
 	return String(discordpp::EnumToString(p0));
 }
 
-String Discordpp::EnumToString23(DiscordppStatusType::Enum value) {
+String Discordpp::EnumToString24(DiscordppStatusType::Enum value) {
 	discordpp::StatusType p0 = (discordpp::StatusType)value;
+
+	return String(discordpp::EnumToString(p0));
+}
+
+String Discordpp::EnumToString23(DiscordppStatusDisplayTypes::Enum value) {
+	discordpp::StatusDisplayTypes p0 = (discordpp::StatusDisplayTypes)value;
 
 	return String(discordpp::EnumToString(p0));
 }
@@ -160,6 +166,9 @@ String Discordpp::EnumToString0(DiscordppActivityActionTypes::Enum value) {
 void Discordpp::_bind_methods() {
 	ClassDB::bind_static_method("Discordpp", D_METHOD("RunCallbacks"),
 			&Discordpp::RunCallbacks);
+
+	ClassDB::bind_static_method("Discordpp", D_METHOD("EnumToString25", "value"),
+			&Discordpp::EnumToString25);
 
 	ClassDB::bind_static_method("Discordpp", D_METHOD("EnumToString24", "value"),
 			&Discordpp::EnumToString24);

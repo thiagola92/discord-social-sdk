@@ -147,11 +147,17 @@
 		</method>
 		<method name="EnumToString23" qualifiers="static">
 			<return type="String" />
-			<param index="0" name="value" type="int" enum="DiscordppStatusType.Enum" />
+			<param index="0" name="value" type="int" enum="DiscordppStatusDisplayTypes.Enum" />
 			<description>
 			</description>
 		</method>
 		<method name="EnumToString24" qualifiers="static">
+			<return type="String" />
+			<param index="0" name="value" type="int" enum="DiscordppStatusType.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="EnumToString25" qualifiers="static">
 			<return type="String" />
 			<param index="0" name="value" type="int" enum="DiscordppUserHandleAvatarType.Enum" />
 			<description>

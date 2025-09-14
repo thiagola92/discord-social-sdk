@@ -29,6 +29,13 @@ enum ActivityTypes {
 }
 
 
+enum StatusDisplayTypes {
+    Name:  0,
+    State:  1,
+    Details:  2,
+}
+
+
 enum ActivityGamePlatforms {
     Desktop:  1,
     Xbox:  2,
@@ -276,10 +283,14 @@ func LargeImage() -> std::optional<std::string>
 func SetLargeImage(std::optional<std::string> LargeImage) -> void
 func LargeText() -> std::optional<std::string>
 func SetLargeText(std::optional<std::string> LargeText) -> void
+func LargeUrl() -> std::optional<std::string>
+func SetLargeUrl(std::optional<std::string> LargeUrl) -> void
 func SmallImage() -> std::optional<std::string>
 func SetSmallImage(std::optional<std::string> SmallImage) -> void
 func SmallText() -> std::optional<std::string>
 func SetSmallText(std::optional<std::string> SmallText) -> void
+func SmallUrl() -> std::optional<std::string>
+func SetSmallUrl(std::optional<std::string> SmallUrl) -> void
 }
 
 
@@ -365,10 +376,16 @@ func Name() -> std::string
 func SetName(std::string Name) -> void
 func Type() -> discordpp::ActivityTypes
 func SetType(discordpp::ActivityTypes Type) -> void
+func StatusDisplayType() -> std::optional<discordpp::StatusDisplayTypes>
+func SetStatusDisplayType(std::optional<discordpp::StatusDisplayTypes> StatusDisplayType) -> void
 func State() -> std::optional<std::string>
 func SetState(std::optional<std::string> State) -> void
+func StateUrl() -> std::optional<std::string>
+func SetStateUrl(std::optional<std::string> StateUrl) -> void
 func Details() -> std::optional<std::string>
 func SetDetails(std::optional<std::string> Details) -> void
+func DetailsUrl() -> std::optional<std::string>
+func SetDetailsUrl(std::optional<std::string> DetailsUrl) -> void
 func ApplicationId() -> std::optional<uint64_t>
 func SetApplicationId(std::optional<uint64_t> ApplicationId) -> void
 func ParentApplicationId() -> std::optional<uint64_t>
@@ -466,6 +483,8 @@ func CodeChallenge() -> std::optional<discordpp::AuthorizationCodeChallenge>
 func SetCodeChallenge(std::optional<discordpp::AuthorizationCodeChallenge> CodeChallenge) -> void
 func IntegrationType() -> std::optional<discordpp::IntegrationType>
 func SetIntegrationType(std::optional<discordpp::IntegrationType> IntegrationType) -> void
+func CustomSchemeParam() -> std::optional<std::string>
+func SetCustomSchemeParam(std::optional<std::string> CustomSchemeParam) -> void
 }
 
 
@@ -802,6 +821,19 @@ func SetIsDefault(bool IsDefault) -> void
 }
 
 
+class UserMessageSummary {
+
+-----
+
+-----
+constructor (const UserMessageSummary & arg0) 
+-----
+func Drop() -> void
+func LastMessageId() -> uint64_t
+func UserId() -> uint64_t
+}
+
+
 class ClientCreateOptions {
 
 -----
@@ -817,6 +849,8 @@ func ApiBase() -> std::string
 func SetApiBase(std::string ApiBase) -> void
 func ExperimentalAudioSystem() -> discordpp::AudioSystem
 func SetExperimentalAudioSystem(discordpp::AudioSystem ExperimentalAudioSystem) -> void
+func ExperimentalAndroidPreventCommsForBluetooth() -> bool
+func SetExperimentalAndroidPreventCommsForBluetooth(bool ExperimentalAndroidPreventCommsForBluetooth) -> void
 }
 
 
@@ -872,6 +906,8 @@ callback UpdateTokenCallback(discordpp::ClientResult result)
 callback DeleteUserMessageCallback(discordpp::ClientResult result)
 callback EditUserMessageCallback(discordpp::ClientResult result)
 callback GetLobbyMessagesCallback(discordpp::ClientResult result, std::vector<discordpp::MessageHandle> messages)
+callback UserMessageSummariesCallback(discordpp::ClientResult result, std::vector<discordpp::UserMessageSummary> summaries)
+callback UserMessagesWithLimitCallback(discordpp::ClientResult result, std::vector<discordpp::MessageHandle> messages)
 callback ProvisionalUserMergeRequiredCallback()
 callback OpenMessageInDiscordCallback(discordpp::ClientResult result)
 callback SendUserMessageCallback(discordpp::ClientResult result, uint64_t messageId)
@@ -884,6 +920,7 @@ callback OnStatusChanged(discordpp::Client::Status status, discordpp::Client::Er
 callback CreateOrJoinLobbyCallback(discordpp::ClientResult result, uint64_t lobbyId)
 callback GetGuildChannelsCallback(discordpp::ClientResult result, std::vector<discordpp::GuildChannel> guildChannels)
 callback GetUserGuildsCallback(discordpp::ClientResult result, std::vector<discordpp::GuildMinimal> guilds)
+callback JoinLinkedLobbyGuildCallback(discordpp::ClientResult result, std::string inviteUrl)
 callback LeaveLobbyCallback(discordpp::ClientResult result)
 callback LinkOrUnlinkChannelCallback(discordpp::ClientResult result)
 callback LobbyCreatedCallback(uint64_t lobbyId)
@@ -896,6 +933,7 @@ callback AcceptActivityInviteCallback(discordpp::ClientResult result, std::strin
 callback SendActivityInviteCallback(discordpp::ClientResult result)
 callback ActivityInviteCallback(discordpp::ActivityInvite invite)
 callback ActivityJoinCallback(std::string joinSecret)
+callback ActivityJoinWithApplicationCallback(uint64_t applicationId, std::string joinSecret)
 callback UpdateStatusCallback(discordpp::ClientResult result)
 callback UpdateRichPresenceCallback(discordpp::ClientResult result)
 callback UpdateRelationshipCallback(discordpp::ClientResult result)
@@ -986,6 +1024,8 @@ func EditUserMessage(uint64_t recipientId, uint64_t messageId, std::string const
 func GetChannelHandle(uint64_t channelId) -> std::optional<discordpp::ChannelHandle>
 func GetLobbyMessagesWithLimit(uint64_t lobbyId, int32_t limit, discordpp::Client::GetLobbyMessagesCallback cb) -> void
 func GetMessageHandle(uint64_t messageId) -> std::optional<discordpp::MessageHandle>
+func GetUserMessageSummaries(discordpp::Client::UserMessageSummariesCallback cb) -> void
+func GetUserMessagesWithLimit(uint64_t recipientId, int32_t limit, discordpp::Client::UserMessagesWithLimitCallback cb) -> void
 func OpenMessageInDiscord(uint64_t messageId, discordpp::Client::ProvisionalUserMergeRequiredCallback provisionalUserMergeRequiredCallback, discordpp::Client::OpenMessageInDiscordCallback callback) -> void
 func SendLobbyMessage(uint64_t lobbyId, std::string const & content, discordpp::Client::SendUserMessageCallback cb) -> void
 func SendLobbyMessageWithMetadata(uint64_t lobbyId, std::string const & content, std::unordered_map<std::string, std::string> metadata, discordpp::Client::SendUserMessageCallback cb) -> void
@@ -1011,6 +1051,7 @@ func GetGuildChannels(uint64_t guildId, discordpp::Client::GetGuildChannelsCallb
 func GetLobbyHandle(uint64_t lobbyId) -> std::optional<discordpp::LobbyHandle>
 func GetLobbyIds() -> std::vector<uint64_t>
 func GetUserGuilds(discordpp::Client::GetUserGuildsCallback cb) -> void
+func JoinLinkedLobbyGuild(uint64_t lobbyId, discordpp::Client::ProvisionalUserMergeRequiredCallback provisionalUserMergeRequiredCallback, discordpp::Client::JoinLinkedLobbyGuildCallback callback) -> void
 func LeaveLobby(uint64_t lobbyId, discordpp::Client::LeaveLobbyCallback callback) -> void
 func LinkChannelToLobby(uint64_t lobbyId, uint64_t channelId, discordpp::Client::LinkOrUnlinkChannelCallback callback) -> void
 func SetLobbyCreatedCallback(discordpp::Client::LobbyCreatedCallback cb) -> void
@@ -1030,6 +1071,7 @@ func SendActivityJoinRequestReply(discordpp::ActivityInvite invite, discordpp::C
 func SetActivityInviteCreatedCallback(discordpp::Client::ActivityInviteCallback cb) -> void
 func SetActivityInviteUpdatedCallback(discordpp::Client::ActivityInviteCallback cb) -> void
 func SetActivityJoinCallback(discordpp::Client::ActivityJoinCallback cb) -> void
+func SetActivityJoinWithApplicationCallback(discordpp::Client::ActivityJoinWithApplicationCallback cb) -> void
 func SetOnlineStatus(discordpp::StatusType status, discordpp::Client::UpdateStatusCallback callback) -> void
 func UpdateRichPresence(discordpp::Activity activity, discordpp::Client::UpdateRichPresenceCallback cb) -> void
 func AcceptDiscordFriendRequest(uint64_t userId, discordpp::Client::UpdateRelationshipCallback cb) -> void
@@ -1053,6 +1095,7 @@ func SetRelationshipCreatedCallback(discordpp::Client::RelationshipCreatedCallba
 func SetRelationshipDeletedCallback(discordpp::Client::RelationshipDeletedCallback cb) -> void
 func UnblockUser(uint64_t userId, discordpp::Client::UpdateRelationshipCallback cb) -> void
 func GetCurrentUser() -> discordpp::UserHandle
+func GetCurrentUserV2() -> std::optional<discordpp::UserHandle>
 func GetDiscordClientConnectedUser(uint64_t applicationId, discordpp::Client::GetDiscordClientConnectedUserCallback callback) -> void
 func GetUser(uint64_t userId) -> std::optional<discordpp::UserHandle>
 func SetRelationshipGroupsUpdatedCallback(discordpp::Client::RelationshipGroupsUpdatedCallback cb) -> void
@@ -1077,6 +1120,7 @@ func GuildId() -> uint64_t
 static func EnumToString(discordpp::ActivityActionTypes value) -> const char *
 static func EnumToString(discordpp::ActivityPartyPrivacy value) -> const char *
 static func EnumToString(discordpp::ActivityTypes value) -> const char *
+static func EnumToString(discordpp::StatusDisplayTypes value) -> const char *
 static func EnumToString(discordpp::ActivityGamePlatforms value) -> const char *
 static func EnumToString(discordpp::ErrorType value) -> const char *
 static func EnumToString(discordpp::HttpStatusCode value) -> const char *

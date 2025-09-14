@@ -37,6 +37,16 @@ void DiscordppClientCreateOptions::SetExperimentalAudioSystem(DiscordppAudioSyst
 	obj->SetExperimentalAudioSystem(p0);
 }
 
+bool DiscordppClientCreateOptions::ExperimentalAndroidPreventCommsForBluetooth() {
+	return obj->ExperimentalAndroidPreventCommsForBluetooth();
+}
+
+void DiscordppClientCreateOptions::SetExperimentalAndroidPreventCommsForBluetooth(bool ExperimentalAndroidPreventCommsForBluetooth) {
+	bool p0 = ExperimentalAndroidPreventCommsForBluetooth;
+
+	obj->SetExperimentalAndroidPreventCommsForBluetooth(p0);
+}
+
 void DiscordppClientCreateOptions::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("Drop"),
 			&DiscordppClientCreateOptions::Drop);
@@ -58,4 +68,10 @@ void DiscordppClientCreateOptions::_bind_methods() {
 
 	ClassDB::bind_method(D_METHOD("SetExperimentalAudioSystem", "ExperimentalAudioSystem"),
 			&DiscordppClientCreateOptions::SetExperimentalAudioSystem);
+
+	ClassDB::bind_method(D_METHOD("ExperimentalAndroidPreventCommsForBluetooth"),
+			&DiscordppClientCreateOptions::ExperimentalAndroidPreventCommsForBluetooth);
+
+	ClassDB::bind_method(D_METHOD("SetExperimentalAndroidPreventCommsForBluetooth", "ExperimentalAndroidPreventCommsForBluetooth"),
+			&DiscordppClientCreateOptions::SetExperimentalAndroidPreventCommsForBluetooth);
 }

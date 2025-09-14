@@ -656,6 +656,41 @@ Variant DiscordppClient::GetMessageHandle(int64_t messageId) {
 	return Variant(memnew(DiscordppMessageHandle{ t_r }));
 }
 
+void DiscordppClient::GetUserMessageSummaries(Callable cb) {
+	obj->GetUserMessageSummaries([cb](auto result, auto summaries) {
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
+
+		TypedArray<DiscordppUserMessageSummary> p1 = TypedArray<DiscordppUserMessageSummary>();
+
+		for (auto i : summaries) {
+			discordpp::UserMessageSummary *t_i = memnew(discordpp::UserMessageSummary(std::move(i)));
+			p1.push_back(memnew(DiscordppUserMessageSummary{ t_i }));
+		}
+
+		cb.call(p0, p1);
+	});
+}
+
+void DiscordppClient::GetUserMessagesWithLimit(int64_t recipientId, int64_t limit, Callable cb) {
+	int64_t p0 = recipientId;
+	int64_t p1 = limit;
+
+	obj->GetUserMessagesWithLimit(p0, p1, [cb](auto result, auto messages) {
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordppClientResult *p0 = memnew(DiscordppClientResult{ t_p0 });
+
+		TypedArray<DiscordppMessageHandle> p1 = TypedArray<DiscordppMessageHandle>();
+
+		for (auto i : messages) {
+			discordpp::MessageHandle *t_i = memnew(discordpp::MessageHandle(std::move(i)));
+			p1.push_back(memnew(DiscordppMessageHandle{ t_i }));
+		}
+
+		cb.call(p0, p1);
+	});
+}
+
 void DiscordppClient::OpenMessageInDiscord(int64_t messageId, Callable provisionalUserMergeRequiredCallback, Callable callback) {
 	int64_t p0 = messageId;
 
@@ -940,6 +975,17 @@ void DiscordppClient::GetUserGuilds(Callable cb) {
 	});
 }
 
+void DiscordppClient::JoinLinkedLobbyGuild(int64_t lobbyId, Callable provisionalUserMergeRequiredCallback, Callable callback) {
+	int64_t p0 = lobbyId;
+
+	obj->JoinLinkedLobbyGuild(p0, [provisionalUserMergeRequiredCallback]() { provisionalUserMergeRequiredCallback.call(); }, [callback](auto result, auto inviteUrl) {
+        discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+    DiscordppClientResult *p0 = memnew(DiscordppClientResult { t_p0 });
+    
+    String p1 = String(inviteUrl.c_str());
+        callback.call(p0, p1); });
+}
+
 void DiscordppClient::LeaveLobby(int64_t lobbyId, Callable callback) {
 	int64_t p0 = lobbyId;
 
@@ -1105,6 +1151,14 @@ void DiscordppClient::SetActivityJoinCallback(Callable cb) {
 	obj->SetActivityJoinCallback([cb](auto joinSecret) {
 		String p0 = String(joinSecret.c_str());
 		cb.call(p0);
+	});
+}
+
+void DiscordppClient::SetActivityJoinWithApplicationCallback(Callable cb) {
+	obj->SetActivityJoinWithApplicationCallback([cb](auto applicationId, auto joinSecret) {
+		int64_t p0 = (int64_t)applicationId;
+		String p1 = String(joinSecret.c_str());
+		cb.call(p0, p1);
 	});
 }
 
@@ -1352,6 +1406,17 @@ DiscordppUserHandle *DiscordppClient::GetCurrentUser() {
 	discordpp::UserHandle r = obj->GetCurrentUser();
 	discordpp::UserHandle *t_r = memnew(discordpp::UserHandle(std::move(r)));
 	return memnew(DiscordppUserHandle{ t_r });
+}
+
+Variant DiscordppClient::GetCurrentUserV2() {
+	auto r = obj->GetCurrentUserV2();
+
+	if (!r.has_value()) {
+		return nullptr;
+	}
+
+	discordpp::UserHandle *t_r = memnew(discordpp::UserHandle(std::move(r.value())));
+	return Variant(memnew(DiscordppUserHandle{ t_r }));
 }
 
 void DiscordppClient::GetDiscordClientConnectedUser(int64_t applicationId, Callable callback) {
@@ -1627,6 +1692,12 @@ void DiscordppClient::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("GetMessageHandle", "messageId"),
 			&DiscordppClient::GetMessageHandle);
 
+	ClassDB::bind_method(D_METHOD("GetUserMessageSummaries", "cb"),
+			&DiscordppClient::GetUserMessageSummaries);
+
+	ClassDB::bind_method(D_METHOD("GetUserMessagesWithLimit", "recipientId", "limit", "cb"),
+			&DiscordppClient::GetUserMessagesWithLimit);
+
 	ClassDB::bind_method(D_METHOD("OpenMessageInDiscord", "messageId", "provisionalUserMergeRequiredCallback", "callback"),
 			&DiscordppClient::OpenMessageInDiscord);
 
@@ -1702,6 +1773,9 @@ void DiscordppClient::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("GetUserGuilds", "cb"),
 			&DiscordppClient::GetUserGuilds);
 
+	ClassDB::bind_method(D_METHOD("JoinLinkedLobbyGuild", "lobbyId", "provisionalUserMergeRequiredCallback", "callback"),
+			&DiscordppClient::JoinLinkedLobbyGuild);
+
 	ClassDB::bind_method(D_METHOD("LeaveLobby", "lobbyId", "callback"),
 			&DiscordppClient::LeaveLobby);
 
@@ -1758,6 +1832,9 @@ void DiscordppClient::_bind_methods() {
 
 	ClassDB::bind_method(D_METHOD("SetActivityJoinCallback", "cb"),
 			&DiscordppClient::SetActivityJoinCallback);
+
+	ClassDB::bind_method(D_METHOD("SetActivityJoinWithApplicationCallback", "cb"),
+			&DiscordppClient::SetActivityJoinWithApplicationCallback);
 
 	ClassDB::bind_method(D_METHOD("SetOnlineStatus", "status", "callback"),
 			&DiscordppClient::SetOnlineStatus);
@@ -1827,6 +1904,9 @@ void DiscordppClient::_bind_methods() {
 
 	ClassDB::bind_method(D_METHOD("GetCurrentUser"),
 			&DiscordppClient::GetCurrentUser);
+
+	ClassDB::bind_method(D_METHOD("GetCurrentUserV2"),
+			&DiscordppClient::GetCurrentUserV2);
 
 	ClassDB::bind_method(D_METHOD("GetDiscordClientConnectedUser", "applicationId", "callback"),
 			&DiscordppClient::GetDiscordClientConnectedUser);

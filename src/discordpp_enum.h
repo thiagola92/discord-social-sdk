@@ -79,6 +79,28 @@ public:
 	};
 };
 
+class DiscordppStatusDisplayTypes : public RefCounted {
+	GDCLASS(DiscordppStatusDisplayTypes, RefCounted)
+
+private:
+	DiscordppStatusDisplayTypes() {}
+	~DiscordppStatusDisplayTypes() {}
+
+protected:
+	static void _bind_methods() {
+		BIND_ENUM_CONSTANT(Name);
+		BIND_ENUM_CONSTANT(State);
+		BIND_ENUM_CONSTANT(Details);
+	}
+
+public:
+	enum Enum {
+		Name = 0,
+		State = 1,
+		Details = 2,
+	};
+};
+
 class DiscordppActivityGamePlatforms : public RefCounted {
 	GDCLASS(DiscordppActivityGamePlatforms, RefCounted)
 
@@ -779,6 +801,7 @@ public:
 VARIANT_ENUM_CAST(DiscordppActivityActionTypes::Enum);
 VARIANT_ENUM_CAST(DiscordppActivityPartyPrivacy::Enum);
 VARIANT_ENUM_CAST(DiscordppActivityTypes::Enum);
+VARIANT_ENUM_CAST(DiscordppStatusDisplayTypes::Enum);
 VARIANT_ENUM_CAST(DiscordppActivityGamePlatforms::Enum);
 VARIANT_ENUM_CAST(DiscordppErrorType::Enum);
 VARIANT_ENUM_CAST(DiscordppHttpStatusCode::Enum);

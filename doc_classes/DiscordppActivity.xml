@@ -32,6 +32,12 @@
 				Returns [String] or [code]null[/code].
 			</description>
 		</method>
+		<method name="DetailsUrl">
+			<return type="Variant" />
+			<description>
+				Returns [String] or [code]null[/code].
+			</description>
+		</method>
 		<method name="Drop">
 			<return type="void" />
 			<description>
@@ -92,6 +98,13 @@
 				Where [param Details] is [String] or [code]null[/code].
 			</description>
 		</method>
+		<method name="SetDetailsUrl">
+			<return type="void" />
+			<param index="0" name="DetailsUrl" type="Variant" />
+			<description>
+				Where [param DetailsUrl] is [String] or [code]null[/code].
+			</description>
+		</method>
 		<method name="SetName">
 			<return type="void" />
 			<param index="0" name="Name" type="String" />
@@ -126,6 +139,20 @@
 				Where [param State] is [String] or [code]null[/code].
 			</description>
 		</method>
+		<method name="SetStateUrl">
+			<return type="void" />
+			<param index="0" name="StateUrl" type="Variant" />
+			<description>
+				Where [param StateUrl] is [String] or [code]null[/code].
+			</description>
+		</method>
+		<method name="SetStatusDisplayType">
+			<return type="void" />
+			<param index="0" name="StatusDisplayType" type="Variant" />
+			<description>
+				Where [param StatusDisplayType] is [enum DiscordppStatusDisplayTypes.Enum] or [code]null[/code].
+			</description>
+		</method>
 		<method name="SetSupportedPlatforms">
 			<return type="void" />
 			<param index="0" name="SupportedPlatforms" type="int" enum="DiscordppActivityGamePlatforms.Enum" />
@@ -149,6 +176,18 @@
 			<return type="Variant" />
 			<description>
 				Returns [String] or [code]null[/code].
+			</description>
+		</method>
+		<method name="StateUrl">
+			<return type="Variant" />
+			<description>
+				Returns [String] or [code]null[/code].
+			</description>
+		</method>
+		<method name="StatusDisplayType">
+			<return type="Variant" />
+			<description>
+				Returns [enum DiscordppStatusDisplayTypes.Enum] or [code]null[/code].
 			</description>
 		</method>
 		<method name="SupportedPlatforms">

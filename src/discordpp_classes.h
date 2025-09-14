@@ -39,6 +39,7 @@ class DiscordppLobbyHandle;
 class DiscordppAdditionalContent;
 class DiscordppMessageHandle;
 class DiscordppAudioDevice;
+class DiscordppUserMessageSummary;
 class DiscordppClientCreateOptions;
 class DiscordppClient;
 class DiscordppCallInfoHandle;
@@ -54,8 +55,9 @@ protected:
 
 public:
 	static void RunCallbacks();
-	static String EnumToString24(DiscordppUserHandleAvatarType::Enum value);
-	static String EnumToString23(DiscordppStatusType::Enum value);
+	static String EnumToString25(DiscordppUserHandleAvatarType::Enum value);
+	static String EnumToString24(DiscordppStatusType::Enum value);
+	static String EnumToString23(DiscordppStatusDisplayTypes::Enum value);
 	static String EnumToString22(DiscordppRelationshipType::Enum value);
 	static String EnumToString21(DiscordppRelationshipGroupType::Enum value);
 	static String EnumToString20(DiscordppLoggingSeverity::Enum value);
@@ -155,10 +157,14 @@ public:
 	void SetLargeImage(Variant LargeImage);
 	Variant LargeText();
 	void SetLargeText(Variant LargeText);
+	Variant LargeUrl();
+	void SetLargeUrl(Variant LargeUrl);
 	Variant SmallImage();
 	void SetSmallImage(Variant SmallImage);
 	Variant SmallText();
 	void SetSmallText(Variant SmallText);
+	Variant SmallUrl();
+	void SetSmallUrl(Variant SmallUrl);
 
 	DiscordppActivityAssets() {
 		this->obj = memnew(discordpp::ActivityAssets);
@@ -354,10 +360,16 @@ public:
 	void SetName(String Name);
 	DiscordppActivityTypes::Enum Type();
 	void SetType(DiscordppActivityTypes::Enum Type);
+	Variant StatusDisplayType();
+	void SetStatusDisplayType(Variant StatusDisplayType);
 	Variant State();
 	void SetState(Variant State);
+	Variant StateUrl();
+	void SetStateUrl(Variant StateUrl);
 	Variant Details();
 	void SetDetails(Variant Details);
+	Variant DetailsUrl();
+	void SetDetailsUrl(Variant DetailsUrl);
 	Variant ApplicationId();
 	void SetApplicationId(Variant ApplicationId);
 	Variant ParentApplicationId();
@@ -539,6 +551,8 @@ public:
 	void SetCodeChallenge(Variant CodeChallenge);
 	Variant IntegrationType();
 	void SetIntegrationType(Variant IntegrationType);
+	Variant CustomSchemeParam();
+	void SetCustomSchemeParam(Variant CustomSchemeParam);
 
 	DiscordppAuthorizationArgs() {
 		this->obj = memnew(discordpp::AuthorizationArgs);
@@ -1187,6 +1201,39 @@ public:
 	}
 };
 
+class DiscordppUserMessageSummary : public RefCounted {
+	GDCLASS(DiscordppUserMessageSummary, RefCounted)
+
+private:
+	discordpp::UserMessageSummary *obj;
+	DiscordppUserMessageSummary() {}
+
+protected:
+	static void _bind_methods();
+
+public:
+	// Internal usage.
+	discordpp::UserMessageSummary *unwrap() {
+		return obj;
+	}
+
+	void Drop();
+	int64_t LastMessageId();
+	int64_t UserId();
+
+	DiscordppUserMessageSummary(discordpp::UserMessageSummary *obj) {
+		this->obj = obj;
+	}
+
+	//DiscordppUserMessageSummary(discordpp::UserMessageSummary &&obj) : obj(std::move(obj)) {
+
+	//}
+
+	~DiscordppUserMessageSummary() {
+		memdelete(this->obj);
+	}
+};
+
 class DiscordppClientCreateOptions : public RefCounted {
 	GDCLASS(DiscordppClientCreateOptions, RefCounted)
 
@@ -1209,6 +1256,8 @@ public:
 	void SetApiBase(String ApiBase);
 	DiscordppAudioSystem::Enum ExperimentalAudioSystem();
 	void SetExperimentalAudioSystem(DiscordppAudioSystem::Enum ExperimentalAudioSystem);
+	bool ExperimentalAndroidPreventCommsForBluetooth();
+	void SetExperimentalAndroidPreventCommsForBluetooth(bool ExperimentalAndroidPreventCommsForBluetooth);
 
 	DiscordppClientCreateOptions() {
 		this->obj = memnew(discordpp::ClientCreateOptions);
@@ -1317,6 +1366,8 @@ public:
 	Variant GetChannelHandle(int64_t channelId);
 	void GetLobbyMessagesWithLimit(int64_t lobbyId, int64_t limit, Callable cb);
 	Variant GetMessageHandle(int64_t messageId);
+	void GetUserMessageSummaries(Callable cb);
+	void GetUserMessagesWithLimit(int64_t recipientId, int64_t limit, Callable cb);
 	void OpenMessageInDiscord(int64_t messageId, Callable provisionalUserMergeRequiredCallback, Callable callback);
 	void SendLobbyMessage(int64_t lobbyId, String content, Callable cb);
 	void SendLobbyMessageWithMetadata(int64_t lobbyId, String content, TypedDictionary<String, String> metadata, Callable cb);
@@ -1342,6 +1393,7 @@ public:
 	Variant GetLobbyHandle(int64_t lobbyId);
 	TypedArray<int64_t> GetLobbyIds();
 	void GetUserGuilds(Callable cb);
+	void JoinLinkedLobbyGuild(int64_t lobbyId, Callable provisionalUserMergeRequiredCallback, Callable callback);
 	void LeaveLobby(int64_t lobbyId, Callable callback);
 	void LinkChannelToLobby(int64_t lobbyId, int64_t channelId, Callable callback);
 	void SetLobbyCreatedCallback(Callable cb);
@@ -1361,6 +1413,7 @@ public:
 	void SetActivityInviteCreatedCallback(Callable cb);
 	void SetActivityInviteUpdatedCallback(Callable cb);
 	void SetActivityJoinCallback(Callable cb);
+	void SetActivityJoinWithApplicationCallback(Callable cb);
 	void SetOnlineStatus(DiscordppStatusType::Enum status, Callable callback);
 	void UpdateRichPresence(DiscordppActivity *activity, Callable cb);
 	void AcceptDiscordFriendRequest(int64_t userId, Callable cb);
@@ -1384,6 +1437,7 @@ public:
 	void SetRelationshipDeletedCallback(Callable cb);
 	void UnblockUser(int64_t userId, Callable cb);
 	DiscordppUserHandle *GetCurrentUser();
+	Variant GetCurrentUserV2();
 	void GetDiscordClientConnectedUser(int64_t applicationId, Callable callback);
 	Variant GetUser(int64_t userId);
 	void SetRelationshipGroupsUpdatedCallback(Callable cb);

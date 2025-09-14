@@ -19,6 +19,12 @@
 				Returns [DiscordppAuthorizationCodeChallenge] or [code]null[/code].
 			</description>
 		</method>
+		<method name="CustomSchemeParam">
+			<return type="Variant" />
+			<description>
+				Returns [String] or [code]null[/code].
+			</description>
+		</method>
 		<method name="Drop">
 			<return type="void" />
 			<description>
@@ -52,6 +58,13 @@
 			<param index="0" name="CodeChallenge" type="Variant" />
 			<description>
 				Where [param CodeChallenge] is [DiscordppAuthorizationCodeChallenge] or [code]null[/code].
+			</description>
+		</method>
+		<method name="SetCustomSchemeParam">
+			<return type="void" />
+			<param index="0" name="CustomSchemeParam" type="Variant" />
+			<description>
+				Where [param CustomSchemeParam] is [String] or [code]null[/code].
 			</description>
 		</method>
 		<method name="SetIntegrationType">

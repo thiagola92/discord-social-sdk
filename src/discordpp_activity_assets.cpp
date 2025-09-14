@@ -47,6 +47,26 @@ void DiscordppActivityAssets::SetLargeText(Variant LargeText) {
 	obj->SetLargeText(p0);
 }
 
+Variant DiscordppActivityAssets::LargeUrl() {
+	auto r = obj->LargeUrl();
+
+	if (!r.has_value()) {
+		return nullptr;
+	}
+
+	return Variant(r.value().c_str());
+}
+
+void DiscordppActivityAssets::SetLargeUrl(Variant LargeUrl) {
+	std::optional<std::string> p0;
+
+	if (LargeUrl.get_type() == Variant::STRING) {
+		p0 = LargeUrl.stringify().utf8().get_data();
+	}
+
+	obj->SetLargeUrl(p0);
+}
+
 Variant DiscordppActivityAssets::SmallImage() {
 	auto r = obj->SmallImage();
 
@@ -87,6 +107,26 @@ void DiscordppActivityAssets::SetSmallText(Variant SmallText) {
 	obj->SetSmallText(p0);
 }
 
+Variant DiscordppActivityAssets::SmallUrl() {
+	auto r = obj->SmallUrl();
+
+	if (!r.has_value()) {
+		return nullptr;
+	}
+
+	return Variant(r.value().c_str());
+}
+
+void DiscordppActivityAssets::SetSmallUrl(Variant SmallUrl) {
+	std::optional<std::string> p0;
+
+	if (SmallUrl.get_type() == Variant::STRING) {
+		p0 = SmallUrl.stringify().utf8().get_data();
+	}
+
+	obj->SetSmallUrl(p0);
+}
+
 void DiscordppActivityAssets::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("Drop"),
 			&DiscordppActivityAssets::Drop);
@@ -103,6 +143,12 @@ void DiscordppActivityAssets::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("SetLargeText", "LargeText"),
 			&DiscordppActivityAssets::SetLargeText);
 
+	ClassDB::bind_method(D_METHOD("LargeUrl"),
+			&DiscordppActivityAssets::LargeUrl);
+
+	ClassDB::bind_method(D_METHOD("SetLargeUrl", "LargeUrl"),
+			&DiscordppActivityAssets::SetLargeUrl);
+
 	ClassDB::bind_method(D_METHOD("SmallImage"),
 			&DiscordppActivityAssets::SmallImage);
 
@@ -114,4 +160,10 @@ void DiscordppActivityAssets::_bind_methods() {
 
 	ClassDB::bind_method(D_METHOD("SetSmallText", "SmallText"),
 			&DiscordppActivityAssets::SetSmallText);
+
+	ClassDB::bind_method(D_METHOD("SmallUrl"),
+			&DiscordppActivityAssets::SmallUrl);
+
+	ClassDB::bind_method(D_METHOD("SetSmallUrl", "SmallUrl"),
+			&DiscordppActivityAssets::SetSmallUrl);
 }

@@ -18,6 +18,11 @@
 			<description>
 			</description>
 		</method>
+		<method name="ExperimentalAndroidPreventCommsForBluetooth">
+			<return type="bool" />
+			<description>
+			</description>
+		</method>
 		<method name="ExperimentalAudioSystem">
 			<return type="int" enum="DiscordppAudioSystem.Enum" />
 			<description>
@@ -26,6 +31,12 @@
 		<method name="SetApiBase">
 			<return type="void" />
 			<param index="0" name="ApiBase" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="SetExperimentalAndroidPreventCommsForBluetooth">
+			<return type="void" />
+			<param index="0" name="ExperimentalAndroidPreventCommsForBluetooth" type="bool" />
 			<description>
 			</description>
 		</method>

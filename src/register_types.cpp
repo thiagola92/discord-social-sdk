@@ -18,6 +18,7 @@ void initialize_module(ModuleInitializationLevel p_level) {
 	GDREGISTER_ABSTRACT_CLASS(DiscordppActivityActionTypes);
 	GDREGISTER_ABSTRACT_CLASS(DiscordppActivityPartyPrivacy);
 	GDREGISTER_ABSTRACT_CLASS(DiscordppActivityTypes);
+	GDREGISTER_ABSTRACT_CLASS(DiscordppStatusDisplayTypes);
 	GDREGISTER_ABSTRACT_CLASS(DiscordppActivityGamePlatforms);
 	GDREGISTER_ABSTRACT_CLASS(DiscordppErrorType);
 	GDREGISTER_ABSTRACT_CLASS(DiscordppHttpStatusCode);
@@ -70,6 +71,7 @@ void initialize_module(ModuleInitializationLevel p_level) {
 	GDREGISTER_RUNTIME_CLASS(DiscordppAdditionalContent);
 	GDREGISTER_RUNTIME_CLASS(DiscordppMessageHandle);
 	GDREGISTER_RUNTIME_CLASS(DiscordppAudioDevice);
+	GDREGISTER_RUNTIME_CLASS(DiscordppUserMessageSummary);
 	GDREGISTER_RUNTIME_CLASS(DiscordppClientCreateOptions);
 	GDREGISTER_RUNTIME_CLASS(DiscordppClient);
 	GDREGISTER_RUNTIME_CLASS(DiscordppCallInfoHandle);

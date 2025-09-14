@@ -94,6 +94,21 @@ enum class ActivityTypes {
 	HangStatus = 6,
 };
 
+/// \brief Controls which Discord RichPresence field is displayed in the user's status.
+///
+/// See https://discord.com/developers/docs/rich-presence/overview for more information.
+enum class StatusDisplayTypes {
+
+	/// \brief Name
+	Name = 0,
+
+	/// \brief State
+	State = 1,
+
+	/// \brief Details
+	Details = 2,
+};
+
 /// \brief Represents the type of platforms that an activity invite can be accepted on.
 enum class ActivityGamePlatforms {
 
@@ -653,6 +668,7 @@ class LobbyHandle;
 class AdditionalContent;
 class MessageHandle;
 class AudioDevice;
+class UserMessageSummary;
 class ClientCreateOptions;
 class Client;
 class CallInfoHandle;
@@ -795,7 +811,7 @@ public:
 	/// \brief The primary image identifier or URL, rendered as a large square icon on a user's rich
 	/// presence.
 	///
-	/// If specified, must be a string between 1 and 256 characters.
+	/// If specified, must be a string between 1 and 300 characters.
 	std::optional<std::string> LargeImage() const;
 	/// Setter for ActivityAssets::LargeImage.
 	void SetLargeImage(std::optional<std::string> LargeImage);
@@ -807,9 +823,16 @@ public:
 	/// Setter for ActivityAssets::LargeText.
 	void SetLargeText(std::optional<std::string> LargeText);
 
-	/// \brief The secondary image, rendered as a small circle over the `largeImage`.
+	/// \brief A URL that opens when the user clicks/taps the large image.
 	///
 	/// If specified, must be a string between 1 and 256 characters.
+	std::optional<std::string> LargeUrl() const;
+	/// Setter for ActivityAssets::LargeUrl.
+	void SetLargeUrl(std::optional<std::string> LargeUrl);
+
+	/// \brief The secondary image, rendered as a small circle over the `largeImage`.
+	///
+	/// If specified, must be a string between 1 and 300 characters.
 	std::optional<std::string> SmallImage() const;
 	/// Setter for ActivityAssets::SmallImage.
 	void SetSmallImage(std::optional<std::string> SmallImage);
@@ -820,6 +843,13 @@ public:
 	std::optional<std::string> SmallText() const;
 	/// Setter for ActivityAssets::SmallText.
 	void SetSmallText(std::optional<std::string> SmallText);
+
+	/// \brief A URL that opens when the user clicks/taps the small image.
+	///
+	/// If specified, must be a string between 1 and 256 characters.
+	std::optional<std::string> SmallUrl() const;
+	/// Setter for ActivityAssets::SmallUrl.
+	void SetSmallUrl(std::optional<std::string> SmallUrl);
 };
 
 /// \brief \see Activity
@@ -1265,6 +1295,13 @@ public:
 	/// Setter for Activity::Type.
 	void SetType(discordpp::ActivityTypes Type);
 
+	/// \brief Controls which field is used for the user's status message
+	///
+	/// See the docs on the Activity struct for more info.
+	std::optional<discordpp::StatusDisplayTypes> StatusDisplayType() const;
+	/// Setter for Activity::StatusDisplayType.
+	void SetStatusDisplayType(std::optional<discordpp::StatusDisplayTypes> StatusDisplayType);
+
 	/// \brief The state _of the party_ for this activity.
 	///
 	/// See the docs on the Activity struct for more info.
@@ -1273,6 +1310,14 @@ public:
 	/// Setter for Activity::State.
 	void SetState(std::optional<std::string> State);
 
+	/// \brief A URL that opens when the user clicks/taps the state text.
+	///
+	/// See the docs on the Activity struct for more info.
+	/// If specified, must be a string between 2 and 256 characters.
+	std::optional<std::string> StateUrl() const;
+	/// Setter for Activity::StateUrl.
+	void SetStateUrl(std::optional<std::string> StateUrl);
+
 	/// \brief The state _of the what the user is doing_ for this activity.
 	///
 	/// See the docs on the Activity struct for more info.
@@ -1280,6 +1325,14 @@ public:
 	std::optional<std::string> Details() const;
 	/// Setter for Activity::Details.
 	void SetDetails(std::optional<std::string> Details);
+
+	/// \brief A URL that opens when the user clicks/taps the details text.
+	///
+	/// See the docs on the Activity struct for more info.
+	/// If specified, must be a string between 2 and 256 characters.
+	std::optional<std::string> DetailsUrl() const;
+	/// Setter for Activity::DetailsUrl.
+	void SetDetailsUrl(std::optional<std::string> DetailsUrl);
 
 	/// \brief The application ID of the game that the activity is associated with.
 	///
@@ -1614,6 +1667,21 @@ public:
 	std::optional<discordpp::IntegrationType> IntegrationType() const;
 	/// Setter for AuthorizationArgs::IntegrationType.
 	void SetIntegrationType(std::optional<discordpp::IntegrationType> IntegrationType);
+
+	/// \brief Custom URI scheme for mobile redirects.
+	///
+	/// This allows games to specify a completely custom URI scheme for OAuth redirects.
+	/// For example, setting this to "mygame" will result in a URI scheme like:
+	/// mygame:/authorize/callback
+	///
+	/// If not provided, defaults to the standard Discord format:
+	/// discord-123456789:/authorize/callback
+	///
+	/// This is particularly useful for distinguishing between multiple games from the same
+	/// developer or for avoiding conflicts with other apps.
+	std::optional<std::string> CustomSchemeParam() const;
+	/// Setter for AuthorizationArgs::CustomSchemeParam.
+	void SetCustomSchemeParam(std::optional<std::string> CustomSchemeParam);
 };
 
 /// \brief Arguments to the Client::GetTokenFromDevice function.
@@ -2970,6 +3038,46 @@ public:
 	void SetIsDefault(bool IsDefault);
 };
 
+/// \brief Represents a summary of a DM conversation with a user.
+class UserMessageSummary {
+	/// \cond
+	mutable Discord_UserMessageSummary instance_{};
+	DiscordObjectState state_ = DiscordObjectState::Invalid;
+	/// \endcond
+
+public:
+	/// \cond
+	Discord_UserMessageSummary *instance() const { return &instance_; }
+	/// \endcond
+	/// \cond
+	explicit UserMessageSummary(Discord_UserMessageSummary instance, DiscordObjectState state);
+	~UserMessageSummary();
+	/// \endcond
+	/// Move constructor for UserMessageSummary
+	UserMessageSummary(UserMessageSummary &&other) noexcept;
+	/// Move assignment operator for UserMessageSummary
+	UserMessageSummary &operator=(UserMessageSummary &&other) noexcept;
+	/// Uninitialized instance of UserMessageSummary
+	static const UserMessageSummary nullobj;
+	/// Returns true if the instance contains a valid object
+	operator bool() const { return state_ != DiscordObjectState::Invalid; }
+
+	/// Copy constructor for UserMessageSummary
+	UserMessageSummary(const UserMessageSummary &arg0);
+	/// Copy assignment operator for UserMessageSummary
+	UserMessageSummary &operator=(const UserMessageSummary &arg0);
+
+	/// \cond
+	void Drop();
+	/// \endcond
+
+	/// \brief Returns the ID of the last message sent in the DM conversation.
+	uint64_t LastMessageId() const;
+
+	/// \brief Returns the ID of the other user in the DM conversation.
+	uint64_t UserId() const;
+};
+
 /// \brief Options for creating a new Client instance.
 ///
 /// This class may be used to set advanced initialization-time options on Client.
@@ -3022,13 +3130,25 @@ public:
 	/// This is an experimental API which may be removed or changed in a future release.
 	///
 	/// The game audio system alters the behavior of Discord Voice on mobile platforms
-	/// to use standard media-type streams instead of voice-specific audio APIs. This
-	/// may impose an additional CPU cost as software components for gain control,
-	/// acoustic echo cancellation and noise suppression will be used, but allows for
-	/// the normal media volume behavior to be used instead of in-call volume control.
+	/// to use standard media-type streams instead of voice-specific audio APIs when
+	/// possible. Currently this will be used on iOS 18.2+ on devices which return true
+	/// from `-[AVAudioSession isEchoCancelledInputAvailable]` and on Android devices.
 	discordpp::AudioSystem ExperimentalAudioSystem() const;
 	/// Setter for ClientCreateOptions::ExperimentalAudioSystem.
 	void SetExperimentalAudioSystem(discordpp::AudioSystem ExperimentalAudioSystem);
+
+	/// \brief Whether to prevent communications mode on Android when Bluetooth is connected.
+	///
+	/// This is an experimental API which may be removed or changed in a future release.
+	///
+	/// When set to true, the SDK will not enter communications mode when Bluetooth is connected.
+	/// This setting is only meaningful on Android. It allows you to retain full quality stereo
+	/// audio playback when in-call and avoids mixing issues caused by Bluetooth Absolute Volume,
+	/// but will use the device microphone instead of the headset one.
+	bool ExperimentalAndroidPreventCommsForBluetooth() const;
+	/// Setter for ClientCreateOptions::ExperimentalAndroidPreventCommsForBluetooth.
+	void SetExperimentalAndroidPreventCommsForBluetooth(
+			bool ExperimentalAndroidPreventCommsForBluetooth);
 };
 
 /// \brief The Client class is the main entry point for the Discord SDK. All functionality is
@@ -3230,6 +3350,16 @@ public:
 			std::function<void(discordpp::ClientResult result,
 					std::vector<discordpp::MessageHandle> messages)>;
 
+	/// \brief Callback function for Client::GetUserMessageSummaries.
+	using UserMessageSummariesCallback =
+			std::function<void(discordpp::ClientResult result,
+					std::vector<discordpp::UserMessageSummary> summaries)>;
+
+	/// \brief Callback function for Client::GetUserMessagesWithLimit.
+	using UserMessagesWithLimitCallback =
+			std::function<void(discordpp::ClientResult result,
+					std::vector<discordpp::MessageHandle> messages)>;
+
 	/// \brief Callback function for when Client::ProvisionalUserMergeCompleted completes.
 	using ProvisionalUserMergeRequiredCallback = std::function<void()>;
 
@@ -3279,6 +3409,10 @@ public:
 	using GetUserGuildsCallback = std::function<void(discordpp::ClientResult result,
 			std::vector<discordpp::GuildMinimal> guilds)>;
 
+	/// \brief Callback function for Client::JoinLinkedLobbyGuild.
+	using JoinLinkedLobbyGuildCallback =
+			std::function<void(discordpp::ClientResult result, std::string inviteUrl)>;
+
 	/// \brief Callback function for Client::LeaveLobby.
 	using LeaveLobbyCallback = std::function<void(discordpp::ClientResult result)>;
 
@@ -3317,6 +3451,10 @@ public:
 
 	/// \brief Callback function for Client::SetActivityJoinCallback
 	using ActivityJoinCallback = std::function<void(std::string joinSecret)>;
+
+	/// \brief Callback function for Client::SetActivityJoinWithApplicationCallback
+	using ActivityJoinWithApplicationCallback =
+			std::function<void(uint64_t applicationId, std::string joinSecret)>;
 
 	/// \brief Callback function for when Client::SetOnlineStatus completes.
 	using UpdateStatusCallback = std::function<void(discordpp::ClientResult result)>;
@@ -4135,9 +4273,9 @@ public:
 
 	/// \brief Retrieves recent messages from the specified lobby.
 	///
-	/// Returns a list of message IDs representing the recent messages in the lobby.
+	/// Returns a list of MessageHandle representing the recent messages in the lobby,
+	/// with a maximum of 200 messages and up to 72 hours.
 	/// The messages are returned in reverse chronological order (newest first).
-	/// Use Client::GetMessageHandle to get the MessageHandle for each ID.
 	/// This function requires the current user to be a member of the lobby.
 	///
 	/// Note: This function makes an HTTP request to Discord's API to retrieve messages, as opposed
@@ -4153,6 +4291,29 @@ public:
 	/// The SDK keeps the 25 most recent messages in each channel in memory.
 	/// Messages sent before the SDK was started cannot be accessed with this.
 	std::optional<discordpp::MessageHandle> GetMessageHandle(uint64_t messageId) const;
+
+	/// \brief Retrieves message conversation summaries for all users the current user has DM
+	/// conversations with.
+	///
+	/// The callback will be invoked with a list of UserMessageSummary objects containing:
+	/// - userId: The ID of the user this conversation is with
+	/// - lastMessageId: The ID of the most recent message in this conversation
+	void GetUserMessageSummaries(discordpp::Client::UserMessageSummariesCallback cb);
+
+	/// \brief Retrieves messages from the DM conversation with the specified user.
+	///
+	/// Returns a list of MessageHandle representing the recent messages in the conversation with
+	/// the recipient, with a maximum number specified by the limit parameter. The messages are
+	/// returned in reverse chronological order (newest first). This function checks the local cache
+	/// first and only makes an HTTP request to Discord's API if there are not enough cached
+	/// messages available.
+	///
+	/// If limit is greater than 0, restricts the number of messages returned. If limit is 0
+	/// or negative, the limit parameter is omitted from the request. This is intended for
+	/// games to load message history when users open a DM conversation.
+	void GetUserMessagesWithLimit(uint64_t recipientId,
+			int32_t limit,
+			discordpp::Client::UserMessagesWithLimitCallback cb);
 
 	/// \brief Opens the given message in the Discord client.
 	///
@@ -4410,6 +4571,17 @@ public:
 	/// to link to. See the docs on LobbyHandle for more information.
 	void GetUserGuilds(discordpp::Client::GetUserGuildsCallback cb);
 
+	/// \brief Invites the current user to the Discord guild of the channel that is linked to the
+	/// specified lobby. The user is forwarded to the Discord client with the resulting invite url,
+	/// upon which the user can decide to accept or decline that invite.
+	///
+	/// On console platforms, the user is not navigated to any Discord client, so the invite url
+	/// should be presented to the user in some way, so they can use it.
+	void JoinLinkedLobbyGuild(
+			uint64_t lobbyId,
+			discordpp::Client::ProvisionalUserMergeRequiredCallback provisionalUserMergeRequiredCallback,
+			discordpp::Client::JoinLinkedLobbyGuildCallback callback);
+
 	/// \brief Removes the current user from the specified lobby.
 	///
 	/// Only lobbies that contain a "secret" can be left.
@@ -4583,6 +4755,15 @@ public:
 	/// use to join them to the game's internal party system. See Activity for more information on
 	/// invites.
 	void SetActivityJoinCallback(discordpp::Client::ActivityJoinCallback cb);
+
+	/// \brief Sets a callback function that is invoked when the current user also has Discord
+	/// running on their computer and they accept an activity invite in the Discord client.
+	///
+	/// This callback is invoked with the join secret from the activity rich presence, which you can
+	/// use to join them to the game's internal party system. See Activity for more information on
+	/// invites.
+	void SetActivityJoinWithApplicationCallback(
+			discordpp::Client::ActivityJoinWithApplicationCallback cb);
 
 	/// \brief Sets whether a user is online/invisible/idle/dnd on Discord.
 	void SetOnlineStatus(discordpp::StatusType status,
@@ -4795,11 +4976,19 @@ public:
 
 	/// \brief Returns the user associated with the current client.
 	///
-	/// Must not be called before the Client::GetStatus has changed to Status::Ready.
+	/// **Must not be called before the Client::GetStatus has changed to Status::Ready.**
 	/// If the client has disconnected, or is in the process of reconnecting, it will return the
 	/// previous value of the user, even if the auth token has changed since then. Wait for
 	/// client.GetStatus() to change to Ready before accessing it again.
+	/// If accessed before the client is ready, it will return a dummy object.
 	discordpp::UserHandle GetCurrentUser() const;
+
+	/// \brief Returns the UserHandle associated with the current user, if one is available.
+	///
+	/// Unlike GetCurrentUser(), this method returns std::nullopt instead of a dummy object
+	/// when no user is authenticated or available. This provides clearer intent about when
+	/// the user data is actually available.
+	std::optional<discordpp::UserHandle> GetCurrentUserV2() const;
 
 	/// \brief If the Discord app is running on the user's computer and the SDK establishes a
 	/// connection to it, this function will return the user that is currently logged in to the
@@ -4915,6 +5104,19 @@ inline const char *EnumToString(discordpp::ActivityTypes value) {
 			return "Competing";
 		case discordpp::ActivityTypes::HangStatus:
 			return "HangStatus";
+		default:
+			return "unknown";
+	}
+}
+/// Converts a discordpp::StatusDisplayTypes to a string.
+inline const char *EnumToString(discordpp::StatusDisplayTypes value) {
+	switch (value) {
+		case discordpp::StatusDisplayTypes::Name:
+			return "Name";
+		case discordpp::StatusDisplayTypes::State:
+			return "State";
+		case discordpp::StatusDisplayTypes::Details:
+			return "Details";
 		default:
 			return "unknown";
 	}
@@ -5755,6 +5957,29 @@ void ActivityAssets::SetLargeText(std::optional<std::string> LargeText) {
 	Discord_ActivityAssets_SetLargeText(&instance_,
 			(LargeText.has_value() ? &LargeText__str : nullptr));
 }
+std::optional<std::string> ActivityAssets::LargeUrl() const {
+	assert(state_ == DiscordObjectState::Owned);
+	bool returnIsNonNull__;
+	Discord_String returnValueNative__;
+	returnIsNonNull__ = Discord_ActivityAssets_LargeUrl(&instance_, &returnValueNative__);
+	if (!returnIsNonNull__) {
+		return {};
+	}
+	std::string returnValue__(reinterpret_cast<char *>(returnValueNative__.ptr),
+			returnValueNative__.size);
+	Discord_Free(returnValueNative__.ptr);
+	return returnValue__;
+}
+void ActivityAssets::SetLargeUrl(std::optional<std::string> LargeUrl) {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_String LargeUrl__str{};
+	if (LargeUrl.has_value()) {
+		LargeUrl__str.ptr = reinterpret_cast<uint8_t *>(LargeUrl->data());
+		LargeUrl__str.size = LargeUrl->size();
+	}
+	Discord_ActivityAssets_SetLargeUrl(&instance_,
+			(LargeUrl.has_value() ? &LargeUrl__str : nullptr));
+}
 std::optional<std::string> ActivityAssets::SmallImage() const {
 	assert(state_ == DiscordObjectState::Owned);
 	bool returnIsNonNull__;
@@ -5800,6 +6025,29 @@ void ActivityAssets::SetSmallText(std::optional<std::string> SmallText) {
 	}
 	Discord_ActivityAssets_SetSmallText(&instance_,
 			(SmallText.has_value() ? &SmallText__str : nullptr));
+}
+std::optional<std::string> ActivityAssets::SmallUrl() const {
+	assert(state_ == DiscordObjectState::Owned);
+	bool returnIsNonNull__;
+	Discord_String returnValueNative__;
+	returnIsNonNull__ = Discord_ActivityAssets_SmallUrl(&instance_, &returnValueNative__);
+	if (!returnIsNonNull__) {
+		return {};
+	}
+	std::string returnValue__(reinterpret_cast<char *>(returnValueNative__.ptr),
+			returnValueNative__.size);
+	Discord_Free(returnValueNative__.ptr);
+	return returnValue__;
+}
+void ActivityAssets::SetSmallUrl(std::optional<std::string> SmallUrl) {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_String SmallUrl__str{};
+	if (SmallUrl.has_value()) {
+		SmallUrl__str.ptr = reinterpret_cast<uint8_t *>(SmallUrl->data());
+		SmallUrl__str.size = SmallUrl->size();
+	}
+	Discord_ActivityAssets_SetSmallUrl(&instance_,
+			(SmallUrl.has_value() ? &SmallUrl__str : nullptr));
 }
 const ActivityTimestamps ActivityTimestamps::nullobj{ {}, DiscordObjectState::Invalid };
 ActivityTimestamps::~ActivityTimestamps() {
@@ -6255,6 +6503,25 @@ void Activity::SetType(discordpp::ActivityTypes Type) {
 	assert(state_ == DiscordObjectState::Owned);
 	Discord_Activity_SetType(&instance_, static_cast<Discord_ActivityTypes>(Type));
 }
+std::optional<discordpp::StatusDisplayTypes> Activity::StatusDisplayType() const {
+	assert(state_ == DiscordObjectState::Owned);
+	bool returnIsNonNull__;
+	Discord_StatusDisplayTypes returnValueNative__;
+	returnIsNonNull__ = Discord_Activity_StatusDisplayType(&instance_, &returnValueNative__);
+	if (!returnIsNonNull__) {
+		return {};
+	}
+	auto returnValue__ = static_cast<discordpp::StatusDisplayTypes>(returnValueNative__);
+	return returnValue__;
+}
+void Activity::SetStatusDisplayType(std::optional<discordpp::StatusDisplayTypes> StatusDisplayType) {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_Activity_SetStatusDisplayType(
+			&instance_,
+			(StatusDisplayType.has_value()
+							? reinterpret_cast<Discord_StatusDisplayTypes *>(&*StatusDisplayType)
+							: nullptr));
+}
 std::optional<std::string> Activity::State() const {
 	assert(state_ == DiscordObjectState::Owned);
 	bool returnIsNonNull__;
@@ -6277,6 +6544,28 @@ void Activity::SetState(std::optional<std::string> State) {
 	}
 	Discord_Activity_SetState(&instance_, (State.has_value() ? &State__str : nullptr));
 }
+std::optional<std::string> Activity::StateUrl() const {
+	assert(state_ == DiscordObjectState::Owned);
+	bool returnIsNonNull__;
+	Discord_String returnValueNative__;
+	returnIsNonNull__ = Discord_Activity_StateUrl(&instance_, &returnValueNative__);
+	if (!returnIsNonNull__) {
+		return {};
+	}
+	std::string returnValue__(reinterpret_cast<char *>(returnValueNative__.ptr),
+			returnValueNative__.size);
+	Discord_Free(returnValueNative__.ptr);
+	return returnValue__;
+}
+void Activity::SetStateUrl(std::optional<std::string> StateUrl) {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_String StateUrl__str{};
+	if (StateUrl.has_value()) {
+		StateUrl__str.ptr = reinterpret_cast<uint8_t *>(StateUrl->data());
+		StateUrl__str.size = StateUrl->size();
+	}
+	Discord_Activity_SetStateUrl(&instance_, (StateUrl.has_value() ? &StateUrl__str : nullptr));
+}
 std::optional<std::string> Activity::Details() const {
 	assert(state_ == DiscordObjectState::Owned);
 	bool returnIsNonNull__;
@@ -6298,6 +6587,29 @@ void Activity::SetDetails(std::optional<std::string> Details) {
 		Details__str.size = Details->size();
 	}
 	Discord_Activity_SetDetails(&instance_, (Details.has_value() ? &Details__str : nullptr));
+}
+std::optional<std::string> Activity::DetailsUrl() const {
+	assert(state_ == DiscordObjectState::Owned);
+	bool returnIsNonNull__;
+	Discord_String returnValueNative__;
+	returnIsNonNull__ = Discord_Activity_DetailsUrl(&instance_, &returnValueNative__);
+	if (!returnIsNonNull__) {
+		return {};
+	}
+	std::string returnValue__(reinterpret_cast<char *>(returnValueNative__.ptr),
+			returnValueNative__.size);
+	Discord_Free(returnValueNative__.ptr);
+	return returnValue__;
+}
+void Activity::SetDetailsUrl(std::optional<std::string> DetailsUrl) {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_String DetailsUrl__str{};
+	if (DetailsUrl.has_value()) {
+		DetailsUrl__str.ptr = reinterpret_cast<uint8_t *>(DetailsUrl->data());
+		DetailsUrl__str.size = DetailsUrl->size();
+	}
+	Discord_Activity_SetDetailsUrl(&instance_,
+			(DetailsUrl.has_value() ? &DetailsUrl__str : nullptr));
 }
 std::optional<uint64_t> Activity::ApplicationId() const {
 	assert(state_ == DiscordObjectState::Owned);
@@ -6890,6 +7202,30 @@ void AuthorizationArgs::SetIntegrationType(
 			&instance_,
 			(IntegrationType.has_value() ? reinterpret_cast<Discord_IntegrationType *>(&*IntegrationType)
 										 : nullptr));
+}
+std::optional<std::string> AuthorizationArgs::CustomSchemeParam() const {
+	assert(state_ == DiscordObjectState::Owned);
+	bool returnIsNonNull__;
+	Discord_String returnValueNative__;
+	returnIsNonNull__ =
+			Discord_AuthorizationArgs_CustomSchemeParam(&instance_, &returnValueNative__);
+	if (!returnIsNonNull__) {
+		return {};
+	}
+	std::string returnValue__(reinterpret_cast<char *>(returnValueNative__.ptr),
+			returnValueNative__.size);
+	Discord_Free(returnValueNative__.ptr);
+	return returnValue__;
+}
+void AuthorizationArgs::SetCustomSchemeParam(std::optional<std::string> CustomSchemeParam) {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_String CustomSchemeParam__str{};
+	if (CustomSchemeParam.has_value()) {
+		CustomSchemeParam__str.ptr = reinterpret_cast<uint8_t *>(CustomSchemeParam->data());
+		CustomSchemeParam__str.size = CustomSchemeParam->size();
+	}
+	Discord_AuthorizationArgs_SetCustomSchemeParam(
+			&instance_, (CustomSchemeParam.has_value() ? &CustomSchemeParam__str : nullptr));
 }
 const DeviceAuthorizationArgs DeviceAuthorizationArgs::nullobj{ {}, DiscordObjectState::Invalid };
 DeviceAuthorizationArgs::~DeviceAuthorizationArgs() {
@@ -8668,6 +9004,74 @@ void AudioDevice::SetIsDefault(bool IsDefault) {
 	assert(state_ == DiscordObjectState::Owned);
 	Discord_AudioDevice_SetIsDefault(&instance_, IsDefault);
 }
+const UserMessageSummary UserMessageSummary::nullobj{ {}, DiscordObjectState::Invalid };
+UserMessageSummary::~UserMessageSummary() {
+	if (state_ == DiscordObjectState::Owned) {
+		Drop();
+		state_ = DiscordObjectState::Invalid;
+	}
+}
+UserMessageSummary::UserMessageSummary(UserMessageSummary &&other) noexcept
+		:
+		instance_(other.instance_), state_(other.state_) {
+	other.state_ = DiscordObjectState::Invalid;
+}
+UserMessageSummary &UserMessageSummary::operator=(UserMessageSummary &&other) noexcept {
+	if (this != &other) {
+		if (state_ == DiscordObjectState::Owned) {
+			Drop();
+		}
+		instance_ = other.instance_;
+		state_ = other.state_;
+		other.state_ = DiscordObjectState::Invalid;
+	}
+	return *this;
+}
+UserMessageSummary::UserMessageSummary(const UserMessageSummary &arg0) :
+		instance_{}, state_(DiscordObjectState::Invalid) {
+	if (arg0.state_ == DiscordObjectState::Owned) {
+		Discord_UserMessageSummary_Clone(&instance_, arg0.instance());
+
+		state_ = DiscordObjectState::Owned;
+	}
+}
+UserMessageSummary &UserMessageSummary::operator=(const UserMessageSummary &arg0) {
+	if (this != &arg0) {
+		if (state_ == DiscordObjectState::Owned) {
+			Drop();
+			state_ = DiscordObjectState::Invalid;
+		}
+		if (arg0.state_ == DiscordObjectState::Owned) {
+			Discord_UserMessageSummary_Clone(&instance_, arg0.instance());
+
+			state_ = DiscordObjectState::Owned;
+		}
+	}
+	return *this;
+}
+UserMessageSummary::UserMessageSummary(Discord_UserMessageSummary instance,
+		DiscordObjectState state) :
+		instance_(instance), state_(state) {
+}
+void UserMessageSummary::Drop() {
+	if (state_ != DiscordObjectState::Owned) {
+		return;
+	}
+	Discord_UserMessageSummary_Drop(&instance_);
+	state_ = DiscordObjectState::Invalid;
+}
+uint64_t UserMessageSummary::LastMessageId() const {
+	assert(state_ == DiscordObjectState::Owned);
+	uint64_t returnValue__;
+	returnValue__ = Discord_UserMessageSummary_LastMessageId(&instance_);
+	return returnValue__;
+}
+uint64_t UserMessageSummary::UserId() const {
+	assert(state_ == DiscordObjectState::Owned);
+	uint64_t returnValue__;
+	returnValue__ = Discord_UserMessageSummary_UserId(&instance_);
+	return returnValue__;
+}
 const ClientCreateOptions ClientCreateOptions::nullobj{ {}, DiscordObjectState::Invalid };
 ClientCreateOptions::~ClientCreateOptions() {
 	if (state_ == DiscordObjectState::Owned) {
@@ -8767,6 +9171,19 @@ void ClientCreateOptions::SetExperimentalAudioSystem(discordpp::AudioSystem Expe
 	assert(state_ == DiscordObjectState::Owned);
 	Discord_ClientCreateOptions_SetExperimentalAudioSystem(
 			&instance_, static_cast<Discord_AudioSystem>(ExperimentalAudioSystem));
+}
+bool ClientCreateOptions::ExperimentalAndroidPreventCommsForBluetooth() const {
+	assert(state_ == DiscordObjectState::Owned);
+	bool returnValue__;
+	returnValue__ =
+			Discord_ClientCreateOptions_ExperimentalAndroidPreventCommsForBluetooth(&instance_);
+	return returnValue__;
+}
+void ClientCreateOptions::SetExperimentalAndroidPreventCommsForBluetooth(
+		bool ExperimentalAndroidPreventCommsForBluetooth) {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_ClientCreateOptions_SetExperimentalAndroidPreventCommsForBluetooth(
+			&instance_, ExperimentalAndroidPreventCommsForBluetooth);
 }
 const Client Client::nullobj{ {}, DiscordObjectState::Invalid };
 Client::~Client() {
@@ -9749,6 +10166,46 @@ std::optional<discordpp::MessageHandle> Client::GetMessageHandle(uint64_t messag
 	discordpp::MessageHandle returnValue__(returnValueNative__, DiscordObjectState::Owned);
 	return returnValue__;
 }
+void Client::GetUserMessageSummaries(discordpp::Client::UserMessageSummariesCallback cb) {
+	assert(state_ == DiscordObjectState::Owned);
+	using Tcb__UserData = TDelegateUserData<std::remove_reference_t<decltype(cb)>>;
+	auto cb__userData = new Tcb__UserData(cb);
+	Discord_Client_UserMessageSummariesCallback cb__native =
+			[](auto result, auto summaries, void *userData__) {
+				auto userData__typed = static_cast<Tcb__UserData *>(userData__);
+				discordpp::ClientResult result__obj(*result, DiscordObjectState::Owned);
+				std::vector<discordpp::UserMessageSummary> summaries__vec;
+				summaries__vec.reserve(summaries.size);
+				for (size_t i__ = 0; i__ < summaries.size; ++i__) {
+					summaries__vec.emplace_back(summaries.ptr[i__], DiscordObjectState::Owned);
+				}
+				Discord_Free(summaries.ptr);
+				userData__typed->delegate(std::move(result__obj), std::move(summaries__vec));
+			};
+	Discord_Client_GetUserMessageSummaries(
+			&instance_, cb__native, Tcb__UserData::Free, cb__userData);
+}
+void Client::GetUserMessagesWithLimit(uint64_t recipientId,
+		int32_t limit,
+		discordpp::Client::UserMessagesWithLimitCallback cb) {
+	assert(state_ == DiscordObjectState::Owned);
+	using Tcb__UserData = TDelegateUserData<std::remove_reference_t<decltype(cb)>>;
+	auto cb__userData = new Tcb__UserData(cb);
+	Discord_Client_UserMessagesWithLimitCallback cb__native =
+			[](auto result, auto messages, void *userData__) {
+				auto userData__typed = static_cast<Tcb__UserData *>(userData__);
+				discordpp::ClientResult result__obj(*result, DiscordObjectState::Owned);
+				std::vector<discordpp::MessageHandle> messages__vec;
+				messages__vec.reserve(messages.size);
+				for (size_t i__ = 0; i__ < messages.size; ++i__) {
+					messages__vec.emplace_back(messages.ptr[i__], DiscordObjectState::Owned);
+				}
+				Discord_Free(messages.ptr);
+				userData__typed->delegate(std::move(result__obj), std::move(messages__vec));
+			};
+	Discord_Client_GetUserMessagesWithLimit(
+			&instance_, recipientId, limit, cb__native, Tcb__UserData::Free, cb__userData);
+}
 void Client::OpenMessageInDiscord(
 		uint64_t messageId,
 		discordpp::Client::ProvisionalUserMergeRequiredCallback provisionalUserMergeRequiredCallback,
@@ -10094,6 +10551,40 @@ void Client::GetUserGuilds(discordpp::Client::GetUserGuildsCallback cb) {
 			};
 	Discord_Client_GetUserGuilds(&instance_, cb__native, Tcb__UserData::Free, cb__userData);
 }
+void Client::JoinLinkedLobbyGuild(
+		uint64_t lobbyId,
+		discordpp::Client::ProvisionalUserMergeRequiredCallback provisionalUserMergeRequiredCallback,
+		discordpp::Client::JoinLinkedLobbyGuildCallback callback) {
+	assert(state_ == DiscordObjectState::Owned);
+	using TprovisionalUserMergeRequiredCallback__UserData =
+			TDelegateUserData<std::remove_reference_t<decltype(provisionalUserMergeRequiredCallback)>>;
+	auto provisionalUserMergeRequiredCallback__userData =
+			new TprovisionalUserMergeRequiredCallback__UserData(provisionalUserMergeRequiredCallback);
+	Discord_Client_ProvisionalUserMergeRequiredCallback
+			provisionalUserMergeRequiredCallback__native = [](void *userData__) {
+				auto userData__typed =
+						static_cast<TprovisionalUserMergeRequiredCallback__UserData *>(userData__);
+				userData__typed->delegate();
+			};
+	using Tcallback__UserData = TDelegateUserData<std::remove_reference_t<decltype(callback)>>;
+	auto callback__userData = new Tcallback__UserData(callback);
+	Discord_Client_JoinLinkedLobbyGuildCallback callback__native =
+			[](auto result, auto inviteUrl, void *userData__) {
+				auto userData__typed = static_cast<Tcallback__UserData *>(userData__);
+				discordpp::ClientResult result__obj(*result, DiscordObjectState::Owned);
+				std::string inviteUrl__str(reinterpret_cast<char *>(inviteUrl.ptr), inviteUrl.size);
+				userData__typed->delegate(std::move(result__obj), std::move(inviteUrl__str));
+				Discord_Free(inviteUrl.ptr);
+			};
+	Discord_Client_JoinLinkedLobbyGuild(&instance_,
+			lobbyId,
+			provisionalUserMergeRequiredCallback__native,
+			TprovisionalUserMergeRequiredCallback__UserData::Free,
+			provisionalUserMergeRequiredCallback__userData,
+			callback__native,
+			Tcallback__UserData::Free,
+			callback__userData);
+}
 void Client::LeaveLobby(uint64_t lobbyId, discordpp::Client::LeaveLobbyCallback callback) {
 	assert(state_ == DiscordObjectState::Owned);
 	using Tcallback__UserData = TDelegateUserData<std::remove_reference_t<decltype(callback)>>;
@@ -10318,6 +10809,21 @@ void Client::SetActivityJoinCallback(discordpp::Client::ActivityJoinCallback cb)
 		Discord_Free(joinSecret.ptr);
 	};
 	Discord_Client_SetActivityJoinCallback(
+			&instance_, cb__native, Tcb__UserData::Free, cb__userData);
+}
+void Client::SetActivityJoinWithApplicationCallback(
+		discordpp::Client::ActivityJoinWithApplicationCallback cb) {
+	assert(state_ == DiscordObjectState::Owned);
+	using Tcb__UserData = TDelegateUserData<std::remove_reference_t<decltype(cb)>>;
+	auto cb__userData = new Tcb__UserData(cb);
+	Discord_Client_ActivityJoinWithApplicationCallback cb__native =
+			[](auto applicationId, auto joinSecret, void *userData__) {
+				auto userData__typed = static_cast<Tcb__UserData *>(userData__);
+				std::string joinSecret__str(reinterpret_cast<char *>(joinSecret.ptr), joinSecret.size);
+				userData__typed->delegate(applicationId, std::move(joinSecret__str));
+				Discord_Free(joinSecret.ptr);
+			};
+	Discord_Client_SetActivityJoinWithApplicationCallback(
 			&instance_, cb__native, Tcb__UserData::Free, cb__userData);
 }
 void Client::SetOnlineStatus(discordpp::StatusType status,
@@ -10602,6 +11108,17 @@ discordpp::UserHandle Client::GetCurrentUser() const {
 	assert(state_ == DiscordObjectState::Owned);
 	Discord_UserHandle returnValueNative__{};
 	Discord_Client_GetCurrentUser(&instance_, &returnValueNative__);
+	discordpp::UserHandle returnValue__(returnValueNative__, DiscordObjectState::Owned);
+	return returnValue__;
+}
+std::optional<discordpp::UserHandle> Client::GetCurrentUserV2() const {
+	assert(state_ == DiscordObjectState::Owned);
+	bool returnIsNonNull__;
+	Discord_UserHandle returnValueNative__;
+	returnIsNonNull__ = Discord_Client_GetCurrentUserV2(&instance_, &returnValueNative__);
+	if (!returnIsNonNull__) {
+		return {};
+	}
 	discordpp::UserHandle returnValue__(returnValueNative__, DiscordObjectState::Owned);
 	return returnValue__;
 }

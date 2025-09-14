@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="DiscordppStatusDisplayTypes" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<constants>
+		<constant name="Name" value="0" enum="Enum">
+		</constant>
+		<constant name="State" value="1" enum="Enum">
+		</constant>
+		<constant name="Details" value="2" enum="Enum">
+		</constant>
+	</constants>
+</class>

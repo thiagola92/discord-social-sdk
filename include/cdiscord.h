@@ -68,6 +68,13 @@ typedef enum Discord_ActivityTypes {
 	Discord_ActivityTypes_forceint = 0x7FFFFFFF
 } Discord_ActivityTypes;
 
+typedef enum Discord_StatusDisplayTypes {
+	Discord_StatusDisplayTypes_Name = 0,
+	Discord_StatusDisplayTypes_State = 1,
+	Discord_StatusDisplayTypes_Details = 2,
+	Discord_StatusDisplayTypes_forceint = 0x7FFFFFFF
+} Discord_StatusDisplayTypes;
+
 typedef enum Discord_ActivityGamePlatforms {
 	Discord_ActivityGamePlatforms_Desktop = 1,
 	Discord_ActivityGamePlatforms_Xbox = 2,
@@ -354,6 +361,7 @@ typedef struct Discord_LobbyHandle Discord_LobbyHandle;
 typedef struct Discord_AdditionalContent Discord_AdditionalContent;
 typedef struct Discord_MessageHandle Discord_MessageHandle;
 typedef struct Discord_AudioDevice Discord_AudioDevice;
+typedef struct Discord_UserMessageSummary Discord_UserMessageSummary;
 typedef struct Discord_ClientCreateOptions Discord_ClientCreateOptions;
 typedef struct Discord_Client Discord_Client;
 typedef struct Discord_CallInfoHandle Discord_CallInfoHandle;
@@ -385,6 +393,10 @@ typedef struct Discord_MessageHandleSpan {
 	Discord_MessageHandle *ptr;
 	size_t size;
 } Discord_MessageHandleSpan;
+typedef struct Discord_UserMessageSummarySpan {
+	Discord_UserMessageSummary *ptr;
+	size_t size;
+} Discord_UserMessageSummarySpan;
 typedef struct Discord_GuildChannelSpan {
 	Discord_GuildChannel *ptr;
 	size_t size;
@@ -480,6 +492,13 @@ typedef void (*Discord_Client_EditUserMessageCallback)(Discord_ClientResult *res
 typedef void (*Discord_Client_GetLobbyMessagesCallback)(Discord_ClientResult *result,
 		Discord_MessageHandleSpan messages,
 		void *userData);
+typedef void (*Discord_Client_UserMessageSummariesCallback)(
+		Discord_ClientResult *result,
+		Discord_UserMessageSummarySpan summaries,
+		void *userData);
+typedef void (*Discord_Client_UserMessagesWithLimitCallback)(Discord_ClientResult *result,
+		Discord_MessageHandleSpan messages,
+		void *userData);
 typedef void (*Discord_Client_ProvisionalUserMergeRequiredCallback)(void *userData);
 typedef void (*Discord_Client_OpenMessageInDiscordCallback)(Discord_ClientResult *result,
 		void *userData);
@@ -510,6 +529,9 @@ typedef void (*Discord_Client_GetGuildChannelsCallback)(Discord_ClientResult *re
 typedef void (*Discord_Client_GetUserGuildsCallback)(Discord_ClientResult *result,
 		Discord_GuildMinimalSpan guilds,
 		void *userData);
+typedef void (*Discord_Client_JoinLinkedLobbyGuildCallback)(Discord_ClientResult *result,
+		Discord_String inviteUrl,
+		void *userData);
 typedef void (*Discord_Client_LeaveLobbyCallback)(Discord_ClientResult *result, void *userData);
 typedef void (*Discord_Client_LinkOrUnlinkChannelCallback)(Discord_ClientResult *result,
 		void *userData);
@@ -533,6 +555,9 @@ typedef void (*Discord_Client_SendActivityInviteCallback)(Discord_ClientResult *
 typedef void (*Discord_Client_ActivityInviteCallback)(Discord_ActivityInvite *invite,
 		void *userData);
 typedef void (*Discord_Client_ActivityJoinCallback)(Discord_String joinSecret, void *userData);
+typedef void (*Discord_Client_ActivityJoinWithApplicationCallback)(uint64_t applicationId,
+		Discord_String joinSecret,
+		void *userData);
 typedef void (*Discord_Client_UpdateStatusCallback)(Discord_ClientResult *result, void *userData);
 typedef void (*Discord_Client_UpdateRichPresenceCallback)(Discord_ClientResult *result,
 		void *userData);
@@ -600,6 +625,10 @@ void DISCORD_API Discord_ActivityAssets_SetLargeText(Discord_ActivityAssets *sel
 		Discord_String *value);
 bool DISCORD_API Discord_ActivityAssets_LargeText(Discord_ActivityAssets *self,
 		Discord_String *returnValue);
+void DISCORD_API Discord_ActivityAssets_SetLargeUrl(Discord_ActivityAssets *self,
+		Discord_String *value);
+bool DISCORD_API Discord_ActivityAssets_LargeUrl(Discord_ActivityAssets *self,
+		Discord_String *returnValue);
 void DISCORD_API Discord_ActivityAssets_SetSmallImage(Discord_ActivityAssets *self,
 		Discord_String *value);
 bool DISCORD_API Discord_ActivityAssets_SmallImage(Discord_ActivityAssets *self,
@@ -607,6 +636,10 @@ bool DISCORD_API Discord_ActivityAssets_SmallImage(Discord_ActivityAssets *self,
 void DISCORD_API Discord_ActivityAssets_SetSmallText(Discord_ActivityAssets *self,
 		Discord_String *value);
 bool DISCORD_API Discord_ActivityAssets_SmallText(Discord_ActivityAssets *self,
+		Discord_String *returnValue);
+void DISCORD_API Discord_ActivityAssets_SetSmallUrl(Discord_ActivityAssets *self,
+		Discord_String *value);
+bool DISCORD_API Discord_ActivityAssets_SmallUrl(Discord_ActivityAssets *self,
 		Discord_String *returnValue);
 struct Discord_ActivityTimestamps {
 	void *opaque;
@@ -682,10 +715,18 @@ void DISCORD_API Discord_Activity_SetName(Discord_Activity *self, Discord_String
 void DISCORD_API Discord_Activity_Name(Discord_Activity *self, Discord_String *returnValue);
 void DISCORD_API Discord_Activity_SetType(Discord_Activity *self, Discord_ActivityTypes value);
 Discord_ActivityTypes DISCORD_API Discord_Activity_Type(Discord_Activity *self);
+void DISCORD_API Discord_Activity_SetStatusDisplayType(Discord_Activity *self,
+		Discord_StatusDisplayTypes *value);
+bool DISCORD_API Discord_Activity_StatusDisplayType(Discord_Activity *self,
+		Discord_StatusDisplayTypes *returnValue);
 void DISCORD_API Discord_Activity_SetState(Discord_Activity *self, Discord_String *value);
 bool DISCORD_API Discord_Activity_State(Discord_Activity *self, Discord_String *returnValue);
+void DISCORD_API Discord_Activity_SetStateUrl(Discord_Activity *self, Discord_String *value);
+bool DISCORD_API Discord_Activity_StateUrl(Discord_Activity *self, Discord_String *returnValue);
 void DISCORD_API Discord_Activity_SetDetails(Discord_Activity *self, Discord_String *value);
 bool DISCORD_API Discord_Activity_Details(Discord_Activity *self, Discord_String *returnValue);
+void DISCORD_API Discord_Activity_SetDetailsUrl(Discord_Activity *self, Discord_String *value);
+bool DISCORD_API Discord_Activity_DetailsUrl(Discord_Activity *self, Discord_String *returnValue);
 void DISCORD_API Discord_Activity_SetApplicationId(Discord_Activity *self, uint64_t *value);
 bool DISCORD_API Discord_Activity_ApplicationId(Discord_Activity *self, uint64_t *returnValue);
 void DISCORD_API Discord_Activity_SetParentApplicationId(Discord_Activity *self, uint64_t *value);
@@ -809,6 +850,10 @@ void DISCORD_API Discord_AuthorizationArgs_SetIntegrationType(Discord_Authorizat
 		Discord_IntegrationType *value);
 bool DISCORD_API Discord_AuthorizationArgs_IntegrationType(Discord_AuthorizationArgs *self,
 		Discord_IntegrationType *returnValue);
+void DISCORD_API Discord_AuthorizationArgs_SetCustomSchemeParam(Discord_AuthorizationArgs *self,
+		Discord_String *value);
+bool DISCORD_API Discord_AuthorizationArgs_CustomSchemeParam(Discord_AuthorizationArgs *self,
+		Discord_String *returnValue);
 struct Discord_DeviceAuthorizationArgs {
 	void *opaque;
 };
@@ -1113,6 +1158,15 @@ void DISCORD_API Discord_AudioDevice_SetName(Discord_AudioDevice *self, Discord_
 void DISCORD_API Discord_AudioDevice_Name(Discord_AudioDevice *self, Discord_String *returnValue);
 void DISCORD_API Discord_AudioDevice_SetIsDefault(Discord_AudioDevice *self, bool value);
 bool DISCORD_API Discord_AudioDevice_IsDefault(Discord_AudioDevice *self);
+struct Discord_UserMessageSummary {
+	void *opaque;
+};
+
+void DISCORD_API Discord_UserMessageSummary_Drop(Discord_UserMessageSummary *self);
+void DISCORD_API Discord_UserMessageSummary_Clone(Discord_UserMessageSummary *self,
+		Discord_UserMessageSummary const *arg0);
+uint64_t DISCORD_API Discord_UserMessageSummary_LastMessageId(Discord_UserMessageSummary *self);
+uint64_t DISCORD_API Discord_UserMessageSummary_UserId(Discord_UserMessageSummary *self);
 struct Discord_ClientCreateOptions {
 	void *opaque;
 };
@@ -1134,6 +1188,11 @@ Discord_ClientCreateOptions_SetExperimentalAudioSystem(Discord_ClientCreateOptio
 		Discord_AudioSystem value);
 Discord_AudioSystem DISCORD_API
 Discord_ClientCreateOptions_ExperimentalAudioSystem(Discord_ClientCreateOptions *self);
+void DISCORD_API Discord_ClientCreateOptions_SetExperimentalAndroidPreventCommsForBluetooth(
+		Discord_ClientCreateOptions *self,
+		bool value);
+bool DISCORD_API Discord_ClientCreateOptions_ExperimentalAndroidPreventCommsForBluetooth(
+		Discord_ClientCreateOptions *self);
 struct Discord_Client {
 	void *opaque;
 };
@@ -1392,6 +1451,18 @@ Discord_Client_GetLobbyMessagesWithLimit(Discord_Client *self,
 bool DISCORD_API Discord_Client_GetMessageHandle(Discord_Client *self,
 		uint64_t messageId,
 		Discord_MessageHandle *returnValue);
+void DISCORD_API
+Discord_Client_GetUserMessageSummaries(Discord_Client *self,
+		Discord_Client_UserMessageSummariesCallback cb,
+		Discord_FreeFn cb__userDataFree,
+		void *cb__userData);
+void DISCORD_API
+Discord_Client_GetUserMessagesWithLimit(Discord_Client *self,
+		uint64_t recipientId,
+		int32_t limit,
+		Discord_Client_UserMessagesWithLimitCallback cb,
+		Discord_FreeFn cb__userDataFree,
+		void *cb__userData);
 void DISCORD_API Discord_Client_OpenMessageInDiscord(
 		Discord_Client *self,
 		uint64_t messageId,
@@ -1497,6 +1568,15 @@ void DISCORD_API Discord_Client_GetUserGuilds(Discord_Client *self,
 		Discord_Client_GetUserGuildsCallback cb,
 		Discord_FreeFn cb__userDataFree,
 		void *cb__userData);
+void DISCORD_API Discord_Client_JoinLinkedLobbyGuild(
+		Discord_Client *self,
+		uint64_t lobbyId,
+		Discord_Client_ProvisionalUserMergeRequiredCallback provisionalUserMergeRequiredCallback,
+		Discord_FreeFn provisionalUserMergeRequiredCallback__userDataFree,
+		void *provisionalUserMergeRequiredCallback__userData,
+		Discord_Client_JoinLinkedLobbyGuildCallback callback,
+		Discord_FreeFn callback__userDataFree,
+		void *callback__userData);
 void DISCORD_API Discord_Client_LeaveLobby(Discord_Client *self,
 		uint64_t lobbyId,
 		Discord_Client_LeaveLobbyCallback callback,
@@ -1584,6 +1664,11 @@ Discord_Client_SetActivityInviteUpdatedCallback(Discord_Client *self,
 		void *cb__userData);
 void DISCORD_API Discord_Client_SetActivityJoinCallback(Discord_Client *self,
 		Discord_Client_ActivityJoinCallback cb,
+		Discord_FreeFn cb__userDataFree,
+		void *cb__userData);
+void DISCORD_API Discord_Client_SetActivityJoinWithApplicationCallback(
+		Discord_Client *self,
+		Discord_Client_ActivityJoinWithApplicationCallback cb,
 		Discord_FreeFn cb__userDataFree,
 		void *cb__userData);
 void DISCORD_API Discord_Client_SetOnlineStatus(Discord_Client *self,
@@ -1699,6 +1784,8 @@ void DISCORD_API Discord_Client_UnblockUser(Discord_Client *self,
 		Discord_FreeFn cb__userDataFree,
 		void *cb__userData);
 void DISCORD_API Discord_Client_GetCurrentUser(Discord_Client *self,
+		Discord_UserHandle *returnValue);
+bool DISCORD_API Discord_Client_GetCurrentUserV2(Discord_Client *self,
 		Discord_UserHandle *returnValue);
 void DISCORD_API Discord_Client_GetDiscordClientConnectedUser(
 		Discord_Client *self,
