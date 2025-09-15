@@ -55,32 +55,32 @@ protected:
 
 public:
 	static void RunCallbacks();
-	static String EnumToString25(DiscordppUserHandleAvatarType::Enum value);
-	static String EnumToString24(DiscordppStatusType::Enum value);
-	static String EnumToString23(DiscordppStatusDisplayTypes::Enum value);
-	static String EnumToString22(DiscordppRelationshipType::Enum value);
-	static String EnumToString21(DiscordppRelationshipGroupType::Enum value);
-	static String EnumToString20(DiscordppLoggingSeverity::Enum value);
-	static String EnumToString19(DiscordppIntegrationType::Enum value);
-	static String EnumToString18(DiscordppHttpStatusCode::Enum value);
-	static String EnumToString17(DiscordppErrorType::Enum value);
-	static String EnumToString16(DiscordppDisclosureTypes::Enum value);
-	static String EnumToString15(DiscordppClientThread::Enum value);
-	static String EnumToString14(DiscordppClientStatus::Enum value);
-	static String EnumToString13(DiscordppClientError::Enum value);
-	static String EnumToString12(DiscordppChannelType::Enum value);
-	static String EnumToString11(DiscordppCallStatus::Enum value);
-	static String EnumToString10(DiscordppCallError::Enum value);
-	static String EnumToString9(DiscordppAuthorizationTokenType::Enum value);
-	static String EnumToString8(DiscordppAuthenticationExternalAuthType::Enum value);
-	static String EnumToString7(DiscordppAuthenticationCodeChallengeMethod::Enum value);
-	static String EnumToString6(DiscordppAudioSystem::Enum value);
-	static String EnumToString5(DiscordppAudioModeType::Enum value);
-	static String EnumToString4(DiscordppAdditionalContentType::Enum value);
-	static String EnumToString3(DiscordppActivityTypes::Enum value);
-	static String EnumToString2(DiscordppActivityPartyPrivacy::Enum value);
-	static String EnumToString1(DiscordppActivityGamePlatforms::Enum value);
-	static String EnumToString0(DiscordppActivityActionTypes::Enum value);
+	static String EnumToStringActivityActionTypes(DiscordppActivityActionTypes::Enum value);
+	static String EnumToStringActivityPartyPrivacy(DiscordppActivityPartyPrivacy::Enum value);
+	static String EnumToStringActivityTypes(DiscordppActivityTypes::Enum value);
+	static String EnumToStringStatusDisplayTypes(DiscordppStatusDisplayTypes::Enum value);
+	static String EnumToStringActivityGamePlatforms(DiscordppActivityGamePlatforms::Enum value);
+	static String EnumToStringErrorType(DiscordppErrorType::Enum value);
+	static String EnumToStringHttpStatusCode(DiscordppHttpStatusCode::Enum value);
+	static String EnumToStringAuthenticationCodeChallengeMethod(DiscordppAuthenticationCodeChallengeMethod::Enum value);
+	static String EnumToStringIntegrationType(DiscordppIntegrationType::Enum value);
+	static String EnumToStringAdditionalContentType(DiscordppAdditionalContentType::Enum value);
+	static String EnumToStringAudioSystem(DiscordppAudioSystem::Enum value);
+	static String EnumToStringCallError(DiscordppCallError::Enum value);
+	static String EnumToStringAudioModeType(DiscordppAudioModeType::Enum value);
+	static String EnumToStringCallStatus(DiscordppCallStatus::Enum value);
+	static String EnumToStringChannelType(DiscordppChannelType::Enum value);
+	static String EnumToStringRelationshipType(DiscordppRelationshipType::Enum value);
+	static String EnumToStringUserHandleAvatarType(DiscordppUserHandleAvatarType::Enum value);
+	static String EnumToStringStatusType(DiscordppStatusType::Enum value);
+	static String EnumToStringDisclosureTypes(DiscordppDisclosureTypes::Enum value);
+	static String EnumToStringClientError(DiscordppClientError::Enum value);
+	static String EnumToStringClientStatus(DiscordppClientStatus::Enum value);
+	static String EnumToStringClientThread(DiscordppClientThread::Enum value);
+	static String EnumToStringAuthorizationTokenType(DiscordppAuthorizationTokenType::Enum value);
+	static String EnumToStringAuthenticationExternalAuthType(DiscordppAuthenticationExternalAuthType::Enum value);
+	static String EnumToStringLoggingSeverity(DiscordppLoggingSeverity::Enum value);
+	static String EnumToStringRelationshipGroupType(DiscordppRelationshipGroupType::Enum value);
 
 	~Discordpp() {}
 };
