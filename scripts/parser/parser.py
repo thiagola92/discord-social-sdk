@@ -17,20 +17,24 @@ class Parser:
 
     def start(self) -> list[TokenEnum | TokenFunction | TokenClass]:
         tokens = []
+        docstring = TokenDocstring([])
         string_matched = self.read_until_find(["enum", "inline", "class", "///"])
 
         while string_matched:
             match string_matched:
                 case "enum":
-                    tokens.append(self.parse_enum())
+                    tokens.append(self.parse_enum(docs=docstring))
+                    docstring = TokenDocstring([])
                 case "inline":
-                    tokens.append(self.parse_function(static=True))
+                    tokens.append(self.parse_function(docs=docstring, static=True))
+                    docstring = TokenDocstring([])
                 case "class":
-                    tokens.append(self.parse_class())
+                    # tokens.append(self.parse_class())
+                    docstring = TokenDocstring([])
                 case "///":
-                    tokens.append(self.parse_docstring())
+                    self.parse_docstring(docstring)
 
-            string_matched = self.read_until_find(["enum", "inline", "class"])
+            string_matched = self.read_until_find(["enum", "inline", "class", "///"])
 
         return tokens
 
@@ -74,24 +78,26 @@ class Parser:
 
         return None
 
-    def get_text_before(self, string: str) -> str | None:
+    def get_text_before(self, strings: list[str]) -> tuple[str | None, str | None]:
         """
-        Return the text between current position and a string,
-        otherwise None.
+        Returns a tuple:
+            First value is the text between current position and the matched string
+            Second value is the matched string
 
-        This will move the current position while searching
-        for the string.
+        Both will be None if doesn't find a match.
+
+        This will move the current position while searching for a match.
         """
         start_position = self.current_position
 
-        if self.read_until_find([string]) is None:
-            return None
+        if (string := self.read_until_find(strings)) is None:
+            return (None, None)
 
-        return self.content[start_position : self.current_position - 1]
+        return (self.content[start_position : self.current_position - 1], string)
 
-    def parse_enum(self) -> TokenEnum | None:
+    def parse_enum(self, docs: TokenDocstring) -> TokenEnum | None:
         # Parse name.
-        text = self.get_text_before("{")
+        text, _ = self.get_text_before(["{"])
 
         if text is None:
             return None
@@ -99,25 +105,38 @@ class Parser:
         name = text.strip().removeprefix("class ")
 
         # Parse options.
-        text = self.get_text_before("}")
-        text = text or ""
-        lines = text.split(",")
-        lines = [l.strip() for l in lines]
-        lines = [l for l in lines if l]
-        lines = [l.split("=") for l in lines]
+        text, string_matched = self.get_text_before(["}", "///", ","])
         counter = 0
+        options = {}
+        docstring = TokenDocstring([])
+        options_docs = {}
 
-        for l in lines:
-            if len(l) == 1:
-                l.append(str(counter))
-                counter += 1
+        while string_matched:
+            match string_matched:
+                case "}":
+                    break
+                case "///":
+                    self.parse_docstring(docstring)
+                case ",":
+                    texts = text.split("=")
+                    texts = [t.strip("\n\t ") for t in texts]
 
-            l[0] = l[0].strip()
+                    if len(texts) == 1:
+                        options[texts[0]] = str(counter)
+                        counter += 1
+                    else:
+                        options[texts[0]] = texts[1]
+                        counter = int(texts[1]) + 1
 
-        options = {l[0]: l[1] for l in lines}
+                    options_docs[texts[0]] = docstring
+                    docstring = TokenDocstring([])
+
+            text, string_matched = self.get_text_before(["}", "///", ","])
 
         return TokenEnum(
+            docs=docs,
             name=name,
+            options_docs=options_docs,
             options=options,
         )
 
@@ -180,7 +199,7 @@ class Parser:
         )
 
     def parse_params(self) -> list[TokenParam]:
-        text = self.get_text_before(")")
+        text, _ = self.get_text_before([")"])
 
         if text is None or text == "":
             return []
@@ -210,8 +229,12 @@ class Parser:
 
         return params
 
-    def parse_function(self, static: bool = False) -> TokenFunction | None:
-        text = self.get_text_before("(")
+    def parse_function(
+        self,
+        docs: TokenDocstring,
+        static: bool = False,
+    ) -> TokenFunction | None:
+        text, _ = self.get_text_before(["("])
 
         if text is None:
             return None
@@ -228,13 +251,14 @@ class Parser:
         return TokenFunction(
             ret=ret,
             name=name,
+            docs=docs,
             params=params,
             static=static,
         )
 
     def parse_callback(self) -> TokenCallback | None:
         # Parse name.
-        name = self.get_text_before("=")
+        name, _ = self.get_text_before(["="])
         name = name.removeprefix("using")
         name = name.strip()
 
@@ -263,7 +287,7 @@ class Parser:
 
     def parse_class(self) -> TokenClass | None:
         # Parse name.
-        name = self.get_text_before("{")
+        name, _ = self.get_text_before(["{"])
 
         if name is None:
             return None
@@ -289,7 +313,7 @@ class Parser:
 
             self.current_position += 1
 
-        # Parse statements
+        # Parse statements.
         enums = []
         callbacks = []
         constructors = []
@@ -322,5 +346,11 @@ class Parser:
             functions=functions,
         )
 
-    def parse_docstring(self) -> TokenDocstring:
-        return TokenDocstring(text=self.get_text_before("\n").strip())
+    def parse_docstring(self, docstring: TokenDocstring):
+        # Parse docstring.
+        line, _ = self.get_text_before(["\n"])
+        line = line or ""
+        line = line.strip()
+
+        # Docstring just extend an existing one.
+        docstring.lines.append(line)

@@ -1,22 +1,41 @@
-type TokenSubType = TokenType  # Allows me use recursive typing
+type TokenSubType = TokenType  # Allows me to use recursive typing
+type TokenDocs = TokenDocstring
 
 
 class TokenEnum:
     """Used to represent enums"""
 
+    docs: TokenDocs
     name: str
     options: dict[str, int]
+    options_docs: dict[str, TokenDocs]
 
-    def __init__(self, name: str, options: dict[str, int]):
+    def __init__(
+        self,
+        docs: TokenDocs,
+        name: str,
+        options_docs: dict[str, TokenDocs],
+        options: dict[str, int],
+    ):
+        self.docs = docs
         self.name = name
+        self.options_docs = options_docs
         self.options = options
 
     def __str__(self):
-        options = "\n    ".join([f"{k}: {v}," for k, v in self.options.items()])
+        options = []
+
+        for k, v in self.options.items():
+            d = self.options_docs.get(k, "")
+            options.append(d.indented("    "))
+            options.append(f"    {k}: {v},")
+
+        options = "\n".join(options)
 
         return f"""
+{self.docs}
 enum {self.name} {{
-    {options}
+{options}
 }}
 """
 
@@ -177,9 +196,26 @@ class {self.name} {{
 
 
 class TokenDocstring:
-    """Used to represent a docstring."""
+    """
+    Used to represent a docstring.
 
-    text: str
+    Which could be one or more lines,
+    each starting with "///" and ending with newline.
+    """
 
-    def __init__(self, text: str):
-        self.text = text
+    lines: list[str]
+
+    def __init__(self, lines: list[str]):
+        self.lines = lines
+
+    def indented(self, prefix: str) -> str:
+        """
+        Utility to prettify the temporary file.
+        Because docstrings can be in any indentation of the code.
+        """
+        return prefix + str(self).replace("\n", f"\n{prefix}")
+
+    def __str__(self) -> str:
+        docs = "\n# ".join(self.lines)
+
+        return f"""# {docs}"""
