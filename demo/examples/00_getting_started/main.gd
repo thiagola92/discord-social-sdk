@@ -13,7 +13,7 @@ func _ready() -> void:
 	
 	client.AddLogCallback(
 		func(message: String, severity: DiscordppLoggingSeverity.Enum):
-			print("[%s] %s" % [Discordpp.EnumToString20(severity), message]),
+			print("[%s] %s" % [Discordpp.EnumToStringLoggingSeverity(severity), message]),
 		DiscordppLoggingSeverity.Info
 	)
 	
