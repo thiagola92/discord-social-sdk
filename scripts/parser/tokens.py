@@ -32,8 +32,7 @@ class TokenEnum:
 
         options = "\n".join(options)
 
-        return f"""
-{self.docs}
+        return f"""{self.docs}
 enum {self.name} {{
 {options}
 }}
@@ -80,7 +79,9 @@ class TokenParam:
         self.name = name
 
     def __str__(self):
-        return f"{str(self.type)} {self.name}"
+        type = str(self.type)
+
+        return f"{type} {self.name}"
 
 
 class TokenCallback:
@@ -95,6 +96,7 @@ class TokenCallback:
 
     def __str__(self):
         params = ", ".join([str(p) for p in self.params])
+
         return f"callback {self.name}({params})"
 
 
@@ -119,6 +121,7 @@ class TokenConstructor:
     def __str__(self):
         params = ", ".join([str(p) for p in self.params])
         deleted = "deleted" if self.deleted else ""
+
         return f"constructor ({params}) {deleted}"
 
 
@@ -130,6 +133,7 @@ class TokenFunction:
     Function content it's not important to us.
     """
 
+    docs: TokenDocs
     ret: TokenType
     name: str
     params: list[TokenParam]
@@ -137,25 +141,33 @@ class TokenFunction:
 
     def __init__(
         self,
+        docs: TokenDocs,
         ret: TokenType,
         name: str,
         params: list[TokenParam],
         static: bool,
     ):
+        self.docs = docs
         self.ret = ret
         self.name = name
         self.params = params
         self.static = static
 
     def __str__(self):
+        docs = str(self.docs)
         params = ", ".join([str(p) for p in self.params])
         modifier = "static " if self.static else ""
-        return f"{modifier}func {self.name}({params}) -> {str(self.ret)}"
+        ret = str(self.ret)
+
+        return f"""{docs}
+{modifier}func {self.name}({params}) -> {ret}
+"""
 
 
 class TokenClass:
     """Used to represent a class."""
 
+    docs: TokenDocs
     name: str
     enums: list[TokenEnum]
     callbacks: list[TokenCallback]
@@ -164,12 +176,14 @@ class TokenClass:
 
     def __init__(
         self,
+        docs: TokenDocs,
         name: str,
         enums: list[TokenEnum],
         callbacks: list[TokenCallback],
         constructors: list[TokenConstructor],
         functions: list[TokenFunction],
     ):
+        self.docs = docs
         self.name = name
         self.enums = enums
         self.callbacks = callbacks
@@ -177,12 +191,14 @@ class TokenClass:
         self.functions = functions
 
     def __str__(self):
+        docs = str(self.docs)
         enums = "".join([str(e) for e in self.enums])
         callbacks = "\n".join([str(c) for c in self.callbacks])
         constructors = "\n".join([str(c) for c in self.constructors])
         functions = "\n".join([str(f) for f in self.functions])
 
         return f"""
+{docs}
 class {self.name} {{
 {enums}
 -----
@@ -216,6 +232,6 @@ class TokenDocstring:
         return prefix + str(self).replace("\n", f"\n{prefix}")
 
     def __str__(self) -> str:
-        docs = "\n# ".join(self.lines)
+        docs = "\n// ".join(self.lines)
 
-        return f"""# {docs}"""
+        return f"""// {docs}"""

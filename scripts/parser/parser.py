@@ -29,8 +29,9 @@ class Parser:
                     tokens.append(self.parse_function(docs=docstring, static=True))
                     docstring = TokenDocstring([])
                 case "class":
-                    # tokens.append(self.parse_class())
+                    tokens.append(self.parse_class(docstring))
                     docstring = TokenDocstring([])
+                    pass
                 case "///":
                     self.parse_docstring(docstring)
 
@@ -249,9 +250,9 @@ class Parser:
         params = self.parse_params()
 
         return TokenFunction(
+            docs=docs,
             ret=ret,
             name=name,
-            docs=docs,
             params=params,
             static=static,
         )
@@ -285,7 +286,7 @@ class Parser:
             deleted=deleted,
         )
 
-    def parse_class(self) -> TokenClass | None:
+    def parse_class(self, docs: TokenDocstring) -> TokenClass | None:
         # Parse name.
         name, _ = self.get_text_before(["{"])
 
@@ -319,26 +320,27 @@ class Parser:
         constructors = []
         functions = []
 
-        for statement in statements:
-            parser = Parser(content=statement)
+        # for statement in statements:
+        #     parser = Parser(content=statement)
 
-            if statement.startswith("enum "):
-                parser.read_until_find(["enum"])
-                enums.append(parser.parse_enum())
-            elif statement.startswith("using "):
-                callbacks.append(parser.parse_callback())
-            elif statement.startswith(name):
-                constructors.append(parser.parse_constructor())
-            elif statement.startswith("explicit "):
-                parser.read_until_find(["explicit"])
-                constructors.append(parser.parse_constructor())
-            elif statement.startswith("static "):
-                parser.read_until_find(["static"])
-                functions.append(parser.parse_function(static=True))
-            else:
-                functions.append(parser.parse_function())
+        #     if statement.startswith("enum "):
+        #         parser.read_until_find(["enum"])
+        #         enums.append(parser.parse_enum())
+        #     elif statement.startswith("using "):
+        #         callbacks.append(parser.parse_callback())
+        #     elif statement.startswith(name):
+        #         constructors.append(parser.parse_constructor())
+        #     elif statement.startswith("explicit "):
+        #         parser.read_until_find(["explicit"])
+        #         constructors.append(parser.parse_constructor())
+        #     elif statement.startswith("static "):
+        #         parser.read_until_find(["static"])
+        #         functions.append(parser.parse_function(static=True))
+        #     else:
+        #         functions.append(parser.parse_function(TokenDocstring([])))
 
         return TokenClass(
+            docs=docs,
             name=name,
             enums=enums,
             callbacks=callbacks,

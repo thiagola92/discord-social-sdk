@@ -1,597 +1,1347 @@
-
-# Represents the memory state of a Discord object.
+// Represents the memory state of a Discord object.
 enum DiscordObjectState {
-    # The object has been freed
+    // The object has been freed
     Invalid: 0,
-    # The object is owned by the C++ wrapper and methods can be called on it
+    // The object is owned by the C++ wrapper and methods can be called on it
     Owned: 1,
 }
 
+// Runs pending callbacks from the Discord SDK.
+// 
+// You should call this function periodically to process callbacks, e.g. once per frame.
+static func RunCallbacks() -> void
 
-# \brief ActivityActionTypes represents the type of invite being sent to a user.
-# 
-# There are essentially two types of invites:
-# 1: A user with an existing activity party can invite another user to join that existing party
-# 2: A user can request to join the existing activity party of another user
-# 
-# See https://discord.com/developers/docs/rich-presence/overview for more information.
+// \brief ActivityActionTypes represents the type of invite being sent to a user.
+// 
+// There are essentially two types of invites:
+// 1: A user with an existing activity party can invite another user to join that existing party
+// 2: A user can request to join the existing activity party of another user
+// 
+// See https://discord.com/developers/docs/rich-presence/overview for more information.
 enum ActivityActionTypes {
-    # \brief Join
+    // \brief Join
     Join: 1,
-    # \brief JoinRequest
+    // \brief JoinRequest
     JoinRequest: 5,
 }
 
-
-# \brief Allows your game to control the privacy of the party the user is in.
+// \brief Allows your game to control the privacy of the party the user is in.
 enum ActivityPartyPrivacy {
-    # \brief The party is private (or unknown), which means that the user is in a party but it is
-    # not
-    # joinable without sending a request to join the party.
-    # 
-    # This is the default value. You will also receive this value when receiving other users'
-    # activities as the party privacy for other users is not exposed.
+    // \brief The party is private (or unknown), which means that the user is in a party but it is
+    // not
+    // joinable without sending a request to join the party.
+    // 
+    // This is the default value. You will also receive this value when receiving other users'
+    // activities as the party privacy for other users is not exposed.
     Private: 0,
-    # \brief The party is public, which means that the user is in a party which *could* be
-    # joinable by
-    # either friends or mutual voice participants without sending a request to join the party.
-    # This depends on a user's desired Discord account privacy settings.
+    // \brief The party is public, which means that the user is in a party which *could* be
+    // joinable by
+    // either friends or mutual voice participants without sending a request to join the party.
+    // This depends on a user's desired Discord account privacy settings.
     Public: 1,
 }
 
-
-# \brief Discord RichPresence supports multiple types of activities that a user can be doing.
-# 
-# For the SDK, the only activity type that is really relevant is `Playing`.
-# The others are provided for completeness.
-# 
-# See https://discord.com/developers/docs/rich-presence/overview for more information.
+// \brief Discord RichPresence supports multiple types of activities that a user can be doing.
+// 
+// For the SDK, the only activity type that is really relevant is `Playing`.
+// The others are provided for completeness.
+// 
+// See https://discord.com/developers/docs/rich-presence/overview for more information.
 enum ActivityTypes {
-    # \brief Playing
+    // \brief Playing
     Playing: 0,
-    # \brief Streaming
+    // \brief Streaming
     Streaming: 1,
-    # \brief Listening
+    // \brief Listening
     Listening: 2,
-    # \brief Watching
+    // \brief Watching
     Watching: 3,
-    # \brief CustomStatus
+    // \brief CustomStatus
     CustomStatus: 4,
-    # \brief Competing
+    // \brief Competing
     Competing: 5,
-    # \brief HangStatus
+    // \brief HangStatus
     HangStatus: 6,
 }
 
-
-# \brief Controls which Discord RichPresence field is displayed in the user's status.
-# 
-# See https://discord.com/developers/docs/rich-presence/overview for more information.
+// \brief Controls which Discord RichPresence field is displayed in the user's status.
+// 
+// See https://discord.com/developers/docs/rich-presence/overview for more information.
 enum StatusDisplayTypes {
-    # \brief Name
+    // \brief Name
     Name: 0,
-    # \brief State
+    // \brief State
     State: 1,
-    # \brief Details
+    // \brief Details
     Details: 2,
 }
 
-
-# \brief Represents the type of platforms that an activity invite can be accepted on.
+// \brief Represents the type of platforms that an activity invite can be accepted on.
 enum ActivityGamePlatforms {
-    # \brief Desktop
+    // \brief Desktop
     Desktop: 1,
-    # \brief Xbox
+    // \brief Xbox
     Xbox: 2,
-    # \brief Samsung
+    // \brief Samsung
     Samsung: 4,
-    # \brief IOS
+    // \brief IOS
     IOS: 8,
-    # \brief Android
+    // \brief Android
     Android: 16,
-    # \brief Embedded
+    // \brief Embedded
     Embedded: 32,
-    # \brief PS4
+    // \brief PS4
     PS4: 64,
-    # \brief PS5
+    // \brief PS5
     PS5: 128,
 }
 
-
-# \brief Enum representing various types of errors the SDK returns.
+// \brief Enum representing various types of errors the SDK returns.
 enum ErrorType {
-    # \brief No error, the operation was successful.
+    // \brief No error, the operation was successful.
     None: 0,
-    # \brief The user is offline or there was some network issue that prevented an underlying
-    # HTTP call from succeeding.
+    // \brief The user is offline or there was some network issue that prevented an underlying
+    // HTTP call from succeeding.
     NetworkError: 1,
-    # \brief An HTTP call was made to Discord's servers but a non success HTTP status code was
-    # returned.
-    # In some cases this may be retryable, and if so ClientResult::Retryable will be true.
-    # In most cases though the failure is due to a validation or permissions error, and the
-    # request is not retryable. ClientResult::Error and ClientResult::ErrorCode will have more
-    # information.
+    // \brief An HTTP call was made to Discord's servers but a non success HTTP status code was
+    // returned.
+    // In some cases this may be retryable, and if so ClientResult::Retryable will be true.
+    // In most cases though the failure is due to a validation or permissions error, and the
+    // request is not retryable. ClientResult::Error and ClientResult::ErrorCode will have more
+    // information.
     HTTPError: 2,
-    # \brief An operation such as sending a friend request or joining a lobby was attempted but
-    # the
-    # Client is not yet ready. Wait for Client::Status to change to Client::Status::Ready before
-    # trying again.
-    # 
-    # Also be sure to call Client::Connect to begin the process of connecting to Discord's
-    # servers, otherwise
-    # the Client will never become ready.
+    // \brief An operation such as sending a friend request or joining a lobby was attempted but
+    // the
+    // Client is not yet ready. Wait for Client::Status to change to Client::Status::Ready before
+    // trying again.
+    // 
+    // Also be sure to call Client::Connect to begin the process of connecting to Discord's
+    // servers, otherwise
+    // the Client will never become ready.
     ClientNotReady: 3,
-    # \brief An operation was temporarily disabled for stability reasons.
+    // \brief An operation was temporarily disabled for stability reasons.
     Disabled: 4,
-    # \brief The Client has been destroyed and so this operation cannot complete.
+    // \brief The Client has been destroyed and so this operation cannot complete.
     ClientDestroyed: 5,
-    # \brief Used when an SDK method is called but the inputs don't pass local validation. For
-    # example
-    # if one attempts to accept a friend request when there is no pending friend request for that
-    # user,
-    # this ErrorType would be used.
-    # 
-    # The specific validation error will be included in the `error` field, and no other
-    # ClientResult fields will be set.
+    // \brief Used when an SDK method is called but the inputs don't pass local validation. For
+    // example
+    // if one attempts to accept a friend request when there is no pending friend request for that
+    // user,
+    // this ErrorType would be used.
+    // 
+    // The specific validation error will be included in the `error` field, and no other
+    // ClientResult fields will be set.
     ValidationError: 6,
-    # \brief The user or developer aborted an operation, such as an authorization flow.
+    // \brief The user or developer aborted an operation, such as an authorization flow.
     Aborted: 7,
-    # \brief An authorization function failed, but not necessarily as the result of an HTTP call
-    # that
-    # returned an error.
+    // \brief An authorization function failed, but not necessarily as the result of an HTTP call
+    // that
+    // returned an error.
     AuthorizationFailed: 8,
-    # \brief An RPC call was made to Discord's desktop application, but it returned a non-success
-    # result.
-    # The error and errorCode fields should both be set with more information.
+    // \brief An RPC call was made to Discord's desktop application, but it returned a non-success
+    // result.
+    // The error and errorCode fields should both be set with more information.
     RPCError: 9,
 }
 
-
-# \brief Enum that represents the various HTTP status codes that can be returned.
-# 
-# You can read more about these at: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
-# For convenience, we have defined a couple of enum values that are non-standard HTTP codes to
-# represent certain types of errors.
+// \brief Enum that represents the various HTTP status codes that can be returned.
+// 
+// You can read more about these at: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
+// For convenience, we have defined a couple of enum values that are non-standard HTTP codes to
+// represent certain types of errors.
 enum HttpStatusCode {
-    # \brief None
+    // \brief None
     None: 0,
-    # \brief Continue
+    // \brief Continue
     Continue: 100,
-    # \brief SwitchingProtocols
+    // \brief SwitchingProtocols
     SwitchingProtocols: 101,
-    # \brief Processing
+    // \brief Processing
     Processing: 102,
-    # \brief EarlyHints
+    // \brief EarlyHints
     EarlyHints: 103,
-    # \brief Ok
+    // \brief Ok
     Ok: 200,
-    # \brief Created
+    // \brief Created
     Created: 201,
-    # \brief Accepted
+    // \brief Accepted
     Accepted: 202,
-    # \brief NonAuthoritativeInfo
+    // \brief NonAuthoritativeInfo
     NonAuthoritativeInfo: 203,
-    # \brief NoContent
+    // \brief NoContent
     NoContent: 204,
-    # \brief ResetContent
+    // \brief ResetContent
     ResetContent: 205,
-    # \brief PartialContent
+    // \brief PartialContent
     PartialContent: 206,
-    # \brief MultiStatus
+    // \brief MultiStatus
     MultiStatus: 207,
-    # \brief AlreadyReported
+    // \brief AlreadyReported
     AlreadyReported: 208,
-    # \brief ImUsed
+    // \brief ImUsed
     ImUsed: 209,
-    # \brief MultipleChoices
+    // \brief MultipleChoices
     MultipleChoices: 300,
-    # \brief MovedPermanently
+    // \brief MovedPermanently
     MovedPermanently: 301,
-    # \brief Found
+    // \brief Found
     Found: 302,
-    # \brief SeeOther
+    // \brief SeeOther
     SeeOther: 303,
-    # \brief NotModified
+    // \brief NotModified
     NotModified: 304,
-    # \brief TemporaryRedirect
+    // \brief TemporaryRedirect
     TemporaryRedirect: 307,
-    # \brief PermanentRedirect
+    // \brief PermanentRedirect
     PermanentRedirect: 308,
-    # \brief BadRequest
+    // \brief BadRequest
     BadRequest: 400,
-    # \brief Unauthorized
+    // \brief Unauthorized
     Unauthorized: 401,
-    # \brief PaymentRequired
+    // \brief PaymentRequired
     PaymentRequired: 402,
-    # \brief Forbidden
+    // \brief Forbidden
     Forbidden: 403,
-    # \brief NotFound
+    // \brief NotFound
     NotFound: 404,
-    # \brief MethodNotAllowed
+    // \brief MethodNotAllowed
     MethodNotAllowed: 405,
-    # \brief NotAcceptable
+    // \brief NotAcceptable
     NotAcceptable: 406,
-    # \brief ProxyAuthRequired
+    // \brief ProxyAuthRequired
     ProxyAuthRequired: 407,
-    # \brief RequestTimeout
+    // \brief RequestTimeout
     RequestTimeout: 408,
-    # \brief Conflict
+    // \brief Conflict
     Conflict: 409,
-    # \brief Gone
+    // \brief Gone
     Gone: 410,
-    # \brief LengthRequired
+    // \brief LengthRequired
     LengthRequired: 411,
-    # \brief PreconditionFailed
+    // \brief PreconditionFailed
     PreconditionFailed: 412,
-    # \brief PayloadTooLarge
+    // \brief PayloadTooLarge
     PayloadTooLarge: 413,
-    # \brief UriTooLong
+    // \brief UriTooLong
     UriTooLong: 414,
-    # \brief UnsupportedMediaType
+    // \brief UnsupportedMediaType
     UnsupportedMediaType: 415,
-    # \brief RangeNotSatisfiable
+    // \brief RangeNotSatisfiable
     RangeNotSatisfiable: 416,
-    # \brief ExpectationFailed
+    // \brief ExpectationFailed
     ExpectationFailed: 417,
-    # \brief MisdirectedRequest
+    // \brief MisdirectedRequest
     MisdirectedRequest: 421,
-    # \brief UnprocessableEntity
+    // \brief UnprocessableEntity
     UnprocessableEntity: 422,
-    # \brief Locked
+    // \brief Locked
     Locked: 423,
-    # \brief FailedDependency
+    // \brief FailedDependency
     FailedDependency: 424,
-    # \brief TooEarly
+    // \brief TooEarly
     TooEarly: 425,
-    # \brief UpgradeRequired
+    // \brief UpgradeRequired
     UpgradeRequired: 426,
-    # \brief PreconditionRequired
+    // \brief PreconditionRequired
     PreconditionRequired: 428,
-    # \brief TooManyRequests
+    // \brief TooManyRequests
     TooManyRequests: 429,
-    # \brief RequestHeaderFieldsTooLarge
+    // \brief RequestHeaderFieldsTooLarge
     RequestHeaderFieldsTooLarge: 431,
-    # \brief InternalServerError
+    // \brief InternalServerError
     InternalServerError: 500,
-    # \brief NotImplemented
+    // \brief NotImplemented
     NotImplemented: 501,
-    # \brief BadGateway
+    // \brief BadGateway
     BadGateway: 502,
-    # \brief ServiceUnavailable
+    // \brief ServiceUnavailable
     ServiceUnavailable: 503,
-    # \brief GatewayTimeout
+    // \brief GatewayTimeout
     GatewayTimeout: 504,
-    # \brief HttpVersionNotSupported
+    // \brief HttpVersionNotSupported
     HttpVersionNotSupported: 505,
-    # \brief VariantAlsoNegotiates
+    // \brief VariantAlsoNegotiates
     VariantAlsoNegotiates: 506,
-    # \brief InsufficientStorage
+    // \brief InsufficientStorage
     InsufficientStorage: 507,
-    # \brief LoopDetected
+    // \brief LoopDetected
     LoopDetected: 508,
-    # \brief NotExtended
+    // \brief NotExtended
     NotExtended: 510,
-    # \brief NetworkAuthorizationRequired
+    // \brief NetworkAuthorizationRequired
     NetworkAuthorizationRequired: 511,
 }
 
-
-# \brief Represents the crypto method used to generate a code challenge.
-# 
-# The only method used by the SDK is sha256.
+// \brief Represents the crypto method used to generate a code challenge.
+// 
+// The only method used by the SDK is sha256.
 enum AuthenticationCodeChallengeMethod {
-    # \brief S256
+    // \brief S256
     S256: 0,
 }
 
-
-# \brief Represents the type of integration the app will be installed as.
+// \brief Represents the type of integration the app will be installed as.
 enum IntegrationType {
-    # \brief GuildInstall
+    // \brief GuildInstall
     GuildInstall: 0,
-    # \brief UserInstall
+    // \brief UserInstall
     UserInstall: 1,
 }
 
-
-# \brief Represents the type of additional content contained in a message.
+// \brief Represents the type of additional content contained in a message.
 enum AdditionalContentType {
-    # \brief Other
+    // \brief Other
     Other: 0,
-    # \brief Attachment
+    // \brief Attachment
     Attachment: 1,
-    # \brief Poll
+    // \brief Poll
     Poll: 2,
-    # \brief VoiceMessage
+    // \brief VoiceMessage
     VoiceMessage: 3,
-    # \brief Thread
+    // \brief Thread
     Thread: 4,
-    # \brief Embed
+    // \brief Embed
     Embed: 5,
-    # \brief Sticker
+    // \brief Sticker
     Sticker: 6,
 }
 
-
-# \brief The Discord Voice audio system to use.
+// \brief The Discord Voice audio system to use.
 enum AudioSystem {
-    # \brief Use the standard audio system.
+    // \brief Use the standard audio system.
     Standard: 0,
-    # \brief Use the game audio system.
+    // \brief Use the game audio system.
     Game: 1,
 }
 
-
-# \brief Represents whether a voice call is using push to talk or auto voice detection
+// \brief Represents whether a voice call is using push to talk or auto voice detection
 enum AudioModeType {
-    # \brief MODE_UNINIT
+    // \brief MODE_UNINIT
     MODE_UNINIT: 0,
-    # \brief MODE_VAD
+    // \brief MODE_VAD
     MODE_VAD: 1,
-    # \brief MODE_PTT
+    // \brief MODE_PTT
     MODE_PTT: 2,
 }
 
-
-# \brief Enum that represents the various channel types on Discord.
-# 
-# For more information see: https://discord.com/developers/docs/resources/channel
+// \brief Enum that represents the various channel types on Discord.
+// 
+// For more information see: https://discord.com/developers/docs/resources/channel
 enum ChannelType {
-    # \brief GuildText
+    // \brief GuildText
     GuildText: 0,
-    # \brief Dm
+    // \brief Dm
     Dm: 1,
-    # \brief GuildVoice
+    // \brief GuildVoice
     GuildVoice: 2,
-    # \brief GroupDm
+    // \brief GroupDm
     GroupDm: 3,
-    # \brief GuildCategory
+    // \brief GuildCategory
     GuildCategory: 4,
-    # \brief GuildNews
+    // \brief GuildNews
     GuildNews: 5,
-    # \brief GuildStore
+    // \brief GuildStore
     GuildStore: 6,
-    # \brief GuildNewsThread
+    // \brief GuildNewsThread
     GuildNewsThread: 10,
-    # \brief GuildPublicThread
+    // \brief GuildPublicThread
     GuildPublicThread: 11,
-    # \brief GuildPrivateThread
+    // \brief GuildPrivateThread
     GuildPrivateThread: 12,
-    # \brief GuildStageVoice
+    // \brief GuildStageVoice
     GuildStageVoice: 13,
-    # \brief GuildDirectory
+    // \brief GuildDirectory
     GuildDirectory: 14,
-    # \brief GuildForum
+    // \brief GuildForum
     GuildForum: 15,
-    # \brief GuildMedia
+    // \brief GuildMedia
     GuildMedia: 16,
-    # \brief Lobby
+    // \brief Lobby
     Lobby: 17,
-    # \brief EphemeralDm
+    // \brief EphemeralDm
     EphemeralDm: 18,
 }
 
-
-# \brief Enum that represents the possible types of relationships that can exist between two users
+// \brief Enum that represents the possible types of relationships that can exist between two users
 enum RelationshipType {
-    # \brief The user has no relationship with the other user.
+    // \brief The user has no relationship with the other user.
     None: 0,
-    # \brief The user is friends with the other user.
+    // \brief The user is friends with the other user.
     Friend: 1,
-    # \brief The current user has blocked the target user, and so certain actions such as sending
-    # messages between these users will not work.
+    // \brief The current user has blocked the target user, and so certain actions such as sending
+    // messages between these users will not work.
     Blocked: 2,
-    # \brief The current user has received a friend request from the target user, but it is not
-    # yet
-    # accepted.
+    // \brief The current user has received a friend request from the target user, but it is not
+    // yet
+    // accepted.
     PendingIncoming: 3,
-    # \brief The current user has sent a friend request to the target user, but it is not yet
-    # accepted.
+    // \brief The current user has sent a friend request to the target user, but it is not yet
+    // accepted.
     PendingOutgoing: 4,
-    # \brief The Implicit type is documented for visibility, but should be unused in the SDK.
+    // \brief The Implicit type is documented for visibility, but should be unused in the SDK.
     Implicit: 5,
-    # \brief The Suggestion type is documented for visibility, but should be unused in the SDK.
+    // \brief The Suggestion type is documented for visibility, but should be unused in the SDK.
     Suggestion: 6,
 }
 
-
-# \brief Enum that specifies the various online statuses for a user.
-# 
-# Generally a user is online or offline, but in Discord users are able to further customize their
-# status such as turning on "Do not Disturb" mode or "Dnd" to silence notifications.
+// \brief Enum that specifies the various online statuses for a user.
+// 
+// Generally a user is online or offline, but in Discord users are able to further customize their
+// status such as turning on "Do not Disturb" mode or "Dnd" to silence notifications.
 enum StatusType {
-    # \brief The user is online and recently active.
+    // \brief The user is online and recently active.
     Online: 0,
-    # \brief The user is offline and not connected to Discord.
+    // \brief The user is offline and not connected to Discord.
     Offline: 1,
-    # \brief Blocked
+    // \brief Blocked
     Blocked: 2,
-    # \brief The user is online, but has not been active for a while and may be away from their
-    # computer.
+    // \brief The user is online, but has not been active for a while and may be away from their
+    // computer.
     Idle: 3,
-    # \brief The user is online, but wishes to suppress notifications for the time being.
+    // \brief The user is online, but wishes to suppress notifications for the time being.
     Dnd: 4,
-    # \brief The user is online, but wishes to appear as if they are offline to other users.
+    // \brief The user is online, but wishes to appear as if they are offline to other users.
     Invisible: 5,
-    # \brief The user is online and is actively streaming content.
+    // \brief The user is online and is actively streaming content.
     Streaming: 6,
-    # \brief Unknown
+    // \brief Unknown
     Unknown: 7,
 }
 
-
-# \brief Enum that represents various informational disclosures that Discord may make to users, so
-# that the game can identity them and customize their rendering as desired.
-# 
-# See MessageHandle for more details.
+// \brief Enum that represents various informational disclosures that Discord may make to users, so
+// that the game can identity them and customize their rendering as desired.
+// 
+// See MessageHandle for more details.
 enum DisclosureTypes {
-    # \brief This disclosure type happens the first time a user sends a message in game, and that
-    # message
-    # will be able to be viewed on Discord, so the user knows their content is being copied out of
-    # the game.
+    // \brief This disclosure type happens the first time a user sends a message in game, and that
+    // message
+    // will be able to be viewed on Discord, so the user knows their content is being copied out of
+    // the game.
     MessageDataVisibleOnDiscord: 3,
 }
 
-
-# \brief Represents the type of auth token used by the SDK, either the normal tokens produced by
-# the Discord desktop app, or an oauth2 bearer token. Only the latter can be used by the SDK.
+// \brief Represents the type of auth token used by the SDK, either the normal tokens produced by
+// the Discord desktop app, or an oauth2 bearer token. Only the latter can be used by the SDK.
 enum AuthorizationTokenType {
-    # \brief User
+    // \brief User
     User: 0,
-    # \brief Bearer
+    // \brief Bearer
     Bearer: 1,
 }
 
-
-# \brief Represents the various identity providers that can be used to authenticate a provisional
-# account user for public clients.
+// \brief Represents the various identity providers that can be used to authenticate a provisional
+// account user for public clients.
 enum AuthenticationExternalAuthType {
-    # \brief OIDC
+    // \brief OIDC
     OIDC: 0,
-    # \brief EpicOnlineServicesAccessToken
+    // \brief EpicOnlineServicesAccessToken
     EpicOnlineServicesAccessToken: 1,
-    # \brief EpicOnlineServicesIdToken
+    // \brief EpicOnlineServicesIdToken
     EpicOnlineServicesIdToken: 2,
-    # \brief SteamSessionTicket
+    // \brief SteamSessionTicket
     SteamSessionTicket: 3,
-    # \brief UnityServicesIdToken
+    // \brief UnityServicesIdToken
     UnityServicesIdToken: 4,
 }
 
-
-# \brief Enum that represents the various log levels supported by the SDK.
+// \brief Enum that represents the various log levels supported by the SDK.
 enum LoggingSeverity {
-    # \brief Verbose
+    // \brief Verbose
     Verbose: 1,
-    # \brief Info
+    // \brief Info
     Info: 2,
-    # \brief Warning
+    // \brief Warning
     Warning: 3,
-    # \brief Error
+    // \brief Error
     Error: 4,
-    # \brief None
+    // \brief None
     None: 5,
 }
 
-
-# \brief Enum that represents the logical groups of relationships based on online status and game
-# activity
+// \brief Enum that represents the logical groups of relationships based on online status and game
+// activity
 enum RelationshipGroupType {
-    # \brief Users who are online and currently playing the game
+    // \brief Users who are online and currently playing the game
     OnlinePlayingGame: 0,
-    # \brief Users who are online but not playing the game
+    // \brief Users who are online but not playing the game
     OnlineElsewhere: 1,
-    # \brief Users who are offline
+    // \brief Users who are offline
     Offline: 2,
 }
 
 
-# \brief Enum that represents any network errors with the Call.
-enum Error {
-    # \brief None
-    None: 0,
-    # \brief SignalingConnectionFailed
-    SignalingConnectionFailed: 1,
-    # \brief SignalingUnexpectedClose
-    SignalingUnexpectedClose: 2,
-    # \brief VoiceConnectionFailed
-    VoiceConnectionFailed: 3,
-    # \brief JoinTimeout
-    JoinTimeout: 4,
-    # \brief Forbidden
-    Forbidden: 5,
+// \brief When one user invites another to join their game on Discord, it will send a message to
+// that user. The SDK will parse those messages for you automatically, and this struct contains all
+// of the relevant invite information which is needed to later accept that invite.
+class ActivityInvite {
+
+-----
+
+-----
+
+-----
+
 }
 
 
-# \brief Enum that respresents the state of the Call's network connection.
-enum Status {
-    # \brief Disconnected
-    Disconnected: 0,
-    # \brief Joining
-    Joining: 1,
-    # \brief Connecting
-    Connecting: 2,
-    # \brief SignalingConnected
-    SignalingConnected: 3,
-    # \brief Connected
-    Connected: 4,
-    # \brief Reconnecting
-    Reconnecting: 5,
-    # \brief Disconnecting
-    Disconnecting: 6,
+// \brief Struct which controls what your rich presence looks like in
+// the Discord client. If you don't specify any values, the icon
+// and name of your application will be used as defaults.
+// 
+// Image assets can be either the unique identifier for an image
+// you uploaded to your application via the `Rich Presence` page in
+// the Developer portal, or they can be an external image URL.
+// 
+// As an example, if I uploaded an asset and name it `goofy-icon`,
+// I could set either image field to the string `goofy-icon`. Alternatively,
+// if my icon was hosted at `http://my-site.com/goofy.jpg`, I could
+// pass that URL into either image field.
+// 
+// See https://discord.com/developers/docs/rich-presence/overview#adding-custom-art-assets
+// for more information on using custom art assets, as well as for visual
+// examples of what each field does.
+class ActivityAssets {
+
+-----
+
+-----
+
+-----
+
 }
 
 
-# \brief The desired type of avatar url to generate for a User.
-enum AvatarType {
-    # \brief Gif
-    Gif: 0,
-    # \brief Webp
-    Webp: 1,
-    # \brief Png
-    Png: 2,
-    # \brief Jpeg
-    Jpeg: 3,
+// \brief \see Activity
+class ActivityTimestamps {
+
+-----
+
+-----
+
+-----
+
 }
 
 
-# \brief Represents an error state for the socket connection that the Discord SDK maintains
-# with the Discord backend.
-# 
-# Generic network failures will use the ConnectionFailed and ConnectionCanceled
-# enum values. Other errors such as if the user's auth token is invalid or out of
-# date will be UnexpectedClose and you should look at the other Error fields for the specific
-# details.
-enum Error {
-    # \brief None
-    None: 0,
-    # \brief ConnectionFailed
-    ConnectionFailed: 1,
-    # \brief UnexpectedClose
-    UnexpectedClose: 2,
-    # \brief ConnectionCanceled
-    ConnectionCanceled: 3,
+// \brief \see Activity
+class ActivityParty {
+
+-----
+
+-----
+
+-----
+
 }
 
 
-# \brief This enum refers to the status of the internal websocket the SDK uses to communicate
-# with Discord There are ~2 phases for "launching" the client:
-# 1. The socket has to connect to Discord and exchange an auth token. This is indicated by the
-# `Connecting` and `Connected` values.
-# 2. The socket has to receive an initial payload of data that describes the current user,
-# what lobbies they are in, who their friends are, etc. This is the `Ready` status.
-# Many Client functions will not work until the status changes to `Ready`, such as
-# GetCurrentUser().
-# 
-# Status::Ready is the one you want to wait for!
-# 
-# Additionally, sometimes the socket will be disconnected, such as through temporary network
-# blips. But it will try to automatically reconnect, as indicated by the `Reconnecting`
-# status.
-enum Status {
-    # \brief Disconnected
-    Disconnected: 0,
-    # \brief Connecting
-    Connecting: 1,
-    # \brief Connected
-    Connected: 2,
-    # \brief Ready
-    Ready: 3,
-    # \brief Reconnecting
-    Reconnecting: 4,
-    # \brief Disconnecting
-    Disconnecting: 5,
-    # \brief HttpWait
-    HttpWait: 6,
+// \brief \see Activity
+class ActivitySecrets {
+
+-----
+
+-----
+
+-----
+
 }
 
 
-# \brief Represents the type of thread to control thread priority on.
-enum Thread {
-    # \brief Client
-    Client: 0,
-    # \brief Voice
-    Voice: 1,
-    # \brief Network
-    Network: 2,
+// \brief \see Activity
+class ActivityButton {
+
+-----
+
+-----
+
+-----
+
 }
+
+
+// \brief An Activity represents one "thing" a user is doing on Discord and is part of their rich
+// presence.
+// 
+// Additional information is located on the Discord Developer Portal:
+// - https://discord.com/developers/docs/rich-presence/overview
+// - https://discord.com/developers/docs/developer-tools/game-sdk#activities
+// - https://discord.com/developers/docs/rich-presence/best-practices
+// 
+// While RichPresence supports multiple types of activities, the only activity type that is really
+// relevant for the SDK is ActivityTypes::Playing. Additionally, the SDK will only expose
+// Activities that are associated with the current game (or application). So for example, a field
+// like `name` below, will always be set to the current game's name from the view of the SDK.
+// 
+// ## Customization
+// When an activity shows up on Discord, it will look something like this:
+// 1. Playing "game name"
+// 2. Capture the flag | 2 - 1
+// 3. In a group (2 of 3)
+// 
+// You can control how lines 2 and 3 are rendered in Discord, here's the breakdown:
+// - Line 1, `Playing "game name"` is powered by the name of your game (or application) on Discord.
+// - Line 2, `Capture the flag | 2 - 1` is powered by the `details` field in the activity, and this
+// should generally try to describe what the _player_ is currently doing. You can even include
+// dynamic data such as a match score here.
+// - Line 3, `In a group (2 of 3)` describes the _party_ the player is in. "Party" is used to refer
+// to a group of players in a shared context, such as a lobby, server, team, etc. The first half,
+// `In a group` is powered by the `state` field in the activity, and the second half, `(2 of 3)` is
+// powered by the `party` field in the activity and describes how many people are in the current
+// party and how big the party can get.
+// 
+// This diagram visually shows the field mapping:
+// 
+// 
+// \image html "rich_presence.png" "Rich presence field diagram" width=1070px
+// 
+// You can also specify up to two custom buttons to display on the rich presence.
+// These buttons will open the URL in the user's default browser.
+// 
+// \code
+// discordpp::ActivityButton button;
+// button.SetLabel("Button 1");
+// button.SetUrl("https://example.com");
+// activity.AddButton(button);
+// \endcode
+// 
+// 
+// ## Invites / Joinable Activities
+// Other users can be invited to join the current player's activity (or request to join it too),
+// but that does require certain fields to be set:
+// 1. ActivityParty must be set and have a non-empty ActivityParty::Id field. All users in the
+// party should set the same id field too!
+// 2. ActivityParty must specify the size of the group, and there must be room in the group for
+// another person to join.
+// 3. ActivitySecrets::Join must be set to a non-empty string. The join secret is only shared with
+// users who are accepted into the party by an existing member, so it is truly a secret. You can
+// use this so that when the user is accepted your game knows how to join them to the party. For
+// example it could be an internal game ID, or a Discord lobby ID/secret that the client could
+// join.
+// 
+// There is additional information about game invites here:
+// https://support.discord.com/hc/en-us/articles/115001557452-Game-Invites
+// 
+// ### Mobile Invites
+// Activity invites are handled via a deep link. To enable users to join your game via an invite in
+// the Discord client, you must do two things:
+// 1. Set your deep link URL in the Discord developer portal. This will be available on the General
+// tab of your application once Social Layer integration is enabled for your app.
+// 2. Set the desired supported platforms when reporting the activity info in your rich presence,
+// e.g.:
+// 
+// 
+// \code
+// activity.SetSupportedPlatforms(
+// ActivityGamePlatforms.Desktop |
+// ActivityGamePlatforms.IOS |
+// ActivityGamePlatforms.Android);
+// \endcode
+// 
+// 
+// When the user accepts the invite, the Discord client will open:
+// `[your url]/_discord/join?secret=[the join secret you set]`
+// 
+// ### Example Invites Flow
+// If you are using Discord lobbies for your game, a neat flow would look like this:
+// - When a user starts playing the game, they create a lobby with a random secret string, using
+// Client::CreateOrJoinLobby
+// - That user publishes their RichPresence with the join secret set to the lobby secret, along
+// with party size information
+// - Another use can then see that RichPresence on Discord and join off of it
+// - Once accepted the new user receives the join secret and their client can call
+// CreateOrJoinLobby(joinSecret) to join the lobby
+// - Finally the original user can notice that the lobby membership has changed and so they publish
+// a new RichPresence update containing the updating party size information.
+// 
+// ### Invites Code Example
+// 
+// \code
+// // User A
+// // 1. Create a lobby with secret
+// std::string lobbySecret = "foo";
+// client->CreateOrJoinLobby(lobbySecret, [=](discordpp::ClientResult result, uint64_t lobbyId) {
+// // 2. Update rich presence with join secret
+// discordpp::Activity activity{};
+// // set name, state, party size ...
+// discordpp::ActivitySecrets secrets{};
+// secrets.SetJoin(lobbySecret);
+// activity.SetSecrets(secrets);
+// client->UpdateRichPresence(std::move(activity), [](discordpp::ClientResult result) {});
+// });
+// // 3. Some time later, send an invite
+// client->SendActivityInvite(USER_B_ID, "come play with me", [](auto result) {});
+// 
+// // User B
+// // 4. Monitor for new invites. Alternatively, you can use
+// // Client::SetActivityInviteUpdatedCallback to get updates on existing invites.
+// client->SetActivityInviteCreatedCallback([client](auto invite) {
+// // 5. When an invite is received, ask the user if they want to accept it.
+// // If they choose to do so then go ahead and invoke AcceptActivityInvite
+// client->AcceptActivityInvite(invite,
+// [client](discordpp::ClientResult result, std::string secret) {
+// if (result.Successful()) {
+// // 5. Join the lobby using the joinSecret
+// client->CreateOrJoinLobby(secret, [](discordpp::ClientResult result, uint64_t
+// lobbyId) {
+// // Successfully joined lobby!
+// });
+// }
+// });
+// });
+// \endcode
+// 
+// 
+// ### Join Requests Code Example
+// Users can also request to join each others parties. This code snippet shows how that flow might
+// look:
+// 
+// \code
+// // User A
+// // 1. Create a lobby with secret
+// std::string lobbySecret = "foo";
+// client->CreateOrJoinLobby(lobbySecret, [=](discordpp::ClientResult result, uint64_t lobbyId) {
+// // 2. Update rich presence with join secret
+// discordpp::Activity activity{};
+// // set name, state, party size ...
+// discordpp::ActivitySecrets secrets{};
+// secrets.SetJoin(lobbySecret);
+// activity.SetSecrets(secrets);
+// client->UpdateRichPresence(std::move(activity), [](discordpp::ClientResult result) {});
+// });
+// 
+// // User B
+// // 3. Request to join User A's party
+// client->SendActivityJoinRequest(USER_A_ID, [](auto result) {});
+// 
+// // User A
+// // Monitor for new invites:
+// client->SetActivityInviteCreatedCallback([client](auto invite) {
+// // 5. The game can now show that User A has received a request to join their party
+// // If User A is ok with that, they can reply back:
+// // Note: invite.type will be ActivityActionTypes::JoinRequest in this example
+// client->SendActivityJoinRequestReply(invite, [](auto result) {});
+// });
+// 
+// // User B
+// // 6. Same as before, user B can monitor for invites
+// client->SetActivityInviteCreatedCallback([client](auto invite) {
+// // 7. When an invite is received, ask the user if they want to accept it.
+// // If they choose to do so then go ahead and invoke AcceptActivityInvite
+// client->AcceptActivityInvite(invite,
+// [client](discordpp::ClientResult result, std::string secret) {
+// if (result.Successful()) {
+// // 5. Join the lobby using the joinSecret
+// client->CreateOrJoinLobby(secret, [](auto result, uint64_t lobbyId) {
+// // Successfully joined lobby!
+// });
+// }
+// });
+// });
+// \endcode
+// 
+class Activity {
+
+-----
+
+-----
+
+-----
+
+}
+
+
+// \brief Struct that stores information about the result of an SDK function call.
+// 
+// Functions can fail for a few reasons including:
+// - The Client is not yet ready and able to perform the action.
+// - The inputs passed to the function are invalid.
+// - The function makes an API call to Discord's backend which returns an error.
+// - The user is offline.
+// 
+// The ClientResult::Type field is used to to distinguish between the above types of failures
+class ClientResult {
+
+-----
+
+-----
+
+-----
+
+}
+
+
+// \brief Struct that encapsulates the challenge part of the code verification flow.
+class AuthorizationCodeChallenge {
+
+-----
+
+-----
+
+-----
+
+}
+
+
+// \brief Struct that encapsulates both parts of the code verification flow.
+class AuthorizationCodeVerifier {
+
+-----
+
+-----
+
+-----
+
+}
+
+
+// \brief Arguments to the Client::Authorize function.
+class AuthorizationArgs {
+
+-----
+
+-----
+
+-----
+
+}
+
+
+// \brief Arguments to the Client::GetTokenFromDevice function.
+class DeviceAuthorizationArgs {
+
+-----
+
+-----
+
+-----
+
+}
+
+
+// \brief A VoiceStateHandle represents the state of a single participant in a Discord voice call.
+// 
+// The main use case for VoiceStateHandle in the SDK is communicate whether a user has muted or
+// defeaned themselves.
+// 
+// Handle objects in the SDK hold a reference both to the underlying data, and to the SDK instance.
+// Changes to the underlying data will generally be available on existing handles objects without
+// having to re-create them. If the SDK instance is destroyed, but you still have a reference to a
+// handle object, note that it will return the default value for all method calls (ie an empty
+// string for methods that return a string).
+class VoiceStateHandle {
+
+-----
+
+-----
+
+-----
+
+}
+
+
+// \brief Settings for the void auto detection threshold for picking up activity from a user's mic.
+class VADThresholdSettings {
+
+-----
+
+-----
+
+-----
+
+}
+
+
+// \brief Class that manages an active voice session in a Lobby.
+class Call {
+
+-----
+
+-----
+
+-----
+
+}
+
+
+// \brief All messages sent on Discord are done so in a Channel. MessageHandle::ChannelId will
+// contain the ID of the channel a message was sent in, and Client::GetChannelHandle will return an
+// instance of this class.
+// 
+// Handle objects in the SDK hold a reference both to the underlying data, and to the SDK instance.
+// Changes to the underlying data will generally be available on existing handles objects without
+// having to re-create them. If the SDK instance is destroyed, but you still have a reference to a
+// handle object, note that it will return the default value for all method calls (ie an empty
+// string for methods that return a string).
+class ChannelHandle {
+
+-----
+
+-----
+
+-----
+
+}
+
+
+// \brief Represents a guild (also knowns as a Discord server), that the current user is a member
+// of, that contains channels that can be linked to a lobby.
+class GuildMinimal {
+
+-----
+
+-----
+
+-----
+
+}
+
+
+// \brief Represents a channel in a guild that the current user is a member of and may be able to
+// be linked to a lobby.
+class GuildChannel {
+
+-----
+
+-----
+
+-----
+
+}
+
+
+// \brief Struct that stores information about the lobby linked to a channel.
+class LinkedLobby {
+
+-----
+
+-----
+
+-----
+
+}
+
+
+// \brief Struct that stores information about the channel that a lobby is linked to.
+class LinkedChannel {
+
+-----
+
+-----
+
+-----
+
+}
+
+
+// \brief A RelationshipHandle represents the relationship between the current user and a target
+// user on Discord. Relationships include friends, blocked users, and friend invites.
+// 
+// The SDK supports two types of relationships:
+// - Discord: These are relationships that persist across games and on the Discord client.
+// Both users will be able to see whether each other is online regardless of whether they are in
+// the same game or not.
+// - Game: These are per-game relationships and do not carry over to other games. The two users
+// will only be able to see if the other is online if they are playing a game in which they are
+// friends.
+// 
+// If someone is a game friend they can later choose to "upgrade" to a full Discord friend. In this
+// case, the user has two relationships at the same time, which is why there are two different type
+// fields on RelationshipHandle. In this example, their RelationshipHandle::DiscordRelationshipType
+// would be set to RelationshipType::PendingIncoming or RelationshipType::PendingOutgoing (based on
+// whether they are receiving or sending the invite respectively), and their
+// RelationshipHandle::GameRelationshipType would remain as RelationshipType::Friend.
+// 
+// When a user blocks another user, it is always stored on the
+// RelationshipHandle::DiscordRelationshipType field, and will persist across games. It is not
+// possible to block a user in only one game.
+// 
+// See the @ref friends documentation for more information.
+// 
+// Note: While the SDK allows you to manage a user's relationships, you should never take an action
+// without their explicit consent. You should not automatically send or accept friend requests.
+// Only invoke APIs to manage relationships in response to a user action such as clicking a "Send
+// Friend Request" button.
+// 
+// Handle objects in the SDK hold a reference both to the underlying data, and to the SDK instance.
+// Changes to the underlying data will generally be available on existing handles objects without
+// having to re-create them. If the SDK instance is destroyed, but you still have a reference to a
+// handle object, note that it will return the default value for all method calls (ie an empty
+// string for methods that return a string).
+class RelationshipHandle {
+
+-----
+
+-----
+
+-----
+
+}
+
+
+// \brief A UserHandle represents a single user on Discord that the SDK knows about and contains
+// basic account information for them such as id, name, and avatar, as well as their "status"
+// information which includes both whether they are online/offline/etc as well as whether they are
+// playing this game.
+// 
+// Handle objects in the SDK hold a reference both to the underlying data, and to the SDK instance.
+// Changes to the underlying data will generally be available on existing handles objects without
+// having to re-create them. If the SDK instance is destroyed, but you still have a reference to a
+// handle object, note that it will return the default value for all method calls (ie an empty
+// string for methods that return a string).
+class UserHandle {
+
+-----
+
+-----
+
+-----
+
+}
+
+
+// \brief A LobbyMemberHandle represents the state of a single user in a Lobby.
+// 
+// The SDK separates lobby membership into two concepts:
+// 1. Has the user been added to the lobby by the game developer?
+// If the LobbyMemberHandle exists for a user/lobby pair, then the user has been added to the
+// lobby.
+// 2. Does the user have an active game session that is connected to the lobby and will receive any
+// lobby messages? It is possible for a game developer to add a user to a lobby while they are
+// offline. Also users may temporarily disconnect and rejoin later. So the `Connected` boolean
+// tells you whether the user is actively connected to the lobby.
+// 
+// Handle objects in the SDK hold a reference both to the underlying data, and to the SDK instance.
+// Changes to the underlying data will generally be available on existing handles objects without
+// having to re-create them. If the SDK instance is destroyed, but you still have a reference to a
+// handle object, note that it will return the default value for all method calls (ie an empty
+// string for methods that return a string).
+class LobbyMemberHandle {
+
+-----
+
+-----
+
+-----
+
+}
+
+
+// \brief A LobbyHandle represents a single lobby in the SDK. A lobby can be thought of as
+// just an arbitrary, developer-controlled group of users that can communicate with each other.
+// 
+// ## Managing Lobbies
+// Lobbies can be managed through a set of @ref server_apis that are documented elsewhere, which
+// allow you to create lobbies, add and remove users from lobbies, and delete them.
+// 
+// There is also an API to create lobbies without any server side component using the
+// Client::CreateOrJoinLobby function, which accepts a game-generated secret and will join the user
+// to the lobby associated with that secret, creating it if necessary.
+// 
+// NOTE: When using this API the secret will auto-expire in 30 days, at which point the existing
+// lobby can no longer be joined, but will still exist. We recommend using this for short term
+// lobbies and not permanent lobbies. Use the Server API for more permanent lobbies.
+// 
+// Members of a lobby are not automatically removed when they close the game or temporarily
+// disconnect. When the SDK connects, it will attempt to re-connect to any lobbies it is currently
+// a member of.
+// 
+// # Lobby Auto-Deletion
+// Lobbies are generally ephemeral and will be auto-deleted if they have been idle (meaning no
+// users are actively connected to them) for some amount of time. The default is to auto delete
+// after 5 minutes, but this can be customized when creating the lobby. As long as one user is
+// connected to the lobby though it will not be auto-deleted (meaning they have the SDK running and
+// status is set to Ready). Additionally, lobbies that are linked to a channel on Discord will not
+// be auto deleted.
+// 
+// You can also use the @ref server_apis to customize this timeout, it can be raised to as high as
+// 7 days, meaning the lobby only gets deleted if no one connects to it for an entire week. This
+// should give a good amount of permanence to lobbies when needed, but there may be rare cases
+// where a lobby does need to be "rebuilt" if everyone is offline for an extended period.
+// 
+// # Membership Limits
+// Lobbies may have a maximum of 1,000 members, and each user may be in a maximum of 200 lobbies
+// per game.
+// 
+// ## Audio
+// Lobbies support voice calls. Although a lobby is allowed to have 1,000 members, you should not
+// try to start voice calls in lobbies that large. We strongly recommend sticking to around 25
+// members or fewer for voice calls.
+// 
+// See Client::StartCall for more information on how to start a voice call in a lobby.
+// 
+// ## Channel Linking
+// Lobbies can be linked to a channel on Discord, which allows messages sent in one place to show
+// up in the other. Any lobby can be linked to a channel, but only lobby members with the
+// LobbyMemberFlags::CanLinkLobby flag are allowed to a link a lobby. This flag must be set using
+// the server APIs, which allows you to ensure that only clan/guild/group leaders can link lobbies
+// to Discord channels.
+// 
+// To setup a link you'll need to use methods in the Client class to fetch the servers (aka guilds)
+// and channels a user is a member of and setup the link. The Client::GetUserGuilds and
+// Client::GetGuildChannels methods are used to fetch the servers and channels respectively. You
+// can use these to show a UI for the user to pick which server and channel they want to link to.
+// 
+// Not all channels are linkable. To be linked:
+// - The channel must be a guild text channel
+// - The channel may not be marked as NSFW
+// - The channel must not be currently linked to a different lobby
+// - The user must have the following permissions in the channel in order to link it:
+// - Manage Channels
+// - View Channel
+// - Send Messages
+// 
+// ### Linking Private Channels
+// Discord is allowing all channels the user has access to in a server to be linked in game, even
+// if that channel is private to other members of the server. This means that a user could choose
+// to link a private "admins chat" channel (assuming they are an admin) in game if they wanted.
+// 
+// It's not really possible for the game to know which users should have access to that channel or
+// not though. So in this implementation, every member of a lobby will be able to view all messages
+// sent in the linked channel and reply to them. If you are going to allow private channels to be
+// linked in game, you must make sure that users are aware that their private channel will be
+// viewable by everyone in the lobby!
+// 
+// To help you identify which channels are public or private, we have added a
+// isViewableAndWriteableByAllMembers boolean which is described more in GuildChannel. You can use
+// that to just not allow private channels to be linked, or to know when to show a clear warning,
+// it's up to you!
+// 
+// ## Misc
+// Handle objects in the SDK hold a reference both to the underlying data, and to the SDK instance.
+// Changes to the underlying data will generally be available on existing handles objects without
+// having to re-create them. If the SDK instance is destroyed, but you still have a reference to a
+// handle object, note that it will return the default value for all method calls (ie an empty
+// string for methods that return a string).
+class LobbyHandle {
+
+-----
+
+-----
+
+-----
+
+}
+
+
+// \brief Contains information about non-text content in a message that likely cannot be rendered
+// in game such as images, videos, embeds, polls, and more.
+class AdditionalContent {
+
+-----
+
+-----
+
+-----
+
+}
+
+
+// \brief A MessageHandle represents a single message received by the SDK.
+// 
+// # Chat types
+// The SDK supports two types of chat:
+// 1. 1 on 1 chat between two users
+// 2. Chat within a lobby
+// 
+// You can determine the context a message was sent in with the MessageHandle::Channel and
+// ChannelHandle::Type methods. The SDK should only be receiving messages in the following channel
+// types:
+// - DM
+// - Ephemeral DM
+// - Lobby
+// 
+// # Syncing with Discord
+// In some situations messages sent from the SDK will also show up in Discord.
+// In general this will happen for:
+// - 1 on 1 chat when at least one of the users is a full Discord user
+// - Lobby chat when the lobby is linked to a Discord channel
+// 
+// Additionally the message must have been sent by a user who is not banned on the Discord side.
+// 
+// # Legal disclosures
+// As a convenience for game developers, the first time a user sends a message in game, and that
+// message will show up on the Discord client, the SDK will inject a "fake" message into the chat,
+// that contains a basic English explanation of what is happening to the user. You can identify
+// these messages with the MessageHandle::DisclosureType method. We encourage you to customize the
+// rendering of these messages, possibly changing the wording, translating them, and making them
+// look more "official". You can choose to avoid rendering these as well.
+// 
+// # History
+// The SDK keeps the 25 most recent messages in each channel in memory, but it does not have access
+// to any historical messages sent before the SDK was connected. A MessageHandle will keep working
+// though even after the SDK has discarded the message for being too old, you just won't be able to
+// create a new MessageHandle objects for that message.
+// 
+// # Unrenderable Content
+// Messages sent on Discord can contain content that may not be renderable in game, such as images,
+// videos, embeds, polls, and more. The game isn't expected to render these, but instead show a
+// small notice so the user is aware there is more content and a way to view that content on
+// Discord. The MessageHandle::AdditionalContent method will contain data about the non-text
+// content in this message.
+// 
+// There is also more information about the struct of messages on Discord here:
+// https://discord.com/developers/docs/resources/message
+// 
+// Note: While the SDK allows you to send messages on behalf of a user, you must only do so in
+// response to a user action. You should never automatically send messages.
+// 
+// Handle objects in the SDK hold a reference both to the underlying data, and to the SDK instance.
+// Changes to the underlying data will generally be available on existing handles objects without
+// having to re-create them. If the SDK instance is destroyed, but you still have a reference to a
+// handle object, note that it will return the default value for all method calls (ie an empty
+// string for methods that return a string).
+class MessageHandle {
+
+-----
+
+-----
+
+-----
+
+}
+
+
+// \brief Represents a single input or output audio device available to the user.
+// 
+// Discord will initialize the audio engine with the system default input and output devices.
+// You can change the device through the Client by passing the id of the desired audio device.
+class AudioDevice {
+
+-----
+
+-----
+
+-----
+
+}
+
+
+// \brief Represents a summary of a DM conversation with a user.
+class UserMessageSummary {
+
+-----
+
+-----
+
+-----
+
+}
+
+
+// \brief Options for creating a new Client instance.
+// 
+// This class may be used to set advanced initialization-time options on Client.
+class ClientCreateOptions {
+
+-----
+
+-----
+
+-----
+
+}
+
+
+// \brief The Client class is the main entry point for the Discord SDK. All functionality is
+// exposed through this class.
+// 
+// See @ref getting_started "Getting Started" for more information on how to use the Client class.
+class Client {
+
+-----
+
+-----
+
+-----
+
+}
+
+
+// \brief Convenience class that represents the state of a single Discord call in a lobby.
+class CallInfoHandle {
+
+-----
+
+-----
+
+-----
+
+}
+
+// Converts a discordpp::ActivityActionTypes to a string.
+static func EnumToString(discordpp::ActivityActionTypes value) -> const char *
+
+// Converts a discordpp::ActivityPartyPrivacy to a string.
+static func EnumToString(discordpp::ActivityPartyPrivacy value) -> const char *
+
+// Converts a discordpp::ActivityTypes to a string.
+static func EnumToString(discordpp::ActivityTypes value) -> const char *
+
+// Converts a discordpp::StatusDisplayTypes to a string.
+static func EnumToString(discordpp::StatusDisplayTypes value) -> const char *
+
+// Converts a discordpp::ActivityGamePlatforms to a string.
+static func EnumToString(discordpp::ActivityGamePlatforms value) -> const char *
+
+// Converts a discordpp::ErrorType to a string.
+static func EnumToString(discordpp::ErrorType value) -> const char *
+
+// Converts a discordpp::HttpStatusCode to a string.
+static func EnumToString(discordpp::HttpStatusCode value) -> const char *
+
+// Converts a discordpp::AuthenticationCodeChallengeMethod to a string.
+static func EnumToString(discordpp::AuthenticationCodeChallengeMethod value) -> const char *
+
+// Converts a discordpp::IntegrationType to a string.
+static func EnumToString(discordpp::IntegrationType value) -> const char *
+
+// Converts a discordpp::AdditionalContentType to a string.
+static func EnumToString(discordpp::AdditionalContentType value) -> const char *
+
+// Converts a discordpp::AudioSystem to a string.
+static func EnumToString(discordpp::AudioSystem value) -> const char *
+
+// Converts a discordpp::Call::Error to a string.
+static func EnumToString(discordpp::Call::Error value) -> const char *
+
+// Converts a discordpp::AudioModeType to a string.
+static func EnumToString(discordpp::AudioModeType value) -> const char *
+
+// Converts a discordpp::Call::Status to a string.
+static func EnumToString(discordpp::Call::Status value) -> const char *
+
+// Converts a discordpp::ChannelType to a string.
+static func EnumToString(discordpp::ChannelType value) -> const char *
+
+// Converts a discordpp::RelationshipType to a string.
+static func EnumToString(discordpp::RelationshipType value) -> const char *
+
+// Converts a discordpp::UserHandle::AvatarType to a string.
+static func EnumToString(discordpp::UserHandle::AvatarType value) -> const char *
+
+// Converts a discordpp::StatusType to a string.
+static func EnumToString(discordpp::StatusType value) -> const char *
+
+// Converts a discordpp::DisclosureTypes to a string.
+static func EnumToString(discordpp::DisclosureTypes value) -> const char *
+
+// Converts a discordpp::Client::Error to a string.
+static func EnumToString(discordpp::Client::Error value) -> const char *
+
+// Converts a discordpp::Client::Status to a string.
+static func EnumToString(discordpp::Client::Status value) -> const char *
+
+// Converts a discordpp::Client::Thread to a string.
+static func EnumToString(discordpp::Client::Thread value) -> const char *
+
+// Converts a discordpp::AuthorizationTokenType to a string.
+static func EnumToString(discordpp::AuthorizationTokenType value) -> const char *
+
+// Converts a discordpp::AuthenticationExternalAuthType to a string.
+static func EnumToString(discordpp::AuthenticationExternalAuthType value) -> const char *
+
+// Converts a discordpp::LoggingSeverity to a string.
+static func EnumToString(discordpp::LoggingSeverity value) -> const char *
+
+// Converts a discordpp::RelationshipGroupType to a string.
+static func EnumToString(discordpp::RelationshipGroupType value) -> const char *
