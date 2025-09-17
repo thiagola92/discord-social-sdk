@@ -120,7 +120,7 @@ class Parser:
                     self.parse_docstring(docstring)
                 case ",":
                     texts = text.split("=")
-                    texts = [t.strip("\n\t ") for t in texts]
+                    texts = [t.strip() for t in texts]
 
                     if len(texts) == 1:
                         options[texts[0]] = str(counter)
@@ -295,7 +295,7 @@ class Parser:
 
         name = name.strip()
 
-        # Split statements.
+        # Split statements (with their respective docstring).
         statements: list[str] = []
         statement_start_position = self.current_position
         braces = 1
@@ -311,6 +311,12 @@ class Parser:
                 s = self.content[statement_start_position : self.current_position]
                 statements.append(s.strip())
                 statement_start_position = self.current_position + 1
+            elif char == "/":
+                s = self.content[self.current_position : self.current_position + 2]
+
+                if s == "///":
+                    self.read_until_find(["\n"])
+                    self.current_position -= 1  # Undo next addition.
 
             self.current_position += 1
 
@@ -319,6 +325,22 @@ class Parser:
         callbacks = []
         constructors = []
         functions = []
+
+        for statement in statements:
+            parser = Parser(statement)
+            docstring = TokenDocstring([])
+            s = parser.parse_statement(name, docstring)
+
+            if isinstance(s, TokenEnum):
+                enums.append(s)
+            elif isinstance(s, TokenCallback):
+                callbacks.append(s)
+            elif isinstance(s, TokenConstructor):
+                constructors.append(s)
+            elif isinstance(s, TokenFunction):
+                functions.append(s)
+            else:
+                assert False, "Fail to parse statement"
 
         # for statement in statements:
         #     parser = Parser(content=statement)
@@ -336,6 +358,8 @@ class Parser:
         #     elif statement.startswith("static "):
         #         parser.read_until_find(["static"])
         #         functions.append(parser.parse_function(static=True))
+        #     elif statement.startswith("///"):
+        #         pass
         #     else:
         #         functions.append(parser.parse_function(TokenDocstring([])))
 
@@ -348,7 +372,41 @@ class Parser:
             functions=functions,
         )
 
+    def parse_statement(
+        self,
+        class_name: str,
+        docs: TokenDocstring,
+    ) -> TokenEnum | TokenCallback | TokenConstructor | TokenFunction:
+        if self.content.startswith("enum "):
+            self.read_until_find(["enum"])
+            return self.parse_enum(docs)
+        elif self.content.startswith("using "):
+            return self.parse_callback()
+        elif self.content.startswith(class_name):
+            return self.parse_constructor()
+        elif self.content.startswith("explicit "):
+            self.read_until_find(["explicit"])
+            return self.parse_constructor()
+        elif self.content.startswith("static "):
+            self.read_until_find(["static"])
+            return self.parse_function(docs, static=True)
+        elif self.content.startswith("///"):
+            self.read_until_find(["///"])
+            self.parse_docstring(docs)
+
+            residue = self.content[self.current_position :]
+            residue = residue.strip()
+            parser = Parser(residue)
+
+            return parser.parse_statement(class_name, docs)
+        else:
+            return self.parse_function(docs)
+
     def parse_docstring(self, docstring: TokenDocstring):
+        """
+        Receives the token that will be expanded as we discover more docstrings.
+        """
+
         # Parse docstring.
         line, _ = self.get_text_before(["\n"])
         line = line or ""

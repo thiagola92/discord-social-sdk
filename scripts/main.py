@@ -32,7 +32,7 @@ if __name__ == "__main__":
     Path(STEP1).write_text("\n".join([str(t) for t in tokens]))
 
     # # Builder.
-    # Builder(src_dir=SRC_DIR, tokens=tokens).build_files()
+    Builder(src_dir=SRC_DIR, tokens=tokens).build_files()
 
     # # Documenter.
     # if Path(DOC_DIR).exists():
