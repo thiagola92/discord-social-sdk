@@ -18,7 +18,7 @@ class Parser:
     def start(self) -> list[TokenEnum | TokenFunction | TokenClass]:
         tokens = []
         docstring = TokenDocstring([])
-        string_matched = self.read_until_find(["enum", "inline", "class", "/// "])
+        string_matched = self.read_until_find(["enum", "inline", "class", "///"])
 
         while string_matched:
             match string_matched:
@@ -32,10 +32,10 @@ class Parser:
                     tokens.append(self.parse_class(docstring))
                     docstring = TokenDocstring([])
                     pass
-                case "/// ":
+                case "///":
                     self.parse_docstring(docstring)
 
-            string_matched = self.read_until_find(["enum", "inline", "class", "/// "])
+            string_matched = self.read_until_find(["enum", "inline", "class", "///"])
 
         return tokens
 
@@ -106,7 +106,7 @@ class Parser:
         name = text.strip().removeprefix("class ")
 
         # Parse options.
-        text, string_matched = self.get_text_before(["}", "/// ", ","])
+        text, string_matched = self.get_text_before(["}", "///", ","])
         counter = 0
         options = {}
         docstring = TokenDocstring([])
@@ -116,7 +116,7 @@ class Parser:
             match string_matched:
                 case "}":
                     break
-                case "/// ":
+                case "///":
                     self.parse_docstring(docstring)
                 case ",":
                     texts = text.split("=")
@@ -132,7 +132,7 @@ class Parser:
                     options_docs[texts[0]] = docstring
                     docstring = TokenDocstring([])
 
-            text, string_matched = self.get_text_before(["}", "/// ", ","])
+            text, string_matched = self.get_text_before(["}", "///", ","])
 
         return TokenEnum(
             docs=docs,
@@ -314,7 +314,7 @@ class Parser:
             elif char == "/":
                 s = self.content[self.current_position : self.current_position + 2]
 
-                if s == "/// ":
+                if s == "///":
                     self.read_until_find(["\n"])
                     self.current_position -= 1  # Undo next addition.
 
@@ -369,8 +369,8 @@ class Parser:
         elif self.content.startswith("static "):
             self.read_until_find(["static"])
             return self.parse_function(docs, static=True)
-        elif self.content.startswith("/// "):
-            self.read_until_find(["/// "])
+        elif self.content.startswith("///"):
+            self.read_until_find(["///"])
             self.parse_docstring(docs)
 
             residue = self.content[self.current_position :]

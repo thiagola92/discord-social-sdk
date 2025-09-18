@@ -3,17 +3,27 @@
 	<brief_description>
 	</brief_description>
 	<description>
-        \brief A MessageHandle represents a single message received by the SDK. 
-        [b]# Chat types[/b] 
-        The SDK supports two types of chat: [br]1. 1 on 1 chat between two users [br]2. Chat within a lobby You can determine the context a message was sent in with the MessageHandle::Channel and ChannelHandle::Type methods. The SDK should only be receiving messages in the following channel types: [br]- DM [br]- Ephemeral DM [br]- Lobby 
-        [b]# Syncing with Discord[/b] 
-        In some situations messages sent from the SDK will also show up in Discord. In general this will happen for: [br]- 1 on 1 chat when at least one of the users is a full Discord user [br]- Lobby chat when the lobby is linked to a Discord channel Additionally the message must have been sent by a user who is not banned on the Discord side. 
-        [b]# Legal disclosures[/b] 
-        As a convenience for game developers, the first time a user sends a message in game, and that message will show up on the Discord client, the SDK will inject a "fake" message into the chat, that contains a basic English explanation of what is happening to the user. You can identify these messages with the MessageHandle::DisclosureType method. We encourage you to customize the rendering of these messages, possibly changing the wording, translating them, and making them look more "official". You can choose to avoid rendering these as well. 
-        [b]# History[/b] 
-        The SDK keeps the 25 most recent messages in each channel in memory, but it does not have access to any historical messages sent before the SDK was connected. A MessageHandle will keep working though even after the SDK has discarded the message for being too old, you just won't be able to create a new MessageHandle objects for that message. 
-        [b]# Unrenderable Content[/b] 
-        Messages sent on Discord can contain content that may not be renderable in game, such as images, videos, embeds, polls, and more. The game isn't expected to render these, but instead show a small notice so the user is aware there is more content and a way to view that content on Discord. The MessageHandle::AdditionalContent method will contain data about the non-text content in this message. There is also more information about the struct of messages on Discord here: https://discord.com/developers/docs/resources/message Note: While the SDK allows you to send messages on behalf of a user, you must only do so in response to a user action. You should never automatically send messages. Handle objects in the SDK hold a reference both to the underlying data, and to the SDK instance. Changes to the underlying data will generally be available on existing handles objects without having to re-create them. If the SDK instance is destroyed, but you still have a reference to a handle object, note that it will return the default value for all method calls (ie an empty string for methods that return a string).
+         A MessageHandle represents a single message received by the SDK.
+        
+         [b]# Chat types[/b]
+         The SDK supports two types of chat: [br]1. 1 on 1 chat between two users [br]2. Chat within a lobby
+         You can determine the context a message was sent in with the MessageHandle::Channel and ChannelHandle::Type methods. The SDK should only be receiving messages in the following channel types: [br]- DM [br]- Ephemeral DM [br]- Lobby
+        
+         [b]# Syncing with Discord[/b]
+         In some situations messages sent from the SDK will also show up in Discord. In general this will happen for: [br]- 1 on 1 chat when at least one of the users is a full Discord user [br]- Lobby chat when the lobby is linked to a Discord channel
+         Additionally the message must have been sent by a user who is not banned on the Discord side.
+        
+         [b]# Legal disclosures[/b]
+         As a convenience for game developers, the first time a user sends a message in game, and that message will show up on the Discord client, the SDK will inject a "fake" message into the chat, that contains a basic English explanation of what is happening to the user. You can identify these messages with the MessageHandle::DisclosureType method. We encourage you to customize the rendering of these messages, possibly changing the wording, translating them, and making them look more "official". You can choose to avoid rendering these as well.
+        
+         [b]# History[/b]
+         The SDK keeps the 25 most recent messages in each channel in memory, but it does not have access to any historical messages sent before the SDK was connected. A MessageHandle will keep working though even after the SDK has discarded the message for being too old, you just won't be able to create a new MessageHandle objects for that message.
+        
+         [b]# Unrenderable Content[/b]
+         Messages sent on Discord can contain content that may not be renderable in game, such as images, videos, embeds, polls, and more. The game isn't expected to render these, but instead show a small notice so the user is aware there is more content and a way to view that content on Discord. The MessageHandle::AdditionalContent method will contain data about the non-text content in this message.
+         There is also more information about the struct of messages on Discord here: https://discord.com/developers/docs/resources/message
+         Note: While the SDK allows you to send messages on behalf of a user, you must only do so in response to a user action. You should never automatically send messages.
+         Handle objects in the SDK hold a reference both to the underlying data, and to the SDK instance. Changes to the underlying data will generally be available on existing handles objects without having to re-create them. If the SDK instance is destroyed, but you still have a reference to a handle object, note that it will return the default value for all method calls (ie an empty string for methods that return a string).
         
         Reference: [url]https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1MessageHandle.html[/url]
     </description>

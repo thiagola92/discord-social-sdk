@@ -3,7 +3,7 @@
 	<brief_description>
 	</brief_description>
 	<description>
-        \brief Struct that encapsulates both parts of the code verification flow.
+         Struct that encapsulates both parts of the code verification flow.
         
         Reference: [url]https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1AuthorizationCodeVerifier.html[/url]
     </description>

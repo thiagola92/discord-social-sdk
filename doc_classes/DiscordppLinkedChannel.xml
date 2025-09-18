@@ -3,7 +3,7 @@
 	<brief_description>
 	</brief_description>
 	<description>
-        \brief Struct that stores information about the channel that a lobby is linked to.
+         Struct that stores information about the channel that a lobby is linked to.
         
         Reference: [url]https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1LinkedChannel.html[/url]
     </description>

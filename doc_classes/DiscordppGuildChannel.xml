@@ -3,7 +3,7 @@
 	<brief_description>
 	</brief_description>
 	<description>
-        \brief Represents a channel in a guild that the current user is a member of and may be able to be linked to a lobby.
+         Represents a channel in a guild that the current user is a member of and may be able to be linked to a lobby.
         
         Reference: [url]https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1GuildChannel.html[/url]
     </description>

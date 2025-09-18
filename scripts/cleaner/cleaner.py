@@ -27,7 +27,7 @@ def clean_content(content: str) -> str:
         if temp.startswith("} // namespace discordpp"):
             break
 
-        # Remove docstrings that doesn't have use in GDScript.
+        # Remove docstrings that doesn't have use for us right now.
         if temp.startswith("/// \\cond"):
             continue
 
@@ -44,13 +44,13 @@ def clean_content(content: str) -> str:
             continue
 
         # Stack docstring.
-        if temp.startswith("/// "):
+        if temp.startswith("///"):
             docstring.append(line)
             continue
 
         # Empty lines are added together with docstrings
         # to not break appearance (and discarded if docstring is not useful too).
-        if len(line) == 0:
+        if len(temp) == 0:
             docstring.append(line)
             continue
 

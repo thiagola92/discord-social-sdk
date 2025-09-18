@@ -3,7 +3,10 @@
 	<brief_description>
 	</brief_description>
 	<description>
-        \brief Struct which controls what your rich presence looks like in the Discord client. If you don't specify any values, the icon and name of your application will be used as defaults. Image assets can be either the unique identifier for an image you uploaded to your application via the `Rich Presence` page in the Developer portal, or they can be an external image URL. As an example, if I uploaded an asset and name it `goofy-icon`, I could set either image field to the string `goofy-icon`. Alternatively, if my icon was hosted at `http://my-site.com/goofy.jpg`, I could pass that URL into either image field. See https://discord.com/developers/docs/rich-presence/overview#adding-custom-art-assets for more information on using custom art assets, as well as for visual examples of what each field does.
+         Struct which controls what your rich presence looks like in the Discord client. If you don't specify any values, the icon and name of your application will be used as defaults.
+         Image assets can be either the unique identifier for an image you uploaded to your application via the `Rich Presence` page in the Developer portal, or they can be an external image URL.
+         As an example, if I uploaded an asset and name it `goofy-icon`, I could set either image field to the string `goofy-icon`. Alternatively, if my icon was hosted at `http://my-site.com/goofy.jpg`, I could pass that URL into either image field.
+         See https://discord.com/developers/docs/rich-presence/overview#adding-custom-art-assets for more information on using custom art assets, as well as for visual examples of what each field does.
         
         Reference: [url]https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1ActivityAssets.html[/url]
     </description>

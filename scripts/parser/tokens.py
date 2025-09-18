@@ -216,7 +216,7 @@ class TokenDocstring:
     Used to represent a docstring.
 
     Which could be one or more lines,
-    each starting with "/// " and ending with newline.
+    each starting with "///" and ending with newline.
     """
 
     lines: list[str]
@@ -232,6 +232,6 @@ class TokenDocstring:
         return prefix + str(self).replace("\n", f"\n{prefix}")
 
     def __str__(self) -> str:
-        docs = "\n// ".join(self.lines)
+        docs = "\n///".join(self.lines)
 
-        return f"""// {docs}"""
+        return f"""///{docs}"""

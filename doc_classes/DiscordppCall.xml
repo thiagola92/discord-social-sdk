@@ -3,7 +3,7 @@
 	<brief_description>
 	</brief_description>
 	<description>
-        \brief Class that manages an active voice session in a Lobby.
+         Class that manages an active voice session in a Lobby.
         
         Reference: [url]https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1Call.html[/url]
     </description>
