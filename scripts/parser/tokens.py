@@ -216,7 +216,7 @@ class TokenDocstring:
     Used to represent a docstring.
 
     Which could be one or more lines,
-    each starting with "///" and ending with newline.
+    each starting with "/// " and ending with newline.
     """
 
     lines: list[str]

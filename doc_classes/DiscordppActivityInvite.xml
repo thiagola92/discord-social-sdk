@@ -3,6 +3,8 @@
 	<brief_description>
 	</brief_description>
 	<description>
+        \brief When one user invites another to join their game on Discord, it will send a message to that user. The SDK will parse those messages for you automatically, and this struct contains all of the relevant invite information which is needed to later accept that invite.
+        
         Reference: [url]https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1ActivityInvite.html[/url]
     </description>
 	<tutorials>

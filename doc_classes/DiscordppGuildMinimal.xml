@@ -3,6 +3,8 @@
 	<brief_description>
 	</brief_description>
 	<description>
+        \brief Represents a guild (also knowns as a Discord server), that the current user is a member of, that contains channels that can be linked to a lobby.
+        
         Reference: [url]https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1GuildMinimal.html[/url]
     </description>
 	<tutorials>

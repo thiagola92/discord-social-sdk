@@ -44,7 +44,7 @@ def clean_content(content: str) -> str:
             continue
 
         # Stack docstring.
-        if temp.startswith("///"):
+        if temp.startswith("/// "):
             docstring.append(line)
             continue
 

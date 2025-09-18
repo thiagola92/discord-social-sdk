@@ -25,34 +25,6 @@ class Documenter:
         self.tokens = tokens
         self.translator = DocTranslator(self.tokens)
 
-    def get_xml_file(self, class_name: str) -> Path:
-        name = f"Discordpp{class_name}.xml"
-
-        for file in self.doc_dir.iterdir():
-            if file.is_dir():
-                continue
-
-            if file.name == name:
-                return file
-
-        return None
-
-    def get_method_element(
-        self,
-        class_element: Element,
-        method_name: str,
-    ) -> Element | None:
-        methods_element = class_element.find("methods")
-
-        for element in methods_element:
-            if element.tag != "method":
-                continue
-
-            if element.attrib["name"] == method_name:
-                return element
-
-        return None
-
     def update_docs(self):
         for token in self.tokens:
             if isinstance(token, TokenFunction):
@@ -81,6 +53,39 @@ class Documenter:
         tree.write(file)
         file.write_text(get_version() + file.read_text() + "\n")
 
+    def get_xml_file(self, class_name: str) -> Path:
+        """
+        Utility to get the XML file from a class.
+        """
+
+        name = f"Discordpp{class_name}.xml"
+        file = self.doc_dir.joinpath(name)
+
+        if file.is_dir():
+            return None
+
+        return file
+
+    def get_method_element(
+        self,
+        class_element: Element,
+        method_name: str,
+    ) -> Element | None:
+        """
+        Utility to get a specific method from the methods tag.
+        """
+
+        methods_element = class_element.find("methods")
+
+        for element in methods_element:
+            if element.tag != "method":
+                continue
+
+            if element.attrib["name"] == method_name:
+                return element
+
+        return None
+
     def clear_class(self, class_element: Element, class_: TokenClass):
         description_ele = class_element.find("description")
         description_ele.text = "\n\t"
@@ -90,7 +95,13 @@ class Documenter:
             description_ele.text = "\n\t\t\t"
 
     def add_class_reference(self, class_element: Element, class_: TokenClass):
-        reference = get_class_reference(class_.name)
+        docstring = self.translator.c_doc_to_gdscript_doc(
+            class_.docs,
+            self.tokens,
+            "        ",
+        )
+
+        reference = get_class_reference(class_.name, docstring)
         description_element = class_element.find("description")
         description_element.text = reference
 

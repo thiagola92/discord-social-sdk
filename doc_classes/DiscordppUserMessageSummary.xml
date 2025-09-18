@@ -3,6 +3,8 @@
 	<brief_description>
 	</brief_description>
 	<description>
+        \brief Represents a summary of a DM conversation with a user.
+        
         Reference: [url]https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1UserMessageSummary.html[/url]
     </description>
 	<tutorials>

@@ -1,5 +1,7 @@
+import re
+
 from builder.translator import Translator
-from parser.tokens import TokenType
+from parser.tokens import TokenType, TokenDocstring
 
 
 class DocTranslator(Translator):
@@ -107,3 +109,71 @@ class DocTranslator(Translator):
             return f"[{name}]"
 
         assert False, f'Fail to convert from "{token.name}" to BBCode'
+
+    def c_doc_to_gdscript_doc(
+        self,
+        token: TokenDocstring,
+        tokens: list,
+        indentation: str,
+    ) -> str:
+        lines: list[str] = token.lines.copy()
+
+        # for l in lines:
+        #     print(l)
+
+        # Change headers to bold text.
+        for n in range(len(lines) - 1, -1, -1):
+            if re.search(r"(\s*)(#+ .*)", lines[n]):
+                lines[n] = re.sub(r"(\s*)(#+ .*)", r"\1[b]\2[/b]", lines[n])
+                lines.insert(n + 1, "")
+                lines.insert(n, "")
+
+        # Change codeblocks.
+        inside_codeblock = False
+
+        for n in range(len(lines) - 1, -1, -1):
+            if "\\code" in lines[n]:
+                lines[n] = lines[n].replace("\\code", "[codeblock lang=csharp]")
+                lines.insert(n, "")
+                inside_codeblock = False
+
+            if "\\endcode" in lines[n]:
+                lines[n] = lines[n].replace("\\endcode", "[/codeblock]")
+                inside_codeblock = True  # Remember: we are going backwards.
+
+            if inside_codeblock:
+                lines.insert(n, "")
+
+        # Change unordered list.
+        for n in range(len(lines) - 1, -1, -1):
+            if re.search("^- ", lines[n]):
+                lines[n] = "[br]" + lines[n]
+
+        # Change ordered list.
+        for n in range(len(lines) - 1, -1, -1):
+            if re.search(r"^\d+. ", lines[n]):
+                lines[n] = "[br]" + lines[n]
+
+        # TODO: Link references.
+        # references: list[str] = []
+
+        # for n, line in enumerate(lines):
+        #     references.extend(re.findall(r"(\w*::\w*)", line))
+
+        # Join Lines.
+        # Multiple lines of a docstring could be a single paragraph in the documentation.
+        # We can only be sure if we find an empty line between them.
+        docstring = ""
+        newline = False
+
+        for line in lines:
+            if newline:
+                docstring += f"\n{indentation}" + line
+                newline = False
+            else:
+                docstring += " " + line
+
+            if line.strip() == "":
+                newline = True
+
+        return docstring.strip()
