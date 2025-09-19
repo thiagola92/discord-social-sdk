@@ -179,13 +179,13 @@ GDScript doesn't has an alternative to [`std::optional<T>`](https://en.cpprefere
 
 Note: I wiil create a class `Optional` if Godot documentation start giving support to make something like `Optional[T]`.  
 
-> Why exists many functions like `Discordpp.EnumToString0()`, `Discordpp.EnumToString1()`, `Discordpp.EnumToString2()`, ...?  
+> Why exists many functions like `Discordpp.EnumToStringXXX()`?  
 
 GDScript doesn't support [function overloading](https://www.w3schools.com/cpp/cpp_function_overloading.asp), so I just made one function for each option.  
 
 > Why doesn't follow [GDScript style guide](https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_styleguide.html#doc-gdscript-styleguide)?  
 
-I made this decision to avoid solving conflict between methods names because, as mentioned above, GDScript doesn't support function overloading.  
+I made this decision to avoid solving conflict between methods names because GDScript doesn't support function overloading.  
 
 **Example**: [`discordpp:Client`](https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1Client.html#a873a844c7c4c72e9e693419bb3e290aa) has `Connect()` and [`Object`](https://docs.godotengine.org/en/4.4/classes/class_object.html#class-object-method-connect) has `connect()`.  
 If I were to snake_case the `discordpp:Client` method, I would need to find another name for it.   
