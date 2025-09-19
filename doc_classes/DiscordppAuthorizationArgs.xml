@@ -3,102 +3,129 @@
 	<brief_description>
 	</brief_description>
 	<description>
-        Reference: [url]https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1AuthorizationArgs.html[/url]
-    </description>
+ Arguments to the Client::Authorize function.
+
+Reference: [url]https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1AuthorizationArgs.html[/url]
+</description>
 	<tutorials>
 	</tutorials>
 	<methods>
 		<method name="ClientId">
 			<return type="int" />
 			<description>
-			</description>
+ Optional. The Discord application ID for your game. Defaults to the value set by Client::SetApplicationId.
+</description>
 		</method>
 		<method name="CodeChallenge">
 			<return type="Variant" />
 			<description>
-				Returns [DiscordppAuthorizationCodeChallenge] or [code]null[/code].
-			</description>
+ If using the Client::GetToken flow, you will need to generate a code challenge and verifier.
+ Use Client::CreateAuthorizationCodeVerifier to generate these values and pass the challenge property here.
+Returns [DiscordppAuthorizationCodeChallenge] or [code]null[/code].
+</description>
 		</method>
 		<method name="CustomSchemeParam">
 			<return type="Variant" />
 			<description>
-				Returns [String] or [code]null[/code].
-			</description>
+ Custom URI scheme for mobile redirects.
+ This allows games to specify a completely custom URI scheme for OAuth redirects. For example, setting this to "mygame" will result in a URI scheme like: mygame:/authorize/callback
+ If not provided, defaults to the standard Discord format: discord-123456789:/authorize/callback
+ This is particularly useful for distinguishing between multiple games from the same developer or for avoiding conflicts with other apps.
+Returns [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="Drop">
 			<return type="void" />
 			<description>
-			</description>
+
+</description>
 		</method>
 		<method name="IntegrationType">
 			<return type="Variant" />
 			<description>
-				Returns [enum DiscordppIntegrationType.Enum] or [code]null[/code].
-			</description>
+ The type of integration the app will be installed as.
+ https://discord.com/developers/docs/resources/application#installation-context
+Returns [enum DiscordppIntegrationType.Enum] or [code]null[/code].
+</description>
 		</method>
 		<method name="Nonce">
 			<return type="Variant" />
 			<description>
-				Returns [String] or [code]null[/code].
-			</description>
+ The nonce field is generally only useful for backend integrations using ID tokens.
+ For more information, see: https://openid.net/specs/openid-connect-core-1_0.html#rfc.section.2~nonce:~:text=auth_time%20response%20parameter.)-,nonce,-String%20value%20used
+Returns [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="Scopes">
 			<return type="String" />
 			<description>
-			</description>
+ Scopes is a space separated string of the oauth scopes your game is requesting.
+ Most games should just pass in Client::GetDefaultCommunicationScopes or Client::GetDefaultPresenceScopes which will include these scopes, respectively: `openid sdk.social_layer` or `openid sdk.social_layer_presence`
+ `sdk.social_layer` and `sdk.social_layer_presence` automatically expand to include all the necessary scopes for the integration.
+ You can pass in additional scopes if you need to, but as a general rule you should only request the scopes you actually need, and the user will need to grant access to those additional scopes as well.
+</description>
 		</method>
 		<method name="SetClientId">
 			<return type="void" />
 			<param index="0" name="ClientId" type="int" />
 			<description>
-			</description>
+ Setter for AuthorizationArgs::ClientId.
+</description>
 		</method>
 		<method name="SetCodeChallenge">
 			<return type="void" />
 			<param index="0" name="CodeChallenge" type="Variant" />
 			<description>
-				Where [param CodeChallenge] is [DiscordppAuthorizationCodeChallenge] or [code]null[/code].
-			</description>
+ Setter for AuthorizationArgs::CodeChallenge.
+Where [param CodeChallenge] is [DiscordppAuthorizationCodeChallenge] or [code]null[/code].
+</description>
 		</method>
 		<method name="SetCustomSchemeParam">
 			<return type="void" />
 			<param index="0" name="CustomSchemeParam" type="Variant" />
 			<description>
-				Where [param CustomSchemeParam] is [String] or [code]null[/code].
-			</description>
+ Setter for AuthorizationArgs::CustomSchemeParam.
+Where [param CustomSchemeParam] is [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="SetIntegrationType">
 			<return type="void" />
 			<param index="0" name="IntegrationType" type="Variant" />
 			<description>
-				Where [param IntegrationType] is [enum DiscordppIntegrationType.Enum] or [code]null[/code].
-			</description>
+ Setter for AuthorizationArgs::IntegrationType.
+Where [param IntegrationType] is [enum DiscordppIntegrationType.Enum] or [code]null[/code].
+</description>
 		</method>
 		<method name="SetNonce">
 			<return type="void" />
 			<param index="0" name="Nonce" type="Variant" />
 			<description>
-				Where [param Nonce] is [String] or [code]null[/code].
-			</description>
+ Setter for AuthorizationArgs::Nonce.
+Where [param Nonce] is [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="SetScopes">
 			<return type="void" />
 			<param index="0" name="Scopes" type="String" />
 			<description>
-			</description>
+ Setter for AuthorizationArgs::Scopes.
+</description>
 		</method>
 		<method name="SetState">
 			<return type="void" />
 			<param index="0" name="State" type="Variant" />
 			<description>
-				Where [param State] is [String] or [code]null[/code].
-			</description>
+ Setter for AuthorizationArgs::State.
+Where [param State] is [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="State">
 			<return type="Variant" />
 			<description>
-				Returns [String] or [code]null[/code].
-			</description>
+ See https://discord.com/developers/docs/topics/oauth2#state-and-security for details on this field.
+ We recommend leaving this unset, and the SDK will automatically generate a secure random value for you.
+Returns [String] or [code]null[/code].
+</description>
 		</method>
 	</methods>
 </class>

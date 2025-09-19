@@ -2,7 +2,13 @@
 # Remove warnings about f-strings without using variables.
 
 from helper import clang_format, to_snake_case
-from parser.tokens import TokenEnum, TokenClass, TokenFunction, TokenParam
+from parser.tokens import (
+    TokenEnum,
+    TokenClass,
+    TokenFunction,
+    TokenParam,
+    TokenDocstring,
+)
 from pathlib import Path
 from builder.translator import Translator
 from builder.util import get_functions_names
@@ -320,7 +326,7 @@ class Builder:
 
         # Build a fake class to be used as global.
         global_functions = [t for t in self.tokens if isinstance(t, TokenFunction)]
-        fake_token = TokenClass("", [], [], [], global_functions)
+        fake_token = TokenClass(TokenDocstring([]), "", [], [], [], global_functions)
         filepath = self.src.joinpath(f"discordpp.cpp")
         content = self.build_class(fake_token, static=True)
 

@@ -3,37 +3,44 @@
 	<brief_description>
 	</brief_description>
 	<description>
-        Reference: [url]https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1VADThresholdSettings.html[/url]
-    </description>
+ Settings for the void auto detection threshold for picking up activity from a user's mic.
+
+Reference: [url]https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1VADThresholdSettings.html[/url]
+</description>
 	<tutorials>
 	</tutorials>
 	<methods>
 		<method name="Automatic">
 			<return type="bool" />
 			<description>
-			</description>
+ Whether or not Discord is currently automatically setting and detecting the appropriate threshold to use.
+</description>
 		</method>
 		<method name="Drop">
 			<return type="void" />
 			<description>
-			</description>
+
+</description>
 		</method>
 		<method name="SetAutomatic">
 			<return type="void" />
 			<param index="0" name="Automatic" type="bool" />
 			<description>
-			</description>
+ Setter for VADThresholdSettings::Automatic.
+</description>
 		</method>
 		<method name="SetVadThreshold">
 			<return type="void" />
 			<param index="0" name="VadThreshold" type="float" />
 			<description>
-			</description>
+ Setter for VADThresholdSettings::VadThreshold.
+</description>
 		</method>
 		<method name="VadThreshold">
 			<return type="float" />
 			<description>
-			</description>
+ The current void auto detection threshold value, has a range of -100, 0 and defaults to -60.
+</description>
 		</method>
 	</methods>
 </class>

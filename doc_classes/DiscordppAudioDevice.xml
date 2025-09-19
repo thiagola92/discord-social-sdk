@@ -3,54 +3,65 @@
 	<brief_description>
 	</brief_description>
 	<description>
-        Reference: [url]https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1AudioDevice.html[/url]
-    </description>
+ Represents a single input or output audio device available to the user.
+ Discord will initialize the audio engine with the system default input and output devices. You can change the device through the Client by passing the id of the desired audio device.
+
+Reference: [url]https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1AudioDevice.html[/url]
+</description>
 	<tutorials>
 	</tutorials>
 	<methods>
 		<method name="Drop">
 			<return type="void" />
 			<description>
-			</description>
+
+</description>
 		</method>
 		<method name="Equals">
 			<return type="bool" />
 			<param index="0" name="rhs" type="DiscordppAudioDevice" />
 			<description>
-			</description>
+ Compares the ID of two AudioDevice objects for equality.
+</description>
 		</method>
 		<method name="Id">
 			<return type="String" />
 			<description>
-			</description>
+ The ID of the audio device.
+</description>
 		</method>
 		<method name="IsDefault">
 			<return type="bool" />
 			<description>
-			</description>
+ Whether the audio device is the system default device.
+</description>
 		</method>
 		<method name="Name">
 			<return type="String" />
 			<description>
-			</description>
+ The display name of the audio device.
+</description>
 		</method>
 		<method name="SetId">
 			<return type="void" />
 			<param index="0" name="Id" type="String" />
 			<description>
-			</description>
+ Setter for AudioDevice::Id.
+</description>
 		</method>
 		<method name="SetIsDefault">
 			<return type="void" />
 			<param index="0" name="IsDefault" type="bool" />
 			<description>
-			</description>
+ Setter for AudioDevice::IsDefault.
+</description>
 		</method>
 		<method name="SetName">
 			<return type="void" />
 			<param index="0" name="Name" type="String" />
 			<description>
-			</description>
+ Setter for AudioDevice::Name.
+</description>
 		</method>
 	</methods>
 </class>

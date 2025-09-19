@@ -3,37 +3,44 @@
 	<brief_description>
 	</brief_description>
 	<description>
-        Reference: [url]https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1ActivityButton.html[/url]
-    </description>
+ \see Activity
+
+Reference: [url]https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1ActivityButton.html[/url]
+</description>
 	<tutorials>
 	</tutorials>
 	<methods>
 		<method name="Drop">
 			<return type="void" />
 			<description>
-			</description>
+
+</description>
 		</method>
 		<method name="Label">
 			<return type="String" />
 			<description>
-			</description>
+ The label of the button.
+</description>
 		</method>
 		<method name="SetLabel">
 			<return type="void" />
 			<param index="0" name="Label" type="String" />
 			<description>
-			</description>
+ Setter for ActivityButton::Label.
+</description>
 		</method>
 		<method name="SetUrl">
 			<return type="void" />
 			<param index="0" name="Url" type="String" />
 			<description>
-			</description>
+ Setter for ActivityButton::Url.
+</description>
 		</method>
 		<method name="Url">
 			<return type="String" />
 			<description>
-			</description>
+ The url of the button.
+</description>
 		</method>
 	</methods>
 </class>

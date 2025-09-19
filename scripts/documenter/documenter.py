@@ -25,34 +25,6 @@ class Documenter:
         self.tokens = tokens
         self.translator = DocTranslator(self.tokens)
 
-    def get_xml_file(self, class_name: str) -> Path:
-        name = f"Discordpp{class_name}.xml"
-
-        for file in self.doc_dir.iterdir():
-            if file.is_dir():
-                continue
-
-            if file.name == name:
-                return file
-
-        return None
-
-    def get_method_element(
-        self,
-        class_element: Element,
-        method_name: str,
-    ) -> Element | None:
-        methods_element = class_element.find("methods")
-
-        for element in methods_element:
-            if element.tag != "method":
-                continue
-
-            if element.attrib["name"] == method_name:
-                return element
-
-        return None
-
     def update_docs(self):
         for token in self.tokens:
             if isinstance(token, TokenFunction):
@@ -73,28 +45,70 @@ class Documenter:
         # Update XML.
         self.clear_class(class_element, class_)
         self.add_class_reference(class_element, class_)
-        self.add_variant_param(class_element, class_)
-        self.add_callback_param(class_element, class_)
-        self.add_variant_return(class_element, class_)
+        self.add_method_docstring(class_element, class_)
+        self.add_method_param_variant(class_element, class_)
+        self.add_method_param_callback(class_element, class_)
+        self.add_method_return_variant(class_element, class_)
 
         # Save XML.
         tree.write(file)
         file.write_text(get_version() + file.read_text() + "\n")
 
+    def get_xml_file(self, class_name: str) -> Path:
+        """
+        Utility to get the XML file from a class.
+        """
+
+        name = f"Discordpp{class_name}.xml"
+        file = self.doc_dir.joinpath(name)
+
+        if file.is_dir():
+            return None
+
+        return file
+
+    def get_method_element(
+        self,
+        class_element: Element,
+        method_name: str,
+    ) -> Element | None:
+        """
+        Utility to get a specific method from the methods tag.
+        """
+
+        methods_element = class_element.find("methods")
+
+        for element in methods_element:
+            if element.tag != "method":
+                continue
+
+            if element.attrib["name"] == method_name:
+                return element
+
+        return None
+
     def clear_class(self, class_element: Element, class_: TokenClass):
         description_ele = class_element.find("description")
-        description_ele.text = "\n\t"
+        description_ele.text = "\n"
 
         for method_ele in class_element.find("methods"):
             description_ele = method_ele.find("description")
-            description_ele.text = "\n\t\t\t"
+            description_ele.text = "\n"
 
     def add_class_reference(self, class_element: Element, class_: TokenClass):
-        reference = get_class_reference(class_.name)
+        docstring = self.translator.c_doc_to_gdscript_doc(class_.docs)
+        reference = get_class_reference(class_.name, docstring)
         description_element = class_element.find("description")
         description_element.text = reference
 
-    def add_variant_param(self, class_element: Element, class_: TokenClass):
+    def add_method_docstring(self, class_element: Element, class_: TokenClass):
+        for function in class_.functions:
+            docstring = self.translator.c_doc_to_gdscript_doc(function.docs)
+            element = self.get_method_element(class_element, function.name)
+            element = element.find("description")
+            element.text += docstring + "\n"
+
+    def add_method_param_variant(self, class_element: Element, class_: TokenClass):
         for function in class_.functions:
             for param in function.params:
                 if self.translator.is_c_opt(param.type.name):
@@ -104,7 +118,7 @@ class Documenter:
                     content = get_variant_param(param.name, bbcode)
                     element.text += content
 
-    def add_callback_param(self, class_element: Element, class_: TokenClass):
+    def add_method_param_callback(self, class_element: Element, class_: TokenClass):
         if not class_.callbacks:
             return
 
@@ -128,7 +142,7 @@ class Documenter:
                     content = get_callback_param(param_name=param.name, params=params)
                     element.text += content
 
-    def add_variant_return(self, class_element: Element, class_: TokenClass):
+    def add_method_return_variant(self, class_element: Element, class_: TokenClass):
         for function in class_.functions:
             if self.translator.is_c_opt(function.ret.name):
                 element = self.get_method_element(class_element, function.name)

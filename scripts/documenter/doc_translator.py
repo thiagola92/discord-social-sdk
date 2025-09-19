@@ -1,5 +1,7 @@
+import re
+
 from builder.translator import Translator
-from parser.tokens import TokenType
+from parser.tokens import TokenType, TokenDocstring
 
 
 class DocTranslator(Translator):
@@ -107,3 +109,106 @@ class DocTranslator(Translator):
             return f"[{name}]"
 
         assert False, f'Fail to convert from "{token.name}" to BBCode'
+
+    def c_doc_to_gdscript_doc(
+        self,
+        token: TokenDocstring,
+    ) -> str:
+        """
+        The plan is reusing the docstring from C code.
+
+        This is mostly regex substitution and it's a temporary
+        way to solve it.
+
+        NOTE:
+            - If you just want it to go to the next line, add bbcode [br]
+            - If you want to end a paragraph, add an empty new line
+                - lines.insert(n, "")
+        """
+        lines: list[str] = token.lines.copy()
+        inside_codeblock = False
+
+        # Patterns.
+        BRIEF_PATTERN = r"^ \\brief"
+        HEADER_PATTERN = r"^ (#+ .*)"
+        CODE_PATTERN = r"^ \\code"
+        ENDCODE_PATTERN = r"^ \\endcode"
+        UL_PATTERN = r"^ (- )"
+        OL_PATTERN = r"^ (\d+. )"
+        IMG_PATTERN = r"^ \\image .*\"([^ ]+)\".*"
+        REF_PATTERN = r"@ref (\w+)"
+
+        for n in range(len(lines) - 1, -1, -1):
+            # Change codeblocks.
+            if re.search(CODE_PATTERN, lines[n]):
+                lines[n] = re.sub(CODE_PATTERN, r" [codeblock lang=text]", lines[n])
+                lines.insert(n + 1, "")
+                inside_codeblock = False
+
+                # Add warning.
+                lines.insert(n, "")
+                lines.insert(
+                    n,
+                    " [color=orange]WARNING:[/color] The following example is in C++.",
+                )
+                lines.insert(n, "")
+
+            if inside_codeblock:
+                lines.insert(n + 1, "")
+                continue  # Stop replacing when inside codeblocks.
+
+            if re.search(ENDCODE_PATTERN, lines[n]):
+                lines[n] = re.sub(ENDCODE_PATTERN, r" [/codeblock]", lines[n])
+                inside_codeblock = True  # Remember: we are walking backwards.
+
+            # Change brief.
+            if re.search(BRIEF_PATTERN, lines[n]):
+                lines[n] = re.sub(BRIEF_PATTERN, r"", lines[n])
+
+            # Change image.
+            if re.search(IMG_PATTERN, lines[n]):
+                lines[n] = re.sub(
+                    IMG_PATTERN,
+                    r" [url]https://discord.com/developers/docs/social-sdk/\1[/url]",
+                    lines[n],
+                )
+
+            # Change reference.
+            if re.search(REF_PATTERN, lines[n]):
+                lines[n] = re.sub(
+                    REF_PATTERN,
+                    r"[url=https://discord.com/developers/docs/social-sdk/\1.html]this[/url]",
+                    lines[n],
+                )
+
+            # Change headers to bold text.
+            if re.search(HEADER_PATTERN, lines[n]):
+                lines[n] = re.sub(HEADER_PATTERN, r" [b]\1[/b]", lines[n])
+                lines.insert(n + 1, "")
+                lines.insert(n, "")
+
+            # Change unordered list.
+            if re.search(UL_PATTERN, lines[n]):
+                lines[n] = re.sub(UL_PATTERN, r" [br]\1", lines[n])
+
+            # Change ordered list.
+            if re.search(OL_PATTERN, lines[n]):
+                lines[n] = re.sub(OL_PATTERN, r" [br]\1", lines[n])
+
+        # Join Lines.
+        # Multiple lines of a docstring could be a single paragraph in the documentation.
+        # We can only be sure if we find an empty line between them.
+        docstring = ""
+        newline = False
+
+        for line in lines:
+            if newline:
+                docstring += "\n" + line
+                newline = False
+            else:
+                docstring += line
+
+            if line.strip() == "":
+                newline = True
+
+        return docstring

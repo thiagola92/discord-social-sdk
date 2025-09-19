@@ -3,37 +3,44 @@
 	<brief_description>
 	</brief_description>
 	<description>
-        Reference: [url]https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1AuthorizationCodeChallenge.html[/url]
-    </description>
+ Struct that encapsulates the challenge part of the code verification flow.
+
+Reference: [url]https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1AuthorizationCodeChallenge.html[/url]
+</description>
 	<tutorials>
 	</tutorials>
 	<methods>
 		<method name="Challenge">
 			<return type="String" />
 			<description>
-			</description>
+ The challenge value
+</description>
 		</method>
 		<method name="Drop">
 			<return type="void" />
 			<description>
-			</description>
+
+</description>
 		</method>
 		<method name="Method">
 			<return type="int" enum="DiscordppAuthenticationCodeChallengeMethod.Enum" />
 			<description>
-			</description>
+ The method used to generate the challenge. The only method used by the SDK is sha256.
+</description>
 		</method>
 		<method name="SetChallenge">
 			<return type="void" />
 			<param index="0" name="Challenge" type="String" />
 			<description>
-			</description>
+ Setter for AuthorizationCodeChallenge::Challenge.
+</description>
 		</method>
 		<method name="SetMethod">
 			<return type="void" />
 			<param index="0" name="Method" type="int" enum="DiscordppAuthenticationCodeChallengeMethod.Enum" />
 			<description>
-			</description>
+ Setter for AuthorizationCodeChallenge::Method.
+</description>
 		</method>
 	</methods>
 </class>

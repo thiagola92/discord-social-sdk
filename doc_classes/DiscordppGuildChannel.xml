@@ -3,72 +3,89 @@
 	<brief_description>
 	</brief_description>
 	<description>
-        Reference: [url]https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1GuildChannel.html[/url]
-    </description>
+ Represents a channel in a guild that the current user is a member of and may be able to be linked to a lobby.
+
+Reference: [url]https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1GuildChannel.html[/url]
+</description>
 	<tutorials>
 	</tutorials>
 	<methods>
 		<method name="Drop">
 			<return type="void" />
 			<description>
-			</description>
+
+</description>
 		</method>
 		<method name="Id">
 			<return type="int" />
 			<description>
-			</description>
+ The id of the channel.
+</description>
 		</method>
 		<method name="IsLinkable">
 			<return type="bool" />
 			<description>
-			</description>
+ Whether the current user is able to link this channel to a lobby.
+ For this to be true: [br]- The channel must be a guild text channel [br]- The channel may not be marked as NSFW [br]- The channel must not be currently linked to a different lobby [br]- The user must have the following permissions in the channel in order to link it:   - Manage Channels   - View Channel   - Send Messages
+</description>
 		</method>
 		<method name="IsViewableAndWriteableByAllMembers">
 			<return type="bool" />
 			<description>
-			</description>
+ Whether the channel is "fully public" which means every member of the guild is able to view and send messages in that channel.
+ Discord allows lobbies to be linked to private channels in a server, which enables things like a private admin chat.
+ However there is no permission synchronization between the game and Discord, so it is the responsibility of the game to restrict access to the lobby. Every member of the lobby will be able to view and send messages in the lobby/channel, regardless of whether that user would have permission to do so in Discord.
+ This may be more complexity than a game wants to take on, so instead you can only allow linking of channels that are fully public in the server so there is no confusion.
+</description>
 		</method>
 		<method name="LinkedLobby">
 			<return type="Variant" />
 			<description>
-				Returns [DiscordppLinkedLobby] or [code]null[/code].
-			</description>
+ Information about the currently linked lobby, if any. Currently Discord enforces that a channel can only be linked to a single lobby.
+Returns [DiscordppLinkedLobby] or [code]null[/code].
+</description>
 		</method>
 		<method name="Name">
 			<return type="String" />
 			<description>
-			</description>
+ The name of the channel.
+</description>
 		</method>
 		<method name="SetId">
 			<return type="void" />
 			<param index="0" name="Id" type="int" />
 			<description>
-			</description>
+ Setter for GuildChannel::Id.
+</description>
 		</method>
 		<method name="SetIsLinkable">
 			<return type="void" />
 			<param index="0" name="IsLinkable" type="bool" />
 			<description>
-			</description>
+ Setter for GuildChannel::IsLinkable.
+</description>
 		</method>
 		<method name="SetIsViewableAndWriteableByAllMembers">
 			<return type="void" />
 			<param index="0" name="IsViewableAndWriteableByAllMembers" type="bool" />
 			<description>
-			</description>
+ Setter for GuildChannel::IsViewableAndWriteableByAllMembers.
+</description>
 		</method>
 		<method name="SetLinkedLobby">
 			<return type="void" />
 			<param index="0" name="LinkedLobby" type="Variant" />
 			<description>
-				Where [param LinkedLobby] is [DiscordppLinkedLobby] or [code]null[/code].
-			</description>
+ Setter for GuildChannel::LinkedLobby.
+Where [param LinkedLobby] is [DiscordppLinkedLobby] or [code]null[/code].
+</description>
 		</method>
 		<method name="SetName">
 			<return type="void" />
 			<param index="0" name="Name" type="String" />
 			<description>
-			</description>
+ Setter for GuildChannel::Name.
+</description>
 		</method>
 	</methods>
 </class>

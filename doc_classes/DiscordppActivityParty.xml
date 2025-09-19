@@ -3,59 +3,71 @@
 	<brief_description>
 	</brief_description>
 	<description>
-        Reference: [url]https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1ActivityParty.html[/url]
-    </description>
+ \see Activity
+
+Reference: [url]https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1ActivityParty.html[/url]
+</description>
 	<tutorials>
 	</tutorials>
 	<methods>
 		<method name="CurrentSize">
 			<return type="int" />
 			<description>
-			</description>
+ The number of people currently in the party, must be at least 1.
+</description>
 		</method>
 		<method name="Drop">
 			<return type="void" />
 			<description>
-			</description>
+
+</description>
 		</method>
 		<method name="Id">
 			<return type="String" />
 			<description>
-			</description>
+ Specifies the id of the party. "Party" is used colloquially to refer to a group of players in a shared context. This could be a lobby id, server id, team id, etc.
+ All party members should specify a RichPresence update using the same party id so that the Discord client knows how to group them together. If specified, must be a string between 2 and 128 characters.
+</description>
 		</method>
 		<method name="MaxSize">
 			<return type="int" />
 			<description>
-			</description>
+ The maximum number of people that can be in the party, must be at least 0. When 0, the UI will not display a maximum.
+</description>
 		</method>
 		<method name="Privacy">
 			<return type="int" enum="DiscordppActivityPartyPrivacy.Enum" />
 			<description>
-			</description>
+ The privacy of the party.
+</description>
 		</method>
 		<method name="SetCurrentSize">
 			<return type="void" />
 			<param index="0" name="CurrentSize" type="int" />
 			<description>
-			</description>
+ Setter for ActivityParty::CurrentSize.
+</description>
 		</method>
 		<method name="SetId">
 			<return type="void" />
 			<param index="0" name="Id" type="String" />
 			<description>
-			</description>
+ Setter for ActivityParty::Id.
+</description>
 		</method>
 		<method name="SetMaxSize">
 			<return type="void" />
 			<param index="0" name="MaxSize" type="int" />
 			<description>
-			</description>
+ Setter for ActivityParty::MaxSize.
+</description>
 		</method>
 		<method name="SetPrivacy">
 			<return type="void" />
 			<param index="0" name="Privacy" type="int" enum="DiscordppActivityPartyPrivacy.Enum" />
 			<description>
-			</description>
+ Setter for ActivityParty::Privacy.
+</description>
 		</method>
 	</methods>
 </class>

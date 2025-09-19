@@ -6,6 +6,7 @@ from parser.tokens import (
     TokenFunction,
     TokenCallback,
     TokenClass,
+    TokenDocstring,
 )
 
 
@@ -16,18 +17,25 @@ class Parser:
 
     def start(self) -> list[TokenEnum | TokenFunction | TokenClass]:
         tokens = []
-        string_matched = self.read_until_find(["enum", "inline", "class"])
+        docstring = TokenDocstring([])
+        string_matched = self.read_until_find(["enum", "inline", "class", "///"])
 
         while string_matched:
             match string_matched:
                 case "enum":
-                    tokens.append(self.parse_enum())
+                    tokens.append(self.parse_enum(docs=docstring))
+                    docstring = TokenDocstring([])
                 case "inline":
-                    tokens.append(self.parse_function(static=True))
+                    tokens.append(self.parse_function(docs=docstring, static=True))
+                    docstring = TokenDocstring([])
                 case "class":
-                    tokens.append(self.parse_class())
+                    tokens.append(self.parse_class(docstring))
+                    docstring = TokenDocstring([])
+                    pass
+                case "///":
+                    self.parse_docstring(docstring)
 
-            string_matched = self.read_until_find(["enum", "inline", "class"])
+            string_matched = self.read_until_find(["enum", "inline", "class", "///"])
 
         return tokens
 
@@ -71,24 +79,26 @@ class Parser:
 
         return None
 
-    def get_text_before(self, string: str) -> str | None:
+    def get_text_before(self, strings: list[str]) -> tuple[str | None, str | None]:
         """
-        Return the text between current position and a string,
-        otherwise None.
+        Returns a tuple:
+            First value is the text between current position and the matched string
+            Second value is the matched string
 
-        This will move the current position while searching
-        for the string.
+        Both will be None if doesn't find a match.
+
+        This will move the current position while searching for a match.
         """
         start_position = self.current_position
 
-        if self.read_until_find([string]) is None:
-            return None
+        if (string := self.read_until_find(strings)) is None:
+            return (None, None)
 
-        return self.content[start_position : self.current_position - 1]
+        return (self.content[start_position : self.current_position - 1], string)
 
-    def parse_enum(self) -> TokenEnum | None:
+    def parse_enum(self, docs: TokenDocstring) -> TokenEnum | None:
         # Parse name.
-        text = self.get_text_before("{")
+        text, _ = self.get_text_before(["{"])
 
         if text is None:
             return None
@@ -96,25 +106,38 @@ class Parser:
         name = text.strip().removeprefix("class ")
 
         # Parse options.
-        text = self.get_text_before("}")
-        text = text or ""
-        lines = text.split(",")
-        lines = [l.strip() for l in lines]
-        lines = [l for l in lines if l]
-        lines = [l.split("=") for l in lines]
+        text, string_matched = self.get_text_before(["}", "///", ","])
         counter = 0
+        options = {}
+        docstring = TokenDocstring([])
+        options_docs = {}
 
-        for l in lines:
-            if len(l) == 1:
-                l.append(str(counter))
-                counter += 1
+        while string_matched:
+            match string_matched:
+                case "}":
+                    break
+                case "///":
+                    self.parse_docstring(docstring)
+                case ",":
+                    texts = text.split("=")
+                    texts = [t.strip() for t in texts]
 
-            l[0] = l[0].strip()
+                    if len(texts) == 1:
+                        options[texts[0]] = str(counter)
+                        counter += 1
+                    else:
+                        options[texts[0]] = texts[1]
+                        counter = int(texts[1]) + 1
 
-        options = {l[0]: l[1] for l in lines}
+                    options_docs[texts[0]] = docstring
+                    docstring = TokenDocstring([])
+
+            text, string_matched = self.get_text_before(["}", "///", ","])
 
         return TokenEnum(
+            docs=docs,
             name=name,
+            options_docs=options_docs,
             options=options,
         )
 
@@ -177,7 +200,7 @@ class Parser:
         )
 
     def parse_params(self) -> list[TokenParam]:
-        text = self.get_text_before(")")
+        text, _ = self.get_text_before([")"])
 
         if text is None or text == "":
             return []
@@ -207,8 +230,12 @@ class Parser:
 
         return params
 
-    def parse_function(self, static: bool = False) -> TokenFunction | None:
-        text = self.get_text_before("(")
+    def parse_function(
+        self,
+        docs: TokenDocstring,
+        static: bool = False,
+    ) -> TokenFunction | None:
+        text, _ = self.get_text_before(["("])
 
         if text is None:
             return None
@@ -223,6 +250,7 @@ class Parser:
         params = self.parse_params()
 
         return TokenFunction(
+            docs=docs,
             ret=ret,
             name=name,
             params=params,
@@ -231,7 +259,7 @@ class Parser:
 
     def parse_callback(self) -> TokenCallback | None:
         # Parse name.
-        name = self.get_text_before("=")
+        name, _ = self.get_text_before(["="])
         name = name.removeprefix("using")
         name = name.strip()
 
@@ -258,16 +286,16 @@ class Parser:
             deleted=deleted,
         )
 
-    def parse_class(self) -> TokenClass | None:
+    def parse_class(self, docs: TokenDocstring) -> TokenClass | None:
         # Parse name.
-        name = self.get_text_before("{")
+        name, _ = self.get_text_before(["{"])
 
         if name is None:
             return None
 
         name = name.strip()
 
-        # Split statements.
+        # Split statements (with their respective docstring).
         statements: list[str] = []
         statement_start_position = self.current_position
         braces = 1
@@ -283,38 +311,84 @@ class Parser:
                 s = self.content[statement_start_position : self.current_position]
                 statements.append(s.strip())
                 statement_start_position = self.current_position + 1
+            elif char == "/":
+                s = self.content[self.current_position : self.current_position + 2]
+
+                if s == "///":
+                    self.read_until_find(["\n"])
+                    self.current_position -= 1  # Undo next addition.
 
             self.current_position += 1
 
-        # Parse statements
+        # Parse statements.
         enums = []
         callbacks = []
         constructors = []
         functions = []
 
         for statement in statements:
-            parser = Parser(content=statement)
+            parser = Parser(statement)
+            docstring = TokenDocstring([])
+            s = parser.parse_statement(name, docstring)
 
-            if statement.startswith("enum "):
-                parser.read_until_find(["enum"])
-                enums.append(parser.parse_enum())
-            elif statement.startswith("using "):
-                callbacks.append(parser.parse_callback())
-            elif statement.startswith(name):
-                constructors.append(parser.parse_constructor())
-            elif statement.startswith("explicit "):
-                parser.read_until_find(["explicit"])
-                constructors.append(parser.parse_constructor())
-            elif statement.startswith("static "):
-                parser.read_until_find(["static"])
-                functions.append(parser.parse_function(static=True))
+            if isinstance(s, TokenEnum):
+                enums.append(s)
+            elif isinstance(s, TokenCallback):
+                callbacks.append(s)
+            elif isinstance(s, TokenConstructor):
+                constructors.append(s)
+            elif isinstance(s, TokenFunction):
+                functions.append(s)
             else:
-                functions.append(parser.parse_function())
+                assert False, "Fail to parse statement"
 
         return TokenClass(
+            docs=docs,
             name=name,
             enums=enums,
             callbacks=callbacks,
             constructors=constructors,
             functions=functions,
         )
+
+    def parse_statement(
+        self,
+        class_name: str,
+        docs: TokenDocstring,
+    ) -> TokenEnum | TokenCallback | TokenConstructor | TokenFunction:
+        if self.content.startswith("enum "):
+            self.read_until_find(["enum"])
+            return self.parse_enum(docs)
+        elif self.content.startswith("using "):
+            return self.parse_callback()
+        elif self.content.startswith(class_name):
+            return self.parse_constructor()
+        elif self.content.startswith("explicit "):
+            self.read_until_find(["explicit"])
+            return self.parse_constructor()
+        elif self.content.startswith("static "):
+            self.read_until_find(["static"])
+            return self.parse_function(docs, static=True)
+        elif self.content.startswith("///"):
+            self.read_until_find(["///"])
+            self.parse_docstring(docs)
+
+            residue = self.content[self.current_position :]
+            residue = residue.strip()
+            parser = Parser(residue)
+
+            return parser.parse_statement(class_name, docs)
+        else:
+            return self.parse_function(docs)
+
+    def parse_docstring(self, docstring: TokenDocstring):
+        """
+        Receives the token that will be expanded as we discover more docstrings.
+        """
+
+        # Parse docstring.
+        line, _ = self.get_text_before(["\n"])
+        line = line or ""
+
+        # Docstring just extend an existing one.
+        docstring.lines.append(line)

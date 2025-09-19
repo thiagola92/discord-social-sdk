@@ -3,8 +3,142 @@
 	<brief_description>
 	</brief_description>
 	<description>
-        Reference: [url]https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1Activity.html[/url]
-    </description>
+ An Activity represents one "thing" a user is doing on Discord and is part of their rich presence.
+ Additional information is located on the Discord Developer Portal: [br]- https://discord.com/developers/docs/rich-presence/overview [br]- https://discord.com/developers/docs/developer-tools/game-sdk#activities [br]- https://discord.com/developers/docs/rich-presence/best-practices
+ While RichPresence supports multiple types of activities, the only activity type that is really relevant for the SDK is ActivityTypes::Playing. Additionally, the SDK will only expose Activities that are associated with the current game (or application). So for example, a field like `name` below, will always be set to the current game's name from the view of the SDK.
+
+ [b]## Customization[/b]
+ When an activity shows up on Discord, it will look something like this: [br]1. Playing "game name" [br]2. Capture the flag | 2 - 1 [br]3. In a group (2 of 3)
+ You can control how lines 2 and 3 are rendered in Discord, here's the breakdown: [br]- Line 1, `Playing "game name"` is powered by the name of your game (or application) on Discord. [br]- Line 2, `Capture the flag | 2 - 1` is powered by the `details` field in the activity, and this should generally try to describe what the _player_ is currently doing. You can even include dynamic data such as a match score here. [br]- Line 3, `In a group (2 of 3)` describes the _party_ the player is in. "Party" is used to refer to a group of players in a shared context, such as a lobby, server, team, etc. The first half, `In a group` is powered by the `state` field in the activity, and the second half, `(2 of 3)` is powered by the `party` field in the activity and describes how many people are in the current party and how big the party can get.
+ This diagram visually shows the field mapping:
+
+ [url]https://discord.com/developers/docs/social-sdk/rich_presence.png[/url]
+ You can also specify up to two custom buttons to display on the rich presence. These buttons will open the URL in the user's default browser.
+
+ [color=orange]WARNING:[/color] The following example is in C++.
+ [codeblock lang=text]
+     discordpp::ActivityButton button;
+     button.SetLabel("Button 1");
+     button.SetUrl("https://example.com");
+     activity.AddButton(button);
+ [/codeblock]
+
+
+ [b]## Invites / Joinable Activities[/b]
+ Other users can be invited to join the current player's activity (or request to join it too), but that does require certain fields to be set: [br]1. ActivityParty must be set and have a non-empty ActivityParty::Id field. All users in the party should set the same id field too! [br]2. ActivityParty must specify the size of the group, and there must be room in the group for another person to join. [br]3. ActivitySecrets::Join must be set to a non-empty string. The join secret is only shared with users who are accepted into the party by an existing member, so it is truly a secret. You can use this so that when the user is accepted your game knows how to join them to the party. For example it could be an internal game ID, or a Discord lobby ID/secret that the client could join.
+ There is additional information about game invites here: https://support.discord.com/hc/en-us/articles/115001557452-Game-Invites
+
+ [b]### Mobile Invites[/b]
+ Activity invites are handled via a deep link. To enable users to join your game via an invite in the Discord client, you must do two things: [br]1. Set your deep link URL in the Discord developer portal. This will be available on the General tab of your application once Social Layer integration is enabled for your app. [br]2. Set the desired supported platforms when reporting the activity info in your rich presence, e.g.:
+
+
+ [color=orange]WARNING:[/color] The following example is in C++.
+ [codeblock lang=text]
+     activity.SetSupportedPlatforms(
+         ActivityGamePlatforms.Desktop |
+         ActivityGamePlatforms.IOS |
+         ActivityGamePlatforms.Android);
+ [/codeblock]
+
+ When the user accepts the invite, the Discord client will open: `[your url]/_discord/join?secret=[the join secret you set]`
+
+ [b]### Example Invites Flow[/b]
+ If you are using Discord lobbies for your game, a neat flow would look like this: [br]- When a user starts playing the game, they create a lobby with a random secret string, using Client::CreateOrJoinLobby [br]- That user publishes their RichPresence with the join secret set to the lobby secret, along with party size information [br]- Another use can then see that RichPresence on Discord and join off of it [br]- Once accepted the new user receives the join secret and their client can call CreateOrJoinLobby(joinSecret) to join the lobby [br]- Finally the original user can notice that the lobby membership has changed and so they publish a new RichPresence update containing the updating party size information.
+
+ [b]### Invites Code Example[/b]
+
+
+ [color=orange]WARNING:[/color] The following example is in C++.
+ [codeblock lang=text]
+ // User A
+ // 1. Create a lobby with secret
+ std::string lobbySecret = "foo";
+ client-&gt;CreateOrJoinLobby(lobbySecret, [=](discordpp::ClientResult result, uint64_t lobbyId) {
+     // 2. Update rich presence with join secret
+     discordpp::Activity activity{};
+     // set name, state, party size ...
+     discordpp::ActivitySecrets secrets{};
+     secrets.SetJoin(lobbySecret);
+     activity.SetSecrets(secrets);
+     client-&gt;UpdateRichPresence(std::move(activity), [](discordpp::ClientResult result) {});
+ });
+ // 3. Some time later, send an invite
+ client-&gt;SendActivityInvite(USER_B_ID, "come play with me", [](auto result) {});
+
+
+ // User B
+ // 4. Monitor for new invites. Alternatively, you can use
+ // Client::SetActivityInviteUpdatedCallback to get updates on existing invites.
+ client-&gt;SetActivityInviteCreatedCallback([client](auto invite) {
+     // 5. When an invite is received, ask the user if they want to accept it.
+     // If they choose to do so then go ahead and invoke AcceptActivityInvite
+     client-&gt;AcceptActivityInvite(invite,
+         [client](discordpp::ClientResult result, std::string secret) {
+         if (result.Successful()) {
+             // 5. Join the lobby using the joinSecret
+             client-&gt;CreateOrJoinLobby(secret, [](discordpp::ClientResult result, uint64_t
+             lobbyId) {
+                 // Successfully joined lobby!
+             });
+         }
+     });
+ });
+ [/codeblock]
+
+
+ [b]### Join Requests Code Example[/b]
+ Users can also request to join each others parties. This code snippet shows how that flow might look:
+
+ [color=orange]WARNING:[/color] The following example is in C++.
+ [codeblock lang=text]
+ // User A
+ // 1. Create a lobby with secret
+ std::string lobbySecret = "foo";
+ client-&gt;CreateOrJoinLobby(lobbySecret, [=](discordpp::ClientResult result, uint64_t lobbyId) {
+     // 2. Update rich presence with join secret
+     discordpp::Activity activity{};
+     // set name, state, party size ...
+     discordpp::ActivitySecrets secrets{};
+     secrets.SetJoin(lobbySecret);
+     activity.SetSecrets(secrets);
+     client-&gt;UpdateRichPresence(std::move(activity), [](discordpp::ClientResult result) {});
+ });
+
+
+ // User B
+ // 3. Request to join User A's party
+ client-&gt;SendActivityJoinRequest(USER_A_ID, [](auto result) {});
+
+
+ // User A
+ // Monitor for new invites:
+ client-&gt;SetActivityInviteCreatedCallback([client](auto invite) {
+     // 5. The game can now show that User A has received a request to join their party
+     // If User A is ok with that, they can reply back:
+     // Note: invite.type will be ActivityActionTypes::JoinRequest in this example
+     client-&gt;SendActivityJoinRequestReply(invite, [](auto result) {});
+ });
+
+
+ // User B
+ // 6. Same as before, user B can monitor for invites
+ client-&gt;SetActivityInviteCreatedCallback([client](auto invite) {
+     // 7. When an invite is received, ask the user if they want to accept it.
+     // If they choose to do so then go ahead and invoke AcceptActivityInvite
+     client-&gt;AcceptActivityInvite(invite,
+         [client](discordpp::ClientResult result, std::string secret) {
+         if (result.Successful()) {
+             // 5. Join the lobby using the joinSecret
+             client-&gt;CreateOrJoinLobby(secret, [](auto result, uint64_t lobbyId) {
+                 // Successfully joined lobby!
+             });
+         }
+     });
+ });
+ [/codeblock]
+
+Reference: [url]https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1Activity.html[/url]
+</description>
 	<tutorials>
 	</tutorials>
 	<methods>
@@ -12,199 +146,240 @@
 			<return type="void" />
 			<param index="0" name="button" type="DiscordppActivityButton" />
 			<description>
-			</description>
+ Adds a custom button to the rich presence
+</description>
 		</method>
 		<method name="ApplicationId">
 			<return type="Variant" />
 			<description>
-				Returns [int] or [code]null[/code].
-			</description>
+ The application ID of the game that the activity is associated with.
+ This field cannot be set by the SDK, and will always be the application ID of the current game or a game from the same publisher.
+Returns [int] or [code]null[/code].
+</description>
 		</method>
 		<method name="Assets">
 			<return type="Variant" />
 			<description>
-				Returns [DiscordppActivityAssets] or [code]null[/code].
-			</description>
+ Images used to customize how the Activity is displayed in the Discord client.
+Returns [DiscordppActivityAssets] or [code]null[/code].
+</description>
 		</method>
 		<method name="Details">
 			<return type="Variant" />
 			<description>
-				Returns [String] or [code]null[/code].
-			</description>
+ The state _of the what the user is doing_ for this activity.
+ See the docs on the Activity struct for more info. If specified, must be a string between 2 and 128 characters.
+Returns [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="DetailsUrl">
 			<return type="Variant" />
 			<description>
-				Returns [String] or [code]null[/code].
-			</description>
+ A URL that opens when the user clicks/taps the details text.
+ See the docs on the Activity struct for more info. If specified, must be a string between 2 and 256 characters.
+Returns [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="Drop">
 			<return type="void" />
 			<description>
-			</description>
+
+</description>
 		</method>
 		<method name="Equals">
 			<return type="bool" />
 			<param index="0" name="other" type="DiscordppActivity" />
 			<description>
-			</description>
+ Compares each field of the Activity struct for equality.
+</description>
 		</method>
 		<method name="GetButtons">
 			<return type="DiscordppActivityButton[]" />
 			<description>
-			</description>
+ Returns the custom buttons for the rich presence
+</description>
 		</method>
 		<method name="Name">
 			<return type="String" />
 			<description>
-			</description>
+ The name of the game or application that the activity is associated with.
+ This field cannot be set by the SDK, and will always be the name of the current game.
+</description>
 		</method>
 		<method name="ParentApplicationId">
 			<return type="Variant" />
 			<description>
-				Returns [int] or [code]null[/code].
-			</description>
+ The application ID of the parent application that the activity is associated with if it exists. This is to help identify a collection of games that are from the same publisher.
+ This field cannot be set by the SDK, and will always be the application ID of the game's parent or unset if the game has no parent.
+Returns [int] or [code]null[/code].
+</description>
 		</method>
 		<method name="Party">
 			<return type="Variant" />
 			<description>
-				Returns [DiscordppActivityParty] or [code]null[/code].
-			</description>
+ The party struct is used to indicate the size and members of the people the current user is playing with.
+Returns [DiscordppActivityParty] or [code]null[/code].
+</description>
 		</method>
 		<method name="Secrets">
 			<return type="Variant" />
 			<description>
-				Returns [DiscordppActivitySecrets] or [code]null[/code].
-			</description>
+ The secrets struct is used in combination with the party struct to make an Activity joinable.
+Returns [DiscordppActivitySecrets] or [code]null[/code].
+</description>
 		</method>
 		<method name="SetApplicationId">
 			<return type="void" />
 			<param index="0" name="ApplicationId" type="Variant" />
 			<description>
-				Where [param ApplicationId] is [int] or [code]null[/code].
-			</description>
+ Setter for Activity::ApplicationId.
+Where [param ApplicationId] is [int] or [code]null[/code].
+</description>
 		</method>
 		<method name="SetAssets">
 			<return type="void" />
 			<param index="0" name="Assets" type="Variant" />
 			<description>
-				Where [param Assets] is [DiscordppActivityAssets] or [code]null[/code].
-			</description>
+ Setter for Activity::Assets.
+Where [param Assets] is [DiscordppActivityAssets] or [code]null[/code].
+</description>
 		</method>
 		<method name="SetDetails">
 			<return type="void" />
 			<param index="0" name="Details" type="Variant" />
 			<description>
-				Where [param Details] is [String] or [code]null[/code].
-			</description>
+ Setter for Activity::Details.
+Where [param Details] is [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="SetDetailsUrl">
 			<return type="void" />
 			<param index="0" name="DetailsUrl" type="Variant" />
 			<description>
-				Where [param DetailsUrl] is [String] or [code]null[/code].
-			</description>
+ Setter for Activity::DetailsUrl.
+Where [param DetailsUrl] is [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="SetName">
 			<return type="void" />
 			<param index="0" name="Name" type="String" />
 			<description>
-			</description>
+ Setter for Activity::Name.
+</description>
 		</method>
 		<method name="SetParentApplicationId">
 			<return type="void" />
 			<param index="0" name="ParentApplicationId" type="Variant" />
 			<description>
-				Where [param ParentApplicationId] is [int] or [code]null[/code].
-			</description>
+ Setter for Activity::ParentApplicationId.
+Where [param ParentApplicationId] is [int] or [code]null[/code].
+</description>
 		</method>
 		<method name="SetParty">
 			<return type="void" />
 			<param index="0" name="Party" type="Variant" />
 			<description>
-				Where [param Party] is [DiscordppActivityParty] or [code]null[/code].
-			</description>
+ Setter for Activity::Party.
+Where [param Party] is [DiscordppActivityParty] or [code]null[/code].
+</description>
 		</method>
 		<method name="SetSecrets">
 			<return type="void" />
 			<param index="0" name="Secrets" type="Variant" />
 			<description>
-				Where [param Secrets] is [DiscordppActivitySecrets] or [code]null[/code].
-			</description>
+ Setter for Activity::Secrets.
+Where [param Secrets] is [DiscordppActivitySecrets] or [code]null[/code].
+</description>
 		</method>
 		<method name="SetState">
 			<return type="void" />
 			<param index="0" name="State" type="Variant" />
 			<description>
-				Where [param State] is [String] or [code]null[/code].
-			</description>
+ Setter for Activity::State.
+Where [param State] is [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="SetStateUrl">
 			<return type="void" />
 			<param index="0" name="StateUrl" type="Variant" />
 			<description>
-				Where [param StateUrl] is [String] or [code]null[/code].
-			</description>
+ Setter for Activity::StateUrl.
+Where [param StateUrl] is [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="SetStatusDisplayType">
 			<return type="void" />
 			<param index="0" name="StatusDisplayType" type="Variant" />
 			<description>
-				Where [param StatusDisplayType] is [enum DiscordppStatusDisplayTypes.Enum] or [code]null[/code].
-			</description>
+ Setter for Activity::StatusDisplayType.
+Where [param StatusDisplayType] is [enum DiscordppStatusDisplayTypes.Enum] or [code]null[/code].
+</description>
 		</method>
 		<method name="SetSupportedPlatforms">
 			<return type="void" />
 			<param index="0" name="SupportedPlatforms" type="int" enum="DiscordppActivityGamePlatforms.Enum" />
 			<description>
-			</description>
+ Setter for Activity::SupportedPlatforms.
+</description>
 		</method>
 		<method name="SetTimestamps">
 			<return type="void" />
 			<param index="0" name="Timestamps" type="Variant" />
 			<description>
-				Where [param Timestamps] is [DiscordppActivityTimestamps] or [code]null[/code].
-			</description>
+ Setter for Activity::Timestamps.
+Where [param Timestamps] is [DiscordppActivityTimestamps] or [code]null[/code].
+</description>
 		</method>
 		<method name="SetType">
 			<return type="void" />
 			<param index="0" name="Type" type="int" enum="DiscordppActivityTypes.Enum" />
 			<description>
-			</description>
+ Setter for Activity::Type.
+</description>
 		</method>
 		<method name="State">
 			<return type="Variant" />
 			<description>
-				Returns [String] or [code]null[/code].
-			</description>
+ The state _of the party_ for this activity.
+ See the docs on the Activity struct for more info. If specified, must be a string between 2 and 128 characters.
+Returns [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="StateUrl">
 			<return type="Variant" />
 			<description>
-				Returns [String] or [code]null[/code].
-			</description>
+ A URL that opens when the user clicks/taps the state text.
+ See the docs on the Activity struct for more info. If specified, must be a string between 2 and 256 characters.
+Returns [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="StatusDisplayType">
 			<return type="Variant" />
 			<description>
-				Returns [enum DiscordppStatusDisplayTypes.Enum] or [code]null[/code].
-			</description>
+ Controls which field is used for the user's status message
+ See the docs on the Activity struct for more info.
+Returns [enum DiscordppStatusDisplayTypes.Enum] or [code]null[/code].
+</description>
 		</method>
 		<method name="SupportedPlatforms">
 			<return type="int" enum="DiscordppActivityGamePlatforms.Enum" />
 			<description>
-			</description>
+ If an activity is joinable, but only on certain platforms, this field can be used to indicate which platforms the activity is joinable on. For example if a game is available on both PC and Mobile, but PC users cannot join Mobile users and vice versa, this field can be used so that an activity only shows as joinable on Discord if the user is on the appropriate platform.
+</description>
 		</method>
 		<method name="Timestamps">
 			<return type="Variant" />
 			<description>
-				Returns [DiscordppActivityTimestamps] or [code]null[/code].
-			</description>
+ The timestamps struct can be used to render either: [br]- a "time remaining" countdown timer (by specifying the `end` value) [br]- a "time elapsed" countup timer (by specifying the `start` value)
+Returns [DiscordppActivityTimestamps] or [code]null[/code].
+</description>
 		</method>
 		<method name="Type">
 			<return type="int" enum="DiscordppActivityTypes.Enum" />
 			<description>
-			</description>
+ The type of activity this is.
+ This should almost always be set to `Playing`
+</description>
 		</method>
 	</methods>
 </class>
