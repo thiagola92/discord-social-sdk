@@ -113,8 +113,6 @@ class DocTranslator(Translator):
     def c_doc_to_gdscript_doc(
         self,
         token: TokenDocstring,
-        tokens: list,
-        indentation: str,
     ) -> str:
         """
         The plan is reusing the docstring from C code.
@@ -138,6 +136,7 @@ class DocTranslator(Translator):
         UL_PATTERN = r"^ (- )"
         OL_PATTERN = r"^ (\d+. )"
         IMG_PATTERN = r"^ \\image .*\"([^ ]+)\".*"
+        REF_PATTERN = r"@ref (\w+)"
 
         for n in range(len(lines) - 1, -1, -1):
             # Change codeblocks.
@@ -170,7 +169,15 @@ class DocTranslator(Translator):
             if re.search(IMG_PATTERN, lines[n]):
                 lines[n] = re.sub(
                     IMG_PATTERN,
-                    r"[url]https://discord.com/developers/docs/social-sdk/\1[/url]",
+                    r" [url]https://discord.com/developers/docs/social-sdk/\1[/url]",
+                    lines[n],
+                )
+
+            # Change reference.
+            if re.search(REF_PATTERN, lines[n]):
+                lines[n] = re.sub(
+                    REF_PATTERN,
+                    r"[url=https://discord.com/developers/docs/social-sdk/\1.html]this[/url]",
                     lines[n],
                 )
 
@@ -188,12 +195,6 @@ class DocTranslator(Translator):
             if re.search(OL_PATTERN, lines[n]):
                 lines[n] = re.sub(OL_PATTERN, r" [br]\1", lines[n])
 
-        # TODO: Link references.
-        # references: list[str] = []
-
-        # for n, line in enumerate(lines):
-        #     references.extend(re.findall(r"(\w*::\w*)", line))
-
         # Join Lines.
         # Multiple lines of a docstring could be a single paragraph in the documentation.
         # We can only be sure if we find an empty line between them.
@@ -202,7 +203,7 @@ class DocTranslator(Translator):
 
         for line in lines:
             if newline:
-                docstring += f"\n{indentation}" + line
+                docstring += "\n" + line
                 newline = False
             else:
                 docstring += line

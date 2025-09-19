@@ -3,27 +3,30 @@
 	<brief_description>
 	</brief_description>
 	<description>
-         Represents a summary of a DM conversation with a user.
-        
-        Reference: [url]https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1UserMessageSummary.html[/url]
-    </description>
+ Represents a summary of a DM conversation with a user.
+
+Reference: [url]https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1UserMessageSummary.html[/url]
+</description>
 	<tutorials>
 	</tutorials>
 	<methods>
 		<method name="Drop">
 			<return type="void" />
 			<description>
-			</description>
+
+</description>
 		</method>
 		<method name="LastMessageId">
 			<return type="int" />
 			<description>
-			</description>
+ Returns the ID of the last message sent in the DM conversation.
+</description>
 		</method>
 		<method name="UserId">
 			<return type="int" />
 			<description>
-			</description>
+ Returns the ID of the other user in the DM conversation.
+</description>
 		</method>
 	</methods>
 </class>

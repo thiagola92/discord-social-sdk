@@ -3,98 +3,117 @@
 	<brief_description>
 	</brief_description>
 	<description>
-         Struct which controls what your rich presence looks like in the Discord client. If you don't specify any values, the icon and name of your application will be used as defaults.
-         Image assets can be either the unique identifier for an image you uploaded to your application via the `Rich Presence` page in the Developer portal, or they can be an external image URL.
-         As an example, if I uploaded an asset and name it `goofy-icon`, I could set either image field to the string `goofy-icon`. Alternatively, if my icon was hosted at `http://my-site.com/goofy.jpg`, I could pass that URL into either image field.
-         See https://discord.com/developers/docs/rich-presence/overview#adding-custom-art-assets for more information on using custom art assets, as well as for visual examples of what each field does.
-        
-        Reference: [url]https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1ActivityAssets.html[/url]
-    </description>
+ Struct which controls what your rich presence looks like in the Discord client. If you don't specify any values, the icon and name of your application will be used as defaults.
+ Image assets can be either the unique identifier for an image you uploaded to your application via the `Rich Presence` page in the Developer portal, or they can be an external image URL.
+ As an example, if I uploaded an asset and name it `goofy-icon`, I could set either image field to the string `goofy-icon`. Alternatively, if my icon was hosted at `http://my-site.com/goofy.jpg`, I could pass that URL into either image field.
+ See https://discord.com/developers/docs/rich-presence/overview#adding-custom-art-assets for more information on using custom art assets, as well as for visual examples of what each field does.
+
+Reference: [url]https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1ActivityAssets.html[/url]
+</description>
 	<tutorials>
 	</tutorials>
 	<methods>
 		<method name="Drop">
 			<return type="void" />
 			<description>
-			</description>
+
+</description>
 		</method>
 		<method name="LargeImage">
 			<return type="Variant" />
 			<description>
-				Returns [String] or [code]null[/code].
-			</description>
+ The primary image identifier or URL, rendered as a large square icon on a user's rich presence.
+ If specified, must be a string between 1 and 300 characters.
+Returns [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="LargeText">
 			<return type="Variant" />
 			<description>
-				Returns [String] or [code]null[/code].
-			</description>
+ A tooltip string that is shown when the user hovers over the large image.
+ If specified, must be a string between 2 and 128 characters.
+Returns [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="LargeUrl">
 			<return type="Variant" />
 			<description>
-				Returns [String] or [code]null[/code].
-			</description>
+ A URL that opens when the user clicks/taps the large image.
+ If specified, must be a string between 1 and 256 characters.
+Returns [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="SetLargeImage">
 			<return type="void" />
 			<param index="0" name="LargeImage" type="Variant" />
 			<description>
-				Where [param LargeImage] is [String] or [code]null[/code].
-			</description>
+ Setter for ActivityAssets::LargeImage.
+Where [param LargeImage] is [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="SetLargeText">
 			<return type="void" />
 			<param index="0" name="LargeText" type="Variant" />
 			<description>
-				Where [param LargeText] is [String] or [code]null[/code].
-			</description>
+ Setter for ActivityAssets::LargeText.
+Where [param LargeText] is [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="SetLargeUrl">
 			<return type="void" />
 			<param index="0" name="LargeUrl" type="Variant" />
 			<description>
-				Where [param LargeUrl] is [String] or [code]null[/code].
-			</description>
+ Setter for ActivityAssets::LargeUrl.
+Where [param LargeUrl] is [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="SetSmallImage">
 			<return type="void" />
 			<param index="0" name="SmallImage" type="Variant" />
 			<description>
-				Where [param SmallImage] is [String] or [code]null[/code].
-			</description>
+ Setter for ActivityAssets::SmallImage.
+Where [param SmallImage] is [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="SetSmallText">
 			<return type="void" />
 			<param index="0" name="SmallText" type="Variant" />
 			<description>
-				Where [param SmallText] is [String] or [code]null[/code].
-			</description>
+ Setter for ActivityAssets::SmallText.
+Where [param SmallText] is [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="SetSmallUrl">
 			<return type="void" />
 			<param index="0" name="SmallUrl" type="Variant" />
 			<description>
-				Where [param SmallUrl] is [String] or [code]null[/code].
-			</description>
+ Setter for ActivityAssets::SmallUrl.
+Where [param SmallUrl] is [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="SmallImage">
 			<return type="Variant" />
 			<description>
-				Returns [String] or [code]null[/code].
-			</description>
+ The secondary image, rendered as a small circle over the `largeImage`.
+ If specified, must be a string between 1 and 300 characters.
+Returns [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="SmallText">
 			<return type="Variant" />
 			<description>
-				Returns [String] or [code]null[/code].
-			</description>
+ A tooltip string that is shown when the user hovers over the small image.
+ If specified, must be a string between 2 and 128 characters.
+Returns [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="SmallUrl">
 			<return type="Variant" />
 			<description>
-				Returns [String] or [code]null[/code].
-			</description>
+ A URL that opens when the user clicks/taps the small image.
+ If specified, must be a string between 1 and 256 characters.
+Returns [String] or [code]null[/code].
+</description>
 		</method>
 	</methods>
 </class>

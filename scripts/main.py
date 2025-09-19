@@ -31,9 +31,9 @@ if __name__ == "__main__":
     tokens = Parser(content=discordpp_content).start()
     Path(STEP1).write_text("\n".join([str(t) for t in tokens]))
 
-    # # Builder.
+    # Builder.
     Builder(src_dir=SRC_DIR, tokens=tokens).build_files()
 
-    # # Documenter.
+    # Documenter.
     if Path(DOC_DIR).exists():
         Documenter(doc_dir=DOC_DIR, tokens=tokens).update_docs()

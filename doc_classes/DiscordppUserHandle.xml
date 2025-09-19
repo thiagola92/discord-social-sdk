@@ -3,79 +3,100 @@
 	<brief_description>
 	</brief_description>
 	<description>
-         A UserHandle represents a single user on Discord that the SDK knows about and contains basic account information for them such as id, name, and avatar, as well as their "status" information which includes both whether they are online/offline/etc as well as whether they are playing this game.
-         Handle objects in the SDK hold a reference both to the underlying data, and to the SDK instance. Changes to the underlying data will generally be available on existing handles objects without having to re-create them. If the SDK instance is destroyed, but you still have a reference to a handle object, note that it will return the default value for all method calls (ie an empty string for methods that return a string).
-        
-        Reference: [url]https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1UserHandle.html[/url]
-    </description>
+ A UserHandle represents a single user on Discord that the SDK knows about and contains basic account information for them such as id, name, and avatar, as well as their "status" information which includes both whether they are online/offline/etc as well as whether they are playing this game.
+ Handle objects in the SDK hold a reference both to the underlying data, and to the SDK instance. Changes to the underlying data will generally be available on existing handles objects without having to re-create them. If the SDK instance is destroyed, but you still have a reference to a handle object, note that it will return the default value for all method calls (ie an empty string for methods that return a string).
+
+Reference: [url]https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1UserHandle.html[/url]
+</description>
 	<tutorials>
 	</tutorials>
 	<methods>
 		<method name="Avatar">
 			<return type="Variant" />
 			<description>
-				Returns [String] or [code]null[/code].
-			</description>
+ Returns the hash of the user's Discord profile avatar, if one is set.
+Returns [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="AvatarTypeToString" qualifiers="static">
 			<return type="String" />
 			<param index="0" name="type" type="int" enum="DiscordppUserHandleAvatarType.Enum" />
 			<description>
-			</description>
+ Converts the AvatarType enum to a string.
+</description>
 		</method>
 		<method name="AvatarUrl">
 			<return type="String" />
 			<param index="0" name="animatedType" type="int" enum="DiscordppUserHandleAvatarType.Enum" />
 			<param index="1" name="staticType" type="int" enum="DiscordppUserHandleAvatarType.Enum" />
 			<description>
-			</description>
+ Returns a CDN url to the user's Discord profile avatar.
+ If the user does not have an avatar set, a url to one of Discord's default avatars is returned instead.
+</description>
 		</method>
 		<method name="DisplayName">
 			<return type="String" />
 			<description>
-			</description>
+ Returns the user's preferred name, if one is set, otherwise returns their unique username.
+</description>
 		</method>
 		<method name="Drop">
 			<return type="void" />
 			<description>
-			</description>
+
+</description>
 		</method>
 		<method name="GameActivity">
 			<return type="Variant" />
 			<description>
-				Returns [DiscordppActivity] or [code]null[/code].
-			</description>
+ Returns the user's rich presence activity that is associated with the current game, if one is set.
+ On Discord, users can have multiple rich presence activities at once, but the SDK will only expose the activity that is associated with your game. You can use this to know about the party the user is in, if any, and what the user is doing in the game.
+ For more information see the Activity class and check out https://discord.com/developers/docs/rich-presence/overview
+Returns [DiscordppActivity] or [code]null[/code].
+</description>
 		</method>
 		<method name="GlobalName">
 			<return type="Variant" />
 			<description>
-				Returns [String] or [code]null[/code].
-			</description>
+ Returns the preferred display name of this user, if one is set.
+ Discord's public API refers to this as a "global name" instead of "display name".
+ Discord users can set their preferred name to almost any string.
+ For more information about usernames on Discord, see: https://discord.com/developers/docs/resources/user
+Returns [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="Id">
 			<return type="int" />
 			<description>
-			</description>
+ Returns the ID of this user.
+ If this returns 0 then the UserHandle is no longer valid.
+</description>
 		</method>
 		<method name="IsProvisional">
 			<return type="bool" />
 			<description>
-			</description>
+ Returns true if this user is a provisional account.
+</description>
 		</method>
 		<method name="Relationship">
 			<return type="DiscordppRelationshipHandle" />
 			<description>
-			</description>
+ Returns a reference to the RelationshipHandle between the currently authenticated user and this user, if any.
+</description>
 		</method>
 		<method name="Status">
 			<return type="int" enum="DiscordppStatusType.Enum" />
 			<description>
-			</description>
+ Returns the user's online/offline/idle status.
+</description>
 		</method>
 		<method name="Username">
 			<return type="String" />
 			<description>
-			</description>
+ Returns the globally unique username of this user.
+ For provisional accounts this is an auto-generated string.
+ For more information about usernames on Discord, see: https://discord.com/developers/docs/resources/user
+</description>
 		</method>
 	</methods>
 </class>

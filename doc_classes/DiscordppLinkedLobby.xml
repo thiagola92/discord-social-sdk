@@ -3,39 +3,44 @@
 	<brief_description>
 	</brief_description>
 	<description>
-         Struct that stores information about the lobby linked to a channel.
-        
-        Reference: [url]https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1LinkedLobby.html[/url]
-    </description>
+ Struct that stores information about the lobby linked to a channel.
+
+Reference: [url]https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1LinkedLobby.html[/url]
+</description>
 	<tutorials>
 	</tutorials>
 	<methods>
 		<method name="ApplicationId">
 			<return type="int" />
 			<description>
-			</description>
+ The ID of the application that owns the lobby.
+</description>
 		</method>
 		<method name="Drop">
 			<return type="void" />
 			<description>
-			</description>
+
+</description>
 		</method>
 		<method name="LobbyId">
 			<return type="int" />
 			<description>
-			</description>
+ The ID of the lobby.
+</description>
 		</method>
 		<method name="SetApplicationId">
 			<return type="void" />
 			<param index="0" name="ApplicationId" type="int" />
 			<description>
-			</description>
+ Setter for LinkedLobby::ApplicationId.
+</description>
 		</method>
 		<method name="SetLobbyId">
 			<return type="void" />
 			<param index="0" name="LobbyId" type="int" />
 			<description>
-			</description>
+ Setter for LinkedLobby::LobbyId.
+</description>
 		</method>
 	</methods>
 </class>

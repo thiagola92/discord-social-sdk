@@ -3,39 +3,44 @@
 	<brief_description>
 	</brief_description>
 	<description>
-         Represents a guild (also knowns as a Discord server), that the current user is a member of, that contains channels that can be linked to a lobby.
-        
-        Reference: [url]https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1GuildMinimal.html[/url]
-    </description>
+ Represents a guild (also knowns as a Discord server), that the current user is a member of, that contains channels that can be linked to a lobby.
+
+Reference: [url]https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1GuildMinimal.html[/url]
+</description>
 	<tutorials>
 	</tutorials>
 	<methods>
 		<method name="Drop">
 			<return type="void" />
 			<description>
-			</description>
+
+</description>
 		</method>
 		<method name="Id">
 			<return type="int" />
 			<description>
-			</description>
+ The id of the guild.
+</description>
 		</method>
 		<method name="Name">
 			<return type="String" />
 			<description>
-			</description>
+ The name of the guild.
+</description>
 		</method>
 		<method name="SetId">
 			<return type="void" />
 			<param index="0" name="Id" type="int" />
 			<description>
-			</description>
+ Setter for GuildMinimal::Id.
+</description>
 		</method>
 		<method name="SetName">
 			<return type="void" />
 			<param index="0" name="Name" type="String" />
 			<description>
-			</description>
+ Setter for GuildMinimal::Name.
+</description>
 		</method>
 	</methods>
 </class>

@@ -3,62 +3,75 @@
 	<brief_description>
 	</brief_description>
 	<description>
-         Options for creating a new Client instance.
-         This class may be used to set advanced initialization-time options on Client.
-        
-        Reference: [url]https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1ClientCreateOptions.html[/url]
-    </description>
+ Options for creating a new Client instance.
+ This class may be used to set advanced initialization-time options on Client.
+
+Reference: [url]https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1ClientCreateOptions.html[/url]
+</description>
 	<tutorials>
 	</tutorials>
 	<methods>
 		<method name="ApiBase">
 			<return type="String" />
 			<description>
-			</description>
+ The base URL for the Discord API.
+</description>
 		</method>
 		<method name="Drop">
 			<return type="void" />
 			<description>
-			</description>
+
+</description>
 		</method>
 		<method name="ExperimentalAndroidPreventCommsForBluetooth">
 			<return type="bool" />
 			<description>
-			</description>
+ Whether to prevent communications mode on Android when Bluetooth is connected.
+ This is an experimental API which may be removed or changed in a future release.
+ When set to true, the SDK will not enter communications mode when Bluetooth is connected. This setting is only meaningful on Android. It allows you to retain full quality stereo audio playback when in-call and avoids mixing issues caused by Bluetooth Absolute Volume, but will use the device microphone instead of the headset one.
+</description>
 		</method>
 		<method name="ExperimentalAudioSystem">
 			<return type="int" enum="DiscordppAudioSystem.Enum" />
 			<description>
-			</description>
+ The audio system to use. Defaults to AudioSystem::Standard.
+ This is an experimental API which may be removed or changed in a future release.
+ The game audio system alters the behavior of Discord Voice on mobile platforms to use standard media-type streams instead of voice-specific audio APIs when possible. Currently this will be used on iOS 18.2+ on devices which return true from `-[AVAudioSession isEchoCancelledInputAvailable]` and on Android devices.
+</description>
 		</method>
 		<method name="SetApiBase">
 			<return type="void" />
 			<param index="0" name="ApiBase" type="String" />
 			<description>
-			</description>
+ Setter for ClientCreateOptions::ApiBase.
+</description>
 		</method>
 		<method name="SetExperimentalAndroidPreventCommsForBluetooth">
 			<return type="void" />
 			<param index="0" name="ExperimentalAndroidPreventCommsForBluetooth" type="bool" />
 			<description>
-			</description>
+ Setter for ClientCreateOptions::ExperimentalAndroidPreventCommsForBluetooth.
+</description>
 		</method>
 		<method name="SetExperimentalAudioSystem">
 			<return type="void" />
 			<param index="0" name="ExperimentalAudioSystem" type="int" enum="DiscordppAudioSystem.Enum" />
 			<description>
-			</description>
+ Setter for ClientCreateOptions::ExperimentalAudioSystem.
+</description>
 		</method>
 		<method name="SetWebBase">
 			<return type="void" />
 			<param index="0" name="WebBase" type="String" />
 			<description>
-			</description>
+ Setter for ClientCreateOptions::WebBase.
+</description>
 		</method>
 		<method name="WebBase">
 			<return type="String" />
 			<description>
-			</description>
+ The base URL for the Discord web application.
+</description>
 		</method>
 	</methods>
 </class>

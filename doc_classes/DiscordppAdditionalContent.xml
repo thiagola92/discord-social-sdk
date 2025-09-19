@@ -3,64 +3,73 @@
 	<brief_description>
 	</brief_description>
 	<description>
-         Contains information about non-text content in a message that likely cannot be rendered in game such as images, videos, embeds, polls, and more.
-        
-        Reference: [url]https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1AdditionalContent.html[/url]
-    </description>
+ Contains information about non-text content in a message that likely cannot be rendered in game such as images, videos, embeds, polls, and more.
+
+Reference: [url]https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1AdditionalContent.html[/url]
+</description>
 	<tutorials>
 	</tutorials>
 	<methods>
 		<method name="Count">
 			<return type="int" />
 			<description>
-			</description>
+ Represents the number of pieces of additional content so you could for example renders "2 additional images".
+</description>
 		</method>
 		<method name="Drop">
 			<return type="void" />
 			<description>
-			</description>
+
+</description>
 		</method>
 		<method name="Equals">
 			<return type="bool" />
 			<param index="0" name="rhs" type="DiscordppAdditionalContent" />
 			<description>
-			</description>
+ Compares each field of the AdditionalContent struct for equality.
+</description>
 		</method>
 		<method name="SetCount">
 			<return type="void" />
 			<param index="0" name="Count" type="int" />
 			<description>
-			</description>
+ Setter for AdditionalContent::Count.
+</description>
 		</method>
 		<method name="SetTitle">
 			<return type="void" />
 			<param index="0" name="Title" type="Variant" />
 			<description>
-				Where [param Title] is [String] or [code]null[/code].
-			</description>
+ Setter for AdditionalContent::Title.
+Where [param Title] is [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="SetType">
 			<return type="void" />
 			<param index="0" name="Type" type="int" enum="DiscordppAdditionalContentType.Enum" />
 			<description>
-			</description>
+ Setter for AdditionalContent::Type.
+</description>
 		</method>
 		<method name="Title">
 			<return type="Variant" />
 			<description>
-				Returns [String] or [code]null[/code].
-			</description>
+ When the additional content is a poll or thread, this field will contain the name of the poll or thread.
+Returns [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="Type">
 			<return type="int" enum="DiscordppAdditionalContentType.Enum" />
 			<description>
-			</description>
+ Represents the type of additional content in the message.
+</description>
 		</method>
 		<method name="TypeToString" qualifiers="static">
 			<return type="String" />
 			<param index="0" name="type" type="int" enum="DiscordppAdditionalContentType.Enum" />
 			<description>
-			</description>
+ Converts the AdditionalContentType enum to a string.
+</description>
 		</method>
 	</methods>
 </class>

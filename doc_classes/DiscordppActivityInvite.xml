@@ -3,116 +3,135 @@
 	<brief_description>
 	</brief_description>
 	<description>
-         When one user invites another to join their game on Discord, it will send a message to that user. The SDK will parse those messages for you automatically, and this struct contains all of the relevant invite information which is needed to later accept that invite.
-        
-        Reference: [url]https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1ActivityInvite.html[/url]
-    </description>
+ When one user invites another to join their game on Discord, it will send a message to that user. The SDK will parse those messages for you automatically, and this struct contains all of the relevant invite information which is needed to later accept that invite.
+
+Reference: [url]https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1ActivityInvite.html[/url]
+</description>
 	<tutorials>
 	</tutorials>
 	<methods>
 		<method name="ApplicationId">
 			<return type="int" />
 			<description>
-			</description>
+ The target application of the invite.
+</description>
 		</method>
 		<method name="ChannelId">
 			<return type="int" />
 			<description>
-			</description>
+ The id of the Discord channel in which the invite was sent.
+</description>
 		</method>
 		<method name="Drop">
 			<return type="void" />
 			<description>
-			</description>
+
+</description>
 		</method>
 		<method name="IsValid">
 			<return type="bool" />
 			<description>
-			</description>
+ Whether or not this invite is currently joinable. An invite becomes invalid if it was sent more than 6 hours ago or if the sender is no longer playing the game the invite is for.
+</description>
 		</method>
 		<method name="MessageId">
 			<return type="int" />
 			<description>
-			</description>
+ The id of the Discord message that contains the invite.
+</description>
 		</method>
 		<method name="ParentApplicationId">
 			<return type="int" />
 			<description>
-			</description>
+ The application id of the parent - this is only applicable if there is a parent for a publisher's suite of applications.
+</description>
 		</method>
 		<method name="PartyId">
 			<return type="String" />
 			<description>
-			</description>
+ The id of the party the invite was sent for.
+</description>
 		</method>
 		<method name="SenderId">
 			<return type="int" />
 			<description>
-			</description>
+ The user id of the user who sent the invite.
+</description>
 		</method>
 		<method name="SessionId">
 			<return type="String" />
 			<description>
-			</description>
+ The session id of the user who sent the invite.
+</description>
 		</method>
 		<method name="SetApplicationId">
 			<return type="void" />
 			<param index="0" name="ApplicationId" type="int" />
 			<description>
-			</description>
+ Setter for ActivityInvite::ApplicationId.
+</description>
 		</method>
 		<method name="SetChannelId">
 			<return type="void" />
 			<param index="0" name="ChannelId" type="int" />
 			<description>
-			</description>
+ Setter for ActivityInvite::ChannelId.
+</description>
 		</method>
 		<method name="SetIsValid">
 			<return type="void" />
 			<param index="0" name="IsValid" type="bool" />
 			<description>
-			</description>
+ Setter for ActivityInvite::IsValid.
+</description>
 		</method>
 		<method name="SetMessageId">
 			<return type="void" />
 			<param index="0" name="MessageId" type="int" />
 			<description>
-			</description>
+ Setter for ActivityInvite::MessageId.
+</description>
 		</method>
 		<method name="SetParentApplicationId">
 			<return type="void" />
 			<param index="0" name="ParentApplicationId" type="int" />
 			<description>
-			</description>
+ Setter for ActivityInvite::ParentApplicationId.
+</description>
 		</method>
 		<method name="SetPartyId">
 			<return type="void" />
 			<param index="0" name="PartyId" type="String" />
 			<description>
-			</description>
+ Setter for ActivityInvite::PartyId.
+</description>
 		</method>
 		<method name="SetSenderId">
 			<return type="void" />
 			<param index="0" name="SenderId" type="int" />
 			<description>
-			</description>
+ Setter for ActivityInvite::SenderId.
+</description>
 		</method>
 		<method name="SetSessionId">
 			<return type="void" />
 			<param index="0" name="SessionId" type="String" />
 			<description>
-			</description>
+ Setter for ActivityInvite::SessionId.
+</description>
 		</method>
 		<method name="SetType">
 			<return type="void" />
 			<param index="0" name="Type" type="int" enum="DiscordppActivityActionTypes.Enum" />
 			<description>
-			</description>
+ Setter for ActivityInvite::Type.
+</description>
 		</method>
 		<method name="Type">
 			<return type="int" enum="DiscordppActivityActionTypes.Enum" />
 			<description>
-			</description>
+ The type of invite that was sent.
+</description>
 		</method>
 	</methods>
 </class>
