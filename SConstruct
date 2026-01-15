@@ -17,8 +17,15 @@ env.Append(
     CPPPATH=["src/", "include/"],
     LIBPATH=["lib/"],
     LIBS=["discord_partner_sdk"],
-    RPATH=["."],
 )
+
+# MacOS seems to dislike the way this RPATH flag gets passed to the linker.
+# appending -rpath as LINKFLAGS seem to work - using @loader_path to point 
+#to the library's own path.
+if env["platform"] == "macos":
+    env.Append(LINKFLAGS=["-Wl,-rpath,@loader_path"])
+elif env["platform"] == "linux":
+    env.Append(RPATH=["."])
 
 sources = Glob("src/*.cpp")
 
