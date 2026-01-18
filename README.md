@@ -233,7 +233,9 @@ flowchart LR
 **Document**: Update the generated XML documentation from Godot (files in `doc_classes/`) with some details to help.  
 
 ## Prerequisites
-I'm using Ubuntu, please adapt this list to your operating system.  
+I'm letting this so you can adapt to your operating system.  
+
+### Ubuntu
 
 - [Godot](https://godotengine.org/)
 - [SCons](https://scons.org/)
@@ -242,8 +244,28 @@ I'm using Ubuntu, please adapt this list to your operating system.
     - `sudo apt install mingw-w64`
 - [Python](https://www.python.org/) >=3.12
     - Included by default
-- Clang format
+- [Clang](https://clang.llvm.org/)
+    - `sudo apt install clang`
+- [Clang format](https://clang.llvm.org/docs/ClangFormat.html)
     - `sudo apt install clang-format`
+    - [VSCode](https://marketplace.visualstudio.com/items?itemName=xaver.clang-format)
+- [Discord SDK for C++](https://discord.com/developers/docs/discord-social-sdk/getting-started/using-c++#step-4-download-the-discord-sdk-for-c++)
+
+### Fedora
+
+- [Godot](https://godotengine.org/)
+- [SCons](https://scons.org/)
+    - `sudo dnf install scons`
+- Others
+    - `sudo dnf install libstdc++-static`
+- [Mingw-w64](https://www.mingw-w64.org/)
+    - `sudo dnf install mingw64-gcc-c++`
+- [Python](https://www.python.org/) >=3.12
+    - Included by default
+- [Clang](https://clang.llvm.org/)
+    - `sudo dnf install clang`
+- [Clang format](https://clang.llvm.org/docs/ClangFormat.html)
+    - `sudo dnf install clang-tools-extra`
     - [VSCode](https://marketplace.visualstudio.com/items?itemName=xaver.clang-format)
 - [Discord SDK for C++](https://discord.com/developers/docs/discord-social-sdk/getting-started/using-c++#step-4-download-the-discord-sdk-for-c++)
 
@@ -268,6 +290,12 @@ I'm using Ubuntu, please adapt this list to your operating system.
 
 ## Step by step
 ```bash
+# Clone repository, submodules and only file needed.
+git clone --recurse-submodules --filter=blob:none https://github.com/thiagola92/discord-social-sdk.git
+cd discord-social-sdk
+
+# Manually download the DiscordSocialSdk zip to the project directory.
+
 # Unzip libraries and headers to correct directories.
 unzip DiscordSocialSdk*.zip -d /tmp/
 cp -r /tmp/discord_social_sdk/lib/release/* lib/
