@@ -118,6 +118,13 @@ Returns [DiscordppLobbyHandle] or [code]null[/code].
  Metadata is just a set of simple string key/value pairs. An example use case might be to include a character name so you can customize how a message renders in game.
 </description>
 		</method>
+		<method name="ModerationMetadata">
+			<return type="Dictionary[String, String]" />
+			<description>
+ Returns any moderation metadata the developer set on this message.
+ Moderation metadata is just a set of simple string key/value pairs. An example use case might be to include a flag that indicates the moderation status of the message. Another example would be to include a re-written message that is more appropriate for the game's audience.
+</description>
+		</method>
 		<method name="RawContent">
 			<return type="String" />
 			<description>

@@ -47,6 +47,26 @@ void DiscordppClientCreateOptions::SetExperimentalAndroidPreventCommsForBluetoot
 	obj->SetExperimentalAndroidPreventCommsForBluetooth(p0);
 }
 
+Variant DiscordppClientCreateOptions::CpuAffinityMask() {
+	auto r = obj->CpuAffinityMask();
+
+	if (!r.has_value()) {
+		return nullptr;
+	}
+
+	return Variant(r.value());
+}
+
+void DiscordppClientCreateOptions::SetCpuAffinityMask(Variant CpuAffinityMask) {
+	std::optional<uint64_t> p0;
+
+	if (CpuAffinityMask.get_type() == Variant::INT) {
+		p0 = CpuAffinityMask;
+	}
+
+	obj->SetCpuAffinityMask(p0);
+}
+
 void DiscordppClientCreateOptions::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("Drop"),
 			&DiscordppClientCreateOptions::Drop);
@@ -74,4 +94,10 @@ void DiscordppClientCreateOptions::_bind_methods() {
 
 	ClassDB::bind_method(D_METHOD("SetExperimentalAndroidPreventCommsForBluetooth", "ExperimentalAndroidPreventCommsForBluetooth"),
 			&DiscordppClientCreateOptions::SetExperimentalAndroidPreventCommsForBluetooth);
+
+	ClassDB::bind_method(D_METHOD("CpuAffinityMask"),
+			&DiscordppClientCreateOptions::CpuAffinityMask);
+
+	ClassDB::bind_method(D_METHOD("SetCpuAffinityMask", "CpuAffinityMask"),
+			&DiscordppClientCreateOptions::SetCpuAffinityMask);
 }

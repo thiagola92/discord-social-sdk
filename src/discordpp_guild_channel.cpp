@@ -27,6 +27,46 @@ void DiscordppGuildChannel::SetName(String Name) {
 	obj->SetName(p0);
 }
 
+DiscordppChannelType::Enum DiscordppGuildChannel::Type() {
+	return (DiscordppChannelType::Enum)obj->Type();
+}
+
+void DiscordppGuildChannel::SetType(DiscordppChannelType::Enum Type) {
+	discordpp::ChannelType p0 = (discordpp::ChannelType)Type;
+
+	obj->SetType(p0);
+}
+
+int64_t DiscordppGuildChannel::Position() {
+	return obj->Position();
+}
+
+void DiscordppGuildChannel::SetPosition(int64_t Position) {
+	int64_t p0 = Position;
+
+	obj->SetPosition(p0);
+}
+
+Variant DiscordppGuildChannel::ParentId() {
+	auto r = obj->ParentId();
+
+	if (!r.has_value()) {
+		return nullptr;
+	}
+
+	return Variant(r.value());
+}
+
+void DiscordppGuildChannel::SetParentId(Variant ParentId) {
+	std::optional<uint64_t> p0;
+
+	if (ParentId.get_type() == Variant::INT) {
+		p0 = ParentId;
+	}
+
+	obj->SetParentId(p0);
+}
+
 bool DiscordppGuildChannel::IsLinkable() {
 	return obj->IsLinkable();
 }
@@ -84,6 +124,24 @@ void DiscordppGuildChannel::_bind_methods() {
 
 	ClassDB::bind_method(D_METHOD("SetName", "Name"),
 			&DiscordppGuildChannel::SetName);
+
+	ClassDB::bind_method(D_METHOD("Type"),
+			&DiscordppGuildChannel::Type);
+
+	ClassDB::bind_method(D_METHOD("SetType", "Type"),
+			&DiscordppGuildChannel::SetType);
+
+	ClassDB::bind_method(D_METHOD("Position"),
+			&DiscordppGuildChannel::Position);
+
+	ClassDB::bind_method(D_METHOD("SetPosition", "Position"),
+			&DiscordppGuildChannel::SetPosition);
+
+	ClassDB::bind_method(D_METHOD("ParentId"),
+			&DiscordppGuildChannel::ParentId);
+
+	ClassDB::bind_method(D_METHOD("SetParentId", "ParentId"),
+			&DiscordppGuildChannel::SetParentId);
 
 	ClassDB::bind_method(D_METHOD("IsLinkable"),
 			&DiscordppGuildChannel::IsLinkable);

@@ -17,6 +17,13 @@ Reference: [url]https://discord.com/developers/docs/social-sdk/classdiscordpp_1_
  The base URL for the Discord API.
 </description>
 		</method>
+		<method name="CpuAffinityMask">
+			<return type="Variant" />
+			<description>
+ CPU affinity mask hint for certain platforms. Depending on platform support, may or may not be ignored.
+Returns [int] or [code]null[/code].
+</description>
+		</method>
 		<method name="Drop">
 			<return type="void" />
 			<description>
@@ -44,6 +51,14 @@ Reference: [url]https://discord.com/developers/docs/social-sdk/classdiscordpp_1_
 			<param index="0" name="ApiBase" type="String" />
 			<description>
  Setter for ClientCreateOptions::ApiBase.
+</description>
+		</method>
+		<method name="SetCpuAffinityMask">
+			<return type="void" />
+			<param index="0" name="CpuAffinityMask" type="Variant" />
+			<description>
+ Setter for ClientCreateOptions::CpuAffinityMask.
+Where [param CpuAffinityMask] is [int] or [code]null[/code].
 </description>
 		</method>
 		<method name="SetExperimentalAndroidPreventCommsForBluetooth">

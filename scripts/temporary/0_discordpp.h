@@ -23,6 +23,9 @@ inline void RunCallbacks() {
 /// See https://discord.com/developers/docs/rich-presence/overview for more information.
 enum class ActivityActionTypes {
 
+	/// \brief Invalid
+	Invalid = 0,
+
 	/// \brief Join
 	Join = 1,
 
@@ -386,54 +389,6 @@ enum class IntegrationType {
 	UserInstall = 1,
 };
 
-/// \brief Represents the type of additional content contained in a message.
-enum class AdditionalContentType {
-
-	/// \brief Other
-	Other = 0,
-
-	/// \brief Attachment
-	Attachment = 1,
-
-	/// \brief Poll
-	Poll = 2,
-
-	/// \brief VoiceMessage
-	VoiceMessage = 3,
-
-	/// \brief Thread
-	Thread = 4,
-
-	/// \brief Embed
-	Embed = 5,
-
-	/// \brief Sticker
-	Sticker = 6,
-};
-
-/// \brief The Discord Voice audio system to use.
-enum class AudioSystem {
-
-	/// \brief Use the standard audio system.
-	Standard = 0,
-
-	/// \brief Use the game audio system.
-	Game = 1,
-};
-
-/// \brief Represents whether a voice call is using push to talk or auto voice detection
-enum class AudioModeType {
-
-	/// \brief MODE_UNINIT
-	MODE_UNINIT = 0,
-
-	/// \brief MODE_VAD
-	MODE_VAD = 1,
-
-	/// \brief MODE_PTT
-	MODE_PTT = 2,
-};
-
 /// \brief Enum that represents the various channel types on Discord.
 ///
 /// For more information see: https://discord.com/developers/docs/resources/channel
@@ -488,6 +443,54 @@ enum class ChannelType {
 	EphemeralDm = 18,
 };
 
+/// \brief Represents the type of additional content contained in a message.
+enum class AdditionalContentType {
+
+	/// \brief Other
+	Other = 0,
+
+	/// \brief Attachment
+	Attachment = 1,
+
+	/// \brief Poll
+	Poll = 2,
+
+	/// \brief VoiceMessage
+	VoiceMessage = 3,
+
+	/// \brief Thread
+	Thread = 4,
+
+	/// \brief Embed
+	Embed = 5,
+
+	/// \brief Sticker
+	Sticker = 6,
+};
+
+/// \brief The Discord Voice audio system to use.
+enum class AudioSystem {
+
+	/// \brief Use the standard audio system.
+	Standard = 0,
+
+	/// \brief Use the game audio system.
+	Game = 1,
+};
+
+/// \brief Represents whether a voice call is using push to talk or auto voice detection
+enum class AudioModeType {
+
+	/// \brief MODE_UNINIT
+	MODE_UNINIT = 0,
+
+	/// \brief MODE_VAD
+	MODE_VAD = 1,
+
+	/// \brief MODE_PTT
+	MODE_PTT = 2,
+};
+
 /// \brief Enum that represents the possible types of relationships that can exist between two users
 enum class RelationshipType {
 
@@ -515,6 +518,31 @@ enum class RelationshipType {
 
 	/// \brief The Suggestion type is documented for visibility, but should be unused in the SDK.
 	Suggestion = 6,
+};
+
+/// \brief The type of external identity provider.
+enum class ExternalIdentityProviderType {
+
+	/// \brief OIDC
+	OIDC = 0,
+
+	/// \brief EpicOnlineServices
+	EpicOnlineServices = 1,
+
+	/// \brief Steam
+	Steam = 2,
+
+	/// \brief Unity
+	Unity = 3,
+
+	/// \brief DiscordBot
+	DiscordBot = 4,
+
+	/// \brief None
+	None = 5,
+
+	/// \brief Unknown
+	Unknown = 6,
 };
 
 /// \brief Enum that specifies the various online statuses for a user.
@@ -591,6 +619,15 @@ enum class AuthenticationExternalAuthType {
 
 	/// \brief UnityServicesIdToken
 	UnityServicesIdToken = 4,
+
+	/// \brief DiscordBotIssuedAccessToken
+	DiscordBotIssuedAccessToken = 5,
+
+	/// \brief AppleIdToken
+	AppleIdToken = 6,
+
+	/// \brief PlayStationNetworkIdToken
+	PlayStationNetworkIdToken = 7,
 };
 
 /// \brief Enum that represents the various log levels supported by the SDK.
@@ -753,6 +790,14 @@ class ActivityAssets {
 	std::optional<std::string> SmallUrl() const;
 	/// Setter for ActivityAssets::SmallUrl.
 	void SetSmallUrl(std::optional<std::string> SmallUrl);
+
+	/// \brief The invite cover image identifier or URL, rendered as a banner image on activity
+	/// invites.
+	///
+	/// If specified, must be a string between 1 and 300 characters.
+	std::optional<std::string> InviteCoverImage() const;
+	/// Setter for ActivityAssets::InviteCoverImage.
+	void SetInviteCoverImage(std::optional<std::string> InviteCoverImage);
 };
 
 /// \brief \see Activity
@@ -1061,7 +1106,7 @@ class Activity {
 
 	/// \brief The name of the game or application that the activity is associated with.
 	///
-	/// This field cannot be set by the SDK, and will always be the name of the current game.
+	/// This field defaults to the name of the current game.
 	std::string Name() const;
 	/// Setter for Activity::Name.
 	void SetName(std::string Name);
@@ -1705,6 +1750,21 @@ class GuildChannel {
 	/// Setter for GuildChannel::Name.
 	void SetName(std::string Name);
 
+	/// \brief The type of the channel.
+	discordpp::ChannelType Type() const;
+	/// Setter for GuildChannel::Type.
+	void SetType(discordpp::ChannelType Type);
+
+	/// \brief The position of the channel in the guild's channel list.
+	int32_t Position() const;
+	/// Setter for GuildChannel::Position.
+	void SetPosition(int32_t Position);
+
+	/// \brief The id of the parent category channel, if any.
+	std::optional<uint64_t> ParentId() const;
+	/// Setter for GuildChannel::ParentId.
+	void SetParentId(std::optional<uint64_t> ParentId);
+
 	/// \brief Whether the current user is able to link this channel to a lobby.
 	///
 	/// For this to be true:
@@ -1846,6 +1906,40 @@ class RelationshipHandle {
 	std::optional<discordpp::UserHandle> User() const;
 };
 
+/// \brief A UserApplicationProfileHandle represents a profile from an external identity provider,
+/// such as Steam or Epic Online Services.
+///
+/// Handle objects in the SDK hold a reference both to the underlying data, and to the SDK instance.
+/// Changes to the underlying data will generally be available on existing handles objects without
+/// having to re-create them. If the SDK instance is destroyed, but you still have a reference to a
+/// handle object, note that it will return the default value for all method calls (ie an empty
+/// string for methods that return a string).
+class UserApplicationProfileHandle {
+
+	/// Copy constructor for UserApplicationProfileHandle
+	UserApplicationProfileHandle(const UserApplicationProfileHandle &other);
+
+	void Drop();
+
+	/// \brief Returns the user's in-game avatar hash.
+	std::string AvatarHash() const;
+
+	/// \brief Returns any metadata set by the developer.
+	std::string Metadata() const;
+
+	/// \brief Returns the user's external identity provider ID if it exists.
+	std::optional<std::string> ProviderId() const;
+
+	/// \brief Returns the user's external identity provider issued user ID.
+	std::string ProviderIssuedUserId() const;
+
+	/// \brief Returns the type of the external identity provider.
+	discordpp::ExternalIdentityProviderType ProviderType() const;
+
+	/// \brief Returns the user's in-game username.
+	std::string Username() const;
+};
+
 /// \brief A UserHandle represents a single user on Discord that the SDK knows about and contains
 /// basic account information for them such as id, name, and avatar, as well as their "status"
 /// information which includes both whether they are online/offline/etc as well as whether they are
@@ -1930,6 +2024,11 @@ class UserHandle {
 
 	/// \brief Returns the user's online/offline/idle status.
 	discordpp::StatusType Status() const;
+
+	/// \brief Returns a list of UserApplicationProfileHandles for this user. Currently, a user can
+	/// only have a single profile per application, so this list will always contain at most one
+	/// UserApplicationProfileHandle.
+	std::vector<discordpp::UserApplicationProfileHandle> UserApplicationProfiles() const;
 
 	/// \brief Returns the globally unique username of this user.
 	///
@@ -2260,6 +2359,14 @@ class MessageHandle {
 	/// renders in game.
 	std::unordered_map<std::string, std::string> Metadata() const;
 
+	/// \brief Returns any moderation metadata the developer set on this message.
+	///
+	/// Moderation metadata is just a set of simple string key/value pairs.
+	/// An example use case might be to include a flag that indicates the moderation status of the
+	/// message. Another example would be to include a re-written message that is more appropriate
+	/// for the game's audience.
+	std::unordered_map<std::string, std::string> ModerationMetadata() const;
+
 	/// \brief Returns the content of this message, if any, but without replacing any markup from
 	/// emojis and mentions.
 	///
@@ -2375,6 +2482,12 @@ class ClientCreateOptions {
 	/// Setter for ClientCreateOptions::ExperimentalAndroidPreventCommsForBluetooth.
 	void SetExperimentalAndroidPreventCommsForBluetooth(
 			bool ExperimentalAndroidPreventCommsForBluetooth);
+
+	/// \brief CPU affinity mask hint for certain platforms. Depending on platform support, may or
+	/// may not be ignored.
+	std::optional<uint64_t> CpuAffinityMask() const;
+	/// Setter for ClientCreateOptions::CpuAffinityMask.
+	void SetCpuAffinityMask(std::optional<uint64_t> CpuAffinityMask);
 };
 
 /// \brief The Client class is the main entry point for the Discord SDK. All functionality is
@@ -2538,6 +2651,13 @@ class Client {
 			int32_t expiresIn,
 			std::string scopes)>;
 
+	/// \brief Callback invoked when a user requests to initiate the authorization flow from the
+	/// discord app
+	///
+	/// The callback receives no args and must call the functions needed to initiate the auth flow
+	/// as if the user had clicked the account link button in the game
+	using AuthorizeRequestCallback = std::function<void()>;
+
 	/// \brief Callback function for the Client::RevokeToken method.
 	using RevokeTokenCallback = std::function<void(discordpp::ClientResult result)>;
 
@@ -2657,6 +2777,9 @@ class Client {
 	/// \brief Callback function for Client::SetLobbyUpdatedCallback.
 	using LobbyUpdatedCallback = std::function<void(uint64_t lobbyId)>;
 
+	/// \brief Callback invoked when the IsDiscordAppInstalled function completes.
+	using IsDiscordAppInstalledCallback = std::function<void(bool installed)>;
+
 	/// \brief Callback function for Client::AcceptActivityInvite.
 	using AcceptActivityInviteCallback =
 			std::function<void(discordpp::ClientResult result, std::string joinSecret)>;
@@ -2736,6 +2859,7 @@ class Client {
 	/// authentication, rich presence, and activity invites when *not* connected with
 	/// Client::Connect. When calling Client::Connect, the application ID is set automatically
 	uint64_t GetApplicationId();
+	discordpp::UserHandle GetCurrentUser() const;
 
 	/// \brief Returns the ID of the system default audio device if the user has not explicitly
 	/// chosen one.
@@ -3348,6 +3472,24 @@ class Client {
 			std::string const &refreshToken,
 			discordpp::Client::TokenExchangeCallback callback);
 
+	/// \brief Registers a callback to be invoked when a user requests to initiate the authorization
+	/// flow.
+	///
+	/// When you register this callback, the Discord app will show new entry points to allow users
+	/// to initiate the authorization flow.
+	///
+	/// This function is tied to upcoming Discord client functionality experiments that will be
+	/// rolled out to a percentage of Discord users over time. More documentation and implementation
+	/// details to come as the client experiments run.
+	void RegisterAuthorizeRequestCallback(discordpp::Client::AuthorizeRequestCallback callback);
+
+	/// \brief Stops listening for the AUTHORIZE_REQUEST event and removes the registered callback
+	///
+	/// This function is tied to upcoming Discord client functionality experiments that will be
+	/// rolled out to a percentage of Discord users over time. More documentation and implementation
+	/// details to come as the client experiments run.
+	void RemoveAuthorizeRequestCallback();
+
 	/// \brief Revoke all application access/refresh tokens associated with a user with any valid
 	/// access/refresh token. This will invalidate all tokens and they cannot be used again. This
 	/// is useful if you want to log the user out of the game and invalidate their session.
@@ -3492,14 +3634,17 @@ class Client {
 	/// \brief Retrieves messages from the DM conversation with the specified user.
 	///
 	/// Returns a list of MessageHandle representing the recent messages in the conversation with
-	/// the recipient, with a maximum number specified by the limit parameter. The messages are
+	/// the recipient, with a with a maximum of 200 messages and up to 72 hours. The messages are
 	/// returned in reverse chronological order (newest first). This function checks the local cache
 	/// first and only makes an HTTP request to Discord's API if there are not enough cached
 	/// messages available.
 	///
 	/// If limit is greater than 0, restricts the number of messages returned. If limit is 0
-	/// or negative, the limit parameter is omitted from the request. This is intended for
+	/// or negative, the limit parameter is 200 messages and 72 hours. This is intended for
 	/// games to load message history when users open a DM conversation.
+	///
+	/// If either user hasn't played the game, there will be no channel between them and
+	/// this function will return a 404 `discordpp::ErrorType::HTTPError` error.
 	void GetUserMessagesWithLimit(uint64_t recipientId,
 			int32_t limit,
 			discordpp::Client::UserMessagesWithLimitCallback cb);
@@ -3730,6 +3875,8 @@ class Client {
 			discordpp::Client::CreateOrJoinLobbyCallback callback);
 
 	/// \brief Fetches all of the channels that the current user can access in the given guild.
+	/// Channels are sorted by their `position` field, which matches what you see in the Discord
+	/// client.
 	///
 	/// The purpose of this is to power the channel linking flow for linking a Discord channel to an
 	/// in-game lobby. So this function can be used to power a UI to let the user pick which channel
@@ -3843,6 +3990,22 @@ class Client {
 			discordpp::Client::LinkOrUnlinkChannelCallback callback);
 
 
+	/// \brief Checks whether the Discord mobile app is installed on this device.
+	/// On desktop platforms, always returns false.
+	///
+	/// This check does not require a client connection and can be called at any time.
+	///
+	/// This can be used to provide UI hints to users about whether they can authorize via the
+	/// Discord app, or whether they will need to use a web browser flow.
+	///
+	/// Platform Requirements:
+	/// - iOS: Your app must include "discord" in the LSApplicationQueriesSchemes array
+	///   in your Info.plist for this check to work correctly.
+	/// - Android: Your app must include "com.discord" in the `queries` element
+	///   in your AndroidManifest.xml (required for Android 11+).
+	void IsDiscordAppInstalled(discordpp::Client::IsDiscordAppInstalledCallback callback);
+
+
 	/// \brief Accepts an activity invite that the current user has received.
 	///
 	/// The given callback will be invoked with the join secret for the activity, which can be used
@@ -3885,8 +4048,8 @@ class Client {
 
 	/// \brief Sends a Discord activity invite to the specified user.
 	///
-	/// The invite is sent as a message on Discord, which means it can be sent in the following
-	/// situations:
+	/// The invite is sent as a message on Discord, which means it can be sent if any
+	/// of the following are true:
 	/// - Both users are online and in the game and have not blocked each other
 	/// - Both users are friends with each other
 	/// - Both users share a mutual Discord server and have previously DM'd each other on Discord
@@ -4148,18 +4311,7 @@ class Client {
 	void UnblockUser(uint64_t userId, discordpp::Client::UpdateRelationshipCallback cb);
 
 
-	/// \brief Returns the user associated with the current client.
-	///
-	/// **Must not be called before the Client::GetStatus has changed to Status::Ready.**
-	/// If the client has disconnected, or is in the process of reconnecting, it will return the
-	/// previous value of the user, even if the auth token has changed since then. Wait for
-	/// client.GetStatus() to change to Ready before accessing it again.
-	/// If accessed before the client is ready, it will return a dummy object.
-	discordpp::UserHandle GetCurrentUser() const;
-
-	/// \brief Returns the UserHandle associated with the current user, if one is available.
-	///
-	/// Unlike GetCurrentUser(), this method returns std::nullopt instead of a dummy object
+	/// \brief Unlike GetCurrentUser(), this method returns std::nullopt instead of a dummy object
 	/// when no user is authenticated or available. This provides clearer intent about when
 	/// the user data is actually available.
 	std::optional<discordpp::UserHandle> GetCurrentUserV2() const;
@@ -4216,6 +4368,8 @@ class CallInfoHandle {
 /// Converts a discordpp::ActivityActionTypes to a string.
 inline const char *EnumToString(discordpp::ActivityActionTypes value) {
 	switch (value) {
+		case discordpp::ActivityActionTypes::Invalid:
+			return "Invalid";
 		case discordpp::ActivityActionTypes::Join:
 			return "Join";
 		case discordpp::ActivityActionTypes::JoinRequest:
@@ -4466,6 +4620,45 @@ inline const char *EnumToString(discordpp::IntegrationType value) {
 			return "unknown";
 	}
 }
+/// Converts a discordpp::ChannelType to a string.
+inline const char *EnumToString(discordpp::ChannelType value) {
+	switch (value) {
+		case discordpp::ChannelType::GuildText:
+			return "GuildText";
+		case discordpp::ChannelType::Dm:
+			return "Dm";
+		case discordpp::ChannelType::GuildVoice:
+			return "GuildVoice";
+		case discordpp::ChannelType::GroupDm:
+			return "GroupDm";
+		case discordpp::ChannelType::GuildCategory:
+			return "GuildCategory";
+		case discordpp::ChannelType::GuildNews:
+			return "GuildNews";
+		case discordpp::ChannelType::GuildStore:
+			return "GuildStore";
+		case discordpp::ChannelType::GuildNewsThread:
+			return "GuildNewsThread";
+		case discordpp::ChannelType::GuildPublicThread:
+			return "GuildPublicThread";
+		case discordpp::ChannelType::GuildPrivateThread:
+			return "GuildPrivateThread";
+		case discordpp::ChannelType::GuildStageVoice:
+			return "GuildStageVoice";
+		case discordpp::ChannelType::GuildDirectory:
+			return "GuildDirectory";
+		case discordpp::ChannelType::GuildForum:
+			return "GuildForum";
+		case discordpp::ChannelType::GuildMedia:
+			return "GuildMedia";
+		case discordpp::ChannelType::Lobby:
+			return "Lobby";
+		case discordpp::ChannelType::EphemeralDm:
+			return "EphemeralDm";
+		default:
+			return "unknown";
+	}
+}
 /// Converts a discordpp::AdditionalContentType to a string.
 inline const char *EnumToString(discordpp::AdditionalContentType value) {
 	switch (value) {
@@ -4551,45 +4744,6 @@ inline const char *EnumToString(discordpp::Call::Status value) {
 			return "unknown";
 	}
 }
-/// Converts a discordpp::ChannelType to a string.
-inline const char *EnumToString(discordpp::ChannelType value) {
-	switch (value) {
-		case discordpp::ChannelType::GuildText:
-			return "GuildText";
-		case discordpp::ChannelType::Dm:
-			return "Dm";
-		case discordpp::ChannelType::GuildVoice:
-			return "GuildVoice";
-		case discordpp::ChannelType::GroupDm:
-			return "GroupDm";
-		case discordpp::ChannelType::GuildCategory:
-			return "GuildCategory";
-		case discordpp::ChannelType::GuildNews:
-			return "GuildNews";
-		case discordpp::ChannelType::GuildStore:
-			return "GuildStore";
-		case discordpp::ChannelType::GuildNewsThread:
-			return "GuildNewsThread";
-		case discordpp::ChannelType::GuildPublicThread:
-			return "GuildPublicThread";
-		case discordpp::ChannelType::GuildPrivateThread:
-			return "GuildPrivateThread";
-		case discordpp::ChannelType::GuildStageVoice:
-			return "GuildStageVoice";
-		case discordpp::ChannelType::GuildDirectory:
-			return "GuildDirectory";
-		case discordpp::ChannelType::GuildForum:
-			return "GuildForum";
-		case discordpp::ChannelType::GuildMedia:
-			return "GuildMedia";
-		case discordpp::ChannelType::Lobby:
-			return "Lobby";
-		case discordpp::ChannelType::EphemeralDm:
-			return "EphemeralDm";
-		default:
-			return "unknown";
-	}
-}
 /// Converts a discordpp::RelationshipType to a string.
 inline const char *EnumToString(discordpp::RelationshipType value) {
 	switch (value) {
@@ -4607,6 +4761,27 @@ inline const char *EnumToString(discordpp::RelationshipType value) {
 			return "Implicit";
 		case discordpp::RelationshipType::Suggestion:
 			return "Suggestion";
+		default:
+			return "unknown";
+	}
+}
+/// Converts a discordpp::ExternalIdentityProviderType to a string.
+inline const char *EnumToString(discordpp::ExternalIdentityProviderType value) {
+	switch (value) {
+		case discordpp::ExternalIdentityProviderType::OIDC:
+			return "OIDC";
+		case discordpp::ExternalIdentityProviderType::EpicOnlineServices:
+			return "EpicOnlineServices";
+		case discordpp::ExternalIdentityProviderType::Steam:
+			return "Steam";
+		case discordpp::ExternalIdentityProviderType::Unity:
+			return "Unity";
+		case discordpp::ExternalIdentityProviderType::DiscordBot:
+			return "DiscordBot";
+		case discordpp::ExternalIdentityProviderType::None:
+			return "None";
+		case discordpp::ExternalIdentityProviderType::Unknown:
+			return "Unknown";
 		default:
 			return "unknown";
 	}
@@ -4731,6 +4906,12 @@ inline const char *EnumToString(discordpp::AuthenticationExternalAuthType value)
 			return "SteamSessionTicket";
 		case discordpp::AuthenticationExternalAuthType::UnityServicesIdToken:
 			return "UnityServicesIdToken";
+		case discordpp::AuthenticationExternalAuthType::DiscordBotIssuedAccessToken:
+			return "DiscordBotIssuedAccessToken";
+		case discordpp::AuthenticationExternalAuthType::AppleIdToken:
+			return "AppleIdToken";
+		case discordpp::AuthenticationExternalAuthType::PlayStationNetworkIdToken:
+			return "PlayStationNetworkIdToken";
 		default:
 			return "unknown";
 	}

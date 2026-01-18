@@ -61,6 +61,12 @@ String Discordpp::EnumToStringIntegrationType(DiscordppIntegrationType::Enum val
 	return String(discordpp::EnumToString(p0));
 }
 
+String Discordpp::EnumToStringChannelType(DiscordppChannelType::Enum value) {
+	discordpp::ChannelType p0 = (discordpp::ChannelType)value;
+
+	return String(discordpp::EnumToString(p0));
+}
+
 String Discordpp::EnumToStringAdditionalContentType(DiscordppAdditionalContentType::Enum value) {
 	discordpp::AdditionalContentType p0 = (discordpp::AdditionalContentType)value;
 
@@ -91,14 +97,14 @@ String Discordpp::EnumToStringCallStatus(DiscordppCallStatus::Enum value) {
 	return String(discordpp::EnumToString(p0));
 }
 
-String Discordpp::EnumToStringChannelType(DiscordppChannelType::Enum value) {
-	discordpp::ChannelType p0 = (discordpp::ChannelType)value;
+String Discordpp::EnumToStringRelationshipType(DiscordppRelationshipType::Enum value) {
+	discordpp::RelationshipType p0 = (discordpp::RelationshipType)value;
 
 	return String(discordpp::EnumToString(p0));
 }
 
-String Discordpp::EnumToStringRelationshipType(DiscordppRelationshipType::Enum value) {
-	discordpp::RelationshipType p0 = (discordpp::RelationshipType)value;
+String Discordpp::EnumToStringExternalIdentityProviderType(DiscordppExternalIdentityProviderType::Enum value) {
+	discordpp::ExternalIdentityProviderType p0 = (discordpp::ExternalIdentityProviderType)value;
 
 	return String(discordpp::EnumToString(p0));
 }
@@ -194,6 +200,9 @@ void Discordpp::_bind_methods() {
 	ClassDB::bind_static_method("Discordpp", D_METHOD("EnumToStringIntegrationType", "value"),
 			&Discordpp::EnumToStringIntegrationType);
 
+	ClassDB::bind_static_method("Discordpp", D_METHOD("EnumToStringChannelType", "value"),
+			&Discordpp::EnumToStringChannelType);
+
 	ClassDB::bind_static_method("Discordpp", D_METHOD("EnumToStringAdditionalContentType", "value"),
 			&Discordpp::EnumToStringAdditionalContentType);
 
@@ -209,11 +218,11 @@ void Discordpp::_bind_methods() {
 	ClassDB::bind_static_method("Discordpp", D_METHOD("EnumToStringCallStatus", "value"),
 			&Discordpp::EnumToStringCallStatus);
 
-	ClassDB::bind_static_method("Discordpp", D_METHOD("EnumToStringChannelType", "value"),
-			&Discordpp::EnumToStringChannelType);
-
 	ClassDB::bind_static_method("Discordpp", D_METHOD("EnumToStringRelationshipType", "value"),
 			&Discordpp::EnumToStringRelationshipType);
+
+	ClassDB::bind_static_method("Discordpp", D_METHOD("EnumToStringExternalIdentityProviderType", "value"),
+			&Discordpp::EnumToStringExternalIdentityProviderType);
 
 	ClassDB::bind_static_method("Discordpp", D_METHOD("EnumToStringUserHandleAvatarType", "value"),
 			&Discordpp::EnumToStringUserHandleAvatarType);

@@ -127,6 +127,26 @@ void DiscordppActivityAssets::SetSmallUrl(Variant SmallUrl) {
 	obj->SetSmallUrl(p0);
 }
 
+Variant DiscordppActivityAssets::InviteCoverImage() {
+	auto r = obj->InviteCoverImage();
+
+	if (!r.has_value()) {
+		return nullptr;
+	}
+
+	return Variant(r.value().c_str());
+}
+
+void DiscordppActivityAssets::SetInviteCoverImage(Variant InviteCoverImage) {
+	std::optional<std::string> p0;
+
+	if (InviteCoverImage.get_type() == Variant::STRING) {
+		p0 = InviteCoverImage.stringify().utf8().get_data();
+	}
+
+	obj->SetInviteCoverImage(p0);
+}
+
 void DiscordppActivityAssets::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("Drop"),
 			&DiscordppActivityAssets::Drop);
@@ -166,4 +186,10 @@ void DiscordppActivityAssets::_bind_methods() {
 
 	ClassDB::bind_method(D_METHOD("SetSmallUrl", "SmallUrl"),
 			&DiscordppActivityAssets::SetSmallUrl);
+
+	ClassDB::bind_method(D_METHOD("InviteCoverImage"),
+			&DiscordppActivityAssets::InviteCoverImage);
+
+	ClassDB::bind_method(D_METHOD("SetInviteCoverImage", "InviteCoverImage"),
+			&DiscordppActivityAssets::SetInviteCoverImage);
 }

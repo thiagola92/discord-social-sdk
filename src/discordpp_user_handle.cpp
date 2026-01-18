@@ -73,6 +73,18 @@ DiscordppStatusType::Enum DiscordppUserHandle::Status() {
 	return (DiscordppStatusType::Enum)obj->Status();
 }
 
+TypedArray<DiscordppUserApplicationProfileHandle> DiscordppUserHandle::UserApplicationProfiles() {
+	auto r = obj->UserApplicationProfiles();
+	TypedArray<DiscordppUserApplicationProfileHandle> t_r = TypedArray<DiscordppUserApplicationProfileHandle>();
+
+	for (auto i : r) {
+		discordpp::UserApplicationProfileHandle *t_i = memnew(discordpp::UserApplicationProfileHandle(std::move(i)));
+		t_r.push_back(memnew(DiscordppUserApplicationProfileHandle{ t_i }));
+	}
+
+	return t_r;
+}
+
 String DiscordppUserHandle::Username() {
 	return String(obj->Username().c_str());
 }
@@ -110,6 +122,9 @@ void DiscordppUserHandle::_bind_methods() {
 
 	ClassDB::bind_method(D_METHOD("Status"),
 			&DiscordppUserHandle::Status);
+
+	ClassDB::bind_method(D_METHOD("UserApplicationProfiles"),
+			&DiscordppUserHandle::UserApplicationProfiles);
 
 	ClassDB::bind_method(D_METHOD("Username"),
 			&DiscordppUserHandle::Username);

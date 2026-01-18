@@ -17,6 +17,12 @@ int64_t DiscordppClient::GetApplicationId() {
 	return obj->GetApplicationId();
 }
 
+DiscordppUserHandle *DiscordppClient::GetCurrentUser() {
+	discordpp::UserHandle r = obj->GetCurrentUser();
+	discordpp::UserHandle *t_r = memnew(discordpp::UserHandle(std::move(r)));
+	return memnew(DiscordppUserHandle{ t_r });
+}
+
 String DiscordppClient::GetDefaultAudioDeviceId() {
 	return String(discordpp::Client::GetDefaultAudioDeviceId().c_str());
 }
@@ -512,6 +518,16 @@ void DiscordppClient::RefreshToken(int64_t applicationId, String refreshToken, C
 		String p5 = String(scopes.c_str());
 		callback.call(p0, p1, p2, p3, p4, p5);
 	});
+}
+
+void DiscordppClient::RegisterAuthorizeRequestCallback(Callable callback) {
+	obj->RegisterAuthorizeRequestCallback([callback]() {
+		callback.call();
+	});
+}
+
+void DiscordppClient::RemoveAuthorizeRequestCallback() {
+	obj->RemoveAuthorizeRequestCallback();
 }
 
 void DiscordppClient::RevokeToken(int64_t applicationId, String token, Callable callback) {
@@ -1065,6 +1081,13 @@ void DiscordppClient::UnlinkChannelFromLobby(int64_t lobbyId, Callable callback)
 	});
 }
 
+void DiscordppClient::IsDiscordAppInstalled(Callable callback) {
+	obj->IsDiscordAppInstalled([callback](auto installed) {
+		bool p0 = installed;
+		callback.call(p0);
+	});
+}
+
 void DiscordppClient::AcceptActivityInvite(DiscordppActivityInvite *invite, Callable cb) {
 	discordpp::ActivityInvite p0 = *invite->unwrap();
 
@@ -1402,12 +1425,6 @@ void DiscordppClient::UnblockUser(int64_t userId, Callable cb) {
 	});
 }
 
-DiscordppUserHandle *DiscordppClient::GetCurrentUser() {
-	discordpp::UserHandle r = obj->GetCurrentUser();
-	discordpp::UserHandle *t_r = memnew(discordpp::UserHandle(std::move(r)));
-	return memnew(DiscordppUserHandle{ t_r });
-}
-
 Variant DiscordppClient::GetCurrentUserV2() {
 	auto r = obj->GetCurrentUserV2();
 
@@ -1475,6 +1492,9 @@ void DiscordppClient::_bind_methods() {
 
 	ClassDB::bind_method(D_METHOD("GetApplicationId"),
 			&DiscordppClient::GetApplicationId);
+
+	ClassDB::bind_method(D_METHOD("GetCurrentUser"),
+			&DiscordppClient::GetCurrentUser);
 
 	ClassDB::bind_static_method("DiscordppClient", D_METHOD("GetDefaultAudioDeviceId"),
 			&DiscordppClient::GetDefaultAudioDeviceId);
@@ -1653,6 +1673,12 @@ void DiscordppClient::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("RefreshToken", "applicationId", "refreshToken", "callback"),
 			&DiscordppClient::RefreshToken);
 
+	ClassDB::bind_method(D_METHOD("RegisterAuthorizeRequestCallback", "callback"),
+			&DiscordppClient::RegisterAuthorizeRequestCallback);
+
+	ClassDB::bind_method(D_METHOD("RemoveAuthorizeRequestCallback"),
+			&DiscordppClient::RemoveAuthorizeRequestCallback);
+
 	ClassDB::bind_method(D_METHOD("RevokeToken", "applicationId", "token", "callback"),
 			&DiscordppClient::RevokeToken);
 
@@ -1803,6 +1829,9 @@ void DiscordppClient::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("UnlinkChannelFromLobby", "lobbyId", "callback"),
 			&DiscordppClient::UnlinkChannelFromLobby);
 
+	ClassDB::bind_method(D_METHOD("IsDiscordAppInstalled", "callback"),
+			&DiscordppClient::IsDiscordAppInstalled);
+
 	ClassDB::bind_method(D_METHOD("AcceptActivityInvite", "invite", "cb"),
 			&DiscordppClient::AcceptActivityInvite);
 
@@ -1901,9 +1930,6 @@ void DiscordppClient::_bind_methods() {
 
 	ClassDB::bind_method(D_METHOD("UnblockUser", "userId", "cb"),
 			&DiscordppClient::UnblockUser);
-
-	ClassDB::bind_method(D_METHOD("GetCurrentUser"),
-			&DiscordppClient::GetCurrentUser);
 
 	ClassDB::bind_method(D_METHOD("GetCurrentUserV2"),
 			&DiscordppClient::GetCurrentUserV2);

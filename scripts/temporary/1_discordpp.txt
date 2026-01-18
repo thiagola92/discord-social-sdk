@@ -19,6 +19,8 @@ static func RunCallbacks() -> void
 ///
 /// See https://discord.com/developers/docs/rich-presence/overview for more information.
 enum ActivityActionTypes {
+    /// \brief Invalid
+    Invalid: 0,
     /// \brief Join
     Join: 1,
     /// \brief JoinRequest
@@ -288,42 +290,6 @@ enum IntegrationType {
     UserInstall: 1,
 }
 
-/// \brief Represents the type of additional content contained in a message.
-enum AdditionalContentType {
-    /// \brief Other
-    Other: 0,
-    /// \brief Attachment
-    Attachment: 1,
-    /// \brief Poll
-    Poll: 2,
-    /// \brief VoiceMessage
-    VoiceMessage: 3,
-    /// \brief Thread
-    Thread: 4,
-    /// \brief Embed
-    Embed: 5,
-    /// \brief Sticker
-    Sticker: 6,
-}
-
-/// \brief The Discord Voice audio system to use.
-enum AudioSystem {
-    /// \brief Use the standard audio system.
-    Standard: 0,
-    /// \brief Use the game audio system.
-    Game: 1,
-}
-
-/// \brief Represents whether a voice call is using push to talk or auto voice detection
-enum AudioModeType {
-    /// \brief MODE_UNINIT
-    MODE_UNINIT: 0,
-    /// \brief MODE_VAD
-    MODE_VAD: 1,
-    /// \brief MODE_PTT
-    MODE_PTT: 2,
-}
-
 /// \brief Enum that represents the various channel types on Discord.
 ///
 /// For more information see: https://discord.com/developers/docs/resources/channel
@@ -362,6 +328,42 @@ enum ChannelType {
     EphemeralDm: 18,
 }
 
+/// \brief Represents the type of additional content contained in a message.
+enum AdditionalContentType {
+    /// \brief Other
+    Other: 0,
+    /// \brief Attachment
+    Attachment: 1,
+    /// \brief Poll
+    Poll: 2,
+    /// \brief VoiceMessage
+    VoiceMessage: 3,
+    /// \brief Thread
+    Thread: 4,
+    /// \brief Embed
+    Embed: 5,
+    /// \brief Sticker
+    Sticker: 6,
+}
+
+/// \brief The Discord Voice audio system to use.
+enum AudioSystem {
+    /// \brief Use the standard audio system.
+    Standard: 0,
+    /// \brief Use the game audio system.
+    Game: 1,
+}
+
+/// \brief Represents whether a voice call is using push to talk or auto voice detection
+enum AudioModeType {
+    /// \brief MODE_UNINIT
+    MODE_UNINIT: 0,
+    /// \brief MODE_VAD
+    MODE_VAD: 1,
+    /// \brief MODE_PTT
+    MODE_PTT: 2,
+}
+
 /// \brief Enum that represents the possible types of relationships that can exist between two users
 enum RelationshipType {
     /// \brief The user has no relationship with the other user.
@@ -382,6 +384,24 @@ enum RelationshipType {
     Implicit: 5,
     /// \brief The Suggestion type is documented for visibility, but should be unused in the SDK.
     Suggestion: 6,
+}
+
+/// \brief The type of external identity provider.
+enum ExternalIdentityProviderType {
+    /// \brief OIDC
+    OIDC: 0,
+    /// \brief EpicOnlineServices
+    EpicOnlineServices: 1,
+    /// \brief Steam
+    Steam: 2,
+    /// \brief Unity
+    Unity: 3,
+    /// \brief DiscordBot
+    DiscordBot: 4,
+    /// \brief None
+    None: 5,
+    /// \brief Unknown
+    Unknown: 6,
 }
 
 /// \brief Enum that specifies the various online statuses for a user.
@@ -442,6 +462,12 @@ enum AuthenticationExternalAuthType {
     SteamSessionTicket: 3,
     /// \brief UnityServicesIdToken
     UnityServicesIdToken: 4,
+    /// \brief DiscordBotIssuedAccessToken
+    DiscordBotIssuedAccessToken: 5,
+    /// \brief AppleIdToken
+    AppleIdToken: 6,
+    /// \brief PlayStationNetworkIdToken
+    PlayStationNetworkIdToken: 7,
 }
 
 /// \brief Enum that represents the various log levels supported by the SDK.
@@ -618,6 +644,15 @@ func SmallUrl() -> std::optional<std::string>
 
 /// Setter for ActivityAssets::SmallUrl.
 func SetSmallUrl(std::optional<std::string> SmallUrl) -> void
+
+/// \brief The invite cover image identifier or URL, rendered as a banner image on activity
+/// invites.
+///
+/// If specified, must be a string between 1 and 300 characters.
+func InviteCoverImage() -> std::optional<std::string>
+
+/// Setter for ActivityAssets::InviteCoverImage.
+func SetInviteCoverImage(std::optional<std::string> InviteCoverImage) -> void
 
 }
 
@@ -955,7 +990,7 @@ func GetButtons() -> std::vector<discordpp::ActivityButton>
 
 /// \brief The name of the game or application that the activity is associated with.
 ///
-/// This field cannot be set by the SDK, and will always be the name of the current game.
+/// This field defaults to the name of the current game.
 func Name() -> std::string
 
 /// Setter for Activity::Name.
@@ -1669,6 +1704,24 @@ func Name() -> std::string
 /// Setter for GuildChannel::Name.
 func SetName(std::string Name) -> void
 
+/// \brief The type of the channel.
+func Type() -> discordpp::ChannelType
+
+/// Setter for GuildChannel::Type.
+func SetType(discordpp::ChannelType Type) -> void
+
+/// \brief The position of the channel in the guild's channel list.
+func Position() -> int32_t
+
+/// Setter for GuildChannel::Position.
+func SetPosition(int32_t Position) -> void
+
+/// \brief The id of the parent category channel, if any.
+func ParentId() -> std::optional<uint64_t>
+
+/// Setter for GuildChannel::ParentId.
+func SetParentId(std::optional<uint64_t> ParentId) -> void
+
 /// \brief Whether the current user is able to link this channel to a lobby.
 ///
 /// For this to be true:
@@ -1834,6 +1887,45 @@ func User() -> std::optional<discordpp::UserHandle>
 }
 
 
+/// \brief A UserApplicationProfileHandle represents a profile from an external identity provider,
+/// such as Steam or Epic Online Services.
+///
+/// Handle objects in the SDK hold a reference both to the underlying data, and to the SDK instance.
+/// Changes to the underlying data will generally be available on existing handles objects without
+/// having to re-create them. If the SDK instance is destroyed, but you still have a reference to a
+/// handle object, note that it will return the default value for all method calls (ie an empty
+/// string for methods that return a string).
+class UserApplicationProfileHandle {
+
+-----
+
+-----
+constructor (const UserApplicationProfileHandle & other) 
+-----
+///
+func Drop() -> void
+
+/// \brief Returns the user's in-game avatar hash.
+func AvatarHash() -> std::string
+
+/// \brief Returns any metadata set by the developer.
+func Metadata() -> std::string
+
+/// \brief Returns the user's external identity provider ID if it exists.
+func ProviderId() -> std::optional<std::string>
+
+/// \brief Returns the user's external identity provider issued user ID.
+func ProviderIssuedUserId() -> std::string
+
+/// \brief Returns the type of the external identity provider.
+func ProviderType() -> discordpp::ExternalIdentityProviderType
+
+/// \brief Returns the user's in-game username.
+func Username() -> std::string
+
+}
+
+
 /// \brief A UserHandle represents a single user on Discord that the SDK knows about and contains
 /// basic account information for them such as id, name, and avatar, as well as their "status"
 /// information which includes both whether they are online/offline/etc as well as whether they are
@@ -1916,6 +2008,11 @@ func Relationship() -> discordpp::RelationshipHandle
 
 /// \brief Returns the user's online/offline/idle status.
 func Status() -> discordpp::StatusType
+
+/// \brief Returns a list of UserApplicationProfileHandles for this user. Currently, a user can
+/// only have a single profile per application, so this list will always contain at most one
+/// UserApplicationProfileHandle.
+func UserApplicationProfiles() -> std::vector<discordpp::UserApplicationProfileHandle>
 
 /// \brief Returns the globally unique username of this user.
 ///
@@ -2268,6 +2365,14 @@ func Lobby() -> std::optional<discordpp::LobbyHandle>
 /// renders in game.
 func Metadata() -> std::unordered_map<std::string, std::string>
 
+/// \brief Returns any moderation metadata the developer set on this message.
+///
+/// Moderation metadata is just a set of simple string key/value pairs.
+/// An example use case might be to include a flag that indicates the moderation status of the
+/// message. Another example would be to include a re-written message that is more appropriate
+/// for the game's audience.
+func ModerationMetadata() -> std::unordered_map<std::string, std::string>
+
 /// \brief Returns the content of this message, if any, but without replacing any markup from
 /// emojis and mentions.
 ///
@@ -2404,6 +2509,13 @@ func ExperimentalAndroidPreventCommsForBluetooth() -> bool
 /// Setter for ClientCreateOptions::ExperimentalAndroidPreventCommsForBluetooth.
 func SetExperimentalAndroidPreventCommsForBluetooth(bool ExperimentalAndroidPreventCommsForBluetooth) -> void
 
+/// \brief CPU affinity mask hint for certain platforms. Depending on platform support, may or
+/// may not be ignored.
+func CpuAffinityMask() -> std::optional<uint64_t>
+
+/// Setter for ClientCreateOptions::CpuAffinityMask.
+func SetCpuAffinityMask(std::optional<uint64_t> CpuAffinityMask) -> void
+
 }
 
 
@@ -2487,6 +2599,7 @@ callback AuthorizationCallback(discordpp::ClientResult result, std::string code,
 callback ExchangeChildTokenCallback(discordpp::ClientResult result, std::string accessToken, discordpp::AuthorizationTokenType tokenType, int32_t expiresIn, std::string scopes)
 callback FetchCurrentUserCallback(discordpp::ClientResult result, uint64_t id, std::string name)
 callback TokenExchangeCallback(discordpp::ClientResult result, std::string accessToken, std::string refreshToken, discordpp::AuthorizationTokenType tokenType, int32_t expiresIn, std::string scopes)
+callback AuthorizeRequestCallback()
 callback RevokeTokenCallback(discordpp::ClientResult result)
 callback AuthorizeDeviceScreenClosedCallback()
 callback TokenExpirationCallback()
@@ -2519,6 +2632,7 @@ callback LobbyMemberAddedCallback(uint64_t lobbyId, uint64_t memberId)
 callback LobbyMemberRemovedCallback(uint64_t lobbyId, uint64_t memberId)
 callback LobbyMemberUpdatedCallback(uint64_t lobbyId, uint64_t memberId)
 callback LobbyUpdatedCallback(uint64_t lobbyId)
+callback IsDiscordAppInstalledCallback(bool installed)
 callback AcceptActivityInviteCallback(discordpp::ClientResult result, std::string joinSecret)
 callback SendActivityInviteCallback(discordpp::ClientResult result)
 callback ActivityInviteCallback(discordpp::ActivityInvite invite)
@@ -2550,6 +2664,9 @@ static func ErrorToString(discordpp::Client::Error type) -> std::string
 /// authentication, rich presence, and activity invites when *not* connected with
 /// Client::Connect. When calling Client::Connect, the application ID is set automatically
 func GetApplicationId() -> uint64_t
+
+///
+func GetCurrentUser() -> discordpp::UserHandle
 
 /// \brief Returns the ID of the system default audio device if the user has not explicitly
 /// chosen one.
@@ -3134,6 +3251,24 @@ func ProvisionalUserMergeCompleted(bool success) -> void
 /// https://discord.com/developers/applications
 func RefreshToken(uint64_t applicationId, std::string const & refreshToken, discordpp::Client::TokenExchangeCallback callback) -> void
 
+/// \brief Registers a callback to be invoked when a user requests to initiate the authorization
+/// flow.
+///
+/// When you register this callback, the Discord app will show new entry points to allow users
+/// to initiate the authorization flow.
+///
+/// This function is tied to upcoming Discord client functionality experiments that will be
+/// rolled out to a percentage of Discord users over time. More documentation and implementation
+/// details to come as the client experiments run.
+func RegisterAuthorizeRequestCallback(discordpp::Client::AuthorizeRequestCallback callback) -> void
+
+/// \brief Stops listening for the AUTHORIZE_REQUEST event and removes the registered callback
+///
+/// This function is tied to upcoming Discord client functionality experiments that will be
+/// rolled out to a percentage of Discord users over time. More documentation and implementation
+/// details to come as the client experiments run.
+func RemoveAuthorizeRequestCallback() -> void
+
 /// \brief Revoke all application access/refresh tokens associated with a user with any valid
 /// access/refresh token. This will invalidate all tokens and they cannot be used again. This
 /// is useful if you want to log the user out of the game and invalidate their session.
@@ -3259,14 +3394,17 @@ func GetUserMessageSummaries(discordpp::Client::UserMessageSummariesCallback cb)
 /// \brief Retrieves messages from the DM conversation with the specified user.
 ///
 /// Returns a list of MessageHandle representing the recent messages in the conversation with
-/// the recipient, with a maximum number specified by the limit parameter. The messages are
+/// the recipient, with a with a maximum of 200 messages and up to 72 hours. The messages are
 /// returned in reverse chronological order (newest first). This function checks the local cache
 /// first and only makes an HTTP request to Discord's API if there are not enough cached
 /// messages available.
 ///
 /// If limit is greater than 0, restricts the number of messages returned. If limit is 0
-/// or negative, the limit parameter is omitted from the request. This is intended for
+/// or negative, the limit parameter is 200 messages and 72 hours. This is intended for
 /// games to load message history when users open a DM conversation.
+///
+/// If either user hasn't played the game, there will be no channel between them and
+/// this function will return a 404 `discordpp::ErrorType::HTTPError` error.
 func GetUserMessagesWithLimit(uint64_t recipientId, int32_t limit, discordpp::Client::UserMessagesWithLimitCallback cb) -> void
 
 /// \brief Opens the given message in the Discord client.
@@ -3472,6 +3610,8 @@ func CreateOrJoinLobby(std::string const & secret, discordpp::Client::CreateOrJo
 func CreateOrJoinLobbyWithMetadata(std::string const & secret, std::unordered_map<std::string, std::string> lobbyMetadata, std::unordered_map<std::string, std::string> memberMetadata, discordpp::Client::CreateOrJoinLobbyCallback callback) -> void
 
 /// \brief Fetches all of the channels that the current user can access in the given guild.
+/// Channels are sorted by their `position` field, which matches what you see in the Discord
+/// client.
 ///
 /// The purpose of this is to power the channel linking flow for linking a Discord channel to an
 /// in-game lobby. So this function can be used to power a UI to let the user pick which channel
@@ -3578,6 +3718,21 @@ func SetLobbyUpdatedCallback(discordpp::Client::LobbyUpdatedCallback cb) -> void
 /// not need to have any permissions on the Discord channel in order to sever the in-game link.
 func UnlinkChannelFromLobby(uint64_t lobbyId, discordpp::Client::LinkOrUnlinkChannelCallback callback) -> void
 
+/// \brief Checks whether the Discord mobile app is installed on this device.
+/// On desktop platforms, always returns false.
+///
+/// This check does not require a client connection and can be called at any time.
+///
+/// This can be used to provide UI hints to users about whether they can authorize via the
+/// Discord app, or whether they will need to use a web browser flow.
+///
+/// Platform Requirements:
+/// - iOS: Your app must include "discord" in the LSApplicationQueriesSchemes array
+///   in your Info.plist for this check to work correctly.
+/// - Android: Your app must include "com.discord" in the `queries` element
+///   in your AndroidManifest.xml (required for Android 11+).
+func IsDiscordAppInstalled(discordpp::Client::IsDiscordAppInstalledCallback callback) -> void
+
 /// \brief Accepts an activity invite that the current user has received.
 ///
 /// The given callback will be invoked with the join secret for the activity, which can be used
@@ -3619,8 +3774,8 @@ func RegisterLaunchSteamApplication(uint64_t applicationId, uint32_t steamAppId)
 
 /// \brief Sends a Discord activity invite to the specified user.
 ///
-/// The invite is sent as a message on Discord, which means it can be sent in the following
-/// situations:
+/// The invite is sent as a message on Discord, which means it can be sent if any
+/// of the following are true:
 /// - Both users are online and in the game and have not blocked each other
 /// - Both users are friends with each other
 /// - Both users share a mutual Discord server and have previously DM'd each other on Discord
@@ -3865,18 +4020,7 @@ func SetRelationshipDeletedCallback(discordpp::Client::RelationshipDeletedCallba
 /// Fails if the target user is not currently blocked.
 func UnblockUser(uint64_t userId, discordpp::Client::UpdateRelationshipCallback cb) -> void
 
-/// \brief Returns the user associated with the current client.
-///
-/// **Must not be called before the Client::GetStatus has changed to Status::Ready.**
-/// If the client has disconnected, or is in the process of reconnecting, it will return the
-/// previous value of the user, even if the auth token has changed since then. Wait for
-/// client.GetStatus() to change to Ready before accessing it again.
-/// If accessed before the client is ready, it will return a dummy object.
-func GetCurrentUser() -> discordpp::UserHandle
-
-/// \brief Returns the UserHandle associated with the current user, if one is available.
-///
-/// Unlike GetCurrentUser(), this method returns std::nullopt instead of a dummy object
+/// \brief Unlike GetCurrentUser(), this method returns std::nullopt instead of a dummy object
 /// when no user is authenticated or available. This provides clearer intent about when
 /// the user data is actually available.
 func GetCurrentUserV2() -> std::optional<discordpp::UserHandle>
@@ -3961,6 +4105,9 @@ static func EnumToString(discordpp::AuthenticationCodeChallengeMethod value) -> 
 /// Converts a discordpp::IntegrationType to a string.
 static func EnumToString(discordpp::IntegrationType value) -> const char *
 
+/// Converts a discordpp::ChannelType to a string.
+static func EnumToString(discordpp::ChannelType value) -> const char *
+
 /// Converts a discordpp::AdditionalContentType to a string.
 static func EnumToString(discordpp::AdditionalContentType value) -> const char *
 
@@ -3976,11 +4123,11 @@ static func EnumToString(discordpp::AudioModeType value) -> const char *
 /// Converts a discordpp::Call::Status to a string.
 static func EnumToString(discordpp::Call::Status value) -> const char *
 
-/// Converts a discordpp::ChannelType to a string.
-static func EnumToString(discordpp::ChannelType value) -> const char *
-
 /// Converts a discordpp::RelationshipType to a string.
 static func EnumToString(discordpp::RelationshipType value) -> const char *
+
+/// Converts a discordpp::ExternalIdentityProviderType to a string.
+static func EnumToString(discordpp::ExternalIdentityProviderType value) -> const char *
 
 /// Converts a discordpp::UserHandle::AvatarType to a string.
 static func EnumToString(discordpp::UserHandle::AvatarType value) -> const char *

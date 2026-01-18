@@ -115,6 +115,12 @@
 			<description>
 			</description>
 		</method>
+		<method name="EnumToStringExternalIdentityProviderType" qualifiers="static">
+			<return type="String" />
+			<param index="0" name="value" type="int" enum="DiscordppExternalIdentityProviderType.Enum" />
+			<description>
+			</description>
+		</method>
 		<method name="EnumToStringHttpStatusCode" qualifiers="static">
 			<return type="String" />
 			<param index="0" name="value" type="int" enum="DiscordppHttpStatusCode.Enum" />

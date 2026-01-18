@@ -51,6 +51,19 @@ Returns [DiscordppLinkedLobby] or [code]null[/code].
  The name of the channel.
 </description>
 		</method>
+		<method name="ParentId">
+			<return type="Variant" />
+			<description>
+ The id of the parent category channel, if any.
+Returns [int] or [code]null[/code].
+</description>
+		</method>
+		<method name="Position">
+			<return type="int" />
+			<description>
+ The position of the channel in the guild's channel list.
+</description>
+		</method>
 		<method name="SetId">
 			<return type="void" />
 			<param index="0" name="Id" type="int" />
@@ -85,6 +98,34 @@ Where [param LinkedLobby] is [DiscordppLinkedLobby] or [code]null[/code].
 			<param index="0" name="Name" type="String" />
 			<description>
  Setter for GuildChannel::Name.
+</description>
+		</method>
+		<method name="SetParentId">
+			<return type="void" />
+			<param index="0" name="ParentId" type="Variant" />
+			<description>
+ Setter for GuildChannel::ParentId.
+Where [param ParentId] is [int] or [code]null[/code].
+</description>
+		</method>
+		<method name="SetPosition">
+			<return type="void" />
+			<param index="0" name="Position" type="int" />
+			<description>
+ Setter for GuildChannel::Position.
+</description>
+		</method>
+		<method name="SetType">
+			<return type="void" />
+			<param index="0" name="Type" type="int" enum="DiscordppChannelType.Enum" />
+			<description>
+ Setter for GuildChannel::Type.
+</description>
+		</method>
+		<method name="Type">
+			<return type="int" enum="DiscordppChannelType.Enum" />
+			<description>
+ The type of the channel.
 </description>
 		</method>
 	</methods>

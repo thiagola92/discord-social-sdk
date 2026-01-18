@@ -17,5 +17,11 @@
 		</constant>
 		<constant name="UnityServicesIdToken" value="4" enum="Enum">
 		</constant>
+		<constant name="DiscordBotIssuedAccessToken" value="5" enum="Enum">
+		</constant>
+		<constant name="AppleIdToken" value="6" enum="Enum">
+		</constant>
+		<constant name="PlayStationNetworkIdToken" value="7" enum="Enum">
+		</constant>
 	</constants>
 </class>

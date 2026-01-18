@@ -7,6 +7,8 @@
 	<tutorials>
 	</tutorials>
 	<constants>
+		<constant name="Invalid" value="0" enum="Enum">
+		</constant>
 		<constant name="Join" value="1" enum="Enum">
 		</constant>
 		<constant name="JoinRequest" value="5" enum="Enum">

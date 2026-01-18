@@ -203,7 +203,7 @@ Returns [String] or [code]null[/code].
 			<return type="String" />
 			<description>
  The name of the game or application that the activity is associated with.
- This field cannot be set by the SDK, and will always be the name of the current game.
+ This field defaults to the name of the current game.
 </description>
 		</method>
 		<method name="ParentApplicationId">

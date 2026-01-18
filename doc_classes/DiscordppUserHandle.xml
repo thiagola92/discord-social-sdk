@@ -90,6 +90,12 @@ Returns [String] or [code]null[/code].
  Returns the user's online/offline/idle status.
 </description>
 		</method>
+		<method name="UserApplicationProfiles">
+			<return type="DiscordppUserApplicationProfileHandle[]" />
+			<description>
+ Returns a list of UserApplicationProfileHandles for this user. Currently, a user can only have a single profile per application, so this list will always contain at most one UserApplicationProfileHandle.
+</description>
+		</method>
 		<method name="Username">
 			<return type="String" />
 			<description>

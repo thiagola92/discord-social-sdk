@@ -406,14 +406,12 @@ func(device: DiscordppAudioDevice)
 		<method name="GetCurrentUser">
 			<return type="DiscordppUserHandle" />
 			<description>
- Returns the user associated with the current client.
- **Must not be called before the Client::GetStatus has changed to Status::Ready.** If the client has disconnected, or is in the process of reconnecting, it will return the previous value of the user, even if the auth token has changed since then. Wait for client.GetStatus() to change to Ready before accessing it again. If accessed before the client is ready, it will return a dummy object.
+
 </description>
 		</method>
 		<method name="GetCurrentUserV2">
 			<return type="Variant" />
 			<description>
- Returns the UserHandle associated with the current user, if one is available.
  Unlike GetCurrentUser(), this method returns std::nullopt instead of a dummy object when no user is authenticated or available. This provides clearer intent about when the user data is actually available.
 Returns [DiscordppUserHandle] or [code]null[/code].
 </description>
@@ -457,7 +455,7 @@ func(result: DiscordppClientResult, user: Variant)
 			<param index="0" name="guildId" type="int" />
 			<param index="1" name="cb" type="Callable" />
 			<description>
- Fetches all of the channels that the current user can access in the given guild.
+ Fetches all of the channels that the current user can access in the given guild. Channels are sorted by their `position` field, which matches what you see in the Discord client.
  The purpose of this is to power the channel linking flow for linking a Discord channel to an in-game lobby. So this function can be used to power a UI to let the user pick which channel to link to once they have picked a guild. See the docs on LobbyHandle for more information.
 
 Where [param cb] signature is:
@@ -733,8 +731,9 @@ func(result: DiscordppClientResult, summaries: Array[DiscordppUserMessageSummary
 			<param index="2" name="cb" type="Callable" />
 			<description>
  Retrieves messages from the DM conversation with the specified user.
- Returns a list of MessageHandle representing the recent messages in the conversation with the recipient, with a maximum number specified by the limit parameter. The messages are returned in reverse chronological order (newest first). This function checks the local cache first and only makes an HTTP request to Discord's API if there are not enough cached messages available.
- If limit is greater than 0, restricts the number of messages returned. If limit is 0 or negative, the limit parameter is omitted from the request. This is intended for games to load message history when users open a DM conversation.
+ Returns a list of MessageHandle representing the recent messages in the conversation with the recipient, with a with a maximum of 200 messages and up to 72 hours. The messages are returned in reverse chronological order (newest first). This function checks the local cache first and only makes an HTTP request to Discord's API if there are not enough cached messages available.
+ If limit is greater than 0, restricts the number of messages returned. If limit is 0 or negative, the limit parameter is 200 messages and 72 hours. This is intended for games to load message history when users open a DM conversation.
+ If either user hasn't played the game, there will be no channel between them and this function will return a 404 `discordpp::ErrorType::HTTPError` error.
 
 Where [param cb] signature is:
 [codeblock]
@@ -770,6 +769,21 @@ func(result: DiscordppClientResult, messages: Array[DiscordppMessageHandle])
 			<return type="bool" />
 			<description>
  Returns true if the SDK has a non-empty OAuth2 token set, regardless of whether that token is valid or not.
+</description>
+		</method>
+		<method name="IsDiscordAppInstalled">
+			<return type="void" />
+			<param index="0" name="callback" type="Callable" />
+			<description>
+ Checks whether the Discord mobile app is installed on this device. On desktop platforms, always returns false.
+ This check does not require a client connection and can be called at any time.
+ This can be used to provide UI hints to users about whether they can authorize via the Discord app, or whether they will need to use a web browser flow.
+ Platform Requirements: [br]- iOS: Your app must include "discord" in the LSApplicationQueriesSchemes array   in your Info.plist for this check to work correctly. [br]- Android: Your app must include "com.discord" in the `queries` element   in your AndroidManifest.xml (required for Android 11+).
+
+Where [param callback] signature is:
+[codeblock]
+func(installed: bool)
+[/codeblock]
 </description>
 		</method>
 		<method name="JoinLinkedLobbyGuild">
@@ -887,6 +901,20 @@ func(result: DiscordppClientResult, accessToken: String, refreshToken: String, t
 [/codeblock]
 </description>
 		</method>
+		<method name="RegisterAuthorizeRequestCallback">
+			<return type="void" />
+			<param index="0" name="callback" type="Callable" />
+			<description>
+ Registers a callback to be invoked when a user requests to initiate the authorization flow.
+ When you register this callback, the Discord app will show new entry points to allow users to initiate the authorization flow.
+ This function is tied to upcoming Discord client functionality experiments that will be rolled out to a percentage of Discord users over time. More documentation and implementation details to come as the client experiments run.
+
+Where [param callback] signature is:
+[codeblock]
+func()
+[/codeblock]
+</description>
+		</method>
 		<method name="RegisterLaunchCommand">
 			<return type="bool" />
 			<param index="0" name="applicationId" type="int" />
@@ -931,6 +959,13 @@ Where [param cb] signature is:
 [codeblock]
 func(result: DiscordppClientResult)
 [/codeblock]
+</description>
+		</method>
+		<method name="RemoveAuthorizeRequestCallback">
+			<return type="void" />
+			<description>
+ Stops listening for the AUTHORIZE_REQUEST event and removes the registered callback
+ This function is tied to upcoming Discord client functionality experiments that will be rolled out to a percentage of Discord users over time. More documentation and implementation details to come as the client experiments run.
 </description>
 		</method>
 		<method name="RemoveDiscordAndGameFriend">
@@ -992,7 +1027,7 @@ func(result: DiscordppClientResult)
 			<param index="2" name="cb" type="Callable" />
 			<description>
  Sends a Discord activity invite to the specified user.
- The invite is sent as a message on Discord, which means it can be sent in the following situations: [br]- Both users are online and in the game and have not blocked each other [br]- Both users are friends with each other [br]- Both users share a mutual Discord server and have previously DM'd each other on Discord
+ The invite is sent as a message on Discord, which means it can be sent if any of the following are true: [br]- Both users are online and in the game and have not blocked each other [br]- Both users are friends with each other [br]- Both users share a mutual Discord server and have previously DM'd each other on Discord
  You can optionally include some message content to include in the message containing the invite, but it's ok to pass an empty string too.
 
 Where [param cb] signature is:

@@ -18,12 +18,14 @@ private:
 
 protected:
 	static void _bind_methods() {
+		BIND_ENUM_CONSTANT(Invalid);
 		BIND_ENUM_CONSTANT(Join);
 		BIND_ENUM_CONSTANT(JoinRequest);
 	}
 
 public:
 	enum Enum {
+		Invalid = 0,
 		Join = 1,
 		JoinRequest = 5,
 	};
@@ -343,6 +345,54 @@ public:
 	};
 };
 
+class DiscordppChannelType : public RefCounted {
+	GDCLASS(DiscordppChannelType, RefCounted)
+
+private:
+	DiscordppChannelType() {}
+	~DiscordppChannelType() {}
+
+protected:
+	static void _bind_methods() {
+		BIND_ENUM_CONSTANT(GuildText);
+		BIND_ENUM_CONSTANT(Dm);
+		BIND_ENUM_CONSTANT(GuildVoice);
+		BIND_ENUM_CONSTANT(GroupDm);
+		BIND_ENUM_CONSTANT(GuildCategory);
+		BIND_ENUM_CONSTANT(GuildNews);
+		BIND_ENUM_CONSTANT(GuildStore);
+		BIND_ENUM_CONSTANT(GuildNewsThread);
+		BIND_ENUM_CONSTANT(GuildPublicThread);
+		BIND_ENUM_CONSTANT(GuildPrivateThread);
+		BIND_ENUM_CONSTANT(GuildStageVoice);
+		BIND_ENUM_CONSTANT(GuildDirectory);
+		BIND_ENUM_CONSTANT(GuildForum);
+		BIND_ENUM_CONSTANT(GuildMedia);
+		BIND_ENUM_CONSTANT(Lobby);
+		BIND_ENUM_CONSTANT(EphemeralDm);
+	}
+
+public:
+	enum Enum {
+		GuildText = 0,
+		Dm = 1,
+		GuildVoice = 2,
+		GroupDm = 3,
+		GuildCategory = 4,
+		GuildNews = 5,
+		GuildStore = 6,
+		GuildNewsThread = 10,
+		GuildPublicThread = 11,
+		GuildPrivateThread = 12,
+		GuildStageVoice = 13,
+		GuildDirectory = 14,
+		GuildForum = 15,
+		GuildMedia = 16,
+		Lobby = 17,
+		EphemeralDm = 18,
+	};
+};
+
 class DiscordppAdditionalContentType : public RefCounted {
 	GDCLASS(DiscordppAdditionalContentType, RefCounted)
 
@@ -415,54 +465,6 @@ public:
 	};
 };
 
-class DiscordppChannelType : public RefCounted {
-	GDCLASS(DiscordppChannelType, RefCounted)
-
-private:
-	DiscordppChannelType() {}
-	~DiscordppChannelType() {}
-
-protected:
-	static void _bind_methods() {
-		BIND_ENUM_CONSTANT(GuildText);
-		BIND_ENUM_CONSTANT(Dm);
-		BIND_ENUM_CONSTANT(GuildVoice);
-		BIND_ENUM_CONSTANT(GroupDm);
-		BIND_ENUM_CONSTANT(GuildCategory);
-		BIND_ENUM_CONSTANT(GuildNews);
-		BIND_ENUM_CONSTANT(GuildStore);
-		BIND_ENUM_CONSTANT(GuildNewsThread);
-		BIND_ENUM_CONSTANT(GuildPublicThread);
-		BIND_ENUM_CONSTANT(GuildPrivateThread);
-		BIND_ENUM_CONSTANT(GuildStageVoice);
-		BIND_ENUM_CONSTANT(GuildDirectory);
-		BIND_ENUM_CONSTANT(GuildForum);
-		BIND_ENUM_CONSTANT(GuildMedia);
-		BIND_ENUM_CONSTANT(Lobby);
-		BIND_ENUM_CONSTANT(EphemeralDm);
-	}
-
-public:
-	enum Enum {
-		GuildText = 0,
-		Dm = 1,
-		GuildVoice = 2,
-		GroupDm = 3,
-		GuildCategory = 4,
-		GuildNews = 5,
-		GuildStore = 6,
-		GuildNewsThread = 10,
-		GuildPublicThread = 11,
-		GuildPrivateThread = 12,
-		GuildStageVoice = 13,
-		GuildDirectory = 14,
-		GuildForum = 15,
-		GuildMedia = 16,
-		Lobby = 17,
-		EphemeralDm = 18,
-	};
-};
-
 class DiscordppRelationshipType : public RefCounted {
 	GDCLASS(DiscordppRelationshipType, RefCounted)
 
@@ -490,6 +492,36 @@ public:
 		PendingOutgoing = 4,
 		Implicit = 5,
 		Suggestion = 6,
+	};
+};
+
+class DiscordppExternalIdentityProviderType : public RefCounted {
+	GDCLASS(DiscordppExternalIdentityProviderType, RefCounted)
+
+private:
+	DiscordppExternalIdentityProviderType() {}
+	~DiscordppExternalIdentityProviderType() {}
+
+protected:
+	static void _bind_methods() {
+		BIND_ENUM_CONSTANT(OIDC);
+		BIND_ENUM_CONSTANT(EpicOnlineServices);
+		BIND_ENUM_CONSTANT(Steam);
+		BIND_ENUM_CONSTANT(Unity);
+		BIND_ENUM_CONSTANT(DiscordBot);
+		BIND_ENUM_CONSTANT(None);
+		BIND_ENUM_CONSTANT(Unknown);
+	}
+
+public:
+	enum Enum {
+		OIDC = 0,
+		EpicOnlineServices = 1,
+		Steam = 2,
+		Unity = 3,
+		DiscordBot = 4,
+		None = 5,
+		Unknown = 6,
 	};
 };
 
@@ -577,6 +609,9 @@ protected:
 		BIND_ENUM_CONSTANT(EpicOnlineServicesIdToken);
 		BIND_ENUM_CONSTANT(SteamSessionTicket);
 		BIND_ENUM_CONSTANT(UnityServicesIdToken);
+		BIND_ENUM_CONSTANT(DiscordBotIssuedAccessToken);
+		BIND_ENUM_CONSTANT(AppleIdToken);
+		BIND_ENUM_CONSTANT(PlayStationNetworkIdToken);
 	}
 
 public:
@@ -586,6 +621,9 @@ public:
 		EpicOnlineServicesIdToken = 2,
 		SteamSessionTicket = 3,
 		UnityServicesIdToken = 4,
+		DiscordBotIssuedAccessToken = 5,
+		AppleIdToken = 6,
+		PlayStationNetworkIdToken = 7,
 	};
 };
 
@@ -807,11 +845,12 @@ VARIANT_ENUM_CAST(DiscordppErrorType::Enum);
 VARIANT_ENUM_CAST(DiscordppHttpStatusCode::Enum);
 VARIANT_ENUM_CAST(DiscordppAuthenticationCodeChallengeMethod::Enum);
 VARIANT_ENUM_CAST(DiscordppIntegrationType::Enum);
+VARIANT_ENUM_CAST(DiscordppChannelType::Enum);
 VARIANT_ENUM_CAST(DiscordppAdditionalContentType::Enum);
 VARIANT_ENUM_CAST(DiscordppAudioSystem::Enum);
 VARIANT_ENUM_CAST(DiscordppAudioModeType::Enum);
-VARIANT_ENUM_CAST(DiscordppChannelType::Enum);
 VARIANT_ENUM_CAST(DiscordppRelationshipType::Enum);
+VARIANT_ENUM_CAST(DiscordppExternalIdentityProviderType::Enum);
 VARIANT_ENUM_CAST(DiscordppStatusType::Enum);
 VARIANT_ENUM_CAST(DiscordppDisclosureTypes::Enum);
 VARIANT_ENUM_CAST(DiscordppAuthorizationTokenType::Enum);

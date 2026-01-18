@@ -39,6 +39,9 @@ inline void RunCallbacks() {
 /// See https://discord.com/developers/docs/rich-presence/overview for more information.
 enum class ActivityActionTypes {
 
+	/// \brief Invalid
+	Invalid = 0,
+
 	/// \brief Join
 	Join = 1,
 
@@ -402,54 +405,6 @@ enum class IntegrationType {
 	UserInstall = 1,
 };
 
-/// \brief Represents the type of additional content contained in a message.
-enum class AdditionalContentType {
-
-	/// \brief Other
-	Other = 0,
-
-	/// \brief Attachment
-	Attachment = 1,
-
-	/// \brief Poll
-	Poll = 2,
-
-	/// \brief VoiceMessage
-	VoiceMessage = 3,
-
-	/// \brief Thread
-	Thread = 4,
-
-	/// \brief Embed
-	Embed = 5,
-
-	/// \brief Sticker
-	Sticker = 6,
-};
-
-/// \brief The Discord Voice audio system to use.
-enum class AudioSystem {
-
-	/// \brief Use the standard audio system.
-	Standard = 0,
-
-	/// \brief Use the game audio system.
-	Game = 1,
-};
-
-/// \brief Represents whether a voice call is using push to talk or auto voice detection
-enum class AudioModeType {
-
-	/// \brief MODE_UNINIT
-	MODE_UNINIT = 0,
-
-	/// \brief MODE_VAD
-	MODE_VAD = 1,
-
-	/// \brief MODE_PTT
-	MODE_PTT = 2,
-};
-
 /// \brief Enum that represents the various channel types on Discord.
 ///
 /// For more information see: https://discord.com/developers/docs/resources/channel
@@ -504,6 +459,54 @@ enum class ChannelType {
 	EphemeralDm = 18,
 };
 
+/// \brief Represents the type of additional content contained in a message.
+enum class AdditionalContentType {
+
+	/// \brief Other
+	Other = 0,
+
+	/// \brief Attachment
+	Attachment = 1,
+
+	/// \brief Poll
+	Poll = 2,
+
+	/// \brief VoiceMessage
+	VoiceMessage = 3,
+
+	/// \brief Thread
+	Thread = 4,
+
+	/// \brief Embed
+	Embed = 5,
+
+	/// \brief Sticker
+	Sticker = 6,
+};
+
+/// \brief The Discord Voice audio system to use.
+enum class AudioSystem {
+
+	/// \brief Use the standard audio system.
+	Standard = 0,
+
+	/// \brief Use the game audio system.
+	Game = 1,
+};
+
+/// \brief Represents whether a voice call is using push to talk or auto voice detection
+enum class AudioModeType {
+
+	/// \brief MODE_UNINIT
+	MODE_UNINIT = 0,
+
+	/// \brief MODE_VAD
+	MODE_VAD = 1,
+
+	/// \brief MODE_PTT
+	MODE_PTT = 2,
+};
+
 /// \brief Enum that represents the possible types of relationships that can exist between two users
 enum class RelationshipType {
 
@@ -531,6 +534,31 @@ enum class RelationshipType {
 
 	/// \brief The Suggestion type is documented for visibility, but should be unused in the SDK.
 	Suggestion = 6,
+};
+
+/// \brief The type of external identity provider.
+enum class ExternalIdentityProviderType {
+
+	/// \brief OIDC
+	OIDC = 0,
+
+	/// \brief EpicOnlineServices
+	EpicOnlineServices = 1,
+
+	/// \brief Steam
+	Steam = 2,
+
+	/// \brief Unity
+	Unity = 3,
+
+	/// \brief DiscordBot
+	DiscordBot = 4,
+
+	/// \brief None
+	None = 5,
+
+	/// \brief Unknown
+	Unknown = 6,
 };
 
 /// \brief Enum that specifies the various online statuses for a user.
@@ -607,6 +635,15 @@ enum class AuthenticationExternalAuthType {
 
 	/// \brief UnityServicesIdToken
 	UnityServicesIdToken = 4,
+
+	/// \brief DiscordBotIssuedAccessToken
+	DiscordBotIssuedAccessToken = 5,
+
+	/// \brief AppleIdToken
+	AppleIdToken = 6,
+
+	/// \brief PlayStationNetworkIdToken
+	PlayStationNetworkIdToken = 7,
 };
 
 /// \brief Enum that represents the various log levels supported by the SDK.
@@ -662,6 +699,7 @@ class GuildChannel;
 class LinkedLobby;
 class LinkedChannel;
 class RelationshipHandle;
+class UserApplicationProfileHandle;
 class UserHandle;
 class LobbyMemberHandle;
 class LobbyHandle;
@@ -850,6 +888,14 @@ public:
 	std::optional<std::string> SmallUrl() const;
 	/// Setter for ActivityAssets::SmallUrl.
 	void SetSmallUrl(std::optional<std::string> SmallUrl);
+
+	/// \brief The invite cover image identifier or URL, rendered as a banner image on activity
+	/// invites.
+	///
+	/// If specified, must be a string between 1 and 300 characters.
+	std::optional<std::string> InviteCoverImage() const;
+	/// Setter for ActivityAssets::InviteCoverImage.
+	void SetInviteCoverImage(std::optional<std::string> InviteCoverImage);
 };
 
 /// \brief \see Activity
@@ -1283,7 +1329,7 @@ public:
 
 	/// \brief The name of the game or application that the activity is associated with.
 	///
-	/// This field cannot be set by the SDK, and will always be the name of the current game.
+	/// This field defaults to the name of the current game.
 	std::string Name() const;
 	/// Setter for Activity::Name.
 	void SetName(std::string Name);
@@ -2204,6 +2250,21 @@ public:
 	/// Setter for GuildChannel::Name.
 	void SetName(std::string Name);
 
+	/// \brief The type of the channel.
+	discordpp::ChannelType Type() const;
+	/// Setter for GuildChannel::Type.
+	void SetType(discordpp::ChannelType Type);
+
+	/// \brief The position of the channel in the guild's channel list.
+	int32_t Position() const;
+	/// Setter for GuildChannel::Position.
+	void SetPosition(int32_t Position);
+
+	/// \brief The id of the parent category channel, if any.
+	std::optional<uint64_t> ParentId() const;
+	/// Setter for GuildChannel::ParentId.
+	void SetParentId(std::optional<uint64_t> ParentId);
+
 	/// \brief Whether the current user is able to link this channel to a lobby.
 	///
 	/// For this to be true:
@@ -2420,6 +2481,66 @@ public:
 	std::optional<discordpp::UserHandle> User() const;
 };
 
+/// \brief A UserApplicationProfileHandle represents a profile from an external identity provider,
+/// such as Steam or Epic Online Services.
+///
+/// Handle objects in the SDK hold a reference both to the underlying data, and to the SDK instance.
+/// Changes to the underlying data will generally be available on existing handles objects without
+/// having to re-create them. If the SDK instance is destroyed, but you still have a reference to a
+/// handle object, note that it will return the default value for all method calls (ie an empty
+/// string for methods that return a string).
+class UserApplicationProfileHandle {
+	/// \cond
+	mutable Discord_UserApplicationProfileHandle instance_{};
+	DiscordObjectState state_ = DiscordObjectState::Invalid;
+	/// \endcond
+
+public:
+	/// \cond
+	Discord_UserApplicationProfileHandle *instance() const { return &instance_; }
+	/// \endcond
+	/// \cond
+	explicit UserApplicationProfileHandle(Discord_UserApplicationProfileHandle instance,
+			DiscordObjectState state);
+	~UserApplicationProfileHandle();
+	/// \endcond
+	/// Move constructor for UserApplicationProfileHandle
+	UserApplicationProfileHandle(UserApplicationProfileHandle &&other) noexcept;
+	/// Move assignment operator for UserApplicationProfileHandle
+	UserApplicationProfileHandle &operator=(UserApplicationProfileHandle &&other) noexcept;
+	/// Uninitialized instance of UserApplicationProfileHandle
+	static const UserApplicationProfileHandle nullobj;
+	/// Returns true if the instance contains a valid object
+	operator bool() const { return state_ != DiscordObjectState::Invalid; }
+
+	/// Copy constructor for UserApplicationProfileHandle
+	UserApplicationProfileHandle(const UserApplicationProfileHandle &other);
+	/// Copy assignment operator for UserApplicationProfileHandle
+	UserApplicationProfileHandle &operator=(const UserApplicationProfileHandle &other);
+
+	/// \cond
+	void Drop();
+	/// \endcond
+
+	/// \brief Returns the user's in-game avatar hash.
+	std::string AvatarHash() const;
+
+	/// \brief Returns any metadata set by the developer.
+	std::string Metadata() const;
+
+	/// \brief Returns the user's external identity provider ID if it exists.
+	std::optional<std::string> ProviderId() const;
+
+	/// \brief Returns the user's external identity provider issued user ID.
+	std::string ProviderIssuedUserId() const;
+
+	/// \brief Returns the type of the external identity provider.
+	discordpp::ExternalIdentityProviderType ProviderType() const;
+
+	/// \brief Returns the user's in-game username.
+	std::string Username() const;
+};
+
 /// \brief A UserHandle represents a single user on Discord that the SDK knows about and contains
 /// basic account information for them such as id, name, and avatar, as well as their "status"
 /// information which includes both whether they are online/offline/etc as well as whether they are
@@ -2529,6 +2650,11 @@ public:
 
 	/// \brief Returns the user's online/offline/idle status.
 	discordpp::StatusType Status() const;
+
+	/// \brief Returns a list of UserApplicationProfileHandles for this user. Currently, a user can
+	/// only have a single profile per application, so this list will always contain at most one
+	/// UserApplicationProfileHandle.
+	std::vector<discordpp::UserApplicationProfileHandle> UserApplicationProfiles() const;
 
 	/// \brief Returns the globally unique username of this user.
 	///
@@ -2959,6 +3085,14 @@ public:
 	/// renders in game.
 	std::unordered_map<std::string, std::string> Metadata() const;
 
+	/// \brief Returns any moderation metadata the developer set on this message.
+	///
+	/// Moderation metadata is just a set of simple string key/value pairs.
+	/// An example use case might be to include a flag that indicates the moderation status of the
+	/// message. Another example would be to include a re-written message that is more appropriate
+	/// for the game's audience.
+	std::unordered_map<std::string, std::string> ModerationMetadata() const;
+
 	/// \brief Returns the content of this message, if any, but without replacing any markup from
 	/// emojis and mentions.
 	///
@@ -3149,6 +3283,12 @@ public:
 	/// Setter for ClientCreateOptions::ExperimentalAndroidPreventCommsForBluetooth.
 	void SetExperimentalAndroidPreventCommsForBluetooth(
 			bool ExperimentalAndroidPreventCommsForBluetooth);
+
+	/// \brief CPU affinity mask hint for certain platforms. Depending on platform support, may or
+	/// may not be ignored.
+	std::optional<uint64_t> CpuAffinityMask() const;
+	/// Setter for ClientCreateOptions::CpuAffinityMask.
+	void SetCpuAffinityMask(std::optional<uint64_t> CpuAffinityMask);
 };
 
 /// \brief The Client class is the main entry point for the Discord SDK. All functionality is
@@ -3318,6 +3458,13 @@ public:
 			int32_t expiresIn,
 			std::string scopes)>;
 
+	/// \brief Callback invoked when a user requests to initiate the authorization flow from the
+	/// discord app
+	///
+	/// The callback receives no args and must call the functions needed to initiate the auth flow
+	/// as if the user had clicked the account link button in the game
+	using AuthorizeRequestCallback = std::function<void()>;
+
 	/// \brief Callback function for the Client::RevokeToken method.
 	using RevokeTokenCallback = std::function<void(discordpp::ClientResult result)>;
 
@@ -3437,6 +3584,9 @@ public:
 	/// \brief Callback function for Client::SetLobbyUpdatedCallback.
 	using LobbyUpdatedCallback = std::function<void(uint64_t lobbyId)>;
 
+	/// \brief Callback invoked when the IsDiscordAppInstalled function completes.
+	using IsDiscordAppInstalledCallback = std::function<void(bool installed)>;
+
 	/// \brief Callback function for Client::AcceptActivityInvite.
 	using AcceptActivityInviteCallback =
 			std::function<void(discordpp::ClientResult result, std::string joinSecret)>;
@@ -3534,6 +3684,12 @@ public:
 	/// authentication, rich presence, and activity invites when *not* connected with
 	/// Client::Connect. When calling Client::Connect, the application ID is set automatically
 	uint64_t GetApplicationId();
+
+	/// \brief (deprecated)
+	///
+	/// \deprecated Please use GetCurrentUserV2 instead. This will be removed in a future version.
+	[[deprecated("Please use GetCurrentUserV2 instead. This will be removed in a future version.")]]
+	discordpp::UserHandle GetCurrentUser() const;
 
 	/// \brief Returns the ID of the system default audio device if the user has not explicitly
 	/// chosen one.
@@ -4156,6 +4312,24 @@ public:
 			std::string const &refreshToken,
 			discordpp::Client::TokenExchangeCallback callback);
 
+	/// \brief Registers a callback to be invoked when a user requests to initiate the authorization
+	/// flow.
+	///
+	/// When you register this callback, the Discord app will show new entry points to allow users
+	/// to initiate the authorization flow.
+	///
+	/// This function is tied to upcoming Discord client functionality experiments that will be
+	/// rolled out to a percentage of Discord users over time. More documentation and implementation
+	/// details to come as the client experiments run.
+	void RegisterAuthorizeRequestCallback(discordpp::Client::AuthorizeRequestCallback callback);
+
+	/// \brief Stops listening for the AUTHORIZE_REQUEST event and removes the registered callback
+	///
+	/// This function is tied to upcoming Discord client functionality experiments that will be
+	/// rolled out to a percentage of Discord users over time. More documentation and implementation
+	/// details to come as the client experiments run.
+	void RemoveAuthorizeRequestCallback();
+
 	/// \brief Revoke all application access/refresh tokens associated with a user with any valid
 	/// access/refresh token. This will invalidate all tokens and they cannot be used again. This
 	/// is useful if you want to log the user out of the game and invalidate their session.
@@ -4303,14 +4477,17 @@ public:
 	/// \brief Retrieves messages from the DM conversation with the specified user.
 	///
 	/// Returns a list of MessageHandle representing the recent messages in the conversation with
-	/// the recipient, with a maximum number specified by the limit parameter. The messages are
+	/// the recipient, with a with a maximum of 200 messages and up to 72 hours. The messages are
 	/// returned in reverse chronological order (newest first). This function checks the local cache
 	/// first and only makes an HTTP request to Discord's API if there are not enough cached
 	/// messages available.
 	///
 	/// If limit is greater than 0, restricts the number of messages returned. If limit is 0
-	/// or negative, the limit parameter is omitted from the request. This is intended for
+	/// or negative, the limit parameter is 200 messages and 72 hours. This is intended for
 	/// games to load message history when users open a DM conversation.
+	///
+	/// If either user hasn't played the game, there will be no channel between them and
+	/// this function will return a 404 `discordpp::ErrorType::HTTPError` error.
 	void GetUserMessagesWithLimit(uint64_t recipientId,
 			int32_t limit,
 			discordpp::Client::UserMessagesWithLimitCallback cb);
@@ -4547,6 +4724,8 @@ public:
 			discordpp::Client::CreateOrJoinLobbyCallback callback);
 
 	/// \brief Fetches all of the channels that the current user can access in the given guild.
+	/// Channels are sorted by their `position` field, which matches what you see in the Discord
+	/// client.
 	///
 	/// The purpose of this is to power the channel linking flow for linking a Discord channel to an
 	/// in-game lobby. So this function can be used to power a UI to let the user pick which channel
@@ -4660,6 +4839,25 @@ public:
 			discordpp::Client::LinkOrUnlinkChannelCallback callback);
 	/// @}
 
+	/// @name Mobile
+	/// @{
+
+	/// \brief Checks whether the Discord mobile app is installed on this device.
+	/// On desktop platforms, always returns false.
+	///
+	/// This check does not require a client connection and can be called at any time.
+	///
+	/// This can be used to provide UI hints to users about whether they can authorize via the
+	/// Discord app, or whether they will need to use a web browser flow.
+	///
+	/// Platform Requirements:
+	/// - iOS: Your app must include "discord" in the LSApplicationQueriesSchemes array
+	///   in your Info.plist for this check to work correctly.
+	/// - Android: Your app must include "com.discord" in the `queries` element
+	///   in your AndroidManifest.xml (required for Android 11+).
+	void IsDiscordAppInstalled(discordpp::Client::IsDiscordAppInstalledCallback callback);
+	/// @}
+
 	/// @name Presence
 	/// @{
 
@@ -4705,8 +4903,8 @@ public:
 
 	/// \brief Sends a Discord activity invite to the specified user.
 	///
-	/// The invite is sent as a message on Discord, which means it can be sent in the following
-	/// situations:
+	/// The invite is sent as a message on Discord, which means it can be sent if any
+	/// of the following are true:
 	/// - Both users are online and in the game and have not blocked each other
 	/// - Both users are friends with each other
 	/// - Both users share a mutual Discord server and have previously DM'd each other on Discord
@@ -4974,18 +5172,7 @@ public:
 	/// @name Users
 	/// @{
 
-	/// \brief Returns the user associated with the current client.
-	///
-	/// **Must not be called before the Client::GetStatus has changed to Status::Ready.**
-	/// If the client has disconnected, or is in the process of reconnecting, it will return the
-	/// previous value of the user, even if the auth token has changed since then. Wait for
-	/// client.GetStatus() to change to Ready before accessing it again.
-	/// If accessed before the client is ready, it will return a dummy object.
-	discordpp::UserHandle GetCurrentUser() const;
-
-	/// \brief Returns the UserHandle associated with the current user, if one is available.
-	///
-	/// Unlike GetCurrentUser(), this method returns std::nullopt instead of a dummy object
+	/// \brief Unlike GetCurrentUser(), this method returns std::nullopt instead of a dummy object
 	/// when no user is authenticated or available. This provides clearer intent about when
 	/// the user data is actually available.
 	std::optional<discordpp::UserHandle> GetCurrentUserV2() const;
@@ -5068,6 +5255,8 @@ public:
 /// Converts a discordpp::ActivityActionTypes to a string.
 inline const char *EnumToString(discordpp::ActivityActionTypes value) {
 	switch (value) {
+		case discordpp::ActivityActionTypes::Invalid:
+			return "Invalid";
 		case discordpp::ActivityActionTypes::Join:
 			return "Join";
 		case discordpp::ActivityActionTypes::JoinRequest:
@@ -5318,6 +5507,45 @@ inline const char *EnumToString(discordpp::IntegrationType value) {
 			return "unknown";
 	}
 }
+/// Converts a discordpp::ChannelType to a string.
+inline const char *EnumToString(discordpp::ChannelType value) {
+	switch (value) {
+		case discordpp::ChannelType::GuildText:
+			return "GuildText";
+		case discordpp::ChannelType::Dm:
+			return "Dm";
+		case discordpp::ChannelType::GuildVoice:
+			return "GuildVoice";
+		case discordpp::ChannelType::GroupDm:
+			return "GroupDm";
+		case discordpp::ChannelType::GuildCategory:
+			return "GuildCategory";
+		case discordpp::ChannelType::GuildNews:
+			return "GuildNews";
+		case discordpp::ChannelType::GuildStore:
+			return "GuildStore";
+		case discordpp::ChannelType::GuildNewsThread:
+			return "GuildNewsThread";
+		case discordpp::ChannelType::GuildPublicThread:
+			return "GuildPublicThread";
+		case discordpp::ChannelType::GuildPrivateThread:
+			return "GuildPrivateThread";
+		case discordpp::ChannelType::GuildStageVoice:
+			return "GuildStageVoice";
+		case discordpp::ChannelType::GuildDirectory:
+			return "GuildDirectory";
+		case discordpp::ChannelType::GuildForum:
+			return "GuildForum";
+		case discordpp::ChannelType::GuildMedia:
+			return "GuildMedia";
+		case discordpp::ChannelType::Lobby:
+			return "Lobby";
+		case discordpp::ChannelType::EphemeralDm:
+			return "EphemeralDm";
+		default:
+			return "unknown";
+	}
+}
 /// Converts a discordpp::AdditionalContentType to a string.
 inline const char *EnumToString(discordpp::AdditionalContentType value) {
 	switch (value) {
@@ -5403,45 +5631,6 @@ inline const char *EnumToString(discordpp::Call::Status value) {
 			return "unknown";
 	}
 }
-/// Converts a discordpp::ChannelType to a string.
-inline const char *EnumToString(discordpp::ChannelType value) {
-	switch (value) {
-		case discordpp::ChannelType::GuildText:
-			return "GuildText";
-		case discordpp::ChannelType::Dm:
-			return "Dm";
-		case discordpp::ChannelType::GuildVoice:
-			return "GuildVoice";
-		case discordpp::ChannelType::GroupDm:
-			return "GroupDm";
-		case discordpp::ChannelType::GuildCategory:
-			return "GuildCategory";
-		case discordpp::ChannelType::GuildNews:
-			return "GuildNews";
-		case discordpp::ChannelType::GuildStore:
-			return "GuildStore";
-		case discordpp::ChannelType::GuildNewsThread:
-			return "GuildNewsThread";
-		case discordpp::ChannelType::GuildPublicThread:
-			return "GuildPublicThread";
-		case discordpp::ChannelType::GuildPrivateThread:
-			return "GuildPrivateThread";
-		case discordpp::ChannelType::GuildStageVoice:
-			return "GuildStageVoice";
-		case discordpp::ChannelType::GuildDirectory:
-			return "GuildDirectory";
-		case discordpp::ChannelType::GuildForum:
-			return "GuildForum";
-		case discordpp::ChannelType::GuildMedia:
-			return "GuildMedia";
-		case discordpp::ChannelType::Lobby:
-			return "Lobby";
-		case discordpp::ChannelType::EphemeralDm:
-			return "EphemeralDm";
-		default:
-			return "unknown";
-	}
-}
 /// Converts a discordpp::RelationshipType to a string.
 inline const char *EnumToString(discordpp::RelationshipType value) {
 	switch (value) {
@@ -5459,6 +5648,27 @@ inline const char *EnumToString(discordpp::RelationshipType value) {
 			return "Implicit";
 		case discordpp::RelationshipType::Suggestion:
 			return "Suggestion";
+		default:
+			return "unknown";
+	}
+}
+/// Converts a discordpp::ExternalIdentityProviderType to a string.
+inline const char *EnumToString(discordpp::ExternalIdentityProviderType value) {
+	switch (value) {
+		case discordpp::ExternalIdentityProviderType::OIDC:
+			return "OIDC";
+		case discordpp::ExternalIdentityProviderType::EpicOnlineServices:
+			return "EpicOnlineServices";
+		case discordpp::ExternalIdentityProviderType::Steam:
+			return "Steam";
+		case discordpp::ExternalIdentityProviderType::Unity:
+			return "Unity";
+		case discordpp::ExternalIdentityProviderType::DiscordBot:
+			return "DiscordBot";
+		case discordpp::ExternalIdentityProviderType::None:
+			return "None";
+		case discordpp::ExternalIdentityProviderType::Unknown:
+			return "Unknown";
 		default:
 			return "unknown";
 	}
@@ -5583,6 +5793,12 @@ inline const char *EnumToString(discordpp::AuthenticationExternalAuthType value)
 			return "SteamSessionTicket";
 		case discordpp::AuthenticationExternalAuthType::UnityServicesIdToken:
 			return "UnityServicesIdToken";
+		case discordpp::AuthenticationExternalAuthType::DiscordBotIssuedAccessToken:
+			return "DiscordBotIssuedAccessToken";
+		case discordpp::AuthenticationExternalAuthType::AppleIdToken:
+			return "AppleIdToken";
+		case discordpp::AuthenticationExternalAuthType::PlayStationNetworkIdToken:
+			return "PlayStationNetworkIdToken";
 		default:
 			return "unknown";
 	}
@@ -5644,8 +5860,7 @@ void SetSynchronizationContext(std::function<void(std::function<void()>)> execut
 template <typename T>
 struct TDelegateUserData {
 	T delegate;
-	TDelegateUserData(T delegate) :
-			delegate{ delegate } {
+	TDelegateUserData(T delegate) : delegate{ delegate } {
 	}
 
 	static void Free(void *ptr) { delete reinterpret_cast<TDelegateUserData *>(ptr); }
@@ -5701,8 +5916,8 @@ ActivityInvite::~ActivityInvite() {
 	}
 }
 ActivityInvite::ActivityInvite(ActivityInvite &&other) noexcept
-		:
-		instance_(other.instance_), state_(other.state_) {
+		: instance_(other.instance_),
+		  state_(other.state_) {
 	other.state_ = DiscordObjectState::Invalid;
 }
 ActivityInvite &ActivityInvite::operator=(ActivityInvite &&other) noexcept {
@@ -5716,8 +5931,7 @@ ActivityInvite &ActivityInvite::operator=(ActivityInvite &&other) noexcept {
 	}
 	return *this;
 }
-ActivityInvite::ActivityInvite(const ActivityInvite &rhs) :
-		instance_{}, state_(DiscordObjectState::Invalid) {
+ActivityInvite::ActivityInvite(const ActivityInvite &rhs) : instance_{}, state_(DiscordObjectState::Invalid) {
 	if (rhs.state_ == DiscordObjectState::Owned) {
 		Discord_ActivityInvite_Clone(&instance_, rhs.instance());
 
@@ -5738,8 +5952,7 @@ ActivityInvite &ActivityInvite::operator=(const ActivityInvite &rhs) {
 	}
 	return *this;
 }
-ActivityInvite::ActivityInvite(Discord_ActivityInvite instance, DiscordObjectState state) :
-		instance_(instance), state_(state) {
+ActivityInvite::ActivityInvite(Discord_ActivityInvite instance, DiscordObjectState state) : instance_(instance), state_(state) {
 }
 ActivityInvite::ActivityInvite() {
 	assert(state_ == DiscordObjectState::Invalid);
@@ -5859,8 +6072,8 @@ ActivityAssets::~ActivityAssets() {
 	}
 }
 ActivityAssets::ActivityAssets(ActivityAssets &&other) noexcept
-		:
-		instance_(other.instance_), state_(other.state_) {
+		: instance_(other.instance_),
+		  state_(other.state_) {
 	other.state_ = DiscordObjectState::Invalid;
 }
 ActivityAssets &ActivityAssets::operator=(ActivityAssets &&other) noexcept {
@@ -5874,8 +6087,7 @@ ActivityAssets &ActivityAssets::operator=(ActivityAssets &&other) noexcept {
 	}
 	return *this;
 }
-ActivityAssets::ActivityAssets(const ActivityAssets &arg0) :
-		instance_{}, state_(DiscordObjectState::Invalid) {
+ActivityAssets::ActivityAssets(const ActivityAssets &arg0) : instance_{}, state_(DiscordObjectState::Invalid) {
 	if (arg0.state_ == DiscordObjectState::Owned) {
 		Discord_ActivityAssets_Clone(&instance_, arg0.instance());
 
@@ -5896,8 +6108,7 @@ ActivityAssets &ActivityAssets::operator=(const ActivityAssets &arg0) {
 	}
 	return *this;
 }
-ActivityAssets::ActivityAssets(Discord_ActivityAssets instance, DiscordObjectState state) :
-		instance_(instance), state_(state) {
+ActivityAssets::ActivityAssets(Discord_ActivityAssets instance, DiscordObjectState state) : instance_(instance), state_(state) {
 }
 ActivityAssets::ActivityAssets() {
 	assert(state_ == DiscordObjectState::Invalid);
@@ -6049,6 +6260,29 @@ void ActivityAssets::SetSmallUrl(std::optional<std::string> SmallUrl) {
 	Discord_ActivityAssets_SetSmallUrl(&instance_,
 			(SmallUrl.has_value() ? &SmallUrl__str : nullptr));
 }
+std::optional<std::string> ActivityAssets::InviteCoverImage() const {
+	assert(state_ == DiscordObjectState::Owned);
+	bool returnIsNonNull__;
+	Discord_String returnValueNative__;
+	returnIsNonNull__ = Discord_ActivityAssets_InviteCoverImage(&instance_, &returnValueNative__);
+	if (!returnIsNonNull__) {
+		return {};
+	}
+	std::string returnValue__(reinterpret_cast<char *>(returnValueNative__.ptr),
+			returnValueNative__.size);
+	Discord_Free(returnValueNative__.ptr);
+	return returnValue__;
+}
+void ActivityAssets::SetInviteCoverImage(std::optional<std::string> InviteCoverImage) {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_String InviteCoverImage__str{};
+	if (InviteCoverImage.has_value()) {
+		InviteCoverImage__str.ptr = reinterpret_cast<uint8_t *>(InviteCoverImage->data());
+		InviteCoverImage__str.size = InviteCoverImage->size();
+	}
+	Discord_ActivityAssets_SetInviteCoverImage(
+			&instance_, (InviteCoverImage.has_value() ? &InviteCoverImage__str : nullptr));
+}
 const ActivityTimestamps ActivityTimestamps::nullobj{ {}, DiscordObjectState::Invalid };
 ActivityTimestamps::~ActivityTimestamps() {
 	if (state_ == DiscordObjectState::Owned) {
@@ -6057,8 +6291,8 @@ ActivityTimestamps::~ActivityTimestamps() {
 	}
 }
 ActivityTimestamps::ActivityTimestamps(ActivityTimestamps &&other) noexcept
-		:
-		instance_(other.instance_), state_(other.state_) {
+		: instance_(other.instance_),
+		  state_(other.state_) {
 	other.state_ = DiscordObjectState::Invalid;
 }
 ActivityTimestamps &ActivityTimestamps::operator=(ActivityTimestamps &&other) noexcept {
@@ -6072,8 +6306,7 @@ ActivityTimestamps &ActivityTimestamps::operator=(ActivityTimestamps &&other) no
 	}
 	return *this;
 }
-ActivityTimestamps::ActivityTimestamps(const ActivityTimestamps &arg0) :
-		instance_{}, state_(DiscordObjectState::Invalid) {
+ActivityTimestamps::ActivityTimestamps(const ActivityTimestamps &arg0) : instance_{}, state_(DiscordObjectState::Invalid) {
 	if (arg0.state_ == DiscordObjectState::Owned) {
 		Discord_ActivityTimestamps_Clone(&instance_, arg0.instance());
 
@@ -6095,8 +6328,8 @@ ActivityTimestamps &ActivityTimestamps::operator=(const ActivityTimestamps &arg0
 	return *this;
 }
 ActivityTimestamps::ActivityTimestamps(Discord_ActivityTimestamps instance,
-		DiscordObjectState state) :
-		instance_(instance), state_(state) {
+		DiscordObjectState state) : instance_(instance),
+									state_(state) {
 }
 ActivityTimestamps::ActivityTimestamps() {
 	assert(state_ == DiscordObjectState::Invalid);
@@ -6138,8 +6371,8 @@ ActivityParty::~ActivityParty() {
 	}
 }
 ActivityParty::ActivityParty(ActivityParty &&other) noexcept
-		:
-		instance_(other.instance_), state_(other.state_) {
+		: instance_(other.instance_),
+		  state_(other.state_) {
 	other.state_ = DiscordObjectState::Invalid;
 }
 ActivityParty &ActivityParty::operator=(ActivityParty &&other) noexcept {
@@ -6153,8 +6386,7 @@ ActivityParty &ActivityParty::operator=(ActivityParty &&other) noexcept {
 	}
 	return *this;
 }
-ActivityParty::ActivityParty(const ActivityParty &arg0) :
-		instance_{}, state_(DiscordObjectState::Invalid) {
+ActivityParty::ActivityParty(const ActivityParty &arg0) : instance_{}, state_(DiscordObjectState::Invalid) {
 	if (arg0.state_ == DiscordObjectState::Owned) {
 		Discord_ActivityParty_Clone(&instance_, arg0.instance());
 
@@ -6175,8 +6407,7 @@ ActivityParty &ActivityParty::operator=(const ActivityParty &arg0) {
 	}
 	return *this;
 }
-ActivityParty::ActivityParty(Discord_ActivityParty instance, DiscordObjectState state) :
-		instance_(instance), state_(state) {
+ActivityParty::ActivityParty(Discord_ActivityParty instance, DiscordObjectState state) : instance_(instance), state_(state) {
 }
 ActivityParty::ActivityParty() {
 	assert(state_ == DiscordObjectState::Invalid);
@@ -6243,8 +6474,8 @@ ActivitySecrets::~ActivitySecrets() {
 	}
 }
 ActivitySecrets::ActivitySecrets(ActivitySecrets &&other) noexcept
-		:
-		instance_(other.instance_), state_(other.state_) {
+		: instance_(other.instance_),
+		  state_(other.state_) {
 	other.state_ = DiscordObjectState::Invalid;
 }
 ActivitySecrets &ActivitySecrets::operator=(ActivitySecrets &&other) noexcept {
@@ -6258,8 +6489,7 @@ ActivitySecrets &ActivitySecrets::operator=(ActivitySecrets &&other) noexcept {
 	}
 	return *this;
 }
-ActivitySecrets::ActivitySecrets(const ActivitySecrets &arg0) :
-		instance_{}, state_(DiscordObjectState::Invalid) {
+ActivitySecrets::ActivitySecrets(const ActivitySecrets &arg0) : instance_{}, state_(DiscordObjectState::Invalid) {
 	if (arg0.state_ == DiscordObjectState::Owned) {
 		Discord_ActivitySecrets_Clone(&instance_, arg0.instance());
 
@@ -6280,8 +6510,7 @@ ActivitySecrets &ActivitySecrets::operator=(const ActivitySecrets &arg0) {
 	}
 	return *this;
 }
-ActivitySecrets::ActivitySecrets(Discord_ActivitySecrets instance, DiscordObjectState state) :
-		instance_(instance), state_(state) {
+ActivitySecrets::ActivitySecrets(Discord_ActivitySecrets instance, DiscordObjectState state) : instance_(instance), state_(state) {
 }
 ActivitySecrets::ActivitySecrets() {
 	assert(state_ == DiscordObjectState::Invalid);
@@ -6317,8 +6546,8 @@ ActivityButton::~ActivityButton() {
 	}
 }
 ActivityButton::ActivityButton(ActivityButton &&other) noexcept
-		:
-		instance_(other.instance_), state_(other.state_) {
+		: instance_(other.instance_),
+		  state_(other.state_) {
 	other.state_ = DiscordObjectState::Invalid;
 }
 ActivityButton &ActivityButton::operator=(ActivityButton &&other) noexcept {
@@ -6332,8 +6561,7 @@ ActivityButton &ActivityButton::operator=(ActivityButton &&other) noexcept {
 	}
 	return *this;
 }
-ActivityButton::ActivityButton(const ActivityButton &arg0) :
-		instance_{}, state_(DiscordObjectState::Invalid) {
+ActivityButton::ActivityButton(const ActivityButton &arg0) : instance_{}, state_(DiscordObjectState::Invalid) {
 	if (arg0.state_ == DiscordObjectState::Owned) {
 		Discord_ActivityButton_Clone(&instance_, arg0.instance());
 
@@ -6354,8 +6582,7 @@ ActivityButton &ActivityButton::operator=(const ActivityButton &arg0) {
 	}
 	return *this;
 }
-ActivityButton::ActivityButton(Discord_ActivityButton instance, DiscordObjectState state) :
-		instance_(instance), state_(state) {
+ActivityButton::ActivityButton(Discord_ActivityButton instance, DiscordObjectState state) : instance_(instance), state_(state) {
 }
 ActivityButton::ActivityButton() {
 	assert(state_ == DiscordObjectState::Invalid);
@@ -6405,8 +6632,8 @@ Activity::~Activity() {
 	}
 }
 Activity::Activity(Activity &&other) noexcept
-		:
-		instance_(other.instance_), state_(other.state_) {
+		: instance_(other.instance_),
+		  state_(other.state_) {
 	other.state_ = DiscordObjectState::Invalid;
 }
 Activity &Activity::operator=(Activity &&other) noexcept {
@@ -6420,8 +6647,7 @@ Activity &Activity::operator=(Activity &&other) noexcept {
 	}
 	return *this;
 }
-Activity::Activity(const Activity &arg0) :
-		instance_{}, state_(DiscordObjectState::Invalid) {
+Activity::Activity(const Activity &arg0) : instance_{}, state_(DiscordObjectState::Invalid) {
 	if (arg0.state_ == DiscordObjectState::Owned) {
 		Discord_Activity_Clone(&instance_, arg0.instance());
 
@@ -6442,8 +6668,7 @@ Activity &Activity::operator=(const Activity &arg0) {
 	}
 	return *this;
 }
-Activity::Activity(Discord_Activity instance, DiscordObjectState state) :
-		instance_(instance), state_(state) {
+Activity::Activity(Discord_Activity instance, DiscordObjectState state) : instance_(instance), state_(state) {
 }
 Activity::Activity() {
 	assert(state_ == DiscordObjectState::Invalid);
@@ -6721,8 +6946,8 @@ ClientResult::~ClientResult() {
 	}
 }
 ClientResult::ClientResult(ClientResult &&other) noexcept
-		:
-		instance_(other.instance_), state_(other.state_) {
+		: instance_(other.instance_),
+		  state_(other.state_) {
 	other.state_ = DiscordObjectState::Invalid;
 }
 ClientResult &ClientResult::operator=(ClientResult &&other) noexcept {
@@ -6736,8 +6961,7 @@ ClientResult &ClientResult::operator=(ClientResult &&other) noexcept {
 	}
 	return *this;
 }
-ClientResult::ClientResult(const ClientResult &arg0) :
-		instance_{}, state_(DiscordObjectState::Invalid) {
+ClientResult::ClientResult(const ClientResult &arg0) : instance_{}, state_(DiscordObjectState::Invalid) {
 	if (arg0.state_ == DiscordObjectState::Owned) {
 		Discord_ClientResult_Clone(&instance_, arg0.instance());
 
@@ -6758,8 +6982,7 @@ ClientResult &ClientResult::operator=(const ClientResult &arg0) {
 	}
 	return *this;
 }
-ClientResult::ClientResult(Discord_ClientResult instance, DiscordObjectState state) :
-		instance_(instance), state_(state) {
+ClientResult::ClientResult(Discord_ClientResult instance, DiscordObjectState state) : instance_(instance), state_(state) {
 }
 void ClientResult::Drop() {
 	if (state_ != DiscordObjectState::Owned) {
@@ -6874,8 +7097,8 @@ AuthorizationCodeChallenge::~AuthorizationCodeChallenge() {
 	}
 }
 AuthorizationCodeChallenge::AuthorizationCodeChallenge(AuthorizationCodeChallenge &&other) noexcept
-		:
-		instance_(other.instance_), state_(other.state_) {
+		: instance_(other.instance_),
+		  state_(other.state_) {
 	other.state_ = DiscordObjectState::Invalid;
 }
 AuthorizationCodeChallenge &AuthorizationCodeChallenge::operator=(
@@ -6890,8 +7113,7 @@ AuthorizationCodeChallenge &AuthorizationCodeChallenge::operator=(
 	}
 	return *this;
 }
-AuthorizationCodeChallenge::AuthorizationCodeChallenge(const AuthorizationCodeChallenge &arg0) :
-		instance_{}, state_(DiscordObjectState::Invalid) {
+AuthorizationCodeChallenge::AuthorizationCodeChallenge(const AuthorizationCodeChallenge &arg0) : instance_{}, state_(DiscordObjectState::Invalid) {
 	if (arg0.state_ == DiscordObjectState::Owned) {
 		Discord_AuthorizationCodeChallenge_Clone(&instance_, arg0.instance());
 
@@ -6914,8 +7136,8 @@ AuthorizationCodeChallenge &AuthorizationCodeChallenge::operator=(
 	return *this;
 }
 AuthorizationCodeChallenge::AuthorizationCodeChallenge(Discord_AuthorizationCodeChallenge instance,
-		DiscordObjectState state) :
-		instance_(instance), state_(state) {
+		DiscordObjectState state) : instance_(instance),
+									state_(state) {
 }
 AuthorizationCodeChallenge::AuthorizationCodeChallenge() {
 	assert(state_ == DiscordObjectState::Invalid);
@@ -6962,8 +7184,8 @@ AuthorizationCodeVerifier::~AuthorizationCodeVerifier() {
 	}
 }
 AuthorizationCodeVerifier::AuthorizationCodeVerifier(AuthorizationCodeVerifier &&other) noexcept
-		:
-		instance_(other.instance_), state_(other.state_) {
+		: instance_(other.instance_),
+		  state_(other.state_) {
 	other.state_ = DiscordObjectState::Invalid;
 }
 AuthorizationCodeVerifier &AuthorizationCodeVerifier::operator=(
@@ -6978,8 +7200,7 @@ AuthorizationCodeVerifier &AuthorizationCodeVerifier::operator=(
 	}
 	return *this;
 }
-AuthorizationCodeVerifier::AuthorizationCodeVerifier(const AuthorizationCodeVerifier &arg0) :
-		instance_{}, state_(DiscordObjectState::Invalid) {
+AuthorizationCodeVerifier::AuthorizationCodeVerifier(const AuthorizationCodeVerifier &arg0) : instance_{}, state_(DiscordObjectState::Invalid) {
 	if (arg0.state_ == DiscordObjectState::Owned) {
 		Discord_AuthorizationCodeVerifier_Clone(&instance_, arg0.instance());
 
@@ -7002,8 +7223,8 @@ AuthorizationCodeVerifier &AuthorizationCodeVerifier::operator=(
 	return *this;
 }
 AuthorizationCodeVerifier::AuthorizationCodeVerifier(Discord_AuthorizationCodeVerifier instance,
-		DiscordObjectState state) :
-		instance_(instance), state_(state) {
+		DiscordObjectState state) : instance_(instance),
+									state_(state) {
 }
 void AuthorizationCodeVerifier::Drop() {
 	if (state_ != DiscordObjectState::Owned) {
@@ -7046,8 +7267,8 @@ AuthorizationArgs::~AuthorizationArgs() {
 	}
 }
 AuthorizationArgs::AuthorizationArgs(AuthorizationArgs &&other) noexcept
-		:
-		instance_(other.instance_), state_(other.state_) {
+		: instance_(other.instance_),
+		  state_(other.state_) {
 	other.state_ = DiscordObjectState::Invalid;
 }
 AuthorizationArgs &AuthorizationArgs::operator=(AuthorizationArgs &&other) noexcept {
@@ -7061,8 +7282,7 @@ AuthorizationArgs &AuthorizationArgs::operator=(AuthorizationArgs &&other) noexc
 	}
 	return *this;
 }
-AuthorizationArgs::AuthorizationArgs(const AuthorizationArgs &arg0) :
-		instance_{}, state_(DiscordObjectState::Invalid) {
+AuthorizationArgs::AuthorizationArgs(const AuthorizationArgs &arg0) : instance_{}, state_(DiscordObjectState::Invalid) {
 	if (arg0.state_ == DiscordObjectState::Owned) {
 		Discord_AuthorizationArgs_Clone(&instance_, arg0.instance());
 
@@ -7083,8 +7303,7 @@ AuthorizationArgs &AuthorizationArgs::operator=(const AuthorizationArgs &arg0) {
 	}
 	return *this;
 }
-AuthorizationArgs::AuthorizationArgs(Discord_AuthorizationArgs instance, DiscordObjectState state) :
-		instance_(instance), state_(state) {
+AuthorizationArgs::AuthorizationArgs(Discord_AuthorizationArgs instance, DiscordObjectState state) : instance_(instance), state_(state) {
 }
 AuthorizationArgs::AuthorizationArgs() {
 	assert(state_ == DiscordObjectState::Invalid);
@@ -7235,8 +7454,8 @@ DeviceAuthorizationArgs::~DeviceAuthorizationArgs() {
 	}
 }
 DeviceAuthorizationArgs::DeviceAuthorizationArgs(DeviceAuthorizationArgs &&other) noexcept
-		:
-		instance_(other.instance_), state_(other.state_) {
+		: instance_(other.instance_),
+		  state_(other.state_) {
 	other.state_ = DiscordObjectState::Invalid;
 }
 DeviceAuthorizationArgs &DeviceAuthorizationArgs::operator=(
@@ -7251,8 +7470,7 @@ DeviceAuthorizationArgs &DeviceAuthorizationArgs::operator=(
 	}
 	return *this;
 }
-DeviceAuthorizationArgs::DeviceAuthorizationArgs(const DeviceAuthorizationArgs &arg0) :
-		instance_{}, state_(DiscordObjectState::Invalid) {
+DeviceAuthorizationArgs::DeviceAuthorizationArgs(const DeviceAuthorizationArgs &arg0) : instance_{}, state_(DiscordObjectState::Invalid) {
 	if (arg0.state_ == DiscordObjectState::Owned) {
 		Discord_DeviceAuthorizationArgs_Clone(&instance_, arg0.instance());
 
@@ -7274,8 +7492,8 @@ DeviceAuthorizationArgs &DeviceAuthorizationArgs::operator=(const DeviceAuthoriz
 	return *this;
 }
 DeviceAuthorizationArgs::DeviceAuthorizationArgs(Discord_DeviceAuthorizationArgs instance,
-		DiscordObjectState state) :
-		instance_(instance), state_(state) {
+		DiscordObjectState state) : instance_(instance),
+									state_(state) {
 }
 DeviceAuthorizationArgs::DeviceAuthorizationArgs() {
 	assert(state_ == DiscordObjectState::Invalid);
@@ -7321,8 +7539,8 @@ VoiceStateHandle::~VoiceStateHandle() {
 	}
 }
 VoiceStateHandle::VoiceStateHandle(VoiceStateHandle &&other) noexcept
-		:
-		instance_(other.instance_), state_(other.state_) {
+		: instance_(other.instance_),
+		  state_(other.state_) {
 	other.state_ = DiscordObjectState::Invalid;
 }
 VoiceStateHandle &VoiceStateHandle::operator=(VoiceStateHandle &&other) noexcept {
@@ -7336,8 +7554,7 @@ VoiceStateHandle &VoiceStateHandle::operator=(VoiceStateHandle &&other) noexcept
 	}
 	return *this;
 }
-VoiceStateHandle::VoiceStateHandle(const VoiceStateHandle &other) :
-		instance_{}, state_(DiscordObjectState::Invalid) {
+VoiceStateHandle::VoiceStateHandle(const VoiceStateHandle &other) : instance_{}, state_(DiscordObjectState::Invalid) {
 	if (other.state_ == DiscordObjectState::Owned) {
 		Discord_VoiceStateHandle_Clone(&instance_, other.instance());
 
@@ -7358,8 +7575,7 @@ VoiceStateHandle &VoiceStateHandle::operator=(const VoiceStateHandle &other) {
 	}
 	return *this;
 }
-VoiceStateHandle::VoiceStateHandle(Discord_VoiceStateHandle instance, DiscordObjectState state) :
-		instance_(instance), state_(state) {
+VoiceStateHandle::VoiceStateHandle(Discord_VoiceStateHandle instance, DiscordObjectState state) : instance_(instance), state_(state) {
 }
 void VoiceStateHandle::Drop() {
 	if (state_ != DiscordObjectState::Owned) {
@@ -7388,8 +7604,8 @@ VADThresholdSettings::~VADThresholdSettings() {
 	}
 }
 VADThresholdSettings::VADThresholdSettings(VADThresholdSettings &&other) noexcept
-		:
-		instance_(other.instance_), state_(other.state_) {
+		: instance_(other.instance_),
+		  state_(other.state_) {
 	other.state_ = DiscordObjectState::Invalid;
 }
 VADThresholdSettings &VADThresholdSettings::operator=(VADThresholdSettings &&other) noexcept {
@@ -7404,8 +7620,8 @@ VADThresholdSettings &VADThresholdSettings::operator=(VADThresholdSettings &&oth
 	return *this;
 }
 VADThresholdSettings::VADThresholdSettings(Discord_VADThresholdSettings instance,
-		DiscordObjectState state) :
-		instance_(instance), state_(state) {
+		DiscordObjectState state) : instance_(instance),
+									state_(state) {
 }
 void VADThresholdSettings::Drop() {
 	if (state_ != DiscordObjectState::Owned) {
@@ -7442,8 +7658,8 @@ Call::~Call() {
 	}
 }
 Call::Call(Call &&other) noexcept
-		:
-		instance_(other.instance_), state_(other.state_) {
+		: instance_(other.instance_),
+		  state_(other.state_) {
 	other.state_ = DiscordObjectState::Invalid;
 }
 Call &Call::operator=(Call &&other) noexcept {
@@ -7457,8 +7673,7 @@ Call &Call::operator=(Call &&other) noexcept {
 	}
 	return *this;
 }
-Call::Call(const Call &other) :
-		instance_{}, state_(DiscordObjectState::Invalid) {
+Call::Call(const Call &other) : instance_{}, state_(DiscordObjectState::Invalid) {
 	if (other.state_ == DiscordObjectState::Owned) {
 		Discord_Call_Clone(&instance_, other.instance());
 
@@ -7479,8 +7694,7 @@ Call &Call::operator=(const Call &other) {
 	}
 	return *this;
 }
-Call::Call(Discord_Call instance, DiscordObjectState state) :
-		instance_(instance), state_(state) {
+Call::Call(Discord_Call instance, DiscordObjectState state) : instance_(instance), state_(state) {
 }
 void Call::Drop() {
 	if (state_ != DiscordObjectState::Owned) {
@@ -7680,8 +7894,8 @@ ChannelHandle::~ChannelHandle() {
 	}
 }
 ChannelHandle::ChannelHandle(ChannelHandle &&other) noexcept
-		:
-		instance_(other.instance_), state_(other.state_) {
+		: instance_(other.instance_),
+		  state_(other.state_) {
 	other.state_ = DiscordObjectState::Invalid;
 }
 ChannelHandle &ChannelHandle::operator=(ChannelHandle &&other) noexcept {
@@ -7695,8 +7909,7 @@ ChannelHandle &ChannelHandle::operator=(ChannelHandle &&other) noexcept {
 	}
 	return *this;
 }
-ChannelHandle::ChannelHandle(const ChannelHandle &other) :
-		instance_{}, state_(DiscordObjectState::Invalid) {
+ChannelHandle::ChannelHandle(const ChannelHandle &other) : instance_{}, state_(DiscordObjectState::Invalid) {
 	if (other.state_ == DiscordObjectState::Owned) {
 		Discord_ChannelHandle_Clone(&instance_, other.instance());
 
@@ -7717,8 +7930,7 @@ ChannelHandle &ChannelHandle::operator=(const ChannelHandle &other) {
 	}
 	return *this;
 }
-ChannelHandle::ChannelHandle(Discord_ChannelHandle instance, DiscordObjectState state) :
-		instance_(instance), state_(state) {
+ChannelHandle::ChannelHandle(Discord_ChannelHandle instance, DiscordObjectState state) : instance_(instance), state_(state) {
 }
 void ChannelHandle::Drop() {
 	if (state_ != DiscordObjectState::Owned) {
@@ -7765,8 +7977,8 @@ GuildMinimal::~GuildMinimal() {
 	}
 }
 GuildMinimal::GuildMinimal(GuildMinimal &&other) noexcept
-		:
-		instance_(other.instance_), state_(other.state_) {
+		: instance_(other.instance_),
+		  state_(other.state_) {
 	other.state_ = DiscordObjectState::Invalid;
 }
 GuildMinimal &GuildMinimal::operator=(GuildMinimal &&other) noexcept {
@@ -7780,8 +7992,7 @@ GuildMinimal &GuildMinimal::operator=(GuildMinimal &&other) noexcept {
 	}
 	return *this;
 }
-GuildMinimal::GuildMinimal(const GuildMinimal &arg0) :
-		instance_{}, state_(DiscordObjectState::Invalid) {
+GuildMinimal::GuildMinimal(const GuildMinimal &arg0) : instance_{}, state_(DiscordObjectState::Invalid) {
 	if (arg0.state_ == DiscordObjectState::Owned) {
 		Discord_GuildMinimal_Clone(&instance_, arg0.instance());
 
@@ -7802,8 +8013,7 @@ GuildMinimal &GuildMinimal::operator=(const GuildMinimal &arg0) {
 	}
 	return *this;
 }
-GuildMinimal::GuildMinimal(Discord_GuildMinimal instance, DiscordObjectState state) :
-		instance_(instance), state_(state) {
+GuildMinimal::GuildMinimal(Discord_GuildMinimal instance, DiscordObjectState state) : instance_(instance), state_(state) {
 }
 void GuildMinimal::Drop() {
 	if (state_ != DiscordObjectState::Owned) {
@@ -7844,8 +8054,8 @@ GuildChannel::~GuildChannel() {
 	}
 }
 GuildChannel::GuildChannel(GuildChannel &&other) noexcept
-		:
-		instance_(other.instance_), state_(other.state_) {
+		: instance_(other.instance_),
+		  state_(other.state_) {
 	other.state_ = DiscordObjectState::Invalid;
 }
 GuildChannel &GuildChannel::operator=(GuildChannel &&other) noexcept {
@@ -7859,8 +8069,7 @@ GuildChannel &GuildChannel::operator=(GuildChannel &&other) noexcept {
 	}
 	return *this;
 }
-GuildChannel::GuildChannel(const GuildChannel &arg0) :
-		instance_{}, state_(DiscordObjectState::Invalid) {
+GuildChannel::GuildChannel(const GuildChannel &arg0) : instance_{}, state_(DiscordObjectState::Invalid) {
 	if (arg0.state_ == DiscordObjectState::Owned) {
 		Discord_GuildChannel_Clone(&instance_, arg0.instance());
 
@@ -7881,8 +8090,7 @@ GuildChannel &GuildChannel::operator=(const GuildChannel &arg0) {
 	}
 	return *this;
 }
-GuildChannel::GuildChannel(Discord_GuildChannel instance, DiscordObjectState state) :
-		instance_(instance), state_(state) {
+GuildChannel::GuildChannel(Discord_GuildChannel instance, DiscordObjectState state) : instance_(instance), state_(state) {
 }
 void GuildChannel::Drop() {
 	if (state_ != DiscordObjectState::Owned) {
@@ -7914,6 +8122,40 @@ void GuildChannel::SetName(std::string Name) {
 	assert(state_ == DiscordObjectState::Owned);
 	Discord_String Name__str{ (uint8_t *)(Name.data()), Name.size() };
 	Discord_GuildChannel_SetName(&instance_, Name__str);
+}
+discordpp::ChannelType GuildChannel::Type() const {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_ChannelType returnValue__;
+	returnValue__ = Discord_GuildChannel_Type(&instance_);
+	return static_cast<discordpp::ChannelType>(returnValue__);
+}
+void GuildChannel::SetType(discordpp::ChannelType Type) {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_GuildChannel_SetType(&instance_, static_cast<Discord_ChannelType>(Type));
+}
+int32_t GuildChannel::Position() const {
+	assert(state_ == DiscordObjectState::Owned);
+	int32_t returnValue__;
+	returnValue__ = Discord_GuildChannel_Position(&instance_);
+	return returnValue__;
+}
+void GuildChannel::SetPosition(int32_t Position) {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_GuildChannel_SetPosition(&instance_, Position);
+}
+std::optional<uint64_t> GuildChannel::ParentId() const {
+	assert(state_ == DiscordObjectState::Owned);
+	bool returnIsNonNull__;
+	uint64_t returnValue__;
+	returnIsNonNull__ = Discord_GuildChannel_ParentId(&instance_, &returnValue__);
+	if (!returnIsNonNull__) {
+		return std::nullopt;
+	}
+	return returnValue__;
+}
+void GuildChannel::SetParentId(std::optional<uint64_t> ParentId) {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_GuildChannel_SetParentId(&instance_, (ParentId.has_value() ? &*ParentId : nullptr));
 }
 bool GuildChannel::IsLinkable() const {
 	assert(state_ == DiscordObjectState::Owned);
@@ -7960,8 +8202,8 @@ LinkedLobby::~LinkedLobby() {
 	}
 }
 LinkedLobby::LinkedLobby(LinkedLobby &&other) noexcept
-		:
-		instance_(other.instance_), state_(other.state_) {
+		: instance_(other.instance_),
+		  state_(other.state_) {
 	other.state_ = DiscordObjectState::Invalid;
 }
 LinkedLobby &LinkedLobby::operator=(LinkedLobby &&other) noexcept {
@@ -7975,8 +8217,7 @@ LinkedLobby &LinkedLobby::operator=(LinkedLobby &&other) noexcept {
 	}
 	return *this;
 }
-LinkedLobby::LinkedLobby(const LinkedLobby &arg0) :
-		instance_{}, state_(DiscordObjectState::Invalid) {
+LinkedLobby::LinkedLobby(const LinkedLobby &arg0) : instance_{}, state_(DiscordObjectState::Invalid) {
 	if (arg0.state_ == DiscordObjectState::Owned) {
 		Discord_LinkedLobby_Clone(&instance_, arg0.instance());
 
@@ -7997,8 +8238,7 @@ LinkedLobby &LinkedLobby::operator=(const LinkedLobby &arg0) {
 	}
 	return *this;
 }
-LinkedLobby::LinkedLobby(Discord_LinkedLobby instance, DiscordObjectState state) :
-		instance_(instance), state_(state) {
+LinkedLobby::LinkedLobby(Discord_LinkedLobby instance, DiscordObjectState state) : instance_(instance), state_(state) {
 }
 LinkedLobby::LinkedLobby() {
 	assert(state_ == DiscordObjectState::Invalid);
@@ -8040,8 +8280,8 @@ LinkedChannel::~LinkedChannel() {
 	}
 }
 LinkedChannel::LinkedChannel(LinkedChannel &&other) noexcept
-		:
-		instance_(other.instance_), state_(other.state_) {
+		: instance_(other.instance_),
+		  state_(other.state_) {
 	other.state_ = DiscordObjectState::Invalid;
 }
 LinkedChannel &LinkedChannel::operator=(LinkedChannel &&other) noexcept {
@@ -8055,8 +8295,7 @@ LinkedChannel &LinkedChannel::operator=(LinkedChannel &&other) noexcept {
 	}
 	return *this;
 }
-LinkedChannel::LinkedChannel(const LinkedChannel &arg0) :
-		instance_{}, state_(DiscordObjectState::Invalid) {
+LinkedChannel::LinkedChannel(const LinkedChannel &arg0) : instance_{}, state_(DiscordObjectState::Invalid) {
 	if (arg0.state_ == DiscordObjectState::Owned) {
 		Discord_LinkedChannel_Clone(&instance_, arg0.instance());
 
@@ -8077,8 +8316,7 @@ LinkedChannel &LinkedChannel::operator=(const LinkedChannel &arg0) {
 	}
 	return *this;
 }
-LinkedChannel::LinkedChannel(Discord_LinkedChannel instance, DiscordObjectState state) :
-		instance_(instance), state_(state) {
+LinkedChannel::LinkedChannel(Discord_LinkedChannel instance, DiscordObjectState state) : instance_(instance), state_(state) {
 }
 void LinkedChannel::Drop() {
 	if (state_ != DiscordObjectState::Owned) {
@@ -8129,8 +8367,8 @@ RelationshipHandle::~RelationshipHandle() {
 	}
 }
 RelationshipHandle::RelationshipHandle(RelationshipHandle &&other) noexcept
-		:
-		instance_(other.instance_), state_(other.state_) {
+		: instance_(other.instance_),
+		  state_(other.state_) {
 	other.state_ = DiscordObjectState::Invalid;
 }
 RelationshipHandle &RelationshipHandle::operator=(RelationshipHandle &&other) noexcept {
@@ -8144,8 +8382,7 @@ RelationshipHandle &RelationshipHandle::operator=(RelationshipHandle &&other) no
 	}
 	return *this;
 }
-RelationshipHandle::RelationshipHandle(const RelationshipHandle &other) :
-		instance_{}, state_(DiscordObjectState::Invalid) {
+RelationshipHandle::RelationshipHandle(const RelationshipHandle &other) : instance_{}, state_(DiscordObjectState::Invalid) {
 	if (other.state_ == DiscordObjectState::Owned) {
 		Discord_RelationshipHandle_Clone(&instance_, other.instance());
 
@@ -8167,8 +8404,8 @@ RelationshipHandle &RelationshipHandle::operator=(const RelationshipHandle &othe
 	return *this;
 }
 RelationshipHandle::RelationshipHandle(Discord_RelationshipHandle instance,
-		DiscordObjectState state) :
-		instance_(instance), state_(state) {
+		DiscordObjectState state) : instance_(instance),
+									state_(state) {
 }
 void RelationshipHandle::Drop() {
 	if (state_ != DiscordObjectState::Owned) {
@@ -8212,6 +8449,126 @@ std::optional<discordpp::UserHandle> RelationshipHandle::User() const {
 	discordpp::UserHandle returnValue__(returnValueNative__, DiscordObjectState::Owned);
 	return returnValue__;
 }
+const UserApplicationProfileHandle UserApplicationProfileHandle::nullobj{
+	{},
+	DiscordObjectState::Invalid
+};
+UserApplicationProfileHandle::~UserApplicationProfileHandle() {
+	if (state_ == DiscordObjectState::Owned) {
+		Drop();
+		state_ = DiscordObjectState::Invalid;
+	}
+}
+UserApplicationProfileHandle::UserApplicationProfileHandle(
+		UserApplicationProfileHandle &&other) noexcept
+		: instance_(other.instance_),
+		  state_(other.state_) {
+	other.state_ = DiscordObjectState::Invalid;
+}
+UserApplicationProfileHandle &UserApplicationProfileHandle::operator=(
+		UserApplicationProfileHandle &&other) noexcept {
+	if (this != &other) {
+		if (state_ == DiscordObjectState::Owned) {
+			Drop();
+		}
+		instance_ = other.instance_;
+		state_ = other.state_;
+		other.state_ = DiscordObjectState::Invalid;
+	}
+	return *this;
+}
+UserApplicationProfileHandle::UserApplicationProfileHandle(
+		const UserApplicationProfileHandle &other) : instance_{},
+													 state_(DiscordObjectState::Invalid) {
+	if (other.state_ == DiscordObjectState::Owned) {
+		Discord_UserApplicationProfileHandle_Clone(&instance_, other.instance());
+
+		state_ = DiscordObjectState::Owned;
+	}
+}
+UserApplicationProfileHandle &UserApplicationProfileHandle::operator=(
+		const UserApplicationProfileHandle &other) {
+	if (this != &other) {
+		if (state_ == DiscordObjectState::Owned) {
+			Drop();
+			state_ = DiscordObjectState::Invalid;
+		}
+		if (other.state_ == DiscordObjectState::Owned) {
+			Discord_UserApplicationProfileHandle_Clone(&instance_, other.instance());
+
+			state_ = DiscordObjectState::Owned;
+		}
+	}
+	return *this;
+}
+UserApplicationProfileHandle::UserApplicationProfileHandle(
+		Discord_UserApplicationProfileHandle instance,
+		DiscordObjectState state) : instance_(instance),
+									state_(state) {
+}
+void UserApplicationProfileHandle::Drop() {
+	if (state_ != DiscordObjectState::Owned) {
+		return;
+	}
+	Discord_UserApplicationProfileHandle_Drop(&instance_);
+	state_ = DiscordObjectState::Invalid;
+}
+std::string UserApplicationProfileHandle::AvatarHash() const {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_String returnValueNative__;
+	Discord_UserApplicationProfileHandle_AvatarHash(&instance_, &returnValueNative__);
+	std::string returnValue__(reinterpret_cast<char *>(returnValueNative__.ptr),
+			returnValueNative__.size);
+	Discord_Free(returnValueNative__.ptr);
+	return returnValue__;
+}
+std::string UserApplicationProfileHandle::Metadata() const {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_String returnValueNative__;
+	Discord_UserApplicationProfileHandle_Metadata(&instance_, &returnValueNative__);
+	std::string returnValue__(reinterpret_cast<char *>(returnValueNative__.ptr),
+			returnValueNative__.size);
+	Discord_Free(returnValueNative__.ptr);
+	return returnValue__;
+}
+std::optional<std::string> UserApplicationProfileHandle::ProviderId() const {
+	assert(state_ == DiscordObjectState::Owned);
+	bool returnIsNonNull__;
+	Discord_String returnValueNative__;
+	returnIsNonNull__ =
+			Discord_UserApplicationProfileHandle_ProviderId(&instance_, &returnValueNative__);
+	if (!returnIsNonNull__) {
+		return {};
+	}
+	std::string returnValue__(reinterpret_cast<char *>(returnValueNative__.ptr),
+			returnValueNative__.size);
+	Discord_Free(returnValueNative__.ptr);
+	return returnValue__;
+}
+std::string UserApplicationProfileHandle::ProviderIssuedUserId() const {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_String returnValueNative__;
+	Discord_UserApplicationProfileHandle_ProviderIssuedUserId(&instance_, &returnValueNative__);
+	std::string returnValue__(reinterpret_cast<char *>(returnValueNative__.ptr),
+			returnValueNative__.size);
+	Discord_Free(returnValueNative__.ptr);
+	return returnValue__;
+}
+discordpp::ExternalIdentityProviderType UserApplicationProfileHandle::ProviderType() const {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_ExternalIdentityProviderType returnValue__;
+	returnValue__ = Discord_UserApplicationProfileHandle_ProviderType(&instance_);
+	return static_cast<discordpp::ExternalIdentityProviderType>(returnValue__);
+}
+std::string UserApplicationProfileHandle::Username() const {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_String returnValueNative__;
+	Discord_UserApplicationProfileHandle_Username(&instance_, &returnValueNative__);
+	std::string returnValue__(reinterpret_cast<char *>(returnValueNative__.ptr),
+			returnValueNative__.size);
+	Discord_Free(returnValueNative__.ptr);
+	return returnValue__;
+}
 const UserHandle UserHandle::nullobj{ {}, DiscordObjectState::Invalid };
 UserHandle::~UserHandle() {
 	if (state_ == DiscordObjectState::Owned) {
@@ -8220,8 +8577,8 @@ UserHandle::~UserHandle() {
 	}
 }
 UserHandle::UserHandle(UserHandle &&other) noexcept
-		:
-		instance_(other.instance_), state_(other.state_) {
+		: instance_(other.instance_),
+		  state_(other.state_) {
 	other.state_ = DiscordObjectState::Invalid;
 }
 UserHandle &UserHandle::operator=(UserHandle &&other) noexcept {
@@ -8235,8 +8592,7 @@ UserHandle &UserHandle::operator=(UserHandle &&other) noexcept {
 	}
 	return *this;
 }
-UserHandle::UserHandle(const UserHandle &arg0) :
-		instance_{}, state_(DiscordObjectState::Invalid) {
+UserHandle::UserHandle(const UserHandle &arg0) : instance_{}, state_(DiscordObjectState::Invalid) {
 	if (arg0.state_ == DiscordObjectState::Owned) {
 		Discord_UserHandle_Clone(&instance_, arg0.instance());
 
@@ -8257,8 +8613,7 @@ UserHandle &UserHandle::operator=(const UserHandle &arg0) {
 	}
 	return *this;
 }
-UserHandle::UserHandle(Discord_UserHandle instance, DiscordObjectState state) :
-		instance_(instance), state_(state) {
+UserHandle::UserHandle(Discord_UserHandle instance, DiscordObjectState state) : instance_(instance), state_(state) {
 }
 void UserHandle::Drop() {
 	if (state_ != DiscordObjectState::Owned) {
@@ -8360,6 +8715,18 @@ discordpp::StatusType UserHandle::Status() const {
 	returnValue__ = Discord_UserHandle_Status(&instance_);
 	return static_cast<discordpp::StatusType>(returnValue__);
 }
+std::vector<discordpp::UserApplicationProfileHandle> UserHandle::UserApplicationProfiles() const {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_UserApplicationProfileHandleSpan returnValueNative__;
+	Discord_UserHandle_UserApplicationProfiles(&instance_, &returnValueNative__);
+	std::vector<discordpp::UserApplicationProfileHandle> returnValue__;
+	returnValue__.reserve(returnValueNative__.size);
+	for (size_t i__ = 0; i__ < returnValueNative__.size; ++i__) {
+		returnValue__.emplace_back(returnValueNative__.ptr[i__], DiscordObjectState::Owned);
+	}
+	Discord_Free(returnValueNative__.ptr);
+	return returnValue__;
+}
 std::string UserHandle::Username() const {
 	assert(state_ == DiscordObjectState::Owned);
 	Discord_String returnValueNative__;
@@ -8377,8 +8744,8 @@ LobbyMemberHandle::~LobbyMemberHandle() {
 	}
 }
 LobbyMemberHandle::LobbyMemberHandle(LobbyMemberHandle &&other) noexcept
-		:
-		instance_(other.instance_), state_(other.state_) {
+		: instance_(other.instance_),
+		  state_(other.state_) {
 	other.state_ = DiscordObjectState::Invalid;
 }
 LobbyMemberHandle &LobbyMemberHandle::operator=(LobbyMemberHandle &&other) noexcept {
@@ -8392,8 +8759,7 @@ LobbyMemberHandle &LobbyMemberHandle::operator=(LobbyMemberHandle &&other) noexc
 	}
 	return *this;
 }
-LobbyMemberHandle::LobbyMemberHandle(const LobbyMemberHandle &other) :
-		instance_{}, state_(DiscordObjectState::Invalid) {
+LobbyMemberHandle::LobbyMemberHandle(const LobbyMemberHandle &other) : instance_{}, state_(DiscordObjectState::Invalid) {
 	if (other.state_ == DiscordObjectState::Owned) {
 		Discord_LobbyMemberHandle_Clone(&instance_, other.instance());
 
@@ -8414,8 +8780,7 @@ LobbyMemberHandle &LobbyMemberHandle::operator=(const LobbyMemberHandle &other) 
 	}
 	return *this;
 }
-LobbyMemberHandle::LobbyMemberHandle(Discord_LobbyMemberHandle instance, DiscordObjectState state) :
-		instance_(instance), state_(state) {
+LobbyMemberHandle::LobbyMemberHandle(Discord_LobbyMemberHandle instance, DiscordObjectState state) : instance_(instance), state_(state) {
 }
 void LobbyMemberHandle::Drop() {
 	if (state_ != DiscordObjectState::Owned) {
@@ -8470,8 +8835,8 @@ LobbyHandle::~LobbyHandle() {
 	}
 }
 LobbyHandle::LobbyHandle(LobbyHandle &&other) noexcept
-		:
-		instance_(other.instance_), state_(other.state_) {
+		: instance_(other.instance_),
+		  state_(other.state_) {
 	other.state_ = DiscordObjectState::Invalid;
 }
 LobbyHandle &LobbyHandle::operator=(LobbyHandle &&other) noexcept {
@@ -8485,8 +8850,7 @@ LobbyHandle &LobbyHandle::operator=(LobbyHandle &&other) noexcept {
 	}
 	return *this;
 }
-LobbyHandle::LobbyHandle(const LobbyHandle &other) :
-		instance_{}, state_(DiscordObjectState::Invalid) {
+LobbyHandle::LobbyHandle(const LobbyHandle &other) : instance_{}, state_(DiscordObjectState::Invalid) {
 	if (other.state_ == DiscordObjectState::Owned) {
 		Discord_LobbyHandle_Clone(&instance_, other.instance());
 
@@ -8507,8 +8871,7 @@ LobbyHandle &LobbyHandle::operator=(const LobbyHandle &other) {
 	}
 	return *this;
 }
-LobbyHandle::LobbyHandle(Discord_LobbyHandle instance, DiscordObjectState state) :
-		instance_(instance), state_(state) {
+LobbyHandle::LobbyHandle(Discord_LobbyHandle instance, DiscordObjectState state) : instance_(instance), state_(state) {
 }
 void LobbyHandle::Drop() {
 	if (state_ != DiscordObjectState::Owned) {
@@ -8596,8 +8959,8 @@ AdditionalContent::~AdditionalContent() {
 	}
 }
 AdditionalContent::AdditionalContent(AdditionalContent &&other) noexcept
-		:
-		instance_(other.instance_), state_(other.state_) {
+		: instance_(other.instance_),
+		  state_(other.state_) {
 	other.state_ = DiscordObjectState::Invalid;
 }
 AdditionalContent &AdditionalContent::operator=(AdditionalContent &&other) noexcept {
@@ -8611,8 +8974,7 @@ AdditionalContent &AdditionalContent::operator=(AdditionalContent &&other) noexc
 	}
 	return *this;
 }
-AdditionalContent::AdditionalContent(const AdditionalContent &arg0) :
-		instance_{}, state_(DiscordObjectState::Invalid) {
+AdditionalContent::AdditionalContent(const AdditionalContent &arg0) : instance_{}, state_(DiscordObjectState::Invalid) {
 	if (arg0.state_ == DiscordObjectState::Owned) {
 		Discord_AdditionalContent_Clone(&instance_, arg0.instance());
 
@@ -8633,8 +8995,7 @@ AdditionalContent &AdditionalContent::operator=(const AdditionalContent &arg0) {
 	}
 	return *this;
 }
-AdditionalContent::AdditionalContent(Discord_AdditionalContent instance, DiscordObjectState state) :
-		instance_(instance), state_(state) {
+AdditionalContent::AdditionalContent(Discord_AdditionalContent instance, DiscordObjectState state) : instance_(instance), state_(state) {
 }
 AdditionalContent::AdditionalContent() {
 	assert(state_ == DiscordObjectState::Invalid);
@@ -8713,8 +9074,8 @@ MessageHandle::~MessageHandle() {
 	}
 }
 MessageHandle::MessageHandle(MessageHandle &&other) noexcept
-		:
-		instance_(other.instance_), state_(other.state_) {
+		: instance_(other.instance_),
+		  state_(other.state_) {
 	other.state_ = DiscordObjectState::Invalid;
 }
 MessageHandle &MessageHandle::operator=(MessageHandle &&other) noexcept {
@@ -8728,8 +9089,7 @@ MessageHandle &MessageHandle::operator=(MessageHandle &&other) noexcept {
 	}
 	return *this;
 }
-MessageHandle::MessageHandle(const MessageHandle &other) :
-		instance_{}, state_(DiscordObjectState::Invalid) {
+MessageHandle::MessageHandle(const MessageHandle &other) : instance_{}, state_(DiscordObjectState::Invalid) {
 	if (other.state_ == DiscordObjectState::Owned) {
 		Discord_MessageHandle_Clone(&instance_, other.instance());
 
@@ -8750,8 +9110,7 @@ MessageHandle &MessageHandle::operator=(const MessageHandle &other) {
 	}
 	return *this;
 }
-MessageHandle::MessageHandle(Discord_MessageHandle instance, DiscordObjectState state) :
-		instance_(instance), state_(state) {
+MessageHandle::MessageHandle(Discord_MessageHandle instance, DiscordObjectState state) : instance_(instance), state_(state) {
 }
 void MessageHandle::Drop() {
 	if (state_ != DiscordObjectState::Owned) {
@@ -8867,6 +9226,15 @@ std::unordered_map<std::string, std::string> MessageHandle::Metadata() const {
 	Discord_FreeProperties(returnValueNative__);
 	return returnValue__;
 }
+std::unordered_map<std::string, std::string> MessageHandle::ModerationMetadata() const {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_Properties returnValueNative__;
+	Discord_MessageHandle_ModerationMetadata(&instance_, &returnValueNative__);
+	std::unordered_map<std::string, std::string> returnValue__ =
+			ConvertReturnedProperties(returnValueNative__);
+	Discord_FreeProperties(returnValueNative__);
+	return returnValue__;
+}
 std::string MessageHandle::RawContent() const {
 	assert(state_ == DiscordObjectState::Owned);
 	Discord_String returnValueNative__;
@@ -8913,8 +9281,8 @@ AudioDevice::~AudioDevice() {
 	}
 }
 AudioDevice::AudioDevice(AudioDevice &&other) noexcept
-		:
-		instance_(other.instance_), state_(other.state_) {
+		: instance_(other.instance_),
+		  state_(other.state_) {
 	other.state_ = DiscordObjectState::Invalid;
 }
 AudioDevice &AudioDevice::operator=(AudioDevice &&other) noexcept {
@@ -8928,8 +9296,7 @@ AudioDevice &AudioDevice::operator=(AudioDevice &&other) noexcept {
 	}
 	return *this;
 }
-AudioDevice::AudioDevice(const AudioDevice &arg0) :
-		instance_{}, state_(DiscordObjectState::Invalid) {
+AudioDevice::AudioDevice(const AudioDevice &arg0) : instance_{}, state_(DiscordObjectState::Invalid) {
 	if (arg0.state_ == DiscordObjectState::Owned) {
 		Discord_AudioDevice_Clone(&instance_, arg0.instance());
 
@@ -8950,8 +9317,7 @@ AudioDevice &AudioDevice::operator=(const AudioDevice &arg0) {
 	}
 	return *this;
 }
-AudioDevice::AudioDevice(Discord_AudioDevice instance, DiscordObjectState state) :
-		instance_(instance), state_(state) {
+AudioDevice::AudioDevice(Discord_AudioDevice instance, DiscordObjectState state) : instance_(instance), state_(state) {
 }
 void AudioDevice::Drop() {
 	if (state_ != DiscordObjectState::Owned) {
@@ -9012,8 +9378,8 @@ UserMessageSummary::~UserMessageSummary() {
 	}
 }
 UserMessageSummary::UserMessageSummary(UserMessageSummary &&other) noexcept
-		:
-		instance_(other.instance_), state_(other.state_) {
+		: instance_(other.instance_),
+		  state_(other.state_) {
 	other.state_ = DiscordObjectState::Invalid;
 }
 UserMessageSummary &UserMessageSummary::operator=(UserMessageSummary &&other) noexcept {
@@ -9027,8 +9393,7 @@ UserMessageSummary &UserMessageSummary::operator=(UserMessageSummary &&other) no
 	}
 	return *this;
 }
-UserMessageSummary::UserMessageSummary(const UserMessageSummary &arg0) :
-		instance_{}, state_(DiscordObjectState::Invalid) {
+UserMessageSummary::UserMessageSummary(const UserMessageSummary &arg0) : instance_{}, state_(DiscordObjectState::Invalid) {
 	if (arg0.state_ == DiscordObjectState::Owned) {
 		Discord_UserMessageSummary_Clone(&instance_, arg0.instance());
 
@@ -9050,8 +9415,8 @@ UserMessageSummary &UserMessageSummary::operator=(const UserMessageSummary &arg0
 	return *this;
 }
 UserMessageSummary::UserMessageSummary(Discord_UserMessageSummary instance,
-		DiscordObjectState state) :
-		instance_(instance), state_(state) {
+		DiscordObjectState state) : instance_(instance),
+									state_(state) {
 }
 void UserMessageSummary::Drop() {
 	if (state_ != DiscordObjectState::Owned) {
@@ -9080,8 +9445,8 @@ ClientCreateOptions::~ClientCreateOptions() {
 	}
 }
 ClientCreateOptions::ClientCreateOptions(ClientCreateOptions &&other) noexcept
-		:
-		instance_(other.instance_), state_(other.state_) {
+		: instance_(other.instance_),
+		  state_(other.state_) {
 	other.state_ = DiscordObjectState::Invalid;
 }
 ClientCreateOptions &ClientCreateOptions::operator=(ClientCreateOptions &&other) noexcept {
@@ -9095,8 +9460,7 @@ ClientCreateOptions &ClientCreateOptions::operator=(ClientCreateOptions &&other)
 	}
 	return *this;
 }
-ClientCreateOptions::ClientCreateOptions(const ClientCreateOptions &arg0) :
-		instance_{}, state_(DiscordObjectState::Invalid) {
+ClientCreateOptions::ClientCreateOptions(const ClientCreateOptions &arg0) : instance_{}, state_(DiscordObjectState::Invalid) {
 	if (arg0.state_ == DiscordObjectState::Owned) {
 		Discord_ClientCreateOptions_Clone(&instance_, arg0.instance());
 
@@ -9118,8 +9482,8 @@ ClientCreateOptions &ClientCreateOptions::operator=(const ClientCreateOptions &a
 	return *this;
 }
 ClientCreateOptions::ClientCreateOptions(Discord_ClientCreateOptions instance,
-		DiscordObjectState state) :
-		instance_(instance), state_(state) {
+		DiscordObjectState state) : instance_(instance),
+									state_(state) {
 }
 ClientCreateOptions::ClientCreateOptions() {
 	assert(state_ == DiscordObjectState::Invalid);
@@ -9185,6 +9549,21 @@ void ClientCreateOptions::SetExperimentalAndroidPreventCommsForBluetooth(
 	Discord_ClientCreateOptions_SetExperimentalAndroidPreventCommsForBluetooth(
 			&instance_, ExperimentalAndroidPreventCommsForBluetooth);
 }
+std::optional<uint64_t> ClientCreateOptions::CpuAffinityMask() const {
+	assert(state_ == DiscordObjectState::Owned);
+	bool returnIsNonNull__;
+	uint64_t returnValue__;
+	returnIsNonNull__ = Discord_ClientCreateOptions_CpuAffinityMask(&instance_, &returnValue__);
+	if (!returnIsNonNull__) {
+		return std::nullopt;
+	}
+	return returnValue__;
+}
+void ClientCreateOptions::SetCpuAffinityMask(std::optional<uint64_t> CpuAffinityMask) {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_ClientCreateOptions_SetCpuAffinityMask(
+			&instance_, (CpuAffinityMask.has_value() ? &*CpuAffinityMask : nullptr));
+}
 const Client Client::nullobj{ {}, DiscordObjectState::Invalid };
 Client::~Client() {
 	if (state_ == DiscordObjectState::Owned) {
@@ -9193,8 +9572,8 @@ Client::~Client() {
 	}
 }
 Client::Client(Client &&other) noexcept
-		:
-		instance_(other.instance_), state_(other.state_) {
+		: instance_(other.instance_),
+		  state_(other.state_) {
 	other.state_ = DiscordObjectState::Invalid;
 }
 Client &Client::operator=(Client &&other) noexcept {
@@ -9208,8 +9587,7 @@ Client &Client::operator=(Client &&other) noexcept {
 	}
 	return *this;
 }
-Client::Client(Discord_Client instance, DiscordObjectState state) :
-		instance_(instance), state_(state) {
+Client::Client(Discord_Client instance, DiscordObjectState state) : instance_(instance), state_(state) {
 }
 Client::Client() {
 	assert(state_ == DiscordObjectState::Invalid);
@@ -9247,6 +9625,13 @@ uint64_t Client::GetApplicationId() {
 	assert(state_ == DiscordObjectState::Owned);
 	uint64_t returnValue__;
 	returnValue__ = Discord_Client_GetApplicationId(&instance_);
+	return returnValue__;
+}
+discordpp::UserHandle Client::GetCurrentUser() const {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_UserHandle returnValueNative__{};
+	Discord_Client_GetCurrentUser(&instance_, &returnValueNative__);
+	discordpp::UserHandle returnValue__(returnValueNative__, DiscordObjectState::Owned);
 	return returnValue__;
 }
 std::string Client::GetDefaultAudioDeviceId() {
@@ -9974,6 +10359,21 @@ void Client::RefreshToken(uint64_t applicationId,
 			Tcallback__UserData::Free,
 			callback__userData);
 }
+void Client::RegisterAuthorizeRequestCallback(discordpp::Client::AuthorizeRequestCallback callback) {
+	assert(state_ == DiscordObjectState::Owned);
+	using Tcallback__UserData = TDelegateUserData<std::remove_reference_t<decltype(callback)>>;
+	auto callback__userData = new Tcallback__UserData(callback);
+	Discord_Client_AuthorizeRequestCallback callback__native = [](void *userData__) {
+		auto userData__typed = static_cast<Tcallback__UserData *>(userData__);
+		userData__typed->delegate();
+	};
+	Discord_Client_RegisterAuthorizeRequestCallback(
+			&instance_, callback__native, Tcallback__UserData::Free, callback__userData);
+}
+void Client::RemoveAuthorizeRequestCallback() {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_Client_RemoveAuthorizeRequestCallback(&instance_);
+}
 void Client::RevokeToken(uint64_t applicationId,
 		std::string const &token,
 		discordpp::Client::RevokeTokenCallback callback) {
@@ -10699,6 +11099,18 @@ void Client::UnlinkChannelFromLobby(uint64_t lobbyId,
 	Discord_Client_UnlinkChannelFromLobby(
 			&instance_, lobbyId, callback__native, Tcallback__UserData::Free, callback__userData);
 }
+void Client::IsDiscordAppInstalled(discordpp::Client::IsDiscordAppInstalledCallback callback) {
+	assert(state_ == DiscordObjectState::Owned);
+	using Tcallback__UserData = TDelegateUserData<std::remove_reference_t<decltype(callback)>>;
+	auto callback__userData = new Tcallback__UserData(callback);
+	Discord_Client_IsDiscordAppInstalledCallback callback__native = [](auto installed,
+																			void *userData__) {
+		auto userData__typed = static_cast<Tcallback__UserData *>(userData__);
+		userData__typed->delegate(installed);
+	};
+	Discord_Client_IsDiscordAppInstalled(
+			&instance_, callback__native, Tcallback__UserData::Free, callback__userData);
+}
 void Client::AcceptActivityInvite(discordpp::ActivityInvite invite,
 		discordpp::Client::AcceptActivityInviteCallback cb) {
 	assert(state_ == DiscordObjectState::Owned);
@@ -11104,13 +11516,6 @@ void Client::UnblockUser(uint64_t userId, discordpp::Client::UpdateRelationshipC
 	};
 	Discord_Client_UnblockUser(&instance_, userId, cb__native, Tcb__UserData::Free, cb__userData);
 }
-discordpp::UserHandle Client::GetCurrentUser() const {
-	assert(state_ == DiscordObjectState::Owned);
-	Discord_UserHandle returnValueNative__{};
-	Discord_Client_GetCurrentUser(&instance_, &returnValueNative__);
-	discordpp::UserHandle returnValue__(returnValueNative__, DiscordObjectState::Owned);
-	return returnValue__;
-}
 std::optional<discordpp::UserHandle> Client::GetCurrentUserV2() const {
 	assert(state_ == DiscordObjectState::Owned);
 	bool returnIsNonNull__;
@@ -11184,8 +11589,8 @@ CallInfoHandle::~CallInfoHandle() {
 	}
 }
 CallInfoHandle::CallInfoHandle(CallInfoHandle &&other) noexcept
-		:
-		instance_(other.instance_), state_(other.state_) {
+		: instance_(other.instance_),
+		  state_(other.state_) {
 	other.state_ = DiscordObjectState::Invalid;
 }
 CallInfoHandle &CallInfoHandle::operator=(CallInfoHandle &&other) noexcept {
@@ -11199,8 +11604,7 @@ CallInfoHandle &CallInfoHandle::operator=(CallInfoHandle &&other) noexcept {
 	}
 	return *this;
 }
-CallInfoHandle::CallInfoHandle(const CallInfoHandle &other) :
-		instance_{}, state_(DiscordObjectState::Invalid) {
+CallInfoHandle::CallInfoHandle(const CallInfoHandle &other) : instance_{}, state_(DiscordObjectState::Invalid) {
 	if (other.state_ == DiscordObjectState::Owned) {
 		Discord_CallInfoHandle_Clone(&instance_, other.instance());
 
@@ -11221,8 +11625,7 @@ CallInfoHandle &CallInfoHandle::operator=(const CallInfoHandle &other) {
 	}
 	return *this;
 }
-CallInfoHandle::CallInfoHandle(Discord_CallInfoHandle instance, DiscordObjectState state) :
-		instance_(instance), state_(state) {
+CallInfoHandle::CallInfoHandle(Discord_CallInfoHandle instance, DiscordObjectState state) : instance_(instance), state_(state) {
 }
 void CallInfoHandle::Drop() {
 	if (state_ != DiscordObjectState::Owned) {

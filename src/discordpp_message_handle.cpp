@@ -102,6 +102,17 @@ TypedDictionary<String, String> DiscordppMessageHandle::Metadata() {
 	return t_r;
 }
 
+TypedDictionary<String, String> DiscordppMessageHandle::ModerationMetadata() {
+	auto r = obj->ModerationMetadata();
+	TypedDictionary<String, String> t_r = TypedDictionary<String, String>();
+
+	for (auto p_r : r) {
+		t_r[String(p_r.first.c_str())] = String(p_r.second.c_str());
+	}
+
+	return t_r;
+}
+
 String DiscordppMessageHandle::RawContent() {
 	return String(obj->RawContent().c_str());
 }
@@ -168,6 +179,9 @@ void DiscordppMessageHandle::_bind_methods() {
 
 	ClassDB::bind_method(D_METHOD("Metadata"),
 			&DiscordppMessageHandle::Metadata);
+
+	ClassDB::bind_method(D_METHOD("ModerationMetadata"),
+			&DiscordppMessageHandle::ModerationMetadata);
 
 	ClassDB::bind_method(D_METHOD("RawContent"),
 			&DiscordppMessageHandle::RawContent);
