@@ -19,9 +19,7 @@ env.Append(
     LIBS=["discord_partner_sdk"],
 )
 
-# MacOS seems to dislike the way this RPATH flag gets passed to the linker.
-# appending -rpath as LINKFLAGS seem to work - using @loader_path to point 
-#to the library's own path.
+# Dynamic linking libs.
 if env["platform"] == "macos":
     env.Append(LINKFLAGS=["-Wl,-rpath,@loader_path"])
 elif env["platform"] == "linux":
