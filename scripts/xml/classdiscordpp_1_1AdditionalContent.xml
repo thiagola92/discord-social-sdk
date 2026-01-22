@@ -1,0 +1,305 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="classdiscordpp_1_1AdditionalContent" kind="class" language="C++" prot="public">
+    <compoundname>discordpp::AdditionalContent</compoundname>
+    <includes local="no">discordpp.h</includes>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classdiscordpp_1_1AdditionalContent_1ad66af87a7e73142f1aa940a04824c01d" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="classdiscordpp_1_1AdditionalContent" kindref="compound">AdditionalContent</ref></type>
+        <definition>const AdditionalContent discordpp::AdditionalContent::nullobj</definition>
+        <argsstring></argsstring>
+        <name>nullobj</name>
+        <qualifiedname>discordpp::AdditionalContent::nullobj</qualifiedname>
+        <briefdescription>
+<para>Uninitialized instance of <ref refid="classdiscordpp_1_1AdditionalContent" kindref="compound">AdditionalContent</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2910" column="32" bodyfile="include/discordpp.h" bodystart="2910" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classdiscordpp_1_1AdditionalContent_1aaae725626946a5bda7448c160c3bfc8c" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::AdditionalContent::AdditionalContent</definition>
+        <argsstring>(AdditionalContent &amp;&amp;other) noexcept</argsstring>
+        <name>AdditionalContent</name>
+        <qualifiedname>discordpp::AdditionalContent::AdditionalContent</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1AdditionalContent" kindref="compound">AdditionalContent</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move constructor for <ref refid="classdiscordpp_1_1AdditionalContent" kindref="compound">AdditionalContent</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2906" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AdditionalContent_1a21ccadad0bf9ff22a7812764e42fc4c3" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1AdditionalContent" kindref="compound">AdditionalContent</ref> &amp;</type>
+        <definition>AdditionalContent &amp; discordpp::AdditionalContent::operator=</definition>
+        <argsstring>(AdditionalContent &amp;&amp;other) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::AdditionalContent::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1AdditionalContent" kindref="compound">AdditionalContent</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move assignment operator for <ref refid="classdiscordpp_1_1AdditionalContent" kindref="compound">AdditionalContent</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2908" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AdditionalContent_1a32740cbe47696a36eba98ade81f8d214" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::AdditionalContent::operator bool</definition>
+        <argsstring>() const</argsstring>
+        <name>operator bool</name>
+        <qualifiedname>discordpp::AdditionalContent::operator bool</qualifiedname>
+        <briefdescription>
+<para>Returns true if the instance contains a valid object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2912" column="1" bodyfile="include/discordpp.h" bodystart="2912" bodyend="2912"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AdditionalContent_1ab162a7c319bceaab6133c4f89409290a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::AdditionalContent::AdditionalContent</definition>
+        <argsstring>(const AdditionalContent &amp;arg0)</argsstring>
+        <name>AdditionalContent</name>
+        <qualifiedname>discordpp::AdditionalContent::AdditionalContent</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1AdditionalContent" kindref="compound">AdditionalContent</ref> &amp;</type>
+          <declname>arg0</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor for <ref refid="classdiscordpp_1_1AdditionalContent" kindref="compound">AdditionalContent</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2915" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AdditionalContent_1aaf3f1800da1798ac95010d7e40e6bb1d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1AdditionalContent" kindref="compound">AdditionalContent</ref> &amp;</type>
+        <definition>AdditionalContent &amp; discordpp::AdditionalContent::operator=</definition>
+        <argsstring>(const AdditionalContent &amp;arg0)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::AdditionalContent::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1AdditionalContent" kindref="compound">AdditionalContent</ref> &amp;</type>
+          <declname>arg0</declname>
+        </param>
+        <briefdescription>
+<para>Copy assignment operator for <ref refid="classdiscordpp_1_1AdditionalContent" kindref="compound">AdditionalContent</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2917" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AdditionalContent_1a230e54db36abe57d0f9b4bababe5334d" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::AdditionalContent::AdditionalContent</definition>
+        <argsstring>()</argsstring>
+        <name>AdditionalContent</name>
+        <qualifiedname>discordpp::AdditionalContent::AdditionalContent</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2919" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AdditionalContent_1a74b36937fd27724ab5454709cf4545bb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool discordpp::AdditionalContent::Equals</definition>
+        <argsstring>(discordpp::AdditionalContent rhs) const</argsstring>
+        <name>Equals</name>
+        <qualifiedname>discordpp::AdditionalContent::Equals</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1AdditionalContent" kindref="compound">discordpp::AdditionalContent</ref></type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+<para>Compares each field of the <ref refid="classdiscordpp_1_1AdditionalContent" kindref="compound">AdditionalContent</ref> struct for equality. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2926" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AdditionalContent_1a5f71d7a58bfcf125e32cff555f6dd032" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacediscordpp_1aee4b786af6ac9cd4ade73eb2f873177b" kindref="member">discordpp::AdditionalContentType</ref></type>
+        <definition>discordpp::AdditionalContentType discordpp::AdditionalContent::Type</definition>
+        <argsstring>() const</argsstring>
+        <name>Type</name>
+        <qualifiedname>discordpp::AdditionalContent::Type</qualifiedname>
+        <briefdescription>
+<para>Represents the type of additional content in the message. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2932" column="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AdditionalContent_1a4c18621756a4d587660d8a849a5bc8b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::AdditionalContent::SetType</definition>
+        <argsstring>(discordpp::AdditionalContentType Type)</argsstring>
+        <name>SetType</name>
+        <qualifiedname>discordpp::AdditionalContent::SetType</qualifiedname>
+        <param>
+          <type><ref refid="namespacediscordpp_1aee4b786af6ac9cd4ade73eb2f873177b" kindref="member">discordpp::AdditionalContentType</ref></type>
+          <declname>Type</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1AdditionalContent_1a5f71d7a58bfcf125e32cff555f6dd032" kindref="member">AdditionalContent::Type</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2934" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AdditionalContent_1a5162c8a105790c4a654ace2a0fba7b6c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt; std::string &gt; discordpp::AdditionalContent::Title</definition>
+        <argsstring>() const</argsstring>
+        <name>Title</name>
+        <qualifiedname>discordpp::AdditionalContent::Title</qualifiedname>
+        <briefdescription>
+<para>When the additional content is a poll or thread, this field will contain the name of the poll or thread. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2938" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AdditionalContent_1acb289b99006d9ffcb829eeb006f7ebdd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::AdditionalContent::SetTitle</definition>
+        <argsstring>(std::optional&lt; std::string &gt; Title)</argsstring>
+        <name>SetTitle</name>
+        <qualifiedname>discordpp::AdditionalContent::SetTitle</qualifiedname>
+        <param>
+          <type>std::optional&lt; std::string &gt;</type>
+          <declname>Title</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1AdditionalContent_1a5162c8a105790c4a654ace2a0fba7b6c" kindref="member">AdditionalContent::Title</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2940" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AdditionalContent_1a67f810f29c69d51eff30eb424e17428c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t discordpp::AdditionalContent::Count</definition>
+        <argsstring>() const</argsstring>
+        <name>Count</name>
+        <qualifiedname>discordpp::AdditionalContent::Count</qualifiedname>
+        <briefdescription>
+<para>Represents the number of pieces of additional content so you could for example renders &quot;2 additional images&quot;. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2944" column="9"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AdditionalContent_1a335b1c5766a6f0461c657e22ea2737d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::AdditionalContent::SetCount</definition>
+        <argsstring>(uint8_t Count)</argsstring>
+        <name>SetCount</name>
+        <qualifiedname>discordpp::AdditionalContent::SetCount</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>Count</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1AdditionalContent_1a67f810f29c69d51eff30eb424e17428c" kindref="member">AdditionalContent::Count</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2946" column="6"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classdiscordpp_1_1AdditionalContent_1a104d763a401c1a53688c11f60bf9db81" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>static std::string discordpp::AdditionalContent::TypeToString</definition>
+        <argsstring>(discordpp::AdditionalContentType type)</argsstring>
+        <name>TypeToString</name>
+        <qualifiedname>discordpp::AdditionalContent::TypeToString</qualifiedname>
+        <param>
+          <type><ref refid="namespacediscordpp_1aee4b786af6ac9cd4ade73eb2f873177b" kindref="member">discordpp::AdditionalContentType</ref></type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+<para>Converts the <ref refid="namespacediscordpp_1aee4b786af6ac9cd4ade73eb2f873177b" kindref="member">AdditionalContentType</ref> enum to a string. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2929" column="20"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Contains information about non-text content in a message that likely cannot be rendered in game such as images, videos, embeds, polls, and more. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>discordpp::AdditionalContent</label>
+        <link refid="classdiscordpp_1_1AdditionalContent"/>
+        <childnode refid="1" relation="usage">
+          <edgelabel>nullobj</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/discordpp.h" line="2891" column="1" bodyfile="include/discordpp.h" bodystart="2891" bodyend="2947"/>
+    <listofallmembers>
+      <member refid="classdiscordpp_1_1AdditionalContent_1aaae725626946a5bda7448c160c3bfc8c" prot="public" virt="non-virtual"><scope>discordpp::AdditionalContent</scope><name>AdditionalContent</name></member>
+      <member refid="classdiscordpp_1_1AdditionalContent_1ab162a7c319bceaab6133c4f89409290a" prot="public" virt="non-virtual"><scope>discordpp::AdditionalContent</scope><name>AdditionalContent</name></member>
+      <member refid="classdiscordpp_1_1AdditionalContent_1a230e54db36abe57d0f9b4bababe5334d" prot="public" virt="non-virtual"><scope>discordpp::AdditionalContent</scope><name>AdditionalContent</name></member>
+      <member refid="classdiscordpp_1_1AdditionalContent_1a67f810f29c69d51eff30eb424e17428c" prot="public" virt="non-virtual"><scope>discordpp::AdditionalContent</scope><name>Count</name></member>
+      <member refid="classdiscordpp_1_1AdditionalContent_1a74b36937fd27724ab5454709cf4545bb" prot="public" virt="non-virtual"><scope>discordpp::AdditionalContent</scope><name>Equals</name></member>
+      <member refid="classdiscordpp_1_1AdditionalContent_1ad66af87a7e73142f1aa940a04824c01d" prot="public" virt="non-virtual"><scope>discordpp::AdditionalContent</scope><name>nullobj</name></member>
+      <member refid="classdiscordpp_1_1AdditionalContent_1a32740cbe47696a36eba98ade81f8d214" prot="public" virt="non-virtual"><scope>discordpp::AdditionalContent</scope><name>operator bool</name></member>
+      <member refid="classdiscordpp_1_1AdditionalContent_1a21ccadad0bf9ff22a7812764e42fc4c3" prot="public" virt="non-virtual"><scope>discordpp::AdditionalContent</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1AdditionalContent_1aaf3f1800da1798ac95010d7e40e6bb1d" prot="public" virt="non-virtual"><scope>discordpp::AdditionalContent</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1AdditionalContent_1a335b1c5766a6f0461c657e22ea2737d8" prot="public" virt="non-virtual"><scope>discordpp::AdditionalContent</scope><name>SetCount</name></member>
+      <member refid="classdiscordpp_1_1AdditionalContent_1acb289b99006d9ffcb829eeb006f7ebdd" prot="public" virt="non-virtual"><scope>discordpp::AdditionalContent</scope><name>SetTitle</name></member>
+      <member refid="classdiscordpp_1_1AdditionalContent_1a4c18621756a4d587660d8a849a5bc8b2" prot="public" virt="non-virtual"><scope>discordpp::AdditionalContent</scope><name>SetType</name></member>
+      <member refid="classdiscordpp_1_1AdditionalContent_1a5162c8a105790c4a654ace2a0fba7b6c" prot="public" virt="non-virtual"><scope>discordpp::AdditionalContent</scope><name>Title</name></member>
+      <member refid="classdiscordpp_1_1AdditionalContent_1a5f71d7a58bfcf125e32cff555f6dd032" prot="public" virt="non-virtual"><scope>discordpp::AdditionalContent</scope><name>Type</name></member>
+      <member refid="classdiscordpp_1_1AdditionalContent_1a104d763a401c1a53688c11f60bf9db81" prot="public" virt="non-virtual"><scope>discordpp::AdditionalContent</scope><name>TypeToString</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

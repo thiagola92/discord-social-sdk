@@ -1,0 +1,212 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="classdiscordpp_1_1GuildMinimal" kind="class" language="C++" prot="public">
+    <compoundname>discordpp::GuildMinimal</compoundname>
+    <includes local="no">discordpp.h</includes>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classdiscordpp_1_1GuildMinimal_1a40a1e65295946c73e3edebaef96f9bb4" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="classdiscordpp_1_1GuildMinimal" kindref="compound">GuildMinimal</ref></type>
+        <definition>const GuildMinimal discordpp::GuildMinimal::nullobj</definition>
+        <argsstring></argsstring>
+        <name>nullobj</name>
+        <qualifiedname>discordpp::GuildMinimal::nullobj</qualifiedname>
+        <briefdescription>
+<para>Uninitialized instance of <ref refid="classdiscordpp_1_1GuildMinimal" kindref="compound">GuildMinimal</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2185" column="27" bodyfile="include/discordpp.h" bodystart="2185" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classdiscordpp_1_1GuildMinimal_1a89360851ff87ef134f330ad5f774df28" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::GuildMinimal::GuildMinimal</definition>
+        <argsstring>(GuildMinimal &amp;&amp;other) noexcept</argsstring>
+        <name>GuildMinimal</name>
+        <qualifiedname>discordpp::GuildMinimal::GuildMinimal</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1GuildMinimal" kindref="compound">GuildMinimal</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move constructor for <ref refid="classdiscordpp_1_1GuildMinimal" kindref="compound">GuildMinimal</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2181" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1GuildMinimal_1a443d687cb668f4bbbc384d4b77c3ce5b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1GuildMinimal" kindref="compound">GuildMinimal</ref> &amp;</type>
+        <definition>GuildMinimal &amp; discordpp::GuildMinimal::operator=</definition>
+        <argsstring>(GuildMinimal &amp;&amp;other) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::GuildMinimal::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1GuildMinimal" kindref="compound">GuildMinimal</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move assignment operator for <ref refid="classdiscordpp_1_1GuildMinimal" kindref="compound">GuildMinimal</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2183" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1GuildMinimal_1a96a88e4a9e3d5b7d0a7ddb2d80bd8a41" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::GuildMinimal::operator bool</definition>
+        <argsstring>() const</argsstring>
+        <name>operator bool</name>
+        <qualifiedname>discordpp::GuildMinimal::operator bool</qualifiedname>
+        <briefdescription>
+<para>Returns true if the instance contains a valid object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2187" column="1" bodyfile="include/discordpp.h" bodystart="2187" bodyend="2187"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1GuildMinimal_1a66c0e5e9e75c3a2e2e49d974e942afb4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::GuildMinimal::GuildMinimal</definition>
+        <argsstring>(const GuildMinimal &amp;arg0)</argsstring>
+        <name>GuildMinimal</name>
+        <qualifiedname>discordpp::GuildMinimal::GuildMinimal</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1GuildMinimal" kindref="compound">GuildMinimal</ref> &amp;</type>
+          <declname>arg0</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor for <ref refid="classdiscordpp_1_1GuildMinimal" kindref="compound">GuildMinimal</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2190" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1GuildMinimal_1a5de81bf0d64d98f03cfe83bd81354118" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1GuildMinimal" kindref="compound">GuildMinimal</ref> &amp;</type>
+        <definition>GuildMinimal &amp; discordpp::GuildMinimal::operator=</definition>
+        <argsstring>(const GuildMinimal &amp;arg0)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::GuildMinimal::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1GuildMinimal" kindref="compound">GuildMinimal</ref> &amp;</type>
+          <declname>arg0</declname>
+        </param>
+        <briefdescription>
+<para>Copy assignment operator for <ref refid="classdiscordpp_1_1GuildMinimal" kindref="compound">GuildMinimal</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2192" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1GuildMinimal_1ae31b9a80af6e404325dda37007056263" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t discordpp::GuildMinimal::Id</definition>
+        <argsstring>() const</argsstring>
+        <name>Id</name>
+        <qualifiedname>discordpp::GuildMinimal::Id</qualifiedname>
+        <briefdescription>
+<para>The id of the guild. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2199" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1GuildMinimal_1a31b7a83ae5ffe84eb103e249e6a0e0dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::GuildMinimal::SetId</definition>
+        <argsstring>(uint64_t Id)</argsstring>
+        <name>SetId</name>
+        <qualifiedname>discordpp::GuildMinimal::SetId</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>Id</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1GuildMinimal_1ae31b9a80af6e404325dda37007056263" kindref="member">GuildMinimal::Id</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2201" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1GuildMinimal_1a27c6a10f72b07d46dc14292115f9ab72" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string discordpp::GuildMinimal::Name</definition>
+        <argsstring>() const</argsstring>
+        <name>Name</name>
+        <qualifiedname>discordpp::GuildMinimal::Name</qualifiedname>
+        <briefdescription>
+<para>The name of the guild. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2204" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1GuildMinimal_1a20d39f5596a1287a825e2154098ea4b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::GuildMinimal::SetName</definition>
+        <argsstring>(std::string Name)</argsstring>
+        <name>SetName</name>
+        <qualifiedname>discordpp::GuildMinimal::SetName</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>Name</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1GuildMinimal_1a27c6a10f72b07d46dc14292115f9ab72" kindref="member">GuildMinimal::Name</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2206" column="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents a guild (also knowns as a Discord server), that the current user is a member of, that contains channels that can be linked to a lobby. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>discordpp::GuildMinimal</label>
+        <link refid="classdiscordpp_1_1GuildMinimal"/>
+        <childnode refid="1" relation="usage">
+          <edgelabel>nullobj</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/discordpp.h" line="2166" column="1" bodyfile="include/discordpp.h" bodystart="2166" bodyend="2207"/>
+    <listofallmembers>
+      <member refid="classdiscordpp_1_1GuildMinimal_1a89360851ff87ef134f330ad5f774df28" prot="public" virt="non-virtual"><scope>discordpp::GuildMinimal</scope><name>GuildMinimal</name></member>
+      <member refid="classdiscordpp_1_1GuildMinimal_1a66c0e5e9e75c3a2e2e49d974e942afb4" prot="public" virt="non-virtual"><scope>discordpp::GuildMinimal</scope><name>GuildMinimal</name></member>
+      <member refid="classdiscordpp_1_1GuildMinimal_1ae31b9a80af6e404325dda37007056263" prot="public" virt="non-virtual"><scope>discordpp::GuildMinimal</scope><name>Id</name></member>
+      <member refid="classdiscordpp_1_1GuildMinimal_1a27c6a10f72b07d46dc14292115f9ab72" prot="public" virt="non-virtual"><scope>discordpp::GuildMinimal</scope><name>Name</name></member>
+      <member refid="classdiscordpp_1_1GuildMinimal_1a40a1e65295946c73e3edebaef96f9bb4" prot="public" virt="non-virtual"><scope>discordpp::GuildMinimal</scope><name>nullobj</name></member>
+      <member refid="classdiscordpp_1_1GuildMinimal_1a96a88e4a9e3d5b7d0a7ddb2d80bd8a41" prot="public" virt="non-virtual"><scope>discordpp::GuildMinimal</scope><name>operator bool</name></member>
+      <member refid="classdiscordpp_1_1GuildMinimal_1a443d687cb668f4bbbc384d4b77c3ce5b" prot="public" virt="non-virtual"><scope>discordpp::GuildMinimal</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1GuildMinimal_1a5de81bf0d64d98f03cfe83bd81354118" prot="public" virt="non-virtual"><scope>discordpp::GuildMinimal</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1GuildMinimal_1a31b7a83ae5ffe84eb103e249e6a0e0dc" prot="public" virt="non-virtual"><scope>discordpp::GuildMinimal</scope><name>SetId</name></member>
+      <member refid="classdiscordpp_1_1GuildMinimal_1a20d39f5596a1287a825e2154098ea4b7" prot="public" virt="non-virtual"><scope>discordpp::GuildMinimal</scope><name>SetName</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,269 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="classdiscordpp_1_1AudioDevice" kind="class" language="C++" prot="public">
+    <compoundname>discordpp::AudioDevice</compoundname>
+    <includes local="no">discordpp.h</includes>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classdiscordpp_1_1AudioDevice_1a9014d49ff82b3120fba3859e85553438" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="classdiscordpp_1_1AudioDevice" kindref="compound">AudioDevice</ref></type>
+        <definition>const AudioDevice discordpp::AudioDevice::nullobj</definition>
+        <argsstring></argsstring>
+        <name>nullobj</name>
+        <qualifiedname>discordpp::AudioDevice::nullobj</qualifiedname>
+        <briefdescription>
+<para>Uninitialized instance of <ref refid="classdiscordpp_1_1AudioDevice" kindref="compound">AudioDevice</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3143" column="26" bodyfile="include/discordpp.h" bodystart="3143" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classdiscordpp_1_1AudioDevice_1a7d083c7bad8ebde4fc16b3151d5761f6" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::AudioDevice::AudioDevice</definition>
+        <argsstring>(AudioDevice &amp;&amp;other) noexcept</argsstring>
+        <name>AudioDevice</name>
+        <qualifiedname>discordpp::AudioDevice::AudioDevice</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1AudioDevice" kindref="compound">AudioDevice</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move constructor for <ref refid="classdiscordpp_1_1AudioDevice" kindref="compound">AudioDevice</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3139" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AudioDevice_1a807a5b01a3b53a3e3f23b778c5aeb323" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1AudioDevice" kindref="compound">AudioDevice</ref> &amp;</type>
+        <definition>AudioDevice &amp; discordpp::AudioDevice::operator=</definition>
+        <argsstring>(AudioDevice &amp;&amp;other) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::AudioDevice::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1AudioDevice" kindref="compound">AudioDevice</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move assignment operator for <ref refid="classdiscordpp_1_1AudioDevice" kindref="compound">AudioDevice</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3141" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AudioDevice_1a398573781b3f9ade6cfa015c5e92ca42" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::AudioDevice::operator bool</definition>
+        <argsstring>() const</argsstring>
+        <name>operator bool</name>
+        <qualifiedname>discordpp::AudioDevice::operator bool</qualifiedname>
+        <briefdescription>
+<para>Returns true if the instance contains a valid object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3145" column="1" bodyfile="include/discordpp.h" bodystart="3145" bodyend="3145"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AudioDevice_1adec7c5b9e9c59a486de49af91ddcba63" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::AudioDevice::AudioDevice</definition>
+        <argsstring>(const AudioDevice &amp;arg0)</argsstring>
+        <name>AudioDevice</name>
+        <qualifiedname>discordpp::AudioDevice::AudioDevice</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1AudioDevice" kindref="compound">AudioDevice</ref> &amp;</type>
+          <declname>arg0</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor for <ref refid="classdiscordpp_1_1AudioDevice" kindref="compound">AudioDevice</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3148" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AudioDevice_1a04f55870e55b0d971f7362e85b999332" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1AudioDevice" kindref="compound">AudioDevice</ref> &amp;</type>
+        <definition>AudioDevice &amp; discordpp::AudioDevice::operator=</definition>
+        <argsstring>(const AudioDevice &amp;arg0)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::AudioDevice::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1AudioDevice" kindref="compound">AudioDevice</ref> &amp;</type>
+          <declname>arg0</declname>
+        </param>
+        <briefdescription>
+<para>Copy assignment operator for <ref refid="classdiscordpp_1_1AudioDevice" kindref="compound">AudioDevice</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3150" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AudioDevice_1a09b99233147f4a70ecdc5c3e667e56ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool discordpp::AudioDevice::Equals</definition>
+        <argsstring>(discordpp::AudioDevice rhs)</argsstring>
+        <name>Equals</name>
+        <qualifiedname>discordpp::AudioDevice::Equals</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1AudioDevice" kindref="compound">discordpp::AudioDevice</ref></type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+<para>Compares the ID of two <ref refid="classdiscordpp_1_1AudioDevice" kindref="compound">AudioDevice</ref> objects for equality. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3157" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AudioDevice_1a3f85e5323b6a5d6ce8b6b2abb05490b6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string discordpp::AudioDevice::Id</definition>
+        <argsstring>() const</argsstring>
+        <name>Id</name>
+        <qualifiedname>discordpp::AudioDevice::Id</qualifiedname>
+        <briefdescription>
+<para>The ID of the audio device. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3160" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AudioDevice_1aafde2cb9f47e19fd505438a354d95091" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::AudioDevice::SetId</definition>
+        <argsstring>(std::string Id)</argsstring>
+        <name>SetId</name>
+        <qualifiedname>discordpp::AudioDevice::SetId</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>Id</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1AudioDevice_1a3f85e5323b6a5d6ce8b6b2abb05490b6" kindref="member">AudioDevice::Id</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3162" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AudioDevice_1a1f021287a4bf98992d3c9b27589c5f59" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string discordpp::AudioDevice::Name</definition>
+        <argsstring>() const</argsstring>
+        <name>Name</name>
+        <qualifiedname>discordpp::AudioDevice::Name</qualifiedname>
+        <briefdescription>
+<para>The display name of the audio device. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3165" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AudioDevice_1ad09b74c8c38a9371ccff147c38300a86" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::AudioDevice::SetName</definition>
+        <argsstring>(std::string Name)</argsstring>
+        <name>SetName</name>
+        <qualifiedname>discordpp::AudioDevice::SetName</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>Name</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1AudioDevice_1a1f021287a4bf98992d3c9b27589c5f59" kindref="member">AudioDevice::Name</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3167" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AudioDevice_1a39f19c6eb7774ffd939811a3484e0475" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool discordpp::AudioDevice::IsDefault</definition>
+        <argsstring>() const</argsstring>
+        <name>IsDefault</name>
+        <qualifiedname>discordpp::AudioDevice::IsDefault</qualifiedname>
+        <briefdescription>
+<para>Whether the audio device is the system default device. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3170" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AudioDevice_1abddad2867cd2c8ffb87f6262d532c5ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::AudioDevice::SetIsDefault</definition>
+        <argsstring>(bool IsDefault)</argsstring>
+        <name>SetIsDefault</name>
+        <qualifiedname>discordpp::AudioDevice::SetIsDefault</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>IsDefault</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1AudioDevice_1a39f19c6eb7774ffd939811a3484e0475" kindref="member">AudioDevice::IsDefault</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3172" column="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents a single input or output audio device available to the user. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Discord will initialize the audio engine with the system default input and output devices. You can change the device through the <ref refid="classdiscordpp_1_1Client" kindref="compound">Client</ref> by passing the id of the desired audio device. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>discordpp::AudioDevice</label>
+        <link refid="classdiscordpp_1_1AudioDevice"/>
+        <childnode refid="1" relation="usage">
+          <edgelabel>nullobj</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/discordpp.h" line="3124" column="1" bodyfile="include/discordpp.h" bodystart="3124" bodyend="3173"/>
+    <listofallmembers>
+      <member refid="classdiscordpp_1_1AudioDevice_1a7d083c7bad8ebde4fc16b3151d5761f6" prot="public" virt="non-virtual"><scope>discordpp::AudioDevice</scope><name>AudioDevice</name></member>
+      <member refid="classdiscordpp_1_1AudioDevice_1adec7c5b9e9c59a486de49af91ddcba63" prot="public" virt="non-virtual"><scope>discordpp::AudioDevice</scope><name>AudioDevice</name></member>
+      <member refid="classdiscordpp_1_1AudioDevice_1a09b99233147f4a70ecdc5c3e667e56ca" prot="public" virt="non-virtual"><scope>discordpp::AudioDevice</scope><name>Equals</name></member>
+      <member refid="classdiscordpp_1_1AudioDevice_1a3f85e5323b6a5d6ce8b6b2abb05490b6" prot="public" virt="non-virtual"><scope>discordpp::AudioDevice</scope><name>Id</name></member>
+      <member refid="classdiscordpp_1_1AudioDevice_1a39f19c6eb7774ffd939811a3484e0475" prot="public" virt="non-virtual"><scope>discordpp::AudioDevice</scope><name>IsDefault</name></member>
+      <member refid="classdiscordpp_1_1AudioDevice_1a1f021287a4bf98992d3c9b27589c5f59" prot="public" virt="non-virtual"><scope>discordpp::AudioDevice</scope><name>Name</name></member>
+      <member refid="classdiscordpp_1_1AudioDevice_1a9014d49ff82b3120fba3859e85553438" prot="public" virt="non-virtual"><scope>discordpp::AudioDevice</scope><name>nullobj</name></member>
+      <member refid="classdiscordpp_1_1AudioDevice_1a398573781b3f9ade6cfa015c5e92ca42" prot="public" virt="non-virtual"><scope>discordpp::AudioDevice</scope><name>operator bool</name></member>
+      <member refid="classdiscordpp_1_1AudioDevice_1a807a5b01a3b53a3e3f23b778c5aeb323" prot="public" virt="non-virtual"><scope>discordpp::AudioDevice</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1AudioDevice_1a04f55870e55b0d971f7362e85b999332" prot="public" virt="non-virtual"><scope>discordpp::AudioDevice</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1AudioDevice_1aafde2cb9f47e19fd505438a354d95091" prot="public" virt="non-virtual"><scope>discordpp::AudioDevice</scope><name>SetId</name></member>
+      <member refid="classdiscordpp_1_1AudioDevice_1abddad2867cd2c8ffb87f6262d532c5ca" prot="public" virt="non-virtual"><scope>discordpp::AudioDevice</scope><name>SetIsDefault</name></member>
+      <member refid="classdiscordpp_1_1AudioDevice_1ad09b74c8c38a9371ccff147c38300a86" prot="public" virt="non-virtual"><scope>discordpp::AudioDevice</scope><name>SetName</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

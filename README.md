@@ -303,10 +303,6 @@ cp -r /tmp/discord_social_sdk/bin/release/* lib/
 cp -r /tmp/discord_social_sdk/include/* include/
 rm -rf /tmp/discord_social_sdk
 
-# Making sure that headers are formatted.
-clang-format -i --style=file:.clang-format include/cdiscord.h
-clang-format -i --style=file:.clang-format include/discordpp.h
-
 # Clear files generated during previous execution.
 rm -rf doc_classes
 rm -rf src
@@ -354,3 +350,4 @@ zip -r discord_social_sdk.zip demo/addons/discord_social_sdk/**
 - [Discord Social SDK Overview](https://discord.com/developers/docs/discord-social-sdk/overview)
 - [Discord Social SDK Rich Presence](https://discord.com/developers/docs/rich-presence/using-with-the-discord-social-sdk)
 - [Discord Social SDK Reference](https://discord.com/developers/docs/social-sdk/index.html)
+- [Doxygen](https://www.doxygen.nl/)

@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="classdiscordpp_1_1VoiceStateHandle" kind="class" language="C++" prot="public">
+    <compoundname>discordpp::VoiceStateHandle</compoundname>
+    <includes local="no">discordpp.h</includes>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classdiscordpp_1_1VoiceStateHandle_1a7e70d345a32b21813a38f74499aed3b9" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="classdiscordpp_1_1VoiceStateHandle" kindref="compound">VoiceStateHandle</ref></type>
+        <definition>const VoiceStateHandle discordpp::VoiceStateHandle::nullobj</definition>
+        <argsstring></argsstring>
+        <name>nullobj</name>
+        <qualifiedname>discordpp::VoiceStateHandle::nullobj</qualifiedname>
+        <briefdescription>
+<para>Uninitialized instance of <ref refid="classdiscordpp_1_1VoiceStateHandle" kindref="compound">VoiceStateHandle</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1821" column="31" bodyfile="include/discordpp.h" bodystart="1821" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classdiscordpp_1_1VoiceStateHandle_1aad2d4454b6677d82721128b0cd98a2d8" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::VoiceStateHandle::VoiceStateHandle</definition>
+        <argsstring>(VoiceStateHandle &amp;&amp;other) noexcept</argsstring>
+        <name>VoiceStateHandle</name>
+        <qualifiedname>discordpp::VoiceStateHandle::VoiceStateHandle</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1VoiceStateHandle" kindref="compound">VoiceStateHandle</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move constructor for <ref refid="classdiscordpp_1_1VoiceStateHandle" kindref="compound">VoiceStateHandle</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1817" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1VoiceStateHandle_1a50e7dd192dd4a3cb7dd2485802ec6b18" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1VoiceStateHandle" kindref="compound">VoiceStateHandle</ref> &amp;</type>
+        <definition>VoiceStateHandle &amp; discordpp::VoiceStateHandle::operator=</definition>
+        <argsstring>(VoiceStateHandle &amp;&amp;other) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::VoiceStateHandle::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1VoiceStateHandle" kindref="compound">VoiceStateHandle</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move assignment operator for <ref refid="classdiscordpp_1_1VoiceStateHandle" kindref="compound">VoiceStateHandle</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1819" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1VoiceStateHandle_1a724fc1220c513d694a6cd9a4542030a1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::VoiceStateHandle::operator bool</definition>
+        <argsstring>() const</argsstring>
+        <name>operator bool</name>
+        <qualifiedname>discordpp::VoiceStateHandle::operator bool</qualifiedname>
+        <briefdescription>
+<para>Returns true if the instance contains a valid object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1823" column="1" bodyfile="include/discordpp.h" bodystart="1823" bodyend="1823"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1VoiceStateHandle_1acead5efe190660be86f2029d7fc10a8f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::VoiceStateHandle::VoiceStateHandle</definition>
+        <argsstring>(const VoiceStateHandle &amp;other)</argsstring>
+        <name>VoiceStateHandle</name>
+        <qualifiedname>discordpp::VoiceStateHandle::VoiceStateHandle</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1VoiceStateHandle" kindref="compound">VoiceStateHandle</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor for <ref refid="classdiscordpp_1_1VoiceStateHandle" kindref="compound">VoiceStateHandle</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1826" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1VoiceStateHandle_1abc33166d42d530c5949bd088a8aab1f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1VoiceStateHandle" kindref="compound">VoiceStateHandle</ref> &amp;</type>
+        <definition>VoiceStateHandle &amp; discordpp::VoiceStateHandle::operator=</definition>
+        <argsstring>(const VoiceStateHandle &amp;other)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::VoiceStateHandle::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1VoiceStateHandle" kindref="compound">VoiceStateHandle</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Copy assignment operator for <ref refid="classdiscordpp_1_1VoiceStateHandle" kindref="compound">VoiceStateHandle</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1828" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1VoiceStateHandle_1a9fd4ac5fb813b926d1336fc65b440f42" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool discordpp::VoiceStateHandle::SelfDeaf</definition>
+        <argsstring>() const</argsstring>
+        <name>SelfDeaf</name>
+        <qualifiedname>discordpp::VoiceStateHandle::SelfDeaf</qualifiedname>
+        <briefdescription>
+<para>Returns true if the given user has deafened themselves so that no one else in the call can hear them and so that they do not hear anyone else in the call either. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1836" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1VoiceStateHandle_1a5476a6e8d5e9092a153b4646371a9f3f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool discordpp::VoiceStateHandle::SelfMute</definition>
+        <argsstring>() const</argsstring>
+        <name>SelfMute</name>
+        <qualifiedname>discordpp::VoiceStateHandle::SelfMute</qualifiedname>
+        <briefdescription>
+<para>Returns true if the given user has muted themselves so that no one else in the call can hear them. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1840" column="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>A <ref refid="classdiscordpp_1_1VoiceStateHandle" kindref="compound">VoiceStateHandle</ref> represents the state of a single participant in a Discord voice call. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The main use case for <ref refid="classdiscordpp_1_1VoiceStateHandle" kindref="compound">VoiceStateHandle</ref> in the SDK is communicate whether a user has muted or defeaned themselves.</para>
+<para>Handle objects in the SDK hold a reference both to the underlying data, and to the SDK instance. Changes to the underlying data will generally be available on existing handles objects without having to re-create them. If the SDK instance is destroyed, but you still have a reference to a handle object, note that it will return the default value for all method calls (ie an empty string for methods that return a string). </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>discordpp::VoiceStateHandle</label>
+        <link refid="classdiscordpp_1_1VoiceStateHandle"/>
+        <childnode refid="1" relation="usage">
+          <edgelabel>nullobj</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/discordpp.h" line="1802" column="1" bodyfile="include/discordpp.h" bodystart="1802" bodyend="1841"/>
+    <listofallmembers>
+      <member refid="classdiscordpp_1_1VoiceStateHandle_1a7e70d345a32b21813a38f74499aed3b9" prot="public" virt="non-virtual"><scope>discordpp::VoiceStateHandle</scope><name>nullobj</name></member>
+      <member refid="classdiscordpp_1_1VoiceStateHandle_1a724fc1220c513d694a6cd9a4542030a1" prot="public" virt="non-virtual"><scope>discordpp::VoiceStateHandle</scope><name>operator bool</name></member>
+      <member refid="classdiscordpp_1_1VoiceStateHandle_1a50e7dd192dd4a3cb7dd2485802ec6b18" prot="public" virt="non-virtual"><scope>discordpp::VoiceStateHandle</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1VoiceStateHandle_1abc33166d42d530c5949bd088a8aab1f3" prot="public" virt="non-virtual"><scope>discordpp::VoiceStateHandle</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1VoiceStateHandle_1a9fd4ac5fb813b926d1336fc65b440f42" prot="public" virt="non-virtual"><scope>discordpp::VoiceStateHandle</scope><name>SelfDeaf</name></member>
+      <member refid="classdiscordpp_1_1VoiceStateHandle_1a5476a6e8d5e9092a153b4646371a9f3f" prot="public" virt="non-virtual"><scope>discordpp::VoiceStateHandle</scope><name>SelfMute</name></member>
+      <member refid="classdiscordpp_1_1VoiceStateHandle_1aad2d4454b6677d82721128b0cd98a2d8" prot="public" virt="non-virtual"><scope>discordpp::VoiceStateHandle</scope><name>VoiceStateHandle</name></member>
+      <member refid="classdiscordpp_1_1VoiceStateHandle_1acead5efe190660be86f2029d7fc10a8f" prot="public" virt="non-virtual"><scope>discordpp::VoiceStateHandle</scope><name>VoiceStateHandle</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

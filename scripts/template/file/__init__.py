@@ -1,5 +1,0 @@
-from .register_types_h import get_register_types_h
-from .register_types_cpp import get_register_types_cpp
-from .discord_enum_h import get_discord_enum_h
-from .discord_classes_h import get_discord_classes_h
-from .discord_class_cpp import get_discord_class_cpp

@@ -1,5 +1,4 @@
-def get_discord_classes_h(declarations: str, definitions: str) -> str:
-    return f"""
+
 #ifndef DISCORD_CLASSES_H
 #define DISCORD_CLASSES_H
 
@@ -10,13 +9,8 @@ def get_discord_classes_h(declarations: str, definitions: str) -> str:
 #include "godot_cpp/variant/typed_array.hpp"
 #include "godot_cpp/variant/typed_dictionary.hpp"
 
-namespace godot {{
+namespace godot {
 
-{declarations}
-
-{definitions}
-
-}} //namespace godot
+} //namespace godot
 
 #endif
-"""

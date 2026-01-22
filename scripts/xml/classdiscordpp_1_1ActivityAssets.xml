@@ -1,0 +1,417 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="classdiscordpp_1_1ActivityAssets" kind="class" language="C++" prot="public">
+    <compoundname>discordpp::ActivityAssets</compoundname>
+    <includes local="no">discordpp.h</includes>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classdiscordpp_1_1ActivityAssets_1a8dbff0a959acac97c8e1b542edfb4802" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="classdiscordpp_1_1ActivityAssets" kindref="compound">ActivityAssets</ref></type>
+        <definition>const ActivityAssets discordpp::ActivityAssets::nullobj</definition>
+        <argsstring></argsstring>
+        <name>nullobj</name>
+        <qualifiedname>discordpp::ActivityAssets::nullobj</qualifiedname>
+        <briefdescription>
+<para>Uninitialized instance of <ref refid="classdiscordpp_1_1ActivityAssets" kindref="compound">ActivityAssets</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="834" column="29" bodyfile="include/discordpp.h" bodystart="834" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityAssets_1a4569c410d197e153971cab35f5d84f80" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::ActivityAssets::ActivityAssets</definition>
+        <argsstring>(ActivityAssets &amp;&amp;other) noexcept</argsstring>
+        <name>ActivityAssets</name>
+        <qualifiedname>discordpp::ActivityAssets::ActivityAssets</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1ActivityAssets" kindref="compound">ActivityAssets</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move constructor for <ref refid="classdiscordpp_1_1ActivityAssets" kindref="compound">ActivityAssets</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="830" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityAssets_1ad6d52c5ded92e5644f603b40f73718d1" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1ActivityAssets" kindref="compound">ActivityAssets</ref> &amp;</type>
+        <definition>ActivityAssets &amp; discordpp::ActivityAssets::operator=</definition>
+        <argsstring>(ActivityAssets &amp;&amp;other) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::ActivityAssets::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1ActivityAssets" kindref="compound">ActivityAssets</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move assignment operator for <ref refid="classdiscordpp_1_1ActivityAssets" kindref="compound">ActivityAssets</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="832" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityAssets_1acf0fe7ef1451c7514eac6a6b8e8898a2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::ActivityAssets::operator bool</definition>
+        <argsstring>() const</argsstring>
+        <name>operator bool</name>
+        <qualifiedname>discordpp::ActivityAssets::operator bool</qualifiedname>
+        <briefdescription>
+<para>Returns true if the instance contains a valid object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="836" column="1" bodyfile="include/discordpp.h" bodystart="836" bodyend="836"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityAssets_1a5f1a7ab8da06081e69b819130d1fcdb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::ActivityAssets::ActivityAssets</definition>
+        <argsstring>(const ActivityAssets &amp;arg0)</argsstring>
+        <name>ActivityAssets</name>
+        <qualifiedname>discordpp::ActivityAssets::ActivityAssets</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1ActivityAssets" kindref="compound">ActivityAssets</ref> &amp;</type>
+          <declname>arg0</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor for <ref refid="classdiscordpp_1_1ActivityAssets" kindref="compound">ActivityAssets</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="839" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityAssets_1a8b49115b1fc1b13ee841754ffacdf788" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1ActivityAssets" kindref="compound">ActivityAssets</ref> &amp;</type>
+        <definition>ActivityAssets &amp; discordpp::ActivityAssets::operator=</definition>
+        <argsstring>(const ActivityAssets &amp;arg0)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::ActivityAssets::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1ActivityAssets" kindref="compound">ActivityAssets</ref> &amp;</type>
+          <declname>arg0</declname>
+        </param>
+        <briefdescription>
+<para>Copy assignment operator for <ref refid="classdiscordpp_1_1ActivityAssets" kindref="compound">ActivityAssets</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="841" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityAssets_1a005ef8f1048831f8c61c106b7689e21c" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::ActivityAssets::ActivityAssets</definition>
+        <argsstring>()</argsstring>
+        <name>ActivityAssets</name>
+        <qualifiedname>discordpp::ActivityAssets::ActivityAssets</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="843" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityAssets_1a90ec2ac7102c8f99d233e95858603962" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt; std::string &gt; discordpp::ActivityAssets::LargeImage</definition>
+        <argsstring>() const</argsstring>
+        <name>LargeImage</name>
+        <qualifiedname>discordpp::ActivityAssets::LargeImage</qualifiedname>
+        <briefdescription>
+<para>The primary image identifier or URL, rendered as a large square icon on a user&apos;s rich presence. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If specified, must be a string between 1 and 300 characters. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="853" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityAssets_1a09e51cf262fe2b58522f0516a1d8f1d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::ActivityAssets::SetLargeImage</definition>
+        <argsstring>(std::optional&lt; std::string &gt; LargeImage)</argsstring>
+        <name>SetLargeImage</name>
+        <qualifiedname>discordpp::ActivityAssets::SetLargeImage</qualifiedname>
+        <param>
+          <type>std::optional&lt; std::string &gt;</type>
+          <declname>LargeImage</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1ActivityAssets_1a90ec2ac7102c8f99d233e95858603962" kindref="member">ActivityAssets::LargeImage</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="855" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityAssets_1a7e0e5680e47954c3131702cd8dfacd18" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt; std::string &gt; discordpp::ActivityAssets::LargeText</definition>
+        <argsstring>() const</argsstring>
+        <name>LargeText</name>
+        <qualifiedname>discordpp::ActivityAssets::LargeText</qualifiedname>
+        <briefdescription>
+<para>A tooltip string that is shown when the user hovers over the large image. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If specified, must be a string between 2 and 128 characters. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="860" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityAssets_1a351a903fd45643cf8a084a72e30207ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::ActivityAssets::SetLargeText</definition>
+        <argsstring>(std::optional&lt; std::string &gt; LargeText)</argsstring>
+        <name>SetLargeText</name>
+        <qualifiedname>discordpp::ActivityAssets::SetLargeText</qualifiedname>
+        <param>
+          <type>std::optional&lt; std::string &gt;</type>
+          <declname>LargeText</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1ActivityAssets_1a7e0e5680e47954c3131702cd8dfacd18" kindref="member">ActivityAssets::LargeText</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="862" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityAssets_1aaa7725c0ebefcda564fdfbddf7df628a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt; std::string &gt; discordpp::ActivityAssets::LargeUrl</definition>
+        <argsstring>() const</argsstring>
+        <name>LargeUrl</name>
+        <qualifiedname>discordpp::ActivityAssets::LargeUrl</qualifiedname>
+        <briefdescription>
+<para>A URL that opens when the user clicks/taps the large image. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If specified, must be a string between 1 and 256 characters. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="867" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityAssets_1a65294ee7dd810226642c0b5356bf1d80" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::ActivityAssets::SetLargeUrl</definition>
+        <argsstring>(std::optional&lt; std::string &gt; LargeUrl)</argsstring>
+        <name>SetLargeUrl</name>
+        <qualifiedname>discordpp::ActivityAssets::SetLargeUrl</qualifiedname>
+        <param>
+          <type>std::optional&lt; std::string &gt;</type>
+          <declname>LargeUrl</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1ActivityAssets_1aaa7725c0ebefcda564fdfbddf7df628a" kindref="member">ActivityAssets::LargeUrl</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="869" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityAssets_1a4a76a48496ed5c9661e4a0551b324de8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt; std::string &gt; discordpp::ActivityAssets::SmallImage</definition>
+        <argsstring>() const</argsstring>
+        <name>SmallImage</name>
+        <qualifiedname>discordpp::ActivityAssets::SmallImage</qualifiedname>
+        <briefdescription>
+<para>The secondary image, rendered as a small circle over the <computeroutput>largeImage</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If specified, must be a string between 1 and 300 characters. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="874" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityAssets_1a7f406e1e7722470e753d9acb9a0ee690" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::ActivityAssets::SetSmallImage</definition>
+        <argsstring>(std::optional&lt; std::string &gt; SmallImage)</argsstring>
+        <name>SetSmallImage</name>
+        <qualifiedname>discordpp::ActivityAssets::SetSmallImage</qualifiedname>
+        <param>
+          <type>std::optional&lt; std::string &gt;</type>
+          <declname>SmallImage</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1ActivityAssets_1a4a76a48496ed5c9661e4a0551b324de8" kindref="member">ActivityAssets::SmallImage</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="876" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityAssets_1a27f61aebf3ef5c2357d2d99cb4dcfeac" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt; std::string &gt; discordpp::ActivityAssets::SmallText</definition>
+        <argsstring>() const</argsstring>
+        <name>SmallText</name>
+        <qualifiedname>discordpp::ActivityAssets::SmallText</qualifiedname>
+        <briefdescription>
+<para>A tooltip string that is shown when the user hovers over the small image. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If specified, must be a string between 2 and 128 characters. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="881" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityAssets_1aae2b92760fb365439e8ad38444acdebb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::ActivityAssets::SetSmallText</definition>
+        <argsstring>(std::optional&lt; std::string &gt; SmallText)</argsstring>
+        <name>SetSmallText</name>
+        <qualifiedname>discordpp::ActivityAssets::SetSmallText</qualifiedname>
+        <param>
+          <type>std::optional&lt; std::string &gt;</type>
+          <declname>SmallText</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1ActivityAssets_1a27f61aebf3ef5c2357d2d99cb4dcfeac" kindref="member">ActivityAssets::SmallText</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="883" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityAssets_1a862e2fe4b209d18f7633c3436af2860c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt; std::string &gt; discordpp::ActivityAssets::SmallUrl</definition>
+        <argsstring>() const</argsstring>
+        <name>SmallUrl</name>
+        <qualifiedname>discordpp::ActivityAssets::SmallUrl</qualifiedname>
+        <briefdescription>
+<para>A URL that opens when the user clicks/taps the small image. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If specified, must be a string between 1 and 256 characters. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="888" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityAssets_1afd3ed179bf1924a49631eebeaa1f6493" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::ActivityAssets::SetSmallUrl</definition>
+        <argsstring>(std::optional&lt; std::string &gt; SmallUrl)</argsstring>
+        <name>SetSmallUrl</name>
+        <qualifiedname>discordpp::ActivityAssets::SetSmallUrl</qualifiedname>
+        <param>
+          <type>std::optional&lt; std::string &gt;</type>
+          <declname>SmallUrl</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1ActivityAssets_1a862e2fe4b209d18f7633c3436af2860c" kindref="member">ActivityAssets::SmallUrl</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="890" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityAssets_1a0910e12ce7708db7aee9296cc56d947c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt; std::string &gt; discordpp::ActivityAssets::InviteCoverImage</definition>
+        <argsstring>() const</argsstring>
+        <name>InviteCoverImage</name>
+        <qualifiedname>discordpp::ActivityAssets::InviteCoverImage</qualifiedname>
+        <briefdescription>
+<para>The invite cover image identifier or URL, rendered as a banner image on activity invites. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If specified, must be a string between 1 and 300 characters. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="896" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityAssets_1ad0106c55fa323b8520efd77cbd0b0d4f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::ActivityAssets::SetInviteCoverImage</definition>
+        <argsstring>(std::optional&lt; std::string &gt; InviteCoverImage)</argsstring>
+        <name>SetInviteCoverImage</name>
+        <qualifiedname>discordpp::ActivityAssets::SetInviteCoverImage</qualifiedname>
+        <param>
+          <type>std::optional&lt; std::string &gt;</type>
+          <declname>InviteCoverImage</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1ActivityAssets_1a0910e12ce7708db7aee9296cc56d947c" kindref="member">ActivityAssets::InviteCoverImage</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="898" column="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Struct which controls what your rich presence looks like in the Discord client. If you don&apos;t specify any values, the icon and name of your application will be used as defaults. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Image assets can be either the unique identifier for an image you uploaded to your application via the <computeroutput>Rich Presence</computeroutput> page in the Developer portal, or they can be an external image URL.</para>
+<para>As an example, if I uploaded an asset and name it <computeroutput>goofy-icon</computeroutput>, I could set either image field to the string <computeroutput>goofy-icon</computeroutput>. Alternatively, if my icon was hosted at <computeroutput><ulink url="http://my-site.com/goofy.jpg">http://my-site.com/goofy.jpg</ulink></computeroutput>, I could pass that URL into either image field.</para>
+<para>See <ulink url="https://discord.com/developers/docs/rich-presence/overview#adding-custom-art-assets">https://discord.com/developers/docs/rich-presence/overview#adding-custom-art-assets</ulink> for more information on using custom art assets, as well as for visual examples of what each field does. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>discordpp::ActivityAssets</label>
+        <link refid="classdiscordpp_1_1ActivityAssets"/>
+        <childnode refid="1" relation="usage">
+          <edgelabel>nullobj</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/discordpp.h" line="815" column="1" bodyfile="include/discordpp.h" bodystart="815" bodyend="899"/>
+    <listofallmembers>
+      <member refid="classdiscordpp_1_1ActivityAssets_1a4569c410d197e153971cab35f5d84f80" prot="public" virt="non-virtual"><scope>discordpp::ActivityAssets</scope><name>ActivityAssets</name></member>
+      <member refid="classdiscordpp_1_1ActivityAssets_1a5f1a7ab8da06081e69b819130d1fcdb0" prot="public" virt="non-virtual"><scope>discordpp::ActivityAssets</scope><name>ActivityAssets</name></member>
+      <member refid="classdiscordpp_1_1ActivityAssets_1a005ef8f1048831f8c61c106b7689e21c" prot="public" virt="non-virtual"><scope>discordpp::ActivityAssets</scope><name>ActivityAssets</name></member>
+      <member refid="classdiscordpp_1_1ActivityAssets_1a0910e12ce7708db7aee9296cc56d947c" prot="public" virt="non-virtual"><scope>discordpp::ActivityAssets</scope><name>InviteCoverImage</name></member>
+      <member refid="classdiscordpp_1_1ActivityAssets_1a90ec2ac7102c8f99d233e95858603962" prot="public" virt="non-virtual"><scope>discordpp::ActivityAssets</scope><name>LargeImage</name></member>
+      <member refid="classdiscordpp_1_1ActivityAssets_1a7e0e5680e47954c3131702cd8dfacd18" prot="public" virt="non-virtual"><scope>discordpp::ActivityAssets</scope><name>LargeText</name></member>
+      <member refid="classdiscordpp_1_1ActivityAssets_1aaa7725c0ebefcda564fdfbddf7df628a" prot="public" virt="non-virtual"><scope>discordpp::ActivityAssets</scope><name>LargeUrl</name></member>
+      <member refid="classdiscordpp_1_1ActivityAssets_1a8dbff0a959acac97c8e1b542edfb4802" prot="public" virt="non-virtual"><scope>discordpp::ActivityAssets</scope><name>nullobj</name></member>
+      <member refid="classdiscordpp_1_1ActivityAssets_1acf0fe7ef1451c7514eac6a6b8e8898a2" prot="public" virt="non-virtual"><scope>discordpp::ActivityAssets</scope><name>operator bool</name></member>
+      <member refid="classdiscordpp_1_1ActivityAssets_1ad6d52c5ded92e5644f603b40f73718d1" prot="public" virt="non-virtual"><scope>discordpp::ActivityAssets</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1ActivityAssets_1a8b49115b1fc1b13ee841754ffacdf788" prot="public" virt="non-virtual"><scope>discordpp::ActivityAssets</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1ActivityAssets_1ad0106c55fa323b8520efd77cbd0b0d4f" prot="public" virt="non-virtual"><scope>discordpp::ActivityAssets</scope><name>SetInviteCoverImage</name></member>
+      <member refid="classdiscordpp_1_1ActivityAssets_1a09e51cf262fe2b58522f0516a1d8f1d3" prot="public" virt="non-virtual"><scope>discordpp::ActivityAssets</scope><name>SetLargeImage</name></member>
+      <member refid="classdiscordpp_1_1ActivityAssets_1a351a903fd45643cf8a084a72e30207ce" prot="public" virt="non-virtual"><scope>discordpp::ActivityAssets</scope><name>SetLargeText</name></member>
+      <member refid="classdiscordpp_1_1ActivityAssets_1a65294ee7dd810226642c0b5356bf1d80" prot="public" virt="non-virtual"><scope>discordpp::ActivityAssets</scope><name>SetLargeUrl</name></member>
+      <member refid="classdiscordpp_1_1ActivityAssets_1a7f406e1e7722470e753d9acb9a0ee690" prot="public" virt="non-virtual"><scope>discordpp::ActivityAssets</scope><name>SetSmallImage</name></member>
+      <member refid="classdiscordpp_1_1ActivityAssets_1aae2b92760fb365439e8ad38444acdebb" prot="public" virt="non-virtual"><scope>discordpp::ActivityAssets</scope><name>SetSmallText</name></member>
+      <member refid="classdiscordpp_1_1ActivityAssets_1afd3ed179bf1924a49631eebeaa1f6493" prot="public" virt="non-virtual"><scope>discordpp::ActivityAssets</scope><name>SetSmallUrl</name></member>
+      <member refid="classdiscordpp_1_1ActivityAssets_1a4a76a48496ed5c9661e4a0551b324de8" prot="public" virt="non-virtual"><scope>discordpp::ActivityAssets</scope><name>SmallImage</name></member>
+      <member refid="classdiscordpp_1_1ActivityAssets_1a27f61aebf3ef5c2357d2d99cb4dcfeac" prot="public" virt="non-virtual"><scope>discordpp::ActivityAssets</scope><name>SmallText</name></member>
+      <member refid="classdiscordpp_1_1ActivityAssets_1a862e2fe4b209d18f7633c3436af2860c" prot="public" virt="non-virtual"><scope>discordpp::ActivityAssets</scope><name>SmallUrl</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

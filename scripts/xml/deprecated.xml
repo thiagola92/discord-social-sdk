@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="deprecated" kind="page">
+    <compoundname>deprecated</compoundname>
+    <title>Deprecated List</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><variablelist>
+<varlistentry><term>Member <ref refid="classdiscordpp_1_1Client_1a7edea2a3dfe9ae560d5fa5ba8663b5cc" kindref="member">discordpp::Client::GetCurrentUser</ref>  () const</term></varlistentry>
+<listitem><para><anchor id="deprecated_1_deprecated000001"/>Please use GetCurrentUserV2 instead. This will be removed in a future version.  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="classdiscordpp_1_1Client_1ac269ab57407e3b83e2bb2d30895e666d" kindref="member">discordpp::Client::SetSpeakerMode</ref>  (bool speakerMode)</term></varlistentry>
+<listitem><para><anchor id="deprecated_1_deprecated000002"/>Calling <ref refid="classdiscordpp_1_1Client_1ac269ab57407e3b83e2bb2d30895e666d" kindref="member">Client::SetSpeakerMode</ref> is DEPRECATED. </para>
+</listitem>
+</variablelist>
+</para>
+    </detaileddescription>
+    <location file="deprecated"/>
+  </compounddef>
+</doxygen>

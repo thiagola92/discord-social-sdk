@@ -1,0 +1,230 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="classdiscordpp_1_1DeviceAuthorizationArgs" kind="class" language="C++" prot="public">
+    <compoundname>discordpp::DeviceAuthorizationArgs</compoundname>
+    <includes local="no">discordpp.h</includes>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classdiscordpp_1_1DeviceAuthorizationArgs_1a77835d084a92cce64c54672974a82977" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="classdiscordpp_1_1DeviceAuthorizationArgs" kindref="compound">DeviceAuthorizationArgs</ref></type>
+        <definition>const DeviceAuthorizationArgs discordpp::DeviceAuthorizationArgs::nullobj</definition>
+        <argsstring></argsstring>
+        <name>nullobj</name>
+        <qualifiedname>discordpp::DeviceAuthorizationArgs::nullobj</qualifiedname>
+        <briefdescription>
+<para>Uninitialized instance of <ref refid="classdiscordpp_1_1DeviceAuthorizationArgs" kindref="compound">DeviceAuthorizationArgs</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1754" column="38" bodyfile="include/discordpp.h" bodystart="1754" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classdiscordpp_1_1DeviceAuthorizationArgs_1a2b45ff23c20c17bc7ad82cb5753b6031" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::DeviceAuthorizationArgs::DeviceAuthorizationArgs</definition>
+        <argsstring>(DeviceAuthorizationArgs &amp;&amp;other) noexcept</argsstring>
+        <name>DeviceAuthorizationArgs</name>
+        <qualifiedname>discordpp::DeviceAuthorizationArgs::DeviceAuthorizationArgs</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1DeviceAuthorizationArgs" kindref="compound">DeviceAuthorizationArgs</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move constructor for <ref refid="classdiscordpp_1_1DeviceAuthorizationArgs" kindref="compound">DeviceAuthorizationArgs</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1750" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1DeviceAuthorizationArgs_1ad3c66e7bf84bc9544614d3879c439797" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1DeviceAuthorizationArgs" kindref="compound">DeviceAuthorizationArgs</ref> &amp;</type>
+        <definition>DeviceAuthorizationArgs &amp; discordpp::DeviceAuthorizationArgs::operator=</definition>
+        <argsstring>(DeviceAuthorizationArgs &amp;&amp;other) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::DeviceAuthorizationArgs::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1DeviceAuthorizationArgs" kindref="compound">DeviceAuthorizationArgs</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move assignment operator for <ref refid="classdiscordpp_1_1DeviceAuthorizationArgs" kindref="compound">DeviceAuthorizationArgs</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1752" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1DeviceAuthorizationArgs_1a7557758d3e23ae2ca694f8e7573f4078" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::DeviceAuthorizationArgs::operator bool</definition>
+        <argsstring>() const</argsstring>
+        <name>operator bool</name>
+        <qualifiedname>discordpp::DeviceAuthorizationArgs::operator bool</qualifiedname>
+        <briefdescription>
+<para>Returns true if the instance contains a valid object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1756" column="1" bodyfile="include/discordpp.h" bodystart="1756" bodyend="1756"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1DeviceAuthorizationArgs_1a2b80827b09889194b7f9d992523a601f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::DeviceAuthorizationArgs::DeviceAuthorizationArgs</definition>
+        <argsstring>(const DeviceAuthorizationArgs &amp;arg0)</argsstring>
+        <name>DeviceAuthorizationArgs</name>
+        <qualifiedname>discordpp::DeviceAuthorizationArgs::DeviceAuthorizationArgs</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1DeviceAuthorizationArgs" kindref="compound">DeviceAuthorizationArgs</ref> &amp;</type>
+          <declname>arg0</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor for <ref refid="classdiscordpp_1_1DeviceAuthorizationArgs" kindref="compound">DeviceAuthorizationArgs</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1759" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1DeviceAuthorizationArgs_1ab266bbc98df687cb1b47e0e1f2fc3c8c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1DeviceAuthorizationArgs" kindref="compound">DeviceAuthorizationArgs</ref> &amp;</type>
+        <definition>DeviceAuthorizationArgs &amp; discordpp::DeviceAuthorizationArgs::operator=</definition>
+        <argsstring>(const DeviceAuthorizationArgs &amp;arg0)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::DeviceAuthorizationArgs::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1DeviceAuthorizationArgs" kindref="compound">DeviceAuthorizationArgs</ref> &amp;</type>
+          <declname>arg0</declname>
+        </param>
+        <briefdescription>
+<para>Copy assignment operator for <ref refid="classdiscordpp_1_1DeviceAuthorizationArgs" kindref="compound">DeviceAuthorizationArgs</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1761" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1DeviceAuthorizationArgs_1af41edba82ef88448baae7a404f6cc026" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::DeviceAuthorizationArgs::DeviceAuthorizationArgs</definition>
+        <argsstring>()</argsstring>
+        <name>DeviceAuthorizationArgs</name>
+        <qualifiedname>discordpp::DeviceAuthorizationArgs::DeviceAuthorizationArgs</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1763" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1DeviceAuthorizationArgs_1a5c8d15b74d6e5fdcfaed01e6e58a9377" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t discordpp::DeviceAuthorizationArgs::ClientId</definition>
+        <argsstring>() const</argsstring>
+        <name>ClientId</name>
+        <qualifiedname>discordpp::DeviceAuthorizationArgs::ClientId</qualifiedname>
+        <briefdescription>
+<para>Optional. The Discord application ID for your game. Defaults to the value set by <ref refid="classdiscordpp_1_1Client_1ad452335c06b28be0406dab824acccc49" kindref="member">Client::SetApplicationId</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1771" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1DeviceAuthorizationArgs_1a81950ebb58f086de565f128c07874bd6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::DeviceAuthorizationArgs::SetClientId</definition>
+        <argsstring>(uint64_t ClientId)</argsstring>
+        <name>SetClientId</name>
+        <qualifiedname>discordpp::DeviceAuthorizationArgs::SetClientId</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>ClientId</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1DeviceAuthorizationArgs_1a5c8d15b74d6e5fdcfaed01e6e58a9377" kindref="member">DeviceAuthorizationArgs::ClientId</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1773" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1DeviceAuthorizationArgs_1ab68f041359323131d7bb33228ddd2f15" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string discordpp::DeviceAuthorizationArgs::Scopes</definition>
+        <argsstring>() const</argsstring>
+        <name>Scopes</name>
+        <qualifiedname>discordpp::DeviceAuthorizationArgs::Scopes</qualifiedname>
+        <briefdescription>
+<para>Scopes is a space separated string of the oauth scopes your game is requesting. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Most games should just pass in <ref refid="classdiscordpp_1_1Client_1a71499da752fbdc2d4326ae0fd36c0dd1" kindref="member">Client::GetDefaultCommunicationScopes</ref> or <ref refid="classdiscordpp_1_1Client_1a7648bd1d2f7d9a86ebd0edb8bef12b5c" kindref="member">Client::GetDefaultPresenceScopes</ref> which will include these scopes, respectively: <computeroutput>openid sdk.social_layer</computeroutput> or <computeroutput>openid sdk.social_layer_presence</computeroutput></para>
+<para><computeroutput>sdk.social_layer</computeroutput> and <computeroutput>sdk.social_layer_presence</computeroutput> automatically expand to include all the necessary scopes for the integration.</para>
+<para>You can pass in additional scopes if you need to, but as a general rule you should only request the scopes you actually need, and the user will need to grant access to those additional scopes as well. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1787" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1DeviceAuthorizationArgs_1a9968629e4bfeb8e35958cdee2346c410" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::DeviceAuthorizationArgs::SetScopes</definition>
+        <argsstring>(std::string Scopes)</argsstring>
+        <name>SetScopes</name>
+        <qualifiedname>discordpp::DeviceAuthorizationArgs::SetScopes</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>Scopes</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1DeviceAuthorizationArgs_1ab68f041359323131d7bb33228ddd2f15" kindref="member">DeviceAuthorizationArgs::Scopes</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1789" column="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Arguments to the <ref refid="classdiscordpp_1_1Client_1a4a9c666b2d30bae0a16f5afd7ccee60d" kindref="member">Client::GetTokenFromDevice</ref> function. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>discordpp::DeviceAuthorizationArgs</label>
+        <link refid="classdiscordpp_1_1DeviceAuthorizationArgs"/>
+        <childnode refid="1" relation="usage">
+          <edgelabel>nullobj</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/discordpp.h" line="1734" column="1" bodyfile="include/discordpp.h" bodystart="1734" bodyend="1790"/>
+    <listofallmembers>
+      <member refid="classdiscordpp_1_1DeviceAuthorizationArgs_1a5c8d15b74d6e5fdcfaed01e6e58a9377" prot="public" virt="non-virtual"><scope>discordpp::DeviceAuthorizationArgs</scope><name>ClientId</name></member>
+      <member refid="classdiscordpp_1_1DeviceAuthorizationArgs_1a2b45ff23c20c17bc7ad82cb5753b6031" prot="public" virt="non-virtual"><scope>discordpp::DeviceAuthorizationArgs</scope><name>DeviceAuthorizationArgs</name></member>
+      <member refid="classdiscordpp_1_1DeviceAuthorizationArgs_1a2b80827b09889194b7f9d992523a601f" prot="public" virt="non-virtual"><scope>discordpp::DeviceAuthorizationArgs</scope><name>DeviceAuthorizationArgs</name></member>
+      <member refid="classdiscordpp_1_1DeviceAuthorizationArgs_1af41edba82ef88448baae7a404f6cc026" prot="public" virt="non-virtual"><scope>discordpp::DeviceAuthorizationArgs</scope><name>DeviceAuthorizationArgs</name></member>
+      <member refid="classdiscordpp_1_1DeviceAuthorizationArgs_1a77835d084a92cce64c54672974a82977" prot="public" virt="non-virtual"><scope>discordpp::DeviceAuthorizationArgs</scope><name>nullobj</name></member>
+      <member refid="classdiscordpp_1_1DeviceAuthorizationArgs_1a7557758d3e23ae2ca694f8e7573f4078" prot="public" virt="non-virtual"><scope>discordpp::DeviceAuthorizationArgs</scope><name>operator bool</name></member>
+      <member refid="classdiscordpp_1_1DeviceAuthorizationArgs_1ad3c66e7bf84bc9544614d3879c439797" prot="public" virt="non-virtual"><scope>discordpp::DeviceAuthorizationArgs</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1DeviceAuthorizationArgs_1ab266bbc98df687cb1b47e0e1f2fc3c8c" prot="public" virt="non-virtual"><scope>discordpp::DeviceAuthorizationArgs</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1DeviceAuthorizationArgs_1ab68f041359323131d7bb33228ddd2f15" prot="public" virt="non-virtual"><scope>discordpp::DeviceAuthorizationArgs</scope><name>Scopes</name></member>
+      <member refid="classdiscordpp_1_1DeviceAuthorizationArgs_1a81950ebb58f086de565f128c07874bd6" prot="public" virt="non-virtual"><scope>discordpp::DeviceAuthorizationArgs</scope><name>SetClientId</name></member>
+      <member refid="classdiscordpp_1_1DeviceAuthorizationArgs_1a9968629e4bfeb8e35958cdee2346c410" prot="public" virt="non-virtual"><scope>discordpp::DeviceAuthorizationArgs</scope><name>SetScopes</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

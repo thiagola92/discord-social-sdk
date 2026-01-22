@@ -1,0 +1,340 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="classdiscordpp_1_1ClientCreateOptions" kind="class" language="C++" prot="public">
+    <compoundname>discordpp::ClientCreateOptions</compoundname>
+    <includes local="no">discordpp.h</includes>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classdiscordpp_1_1ClientCreateOptions_1a5769df5269c50438853bbc70e129b028" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="classdiscordpp_1_1ClientCreateOptions" kindref="compound">ClientCreateOptions</ref></type>
+        <definition>const ClientCreateOptions discordpp::ClientCreateOptions::nullobj</definition>
+        <argsstring></argsstring>
+        <name>nullobj</name>
+        <qualifiedname>discordpp::ClientCreateOptions::nullobj</qualifiedname>
+        <briefdescription>
+<para>Uninitialized instance of <ref refid="classdiscordpp_1_1ClientCreateOptions" kindref="compound">ClientCreateOptions</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3237" column="34" bodyfile="include/discordpp.h" bodystart="3237" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classdiscordpp_1_1ClientCreateOptions_1ae655ad66ba64f443496c158307cc77b4" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::ClientCreateOptions::ClientCreateOptions</definition>
+        <argsstring>(ClientCreateOptions &amp;&amp;other) noexcept</argsstring>
+        <name>ClientCreateOptions</name>
+        <qualifiedname>discordpp::ClientCreateOptions::ClientCreateOptions</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1ClientCreateOptions" kindref="compound">ClientCreateOptions</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move constructor for <ref refid="classdiscordpp_1_1ClientCreateOptions" kindref="compound">ClientCreateOptions</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3233" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ClientCreateOptions_1afde9899a61abe4c173bdf7beb2a6e18d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1ClientCreateOptions" kindref="compound">ClientCreateOptions</ref> &amp;</type>
+        <definition>ClientCreateOptions &amp; discordpp::ClientCreateOptions::operator=</definition>
+        <argsstring>(ClientCreateOptions &amp;&amp;other) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::ClientCreateOptions::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1ClientCreateOptions" kindref="compound">ClientCreateOptions</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move assignment operator for <ref refid="classdiscordpp_1_1ClientCreateOptions" kindref="compound">ClientCreateOptions</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3235" column="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ClientCreateOptions_1aa73bfe976c33cb916002445ae5507961" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::ClientCreateOptions::operator bool</definition>
+        <argsstring>() const</argsstring>
+        <name>operator bool</name>
+        <qualifiedname>discordpp::ClientCreateOptions::operator bool</qualifiedname>
+        <briefdescription>
+<para>Returns true if the instance contains a valid object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3239" column="1" bodyfile="include/discordpp.h" bodystart="3239" bodyend="3239"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ClientCreateOptions_1abd84b4e6210fb946c3d9bdd987d167ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::ClientCreateOptions::ClientCreateOptions</definition>
+        <argsstring>(const ClientCreateOptions &amp;arg0)</argsstring>
+        <name>ClientCreateOptions</name>
+        <qualifiedname>discordpp::ClientCreateOptions::ClientCreateOptions</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1ClientCreateOptions" kindref="compound">ClientCreateOptions</ref> &amp;</type>
+          <declname>arg0</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor for <ref refid="classdiscordpp_1_1ClientCreateOptions" kindref="compound">ClientCreateOptions</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3242" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ClientCreateOptions_1a86e3d0a59473bfcdc1827879ca77262d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1ClientCreateOptions" kindref="compound">ClientCreateOptions</ref> &amp;</type>
+        <definition>ClientCreateOptions &amp; discordpp::ClientCreateOptions::operator=</definition>
+        <argsstring>(const ClientCreateOptions &amp;arg0)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::ClientCreateOptions::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1ClientCreateOptions" kindref="compound">ClientCreateOptions</ref> &amp;</type>
+          <declname>arg0</declname>
+        </param>
+        <briefdescription>
+<para>Copy assignment operator for <ref refid="classdiscordpp_1_1ClientCreateOptions" kindref="compound">ClientCreateOptions</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3244" column="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ClientCreateOptions_1a18b843a20bb7ee4a6c6e3e257690a4cb" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::ClientCreateOptions::ClientCreateOptions</definition>
+        <argsstring>()</argsstring>
+        <name>ClientCreateOptions</name>
+        <qualifiedname>discordpp::ClientCreateOptions::ClientCreateOptions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3246" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ClientCreateOptions_1aae3dfb794e5cb64a5b7c4185fc21be4a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string discordpp::ClientCreateOptions::WebBase</definition>
+        <argsstring>() const</argsstring>
+        <name>WebBase</name>
+        <qualifiedname>discordpp::ClientCreateOptions::WebBase</qualifiedname>
+        <briefdescription>
+<para>The base URL for the Discord web application. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3253" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ClientCreateOptions_1aef30d2e0aaae55cf363ce22606b6b857" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::ClientCreateOptions::SetWebBase</definition>
+        <argsstring>(std::string WebBase)</argsstring>
+        <name>SetWebBase</name>
+        <qualifiedname>discordpp::ClientCreateOptions::SetWebBase</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>WebBase</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1ClientCreateOptions_1aae3dfb794e5cb64a5b7c4185fc21be4a" kindref="member">ClientCreateOptions::WebBase</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3255" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ClientCreateOptions_1ab75bc5cb2fba2679be638eaa77d33b53" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string discordpp::ClientCreateOptions::ApiBase</definition>
+        <argsstring>() const</argsstring>
+        <name>ApiBase</name>
+        <qualifiedname>discordpp::ClientCreateOptions::ApiBase</qualifiedname>
+        <briefdescription>
+<para>The base URL for the Discord API. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3258" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ClientCreateOptions_1ab8ea2ea26aafb92ebd54b443ae839595" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::ClientCreateOptions::SetApiBase</definition>
+        <argsstring>(std::string ApiBase)</argsstring>
+        <name>SetApiBase</name>
+        <qualifiedname>discordpp::ClientCreateOptions::SetApiBase</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>ApiBase</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1ClientCreateOptions_1ab75bc5cb2fba2679be638eaa77d33b53" kindref="member">ClientCreateOptions::ApiBase</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3260" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ClientCreateOptions_1a4a5859333e09347aef91f9bbda4ca08b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacediscordpp_1a566c99cfc3b8ee94ca322d35bc008633" kindref="member">discordpp::AudioSystem</ref></type>
+        <definition>discordpp::AudioSystem discordpp::ClientCreateOptions::ExperimentalAudioSystem</definition>
+        <argsstring>() const</argsstring>
+        <name>ExperimentalAudioSystem</name>
+        <qualifiedname>discordpp::ClientCreateOptions::ExperimentalAudioSystem</qualifiedname>
+        <briefdescription>
+<para>The audio system to use. Defaults to <ref refid="namespacediscordpp_1a566c99cfc3b8ee94ca322d35bc008633aeb6d8ae6f20283755b339c0dc273988b" kindref="member">AudioSystem::Standard</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This is an experimental API which may be removed or changed in a future release.</para>
+<para>The game audio system alters the behavior of Discord Voice on mobile platforms to use standard media-type streams instead of voice-specific audio APIs when possible. Currently this will be used on iOS 18.2+ on devices which return true from <computeroutput>-[AVAudioSession isEchoCancelledInputAvailable]</computeroutput> and on Android devices. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3270" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ClientCreateOptions_1adfd12e55eff0ae99f54b336f8d256770" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::ClientCreateOptions::SetExperimentalAudioSystem</definition>
+        <argsstring>(discordpp::AudioSystem ExperimentalAudioSystem)</argsstring>
+        <name>SetExperimentalAudioSystem</name>
+        <qualifiedname>discordpp::ClientCreateOptions::SetExperimentalAudioSystem</qualifiedname>
+        <param>
+          <type><ref refid="namespacediscordpp_1a566c99cfc3b8ee94ca322d35bc008633" kindref="member">discordpp::AudioSystem</ref></type>
+          <declname>ExperimentalAudioSystem</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1ClientCreateOptions_1a4a5859333e09347aef91f9bbda4ca08b" kindref="member">ClientCreateOptions::ExperimentalAudioSystem</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3272" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ClientCreateOptions_1aa9a720bd4f7f3ff12d0c1a3054d00a85" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool discordpp::ClientCreateOptions::ExperimentalAndroidPreventCommsForBluetooth</definition>
+        <argsstring>() const</argsstring>
+        <name>ExperimentalAndroidPreventCommsForBluetooth</name>
+        <qualifiedname>discordpp::ClientCreateOptions::ExperimentalAndroidPreventCommsForBluetooth</qualifiedname>
+        <briefdescription>
+<para>Whether to prevent communications mode on Android when Bluetooth is connected. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This is an experimental API which may be removed or changed in a future release.</para>
+<para>When set to true, the SDK will not enter communications mode when Bluetooth is connected. This setting is only meaningful on Android. It allows you to retain full quality stereo audio playback when in-call and avoids mixing issues caused by Bluetooth Absolute Volume, but will use the device microphone instead of the headset one. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3282" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ClientCreateOptions_1af979cbdbf18096496189143d34101d7c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::ClientCreateOptions::SetExperimentalAndroidPreventCommsForBluetooth</definition>
+        <argsstring>(bool ExperimentalAndroidPreventCommsForBluetooth)</argsstring>
+        <name>SetExperimentalAndroidPreventCommsForBluetooth</name>
+        <qualifiedname>discordpp::ClientCreateOptions::SetExperimentalAndroidPreventCommsForBluetooth</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>ExperimentalAndroidPreventCommsForBluetooth</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1ClientCreateOptions_1aa9a720bd4f7f3ff12d0c1a3054d00a85" kindref="member">ClientCreateOptions::ExperimentalAndroidPreventCommsForBluetooth</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3284" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ClientCreateOptions_1ae803723e9c57a0714a813b54dcf6540c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; uint64_t &gt;</type>
+        <definition>std::optional&lt; uint64_t &gt; discordpp::ClientCreateOptions::CpuAffinityMask</definition>
+        <argsstring>() const</argsstring>
+        <name>CpuAffinityMask</name>
+        <qualifiedname>discordpp::ClientCreateOptions::CpuAffinityMask</qualifiedname>
+        <briefdescription>
+<para>CPU affinity mask hint for certain platforms. Depending on platform support, may or may not be ignored. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3289" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ClientCreateOptions_1a45dc95e694b271d7f1cd38ec991937ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::ClientCreateOptions::SetCpuAffinityMask</definition>
+        <argsstring>(std::optional&lt; uint64_t &gt; CpuAffinityMask)</argsstring>
+        <name>SetCpuAffinityMask</name>
+        <qualifiedname>discordpp::ClientCreateOptions::SetCpuAffinityMask</qualifiedname>
+        <param>
+          <type>std::optional&lt; uint64_t &gt;</type>
+          <declname>CpuAffinityMask</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1ClientCreateOptions_1ae803723e9c57a0714a813b54dcf6540c" kindref="member">ClientCreateOptions::CpuAffinityMask</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3291" column="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Options for creating a new <ref refid="classdiscordpp_1_1Client" kindref="compound">Client</ref> instance. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This class may be used to set advanced initialization-time options on <ref refid="classdiscordpp_1_1Client" kindref="compound">Client</ref>. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>discordpp::ClientCreateOptions</label>
+        <link refid="classdiscordpp_1_1ClientCreateOptions"/>
+        <childnode refid="1" relation="usage">
+          <edgelabel>nullobj</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/discordpp.h" line="3218" column="1" bodyfile="include/discordpp.h" bodystart="3218" bodyend="3292"/>
+    <listofallmembers>
+      <member refid="classdiscordpp_1_1ClientCreateOptions_1ab75bc5cb2fba2679be638eaa77d33b53" prot="public" virt="non-virtual"><scope>discordpp::ClientCreateOptions</scope><name>ApiBase</name></member>
+      <member refid="classdiscordpp_1_1ClientCreateOptions_1ae655ad66ba64f443496c158307cc77b4" prot="public" virt="non-virtual"><scope>discordpp::ClientCreateOptions</scope><name>ClientCreateOptions</name></member>
+      <member refid="classdiscordpp_1_1ClientCreateOptions_1abd84b4e6210fb946c3d9bdd987d167ec" prot="public" virt="non-virtual"><scope>discordpp::ClientCreateOptions</scope><name>ClientCreateOptions</name></member>
+      <member refid="classdiscordpp_1_1ClientCreateOptions_1a18b843a20bb7ee4a6c6e3e257690a4cb" prot="public" virt="non-virtual"><scope>discordpp::ClientCreateOptions</scope><name>ClientCreateOptions</name></member>
+      <member refid="classdiscordpp_1_1ClientCreateOptions_1ae803723e9c57a0714a813b54dcf6540c" prot="public" virt="non-virtual"><scope>discordpp::ClientCreateOptions</scope><name>CpuAffinityMask</name></member>
+      <member refid="classdiscordpp_1_1ClientCreateOptions_1aa9a720bd4f7f3ff12d0c1a3054d00a85" prot="public" virt="non-virtual"><scope>discordpp::ClientCreateOptions</scope><name>ExperimentalAndroidPreventCommsForBluetooth</name></member>
+      <member refid="classdiscordpp_1_1ClientCreateOptions_1a4a5859333e09347aef91f9bbda4ca08b" prot="public" virt="non-virtual"><scope>discordpp::ClientCreateOptions</scope><name>ExperimentalAudioSystem</name></member>
+      <member refid="classdiscordpp_1_1ClientCreateOptions_1a5769df5269c50438853bbc70e129b028" prot="public" virt="non-virtual"><scope>discordpp::ClientCreateOptions</scope><name>nullobj</name></member>
+      <member refid="classdiscordpp_1_1ClientCreateOptions_1aa73bfe976c33cb916002445ae5507961" prot="public" virt="non-virtual"><scope>discordpp::ClientCreateOptions</scope><name>operator bool</name></member>
+      <member refid="classdiscordpp_1_1ClientCreateOptions_1afde9899a61abe4c173bdf7beb2a6e18d" prot="public" virt="non-virtual"><scope>discordpp::ClientCreateOptions</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1ClientCreateOptions_1a86e3d0a59473bfcdc1827879ca77262d" prot="public" virt="non-virtual"><scope>discordpp::ClientCreateOptions</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1ClientCreateOptions_1ab8ea2ea26aafb92ebd54b443ae839595" prot="public" virt="non-virtual"><scope>discordpp::ClientCreateOptions</scope><name>SetApiBase</name></member>
+      <member refid="classdiscordpp_1_1ClientCreateOptions_1a45dc95e694b271d7f1cd38ec991937ef" prot="public" virt="non-virtual"><scope>discordpp::ClientCreateOptions</scope><name>SetCpuAffinityMask</name></member>
+      <member refid="classdiscordpp_1_1ClientCreateOptions_1af979cbdbf18096496189143d34101d7c" prot="public" virt="non-virtual"><scope>discordpp::ClientCreateOptions</scope><name>SetExperimentalAndroidPreventCommsForBluetooth</name></member>
+      <member refid="classdiscordpp_1_1ClientCreateOptions_1adfd12e55eff0ae99f54b336f8d256770" prot="public" virt="non-virtual"><scope>discordpp::ClientCreateOptions</scope><name>SetExperimentalAudioSystem</name></member>
+      <member refid="classdiscordpp_1_1ClientCreateOptions_1aef30d2e0aaae55cf363ce22606b6b857" prot="public" virt="non-virtual"><scope>discordpp::ClientCreateOptions</scope><name>SetWebBase</name></member>
+      <member refid="classdiscordpp_1_1ClientCreateOptions_1aae3dfb794e5cb64a5b7c4185fc21be4a" prot="public" virt="non-virtual"><scope>discordpp::ClientCreateOptions</scope><name>WebBase</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

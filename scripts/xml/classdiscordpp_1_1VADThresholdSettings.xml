@@ -1,0 +1,208 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="classdiscordpp_1_1VADThresholdSettings" kind="class" language="C++" prot="public">
+    <compoundname>discordpp::VADThresholdSettings</compoundname>
+    <includes local="no">discordpp.h</includes>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classdiscordpp_1_1VADThresholdSettings_1a5f06041812bdfaf768f033367d64ac57" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="classdiscordpp_1_1VADThresholdSettings" kindref="compound">VADThresholdSettings</ref></type>
+        <definition>const VADThresholdSettings discordpp::VADThresholdSettings::nullobj</definition>
+        <argsstring></argsstring>
+        <name>nullobj</name>
+        <qualifiedname>discordpp::VADThresholdSettings::nullobj</qualifiedname>
+        <briefdescription>
+<para>Uninitialized instance of <ref refid="classdiscordpp_1_1VADThresholdSettings" kindref="compound">VADThresholdSettings</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1863" column="35" bodyfile="include/discordpp.h" bodystart="1863" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classdiscordpp_1_1VADThresholdSettings_1a0d1ec1c699d7b0d2fa55a69d26552277" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::VADThresholdSettings::VADThresholdSettings</definition>
+        <argsstring>(VADThresholdSettings &amp;&amp;other) noexcept</argsstring>
+        <name>VADThresholdSettings</name>
+        <qualifiedname>discordpp::VADThresholdSettings::VADThresholdSettings</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1VADThresholdSettings" kindref="compound">VADThresholdSettings</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move constructor for <ref refid="classdiscordpp_1_1VADThresholdSettings" kindref="compound">VADThresholdSettings</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1859" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1VADThresholdSettings_1a067f3518e79b80447cb9e7bd0a1bbf63" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1VADThresholdSettings" kindref="compound">VADThresholdSettings</ref> &amp;</type>
+        <definition>VADThresholdSettings &amp; discordpp::VADThresholdSettings::operator=</definition>
+        <argsstring>(VADThresholdSettings &amp;&amp;other) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::VADThresholdSettings::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1VADThresholdSettings" kindref="compound">VADThresholdSettings</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move assignment operator for <ref refid="classdiscordpp_1_1VADThresholdSettings" kindref="compound">VADThresholdSettings</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1861" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1VADThresholdSettings_1acd1182b2c6703a999ba1fe337036d0f3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::VADThresholdSettings::operator bool</definition>
+        <argsstring>() const</argsstring>
+        <name>operator bool</name>
+        <qualifiedname>discordpp::VADThresholdSettings::operator bool</qualifiedname>
+        <briefdescription>
+<para>Returns true if the instance contains a valid object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1865" column="1" bodyfile="include/discordpp.h" bodystart="1865" bodyend="1865"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1VADThresholdSettings_1a82c97a18a98a2da2cf908aadf742a0c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::VADThresholdSettings::VADThresholdSettings</definition>
+        <argsstring>(const VADThresholdSettings &amp;)=delete</argsstring>
+        <name>VADThresholdSettings</name>
+        <qualifiedname>discordpp::VADThresholdSettings::VADThresholdSettings</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1VADThresholdSettings" kindref="compound">VADThresholdSettings</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1867" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1VADThresholdSettings_1a57dc811ce9b3e0effb74f8201fcc3312" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1VADThresholdSettings" kindref="compound">VADThresholdSettings</ref> &amp;</type>
+        <definition>VADThresholdSettings &amp; discordpp::VADThresholdSettings::operator=</definition>
+        <argsstring>(const VADThresholdSettings &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::VADThresholdSettings::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1VADThresholdSettings" kindref="compound">VADThresholdSettings</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1868" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1VADThresholdSettings_1a92ddf7ac4143d02c5fb895b11474c15c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float discordpp::VADThresholdSettings::VadThreshold</definition>
+        <argsstring>() const</argsstring>
+        <name>VadThreshold</name>
+        <qualifiedname>discordpp::VADThresholdSettings::VadThreshold</qualifiedname>
+        <briefdescription>
+<para>The current void auto detection threshold value, has a range of -100, 0 and defaults to -60. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1876" column="7"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1VADThresholdSettings_1ad95294ad835cf0282fe11595f7d94cfa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::VADThresholdSettings::SetVadThreshold</definition>
+        <argsstring>(float VadThreshold)</argsstring>
+        <name>SetVadThreshold</name>
+        <qualifiedname>discordpp::VADThresholdSettings::SetVadThreshold</qualifiedname>
+        <param>
+          <type>float</type>
+          <declname>VadThreshold</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1VADThresholdSettings_1a92ddf7ac4143d02c5fb895b11474c15c" kindref="member">VADThresholdSettings::VadThreshold</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1878" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1VADThresholdSettings_1a7f28f03efbb001bc0468762a7f3a5b5c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool discordpp::VADThresholdSettings::Automatic</definition>
+        <argsstring>() const</argsstring>
+        <name>Automatic</name>
+        <qualifiedname>discordpp::VADThresholdSettings::Automatic</qualifiedname>
+        <briefdescription>
+<para>Whether or not Discord is currently automatically setting and detecting the appropriate threshold to use. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1882" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1VADThresholdSettings_1ab5f0db1ed7a73a3f7601d187bc958e86" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::VADThresholdSettings::SetAutomatic</definition>
+        <argsstring>(bool Automatic)</argsstring>
+        <name>SetAutomatic</name>
+        <qualifiedname>discordpp::VADThresholdSettings::SetAutomatic</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>Automatic</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1VADThresholdSettings_1a7f28f03efbb001bc0468762a7f3a5b5c" kindref="member">VADThresholdSettings::Automatic</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1884" column="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Settings for the void auto detection threshold for picking up activity from a user&apos;s mic. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>discordpp::VADThresholdSettings</label>
+        <link refid="classdiscordpp_1_1VADThresholdSettings"/>
+        <childnode refid="1" relation="usage">
+          <edgelabel>nullobj</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/discordpp.h" line="1844" column="1" bodyfile="include/discordpp.h" bodystart="1844" bodyend="1885"/>
+    <listofallmembers>
+      <member refid="classdiscordpp_1_1VADThresholdSettings_1a7f28f03efbb001bc0468762a7f3a5b5c" prot="public" virt="non-virtual"><scope>discordpp::VADThresholdSettings</scope><name>Automatic</name></member>
+      <member refid="classdiscordpp_1_1VADThresholdSettings_1a5f06041812bdfaf768f033367d64ac57" prot="public" virt="non-virtual"><scope>discordpp::VADThresholdSettings</scope><name>nullobj</name></member>
+      <member refid="classdiscordpp_1_1VADThresholdSettings_1acd1182b2c6703a999ba1fe337036d0f3" prot="public" virt="non-virtual"><scope>discordpp::VADThresholdSettings</scope><name>operator bool</name></member>
+      <member refid="classdiscordpp_1_1VADThresholdSettings_1a067f3518e79b80447cb9e7bd0a1bbf63" prot="public" virt="non-virtual"><scope>discordpp::VADThresholdSettings</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1VADThresholdSettings_1a57dc811ce9b3e0effb74f8201fcc3312" prot="public" virt="non-virtual"><scope>discordpp::VADThresholdSettings</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1VADThresholdSettings_1ab5f0db1ed7a73a3f7601d187bc958e86" prot="public" virt="non-virtual"><scope>discordpp::VADThresholdSettings</scope><name>SetAutomatic</name></member>
+      <member refid="classdiscordpp_1_1VADThresholdSettings_1ad95294ad835cf0282fe11595f7d94cfa" prot="public" virt="non-virtual"><scope>discordpp::VADThresholdSettings</scope><name>SetVadThreshold</name></member>
+      <member refid="classdiscordpp_1_1VADThresholdSettings_1a92ddf7ac4143d02c5fb895b11474c15c" prot="public" virt="non-virtual"><scope>discordpp::VADThresholdSettings</scope><name>VadThreshold</name></member>
+      <member refid="classdiscordpp_1_1VADThresholdSettings_1a0d1ec1c699d7b0d2fa55a69d26552277" prot="public" virt="non-virtual"><scope>discordpp::VADThresholdSettings</scope><name>VADThresholdSettings</name></member>
+      <member refid="classdiscordpp_1_1VADThresholdSettings_1a82c97a18a98a2da2cf908aadf742a0c0" prot="public" virt="non-virtual"><scope>discordpp::VADThresholdSettings</scope><name>VADThresholdSettings</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

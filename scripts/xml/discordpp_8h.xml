@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="discordpp_8h" kind="file" language="C++">
+    <compoundname>discordpp.h</compoundname>
+    <includes local="yes">cdiscord.h</includes>
+    <includes local="no">atomic</includes>
+    <includes local="no">cassert</includes>
+    <includes local="no">cstring</includes>
+    <includes local="no">functional</includes>
+    <includes local="no">memory</includes>
+    <includes local="no">optional</includes>
+    <includes local="no">string</includes>
+    <includes local="no">unordered_map</includes>
+    <includes local="no">vector</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>include/discordpp.h</label>
+        <link refid="discordpp_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>atomic</label>
+      </node>
+      <node id="4">
+        <label>cassert</label>
+      </node>
+      <node id="2">
+        <label>cdiscord.h</label>
+      </node>
+      <node id="5">
+        <label>cstring</label>
+      </node>
+      <node id="6">
+        <label>functional</label>
+      </node>
+      <node id="7">
+        <label>memory</label>
+      </node>
+      <node id="8">
+        <label>optional</label>
+      </node>
+      <node id="9">
+        <label>string</label>
+      </node>
+      <node id="10">
+        <label>unordered_map</label>
+      </node>
+      <node id="11">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="classdiscordpp_1_1ActivityInvite" prot="public">discordpp::ActivityInvite</innerclass>
+    <innerclass refid="classdiscordpp_1_1ActivityAssets" prot="public">discordpp::ActivityAssets</innerclass>
+    <innerclass refid="classdiscordpp_1_1ActivityTimestamps" prot="public">discordpp::ActivityTimestamps</innerclass>
+    <innerclass refid="classdiscordpp_1_1ActivityParty" prot="public">discordpp::ActivityParty</innerclass>
+    <innerclass refid="classdiscordpp_1_1ActivitySecrets" prot="public">discordpp::ActivitySecrets</innerclass>
+    <innerclass refid="classdiscordpp_1_1ActivityButton" prot="public">discordpp::ActivityButton</innerclass>
+    <innerclass refid="classdiscordpp_1_1Activity" prot="public">discordpp::Activity</innerclass>
+    <innerclass refid="classdiscordpp_1_1ClientResult" prot="public">discordpp::ClientResult</innerclass>
+    <innerclass refid="classdiscordpp_1_1AuthorizationCodeChallenge" prot="public">discordpp::AuthorizationCodeChallenge</innerclass>
+    <innerclass refid="classdiscordpp_1_1AuthorizationCodeVerifier" prot="public">discordpp::AuthorizationCodeVerifier</innerclass>
+    <innerclass refid="classdiscordpp_1_1AuthorizationArgs" prot="public">discordpp::AuthorizationArgs</innerclass>
+    <innerclass refid="classdiscordpp_1_1DeviceAuthorizationArgs" prot="public">discordpp::DeviceAuthorizationArgs</innerclass>
+    <innerclass refid="classdiscordpp_1_1VoiceStateHandle" prot="public">discordpp::VoiceStateHandle</innerclass>
+    <innerclass refid="classdiscordpp_1_1VADThresholdSettings" prot="public">discordpp::VADThresholdSettings</innerclass>
+    <innerclass refid="classdiscordpp_1_1Call" prot="public">discordpp::Call</innerclass>
+    <innerclass refid="classdiscordpp_1_1ChannelHandle" prot="public">discordpp::ChannelHandle</innerclass>
+    <innerclass refid="classdiscordpp_1_1GuildMinimal" prot="public">discordpp::GuildMinimal</innerclass>
+    <innerclass refid="classdiscordpp_1_1GuildChannel" prot="public">discordpp::GuildChannel</innerclass>
+    <innerclass refid="classdiscordpp_1_1LinkedLobby" prot="public">discordpp::LinkedLobby</innerclass>
+    <innerclass refid="classdiscordpp_1_1LinkedChannel" prot="public">discordpp::LinkedChannel</innerclass>
+    <innerclass refid="classdiscordpp_1_1RelationshipHandle" prot="public">discordpp::RelationshipHandle</innerclass>
+    <innerclass refid="classdiscordpp_1_1UserApplicationProfileHandle" prot="public">discordpp::UserApplicationProfileHandle</innerclass>
+    <innerclass refid="classdiscordpp_1_1UserHandle" prot="public">discordpp::UserHandle</innerclass>
+    <innerclass refid="classdiscordpp_1_1LobbyMemberHandle" prot="public">discordpp::LobbyMemberHandle</innerclass>
+    <innerclass refid="classdiscordpp_1_1LobbyHandle" prot="public">discordpp::LobbyHandle</innerclass>
+    <innerclass refid="classdiscordpp_1_1AdditionalContent" prot="public">discordpp::AdditionalContent</innerclass>
+    <innerclass refid="classdiscordpp_1_1MessageHandle" prot="public">discordpp::MessageHandle</innerclass>
+    <innerclass refid="classdiscordpp_1_1AudioDevice" prot="public">discordpp::AudioDevice</innerclass>
+    <innerclass refid="classdiscordpp_1_1UserMessageSummary" prot="public">discordpp::UserMessageSummary</innerclass>
+    <innerclass refid="classdiscordpp_1_1ClientCreateOptions" prot="public">discordpp::ClientCreateOptions</innerclass>
+    <innerclass refid="classdiscordpp_1_1Client" prot="public">discordpp::Client</innerclass>
+    <innerclass refid="classdiscordpp_1_1CallInfoHandle" prot="public">discordpp::CallInfoHandle</innerclass>
+    <innernamespace refid="namespacediscordpp">discordpp</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/discordpp.h"/>
+  </compounddef>
+</doxygen>

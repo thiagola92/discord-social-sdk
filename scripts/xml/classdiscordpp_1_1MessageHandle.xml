@@ -1,0 +1,467 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="classdiscordpp_1_1MessageHandle" kind="class" language="C++" prot="public">
+    <compoundname>discordpp::MessageHandle</compoundname>
+    <includes local="no">discordpp.h</includes>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classdiscordpp_1_1MessageHandle_1a2609976a300179e97d95bc73927fac74" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="classdiscordpp_1_1MessageHandle" kindref="compound">MessageHandle</ref></type>
+        <definition>const MessageHandle discordpp::MessageHandle::nullobj</definition>
+        <argsstring></argsstring>
+        <name>nullobj</name>
+        <qualifiedname>discordpp::MessageHandle::nullobj</qualifiedname>
+        <briefdescription>
+<para>Uninitialized instance of <ref refid="classdiscordpp_1_1MessageHandle" kindref="compound">MessageHandle</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3022" column="28" bodyfile="include/discordpp.h" bodystart="3022" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classdiscordpp_1_1MessageHandle_1ae25595b43bc74b0c4c92c5165d16382f" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::MessageHandle::MessageHandle</definition>
+        <argsstring>(MessageHandle &amp;&amp;other) noexcept</argsstring>
+        <name>MessageHandle</name>
+        <qualifiedname>discordpp::MessageHandle::MessageHandle</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1MessageHandle" kindref="compound">MessageHandle</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move constructor for <ref refid="classdiscordpp_1_1MessageHandle" kindref="compound">MessageHandle</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3018" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1MessageHandle_1a62b6440741052c8593db05c66b9fb9c7" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1MessageHandle" kindref="compound">MessageHandle</ref> &amp;</type>
+        <definition>MessageHandle &amp; discordpp::MessageHandle::operator=</definition>
+        <argsstring>(MessageHandle &amp;&amp;other) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::MessageHandle::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1MessageHandle" kindref="compound">MessageHandle</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move assignment operator for <ref refid="classdiscordpp_1_1MessageHandle" kindref="compound">MessageHandle</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3020" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1MessageHandle_1a118a3c041afcc84879451374c29f7cef" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::MessageHandle::operator bool</definition>
+        <argsstring>() const</argsstring>
+        <name>operator bool</name>
+        <qualifiedname>discordpp::MessageHandle::operator bool</qualifiedname>
+        <briefdescription>
+<para>Returns true if the instance contains a valid object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3024" column="1" bodyfile="include/discordpp.h" bodystart="3024" bodyend="3024"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1MessageHandle_1a7e2aee125832ed2c66d6b2a265db1523" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::MessageHandle::MessageHandle</definition>
+        <argsstring>(const MessageHandle &amp;other)</argsstring>
+        <name>MessageHandle</name>
+        <qualifiedname>discordpp::MessageHandle::MessageHandle</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1MessageHandle" kindref="compound">MessageHandle</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor for <ref refid="classdiscordpp_1_1MessageHandle" kindref="compound">MessageHandle</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3027" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1MessageHandle_1a548503b12bd759f945f879557111d9e8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1MessageHandle" kindref="compound">MessageHandle</ref> &amp;</type>
+        <definition>MessageHandle &amp; discordpp::MessageHandle::operator=</definition>
+        <argsstring>(const MessageHandle &amp;other)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::MessageHandle::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1MessageHandle" kindref="compound">MessageHandle</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Copy assignment operator for <ref refid="classdiscordpp_1_1MessageHandle" kindref="compound">MessageHandle</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3029" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1MessageHandle_1af4497491a95fda65402b6acf7a8b42e5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; <ref refid="classdiscordpp_1_1AdditionalContent" kindref="compound">discordpp::AdditionalContent</ref> &gt;</type>
+        <definition>std::optional&lt; discordpp::AdditionalContent &gt; discordpp::MessageHandle::AdditionalContent</definition>
+        <argsstring>() const</argsstring>
+        <name>AdditionalContent</name>
+        <qualifiedname>discordpp::MessageHandle::AdditionalContent</qualifiedname>
+        <briefdescription>
+<para>If the message contains non-text content, such as images, videos, embeds, polls, etc, this method will return information about that content. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3037" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1MessageHandle_1a37865567c5dba319fd6baf5cff6d5590" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; uint64_t &gt;</type>
+        <definition>std::optional&lt; uint64_t &gt; discordpp::MessageHandle::ApplicationId</definition>
+        <argsstring>() const</argsstring>
+        <name>ApplicationId</name>
+        <qualifiedname>discordpp::MessageHandle::ApplicationId</qualifiedname>
+        <briefdescription>
+<para>Returns the application ID associated with this message, if any. You can use this to identify if the mesage was sent from another child application in your catalog. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Note: Parent / child applications are in limited access and the SentFromGame field should be relied on for the common case. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3045" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1MessageHandle_1a5e5b89806a8f03f2cf80ad9e1c10665f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; <ref refid="classdiscordpp_1_1UserHandle" kindref="compound">discordpp::UserHandle</ref> &gt;</type>
+        <definition>std::optional&lt; discordpp::UserHandle &gt; discordpp::MessageHandle::Author</definition>
+        <argsstring>() const</argsstring>
+        <name>Author</name>
+        <qualifiedname>discordpp::MessageHandle::Author</qualifiedname>
+        <briefdescription>
+<para>Returns the <ref refid="classdiscordpp_1_1UserHandle" kindref="compound">UserHandle</ref> for the author of this message. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3048" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1MessageHandle_1a0f85af33c2322a9afec892c2bcdce7c6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t discordpp::MessageHandle::AuthorId</definition>
+        <argsstring>() const</argsstring>
+        <name>AuthorId</name>
+        <qualifiedname>discordpp::MessageHandle::AuthorId</qualifiedname>
+        <briefdescription>
+<para>Returns the user ID of the user who sent this message. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3051" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1MessageHandle_1a1e32d54fe034821cc9bc9fd626d7f069" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; <ref refid="classdiscordpp_1_1ChannelHandle" kindref="compound">discordpp::ChannelHandle</ref> &gt;</type>
+        <definition>std::optional&lt; discordpp::ChannelHandle &gt; discordpp::MessageHandle::Channel</definition>
+        <argsstring>() const</argsstring>
+        <name>Channel</name>
+        <qualifiedname>discordpp::MessageHandle::Channel</qualifiedname>
+        <briefdescription>
+<para>Returns the <ref refid="classdiscordpp_1_1ChannelHandle" kindref="compound">ChannelHandle</ref> for the channel this message was sent in. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3054" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1MessageHandle_1ad8b8ccfab8c8e06dc9fc3201284db1ce" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t discordpp::MessageHandle::ChannelId</definition>
+        <argsstring>() const</argsstring>
+        <name>ChannelId</name>
+        <qualifiedname>discordpp::MessageHandle::ChannelId</qualifiedname>
+        <briefdescription>
+<para>Returns the channel ID this message was sent in. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3057" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1MessageHandle_1a7f80e02307db527ab2a55c426ce13d8b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string discordpp::MessageHandle::Content</definition>
+        <argsstring>() const</argsstring>
+        <name>Content</name>
+        <qualifiedname>discordpp::MessageHandle::Content</qualifiedname>
+        <briefdescription>
+<para>Returns the content of this message, if any. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>A message can be blank if it was sent from Discord but only contains content such as image attachments. Certain types of markup, such as markup for emojis and mentions, will be auto replaced with a more human readable form, such as <computeroutput>@username</computeroutput> or <computeroutput>:emoji_name:</computeroutput>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3064" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1MessageHandle_1abefb9be7836951a6acf78a4bb1676638" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; <ref refid="namespacediscordpp_1a0d3a4099faa1d5870eb8a49828e05d34" kindref="member">discordpp::DisclosureTypes</ref> &gt;</type>
+        <definition>std::optional&lt; discordpp::DisclosureTypes &gt; discordpp::MessageHandle::DisclosureType</definition>
+        <argsstring>() const</argsstring>
+        <name>DisclosureType</name>
+        <qualifiedname>discordpp::MessageHandle::DisclosureType</qualifiedname>
+        <briefdescription>
+<para>If this is an auto-generated message that is explaining some integration behavior to users, this method will return the type of disclosure so you can customize it. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3068" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1MessageHandle_1a781f821c3aa2802681d6f6f33c2443b4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t discordpp::MessageHandle::EditedTimestamp</definition>
+        <argsstring>() const</argsstring>
+        <name>EditedTimestamp</name>
+        <qualifiedname>discordpp::MessageHandle::EditedTimestamp</qualifiedname>
+        <briefdescription>
+<para>The timestamp in millis since the epoch when the message was most recently edited. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns 0 if the message has not been edited yet. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3073" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1MessageHandle_1a59f6a4468a3926ffcdf8d0ffff1e4910" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t discordpp::MessageHandle::Id</definition>
+        <argsstring>() const</argsstring>
+        <name>Id</name>
+        <qualifiedname>discordpp::MessageHandle::Id</qualifiedname>
+        <briefdescription>
+<para>Returns the ID of this message. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3076" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1MessageHandle_1aa9ab0eb82985680399dcc1d5c0ea5605" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; <ref refid="classdiscordpp_1_1LobbyHandle" kindref="compound">discordpp::LobbyHandle</ref> &gt;</type>
+        <definition>std::optional&lt; discordpp::LobbyHandle &gt; discordpp::MessageHandle::Lobby</definition>
+        <argsstring>() const</argsstring>
+        <name>Lobby</name>
+        <qualifiedname>discordpp::MessageHandle::Lobby</qualifiedname>
+        <briefdescription>
+<para>Returns the <ref refid="classdiscordpp_1_1LobbyHandle" kindref="compound">LobbyHandle</ref> this message was sent in, if it was sent in a lobby. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3079" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1MessageHandle_1a881df6c0ee36e8009a7b516da4a065d5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::unordered_map&lt; std::string, std::string &gt;</type>
+        <definition>std::unordered_map&lt; std::string, std::string &gt; discordpp::MessageHandle::Metadata</definition>
+        <argsstring>() const</argsstring>
+        <name>Metadata</name>
+        <qualifiedname>discordpp::MessageHandle::Metadata</qualifiedname>
+        <briefdescription>
+<para>Returns any metadata the developer included with this message. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Metadata is just a set of simple string key/value pairs. An example use case might be to include a character name so you can customize how a message renders in game. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3086" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1MessageHandle_1afb9ae126f6b1f0de006f2be8e3688205" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::unordered_map&lt; std::string, std::string &gt;</type>
+        <definition>std::unordered_map&lt; std::string, std::string &gt; discordpp::MessageHandle::ModerationMetadata</definition>
+        <argsstring>() const</argsstring>
+        <name>ModerationMetadata</name>
+        <qualifiedname>discordpp::MessageHandle::ModerationMetadata</qualifiedname>
+        <briefdescription>
+<para>Returns any moderation metadata the developer set on this message. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Moderation metadata is just a set of simple string key/value pairs. An example use case might be to include a flag that indicates the moderation status of the message. Another example would be to include a re-written message that is more appropriate for the game&apos;s audience. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3094" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1MessageHandle_1aa63a42124cd944ca2c67bc24a22e7421" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string discordpp::MessageHandle::RawContent</definition>
+        <argsstring>() const</argsstring>
+        <name>RawContent</name>
+        <qualifiedname>discordpp::MessageHandle::RawContent</qualifiedname>
+        <briefdescription>
+<para>Returns the content of this message, if any, but without replacing any markup from emojis and mentions. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>A message can be blank if it was sent from Discord but only contains content such as image attachments. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3101" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1MessageHandle_1a369267d15083885fbcf5edfc21ecf1e7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; <ref refid="classdiscordpp_1_1UserHandle" kindref="compound">discordpp::UserHandle</ref> &gt;</type>
+        <definition>std::optional&lt; discordpp::UserHandle &gt; discordpp::MessageHandle::Recipient</definition>
+        <argsstring>() const</argsstring>
+        <name>Recipient</name>
+        <qualifiedname>discordpp::MessageHandle::Recipient</qualifiedname>
+        <briefdescription>
+<para>Returns the <ref refid="classdiscordpp_1_1UserHandle" kindref="compound">UserHandle</ref> for the other participant in a DM, if this message was sent in a DM. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3105" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1MessageHandle_1ab1a22f5da27cfe4cce9ddcefeed33a6d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t discordpp::MessageHandle::RecipientId</definition>
+        <argsstring>() const</argsstring>
+        <name>RecipientId</name>
+        <qualifiedname>discordpp::MessageHandle::RecipientId</qualifiedname>
+        <briefdescription>
+<para>When this message was sent in a DM or Ephemeral DM, this method will return the ID of the other user in that DM. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3109" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1MessageHandle_1ae3f3678ea0c19c655b85f5670e0fa88a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool discordpp::MessageHandle::SentFromGame</definition>
+        <argsstring>() const</argsstring>
+        <name>SentFromGame</name>
+        <qualifiedname>discordpp::MessageHandle::SentFromGame</qualifiedname>
+        <briefdescription>
+<para>Returns true if this message was sent in-game, otherwise false (i.e. from Discord itself). If you are using parent / child applications, this will be true if the message was sent from any child application. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3114" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1MessageHandle_1aba9db7eb0500371f4bb8666c912eeca9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t discordpp::MessageHandle::SentTimestamp</definition>
+        <argsstring>() const</argsstring>
+        <name>SentTimestamp</name>
+        <qualifiedname>discordpp::MessageHandle::SentTimestamp</qualifiedname>
+        <briefdescription>
+<para>The timestamp in millis since the epoch when the message was sent. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3117" column="10"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>A <ref refid="classdiscordpp_1_1MessageHandle" kindref="compound">MessageHandle</ref> represents a single message received by the SDK. </para>
+    </briefdescription>
+    <detaileddescription>
+<sect1 id="classdiscordpp_1_1MessageHandle_1autotoc_md13">
+<title>Chat types</title><para>The SDK supports two types of chat:<orderedlist>
+<listitem><para>1 on 1 chat between two users</para>
+</listitem><listitem><para>Chat within a lobby</para>
+</listitem></orderedlist>
+</para>
+<para>You can determine the context a message was sent in with the <ref refid="classdiscordpp_1_1MessageHandle_1a1e32d54fe034821cc9bc9fd626d7f069" kindref="member">MessageHandle::Channel</ref> and <ref refid="classdiscordpp_1_1ChannelHandle_1aff3b40ab2690c966532fc4d8709a9e85" kindref="member">ChannelHandle::Type</ref> methods. The SDK should only be receiving messages in the following channel types:<itemizedlist>
+<listitem><para>DM</para>
+</listitem><listitem><para>Ephemeral DM</para>
+</listitem><listitem><para>Lobby</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="classdiscordpp_1_1MessageHandle_1autotoc_md14">
+<title>Syncing with Discord</title><para>In some situations messages sent from the SDK will also show up in Discord. In general this will happen for:<itemizedlist>
+<listitem><para>1 on 1 chat when at least one of the users is a full Discord user</para>
+</listitem><listitem><para>Lobby chat when the lobby is linked to a Discord channel</para>
+</listitem></itemizedlist>
+</para>
+<para>Additionally the message must have been sent by a user who is not banned on the Discord side.</para>
+</sect1>
+<sect1 id="classdiscordpp_1_1MessageHandle_1autotoc_md15">
+<title>Legal disclosures</title><para>As a convenience for game developers, the first time a user sends a message in game, and that message will show up on the Discord client, the SDK will inject a &quot;fake&quot; message into the chat, that contains a basic English explanation of what is happening to the user. You can identify these messages with the <ref refid="classdiscordpp_1_1MessageHandle_1abefb9be7836951a6acf78a4bb1676638" kindref="member">MessageHandle::DisclosureType</ref> method. We encourage you to customize the rendering of these messages, possibly changing the wording, translating them, and making them look more &quot;official&quot;. You can choose to avoid rendering these as well.</para>
+</sect1>
+<sect1 id="classdiscordpp_1_1MessageHandle_1autotoc_md16">
+<title>History</title><para>The SDK keeps the 25 most recent messages in each channel in memory, but it does not have access to any historical messages sent before the SDK was connected. A <ref refid="classdiscordpp_1_1MessageHandle" kindref="compound">MessageHandle</ref> will keep working though even after the SDK has discarded the message for being too old, you just won&apos;t be able to create a new <ref refid="classdiscordpp_1_1MessageHandle" kindref="compound">MessageHandle</ref> objects for that message.</para>
+</sect1>
+<sect1 id="classdiscordpp_1_1MessageHandle_1autotoc_md17">
+<title>Unrenderable Content</title><para>Messages sent on Discord can contain content that may not be renderable in game, such as images, videos, embeds, polls, and more. The game isn&apos;t expected to render these, but instead show a small notice so the user is aware there is more content and a way to view that content on Discord. The <ref refid="classdiscordpp_1_1MessageHandle_1af4497491a95fda65402b6acf7a8b42e5" kindref="member">MessageHandle::AdditionalContent</ref> method will contain data about the non-text content in this message.</para>
+<para>There is also more information about the struct of messages on Discord here: <ulink url="https://discord.com/developers/docs/resources/message">https://discord.com/developers/docs/resources/message</ulink></para>
+<para>Note: While the SDK allows you to send messages on behalf of a user, you must only do so in response to a user action. You should never automatically send messages.</para>
+<para>Handle objects in the SDK hold a reference both to the underlying data, and to the SDK instance. Changes to the underlying data will generally be available on existing handles objects without having to re-create them. If the SDK instance is destroyed, but you still have a reference to a handle object, note that it will return the default value for all method calls (ie an empty string for methods that return a string). </para>
+</sect1>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>discordpp::MessageHandle</label>
+        <link refid="classdiscordpp_1_1MessageHandle"/>
+        <childnode refid="1" relation="usage">
+          <edgelabel>nullobj</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/discordpp.h" line="3003" column="1" bodyfile="include/discordpp.h" bodystart="3003" bodyend="3118"/>
+    <listofallmembers>
+      <member refid="classdiscordpp_1_1MessageHandle_1af4497491a95fda65402b6acf7a8b42e5" prot="public" virt="non-virtual"><scope>discordpp::MessageHandle</scope><name>AdditionalContent</name></member>
+      <member refid="classdiscordpp_1_1MessageHandle_1a37865567c5dba319fd6baf5cff6d5590" prot="public" virt="non-virtual"><scope>discordpp::MessageHandle</scope><name>ApplicationId</name></member>
+      <member refid="classdiscordpp_1_1MessageHandle_1a5e5b89806a8f03f2cf80ad9e1c10665f" prot="public" virt="non-virtual"><scope>discordpp::MessageHandle</scope><name>Author</name></member>
+      <member refid="classdiscordpp_1_1MessageHandle_1a0f85af33c2322a9afec892c2bcdce7c6" prot="public" virt="non-virtual"><scope>discordpp::MessageHandle</scope><name>AuthorId</name></member>
+      <member refid="classdiscordpp_1_1MessageHandle_1a1e32d54fe034821cc9bc9fd626d7f069" prot="public" virt="non-virtual"><scope>discordpp::MessageHandle</scope><name>Channel</name></member>
+      <member refid="classdiscordpp_1_1MessageHandle_1ad8b8ccfab8c8e06dc9fc3201284db1ce" prot="public" virt="non-virtual"><scope>discordpp::MessageHandle</scope><name>ChannelId</name></member>
+      <member refid="classdiscordpp_1_1MessageHandle_1a7f80e02307db527ab2a55c426ce13d8b" prot="public" virt="non-virtual"><scope>discordpp::MessageHandle</scope><name>Content</name></member>
+      <member refid="classdiscordpp_1_1MessageHandle_1abefb9be7836951a6acf78a4bb1676638" prot="public" virt="non-virtual"><scope>discordpp::MessageHandle</scope><name>DisclosureType</name></member>
+      <member refid="classdiscordpp_1_1MessageHandle_1a781f821c3aa2802681d6f6f33c2443b4" prot="public" virt="non-virtual"><scope>discordpp::MessageHandle</scope><name>EditedTimestamp</name></member>
+      <member refid="classdiscordpp_1_1MessageHandle_1a59f6a4468a3926ffcdf8d0ffff1e4910" prot="public" virt="non-virtual"><scope>discordpp::MessageHandle</scope><name>Id</name></member>
+      <member refid="classdiscordpp_1_1MessageHandle_1aa9ab0eb82985680399dcc1d5c0ea5605" prot="public" virt="non-virtual"><scope>discordpp::MessageHandle</scope><name>Lobby</name></member>
+      <member refid="classdiscordpp_1_1MessageHandle_1ae25595b43bc74b0c4c92c5165d16382f" prot="public" virt="non-virtual"><scope>discordpp::MessageHandle</scope><name>MessageHandle</name></member>
+      <member refid="classdiscordpp_1_1MessageHandle_1a7e2aee125832ed2c66d6b2a265db1523" prot="public" virt="non-virtual"><scope>discordpp::MessageHandle</scope><name>MessageHandle</name></member>
+      <member refid="classdiscordpp_1_1MessageHandle_1a881df6c0ee36e8009a7b516da4a065d5" prot="public" virt="non-virtual"><scope>discordpp::MessageHandle</scope><name>Metadata</name></member>
+      <member refid="classdiscordpp_1_1MessageHandle_1afb9ae126f6b1f0de006f2be8e3688205" prot="public" virt="non-virtual"><scope>discordpp::MessageHandle</scope><name>ModerationMetadata</name></member>
+      <member refid="classdiscordpp_1_1MessageHandle_1a2609976a300179e97d95bc73927fac74" prot="public" virt="non-virtual"><scope>discordpp::MessageHandle</scope><name>nullobj</name></member>
+      <member refid="classdiscordpp_1_1MessageHandle_1a118a3c041afcc84879451374c29f7cef" prot="public" virt="non-virtual"><scope>discordpp::MessageHandle</scope><name>operator bool</name></member>
+      <member refid="classdiscordpp_1_1MessageHandle_1a62b6440741052c8593db05c66b9fb9c7" prot="public" virt="non-virtual"><scope>discordpp::MessageHandle</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1MessageHandle_1a548503b12bd759f945f879557111d9e8" prot="public" virt="non-virtual"><scope>discordpp::MessageHandle</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1MessageHandle_1aa63a42124cd944ca2c67bc24a22e7421" prot="public" virt="non-virtual"><scope>discordpp::MessageHandle</scope><name>RawContent</name></member>
+      <member refid="classdiscordpp_1_1MessageHandle_1a369267d15083885fbcf5edfc21ecf1e7" prot="public" virt="non-virtual"><scope>discordpp::MessageHandle</scope><name>Recipient</name></member>
+      <member refid="classdiscordpp_1_1MessageHandle_1ab1a22f5da27cfe4cce9ddcefeed33a6d" prot="public" virt="non-virtual"><scope>discordpp::MessageHandle</scope><name>RecipientId</name></member>
+      <member refid="classdiscordpp_1_1MessageHandle_1ae3f3678ea0c19c655b85f5670e0fa88a" prot="public" virt="non-virtual"><scope>discordpp::MessageHandle</scope><name>SentFromGame</name></member>
+      <member refid="classdiscordpp_1_1MessageHandle_1aba9db7eb0500371f4bb8666c912eeca9" prot="public" virt="non-virtual"><scope>discordpp::MessageHandle</scope><name>SentTimestamp</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

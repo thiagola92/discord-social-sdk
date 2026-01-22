@@ -1,8 +1,8 @@
-def get_register_types_cpp(runtime_macros: str, abstract_macros: str) -> str:
+def get_register_types_cpp(register_abstracts: str, register_runtimes: str) -> str:
     return f"""
 #include "register_types.h"
-#include "discordpp_classes.h"
-#include "discordpp_enum.h"
+#include "discord_classes.h"
+#include "discord_enum.h"
 #include "gdextension_interface.h"
 #include "godot_cpp/core/class_db.hpp"
 #include "godot_cpp/core/defs.hpp"
@@ -15,11 +15,11 @@ void initialize_module(ModuleInitializationLevel p_level) {{
 		return;
 	}}
 
-	// discordpp_enum.h
-    {abstract_macros}
+	// Abstracts
+    {register_abstracts}
 
-	// discordpp_classes.h
-    {runtime_macros}
+	// Runtimes
+    {register_runtimes}
 }}
 
 void uninitialize_module(ModuleInitializationLevel p_level) {{

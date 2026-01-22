@@ -1,0 +1,880 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="classdiscordpp_1_1Call" kind="class" language="C++" prot="public">
+    <compoundname>discordpp::Call</compoundname>
+    <includes local="no">discordpp.h</includes>
+    <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classdiscordpp_1_1Call_1a92b477828e777e1cab576821a170dff0" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>Error</name>
+        <qualifiedname>discordpp::Call::Error</qualifiedname>
+        <enumvalue id="classdiscordpp_1_1Call_1a92b477828e777e1cab576821a170dff0a6adf97f83acf6453d4a6a4b1070f3754" prot="public">
+          <name>None</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>None. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classdiscordpp_1_1Call_1a92b477828e777e1cab576821a170dff0a9e1d810a3ec6aaac34298d383aeefc98" prot="public">
+          <name>SignalingConnectionFailed</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>SignalingConnectionFailed. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classdiscordpp_1_1Call_1a92b477828e777e1cab576821a170dff0ae514a3b592909caed37be344797e8d92" prot="public">
+          <name>SignalingUnexpectedClose</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+<para>SignalingUnexpectedClose. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classdiscordpp_1_1Call_1a92b477828e777e1cab576821a170dff0afb04ff2931301cfa123f5ea70ed59fb2" prot="public">
+          <name>VoiceConnectionFailed</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+<para>VoiceConnectionFailed. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classdiscordpp_1_1Call_1a92b477828e777e1cab576821a170dff0aea5eaf20a2f174915e258e55ca043ac5" prot="public">
+          <name>JoinTimeout</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+<para>JoinTimeout. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classdiscordpp_1_1Call_1a92b477828e777e1cab576821a170dff0a722969577a96ca3953e84e3d949dee81" prot="public">
+          <name>Forbidden</name>
+          <initializer>= 5</initializer>
+          <briefdescription>
+<para>Forbidden. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Enum that represents any network errors with the <ref refid="classdiscordpp_1_1Call" kindref="compound">Call</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1896" column="1" bodyfile="include/discordpp.h" bodystart="1896" bodyend="1915"/>
+      </memberdef>
+      <memberdef kind="enum" id="classdiscordpp_1_1Call_1a9a8311653be2263ad61243749ff44d4e" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>Status</name>
+        <qualifiedname>discordpp::Call::Status</qualifiedname>
+        <enumvalue id="classdiscordpp_1_1Call_1a9a8311653be2263ad61243749ff44d4eaef70e46fd3bbc21e3e1f0b6815e750c0" prot="public">
+          <name>Disconnected</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Disconnected. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classdiscordpp_1_1Call_1a9a8311653be2263ad61243749ff44d4eaf6807db4ae3a5c82b99bced82a0ca92b" prot="public">
+          <name>Joining</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>Joining. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classdiscordpp_1_1Call_1a9a8311653be2263ad61243749ff44d4eae321c53b354930ba96f0243e652df458" prot="public">
+          <name>Connecting</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+<para>Connecting. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classdiscordpp_1_1Call_1a9a8311653be2263ad61243749ff44d4eae970de17f443dc0b1fdeb4e33e0a2398" prot="public">
+          <name>SignalingConnected</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+<para>SignalingConnected. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classdiscordpp_1_1Call_1a9a8311653be2263ad61243749ff44d4ea2ec0d16e4ca169baedb9b2d50ec5c6d7" prot="public">
+          <name>Connected</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+<para>Connected. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classdiscordpp_1_1Call_1a9a8311653be2263ad61243749ff44d4ea80154864ebe36b3db0acd51f9b10f568" prot="public">
+          <name>Reconnecting</name>
+          <initializer>= 5</initializer>
+          <briefdescription>
+<para>Reconnecting. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classdiscordpp_1_1Call_1a9a8311653be2263ad61243749ff44d4ea10b0501000c144cb2a7424bd45e1bcde" prot="public">
+          <name>Disconnecting</name>
+          <initializer>= 6</initializer>
+          <briefdescription>
+<para>Disconnecting. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Enum that respresents the state of the <ref refid="classdiscordpp_1_1Call" kindref="compound">Call</ref>&apos;s network connection. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1918" column="1" bodyfile="include/discordpp.h" bodystart="1918" bodyend="1940"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classdiscordpp_1_1Call_1afc7352cf4ed242b218422069ed56e695" prot="public" static="no">
+        <type>std::function&lt; void(uint64_t userId)&gt;</type>
+        <definition>using discordpp::Call::OnVoiceStateChanged =  std::function&lt;void(uint64_t userId)&gt;</definition>
+        <argsstring></argsstring>
+        <name>OnVoiceStateChanged</name>
+        <qualifiedname>discordpp::Call::OnVoiceStateChanged</qualifiedname>
+        <briefdescription>
+<para>Callback function for <ref refid="classdiscordpp_1_1Call_1a257a02bdfd79a6443eb810cb687e098a" kindref="member">Call::SetOnVoiceStateChangedCallback</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1943" column="1" bodyfile="include/discordpp.h" bodystart="1943" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classdiscordpp_1_1Call_1ad6702b7adcd5dc162bf1aa0647fd1335" prot="public" static="no">
+        <type>std::function&lt; void(uint64_t userId, bool added)&gt;</type>
+        <definition>using discordpp::Call::OnParticipantChanged =  std::function&lt;void(uint64_t userId, bool added)&gt;</definition>
+        <argsstring></argsstring>
+        <name>OnParticipantChanged</name>
+        <qualifiedname>discordpp::Call::OnParticipantChanged</qualifiedname>
+        <briefdescription>
+<para>Callback function for <ref refid="classdiscordpp_1_1Call_1acb20d338a04abec2369217f41c22c0e5" kindref="member">Call::SetParticipantChangedCallback</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1946" column="1" bodyfile="include/discordpp.h" bodystart="1946" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classdiscordpp_1_1Call_1a154afca004f47569690c71acaf85dc60" prot="public" static="no">
+        <type>std::function&lt; void(uint64_t userId, bool isPlayingSound)&gt;</type>
+        <definition>using discordpp::Call::OnSpeakingStatusChanged =  std::function&lt;void(uint64_t userId, bool isPlayingSound)&gt;</definition>
+        <argsstring></argsstring>
+        <name>OnSpeakingStatusChanged</name>
+        <qualifiedname>discordpp::Call::OnSpeakingStatusChanged</qualifiedname>
+        <briefdescription>
+<para>Callback function for <ref refid="classdiscordpp_1_1Call_1ab29b68345ffa1d6af3c8321bdc39e9f0" kindref="member">Call::SetSpeakingStatusChangedCallback</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1949" column="1" bodyfile="include/discordpp.h" bodystart="1949" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classdiscordpp_1_1Call_1a805cdc2e575fd60a797404b14185f5b0" prot="public" static="no">
+        <type>std::function&lt; void(<ref refid="classdiscordpp_1_1Call_1a9a8311653be2263ad61243749ff44d4e" kindref="member">discordpp::Call::Status</ref> status, <ref refid="classdiscordpp_1_1Call_1a92b477828e777e1cab576821a170dff0" kindref="member">discordpp::Call::Error</ref> error, int32_t errorDetail)&gt;</type>
+        <definition>using discordpp::Call::OnStatusChanged =  std::function&lt;
+			void(discordpp::Call::Status status, discordpp::Call::Error error, int32_t errorDetail)&gt;</definition>
+        <argsstring></argsstring>
+        <name>OnStatusChanged</name>
+        <qualifiedname>discordpp::Call::OnStatusChanged</qualifiedname>
+        <briefdescription>
+<para>Callback function for <ref refid="classdiscordpp_1_1Call_1adffbbbd726f05fa574c96635e76c7860" kindref="member">Call::SetStatusChangedCallback</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1952" column="1" bodyfile="include/discordpp.h" bodystart="1952" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classdiscordpp_1_1Call_1a1617da66e2c14dc310a390568a551712" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="classdiscordpp_1_1Call" kindref="compound">Call</ref></type>
+        <definition>const Call discordpp::Call::nullobj</definition>
+        <argsstring></argsstring>
+        <name>nullobj</name>
+        <qualifiedname>discordpp::Call::nullobj</qualifiedname>
+        <briefdescription>
+<para>Uninitialized instance of <ref refid="classdiscordpp_1_1Call" kindref="compound">Call</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1966" column="19" bodyfile="include/discordpp.h" bodystart="1966" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classdiscordpp_1_1Call_1a1cc8a7f73c15a960bc409d734b5edbd1" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::Call::Call</definition>
+        <argsstring>(Call &amp;&amp;other) noexcept</argsstring>
+        <name>Call</name>
+        <qualifiedname>discordpp::Call::Call</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1Call" kindref="compound">Call</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move constructor for <ref refid="classdiscordpp_1_1Call" kindref="compound">Call</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1962" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Call_1a32ac0c29a7c9789c091c40080edf1280" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1Call" kindref="compound">Call</ref> &amp;</type>
+        <definition>Call &amp; discordpp::Call::operator=</definition>
+        <argsstring>(Call &amp;&amp;other) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::Call::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1Call" kindref="compound">Call</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move assignment operator for <ref refid="classdiscordpp_1_1Call" kindref="compound">Call</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1964" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Call_1aee1d9b4cd38da708c6b28ca3d4dfde54" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::Call::operator bool</definition>
+        <argsstring>() const</argsstring>
+        <name>operator bool</name>
+        <qualifiedname>discordpp::Call::operator bool</qualifiedname>
+        <briefdescription>
+<para>Returns true if the instance contains a valid object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1968" column="1" bodyfile="include/discordpp.h" bodystart="1968" bodyend="1968"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Call_1ac23238eb00a9d76311a3aea1277194c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::Call::Call</definition>
+        <argsstring>(const Call &amp;other)</argsstring>
+        <name>Call</name>
+        <qualifiedname>discordpp::Call::Call</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1Call" kindref="compound">Call</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor for <ref refid="classdiscordpp_1_1Call" kindref="compound">Call</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1971" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Call_1a0706d01291c6d28afd473231415ca8da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1Call" kindref="compound">Call</ref> &amp;</type>
+        <definition>Call &amp; discordpp::Call::operator=</definition>
+        <argsstring>(const Call &amp;other)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::Call::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1Call" kindref="compound">Call</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Copy assignment operator for <ref refid="classdiscordpp_1_1Call" kindref="compound">Call</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1973" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Call_1a3e2bfcf4d0b7e8a6a4dcb21943eb3d1d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacediscordpp_1ad12f4e0df799c97f417320ef861fcffb" kindref="member">discordpp::AudioModeType</ref></type>
+        <definition>discordpp::AudioModeType discordpp::Call::GetAudioMode</definition>
+        <argsstring>()</argsstring>
+        <name>GetAudioMode</name>
+        <qualifiedname>discordpp::Call::GetAudioMode</qualifiedname>
+        <briefdescription>
+<para>Returns whether the call is configured to use voice auto detection or push to talk for the current user. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1984" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Call_1afcd15d87a8e88873c3fb6697bb1e69fb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t discordpp::Call::GetChannelId</definition>
+        <argsstring>() const</argsstring>
+        <name>GetChannelId</name>
+        <qualifiedname>discordpp::Call::GetChannelId</qualifiedname>
+        <briefdescription>
+<para>Returns the ID of the lobby with which this call is associated. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1987" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Call_1abe22991ec5980670ceb15fbd4cbeae24" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t discordpp::Call::GetGuildId</definition>
+        <argsstring>() const</argsstring>
+        <name>GetGuildId</name>
+        <qualifiedname>discordpp::Call::GetGuildId</qualifiedname>
+        <briefdescription>
+<para>Returns the ID of the lobby with which this call is associated. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1990" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Call_1ae71f2a124c13e20f55bf1e6dee5017c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool discordpp::Call::GetLocalMute</definition>
+        <argsstring>(uint64_t userId)</argsstring>
+        <name>GetLocalMute</name>
+        <qualifiedname>discordpp::Call::GetLocalMute</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>userId</declname>
+        </param>
+        <briefdescription>
+<para>Returns whether the current user has locally muted the given userId for themselves. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1993" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Call_1acbbbfad47511535755cb55631a8c9922" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; uint64_t &gt;</type>
+        <definition>std::vector&lt; uint64_t &gt; discordpp::Call::GetParticipants</definition>
+        <argsstring>() const</argsstring>
+        <name>GetParticipants</name>
+        <qualifiedname>discordpp::Call::GetParticipants</qualifiedname>
+        <briefdescription>
+<para>Returns a list of all of the user IDs of the participants in the call. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1996" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Call_1aeff7fa60c6029ffde272160bf1f16748" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float discordpp::Call::GetParticipantVolume</definition>
+        <argsstring>(uint64_t userId)</argsstring>
+        <name>GetParticipantVolume</name>
+        <qualifiedname>discordpp::Call::GetParticipantVolume</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>userId</declname>
+        </param>
+        <briefdescription>
+<para>Returns the locally set playout volume of the given userId. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Does not affect the volume of this user for any other connected clients. The range of volume is [0, 200], where 100 indicate default audio volume of the playback device. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2002" column="7"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Call_1a48e2d2809e8787178bec44c946b31328" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool discordpp::Call::GetPTTActive</definition>
+        <argsstring>()</argsstring>
+        <name>GetPTTActive</name>
+        <qualifiedname>discordpp::Call::GetPTTActive</qualifiedname>
+        <briefdescription>
+<para>Returns whether push to talk is currently active, meaning the user is currently pressing their configured push to talk key. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2006" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Call_1ab8dc6b1527728fecb17f266d5b3e9e6e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t discordpp::Call::GetPTTReleaseDelay</definition>
+        <argsstring>()</argsstring>
+        <name>GetPTTReleaseDelay</name>
+        <qualifiedname>discordpp::Call::GetPTTReleaseDelay</qualifiedname>
+        <briefdescription>
+<para>Returns the time that PTT is active after the user releases the PTT key and SetPTTActive(false) is called. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2010" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Call_1a7ea04973139a803d198661874eb13786" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool discordpp::Call::GetSelfDeaf</definition>
+        <argsstring>()</argsstring>
+        <name>GetSelfDeaf</name>
+        <qualifiedname>discordpp::Call::GetSelfDeaf</qualifiedname>
+        <briefdescription>
+<para>Returns whether the current user is deafened. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2013" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Call_1ad2305065d5e633678c9242ed886e65e2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool discordpp::Call::GetSelfMute</definition>
+        <argsstring>()</argsstring>
+        <name>GetSelfMute</name>
+        <qualifiedname>discordpp::Call::GetSelfMute</qualifiedname>
+        <briefdescription>
+<para>Returns whether the current user&apos;s microphone is muted. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2016" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Call_1ad614dfd6578370a0d9b73b40db1e780f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1Call_1a9a8311653be2263ad61243749ff44d4e" kindref="member">discordpp::Call::Status</ref></type>
+        <definition>discordpp::Call::Status discordpp::Call::GetStatus</definition>
+        <argsstring>() const</argsstring>
+        <name>GetStatus</name>
+        <qualifiedname>discordpp::Call::GetStatus</qualifiedname>
+        <briefdescription>
+<para>Returns the current call status. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>A call is not ready to be used until the status changes to &quot;Connected&quot;. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2021" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Call_1a55fbfb0e3333f227bf16801b787f0a63" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1VADThresholdSettings" kindref="compound">discordpp::VADThresholdSettings</ref></type>
+        <definition>discordpp::VADThresholdSettings discordpp::Call::GetVADThreshold</definition>
+        <argsstring>() const</argsstring>
+        <name>GetVADThreshold</name>
+        <qualifiedname>discordpp::Call::GetVADThreshold</qualifiedname>
+        <briefdescription>
+<para>Returns the current configuration for void auto detection thresholds. See the description of the VADThreshold struct for specifics. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2025" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Call_1a5b162505a2a076a14ff977ba0377f7a2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; <ref refid="classdiscordpp_1_1VoiceStateHandle" kindref="compound">discordpp::VoiceStateHandle</ref> &gt;</type>
+        <definition>std::optional&lt; discordpp::VoiceStateHandle &gt; discordpp::Call::GetVoiceStateHandle</definition>
+        <argsstring>(uint64_t userId) const</argsstring>
+        <name>GetVoiceStateHandle</name>
+        <qualifiedname>discordpp::Call::GetVoiceStateHandle</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>userId</declname>
+        </param>
+        <briefdescription>
+<para>Returns a reference to the <ref refid="classdiscordpp_1_1VoiceStateHandle" kindref="compound">VoiceStateHandle</ref> for the user ID of the given call participant. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The <ref refid="classdiscordpp_1_1VoiceStateHandle" kindref="compound">VoiceStateHandle</ref> allows other users to know if the target user has muted or deafened themselves. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2032" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Call_1ae6613253763877950408d29f4d68d13f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::Call::SetAudioMode</definition>
+        <argsstring>(discordpp::AudioModeType audioMode)</argsstring>
+        <name>SetAudioMode</name>
+        <qualifiedname>discordpp::Call::SetAudioMode</qualifiedname>
+        <param>
+          <type><ref refid="namespacediscordpp_1ad12f4e0df799c97f417320ef861fcffb" kindref="member">discordpp::AudioModeType</ref></type>
+          <declname>audioMode</declname>
+        </param>
+        <briefdescription>
+<para>Sets whether to use voice auto detection or push to talk for the current user on this call. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If using push to talk you should call <ref refid="classdiscordpp_1_1Call_1ac442b1d69b9256abbb188583c0c81c41" kindref="member">SetPTTActive()</ref> whenever the user presses their confused push to talk key. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2039" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Call_1aaf8e7728b15da5d1be8d8b4258225171" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::Call::SetLocalMute</definition>
+        <argsstring>(uint64_t userId, bool mute)</argsstring>
+        <name>SetLocalMute</name>
+        <qualifiedname>discordpp::Call::SetLocalMute</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>userId</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>mute</declname>
+        </param>
+        <briefdescription>
+<para>Locally mutes the given userId, so that the current user cannot hear them anymore. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Does not affect whether the given user is muted for any other connected clients. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2044" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Call_1a257a02bdfd79a6443eb810cb687e098a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::Call::SetOnVoiceStateChangedCallback</definition>
+        <argsstring>(discordpp::Call::OnVoiceStateChanged cb)</argsstring>
+        <name>SetOnVoiceStateChangedCallback</name>
+        <qualifiedname>discordpp::Call::SetOnVoiceStateChangedCallback</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1Call_1afc7352cf4ed242b218422069ed56e695" kindref="member">discordpp::Call::OnVoiceStateChanged</ref></type>
+          <declname>cb</declname>
+        </param>
+        <briefdescription>
+<para>Sets a callback function to generally be invoked whenever a field on a <ref refid="classdiscordpp_1_1VoiceStateHandle" kindref="compound">VoiceStateHandle</ref> object for a user would have changed. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>For example when a user mutes themselves, all other connected clients will invoke the VoiceStateChanged callback, because the &quot;self mute&quot; field will be true now. The callback is generally not invoked when users join or leave channels. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2052" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Call_1acb20d338a04abec2369217f41c22c0e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::Call::SetParticipantChangedCallback</definition>
+        <argsstring>(discordpp::Call::OnParticipantChanged cb)</argsstring>
+        <name>SetParticipantChangedCallback</name>
+        <qualifiedname>discordpp::Call::SetParticipantChangedCallback</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1Call_1ad6702b7adcd5dc162bf1aa0647fd1335" kindref="member">discordpp::Call::OnParticipantChanged</ref></type>
+          <declname>cb</declname>
+        </param>
+        <briefdescription>
+<para>Sets a callback function to be invoked whenever some joins or leaves a voice call. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2055" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Call_1ad974fadbe89c453e4d8a3f9824e21ceb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::Call::SetParticipantVolume</definition>
+        <argsstring>(uint64_t userId, float volume)</argsstring>
+        <name>SetParticipantVolume</name>
+        <qualifiedname>discordpp::Call::SetParticipantVolume</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>userId</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>volume</declname>
+        </param>
+        <briefdescription>
+<para>Locally changes the playout volume of the given userId. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Does not affect the volume of this user for any other connected clients. The range of volume is [0, 200], where 100 indicate default audio volume of the playback device. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2061" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Call_1ac442b1d69b9256abbb188583c0c81c41" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::Call::SetPTTActive</definition>
+        <argsstring>(bool active)</argsstring>
+        <name>SetPTTActive</name>
+        <qualifiedname>discordpp::Call::SetPTTActive</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>active</declname>
+        </param>
+        <briefdescription>
+<para>When push to talk is enabled, this should be called whenever the user pushes or releases their configured push to talk key. This key must be configured in the game, the SDK does not handle keybinds itself. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2066" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Call_1ad3d36056f2b19a98d5efb99897753b66" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::Call::SetPTTReleaseDelay</definition>
+        <argsstring>(uint32_t releaseDelayMs)</argsstring>
+        <name>SetPTTReleaseDelay</name>
+        <qualifiedname>discordpp::Call::SetPTTReleaseDelay</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>releaseDelayMs</declname>
+        </param>
+        <briefdescription>
+<para>If set, extends the time that PTT is active after the user releases the PTT key and SetPTTActive(false) is called. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Defaults to no release delay, but we recommend setting to 20ms, which is what Discord uses. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2072" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Call_1a07d67c210f2a4655c6f1d2899c6d32d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::Call::SetSelfDeaf</definition>
+        <argsstring>(bool deaf)</argsstring>
+        <name>SetSelfDeaf</name>
+        <qualifiedname>discordpp::Call::SetSelfDeaf</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>deaf</declname>
+        </param>
+        <briefdescription>
+<para>Mutes all audio from the currently active call for the current user. They will not be able to hear any other participants, and no other participants will be able to hear the current user either. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2077" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Call_1afa35a5d6a4564df97452df58bb74f617" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::Call::SetSelfMute</definition>
+        <argsstring>(bool mute)</argsstring>
+        <name>SetSelfMute</name>
+        <qualifiedname>discordpp::Call::SetSelfMute</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>mute</declname>
+        </param>
+        <briefdescription>
+<para>Mutes the current user&apos;s microphone so that no other participant in their active calls can hear them. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2081" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Call_1ab29b68345ffa1d6af3c8321bdc39e9f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::Call::SetSpeakingStatusChangedCallback</definition>
+        <argsstring>(discordpp::Call::OnSpeakingStatusChanged cb)</argsstring>
+        <name>SetSpeakingStatusChangedCallback</name>
+        <qualifiedname>discordpp::Call::SetSpeakingStatusChangedCallback</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1Call_1a154afca004f47569690c71acaf85dc60" kindref="member">discordpp::Call::OnSpeakingStatusChanged</ref></type>
+          <declname>cb</declname>
+        </param>
+        <briefdescription>
+<para>Sets a callback function to be invoked whenever a user starts or stops speaking and is passed in the userId and whether they are currently speaking. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>It can be invoked in other cases as well, such as if the priority speaker changes or if the user plays a soundboard sound. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2088" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Call_1adffbbbd726f05fa574c96635e76c7860" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::Call::SetStatusChangedCallback</definition>
+        <argsstring>(discordpp::Call::OnStatusChanged cb)</argsstring>
+        <name>SetStatusChangedCallback</name>
+        <qualifiedname>discordpp::Call::SetStatusChangedCallback</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1Call_1a805cdc2e575fd60a797404b14185f5b0" kindref="member">discordpp::Call::OnStatusChanged</ref></type>
+          <declname>cb</declname>
+        </param>
+        <briefdescription>
+<para>Sets a callback function to be invoked when the call status changes, such as when it fully connects or starts reconnecting. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2092" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Call_1a7c3fd83c5dfe37d796e30c5e28c93b6e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::Call::SetVADThreshold</definition>
+        <argsstring>(bool automatic, float threshold)</argsstring>
+        <name>SetVADThreshold</name>
+        <qualifiedname>discordpp::Call::SetVADThreshold</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>automatic</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>threshold</declname>
+        </param>
+        <briefdescription>
+<para>Customizes the void auto detection thresholds for picking up activity from a user&apos;s mic. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para>When automatic is set to True, Discord will automatically detect the appropriate threshold to use.</para>
+</listitem><listitem><para>When automatic is set to False, the given threshold value will be used. Threshold has a range of -100, 0, and defaults to -60. </para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2100" column="6"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classdiscordpp_1_1Call_1a05e758b1fa053e9f694b93bcd9439a3c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>static std::string discordpp::Call::ErrorToString</definition>
+        <argsstring>(discordpp::Call::Error type)</argsstring>
+        <name>ErrorToString</name>
+        <qualifiedname>discordpp::Call::ErrorToString</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1Call_1a92b477828e777e1cab576821a170dff0" kindref="member">discordpp::Call::Error</ref></type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+<para>Converts the <ref refid="classdiscordpp_1_1Call_1a92b477828e777e1cab576821a170dff0" kindref="member">Error</ref> enum to a string. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1980" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Call_1a69b0ea36ae6859a0ead2cb046bcdbbae" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>static std::string discordpp::Call::StatusToString</definition>
+        <argsstring>(discordpp::Call::Status type)</argsstring>
+        <name>StatusToString</name>
+        <qualifiedname>discordpp::Call::StatusToString</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1Call_1a9a8311653be2263ad61243749ff44d4e" kindref="member">discordpp::Call::Status</ref></type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+<para>Converts the <ref refid="classdiscordpp_1_1Call_1a9a8311653be2263ad61243749ff44d4e" kindref="member">Status</ref> enum to a string. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2103" column="20"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Class that manages an active voice session in a Lobby. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>discordpp::Call</label>
+        <link refid="classdiscordpp_1_1Call"/>
+        <childnode refid="1" relation="usage">
+          <edgelabel>nullobj</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/discordpp.h" line="1888" column="1" bodyfile="include/discordpp.h" bodystart="1888" bodyend="2104"/>
+    <listofallmembers>
+      <member refid="classdiscordpp_1_1Call_1a1cc8a7f73c15a960bc409d734b5edbd1" prot="public" virt="non-virtual"><scope>discordpp::Call</scope><name>Call</name></member>
+      <member refid="classdiscordpp_1_1Call_1ac23238eb00a9d76311a3aea1277194c2" prot="public" virt="non-virtual"><scope>discordpp::Call</scope><name>Call</name></member>
+      <member refid="classdiscordpp_1_1Call_1a92b477828e777e1cab576821a170dff0" prot="public" virt="non-virtual"><scope>discordpp::Call</scope><name>Error</name></member>
+      <member refid="classdiscordpp_1_1Call_1a05e758b1fa053e9f694b93bcd9439a3c" prot="public" virt="non-virtual"><scope>discordpp::Call</scope><name>ErrorToString</name></member>
+      <member refid="classdiscordpp_1_1Call_1a3e2bfcf4d0b7e8a6a4dcb21943eb3d1d" prot="public" virt="non-virtual"><scope>discordpp::Call</scope><name>GetAudioMode</name></member>
+      <member refid="classdiscordpp_1_1Call_1afcd15d87a8e88873c3fb6697bb1e69fb" prot="public" virt="non-virtual"><scope>discordpp::Call</scope><name>GetChannelId</name></member>
+      <member refid="classdiscordpp_1_1Call_1abe22991ec5980670ceb15fbd4cbeae24" prot="public" virt="non-virtual"><scope>discordpp::Call</scope><name>GetGuildId</name></member>
+      <member refid="classdiscordpp_1_1Call_1ae71f2a124c13e20f55bf1e6dee5017c3" prot="public" virt="non-virtual"><scope>discordpp::Call</scope><name>GetLocalMute</name></member>
+      <member refid="classdiscordpp_1_1Call_1acbbbfad47511535755cb55631a8c9922" prot="public" virt="non-virtual"><scope>discordpp::Call</scope><name>GetParticipants</name></member>
+      <member refid="classdiscordpp_1_1Call_1aeff7fa60c6029ffde272160bf1f16748" prot="public" virt="non-virtual"><scope>discordpp::Call</scope><name>GetParticipantVolume</name></member>
+      <member refid="classdiscordpp_1_1Call_1a48e2d2809e8787178bec44c946b31328" prot="public" virt="non-virtual"><scope>discordpp::Call</scope><name>GetPTTActive</name></member>
+      <member refid="classdiscordpp_1_1Call_1ab8dc6b1527728fecb17f266d5b3e9e6e" prot="public" virt="non-virtual"><scope>discordpp::Call</scope><name>GetPTTReleaseDelay</name></member>
+      <member refid="classdiscordpp_1_1Call_1a7ea04973139a803d198661874eb13786" prot="public" virt="non-virtual"><scope>discordpp::Call</scope><name>GetSelfDeaf</name></member>
+      <member refid="classdiscordpp_1_1Call_1ad2305065d5e633678c9242ed886e65e2" prot="public" virt="non-virtual"><scope>discordpp::Call</scope><name>GetSelfMute</name></member>
+      <member refid="classdiscordpp_1_1Call_1ad614dfd6578370a0d9b73b40db1e780f" prot="public" virt="non-virtual"><scope>discordpp::Call</scope><name>GetStatus</name></member>
+      <member refid="classdiscordpp_1_1Call_1a55fbfb0e3333f227bf16801b787f0a63" prot="public" virt="non-virtual"><scope>discordpp::Call</scope><name>GetVADThreshold</name></member>
+      <member refid="classdiscordpp_1_1Call_1a5b162505a2a076a14ff977ba0377f7a2" prot="public" virt="non-virtual"><scope>discordpp::Call</scope><name>GetVoiceStateHandle</name></member>
+      <member refid="classdiscordpp_1_1Call_1a1617da66e2c14dc310a390568a551712" prot="public" virt="non-virtual"><scope>discordpp::Call</scope><name>nullobj</name></member>
+      <member refid="classdiscordpp_1_1Call_1ad6702b7adcd5dc162bf1aa0647fd1335" prot="public" virt="non-virtual"><scope>discordpp::Call</scope><name>OnParticipantChanged</name></member>
+      <member refid="classdiscordpp_1_1Call_1a154afca004f47569690c71acaf85dc60" prot="public" virt="non-virtual"><scope>discordpp::Call</scope><name>OnSpeakingStatusChanged</name></member>
+      <member refid="classdiscordpp_1_1Call_1a805cdc2e575fd60a797404b14185f5b0" prot="public" virt="non-virtual"><scope>discordpp::Call</scope><name>OnStatusChanged</name></member>
+      <member refid="classdiscordpp_1_1Call_1afc7352cf4ed242b218422069ed56e695" prot="public" virt="non-virtual"><scope>discordpp::Call</scope><name>OnVoiceStateChanged</name></member>
+      <member refid="classdiscordpp_1_1Call_1aee1d9b4cd38da708c6b28ca3d4dfde54" prot="public" virt="non-virtual"><scope>discordpp::Call</scope><name>operator bool</name></member>
+      <member refid="classdiscordpp_1_1Call_1a32ac0c29a7c9789c091c40080edf1280" prot="public" virt="non-virtual"><scope>discordpp::Call</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1Call_1a0706d01291c6d28afd473231415ca8da" prot="public" virt="non-virtual"><scope>discordpp::Call</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1Call_1ae6613253763877950408d29f4d68d13f" prot="public" virt="non-virtual"><scope>discordpp::Call</scope><name>SetAudioMode</name></member>
+      <member refid="classdiscordpp_1_1Call_1aaf8e7728b15da5d1be8d8b4258225171" prot="public" virt="non-virtual"><scope>discordpp::Call</scope><name>SetLocalMute</name></member>
+      <member refid="classdiscordpp_1_1Call_1a257a02bdfd79a6443eb810cb687e098a" prot="public" virt="non-virtual"><scope>discordpp::Call</scope><name>SetOnVoiceStateChangedCallback</name></member>
+      <member refid="classdiscordpp_1_1Call_1acb20d338a04abec2369217f41c22c0e5" prot="public" virt="non-virtual"><scope>discordpp::Call</scope><name>SetParticipantChangedCallback</name></member>
+      <member refid="classdiscordpp_1_1Call_1ad974fadbe89c453e4d8a3f9824e21ceb" prot="public" virt="non-virtual"><scope>discordpp::Call</scope><name>SetParticipantVolume</name></member>
+      <member refid="classdiscordpp_1_1Call_1ac442b1d69b9256abbb188583c0c81c41" prot="public" virt="non-virtual"><scope>discordpp::Call</scope><name>SetPTTActive</name></member>
+      <member refid="classdiscordpp_1_1Call_1ad3d36056f2b19a98d5efb99897753b66" prot="public" virt="non-virtual"><scope>discordpp::Call</scope><name>SetPTTReleaseDelay</name></member>
+      <member refid="classdiscordpp_1_1Call_1a07d67c210f2a4655c6f1d2899c6d32d6" prot="public" virt="non-virtual"><scope>discordpp::Call</scope><name>SetSelfDeaf</name></member>
+      <member refid="classdiscordpp_1_1Call_1afa35a5d6a4564df97452df58bb74f617" prot="public" virt="non-virtual"><scope>discordpp::Call</scope><name>SetSelfMute</name></member>
+      <member refid="classdiscordpp_1_1Call_1ab29b68345ffa1d6af3c8321bdc39e9f0" prot="public" virt="non-virtual"><scope>discordpp::Call</scope><name>SetSpeakingStatusChangedCallback</name></member>
+      <member refid="classdiscordpp_1_1Call_1adffbbbd726f05fa574c96635e76c7860" prot="public" virt="non-virtual"><scope>discordpp::Call</scope><name>SetStatusChangedCallback</name></member>
+      <member refid="classdiscordpp_1_1Call_1a7c3fd83c5dfe37d796e30c5e28c93b6e" prot="public" virt="non-virtual"><scope>discordpp::Call</scope><name>SetVADThreshold</name></member>
+      <member refid="classdiscordpp_1_1Call_1a9a8311653be2263ad61243749ff44d4e" prot="public" virt="non-virtual"><scope>discordpp::Call</scope><name>Status</name></member>
+      <member refid="classdiscordpp_1_1Call_1a69b0ea36ae6859a0ead2cb046bcdbbae" prot="public" virt="non-virtual"><scope>discordpp::Call</scope><name>StatusToString</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

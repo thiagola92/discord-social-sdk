@@ -2,6 +2,16 @@ from pathlib import Path
 import subprocess
 
 
+def clear_dir(dir: str | Path) -> None:
+    if isinstance(dir, str):
+        dir = Path(dir)
+
+    for file in dir.iterdir():
+        if file.is_dir():
+            clear_dir(file)
+        file.unlink()
+
+
 def to_snake_case(string: str) -> str:
     """Convert string to snake_case."""
 
@@ -37,3 +47,16 @@ def clang_format(filepath: str) -> None:
     assert process.returncode == 0
 
     Path(filepath).write_bytes(process.stdout)
+
+
+def doxygen(xml_dir: str) -> None:
+    """
+    Parse file.
+
+    Requires:
+        - doxygen installed
+    """
+
+    process = subprocess.run(["doxygen", "Doxyfile"], capture_output=True)
+
+    assert process.returncode == 0
