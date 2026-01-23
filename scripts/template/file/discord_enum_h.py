@@ -1,4 +1,4 @@
-def get_discord_enum_h(enums: str, casts: str) -> str:
+def get_discord_enum_h(enums_definitions: str, enums_casts: str) -> str:
     return f"""
 #ifndef DISCORD_ENUM_H
 #define DISCORD_ENUM_H
@@ -10,12 +10,12 @@ def get_discord_enum_h(enums: str, casts: str) -> str:
 
 namespace godot {{
 
-{enums}
+{enums_definitions}
 
 }} // namespace godot
 
 // Needed so we can bind functions.
-{casts}
+{enums_casts}
 
 #endif
 """
