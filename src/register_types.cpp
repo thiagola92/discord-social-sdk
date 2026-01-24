@@ -15,34 +15,34 @@ void initialize_module(ModuleInitializationLevel p_level) {
 	}
 
 	// Abstracts
+	GDREGISTER_ABSTRACT_CLASS(Discord);
 	GDREGISTER_ABSTRACT_CLASS(DiscordActivityActionTypes);
+	GDREGISTER_ABSTRACT_CLASS(DiscordActivityGamePlatforms);
 	GDREGISTER_ABSTRACT_CLASS(DiscordActivityPartyPrivacy);
 	GDREGISTER_ABSTRACT_CLASS(DiscordActivityTypes);
-	GDREGISTER_ABSTRACT_CLASS(DiscordStatusDisplayTypes);
-	GDREGISTER_ABSTRACT_CLASS(DiscordActivityGamePlatforms);
-	GDREGISTER_ABSTRACT_CLASS(DiscordErrorType);
-	GDREGISTER_ABSTRACT_CLASS(DiscordHttpStatusCode);
-	GDREGISTER_ABSTRACT_CLASS(DiscordAuthenticationCodeChallengeMethod);
-	GDREGISTER_ABSTRACT_CLASS(DiscordIntegrationType);
-	GDREGISTER_ABSTRACT_CLASS(DiscordChannelType);
 	GDREGISTER_ABSTRACT_CLASS(DiscordAdditionalContentType);
-	GDREGISTER_ABSTRACT_CLASS(DiscordAudioSystem);
 	GDREGISTER_ABSTRACT_CLASS(DiscordAudioModeType);
-	GDREGISTER_ABSTRACT_CLASS(DiscordRelationshipType);
-	GDREGISTER_ABSTRACT_CLASS(DiscordExternalIdentityProviderType);
-	GDREGISTER_ABSTRACT_CLASS(DiscordStatusType);
-	GDREGISTER_ABSTRACT_CLASS(DiscordDisclosureTypes);
-	GDREGISTER_ABSTRACT_CLASS(DiscordAuthorizationTokenType);
+	GDREGISTER_ABSTRACT_CLASS(DiscordAudioSystem);
+	GDREGISTER_ABSTRACT_CLASS(DiscordAuthenticationCodeChallengeMethod);
 	GDREGISTER_ABSTRACT_CLASS(DiscordAuthenticationExternalAuthType);
-	GDREGISTER_ABSTRACT_CLASS(DiscordLoggingSeverity);
-	GDREGISTER_ABSTRACT_CLASS(DiscordRelationshipGroupType);
+	GDREGISTER_ABSTRACT_CLASS(DiscordAuthorizationTokenType);
 	GDREGISTER_ABSTRACT_CLASS(DiscordCallError);
 	GDREGISTER_ABSTRACT_CLASS(DiscordCallStatus);
+	GDREGISTER_ABSTRACT_CLASS(DiscordChannelType);
 	GDREGISTER_ABSTRACT_CLASS(DiscordClientError);
 	GDREGISTER_ABSTRACT_CLASS(DiscordClientStatus);
 	GDREGISTER_ABSTRACT_CLASS(DiscordClientThread);
+	GDREGISTER_ABSTRACT_CLASS(DiscordDisclosureTypes);
+	GDREGISTER_ABSTRACT_CLASS(DiscordErrorType);
+	GDREGISTER_ABSTRACT_CLASS(DiscordExternalIdentityProviderType);
+	GDREGISTER_ABSTRACT_CLASS(DiscordHttpStatusCode);
+	GDREGISTER_ABSTRACT_CLASS(DiscordIntegrationType);
+	GDREGISTER_ABSTRACT_CLASS(DiscordLoggingSeverity);
+	GDREGISTER_ABSTRACT_CLASS(DiscordRelationshipGroupType);
+	GDREGISTER_ABSTRACT_CLASS(DiscordRelationshipType);
+	GDREGISTER_ABSTRACT_CLASS(DiscordStatusDisplayTypes);
+	GDREGISTER_ABSTRACT_CLASS(DiscordStatusType);
 	GDREGISTER_ABSTRACT_CLASS(DiscordUserHandleAvatarType);
-	GDREGISTER_ABSTRACT_CLASS(Discord);
 
 	// Runtimes
 	GDREGISTER_CLASS(DiscordActivity);

@@ -1,5 +1,6 @@
-from pathlib import Path
+# Utility functions that doesn't fit into other categories.
 import subprocess
+from pathlib import Path
 
 
 def clear_dir(dir: str | Path) -> None:
