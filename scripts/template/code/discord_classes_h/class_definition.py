@@ -1,8 +1,8 @@
 def get_class_definition(
     class_name: str,
-    private_constructors: str,
-    methods: str,
-    public_constructors: str,
+    constructor_private: str,
+    functions: str,
+    constructor_public: str,
 ) -> str:
     return f"""
 class Discord{class_name} : public RefCounted {{
@@ -10,7 +10,8 @@ class Discord{class_name} : public RefCounted {{
 
 private:
 	discordpp::{class_name} *obj;
-	{private_constructors}
+
+	{constructor_private}
 protected:
 	static void _bind_methods();
 public:
@@ -19,10 +20,11 @@ public:
         return obj;
     }}
 
-	{methods}
+	{functions}
 
-	{public_constructors}
+	{constructor_public}
 
+    // Internal usage.
 	Discord{class_name}(discordpp::{class_name} *obj) {{
         this->obj = obj;
     }}
@@ -30,24 +32,5 @@ public:
 	~Discordpp{class_name}() {{
 		memdelete(this->obj);
     }}
-}};
-"""
-
-
-def get_class_definition_global(
-    methods: str,
-) -> str:
-    return f"""
-class Discordpp : public RefCounted {{
-	GDCLASS(Discordpp, RefCounted)
-
-private:
-	Discordpp() {{}}
-protected:
-	static void _bind_methods();
-public:
-	{methods}
-
-	~Discordpp() {{}}
 }};
 """

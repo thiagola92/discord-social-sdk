@@ -2,16 +2,9 @@
 from pprint import pprint
 from pathlib import Path
 from xml.etree import ElementTree
-from xml.etree.ElementTree import Element
 
 from helper import clang_format
-from collect import (
-    collect_enums,
-    collect_class,
-    NamespaceInfo,
-    EnumInfo,
-    collect_namespace,
-)
+from collect import NamespaceInfo, collect_namespace
 from template.file.register_types_h import get_register_types_h
 from template.file.register_types_cpp import get_register_types_cpp
 from template.file.discord_enum_h import get_discord_enum_h
@@ -23,6 +16,13 @@ from template.code.discord_enum_h.enum_definition import get_enum_definition
 from template.code.discord_enum_h.enum_bind import get_enum_bind
 from template.code.discord_enum_h.enum_cast import get_enum_cast
 from template.code.discord_classes_h.class_declaration import get_class_declaration
+from template.code.discord_classes_h.class_definition import get_class_definition
+from template.code.discord_classes_h.class_definition_g import get_class_definition_g
+from template.code.discord_classes_h.constructor_private import get_constructor_private
+from template.code.discord_classes_h.constructor_public import get_constructor_public
+from template.code.discord_classes_h.function_declaration import (
+    get_function_declaration,
+)
 
 
 class Builder:
@@ -125,19 +125,55 @@ class Builder:
     def build_discord_classes_h(self, namespace_info: NamespaceInfo) -> None:
         # Build code.
         classes_declarations = []
+        classes_definitions = []
 
         for c in namespace_info.classes:
             classes_declarations.append(get_class_declaration(c.name))
+            cf = []
+
+            for f in c.functions:
+                cf.append(
+                    get_function_declaration(
+                        modifier="static " if f.static else "",
+                        ret="void",  # TODO: Translate to GDScript.
+                        name=f.gdscript_name,
+                        params="",
+                    )
+                )
+
+            cf = "\n".join(cf)
+
+            if any([cc for cc in c.constructors if len(cc.params) == 0]):
+                classes_definitions.append(
+                    get_class_definition(
+                        class_name=c.name,
+                        constructor_private="",
+                        functions=cf,
+                        constructor_public=get_constructor_public(c.name),
+                    )
+                )
+            else:
+                classes_definitions.append(
+                    get_class_definition(
+                        class_name=c.name,
+                        constructor_private=get_constructor_private(c.name),
+                        functions=cf,
+                        constructor_public="",
+                    )
+                )
 
         classes_declarations.append(get_class_declaration(""))
         classes_declarations = sorted(classes_declarations)
         classes_declarations = "".join(classes_declarations)
+        classes_definitions.append(get_class_definition_g(""))
+        classes_definitions = sorted(classes_definitions)
+        classes_definitions = "".join(classes_definitions)
 
         # Build file.
         filepath = self.src_dir.joinpath("discord_classes.h")
         content = get_discord_classes_h(
             classes_declarations=classes_declarations,
-            classes_definitions="",
+            classes_definitions=classes_definitions,
         )
 
         filepath.write_text(content)

@@ -14,7 +14,7 @@ void initialize_module(ModuleInitializationLevel p_level) {
 		return;
 	}
 
-	// Abstracts
+	// Abstracts.
 	GDREGISTER_ABSTRACT_CLASS(Discord);
 	GDREGISTER_ABSTRACT_CLASS(DiscordActivityActionTypes);
 	GDREGISTER_ABSTRACT_CLASS(DiscordActivityGamePlatforms);
@@ -44,7 +44,7 @@ void initialize_module(ModuleInitializationLevel p_level) {
 	GDREGISTER_ABSTRACT_CLASS(DiscordStatusType);
 	GDREGISTER_ABSTRACT_CLASS(DiscordUserHandleAvatarType);
 
-	// Runtimes
+	// Runtimes.
 	GDREGISTER_CLASS(DiscordActivity);
 	GDREGISTER_CLASS(DiscordActivityAssets);
 	GDREGISTER_CLASS(DiscordActivityButton);

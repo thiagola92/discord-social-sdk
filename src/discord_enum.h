@@ -9,6 +9,8 @@
 
 namespace godot {
 
+// Enums.
+
 class DiscordActivityActionTypes : public RefCounted {
 	GDCLASS(DiscordActivityActionTypes, RefCounted)
 

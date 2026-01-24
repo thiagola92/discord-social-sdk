@@ -15,10 +15,10 @@ void initialize_module(ModuleInitializationLevel p_level) {{
 		return;
 	}}
 
-	// Abstracts
+	// Abstracts.
     {register_abstracts}
 
-	// Runtimes
+	// Runtimes.
     {register_runtimes}
 }}
 

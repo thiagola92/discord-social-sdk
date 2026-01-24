@@ -10,6 +10,7 @@ def get_discord_enum_h(enums_definitions: str, enums_casts: str) -> str:
 
 namespace godot {{
 
+// Enums.
 {enums_definitions}
 
 }} // namespace godot

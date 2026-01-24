@@ -1,65 +1,19 @@
 # Responsible for collecting informations about from XML tree.
 from pathlib import Path
-from dataclasses import dataclass, field
 from xml.etree import ElementTree
 from xml.etree.ElementTree import Element
 
-
-type SubtypeInfo = TypeInfo
-
-
-@dataclass
-class EnumValueInfo:
-    name: str = ""
-    short_desc: str = ""
-    long_desc: str = ""
-    init: str = ","
-
-
-@dataclass
-class EnumInfo:
-    name: str = ""
-    short_desc: str = ""
-    long_desc: str = ""
-    values: list[EnumValueInfo] = field(default_factory=list)
-
-
-@dataclass
-class TypeInfo:
-    name: str = ""
-    subtype: list[SubtypeInfo] = field(default_factory=list)
-    extra: str = ""
-
-
-@dataclass
-class ParamInfo:
-    name: str = ""
-    type: TypeInfo = field(default_factory=TypeInfo)
-
-
-@dataclass
-class FunctionInfo:
-    name: str = ""
-    type: TypeInfo = field(default_factory=TypeInfo)
-    short_desc: str = ""
-    long_desc: str = ""
-    params: list[ParamInfo] = field(default_factory=list)
-
-
-@dataclass
-class ClassInfo:
-    name: str = ""
-    short_desc: str = ""
-    long_desc: str = ""
-    enums: list[EnumInfo] = field(default_factory=list)
-    functions: list[FunctionInfo] = field(default_factory=list)
-    constructors: list[FunctionInfo] = field(default_factory=list)
-
-
-@dataclass
-class NamespaceInfo:
-    classes: list[ClassInfo] = field(default_factory=list)
-    enums: list[EnumInfo] = field(default_factory=list)
+from name import to_gdscript_name, to_snake_case, undo_functions_overload
+from data import (
+    ClassInfo,
+    EnumInfo,
+    EnumValueInfo,
+    FunctionInfo,
+    NamespaceInfo,
+    ParamInfo,
+    SubtypeInfo,
+    TypeInfo,
+)
 
 
 def collect_namespace(tree: Element, xml_dir: Path) -> NamespaceInfo:
@@ -91,6 +45,7 @@ def collect_class(tree: Element) -> ClassInfo:
     class_info.enums = collect_enums(tree)
     class_info.functions = collect_functions(tree)
     class_info.constructors = collect_constructors(class_info)
+    class_info.functions = undo_functions_overload(class_info.functions)
 
     return class_info
 
@@ -128,7 +83,9 @@ def collect_functions(tree: Element) -> list[FunctionInfo]:
 
     for f in tree.findall(".//memberdef[@kind='function']"):
         fi = FunctionInfo()
+        fi.static = f.attrib.get("static") == "yes"
         fi.name = f.find("name").text
+        fi.gdscript_name = to_gdscript_name(fi.name)
         fi.type = collect_type(f)
         fi.short_desc = f.find("briefdescription").text
         fi.long_desc = f.find("detaileddescription").text
@@ -164,6 +121,7 @@ def collect_params(tree: Element) -> list[ParamInfo]:
 
         if p.find("declname") is not None:
             pi.name = p.find("declname").text
+            pi.gdscript_name = to_snake_case(pi.name)
 
         params.append(pi)
 

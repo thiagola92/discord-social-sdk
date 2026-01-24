@@ -8,8 +8,10 @@ def get_discord_class_cpp(
 
 using namespace godot;
 
+// Functions.
 {methods}
 
+// Binding.
 void Discordpp{class_name}::_bind_methods() {{
     {binds}
 }}
