@@ -1,10 +1,12 @@
 # Responsible for collecting informations about from XML tree.
+from pprint import pprint
 from pathlib import Path
 from xml.etree import ElementTree
 from xml.etree.ElementTree import Element
 
 from name import to_gdscript_name, to_snake_case, undo_functions_overload
 from data import (
+    CallbackInfo,
     ClassInfo,
     EnumInfo,
     EnumValueInfo,
@@ -16,6 +18,10 @@ from data import (
 )
 
 
+def collect_text(tree: Element) -> str:
+    return "".join(tree.itertext()).strip()
+
+
 def collect_namespace(tree: Element, xml_dir: Path) -> NamespaceInfo:
     namespace_info = NamespaceInfo()
 
@@ -25,6 +31,9 @@ def collect_namespace(tree: Element, xml_dir: Path) -> NamespaceInfo:
         nf = ElementTree.parse(nf)
 
         namespace_info.enums = collect_enums(nf)
+        namespace_info.functions = collect_functions(nf)
+
+        namespace_info.functions = undo_functions_overload(namespace_info.functions)
 
     for c in tree.findall("compound[@kind='class']"):
         cf = c.attrib["refid"] + ".xml"
@@ -38,13 +47,15 @@ def collect_namespace(tree: Element, xml_dir: Path) -> NamespaceInfo:
 
 def collect_class(tree: Element) -> ClassInfo:
     class_info = ClassInfo()
-    class_info.name = tree.find("compounddef/compoundname").text
+    class_info.name = collect_text(tree.find("compounddef/compoundname"))
     class_info.name = class_info.name.removeprefix("discordpp::")
-    class_info.short_desc = tree.find("compounddef/briefdescription").text
-    class_info.long_desc = tree.find("compounddef/detaileddescription").text
+    class_info.short_desc = collect_text(tree.find("compounddef/briefdescription"))
+    class_info.long_desc = collect_text(tree.find("compounddef/detaileddescription"))
     class_info.enums = collect_enums(tree)
     class_info.functions = collect_functions(tree)
     class_info.constructors = collect_constructors(class_info)
+    class_info.callbacks = collect_callbacks(tree)
+
     class_info.functions = undo_functions_overload(class_info.functions)
 
     return class_info
@@ -54,22 +65,22 @@ def collect_enums(tree: Element) -> list[EnumInfo]:
     enums = []
 
     for e in tree.findall(".//memberdef[@kind='enum']"):
-        if e.find("name").text == "DiscordObjectState":  # Exclude.
+        if collect_text(e.find("name")) == "DiscordObjectState":  # Exclude.
             continue
 
         ei = EnumInfo()
-        ei.name = e.find("name").text
-        ei.short_desc = "".join(e.find("briefdescription").itertext())
-        ei.long_desc = "".join(e.find("detaileddescription").itertext())
+        ei.name = collect_text(e.find("name"))
+        ei.short_desc = collect_text(e.find("briefdescription"))
+        ei.long_desc = collect_text(e.find("detaileddescription"))
 
         for ev in e.findall("enumvalue"):
             evi = EnumValueInfo()
-            evi.name = ev.find("name").text
-            evi.short_desc = "".join(ev.find("briefdescription").itertext())
-            evi.long_desc = "".join(ev.find("detaileddescription").itertext())
+            evi.name = collect_text(ev.find("name"))
+            evi.short_desc = collect_text(ev.find("briefdescription"))
+            evi.long_desc = collect_text(ev.find("detaileddescription"))
 
             if ev.find("initializer") is not None:
-                evi.init = ev.find("initializer").text + ","
+                evi.init = collect_text(ev.find("initializer")) + ","
 
             ei.values.append(evi)
 
@@ -84,11 +95,11 @@ def collect_functions(tree: Element) -> list[FunctionInfo]:
     for f in tree.findall(".//memberdef[@kind='function']"):
         fi = FunctionInfo()
         fi.static = f.attrib.get("static") == "yes"
-        fi.name = f.find("name").text
+        fi.name = collect_text(f.find("name"))
         fi.gdscript_name = to_gdscript_name(fi.name)
         fi.type = collect_type(f)
-        fi.short_desc = f.find("briefdescription").text
-        fi.long_desc = f.find("detaileddescription").text
+        fi.short_desc = collect_text(f.find("briefdescription"))
+        fi.long_desc = collect_text(f.find("detaileddescription"))
         fi.params = collect_params(f)
 
         if fi.name.startswith("operator"):  # Exclude.
@@ -112,6 +123,24 @@ def collect_constructors(class_info: ClassInfo) -> list[FunctionInfo]:
     return constructors
 
 
+def collect_callbacks(tree: Element) -> list[CallbackInfo]:
+    callbacks = []
+
+    for t in tree.findall(".//memberdef[@kind='typedef']"):
+        c = CallbackInfo()
+        c.name = collect_text(t.find("name"))
+        c.params = collect_type(t)
+        c.short_desc = collect_text(t.find("briefdescription"))
+        c.long_desc = collect_text(t.find("detaileddescription"))
+
+        callbacks.append(c)
+
+    for c in callbacks:
+        pprint(c)
+
+    return callbacks
+
+
 def collect_params(tree: Element) -> list[ParamInfo]:
     params = []
 
@@ -120,7 +149,7 @@ def collect_params(tree: Element) -> list[ParamInfo]:
         pi.type = collect_type(p)
 
         if p.find("declname") is not None:
-            pi.name = p.find("declname").text
+            pi.name = collect_text(p.find("declname"))
             pi.gdscript_name = to_snake_case(pi.name)
 
         params.append(pi)
@@ -130,7 +159,7 @@ def collect_params(tree: Element) -> list[ParamInfo]:
 
 def collect_type(tree: Element) -> TypeInfo:
     type_info = TypeInfo()
-    type_info.name = "".join(tree.find("type").itertext())
+    type_info.name = collect_text(tree.find("type"))
     type_info.name, type_info.subtype, type_info.extra = collect_subtype(type_info.name)
 
     return type_info
@@ -145,7 +174,7 @@ def collect_subtype(type_str: str) -> tuple[str, list[SubtypeInfo], str]:
     - List of subtypes.
     - Anything extra after the type.
 
-    There is 3 possible returns:
+    There is 4 possible paths:
     - When is dealing with a single type:
         - Input: `bool`
         - Output: `('bool', [], '')`
@@ -157,12 +186,15 @@ def collect_subtype(type_str: str) -> tuple[str, list[SubtypeInfo], str]:
     - When is processing consecutives subtypes:
         - Input: `std::string, std::string`
         - Output: `('', [TypeInfo(name='std::string'), TypeInfo(name='std::string')], '')`
+    - When is processing functions signature:
+        - Input: `void(int result, int user)`
+        - Output: `('void', [TypeInfo(name='int result'), TypeInfo(name='int user')], '')`
     """
 
-    for c in type_str:
+    for i, c in enumerate(type_str):
         if c == "<":
             l, _, r = type_str.partition("<")
-            m, _, e = r.rpartition(">")
+            m, _, e = r.partition(">")
             t = TypeInfo()
             t.name, t.subtype, t.extra = collect_subtype(m)
 
@@ -181,5 +213,41 @@ def collect_subtype(type_str: str) -> tuple[str, list[SubtypeInfo], str]:
                 st.append(t2)
 
             return ("", st, "")
+        elif c == "(":
+            l, _, r = type_str.partition("(")
+            m, _, e = r.partition(")")
+            t = TypeInfo()
+            t.name, t.subtype, t.extra = collect_subtype(m)
+
+            return (l, [t], e)
 
     return (type_str, [], "")
+
+
+def collect_subtype2(type_str: str) -> tuple[str, list[SubtypeInfo], str]:
+    """
+    Parses a string to obtain a type.
+
+    It assumes that we will never have brackets that mix with each other:
+        (<)>
+        <(>)
+
+    """
+    if type_str == "":
+        return ("", [], "")
+
+    current_position = 0
+    inside_brackets = 0
+    subtypes = []
+
+    while current_position < len(type_str):
+        c: str = type_str[current_position]
+
+        if c == "<" or c == "(":
+            inside_brackets += 1
+        elif c == ">" or c == ")":
+            inside_brackets -= 1
+        else:
+            pass
+
+        current_position += 1

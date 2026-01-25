@@ -165,7 +165,7 @@ class Builder:
         classes_declarations.append(get_class_declaration(""))
         classes_declarations = sorted(classes_declarations)
         classes_declarations = "".join(classes_declarations)
-        classes_definitions.append(get_class_definition_g(""))
+        classes_definitions.append(get_class_definition_g(""))  # TODO
         classes_definitions = sorted(classes_definitions)
         classes_definitions = "".join(classes_definitions)
 

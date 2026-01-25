@@ -56,11 +56,22 @@ class FunctionInfo:
 
 
 @dataclass
+class CallbackInfo:
+    name: str = ""
+    params: list[ParamInfo] = field(default_factory=list)
+
+    # Documentation.
+    short_desc: str = ""
+    long_desc: str = ""
+
+
+@dataclass
 class ClassInfo:
     name: str = ""
     enums: list[EnumInfo] = field(default_factory=list)
     functions: list[FunctionInfo] = field(default_factory=list)
     constructors: list[FunctionInfo] = field(default_factory=list)
+    callbacks: list[CallbackInfo] = field(default_factory=list)
 
     # Documentation.
     short_desc: str = ""
@@ -71,3 +82,6 @@ class ClassInfo:
 class NamespaceInfo:
     classes: list[ClassInfo] = field(default_factory=list)
     enums: list[EnumInfo] = field(default_factory=list)
+    functions: list[FunctionInfo] = field(default_factory=list)
+    constructors: list[FunctionInfo] = field(default_factory=list)
+    callbacks: list[CallbackInfo] = field(default_factory=list)

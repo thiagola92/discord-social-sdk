@@ -133,15 +133,11 @@ def undo_functions_overload(functions: list[FunctionInfo]) -> list[FunctionInfo]
 
     for f in functions:
         if counter[f.gdscript_name] > 0:
-            print(f.gdscript_name)
-
             for p in f.params:
                 # TODO: Stop using C++ type name,
                 # start using GDScript type name.
                 n = p.type.name.replace("const ", "")
                 f.gdscript_name += "_" + n
-
-            print(f"\t{f.gdscript_name}")
 
     return functions
 
