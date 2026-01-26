@@ -43,6 +43,7 @@ class ParamInfo:
 @dataclass
 class FunctionInfo:
     static: bool = False
+    overloading: bool = False
     type: TypeInfo = field(default_factory=TypeInfo)
     name: str = ""
     params: list[ParamInfo] = field(default_factory=list)
