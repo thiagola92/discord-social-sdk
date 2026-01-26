@@ -1,8 +1,7 @@
 # Responsible for solving naming problems.
 
-# Reserved because they are used in GDScript Object/RefCounted.
 RESERVED_NAMES = [
-    # Object.
+    # Used by GDScript Object methods.
     "_get",
     "_get_property_list",
     "_init",
@@ -65,7 +64,10 @@ RESERVED_NAMES = [
     "to_string",
     "tr",
     "tr_n",
-    # RefCounted.
+    # Used by GDScript Object signals.
+    "property_list_changed",
+    "script_changed",
+    # Used by GDScript RefCounted methods.
     "get_reference_count",
     "init_ref",
     "reference",

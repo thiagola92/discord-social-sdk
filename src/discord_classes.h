@@ -117,7 +117,7 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppActivity() {
+	~DiscordActivity() {
 		memdelete(this->obj);
 	}
 };
@@ -161,7 +161,7 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppActivityAssets() {
+	~DiscordActivityAssets() {
 		memdelete(this->obj);
 	}
 };
@@ -195,7 +195,7 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppActivityButton() {
+	~DiscordActivityButton() {
 		memdelete(this->obj);
 	}
 };
@@ -243,7 +243,7 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppActivityInvite() {
+	~DiscordActivityInvite() {
 		memdelete(this->obj);
 	}
 };
@@ -281,7 +281,7 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppActivityParty() {
+	~DiscordActivityParty() {
 		memdelete(this->obj);
 	}
 };
@@ -313,7 +313,7 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppActivitySecrets() {
+	~DiscordActivitySecrets() {
 		memdelete(this->obj);
 	}
 };
@@ -347,7 +347,7 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppActivityTimestamps() {
+	~DiscordActivityTimestamps() {
 		memdelete(this->obj);
 	}
 };
@@ -385,7 +385,7 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppAdditionalContent() {
+	~DiscordAdditionalContent() {
 		memdelete(this->obj);
 	}
 };
@@ -420,7 +420,7 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppAudioDevice() {
+	~DiscordAudioDevice() {
 		memdelete(this->obj);
 	}
 };
@@ -464,7 +464,7 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppAuthorizationArgs() {
+	~DiscordAuthorizationArgs() {
 		memdelete(this->obj);
 	}
 };
@@ -498,7 +498,7 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppAuthorizationCodeChallenge() {
+	~DiscordAuthorizationCodeChallenge() {
 		memdelete(this->obj);
 	}
 };
@@ -530,7 +530,7 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppAuthorizationCodeVerifier() {
+	~DiscordAuthorizationCodeVerifier() {
 		memdelete(this->obj);
 	}
 };
@@ -585,7 +585,7 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppCall() {
+	~DiscordCall() {
 		memdelete(this->obj);
 	}
 };
@@ -617,7 +617,7 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppCallInfoHandle() {
+	~DiscordCallInfoHandle() {
 		memdelete(this->obj);
 	}
 };
@@ -649,7 +649,7 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppChannelHandle() {
+	~DiscordChannelHandle() {
 		memdelete(this->obj);
 	}
 };
@@ -832,7 +832,7 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppClient() {
+	~DiscordClient() {
 		memdelete(this->obj);
 	}
 };
@@ -872,7 +872,7 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppClientCreateOptions() {
+	~DiscordClientCreateOptions() {
 		memdelete(this->obj);
 	}
 };
@@ -917,7 +917,7 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppClientResult() {
+	~DiscordClientResult() {
 		memdelete(this->obj);
 	}
 };
@@ -951,7 +951,7 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppDeviceAuthorizationArgs() {
+	~DiscordDeviceAuthorizationArgs() {
 		memdelete(this->obj);
 	}
 };
@@ -995,7 +995,7 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppGuildChannel() {
+	~DiscordGuildChannel() {
 		memdelete(this->obj);
 	}
 };
@@ -1027,7 +1027,7 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppGuildMinimal() {
+	~DiscordGuildMinimal() {
 		memdelete(this->obj);
 	}
 };
@@ -1061,7 +1061,7 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppLinkedChannel() {
+	~DiscordLinkedChannel() {
 		memdelete(this->obj);
 	}
 };
@@ -1095,7 +1095,7 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppLinkedLobby() {
+	~DiscordLinkedLobby() {
 		memdelete(this->obj);
 	}
 };
@@ -1130,7 +1130,7 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppLobbyHandle() {
+	~DiscordLobbyHandle() {
 		memdelete(this->obj);
 	}
 };
@@ -1163,7 +1163,7 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppLobbyMemberHandle() {
+	~DiscordLobbyMemberHandle() {
 		memdelete(this->obj);
 	}
 };
@@ -1209,7 +1209,7 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppMessageHandle() {
+	~DiscordMessageHandle() {
 		memdelete(this->obj);
 	}
 };
@@ -1242,7 +1242,7 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppRelationshipHandle() {
+	~DiscordRelationshipHandle() {
 		memdelete(this->obj);
 	}
 };
@@ -1276,7 +1276,7 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppUserApplicationProfileHandle() {
+	~DiscordUserApplicationProfileHandle() {
 		memdelete(this->obj);
 	}
 };
@@ -1316,7 +1316,7 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppUserHandle() {
+	~DiscordUserHandle() {
 		memdelete(this->obj);
 	}
 };
@@ -1346,7 +1346,7 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppUserMessageSummary() {
+	~DiscordUserMessageSummary() {
 		memdelete(this->obj);
 	}
 };
@@ -1378,7 +1378,7 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppVADThresholdSettings() {
+	~DiscordVADThresholdSettings() {
 		memdelete(this->obj);
 	}
 };
@@ -1408,7 +1408,7 @@ public:
 		this->obj = obj;
 	}
 
-	~DiscordppVoiceStateHandle() {
+	~DiscordVoiceStateHandle() {
 		memdelete(this->obj);
 	}
 };

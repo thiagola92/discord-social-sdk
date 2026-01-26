@@ -29,7 +29,7 @@ public:
         this->obj = obj;
     }}
 
-	~Discordpp{class_name}() {{
+	~Discord{class_name}() {{
 		memdelete(this->obj);
     }}
 }};

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhrl1q1r3rqu1"]
+
+[ext_resource type="Script" uid="uid://cgwvybtuumkxu" path="res://examples/04_unified_friends_list/main.gd" id="1_ujepk"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ujepk")

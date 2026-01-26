@@ -10,7 +10,8 @@ def clear_dir(dir: str | Path) -> None:
     for file in dir.iterdir():
         if file.is_dir():
             clear_dir(file)
-        file.unlink()
+        else:
+            file.unlink()
 
 
 def clang_format(filepath: str) -> None:
