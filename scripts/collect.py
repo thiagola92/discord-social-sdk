@@ -158,73 +158,72 @@ def collect_params(tree: Element) -> list[ParamInfo]:
 
 
 def collect_type(tree: Element) -> TypeInfo:
-    type_info = TypeInfo()
-    type_info.name = collect_text(tree.find("type"))
-    type_info.name, type_info.subtype, type_info.extra = collect_subtype(type_info.name)
+    type_str = collect_text(tree.find("type"))
+    type_info = collect_subtype(type_str)
 
     return type_info
 
 
-def collect_subtype(type_str: str) -> tuple[str, list[SubtypeInfo], str]:
-    """
-    Good enough solution for collecting subtypes recursively.
+# def collect_subtype(type_str: str) -> tuple[str, list[SubtypeInfo], str]:
+#     """
+#     Good enough solution for collecting subtypes recursively.
 
-    Returns a tuple with 3 values:
-    - Parent type string.
-    - List of subtypes.
-    - Anything extra after the type.
+#     Returns a tuple with 3 values:
+#     - Parent type string.
+#     - List of subtypes.
+#     - Anything extra after the type.
 
-    There is 4 possible paths:
-    - When is dealing with a single type:
-        - Input: `bool`
-        - Output: `('bool', [], '')`
-    - When is dealing with a type that has subtype:
-        - Input: `std::optional<discordpp::LobbyHandle>`
-        - Output: `('std::optional', [TypeInfo(name='discordpp::LobbyHandle')], '')`
-        - Input: `std::unordered_map<std::string, std::string> const &`
-        - Output: `('std::unordered_map', [TypeInfo(name='std::string'), TypeInfo(name='std::string')], 'const &')`
-    - When is processing consecutives subtypes:
-        - Input: `std::string, std::string`
-        - Output: `('', [TypeInfo(name='std::string'), TypeInfo(name='std::string')], '')`
-    - When is processing functions signature:
-        - Input: `void(int result, int user)`
-        - Output: `('void', [TypeInfo(name='int result'), TypeInfo(name='int user')], '')`
-    """
+#     There is 4 possible paths:
+#     - When is dealing with a single type:
+#         - Input: `bool`
+#         - Output: `('bool', [], '')`
+#     - When is dealing with a type that has subtype:
+#         - Input: `std::optional<discordpp::LobbyHandle>`
+#         - Output: `('std::optional', [TypeInfo(name='discordpp::LobbyHandle')], '')`
+#         - Input: `std::unordered_map<std::string, std::string> const &`
+#         - Output: `('std::unordered_map', [TypeInfo(name='std::string'), TypeInfo(name='std::string')], 'const &')`
+#     - When is processing consecutives subtypes:
+#         - Input: `std::string, std::string`
+#         - Output: `('', [TypeInfo(name='std::string'), TypeInfo(name='std::string')], '')`
+#     - When is processing functions signature:
+#         - Input: `void(int result, int user)`
+#         - Output: `('void', [TypeInfo(name='int result'), TypeInfo(name='int user')], '')`
+#     """
 
-    for i, c in enumerate(type_str):
-        if c == "<":
-            l, _, r = type_str.partition("<")
-            m, _, e = r.partition(">")
-            t = TypeInfo()
-            t.name, t.subtype, t.extra = collect_subtype(m)
+#     for i, c in enumerate(type_str):
+#         if c == "<":
+#             l, _, r = type_str.partition("<")
+#             m, _, e = r.partition(">")
+#             t = TypeInfo()
+#             t.name, t.subtype, t.extra = collect_subtype(m)
 
-            return (l, [t], e)
-        elif c == ",":
-            l, _, r = type_str.partition(",")
-            t1 = TypeInfo()
-            t2 = TypeInfo()
-            t1.name, t1.subtype, t1.extra = collect_subtype(l)
-            t2.name, t2.subtype, t2.extra = collect_subtype(r)
-            st = [t1]
+#             return (l, [t], e)
+#         elif c == ",":
+#             l, _, r = type_str.partition(",")
+#             t1 = TypeInfo()
+#             t2 = TypeInfo()
+#             t1.name, t1.subtype, t1.extra = collect_subtype(l)
+#             t2.name, t2.subtype, t2.extra = collect_subtype(r)
+#             st = [t1]
 
-            if t2.name == "":
-                st.extend(t2.subtype)
-            else:
-                st.append(t2)
+#             if t2.name == "":
+#                 st.extend(t2.subtype)
+#             else:
+#                 st.append(t2)
 
-            return ("", st, "")
-        elif c == "(":
-            l, _, r = type_str.partition("(")
-            m, _, e = r.partition(")")
-            t = TypeInfo()
-            t.name, t.subtype, t.extra = collect_subtype(m)
+#             return ("", st, "")
+#         elif c == "(":
+#             l, _, r = type_str.partition("(")
+#             m, _, e = r.partition(")")
+#             t = TypeInfo()
+#             t.name, t.subtype, t.extra = collect_subtype(m)
 
-            return (l, [t], e)
+#             return (l, [t], e)
 
-    return (type_str, [], "")
+#     return (type_str, [], "")
 
 
-def collect_subtype2(type_str: str) -> tuple[str, list[SubtypeInfo], str]:
+def collect_subtype(type_str: str) -> TypeInfo:
     """
     Parses a string to obtain a type.
 
@@ -237,17 +236,41 @@ def collect_subtype2(type_str: str) -> tuple[str, list[SubtypeInfo], str]:
         return ("", [], "")
 
     current_position = 0
-    inside_brackets = 0
-    subtypes = []
+    brackets_position = []
+    type_info = TypeInfo()
 
     while current_position < len(type_str):
         c: str = type_str[current_position]
 
         if c == "<" or c == "(":
-            inside_brackets += 1
+            brackets_position.append(current_position)
         elif c == ">" or c == ")":
-            inside_brackets -= 1
-        else:
+            start_position = brackets_position.pop() + 1
+            subtype_str = type_str[start_position:current_position]
+            subtype_str = subtype_str.strip()
+            subtype_info = collect_subtype(subtype_str)
+
+            type_info.subtype.append(subtype_info)
+        elif c == ",":
+            start_position = brackets_position.pop() + 1
+            subtype_str = type_str[start_position:current_position]
+            subtype_str = subtype_str.strip()
+            subtype_info = collect_subtype(subtype_str)
+
+            type_info.subtype.append(subtype_info)
+            brackets_position.append(current_position)
+        elif any(brackets_position):
+            # Do nothing inside brackets.
             pass
+        elif any(type_info.subtype):
+            # Send to extra if already processed the main type.
+            type_info.extra += c
+        else:
+            # Put together the main type.
+            type_info.name += c
 
         current_position += 1
+
+    type_info.name = type_info.name.strip()
+    type_info.extra = type_info.extra.strip()
+    return type_info
