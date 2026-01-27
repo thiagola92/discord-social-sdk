@@ -1,7 +1,9 @@
 # Responsible for holding the structures to be used.
 from dataclasses import dataclass, field
 
-type SubtypeInfo = TypeInfo
+# Allow recursion.
+type TypeInfoR = TypeInfo
+type FunctionInfoR = FunctionInfo
 
 
 @dataclass
@@ -27,13 +29,13 @@ class EnumInfo:
 @dataclass
 class TypeInfo:
     name: str = ""
-    subtype: list[SubtypeInfo] = field(default_factory=list)
-    extra: str = ""
+    templates: list[TypeInfoR | FunctionInfoR] = field(default_factory=list)
+    extra: str = ""  # TODO: Replace for useful fields.
 
 
 @dataclass
 class ParamInfo:
-    type: TypeInfo = field(default_factory=TypeInfo)
+    type: TypeInfo | FunctionInfoR = field(default_factory=TypeInfo)
     name: str = ""
 
     # GDScript.
