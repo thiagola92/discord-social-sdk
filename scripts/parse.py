@@ -1,4 +1,6 @@
 # Responsible for parsing strings that doxygen didn't parsed.
+from pprint import pprint
+
 from name import to_gdscript_name
 from data import ParamInfo, TypeInfo, FunctionInfo
 
@@ -48,14 +50,31 @@ class Parser:
 
         return None
 
-    def read_until_leave_scope(self, new_scope: str, end_scope: str) -> None:
+    def get_text_before(self, strings: list[str]) -> tuple[str | None, str | None]:
         """
-        Read characters until find the character
+        Returns a tuple:
+            First value is the text between current position and the matched string
+            Second value is the matched string
+
+        Both will be None if doesn't find a match.
+
+        This will move the current position while searching for a match.
+        """
+        start_position: int = self.current_position
+
+        if (string := self.read_until_find(strings)) is None:
+            return (None, None)
+
+        return (self.content[start_position : self.current_position - 1], string)
+
+    def read_until_leave_bracket(self, enter_bracket: str, leave_bracket: str) -> None:
+        """
+        Read characters until find the bracket
         that leave the current scope.
 
-        The current position must be poiting to the character
-        that start a new scope, otherwise it will leave right
-        after starting.
+        The current position must be pointing to the
+        bracket that enter the scope, otherwise
+        it will leave right away.
 
         If you need to know the content between where you are
         and where the string was found, you need to save
@@ -67,9 +86,9 @@ class Parser:
         while not self.is_eof(self.current_position):
             char: str = self.content[self.current_position]
 
-            if char == new_scope:
+            if char == enter_bracket:
                 scope_counter += 1
-            elif char == end_scope:
+            elif char == leave_bracket:
                 scope_counter -= 1
 
             if scope_counter == 0:
@@ -77,22 +96,17 @@ class Parser:
 
             self.current_position += 1
 
-    def get_text_before(self, strings: list[str]) -> tuple[str | None, str | None]:
+    def get_text_inside_brackets(self, enter_bracket: str, leave_bracket: str) -> str:
         """
-        Returns a tuple:
-            First value is the text between current position and the matched string
-            Second value is the matched string
-
-        Both will be None if doesn't find a match.
+        Returns the text inside the most outside brackets.
 
         This will move the current position while searching for a match.
         """
-        start_position = self.current_position
+        start_position: int = self.current_position
 
-        if (string := self.read_until_find(strings)) is None:
-            return (None, None)
+        self.read_until_leave_bracket(enter_bracket, leave_bracket)
 
-        return (self.content[start_position : self.current_position - 1], string)
+        return self.content[start_position + 1 : self.current_position]
 
     def parse_param(self) -> TypeInfo:
         """
@@ -110,14 +124,14 @@ class Parser:
         param_info = ParamInfo()
 
         while self.current_position >= 0:
-            c = self.content[self.current_position]
+            char = self.content[self.current_position]
 
-            if c == " ":
-                p = Parser(self.content[: self.current_position])
+            if char == " ":
+                parser = Parser(self.content[: self.current_position])
                 param_info.name = self.content[self.current_position :]
                 param_info.name = param_info.name.strip()
                 param_info.gdscript_name = to_gdscript_name(param_info.name)
-                param_info.type = p.parse_type()
+                param_info.type = parser.parse_type()
                 return param_info
 
             self.current_position -= 1
@@ -138,146 +152,136 @@ class Parser:
         type_info = TypeInfo()
         initial_position = self.current_position
 
+        def get_type_name() -> str:
+            return self.content[initial_position : self.current_position].strip()
+
         while not self.is_eof(self.current_position):
-            c = self.content[self.current_position]
+            char = self.content[self.current_position]
 
-            if c == "<":
-                type_info.name = self.content[initial_position : self.current_position]
-                type_info.name = type_info.name.strip()
-                type_info.templates = self.parse_types()
-            elif c == "(":
+            if char == "<":
+                type_info.name = get_type_name()
+                parser = Parser(self.get_text_inside_brackets("<", ">"))
+                type_info.templates = parser.parse_types()
+            elif char == "(":
                 if not type_info.name:
-                    type_info.name = self.content[
-                        initial_position : self.current_position
-                    ]
-                    type_info.name = type_info.name.strip()
+                    type_info.name = get_type_name()
 
-                fi = FunctionInfo()
-                fi.type = type_info
-                fi.params = self.parse_params()
-                return fi
+                function_info = FunctionInfo()
+                function_info.type = type_info
+                parser = Parser(self.get_text_inside_brackets("(", ")"))
+                function_info.params = parser.parse_params()
+
+                return function_info
             else:
                 self.current_position += 1
 
         if not type_info.name:
-            type_info.name = self.content[initial_position : self.current_position]
-            type_info.name = type_info.name.strip()
+            type_info.name = get_type_name().strip()
 
         return type_info
 
     def parse_types(self) -> list[TypeInfo | FunctionInfo]:
         """
-        Parse knowing that content includes angle brackets. Example:
-            - <int>
-            - <float>
-            - <int, float>
-            - <Vector<int>>
-            - <Vector<int>, Vector<float>>
-            - <Dictionary<int, float>>
+        Parse knowing that content is ONLY a list of types. Example:
+            - int
+            - float
+            - int, float
+            - Vector<int>
+            - Vector<int>, Vector<float>
+            - Dictionary<int, float>
         """
 
-        # Start skipping first character.
-        self.current_position += 1
-
         types_found = []
-        brackets_deep = 0
-        initial_position = self.current_position
+        type_info = TypeInfo()
+        type_start_position = self.current_position
+
+        def get_type_name() -> str:
+            return self.content[type_start_position : self.current_position].strip()
 
         while not self.is_eof(self.current_position):
-            c = self.content[self.current_position]
+            char = self.content[self.current_position]
 
-            if brackets_deep == 0:
-                if c == ">":
-                    p = Parser(self.content[initial_position : self.current_position])
-                    ti = p.parse_type()
+            if char == "<":
+                type_info.name = get_type_name()
+                parser = Parser(self.get_text_inside_brackets("<", ">"))
+                type_info.templates = parser.parse_types()
 
-                    types_found.append(ti)
+                # Skip ">"
+                type_start_position = self.current_position + 1
+            elif char == "(":
+                if not type_info.name:
+                    type_info.name = get_type_name()
 
-                    return types_found
-                elif c == ",":
-                    p = Parser(self.content[initial_position : self.current_position])
-                    ti = p.parse_type()
-                    initial_position = self.current_position + 1
+                function_info = FunctionInfo()
+                function_info.type = type_info
+                parser = Parser(self.get_text_inside_brackets("(", ")"))
+                function_info.params = parser.parse_params()
 
-                    types_found.append(ti)
-            else:
-                if c == ">":
-                    brackets_deep += 1
-                elif c == "<":
-                    brackets_deep -= 1
+                # Skip ")"
+                type_start_position = self.current_position + 1
+
+                types_found.append(function_info)
+            elif char == ",":
+                if not type_info.name:
+                    type_info.name = get_type_name()
+
+                types_found.append(type_info)
+                type_info = TypeInfo()
+                type_start_position = self.current_position + 1
 
             self.current_position += 1
 
-        raise Exception(f"Missing closing angle bracket at {self.current_position}")
+        if type_name := get_type_name():
+            type_info.name = type_name
+            types_found.append(type_info)
+
+        return types_found
 
     def parse_params(self) -> list[ParamInfo]:
         """
-        Parse knowing that content includes round brackets. Example:
-            - (int)
-            - (float)
-            - (int, float)
-            - (Vector<int>)
-            - (Vector<int>, Vector<float>)
-            - (Dictionary<int, float>)
+        Parse knowing that is ONLY a list of params. Example:
+            - int
+            - float
+            - int, float
+            - Vector<int>
+            - Vector<int>, Vector<float>
+            - Dictionary<int, float>
         """
 
-        # Start skipping first character.
-        self.current_position += 1
-
         params_found = []
-        brackets_deep = 0
-        initial_position = self.current_position
+        param_start_position = self.current_position
+
+        def get_param() -> ParamInfo:
+            text = self.content[param_start_position : self.current_position].strip()
+            return Parser(text).parse_param()
 
         while not self.is_eof(self.current_position):
-            c = self.content[self.current_position]
+            char = self.content[self.current_position]
 
-            if brackets_deep == 0:
-                if c == ")":
-                    p = Parser(self.content[initial_position : self.current_position])
-                    pi = p.parse_param()
-
-                    params_found.append(pi)
-
-                    return params_found
-                elif c == "<":
-                    s = self.current_position
-
-                    self.read_until_leave_scope("<", ">")
-
-                    ti = TypeInfo()
-                    ti.name = self.content[initial_position:s]
-                    t = self.content[s : self.current_position + 1]
-                    p = Parser(t)
-                    ti.templates = p.parse_types()
-
-                    if self.content[self.current_position + 1] == "(":
-                        pass
-                        # TODO: Mayyybe I should have a variable
-                        # to remember the last type I'm working with...
-
-                elif c == ",":
-                    p = Parser(self.content[initial_position : self.current_position])
-                    pi = p.parse_param()
-                    initial_position = self.current_position + 1
-
-                    params_found.append(pi)
-            else:
-                if c == ")":
-                    brackets_deep += 1
-                elif c == "(":
-                    brackets_deep -= 1
+            if char == "<":
+                self.read_until_leave_bracket("<", ">")
+            elif char == "(":
+                self.read_until_leave_bracket("(", ")")
+            elif char == ",":
+                params_found.append(get_param())
+                param_start_position = self.current_position + 1
 
             self.current_position += 1
 
-        raise Exception(f"Missing closing round bracket at {self.current_position}")
+        param_info = get_param()
+
+        if param_info.type.name:
+            params_found.append(param_info)
+
+        return params_found
 
 
-# print(Parser("int").parse_type())
-# print(Parser("Vector<int>").parse_type())
-# print(Parser("Dictionary<int, float>").parse_type())
-# print(Parser("void(int a)").parse_type())
-# print(Parser("void(int a, float b)").parse_type())
-# print(Parser("void(Vector<int> a)").parse_type())
-# print(Parser("void(Dictionary<int, float> a)").parse_type())
-print(Parser("Vector<Vector<int> a, float b>").parse_type())
-# print(Parser("Vector<int>(int a, int b)").parse_type())
+# pprint(Parser("int").parse_type())
+# pprint(Parser("Vector<int>").parse_type())
+# pprint(Parser("Dictionary<int, float>").parse_type())
+# pprint(Parser("void(int a)").parse_type())
+# pprint(Parser("void(int a, float b)").parse_type())
+# pprint(Parser("void(Vector<int> a)").parse_type())
+# pprint(Parser("void(Dictionary<int, float> a)").parse_type())
+# pprint(Parser("Vector<Vector<int>, float>").parse_type())
+# pprint(Parser("Vector<int>(int a, float b)").parse_type())
