@@ -1,8 +1,39 @@
 # Responsible for parsing strings.
+from dataclasses import dataclass, field
+
 from data import ParamInfo, TypeInfo, FunctionInfo
 
 
-def parse_brackets(text: str) -> list[str]:
+def parse_every_scope(text: str):
+    """
+    Recursively split text every time that detects another scope.
+    """
+
+    main_scope = parse_main_scope(text)
+
+    for i, t in enumerate(main_scope):
+        if t.startswith("<"):  # Template types.
+            main_scope[i] = {
+                "templates": parse_every_scope(t[1:-1]),
+            }
+            pass
+        elif t.startswith("("):  # Parameters.
+            main_scope[i] = {
+                "parameters": parse_every_scope(t[1:-1]),
+            }
+
+    for i, t in enumerate(main_scope):
+        if "," in t:
+            t.split(",")
+
+    return main_scope
+
+
+def parse_main_scope(text: str) -> list[str]:
+    """
+    Split text every time that leave/enter main scope.
+    """
+
     if text == "":
         return []
 
@@ -31,18 +62,20 @@ def parse_brackets(text: str) -> list[str]:
         current_pos += 1
 
     # Remove empties.
+    texts_found = [t.strip() for t in texts_found]
     texts_found = [t for t in texts_found if t]
 
     return texts_found
 
 
-print(parse_brackets("int"))
-print(parse_brackets("int, float"))
-print(parse_brackets("Vector<int>"))
-print(parse_brackets("Dictionary<int, float>"))
-print(parse_brackets("void(int)"))
-print(parse_brackets("void(int, float)"))
-print(parse_brackets("void(Vector<int>)"))
-print(parse_brackets("void(Dictionary<int, float>)"))
-print(parse_brackets("Vector<Vector<int>, float>"))
-print(parse_brackets("Vector<int>(int a, int b)"))
+print(parse_every_scope("int"))
+print(parse_every_scope("int, float"))
+print(parse_every_scope("Vector<int>"))
+print(parse_every_scope("Vector<int>, Vector<int>"))
+print(parse_every_scope("Dictionary<int, float>"))
+print(parse_every_scope("void(int)"))
+print(parse_every_scope("void(int, float)"))
+print(parse_every_scope("void(Vector<int>)"))
+print(parse_every_scope("void(Dictionary<int, float>)"))
+print(parse_every_scope("Vector<Vector<int>, float>"))
+print(parse_every_scope("Vector<int>(int a, int b)"))

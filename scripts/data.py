@@ -48,6 +48,7 @@ class FunctionInfo:
     overloading: bool = False
     type: TypeInfo = field(default_factory=TypeInfo)
     name: str = ""
+    templates: list[TypeInfoR | FunctionInfoR] = field(default_factory=list)
     params: list[ParamInfo] = field(default_factory=list)
 
     # Documentation.
