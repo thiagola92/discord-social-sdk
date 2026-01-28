@@ -6,7 +6,7 @@ from xml.etree.ElementTree import Element
 
 from overloading import check_overloading
 from name import to_gdscript_name, to_snake_case
-from parse import parse_type
+from parse import Parser
 from data import (
     CallbackInfo,
     ClassInfo,
@@ -158,8 +158,8 @@ def collect_params(tree: Element) -> list[ParamInfo]:
     return params
 
 
-def collect_type(tree: Element) -> TypeInfo:
+def collect_type(tree: Element) -> TypeInfo | FunctionInfo:
     type_str = collect_text(tree.find("type"))
-    type_info = parse_type(type_str)
+    type_info = Parser(type_str).parse_type()
 
     return type_info

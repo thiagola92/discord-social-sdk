@@ -108,7 +108,7 @@ class Parser:
 
         return self.content[start_position + 1 : self.current_position]
 
-    def parse_param(self) -> TypeInfo:
+    def parse_param(self) -> ParamInfo | None:
         """
         Parse knowing that content is ONE parameter. Example:
             - int a
@@ -136,7 +136,7 @@ class Parser:
 
             self.current_position -= 1
 
-        raise Exception("Unable to find parameter name")
+        return None
 
     def parse_type(self) -> TypeInfo | FunctionInfo:
         """
@@ -251,7 +251,7 @@ class Parser:
         params_found = []
         param_start_position = self.current_position
 
-        def get_param() -> ParamInfo:
+        def get_param() -> ParamInfo | None:
             text = self.content[param_start_position : self.current_position].strip()
             return Parser(text).parse_param()
 
@@ -263,15 +263,16 @@ class Parser:
             elif char == "(":
                 self.read_until_leave_bracket("(", ")")
             elif char == ",":
-                params_found.append(get_param())
+                if param_info := get_param():
+                    params_found.append(param_info)
+
                 param_start_position = self.current_position + 1
 
             self.current_position += 1
 
-        param_info = get_param()
-
-        if param_info.type.name:
-            params_found.append(param_info)
+        if param_info := get_param():
+            if param_info.type.name:
+                params_found.append(param_info)
 
         return params_found
 
@@ -285,3 +286,4 @@ class Parser:
 # pprint(Parser("void(Dictionary<int, float> a)").parse_type())
 # pprint(Parser("Vector<Vector<int>, float>").parse_type())
 # pprint(Parser("Vector<int>(int a, float b)").parse_type())
+# pprint(Parser("std::function<void()>").parse_type())
