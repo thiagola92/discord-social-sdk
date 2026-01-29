@@ -40,7 +40,7 @@ class Builder:
         self.build_register_types_cpp(namespace_info)
         self.build_discord_enum_h(namespace_info)
         self.build_discord_classes_h(namespace_info)
-        # self.build_discord_cpp()
+        self.build_discord_cpp(namespace_info)
 
         # for c in classes:
         #     self.build_discord_class_cpp()
@@ -125,8 +125,25 @@ class Builder:
 
     def build_discord_classes_h(self, namespace_info: NamespaceInfo) -> None:
         # Build code.
+        functions_declarations = []
         classes_declarations = []
         classes_definitions = []
+
+        for f in namespace_info.functions:
+            r = discord_type_to_godot_type(f.type)
+            p = discord_params_to_godot_params(f.params)
+
+            functions_declarations.append(
+                get_function_declaration(
+                    modifier="static " if f.static else "",
+                    ret=r,
+                    name=f.gdscript_name,
+                    params=p,
+                )
+            )
+
+            if f.overloading:
+                functions_declarations[-1] += " // TODO: Solve overloading\n"
 
         for c in namespace_info.classes:
             classes_declarations.append(get_class_declaration(c.name))
@@ -144,6 +161,9 @@ class Builder:
                         params=p,
                     )
                 )
+
+                if f.overloading:
+                    cf[-1] += " // TODO: Solve overloading\n"
 
             cf = "\n".join(cf)
 
@@ -166,10 +186,12 @@ class Builder:
                     )
                 )
 
+        functions_declarations = sorted(functions_declarations)
+        functions_declarations = "".join(functions_declarations)
         classes_declarations.append(get_class_declaration(""))
         classes_declarations = sorted(classes_declarations)
         classes_declarations = "".join(classes_declarations)
-        classes_definitions.append(get_class_definition_g(""))  # TODO
+        classes_definitions.append(get_class_definition_g(functions_declarations))
         classes_definitions = sorted(classes_definitions)
         classes_definitions = "".join(classes_definitions)
 
@@ -184,7 +206,7 @@ class Builder:
 
         clang_format(filepath)
 
-    def build_discord_cpp(self) -> None:
+    def build_discord_cpp(self, namespace_info: NamespaceInfo) -> None:
         # Build file.
         filepath = self.src_dir.joinpath("discord.cpp")
         content = get_discord_class_cpp(

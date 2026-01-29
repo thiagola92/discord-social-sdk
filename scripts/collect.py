@@ -1,5 +1,4 @@
 # Responsible for collecting informations about from XML tree.
-from pprint import pprint
 from pathlib import Path
 from xml.etree import ElementTree
 from xml.etree.ElementTree import Element

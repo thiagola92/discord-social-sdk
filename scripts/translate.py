@@ -10,7 +10,7 @@
 from pprint import pprint
 
 from data import TypeInfo, FunctionInfo, ParamInfo
-from name import to_godot_class_name, to_gdscript_var_name
+from name import to_godot_class_name
 
 
 def is_discord_void(type_str: str) -> bool:
