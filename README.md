@@ -171,7 +171,7 @@ timer.timeout.connect(func(): Discordpp.RunCallbacks())
 get_tree().root.add_child.call_deferred(timer)
 ```
 
-## Questions
+## Questions (create a new section The Good, The Bad, The Ugly)
 
 > Why some functions return [`Variant`](https://docs.godotengine.org/en/stable/classes/class_variant.html)?  
 
