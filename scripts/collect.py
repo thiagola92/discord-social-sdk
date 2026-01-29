@@ -136,9 +136,6 @@ def collect_callbacks(tree: Element) -> list[CallbackInfo]:
 
         callbacks.append(c)
 
-    for c in callbacks:
-        pprint(c)
-
     return callbacks
 
 

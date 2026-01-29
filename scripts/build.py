@@ -3,7 +3,7 @@ from pprint import pprint
 from pathlib import Path
 from xml.etree import ElementTree
 
-from helper import clang_format
+from help import clang_format
 from collect import NamespaceInfo, collect_namespace
 from template.file.register_types_h import get_register_types_h
 from template.file.register_types_cpp import get_register_types_cpp

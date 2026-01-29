@@ -190,6 +190,12 @@ I made this decision to avoid solving conflict between methods names because GDS
 **Example**: [`discordpp:Client`](https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1Client.html#a873a844c7c4c72e9e693419bb3e290aa) has `Connect()` and [`Object`](https://docs.godotengine.org/en/4.4/classes/class_object.html#class-object-method-connect) has `connect()`.  
 If I were to snake_case the `discordpp:Client` method, I would need to find another name for it.   
 
+> Why each enum has a specific class for it?  
+
+I was not able to insert multiple enums in a same class when they contained values with the same name.  
+
+**Reference**: https://github.com/godotengine/godot-cpp/issues/1910#issuecomment-3811715068  
+
 # Development
 This GDExtension is **all** built using Python and **nothing** should be add manually at `src`. If this is weird for you, listen to me...  
 
