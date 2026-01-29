@@ -41,11 +41,13 @@ class ParamInfo:
     # GDScript.
     gdscript_name: str = ""
 
+    # Utility.
+    callback: bool = False
+
 
 @dataclass
 class FunctionInfo:
     static: bool = False
-    overloading: bool = False
     type: TypeInfo = field(default_factory=TypeInfo)
     name: str = ""
     templates: list[TypeInfoR | FunctionInfoR] = field(default_factory=list)
@@ -55,8 +57,11 @@ class FunctionInfo:
     short_desc: str = ""
     long_desc: str = ""
 
-    # GDScript
+    # GDScript.
     gdscript_name: str = ""
+
+    # Utility.
+    overloading: bool = False
 
 
 @dataclass

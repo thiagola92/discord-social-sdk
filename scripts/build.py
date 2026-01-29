@@ -5,6 +5,7 @@ from xml.etree import ElementTree
 
 from help import clang_format
 from collect import NamespaceInfo, collect_namespace
+from translate import discord_type_to_godot_type, discord_params_to_godot_params
 from template.file.register_types_h import get_register_types_h
 from template.file.register_types_cpp import get_register_types_cpp
 from template.file.discord_enum_h import get_discord_enum_h
@@ -132,12 +133,15 @@ class Builder:
             cf = []
 
             for f in c.functions:
+                r = discord_type_to_godot_type(f.type)
+                p = discord_params_to_godot_params(f.params)
+
                 cf.append(
                     get_function_declaration(
                         modifier="static " if f.static else "",
-                        ret="void",  # TODO: Translate to GDScript.
+                        ret=r,
                         name=f.gdscript_name,
-                        params="",
+                        params=p,
                     )
                 )
 

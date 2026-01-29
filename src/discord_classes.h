@@ -76,37 +76,37 @@ public:
 		return obj;
 	}
 
-	void add_button();
-	void equals();
-	void get_buttons();
-	void name();
-	void set_name();
-	void type();
-	void set_type();
-	void status_display_type();
-	void set_status_display_type();
-	void state();
-	void set_state();
-	void state_url();
-	void set_state_url();
-	void details();
-	void set_details();
-	void details_url();
-	void set_details_url();
-	void application_id();
-	void set_application_id();
-	void parent_application_id();
-	void set_parent_application_id();
-	void assets();
-	void set_assets();
-	void timestamps();
-	void set_timestamps();
-	void party();
-	void set_party();
-	void secrets();
-	void set_secrets();
-	void supported_platforms();
-	void set_supported_platforms();
+	void add_button(DiscordActivityButton button);
+	bool equals(DiscordActivity other);
+	TypedArray<DiscordActivityButton> get_buttons();
+	String name();
+	void set_name(String name);
+	DiscordActivityTypes type();
+	void set_type(DiscordActivityTypes type);
+	Variant status_display_type();
+	void set_status_display_type(Variant status_display_type);
+	Variant state();
+	void set_state(Variant state);
+	Variant state_url();
+	void set_state_url(Variant state_url);
+	Variant details();
+	void set_details(Variant details);
+	Variant details_url();
+	void set_details_url(Variant details_url);
+	Variant application_id();
+	void set_application_id(Variant application_id);
+	Variant parent_application_id();
+	void set_parent_application_id(Variant parent_application_id);
+	Variant assets();
+	void set_assets(Variant assets);
+	Variant timestamps();
+	void set_timestamps(Variant timestamps);
+	Variant party();
+	void set_party(Variant party);
+	Variant secrets();
+	void set_secrets(Variant secrets);
+	DiscordActivityGamePlatforms supported_platforms();
+	void set_supported_platforms(DiscordActivityGamePlatforms supported_platforms);
 
 	DiscordActivity() {
 		this->obj = memnew(discordpp::Activity);
@@ -137,20 +137,20 @@ public:
 		return obj;
 	}
 
-	void large_image();
-	void set_large_image();
-	void large_text();
-	void set_large_text();
-	void large_url();
-	void set_large_url();
-	void small_image();
-	void set_small_image();
-	void small_text();
-	void set_small_text();
-	void small_url();
-	void set_small_url();
-	void invite_cover_image();
-	void set_invite_cover_image();
+	Variant large_image();
+	void set_large_image(Variant large_image);
+	Variant large_text();
+	void set_large_text(Variant large_text);
+	Variant large_url();
+	void set_large_url(Variant large_url);
+	Variant small_image();
+	void set_small_image(Variant small_image);
+	Variant small_text();
+	void set_small_text(Variant small_text);
+	Variant small_url();
+	void set_small_url(Variant small_url);
+	Variant invite_cover_image();
+	void set_invite_cover_image(Variant invite_cover_image);
 
 	DiscordActivityAssets() {
 		this->obj = memnew(discordpp::ActivityAssets);
@@ -181,10 +181,10 @@ public:
 		return obj;
 	}
 
-	void label();
-	void set_label();
-	void url();
-	void set_url();
+	String label();
+	void set_label(String label);
+	String url();
+	void set_url(String url);
 
 	DiscordActivityButton() {
 		this->obj = memnew(discordpp::ActivityButton);
@@ -215,24 +215,24 @@ public:
 		return obj;
 	}
 
-	void sender_id();
-	void set_sender_id();
-	void channel_id();
-	void set_channel_id();
-	void message_id();
-	void set_message_id();
-	void type();
-	void set_type();
-	void application_id();
-	void set_application_id();
-	void parent_application_id();
-	void set_parent_application_id();
-	void party_id();
-	void set_party_id();
-	void session_id();
-	void set_session_id();
-	void is_valid();
-	void set_is_valid();
+	int64_t sender_id();
+	void set_sender_id(int64_t sender_id);
+	int64_t channel_id();
+	void set_channel_id(int64_t channel_id);
+	int64_t message_id();
+	void set_message_id(int64_t message_id);
+	DiscordActivityActionTypes type();
+	void set_type(DiscordActivityActionTypes type);
+	int64_t application_id();
+	void set_application_id(int64_t application_id);
+	int64_t parent_application_id();
+	void set_parent_application_id(int64_t parent_application_id);
+	String party_id();
+	void set_party_id(String party_id);
+	String session_id();
+	void set_session_id(String session_id);
+	bool is_valid();
+	void set_is_valid(bool is_valid);
 
 	DiscordActivityInvite() {
 		this->obj = memnew(discordpp::ActivityInvite);
@@ -263,14 +263,14 @@ public:
 		return obj;
 	}
 
-	void id();
-	void set_id();
-	void current_size();
-	void set_current_size();
-	void max_size();
-	void set_max_size();
-	void privacy();
-	void set_privacy();
+	String id();
+	void set_id(String id);
+	int64_t current_size();
+	void set_current_size(int64_t current_size);
+	int64_t max_size();
+	void set_max_size(int64_t max_size);
+	DiscordActivityPartyPrivacy privacy();
+	void set_privacy(DiscordActivityPartyPrivacy privacy);
 
 	DiscordActivityParty() {
 		this->obj = memnew(discordpp::ActivityParty);
@@ -301,8 +301,8 @@ public:
 		return obj;
 	}
 
-	void join();
-	void set_join();
+	String join();
+	void set_join(String join);
 
 	DiscordActivitySecrets() {
 		this->obj = memnew(discordpp::ActivitySecrets);
@@ -333,10 +333,10 @@ public:
 		return obj;
 	}
 
-	void start();
-	void set_start();
-	void end();
-	void set_end();
+	int64_t start();
+	void set_start(int64_t start);
+	int64_t end();
+	void set_end(int64_t end);
 
 	DiscordActivityTimestamps() {
 		this->obj = memnew(discordpp::ActivityTimestamps);
@@ -367,14 +367,14 @@ public:
 		return obj;
 	}
 
-	void equals();
-	void type();
-	void set_type();
-	void title();
-	void set_title();
-	void count();
-	void set_count();
-	static void type_to_string();
+	bool equals(DiscordAdditionalContent rhs);
+	DiscordAdditionalContentType type();
+	void set_type(DiscordAdditionalContentType type);
+	Variant title();
+	void set_title(Variant title);
+	int64_t count();
+	void set_count(int64_t count);
+	static String type_to_string(DiscordAdditionalContentType type);
 
 	DiscordAdditionalContent() {
 		this->obj = memnew(discordpp::AdditionalContent);
@@ -407,13 +407,13 @@ public:
 		return obj;
 	}
 
-	void equals();
-	void id();
-	void set_id();
-	void name();
-	void set_name();
-	void is_default();
-	void set_is_default();
+	bool equals(DiscordAudioDevice rhs);
+	String id();
+	void set_id(String id);
+	String name();
+	void set_name(String name);
+	bool is_default();
+	void set_is_default(bool is_default);
 
 	// Internal usage.
 	DiscordAudioDevice(discordpp::AudioDevice *obj) {
@@ -440,20 +440,20 @@ public:
 		return obj;
 	}
 
-	void client_id();
-	void set_client_id();
-	void scopes();
-	void set_scopes();
-	void state();
-	void set_state();
-	void nonce();
-	void set_nonce();
-	void code_challenge();
-	void set_code_challenge();
-	void integration_type();
-	void set_integration_type();
-	void custom_scheme_param();
-	void set_custom_scheme_param();
+	int64_t client_id();
+	void set_client_id(int64_t client_id);
+	String scopes();
+	void set_scopes(String scopes);
+	Variant state();
+	void set_state(Variant state);
+	Variant nonce();
+	void set_nonce(Variant nonce);
+	Variant code_challenge();
+	void set_code_challenge(Variant code_challenge);
+	Variant integration_type();
+	void set_integration_type(Variant integration_type);
+	Variant custom_scheme_param();
+	void set_custom_scheme_param(Variant custom_scheme_param);
 
 	DiscordAuthorizationArgs() {
 		this->obj = memnew(discordpp::AuthorizationArgs);
@@ -484,10 +484,10 @@ public:
 		return obj;
 	}
 
-	void method();
-	void set_method();
-	void challenge();
-	void set_challenge();
+	DiscordAuthenticationCodeChallengeMethod method();
+	void set_method(DiscordAuthenticationCodeChallengeMethod method);
+	String challenge();
+	void set_challenge(String challenge);
 
 	DiscordAuthorizationCodeChallenge() {
 		this->obj = memnew(discordpp::AuthorizationCodeChallenge);
@@ -520,10 +520,10 @@ public:
 		return obj;
 	}
 
-	void challenge();
-	void set_challenge();
-	void verifier();
-	void set_verifier();
+	DiscordAuthorizationCodeChallenge challenge();
+	void set_challenge(DiscordAuthorizationCodeChallenge challenge);
+	String verifier();
+	void set_verifier(String verifier);
 
 	// Internal usage.
 	DiscordAuthorizationCodeVerifier(discordpp::AuthorizationCodeVerifier *obj) {
@@ -552,33 +552,33 @@ public:
 		return obj;
 	}
 
-	void get_audio_mode();
-	void get_channel_id();
-	void get_guild_id();
-	void get_local_mute();
-	void get_participants();
-	void get_participant_volume();
-	void get_pttactive();
-	void get_pttrelease_delay();
-	void get_self_deaf();
-	void get_self_mute();
-	void get_status();
-	void get_vadthreshold();
-	void get_voice_state_handle();
-	void set_audio_mode();
-	void set_local_mute();
-	void set_on_voice_state_changed_callback();
-	void set_participant_changed_callback();
-	void set_participant_volume();
-	void set_pttactive();
-	void set_pttrelease_delay();
-	void set_self_deaf();
-	void set_self_mute();
-	void set_speaking_status_changed_callback();
-	void set_status_changed_callback();
-	void set_vadthreshold();
-	static void error_to_string();
-	static void status_to_string();
+	DiscordAudioModeType get_audio_mode();
+	int64_t get_channel_id();
+	int64_t get_guild_id();
+	bool get_local_mute(int64_t user_id);
+	TypedArray<int64_t> get_participants();
+	float get_participant_volume(int64_t user_id);
+	bool get_pttactive();
+	int64_t get_pttrelease_delay();
+	bool get_self_deaf();
+	bool get_self_mute();
+	DiscordCallStatus get_status();
+	DiscordVADThresholdSettings get_vadthreshold();
+	Variant get_voice_state_handle(int64_t user_id);
+	void set_audio_mode(DiscordAudioModeType audio_mode);
+	void set_local_mute(int64_t user_id, bool mute);
+	void set_on_voice_state_changed_callback(Callable cb);
+	void set_participant_changed_callback(Callable cb);
+	void set_participant_volume(int64_t user_id, float volume);
+	void set_pttactive(bool active);
+	void set_pttrelease_delay(int64_t release_delay_ms);
+	void set_self_deaf(bool deaf);
+	void set_self_mute(bool mute);
+	void set_speaking_status_changed_callback(Callable cb);
+	void set_status_changed_callback(Callable cb);
+	void set_vadthreshold(bool automatic, float threshold);
+	static String error_to_string(DiscordCallError type);
+	static String status_to_string(DiscordCallStatus type);
 
 	// Internal usage.
 	DiscordCall(discordpp::Call *obj) {
@@ -607,10 +607,10 @@ public:
 		return obj;
 	}
 
-	void channel_id();
-	void get_participants();
-	void get_voice_state_handle();
-	void guild_id();
+	int64_t channel_id();
+	TypedArray<int64_t> get_participants();
+	Variant get_voice_state_handle(int64_t user_id);
+	int64_t guild_id();
 
 	// Internal usage.
 	DiscordCallInfoHandle(discordpp::CallInfoHandle *obj) {
@@ -639,10 +639,10 @@ public:
 		return obj;
 	}
 
-	void id();
-	void name();
-	void recipients();
-	void type();
+	int64_t id();
+	String name();
+	TypedArray<int64_t> recipients();
+	DiscordChannelType type();
 
 	// Internal usage.
 	DiscordChannelHandle(discordpp::ChannelHandle *obj) {
@@ -669,159 +669,159 @@ public:
 		return obj;
 	}
 
-	void end_call();
-	void end_calls();
-	void get_call();
-	void get_calls();
-	void get_current_input_device();
-	void get_current_output_device();
-	void get_input_devices();
-	void get_input_volume();
-	void get_output_devices();
-	void get_output_volume();
-	void get_self_deaf_all();
-	void get_self_mute_all();
-	void set_aec_dump();
-	void set_automatic_gain_control();
-	void set_device_change_callback();
-	void set_echo_cancellation();
-	void set_engine_managed_audio_session();
-	void set_input_device();
-	void set_input_volume();
-	void set_no_audio_input_callback();
-	void set_no_audio_input_threshold();
-	void set_noise_suppression();
-	void set_opus_hardware_coding();
-	void set_output_device();
-	void set_output_volume();
-	void set_self_deaf_all();
-	void set_self_mute_all();
-	void set_speaker_mode();
-	void set_thread_priority();
-	void set_voice_participant_changed_callback();
-	void show_audio_route_picker();
-	void start_call();
-	void start_call_with_audio_callbacks();
+	void end_call(int64_t channel_id, Callable callback);
+	void end_calls(Callable callback);
+	DiscordCall get_call(int64_t channel_id);
+	TypedArray<DiscordCall> get_calls();
+	void get_current_input_device(Callable cb);
+	void get_current_output_device(Callable cb);
+	void get_input_devices(Callable cb);
+	float get_input_volume();
+	void get_output_devices(Callable cb);
+	float get_output_volume();
+	bool get_self_deaf_all();
+	bool get_self_mute_all();
+	void set_aec_dump(bool on);
+	void set_automatic_gain_control(bool on);
+	void set_device_change_callback(Callable callback);
+	void set_echo_cancellation(bool on);
+	void set_engine_managed_audio_session(bool is_engine_managed);
+	void set_input_device(String device_id, Callable cb);
+	void set_input_volume(float input_volume);
+	void set_no_audio_input_callback(Callable callback);
+	void set_no_audio_input_threshold(float d_bfsthreshold);
+	void set_noise_suppression(bool on);
+	void set_opus_hardware_coding(bool encode, bool decode);
+	void set_output_device(String device_id, Callable cb);
+	void set_output_volume(float output_volume);
+	void set_self_deaf_all(bool deaf);
+	void set_self_mute_all(bool mute);
+	bool set_speaker_mode(bool speaker_mode);
+	void set_thread_priority(DiscordClientThread thread, int64_t priority);
+	void set_voice_participant_changed_callback(Callable cb);
+	bool show_audio_route_picker();
+	DiscordCall start_call(int64_t channel_id);
+	DiscordCall start_call_with_audio_callbacks(int64_t lobby_id, Callable received_cb, Callable captured_cb);
 	void abort_authorize();
 	void abort_get_token_from_device();
-	void authorize();
+	void authorize(DiscordAuthorizationArgs args, Callable callback);
 	void close_authorize_device_screen();
-	void create_authorization_code_verifier();
-	void exchange_child_token();
-	void fetch_current_user();
-	void get_provisional_token();
-	void get_token();
-	void get_token_from_device();
-	void get_token_from_device_provisional_merge();
-	void get_token_from_provisional_merge();
-	void is_authenticated();
-	void open_authorize_device_screen();
-	void provisional_user_merge_completed();
-	void refresh_token();
-	void register_authorize_request_callback();
+	DiscordAuthorizationCodeVerifier create_authorization_code_verifier();
+	void exchange_child_token(String parent_application_token, int64_t child_application_id, Callable callback);
+	void fetch_current_user(DiscordAuthorizationTokenType token_type, String token, Callable callback);
+	void get_provisional_token(int64_t application_id, DiscordAuthenticationExternalAuthType external_auth_type, String external_auth_token, Callable callback);
+	void get_token(int64_t application_id, String code, String code_verifier, String redirect_uri, Callable callback);
+	void get_token_from_device(DiscordDeviceAuthorizationArgs args, Callable callback);
+	void get_token_from_device_provisional_merge(DiscordDeviceAuthorizationArgs args, DiscordAuthenticationExternalAuthType external_auth_type, String external_auth_token, Callable callback);
+	void get_token_from_provisional_merge(int64_t application_id, String code, String code_verifier, String redirect_uri, DiscordAuthenticationExternalAuthType external_auth_type, String external_auth_token, Callable callback);
+	bool is_authenticated();
+	void open_authorize_device_screen(int64_t client_id, String user_code);
+	void provisional_user_merge_completed(bool success);
+	void refresh_token(int64_t application_id, String refresh_token, Callable callback);
+	void register_authorize_request_callback(Callable callback);
 	void remove_authorize_request_callback();
-	void revoke_token();
-	void set_authorize_device_screen_closed_callback();
-	void set_game_window_pid();
-	void set_token_expiration_callback();
-	void unmerge_into_provisional_account();
-	void update_provisional_account_display_name();
-	void update_token();
-	void can_open_message_in_discord();
-	void delete_user_message();
-	void edit_user_message();
-	void get_channel_handle();
-	void get_lobby_messages_with_limit();
-	void get_message_handle();
-	void get_user_message_summaries();
-	void get_user_messages_with_limit();
-	void open_message_in_discord();
-	void send_lobby_message();
-	void send_lobby_message_with_metadata();
-	void send_user_message();
-	void send_user_message_with_metadata();
-	void set_message_created_callback();
-	void set_message_deleted_callback();
-	void set_message_updated_callback();
-	void set_showing_chat();
-	void add_log_callback();
-	void add_voice_log_callback();
+	void revoke_token(int64_t application_id, String token, Callable callback);
+	void set_authorize_device_screen_closed_callback(Callable cb);
+	void set_game_window_pid(int64_t pid);
+	void set_token_expiration_callback(Callable callback);
+	void unmerge_into_provisional_account(int64_t application_id, DiscordAuthenticationExternalAuthType external_auth_type, String external_auth_token, Callable callback);
+	void update_provisional_account_display_name(String name, Callable callback);
+	void update_token(DiscordAuthorizationTokenType token_type, String token, Callable callback);
+	bool can_open_message_in_discord(int64_t message_id);
+	void delete_user_message(int64_t recipient_id, int64_t message_id, Callable cb);
+	void edit_user_message(int64_t recipient_id, int64_t message_id, String content, Callable cb);
+	Variant get_channel_handle(int64_t channel_id);
+	void get_lobby_messages_with_limit(int64_t lobby_id, int64_t limit, Callable cb);
+	Variant get_message_handle(int64_t message_id);
+	void get_user_message_summaries(Callable cb);
+	void get_user_messages_with_limit(int64_t recipient_id, int64_t limit, Callable cb);
+	void open_message_in_discord(int64_t message_id, Callable provisional_user_merge_required_callback, Callable callback);
+	void send_lobby_message(int64_t lobby_id, String content, Callable cb);
+	void send_lobby_message_with_metadata(int64_t lobby_id, String content, TypedDictionary<String, String> metadata, Callable cb);
+	void send_user_message(int64_t recipient_id, String content, Callable cb);
+	void send_user_message_with_metadata(int64_t recipient_id, String content, TypedDictionary<String, String> metadata, Callable cb);
+	void set_message_created_callback(Callable cb);
+	void set_message_deleted_callback(Callable cb);
+	void set_message_updated_callback(Callable cb);
+	void set_showing_chat(bool showing_chat);
+	void add_log_callback(Callable callback, DiscordLoggingSeverity min_severity);
+	void add_voice_log_callback(Callable callback, DiscordLoggingSeverity min_severity);
 	void connect_discord();
 	void disconnect_discord();
-	void get_status();
-	void open_connected_games_settings_in_discord();
-	void set_application_id();
-	void set_log_dir();
-	void set_status_changed_callback();
-	void set_voice_log_dir();
-	void create_or_join_lobby();
-	void create_or_join_lobby_with_metadata();
-	void get_guild_channels();
-	void get_lobby_handle();
-	void get_lobby_ids();
-	void get_user_guilds();
-	void join_linked_lobby_guild();
-	void leave_lobby();
-	void link_channel_to_lobby();
-	void set_lobby_created_callback();
-	void set_lobby_deleted_callback();
-	void set_lobby_member_added_callback();
-	void set_lobby_member_removed_callback();
-	void set_lobby_member_updated_callback();
-	void set_lobby_updated_callback();
-	void unlink_channel_from_lobby();
-	void is_discord_app_installed();
-	void accept_activity_invite();
+	DiscordClientStatus get_status();
+	void open_connected_games_settings_in_discord(Callable callback);
+	void set_application_id(int64_t application_id);
+	bool set_log_dir(String path, DiscordLoggingSeverity min_severity);
+	void set_status_changed_callback(Callable cb);
+	void set_voice_log_dir(String path, DiscordLoggingSeverity min_severity);
+	void create_or_join_lobby(String secret, Callable callback);
+	void create_or_join_lobby_with_metadata(String secret, TypedDictionary<String, String> lobby_metadata, TypedDictionary<String, String> member_metadata, Callable callback);
+	void get_guild_channels(int64_t guild_id, Callable cb);
+	Variant get_lobby_handle(int64_t lobby_id);
+	TypedArray<int64_t> get_lobby_ids();
+	void get_user_guilds(Callable cb);
+	void join_linked_lobby_guild(int64_t lobby_id, Callable provisional_user_merge_required_callback, Callable callback);
+	void leave_lobby(int64_t lobby_id, Callable callback);
+	void link_channel_to_lobby(int64_t lobby_id, int64_t channel_id, Callable callback);
+	void set_lobby_created_callback(Callable cb);
+	void set_lobby_deleted_callback(Callable cb);
+	void set_lobby_member_added_callback(Callable cb);
+	void set_lobby_member_removed_callback(Callable cb);
+	void set_lobby_member_updated_callback(Callable cb);
+	void set_lobby_updated_callback(Callable cb);
+	void unlink_channel_from_lobby(int64_t lobby_id, Callable callback);
+	void is_discord_app_installed(Callable callback);
+	void accept_activity_invite(DiscordActivityInvite invite, Callable cb);
 	void clear_rich_presence();
-	void register_launch_command();
-	void register_launch_steam_application();
-	void send_activity_invite();
-	void send_activity_join_request();
-	void send_activity_join_request_reply();
-	void set_activity_invite_created_callback();
-	void set_activity_invite_updated_callback();
-	void set_activity_join_callback();
-	void set_activity_join_with_application_callback();
-	void set_online_status();
-	void update_rich_presence();
-	void accept_discord_friend_request();
-	void accept_game_friend_request();
-	void block_user();
-	void cancel_discord_friend_request();
-	void cancel_game_friend_request();
-	void get_relationship_handle();
-	void get_relationships();
-	void get_relationships_by_group();
-	void reject_discord_friend_request();
-	void reject_game_friend_request();
-	void remove_discord_and_game_friend();
-	void remove_game_friend();
-	void search_friends_by_username();
-	void send_discord_friend_request();
-	void send_discord_friend_request_by_id();
-	void send_game_friend_request();
-	void send_game_friend_request_by_id();
-	void set_relationship_created_callback();
-	void set_relationship_deleted_callback();
-	void unblock_user();
-	void get_current_user_v();
-	void get_discord_client_connected_user();
-	void get_user();
-	void set_relationship_groups_updated_callback();
-	void set_user_updated_callback();
-	void get_application_id();
-	void get_current_user();
-	void set_http_request_timeout();
-	static void error_to_string();
-	static void get_default_audio_device_id();
-	static void get_default_communication_scopes();
-	static void get_default_presence_scopes();
-	static void get_version_hash();
-	static void get_version_major();
-	static void get_version_minor();
-	static void get_version_patch();
-	static void status_to_string();
-	static void thread_to_string();
+	bool register_launch_command(int64_t application_id, String command);
+	bool register_launch_steam_application(int64_t application_id, int64_t steam_app_id);
+	void send_activity_invite(int64_t user_id, String content, Callable cb);
+	void send_activity_join_request(int64_t user_id, Callable cb);
+	void send_activity_join_request_reply(DiscordActivityInvite invite, Callable cb);
+	void set_activity_invite_created_callback(Callable cb);
+	void set_activity_invite_updated_callback(Callable cb);
+	void set_activity_join_callback(Callable cb);
+	void set_activity_join_with_application_callback(Callable cb);
+	void set_online_status(DiscordStatusType status, Callable callback);
+	void update_rich_presence(DiscordActivity activity, Callable cb);
+	void accept_discord_friend_request(int64_t user_id, Callable cb);
+	void accept_game_friend_request(int64_t user_id, Callable cb);
+	void block_user(int64_t user_id, Callable cb);
+	void cancel_discord_friend_request(int64_t user_id, Callable cb);
+	void cancel_game_friend_request(int64_t user_id, Callable cb);
+	DiscordRelationshipHandle get_relationship_handle(int64_t user_id);
+	TypedArray<DiscordRelationshipHandle> get_relationships();
+	TypedArray<DiscordRelationshipHandle> get_relationships_by_group(DiscordRelationshipGroupType group_type);
+	void reject_discord_friend_request(int64_t user_id, Callable cb);
+	void reject_game_friend_request(int64_t user_id, Callable cb);
+	void remove_discord_and_game_friend(int64_t user_id, Callable cb);
+	void remove_game_friend(int64_t user_id, Callable cb);
+	TypedArray<DiscordUserHandle> search_friends_by_username(String search_str);
+	void send_discord_friend_request(String username, Callable cb);
+	void send_discord_friend_request_by_id(int64_t user_id, Callable cb);
+	void send_game_friend_request(String username, Callable cb);
+	void send_game_friend_request_by_id(int64_t user_id, Callable cb);
+	void set_relationship_created_callback(Callable cb);
+	void set_relationship_deleted_callback(Callable cb);
+	void unblock_user(int64_t user_id, Callable cb);
+	Variant get_current_user_v();
+	void get_discord_client_connected_user(int64_t application_id, Callable callback);
+	Variant get_user(int64_t user_id);
+	void set_relationship_groups_updated_callback(Callable cb);
+	void set_user_updated_callback(Callable cb);
+	int64_t get_application_id();
+	DiscordUserHandle get_current_user();
+	void set_http_request_timeout(int64_t http_timeout_in_milliseconds);
+	static String error_to_string(DiscordClientError type);
+	static String get_default_audio_device_id();
+	static String get_default_communication_scopes();
+	static String get_default_presence_scopes();
+	static String get_version_hash();
+	static int64_t get_version_major();
+	static int64_t get_version_minor();
+	static int64_t get_version_patch();
+	static String status_to_string(DiscordClientStatus type);
+	static String thread_to_string(DiscordClientThread type);
 
 	DiscordClient() {
 		this->obj = memnew(discordpp::Client);
@@ -852,16 +852,16 @@ public:
 		return obj;
 	}
 
-	void web_base();
-	void set_web_base();
-	void api_base();
-	void set_api_base();
-	void experimental_audio_system();
-	void set_experimental_audio_system();
-	void experimental_android_prevent_comms_for_bluetooth();
-	void set_experimental_android_prevent_comms_for_bluetooth();
-	void cpu_affinity_mask();
-	void set_cpu_affinity_mask();
+	String web_base();
+	void set_web_base(String web_base);
+	String api_base();
+	void set_api_base(String api_base);
+	DiscordAudioSystem experimental_audio_system();
+	void set_experimental_audio_system(DiscordAudioSystem experimental_audio_system);
+	bool experimental_android_prevent_comms_for_bluetooth();
+	void set_experimental_android_prevent_comms_for_bluetooth(bool experimental_android_prevent_comms_for_bluetooth);
+	Variant cpu_affinity_mask();
+	void set_cpu_affinity_mask(Variant cpu_affinity_mask);
 
 	DiscordClientCreateOptions() {
 		this->obj = memnew(discordpp::ClientCreateOptions);
@@ -894,23 +894,23 @@ public:
 		return obj;
 	}
 
-	void to_string_discord();
-	void type();
-	void set_type();
-	void error();
-	void set_error();
-	void error_code();
-	void set_error_code();
-	void status();
-	void set_status();
-	void response_body();
-	void set_response_body();
-	void successful();
-	void set_successful();
-	void retryable();
-	void set_retryable();
-	void retry_after();
-	void set_retry_after();
+	String to_string_discord();
+	DiscordErrorType type();
+	void set_type(DiscordErrorType type);
+	String error();
+	void set_error(String error);
+	int64_t error_code();
+	void set_error_code(int64_t error_code);
+	DiscordHttpStatusCode status();
+	void set_status(DiscordHttpStatusCode status);
+	String response_body();
+	void set_response_body(String response_body);
+	bool successful();
+	void set_successful(bool successful);
+	bool retryable();
+	void set_retryable(bool retryable);
+	float retry_after();
+	void set_retry_after(float retry_after);
 
 	// Internal usage.
 	DiscordClientResult(discordpp::ClientResult *obj) {
@@ -937,10 +937,10 @@ public:
 		return obj;
 	}
 
-	void client_id();
-	void set_client_id();
-	void scopes();
-	void set_scopes();
+	int64_t client_id();
+	void set_client_id(int64_t client_id);
+	String scopes();
+	void set_scopes(String scopes);
 
 	DiscordDeviceAuthorizationArgs() {
 		this->obj = memnew(discordpp::DeviceAuthorizationArgs);
@@ -973,22 +973,22 @@ public:
 		return obj;
 	}
 
-	void id();
-	void set_id();
-	void name();
-	void set_name();
-	void type();
-	void set_type();
-	void position();
-	void set_position();
-	void parent_id();
-	void set_parent_id();
-	void is_linkable();
-	void set_is_linkable();
-	void is_viewable_and_writeable_by_all_members();
-	void set_is_viewable_and_writeable_by_all_members();
-	void linked_lobby();
-	void set_linked_lobby();
+	int64_t id();
+	void set_id(int64_t id);
+	String name();
+	void set_name(String name);
+	DiscordChannelType type();
+	void set_type(DiscordChannelType type);
+	int64_t position();
+	void set_position(int64_t position);
+	Variant parent_id();
+	void set_parent_id(Variant parent_id);
+	bool is_linkable();
+	void set_is_linkable(bool is_linkable);
+	bool is_viewable_and_writeable_by_all_members();
+	void set_is_viewable_and_writeable_by_all_members(bool is_viewable_and_writeable_by_all_members);
+	Variant linked_lobby();
+	void set_linked_lobby(Variant linked_lobby);
 
 	// Internal usage.
 	DiscordGuildChannel(discordpp::GuildChannel *obj) {
@@ -1017,10 +1017,10 @@ public:
 		return obj;
 	}
 
-	void id();
-	void set_id();
-	void name();
-	void set_name();
+	int64_t id();
+	void set_id(int64_t id);
+	String name();
+	void set_name(String name);
 
 	// Internal usage.
 	DiscordGuildMinimal(discordpp::GuildMinimal *obj) {
@@ -1049,12 +1049,12 @@ public:
 		return obj;
 	}
 
-	void id();
-	void set_id();
-	void name();
-	void set_name();
-	void guild_id();
-	void set_guild_id();
+	int64_t id();
+	void set_id(int64_t id);
+	String name();
+	void set_name(String name);
+	int64_t guild_id();
+	void set_guild_id(int64_t guild_id);
 
 	// Internal usage.
 	DiscordLinkedChannel(discordpp::LinkedChannel *obj) {
@@ -1081,10 +1081,10 @@ public:
 		return obj;
 	}
 
-	void application_id();
-	void set_application_id();
-	void lobby_id();
-	void set_lobby_id();
+	int64_t application_id();
+	void set_application_id(int64_t application_id);
+	int64_t lobby_id();
+	void set_lobby_id(int64_t lobby_id);
 
 	DiscordLinkedLobby() {
 		this->obj = memnew(discordpp::LinkedLobby);
@@ -1117,13 +1117,13 @@ public:
 		return obj;
 	}
 
-	void get_call_info_handle();
-	void get_lobby_member_handle();
-	void id();
-	void linked_channel();
-	void lobby_member_ids();
-	void lobby_members();
-	void metadata();
+	Variant get_call_info_handle();
+	Variant get_lobby_member_handle(int64_t member_id);
+	int64_t id();
+	Variant linked_channel();
+	TypedArray<int64_t> lobby_member_ids();
+	TypedArray<DiscordLobbyMemberHandle> lobby_members();
+	TypedDictionary<String, String> metadata();
 
 	// Internal usage.
 	DiscordLobbyHandle(discordpp::LobbyHandle *obj) {
@@ -1152,11 +1152,11 @@ public:
 		return obj;
 	}
 
-	void can_link_lobby();
-	void connected();
-	void id();
-	void metadata();
-	void user();
+	bool can_link_lobby();
+	bool connected();
+	int64_t id();
+	TypedDictionary<String, String> metadata();
+	Variant user();
 
 	// Internal usage.
 	DiscordLobbyMemberHandle(discordpp::LobbyMemberHandle *obj) {
@@ -1185,24 +1185,24 @@ public:
 		return obj;
 	}
 
-	void additional_content();
-	void application_id();
-	void author();
-	void author_id();
-	void channel();
-	void channel_id();
-	void content();
-	void disclosure_type();
-	void edited_timestamp();
-	void id();
-	void lobby();
-	void metadata();
-	void moderation_metadata();
-	void raw_content();
-	void recipient();
-	void recipient_id();
-	void sent_from_game();
-	void sent_timestamp();
+	Variant additional_content();
+	Variant application_id();
+	Variant author();
+	int64_t author_id();
+	Variant channel();
+	int64_t channel_id();
+	String content();
+	Variant disclosure_type();
+	int64_t edited_timestamp();
+	int64_t id();
+	Variant lobby();
+	TypedDictionary<String, String> metadata();
+	TypedDictionary<String, String> moderation_metadata();
+	String raw_content();
+	Variant recipient();
+	int64_t recipient_id();
+	bool sent_from_game();
+	int64_t sent_timestamp();
 
 	// Internal usage.
 	DiscordMessageHandle(discordpp::MessageHandle *obj) {
@@ -1231,11 +1231,11 @@ public:
 		return obj;
 	}
 
-	void discord_relationship_type();
-	void game_relationship_type();
-	void id();
-	void is_spam_request();
-	void user();
+	DiscordRelationshipType discord_relationship_type();
+	DiscordRelationshipType game_relationship_type();
+	int64_t id();
+	bool is_spam_request();
+	Variant user();
 
 	// Internal usage.
 	DiscordRelationshipHandle(discordpp::RelationshipHandle *obj) {
@@ -1264,12 +1264,12 @@ public:
 		return obj;
 	}
 
-	void avatar_hash();
-	void metadata();
-	void provider_id();
-	void provider_issued_user_id();
-	void provider_type();
-	void username();
+	String avatar_hash();
+	String metadata();
+	Variant provider_id();
+	String provider_issued_user_id();
+	DiscordExternalIdentityProviderType provider_type();
+	String username();
 
 	// Internal usage.
 	DiscordUserApplicationProfileHandle(discordpp::UserApplicationProfileHandle *obj) {
@@ -1298,18 +1298,18 @@ public:
 		return obj;
 	}
 
-	void avatar();
-	void avatar_url();
-	void display_name();
-	void game_activity();
-	void global_name();
-	void id();
-	void is_provisional();
-	void relationship();
-	void status();
-	void user_application_profiles();
-	void username();
-	static void avatar_type_to_string();
+	Variant avatar();
+	String avatar_url(DiscordUserHandleAvatarType animated_type, DiscordUserHandleAvatarType static_type);
+	String display_name();
+	Variant game_activity();
+	Variant global_name();
+	int64_t id();
+	bool is_provisional();
+	DiscordRelationshipHandle relationship();
+	DiscordStatusType status();
+	TypedArray<DiscordUserApplicationProfileHandle> user_application_profiles();
+	String username();
+	static String avatar_type_to_string(DiscordUserHandleAvatarType type);
 
 	// Internal usage.
 	DiscordUserHandle(discordpp::UserHandle *obj) {
@@ -1338,8 +1338,8 @@ public:
 		return obj;
 	}
 
-	void last_message_id();
-	void user_id();
+	int64_t last_message_id();
+	int64_t user_id();
 
 	// Internal usage.
 	DiscordUserMessageSummary(discordpp::UserMessageSummary *obj) {
@@ -1368,10 +1368,10 @@ public:
 		return obj;
 	}
 
-	void vad_threshold();
-	void set_vad_threshold();
-	void automatic();
-	void set_automatic();
+	float vad_threshold();
+	void set_vad_threshold(float vad_threshold);
+	bool automatic();
+	void set_automatic(bool automatic);
 
 	// Internal usage.
 	DiscordVADThresholdSettings(discordpp::VADThresholdSettings *obj) {
@@ -1400,8 +1400,8 @@ public:
 		return obj;
 	}
 
-	void self_deaf();
-	void self_mute();
+	bool self_deaf();
+	bool self_mute();
 
 	// Internal usage.
 	DiscordVoiceStateHandle(discordpp::VoiceStateHandle *obj) {

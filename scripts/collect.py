@@ -4,8 +4,8 @@ from pathlib import Path
 from xml.etree import ElementTree
 from xml.etree.ElementTree import Element
 
-from overloading import check_overloading
-from name import to_gdscript_name, to_snake_case
+from check import check_overloading, check_callbacks
+from name import to_gdscript_var_name, to_snake_case
 from parse import Parser
 from data import (
     CallbackInfo,
@@ -58,6 +58,7 @@ def collect_class(tree: Element) -> ClassInfo:
     class_info.callbacks = collect_callbacks(tree)
 
     check_overloading(class_info.functions)
+    check_callbacks(class_info)
 
     return class_info
 
@@ -97,7 +98,7 @@ def collect_functions(tree: Element) -> list[FunctionInfo]:
         fi = FunctionInfo()
         fi.static = f.attrib.get("static") == "yes"
         fi.name = collect_text(f.find("name"))
-        fi.gdscript_name = to_gdscript_name(fi.name)
+        fi.gdscript_name = to_gdscript_var_name(fi.name)
         fi.type = collect_type(f)
         fi.short_desc = collect_text(f.find("briefdescription"))
         fi.long_desc = collect_text(f.find("detaileddescription"))

@@ -75,7 +75,7 @@ RESERVED_NAMES = [
 ]
 
 
-def to_gdscript_name(string: str) -> str:
+def to_gdscript_var_name(string: str) -> str:
     """Convert string to a valid gdscript name."""
     string = to_snake_case(string)
 
@@ -102,3 +102,13 @@ def to_snake_case(string: str) -> str:
             new_string += c.lower()
 
     return new_string
+
+
+def to_godot_class_name(string: str) -> str:
+    """Convert string to our expected class name."""
+    return string.replace("discordpp::", "Discord").replace("::", "")
+
+
+def to_godot_enum_name(string: str) -> str:
+    """Convert string to our expected enum name."""
+    return to_godot_class_name(string) + "::Enum"
