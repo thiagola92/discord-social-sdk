@@ -82,6 +82,12 @@ public:
 		return obj;
 	}
 
+	// Constructors.
+	DiscordActivity() {
+		this->obj = memnew(discordpp::Activity);
+	}
+
+	// Functions.
 	void add_button(DiscordActivityButton button);
 	bool equals(DiscordActivity other);
 	TypedArray<DiscordActivityButton> get_buttons();
@@ -114,9 +120,7 @@ public:
 	DiscordActivityGamePlatforms supported_platforms();
 	void set_supported_platforms(DiscordActivityGamePlatforms supported_platforms);
 
-	DiscordActivity() {
-		this->obj = memnew(discordpp::Activity);
-	}
+	// Overloading functions.
 
 	// Internal usage.
 	DiscordActivity(discordpp::Activity *obj) {
@@ -143,6 +147,12 @@ public:
 		return obj;
 	}
 
+	// Constructors.
+	DiscordActivityAssets() {
+		this->obj = memnew(discordpp::ActivityAssets);
+	}
+
+	// Functions.
 	Variant large_image();
 	void set_large_image(Variant large_image);
 	Variant large_text();
@@ -158,9 +168,7 @@ public:
 	Variant invite_cover_image();
 	void set_invite_cover_image(Variant invite_cover_image);
 
-	DiscordActivityAssets() {
-		this->obj = memnew(discordpp::ActivityAssets);
-	}
+	// Overloading functions.
 
 	// Internal usage.
 	DiscordActivityAssets(discordpp::ActivityAssets *obj) {
@@ -187,14 +195,18 @@ public:
 		return obj;
 	}
 
+	// Constructors.
+	DiscordActivityButton() {
+		this->obj = memnew(discordpp::ActivityButton);
+	}
+
+	// Functions.
 	String label();
 	void set_label(String label);
 	String url();
 	void set_url(String url);
 
-	DiscordActivityButton() {
-		this->obj = memnew(discordpp::ActivityButton);
-	}
+	// Overloading functions.
 
 	// Internal usage.
 	DiscordActivityButton(discordpp::ActivityButton *obj) {
@@ -221,6 +233,12 @@ public:
 		return obj;
 	}
 
+	// Constructors.
+	DiscordActivityInvite() {
+		this->obj = memnew(discordpp::ActivityInvite);
+	}
+
+	// Functions.
 	int64_t sender_id();
 	void set_sender_id(int64_t sender_id);
 	int64_t channel_id();
@@ -240,9 +258,7 @@ public:
 	bool is_valid();
 	void set_is_valid(bool is_valid);
 
-	DiscordActivityInvite() {
-		this->obj = memnew(discordpp::ActivityInvite);
-	}
+	// Overloading functions.
 
 	// Internal usage.
 	DiscordActivityInvite(discordpp::ActivityInvite *obj) {
@@ -269,6 +285,12 @@ public:
 		return obj;
 	}
 
+	// Constructors.
+	DiscordActivityParty() {
+		this->obj = memnew(discordpp::ActivityParty);
+	}
+
+	// Functions.
 	String id();
 	void set_id(String id);
 	int64_t current_size();
@@ -278,9 +300,7 @@ public:
 	DiscordActivityPartyPrivacy privacy();
 	void set_privacy(DiscordActivityPartyPrivacy privacy);
 
-	DiscordActivityParty() {
-		this->obj = memnew(discordpp::ActivityParty);
-	}
+	// Overloading functions.
 
 	// Internal usage.
 	DiscordActivityParty(discordpp::ActivityParty *obj) {
@@ -307,12 +327,16 @@ public:
 		return obj;
 	}
 
-	String join();
-	void set_join(String join);
-
+	// Constructors.
 	DiscordActivitySecrets() {
 		this->obj = memnew(discordpp::ActivitySecrets);
 	}
+
+	// Functions.
+	String join();
+	void set_join(String join);
+
+	// Overloading functions.
 
 	// Internal usage.
 	DiscordActivitySecrets(discordpp::ActivitySecrets *obj) {
@@ -339,14 +363,18 @@ public:
 		return obj;
 	}
 
+	// Constructors.
+	DiscordActivityTimestamps() {
+		this->obj = memnew(discordpp::ActivityTimestamps);
+	}
+
+	// Functions.
 	int64_t start();
 	void set_start(int64_t start);
 	int64_t end();
 	void set_end(int64_t end);
 
-	DiscordActivityTimestamps() {
-		this->obj = memnew(discordpp::ActivityTimestamps);
-	}
+	// Overloading functions.
 
 	// Internal usage.
 	DiscordActivityTimestamps(discordpp::ActivityTimestamps *obj) {
@@ -373,6 +401,12 @@ public:
 		return obj;
 	}
 
+	// Constructors.
+	DiscordAdditionalContent() {
+		this->obj = memnew(discordpp::AdditionalContent);
+	}
+
+	// Functions.
 	bool equals(DiscordAdditionalContent rhs);
 	DiscordAdditionalContentType type();
 	void set_type(DiscordAdditionalContentType type);
@@ -382,9 +416,7 @@ public:
 	void set_count(int64_t count);
 	static String type_to_string(DiscordAdditionalContentType type);
 
-	DiscordAdditionalContent() {
-		this->obj = memnew(discordpp::AdditionalContent);
-	}
+	// Overloading functions.
 
 	// Internal usage.
 	DiscordAdditionalContent(discordpp::AdditionalContent *obj) {
@@ -413,6 +445,9 @@ public:
 		return obj;
 	}
 
+	// Constructors.
+
+	// Functions.
 	bool equals(DiscordAudioDevice rhs);
 	String id();
 	void set_id(String id);
@@ -420,6 +455,8 @@ public:
 	void set_name(String name);
 	bool is_default();
 	void set_is_default(bool is_default);
+
+	// Overloading functions.
 
 	// Internal usage.
 	DiscordAudioDevice(discordpp::AudioDevice *obj) {
@@ -446,6 +483,12 @@ public:
 		return obj;
 	}
 
+	// Constructors.
+	DiscordAuthorizationArgs() {
+		this->obj = memnew(discordpp::AuthorizationArgs);
+	}
+
+	// Functions.
 	int64_t client_id();
 	void set_client_id(int64_t client_id);
 	String scopes();
@@ -461,9 +504,7 @@ public:
 	Variant custom_scheme_param();
 	void set_custom_scheme_param(Variant custom_scheme_param);
 
-	DiscordAuthorizationArgs() {
-		this->obj = memnew(discordpp::AuthorizationArgs);
-	}
+	// Overloading functions.
 
 	// Internal usage.
 	DiscordAuthorizationArgs(discordpp::AuthorizationArgs *obj) {
@@ -490,14 +531,18 @@ public:
 		return obj;
 	}
 
+	// Constructors.
+	DiscordAuthorizationCodeChallenge() {
+		this->obj = memnew(discordpp::AuthorizationCodeChallenge);
+	}
+
+	// Functions.
 	DiscordAuthenticationCodeChallengeMethod method();
 	void set_method(DiscordAuthenticationCodeChallengeMethod method);
 	String challenge();
 	void set_challenge(String challenge);
 
-	DiscordAuthorizationCodeChallenge() {
-		this->obj = memnew(discordpp::AuthorizationCodeChallenge);
-	}
+	// Overloading functions.
 
 	// Internal usage.
 	DiscordAuthorizationCodeChallenge(discordpp::AuthorizationCodeChallenge *obj) {
@@ -526,10 +571,15 @@ public:
 		return obj;
 	}
 
+	// Constructors.
+
+	// Functions.
 	DiscordAuthorizationCodeChallenge challenge();
 	void set_challenge(DiscordAuthorizationCodeChallenge challenge);
 	String verifier();
 	void set_verifier(String verifier);
+
+	// Overloading functions.
 
 	// Internal usage.
 	DiscordAuthorizationCodeVerifier(discordpp::AuthorizationCodeVerifier *obj) {
@@ -558,6 +608,9 @@ public:
 		return obj;
 	}
 
+	// Constructors.
+
+	// Functions.
 	DiscordAudioModeType get_audio_mode();
 	int64_t get_channel_id();
 	int64_t get_guild_id();
@@ -586,6 +639,8 @@ public:
 	static String error_to_string(DiscordCallError type);
 	static String status_to_string(DiscordCallStatus type);
 
+	// Overloading functions.
+
 	// Internal usage.
 	DiscordCall(discordpp::Call *obj) {
 		this->obj = obj;
@@ -613,10 +668,15 @@ public:
 		return obj;
 	}
 
+	// Constructors.
+
+	// Functions.
 	int64_t channel_id();
 	TypedArray<int64_t> get_participants();
 	Variant get_voice_state_handle(int64_t user_id);
 	int64_t guild_id();
+
+	// Overloading functions.
 
 	// Internal usage.
 	DiscordCallInfoHandle(discordpp::CallInfoHandle *obj) {
@@ -645,10 +705,15 @@ public:
 		return obj;
 	}
 
+	// Constructors.
+
+	// Functions.
 	int64_t id();
 	String name();
 	TypedArray<int64_t> recipients();
 	DiscordChannelType type();
+
+	// Overloading functions.
 
 	// Internal usage.
 	DiscordChannelHandle(discordpp::ChannelHandle *obj) {
@@ -675,6 +740,12 @@ public:
 		return obj;
 	}
 
+	// Constructors.
+	DiscordClient() {
+		this->obj = memnew(discordpp::Client);
+	}
+
+	// Functions.
 	void end_call(int64_t channel_id, Callable callback);
 	void end_calls(Callable callback);
 	DiscordCall get_call(int64_t channel_id);
@@ -829,9 +900,7 @@ public:
 	static String status_to_string(DiscordClientStatus type);
 	static String thread_to_string(DiscordClientThread type);
 
-	DiscordClient() {
-		this->obj = memnew(discordpp::Client);
-	}
+	// Overloading functions.
 
 	// Internal usage.
 	DiscordClient(discordpp::Client *obj) {
@@ -858,6 +927,12 @@ public:
 		return obj;
 	}
 
+	// Constructors.
+	DiscordClientCreateOptions() {
+		this->obj = memnew(discordpp::ClientCreateOptions);
+	}
+
+	// Functions.
 	String web_base();
 	void set_web_base(String web_base);
 	String api_base();
@@ -869,9 +944,7 @@ public:
 	Variant cpu_affinity_mask();
 	void set_cpu_affinity_mask(Variant cpu_affinity_mask);
 
-	DiscordClientCreateOptions() {
-		this->obj = memnew(discordpp::ClientCreateOptions);
-	}
+	// Overloading functions.
 
 	// Internal usage.
 	DiscordClientCreateOptions(discordpp::ClientCreateOptions *obj) {
@@ -900,6 +973,9 @@ public:
 		return obj;
 	}
 
+	// Constructors.
+
+	// Functions.
 	String to_string_discord();
 	DiscordErrorType type();
 	void set_type(DiscordErrorType type);
@@ -917,6 +993,8 @@ public:
 	void set_retryable(bool retryable);
 	float retry_after();
 	void set_retry_after(float retry_after);
+
+	// Overloading functions.
 
 	// Internal usage.
 	DiscordClientResult(discordpp::ClientResult *obj) {
@@ -943,14 +1021,18 @@ public:
 		return obj;
 	}
 
+	// Constructors.
+	DiscordDeviceAuthorizationArgs() {
+		this->obj = memnew(discordpp::DeviceAuthorizationArgs);
+	}
+
+	// Functions.
 	int64_t client_id();
 	void set_client_id(int64_t client_id);
 	String scopes();
 	void set_scopes(String scopes);
 
-	DiscordDeviceAuthorizationArgs() {
-		this->obj = memnew(discordpp::DeviceAuthorizationArgs);
-	}
+	// Overloading functions.
 
 	// Internal usage.
 	DiscordDeviceAuthorizationArgs(discordpp::DeviceAuthorizationArgs *obj) {
@@ -979,6 +1061,9 @@ public:
 		return obj;
 	}
 
+	// Constructors.
+
+	// Functions.
 	int64_t id();
 	void set_id(int64_t id);
 	String name();
@@ -995,6 +1080,8 @@ public:
 	void set_is_viewable_and_writeable_by_all_members(bool is_viewable_and_writeable_by_all_members);
 	Variant linked_lobby();
 	void set_linked_lobby(Variant linked_lobby);
+
+	// Overloading functions.
 
 	// Internal usage.
 	DiscordGuildChannel(discordpp::GuildChannel *obj) {
@@ -1023,10 +1110,15 @@ public:
 		return obj;
 	}
 
+	// Constructors.
+
+	// Functions.
 	int64_t id();
 	void set_id(int64_t id);
 	String name();
 	void set_name(String name);
+
+	// Overloading functions.
 
 	// Internal usage.
 	DiscordGuildMinimal(discordpp::GuildMinimal *obj) {
@@ -1055,12 +1147,17 @@ public:
 		return obj;
 	}
 
+	// Constructors.
+
+	// Functions.
 	int64_t id();
 	void set_id(int64_t id);
 	String name();
 	void set_name(String name);
 	int64_t guild_id();
 	void set_guild_id(int64_t guild_id);
+
+	// Overloading functions.
 
 	// Internal usage.
 	DiscordLinkedChannel(discordpp::LinkedChannel *obj) {
@@ -1087,14 +1184,18 @@ public:
 		return obj;
 	}
 
+	// Constructors.
+	DiscordLinkedLobby() {
+		this->obj = memnew(discordpp::LinkedLobby);
+	}
+
+	// Functions.
 	int64_t application_id();
 	void set_application_id(int64_t application_id);
 	int64_t lobby_id();
 	void set_lobby_id(int64_t lobby_id);
 
-	DiscordLinkedLobby() {
-		this->obj = memnew(discordpp::LinkedLobby);
-	}
+	// Overloading functions.
 
 	// Internal usage.
 	DiscordLinkedLobby(discordpp::LinkedLobby *obj) {
@@ -1123,6 +1224,9 @@ public:
 		return obj;
 	}
 
+	// Constructors.
+
+	// Functions.
 	Variant get_call_info_handle();
 	Variant get_lobby_member_handle(int64_t member_id);
 	int64_t id();
@@ -1130,6 +1234,8 @@ public:
 	TypedArray<int64_t> lobby_member_ids();
 	TypedArray<DiscordLobbyMemberHandle> lobby_members();
 	TypedDictionary<String, String> metadata();
+
+	// Overloading functions.
 
 	// Internal usage.
 	DiscordLobbyHandle(discordpp::LobbyHandle *obj) {
@@ -1158,11 +1264,16 @@ public:
 		return obj;
 	}
 
+	// Constructors.
+
+	// Functions.
 	bool can_link_lobby();
 	bool connected();
 	int64_t id();
 	TypedDictionary<String, String> metadata();
 	Variant user();
+
+	// Overloading functions.
 
 	// Internal usage.
 	DiscordLobbyMemberHandle(discordpp::LobbyMemberHandle *obj) {
@@ -1191,6 +1302,9 @@ public:
 		return obj;
 	}
 
+	// Constructors.
+
+	// Functions.
 	Variant additional_content();
 	Variant application_id();
 	Variant author();
@@ -1209,6 +1323,8 @@ public:
 	int64_t recipient_id();
 	bool sent_from_game();
 	int64_t sent_timestamp();
+
+	// Overloading functions.
 
 	// Internal usage.
 	DiscordMessageHandle(discordpp::MessageHandle *obj) {
@@ -1237,11 +1353,16 @@ public:
 		return obj;
 	}
 
+	// Constructors.
+
+	// Functions.
 	DiscordRelationshipType discord_relationship_type();
 	DiscordRelationshipType game_relationship_type();
 	int64_t id();
 	bool is_spam_request();
 	Variant user();
+
+	// Overloading functions.
 
 	// Internal usage.
 	DiscordRelationshipHandle(discordpp::RelationshipHandle *obj) {
@@ -1270,12 +1391,17 @@ public:
 		return obj;
 	}
 
+	// Constructors.
+
+	// Functions.
 	String avatar_hash();
 	String metadata();
 	Variant provider_id();
 	String provider_issued_user_id();
 	DiscordExternalIdentityProviderType provider_type();
 	String username();
+
+	// Overloading functions.
 
 	// Internal usage.
 	DiscordUserApplicationProfileHandle(discordpp::UserApplicationProfileHandle *obj) {
@@ -1304,6 +1430,9 @@ public:
 		return obj;
 	}
 
+	// Constructors.
+
+	// Functions.
 	Variant avatar();
 	String avatar_url(DiscordUserHandleAvatarType animated_type, DiscordUserHandleAvatarType static_type);
 	String display_name();
@@ -1316,6 +1445,8 @@ public:
 	TypedArray<DiscordUserApplicationProfileHandle> user_application_profiles();
 	String username();
 	static String avatar_type_to_string(DiscordUserHandleAvatarType type);
+
+	// Overloading functions.
 
 	// Internal usage.
 	DiscordUserHandle(discordpp::UserHandle *obj) {
@@ -1344,8 +1475,13 @@ public:
 		return obj;
 	}
 
+	// Constructors.
+
+	// Functions.
 	int64_t last_message_id();
 	int64_t user_id();
+
+	// Overloading functions.
 
 	// Internal usage.
 	DiscordUserMessageSummary(discordpp::UserMessageSummary *obj) {
@@ -1374,10 +1510,15 @@ public:
 		return obj;
 	}
 
+	// Constructors.
+
+	// Functions.
 	float vad_threshold();
 	void set_vad_threshold(float vad_threshold);
 	bool automatic();
 	void set_automatic(bool automatic);
+
+	// Overloading functions.
 
 	// Internal usage.
 	DiscordVADThresholdSettings(discordpp::VADThresholdSettings *obj) {
@@ -1406,8 +1547,13 @@ public:
 		return obj;
 	}
 
+	// Constructors.
+
+	// Functions.
 	bool self_deaf();
 	bool self_mute();
+
+	// Overloading functions.
 
 	// Internal usage.
 	DiscordVoiceStateHandle(discordpp::VoiceStateHandle *obj) {

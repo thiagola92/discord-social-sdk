@@ -1,7 +1,7 @@
-# Responsible for discovering information.
+# Responsible for discovering information about the data collected.
 from enum import Enum
 
-from data import FunctionInfo, TypeInfo
+from data import FunctionInfo, TypeInfo, NamespaceInfo, ClassInfo
 
 
 class OverloadingPattern(Enum):
@@ -47,3 +47,18 @@ def discover_overloading_type(functions: list[FunctionInfo]) -> OverloadingPatte
         return OverloadingPattern.ENUMS
 
     return OverloadingPattern.NONE
+
+
+def discover_overloading_groups(
+    info: NamespaceInfo | ClassInfo,
+) -> dict[str, list[FunctionInfo]]:
+    overloading_groups: dict[str, list[FunctionInfo]] = {}
+
+    for f in info.functions:
+        if f.overloading:
+            if f.gdscript_name in overloading_groups:
+                overloading_groups[f.gdscript_name].append(f)
+            else:
+                overloading_groups[f.gdscript_name] = [f]
+
+    return overloading_groups

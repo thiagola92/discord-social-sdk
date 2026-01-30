@@ -1,7 +1,6 @@
 # Responsible for forging parts of the code.
 from fake import fake_enums_params
 from collect import NamespaceInfo, FunctionInfo, ClassInfo, ParamInfo
-from discover import discover_overloading_type, OverloadingPattern
 from translate import discord_type_to_godot_type, discord_params_to_godot_params
 from template.code.register_types_cpp.register_abstract import get_register_abstract
 from template.code.register_types_cpp.register_runtime import get_register_runtime
@@ -15,6 +14,11 @@ from template.code.discord_classes_h.constructor_private import get_constructor_
 from template.code.discord_classes_h.constructor_public import get_constructor_public
 from template.code.discord_classes_h.function_declaration import (
     get_function_declaration,
+)
+from discover import (
+    OverloadingPattern,
+    discover_overloading_type,
+    discover_overloading_groups,
 )
 
 
@@ -91,15 +95,16 @@ def forge_classes_definitions(namespace_info: NamespaceInfo) -> str:
 
     for c in namespace_info.classes:
         public = any([cc for cc in c.constructors if len(cc.params) == 0])
-        f = forge_classes_definition(c)
+        o = forge_overloadings_declaration(c)
+        f = forge_class_definition(c)
 
         if public:
             classes_definitions.append(
                 get_class_definition(
                     class_name=c.name,
-                    constructor_private="",
-                    functions=f,
                     constructor_public=get_constructor_public(c.name),
+                    functions=f,
+                    overloadings=o,
                 )
             )
         else:
@@ -108,7 +113,7 @@ def forge_classes_definitions(namespace_info: NamespaceInfo) -> str:
                     class_name=c.name,
                     constructor_private=get_constructor_private(c.name),
                     functions=f,
-                    constructor_public="",
+                    overloadings=o,
                 )
             )
 
@@ -126,12 +131,14 @@ def forge_classes_definitions(namespace_info: NamespaceInfo) -> str:
     return classes_definitions
 
 
-def forge_classes_definition(class_info: ClassInfo) -> str:
+def forge_class_definition(class_info: ClassInfo) -> str:
     functions_declarations = []
 
     for f in class_info.functions:
         if not f.overloading:
             functions_declarations.append(forge_function_declaration(f))
+        else:
+            functions_declarations.append("// TODO: Overloading in class")
 
     functions_declarations = "\n".join(functions_declarations)
 
@@ -164,16 +171,9 @@ def forge_function_declaration(function_info: FunctionInfo) -> str:
     return function_declaration
 
 
-def forge_overloadings_declaration(namespace_info: NamespaceInfo) -> str:
-    overloading_groups: dict[str, list[FunctionInfo]] = {}
+def forge_overloadings_declaration(info: NamespaceInfo | ClassInfo) -> str:
+    overloading_groups = discover_overloading_groups(info)
     overloading_declarations = []
-
-    for f in namespace_info.functions:
-        if f.overloading:
-            if f.gdscript_name in overloading_groups:
-                overloading_groups[f.gdscript_name].append(f)
-            else:
-                overloading_groups[f.gdscript_name] = [f]
 
     for g in overloading_groups.values():
         t = discover_overloading_type(g)
@@ -197,6 +197,9 @@ def forge_overloadings_declaration(namespace_info: NamespaceInfo) -> str:
                 )
 
                 break  # Do once only.
+        else:
+            # TODO: Create generic treatmente for overloadings.
+            assert False, "A new case of overloading needs to be created."
 
     overloading_declarations = sorted(overloading_declarations)
     overloading_declarations = "".join(overloading_declarations)

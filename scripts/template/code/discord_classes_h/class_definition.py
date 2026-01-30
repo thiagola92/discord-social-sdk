@@ -1,8 +1,9 @@
 def get_class_definition(
     class_name: str,
-    constructor_private: str,
-    functions: str,
-    constructor_public: str,
+    constructor_private: str = "",
+    constructor_public: str = "",
+    functions: str = "",
+    overloadings: str = "",
 ) -> str:
     return f"""
 class Discord{class_name} : public RefCounted {{
@@ -20,9 +21,14 @@ public:
         return obj;
     }}
 
+    // Constructors.
+	{constructor_public}
+
+    // Functions.
 	{functions}
 
-	{constructor_public}
+    // Overloading functions.
+    {overloadings}
 
     // Internal usage.
 	Discord{class_name}(discordpp::{class_name} *obj) {{
