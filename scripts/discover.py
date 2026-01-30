@@ -7,7 +7,7 @@ from data import FunctionInfo
 class OverloadingPattern(Enum):
     # Was not possible to detect a pattern,
     # solve using a generic approach.
-    UNKNOWN = 0
+    NONE = 0
 
     # Overloading is just switching between
     # types of enums.
@@ -22,8 +22,22 @@ def discover_overloading_type(functions: list[FunctionInfo]) -> OverloadingPatte
     best solve this problem.
     """
 
-    all_enums = False
+    only_enums = True
+    match_quantity = True
+    params_quantity = []
 
     for f in functions:
+        params_quantity.append(len(f.params))
+
         for p in f.params:
-            pass
+            if not p.enum:
+                only_enums = False
+                print(f.name, p.type.name)
+
+    for c in params_quantity[:1]:
+        match_quantity = params_quantity.count(c) == len(params_quantity)
+
+    if only_enums and match_quantity:
+        return OverloadingPattern.ENUMS
+
+    return OverloadingPattern.NONE

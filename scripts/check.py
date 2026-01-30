@@ -1,5 +1,49 @@
 # Responsible for checking conditions.
-from data import FunctionInfo, ClassInfo
+from pprint import pprint
+
+from name import to_godot_class_name
+from data import FunctionInfo, ClassInfo, NamespaceInfo, TypeInfo
+
+
+def check_callbacks(class_info: ClassInfo) -> None:
+    """
+    Check every parameter that is a callback.
+
+    This contains only the logic for discovery,
+    not for solving any complications from enums.
+    """
+    for f in class_info.functions:
+        for p in f.params:
+            if not p.type.name.startswith("discordpp::"):
+                continue
+
+            for c in class_info.callbacks:
+                n = p.type.name.split("::")
+
+                if n[-1] == c.name:
+                    p.callback = True
+
+
+def check_enums(namespace_info: NamespaceInfo) -> None:
+    """
+    Check every parameter that is an enum.
+
+    This contains only the logic for discovery,
+    not for solving any complications from enums.
+    """
+    enums_name = [to_godot_class_name(e.name) for e in namespace_info.enums]
+
+    for c in namespace_info.classes:
+        for e in c.enums:
+            enums_name.append(to_godot_class_name(c.name + e.name))
+
+    for f in namespace_info.functions:
+        for p in f.params:
+            if not isinstance(p.type, TypeInfo):
+                continue
+
+            if to_godot_class_name(p.type.name) in enums_name:
+                p.enum = True
 
 
 def check_overloading(functions: list[FunctionInfo]) -> None:
@@ -48,16 +92,3 @@ def check_overloading(functions: list[FunctionInfo]) -> None:
     for f in functions:
         if counter[f.gdscript_name] > 0:
             f.overloading = True
-
-
-def check_callbacks(class_info: ClassInfo) -> None:
-    for f in class_info.functions:
-        for p in f.params:
-            if not p.type.name.startswith("discordpp::"):
-                continue
-
-            for c in class_info.callbacks:
-                n = p.type.name.split("::")
-
-                if n[-1] == c.name:
-                    p.callback = True

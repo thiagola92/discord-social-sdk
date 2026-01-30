@@ -1,6 +1,6 @@
 # Responsible for forging parts of the code.
-from check import check_overloading_type
 from collect import NamespaceInfo, FunctionInfo, ClassInfo
+from discover import discover_overloading_type
 from translate import discord_type_to_godot_type, discord_params_to_godot_params
 from template.code.register_types_cpp.register_abstract import get_register_abstract
 from template.code.register_types_cpp.register_runtime import get_register_runtime
@@ -164,7 +164,7 @@ def forge_function_declaration(function_info: FunctionInfo) -> str:
 
 
 def forge_overloadings_declaration(namespace_info: NamespaceInfo) -> str:
-    overloading_groups: dict[str, list] = {}
+    overloading_groups: dict[str, list[FunctionInfo]] = {}
 
     for f in namespace_info.functions:
         if f.overloading:
@@ -174,7 +174,8 @@ def forge_overloadings_declaration(namespace_info: NamespaceInfo) -> str:
                 overloading_groups[f.gdscript_name] = [f]
 
     for g in overloading_groups.values():
-        print(check_overloading_type(g))
+        t = discover_overloading_type(g)
+        print(t)
 
     overloading_declarations = []
 

@@ -38,11 +38,10 @@ class ParamInfo:
     type: TypeInfo | FunctionInfoR = field(default_factory=TypeInfo)
     name: str = ""
 
-    # GDScript.
-    gdscript_name: str = ""
-
     # Utility.
+    gdscript_name: str = ""
     callback: bool = False
+    enum: bool = False
 
 
 @dataclass
@@ -57,10 +56,8 @@ class FunctionInfo:
     short_desc: str = ""
     long_desc: str = ""
 
-    # GDScript.
-    gdscript_name: str = ""
-
     # Utility.
+    gdscript_name: str = ""
     overloading: bool = False
 
 

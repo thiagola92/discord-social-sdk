@@ -106,7 +106,9 @@ def to_snake_case(string: str) -> str:
 
 def to_godot_class_name(string: str) -> str:
     """Convert string to our expected class name."""
-    return string.replace("discordpp::", "Discord").replace("::", "")
+    string = string.replace("discordpp::", "").replace("::", "")
+    string = f"Discord{string}"
+    return string
 
 
 def to_godot_enum_name(string: str) -> str:

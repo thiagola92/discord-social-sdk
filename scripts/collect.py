@@ -1,9 +1,9 @@
-# Responsible for collecting informations about from XML tree.
+# Responsible for collecting informations from XML tree.
 from pathlib import Path
 from xml.etree import ElementTree
 from xml.etree.ElementTree import Element
 
-from check import check_overloading, check_callbacks
+from check import check_overloading, check_callbacks, check_enums
 from name import to_gdscript_var_name, to_snake_case
 from parse import Parser
 from data import (
@@ -41,6 +41,8 @@ def collect_namespace(tree: Element, xml_dir: Path) -> NamespaceInfo:
         cf = ElementTree.parse(cf)
 
         namespace_info.classes.append(collect_class(cf))
+
+    check_enums(namespace_info)
 
     return namespace_info
 
