@@ -5,20 +5,11 @@ from xml.etree import ElementTree
 
 from help import clang_format
 from collect import NamespaceInfo, collect_namespace
-from translate import discord_type_to_godot_type, discord_params_to_godot_params
 from template.file.register_types_h import get_register_types_h
 from template.file.register_types_cpp import get_register_types_cpp
 from template.file.discord_enum_h import get_discord_enum_h
 from template.file.discord_classes_h import get_discord_classes_h
 from template.file.discord_class_cpp import get_discord_class_cpp
-from template.code.discord_classes_h.class_declaration import get_class_declaration
-from template.code.discord_classes_h.class_definition import get_class_definition
-from template.code.discord_classes_h.class_definition_g import get_class_definition_g
-from template.code.discord_classes_h.constructor_private import get_constructor_private
-from template.code.discord_classes_h.constructor_public import get_constructor_public
-from template.code.discord_classes_h.function_declaration import (
-    get_function_declaration,
-)
 from forge import (
     forge_register_abstracts,
     forge_register_runtimes,

@@ -1,11 +1,7 @@
 # Responsible for forging parts of the code.
-from collect import NamespaceInfo
+from check import check_overloading_type
+from collect import NamespaceInfo, FunctionInfo, ClassInfo
 from translate import discord_type_to_godot_type, discord_params_to_godot_params
-from template.file.register_types_h import get_register_types_h
-from template.file.register_types_cpp import get_register_types_cpp
-from template.file.discord_enum_h import get_discord_enum_h
-from template.file.discord_classes_h import get_discord_classes_h
-from template.file.discord_class_cpp import get_discord_class_cpp
 from template.code.register_types_cpp.register_abstract import get_register_abstract
 from template.code.register_types_cpp.register_runtime import get_register_runtime
 from template.code.discord_enum_h.enum_definition import get_enum_definition
@@ -89,29 +85,103 @@ def forge_enum_definitions(namespace_info: NamespaceInfo) -> str:
     return enums_definitions
 
 
+def forge_classes_definitions(namespace_info: NamespaceInfo) -> str:
+    classes_definitions = []
+
+    for c in namespace_info.classes:
+        public = any([cc for cc in c.constructors if len(cc.params) == 0])
+        f = forge_classes_definition(c)
+
+        if public:
+            classes_definitions.append(
+                get_class_definition(
+                    class_name=c.name,
+                    constructor_private="",
+                    functions=f,
+                    constructor_public=get_constructor_public(c.name),
+                )
+            )
+        else:
+            classes_definitions.append(
+                get_class_definition(
+                    class_name=c.name,
+                    constructor_private=get_constructor_private(c.name),
+                    functions=f,
+                    constructor_public="",
+                )
+            )
+
+    # "Discord" class.
+    functions_declarations = forge_functions_declarations(namespace_info)
+    overloadings_declarations = forge_overloadings_declaration(namespace_info)
+    namespace_declarations = get_class_definition_g(
+        functions_declarations, overloadings=overloadings_declarations
+    )
+
+    classes_definitions.append(namespace_declarations)
+    classes_definitions = sorted(classes_definitions)
+    classes_definitions = "".join(classes_definitions)
+
+    return classes_definitions
+
+
+def forge_classes_definition(class_info: ClassInfo) -> str:
+    functions_declarations = []
+
+    for f in class_info.functions:
+        if not f.overloading:
+            functions_declarations.append(forge_function_declaration(f))
+
+    functions_declarations = "\n".join(functions_declarations)
+
+    return functions_declarations
+
+
 def forge_functions_declarations(namespace_info: NamespaceInfo) -> str:
     functions_declarations = []
 
     for f in namespace_info.functions:
-        r = discord_type_to_godot_type(f.type)
-        p = discord_params_to_godot_params(f.params)
-
-        functions_declarations.append(
-            get_function_declaration(
-                modifier="static " if f.static else "",
-                ret=r,
-                name=f.gdscript_name,
-                params=p,
-            )
-        )
-
-        if f.overloading:
-            functions_declarations[-1] += " // TODO: Solve overloading\n"
+        if not f.overloading:
+            functions_declarations.append(forge_function_declaration(f))
 
     functions_declarations = sorted(functions_declarations)
     functions_declarations = "".join(functions_declarations)
 
     return functions_declarations
+
+
+def forge_function_declaration(function_info: FunctionInfo) -> str:
+    return_type = discord_type_to_godot_type(function_info.type)
+    params = discord_params_to_godot_params(function_info.params)
+    function_declaration = get_function_declaration(
+        modifier="static " if function_info.static else "",
+        ret=return_type,
+        name=function_info.gdscript_name,
+        params=params,
+    )
+
+    return function_declaration
+
+
+def forge_overloadings_declaration(namespace_info: NamespaceInfo) -> str:
+    overloading_groups: dict[str, list] = {}
+
+    for f in namespace_info.functions:
+        if f.overloading:
+            if f.gdscript_name in overloading_groups:
+                overloading_groups[f.gdscript_name].append(f)
+            else:
+                overloading_groups[f.gdscript_name] = [f]
+
+    for g in overloading_groups.values():
+        print(check_overloading_type(g))
+
+    overloading_declarations = []
+
+    overloading_declarations = sorted(overloading_declarations)
+    overloading_declarations = "".join(overloading_declarations)
+
+    return overloading_declarations
 
 
 def forge_classes_declarations(namespace_info: NamespaceInfo) -> str:
@@ -125,54 +195,3 @@ def forge_classes_declarations(namespace_info: NamespaceInfo) -> str:
     classes_declarations = "".join(classes_declarations)
 
     return classes_declarations
-
-
-def forge_classes_definitions(namespace_info: NamespaceInfo) -> str:
-    functions_declarations = forge_functions_declarations(namespace_info)
-    classes_definitions = []
-
-    for c in namespace_info.classes:
-        cf = []
-
-        for f in c.functions:
-            r = discord_type_to_godot_type(f.type)
-            p = discord_params_to_godot_params(f.params)
-
-            cf.append(
-                get_function_declaration(
-                    modifier="static " if f.static else "",
-                    ret=r,
-                    name=f.gdscript_name,
-                    params=p,
-                )
-            )
-
-            if f.overloading:
-                cf[-1] += " // TODO: Solve overloading\n"
-
-        cf = "\n".join(cf)
-
-        if any([cc for cc in c.constructors if len(cc.params) == 0]):
-            classes_definitions.append(
-                get_class_definition(
-                    class_name=c.name,
-                    constructor_private="",
-                    functions=cf,
-                    constructor_public=get_constructor_public(c.name),
-                )
-            )
-        else:
-            classes_definitions.append(
-                get_class_definition(
-                    class_name=c.name,
-                    constructor_private=get_constructor_private(c.name),
-                    functions=cf,
-                    constructor_public="",
-                )
-            )
-
-    classes_definitions.append(get_class_definition_g(functions_declarations))
-    classes_definitions = sorted(classes_definitions)
-    classes_definitions = "".join(classes_definitions)
-
-    return classes_definitions

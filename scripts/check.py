@@ -1,10 +1,13 @@
-# Responsible for checking conditions and marking as True/False.
+# Responsible for checking conditions.
 from data import FunctionInfo, ClassInfo
 
 
 def check_overloading(functions: list[FunctionInfo]) -> None:
     """
     Check every function that is overloading.
+
+    This contains only the logic for discovery,
+    not for solving any complications from overloading.
 
     ### Context
     GDScript doesn't support function overloading.This means that,

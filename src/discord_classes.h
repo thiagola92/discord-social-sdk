@@ -58,34 +58,10 @@ protected:
 	static void _bind_methods();
 
 public:
-	String enum_to_string(DiscordActivityActionTypes value); // TODO: Solve overloading
-	String enum_to_string(DiscordActivityGamePlatforms value); // TODO: Solve overloading
-	String enum_to_string(DiscordActivityPartyPrivacy value); // TODO: Solve overloading
-	String enum_to_string(DiscordActivityTypes value); // TODO: Solve overloading
-	String enum_to_string(DiscordAdditionalContentType value); // TODO: Solve overloading
-	String enum_to_string(DiscordAudioModeType value); // TODO: Solve overloading
-	String enum_to_string(DiscordAudioSystem value); // TODO: Solve overloading
-	String enum_to_string(DiscordAuthenticationCodeChallengeMethod value); // TODO: Solve overloading
-	String enum_to_string(DiscordAuthenticationExternalAuthType value); // TODO: Solve overloading
-	String enum_to_string(DiscordAuthorizationTokenType value); // TODO: Solve overloading
-	String enum_to_string(DiscordCallError value); // TODO: Solve overloading
-	String enum_to_string(DiscordCallStatus value); // TODO: Solve overloading
-	String enum_to_string(DiscordChannelType value); // TODO: Solve overloading
-	String enum_to_string(DiscordClientError value); // TODO: Solve overloading
-	String enum_to_string(DiscordClientStatus value); // TODO: Solve overloading
-	String enum_to_string(DiscordClientThread value); // TODO: Solve overloading
-	String enum_to_string(DiscordDisclosureTypes value); // TODO: Solve overloading
-	String enum_to_string(DiscordErrorType value); // TODO: Solve overloading
-	String enum_to_string(DiscordExternalIdentityProviderType value); // TODO: Solve overloading
-	String enum_to_string(DiscordHttpStatusCode value); // TODO: Solve overloading
-	String enum_to_string(DiscordIntegrationType value); // TODO: Solve overloading
-	String enum_to_string(DiscordLoggingSeverity value); // TODO: Solve overloading
-	String enum_to_string(DiscordRelationshipGroupType value); // TODO: Solve overloading
-	String enum_to_string(DiscordRelationshipType value); // TODO: Solve overloading
-	String enum_to_string(DiscordStatusDisplayTypes value); // TODO: Solve overloading
-	String enum_to_string(DiscordStatusType value); // TODO: Solve overloading
-	String enum_to_string(DiscordUserHandleAvatarType value); // TODO: Solve overloading
+	// Functions.
 	void run_callbacks();
+
+	// Overloading functions.
 
 	~Discord() {}
 };
