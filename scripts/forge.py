@@ -1,4 +1,6 @@
 # Responsible for forging parts of the code.
+from pprint import pprint
+
 from fake import fake_enums_params
 from collect import NamespaceInfo, FunctionInfo, ClassInfo, ParamInfo
 from translate import discord_type_to_godot_type, discord_params_to_godot_params
@@ -15,6 +17,8 @@ from template.code.discord_classes_h.constructor_public import get_constructor_p
 from template.code.discord_classes_h.function_declaration import (
     get_function_declaration,
 )
+from template.code.discord_class_cpp.bind import get_bind
+from template.code.discord_class_cpp.bind_static import get_bind_static
 from discover import (
     OverloadingPattern,
     discover_overloading_type,
@@ -215,6 +219,98 @@ def forge_overloadings_declarations(info: NamespaceInfo | ClassInfo) -> str:
 
 
 ########## discord.cpp ##########
+
+
+def forge_binds(info: NamespaceInfo | ClassInfo) -> str:
+    functions_binds = forge_functions_binds(info)
+    overloadings_binds = forge_overloadings_binds(info)
+
+    return functions_binds + overloadings_binds
+
+
+def forge_functions_binds(info: NamespaceInfo | ClassInfo) -> str:
+    class_name = info.name if isinstance(info, ClassInfo) else ""
+    binds = []
+
+    for f in info.functions:
+        if f.overloading:
+            continue
+
+        p = forge_params_bind(f.params)
+
+        if f.static:
+            binds.append(
+                get_bind_static(
+                    function=f.name,
+                    class_name=class_name,
+                    params=p,
+                )
+            )
+        else:
+            binds.append(
+                get_bind(
+                    function=f.name,
+                    class_name=class_name,
+                    params=p,
+                )
+            )
+
+    binds = sorted(binds)
+    binds = "".join(binds)
+
+    return binds
+
+
+def forge_overloadings_binds(info: NamespaceInfo | ClassInfo) -> str:
+    overloading_groups = discover_overloading_groups(info)
+    class_name = info.name if isinstance(info, ClassInfo) else ""
+    binds = []
+
+    for g in overloading_groups.values():
+        t = discover_overloading_type(g)
+
+        if t == OverloadingPattern.ENUMS:
+            for f in g:
+                p = f.params + fake_enums_params(f.params)
+                p = forge_params_bind(p)
+
+                if f.static:
+                    binds.append(
+                        get_bind_static(
+                            function=f.name,
+                            class_name=class_name,
+                            params=p,
+                        )
+                    )
+                else:
+                    binds.append(
+                        get_bind(
+                            function=f.name,
+                            class_name=class_name,
+                            params=p,
+                        )
+                    )
+
+                break
+        else:
+            # TODO: Create generic treatment for overloadings.
+            assert False, "A new case of overloading needs to be created."
+
+    binds = sorted(binds)
+    binds = "".join(binds)
+
+    return binds
+
+
+def forge_params_bind(params_info: list[ParamInfo]) -> str:
+    params = []
+
+    for p in params_info:
+        params.append(f", {p.gdscript_name}")
+
+    params = "".join(params)
+
+    return params
 
 
 ########## <discord_class>.cpp ##########
