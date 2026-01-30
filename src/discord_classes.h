@@ -62,7 +62,7 @@ public:
 	void run_callbacks();
 
 	// Overloading functions.
-	String enum_to_string(DiscordRelationshipGroupType value);
+	String enum_to_string(int value, Variant enum_type);
 
 	~Discord() {}
 };

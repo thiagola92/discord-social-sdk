@@ -116,6 +116,13 @@ def discord_params_to_godot_params(params: list[ParamInfo]) -> str:
     for i, p in enumerate(params):
         if p.callback:
             result += "Callable"
+        elif p.enum and p.fake:
+            result += "Variant"
+        elif p.enum and p.overloading:
+            result += "int"
+        elif p.enum:
+            result += discord_type_to_godot_type(p.type)
+            result += "::Enum"
         else:
             result += discord_type_to_godot_type(p.type)
 

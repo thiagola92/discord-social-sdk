@@ -1,5 +1,6 @@
 # Responsible for forging parts of the code.
-from collect import NamespaceInfo, FunctionInfo, ClassInfo
+from fake import fake_enums_params
+from collect import NamespaceInfo, FunctionInfo, ClassInfo, ParamInfo
 from discover import discover_overloading_type, OverloadingPattern
 from translate import discord_type_to_godot_type, discord_params_to_godot_params
 from template.code.register_types_cpp.register_abstract import get_register_abstract
@@ -178,19 +179,24 @@ def forge_overloadings_declaration(namespace_info: NamespaceInfo) -> str:
         t = discover_overloading_type(g)
 
         if t == OverloadingPattern.ENUMS:
-            r = discord_type_to_godot_type(f.type)
+            for f in g:
+                for p in f.params:
+                    p.overloading = True
 
-            # TODO: Replace by expected params format.
-            p = discord_params_to_godot_params(f.params)
+                r = discord_type_to_godot_type(f.type)
+                p = f.params + fake_enums_params(f.params)
+                p = discord_params_to_godot_params(p)
 
-            overloading_declarations.append(
-                get_function_declaration(
-                    modifier="static " if g[0].static else "",
-                    ret=r,
-                    name=f.gdscript_name,
-                    params=p,
+                overloading_declarations.append(
+                    get_function_declaration(
+                        modifier="static " if g[0].static else "",
+                        ret=r,
+                        name=f.gdscript_name,
+                        params=p,
+                    )
                 )
-            )
+
+                break  # Do once only.
 
     overloading_declarations = sorted(overloading_declarations)
     overloading_declarations = "".join(overloading_declarations)

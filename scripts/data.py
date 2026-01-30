@@ -42,6 +42,8 @@ class ParamInfo:
     gdscript_name: str = ""
     callback: bool = False
     enum: bool = False
+    fake: bool = False
+    overloading: bool = False
 
 
 @dataclass
