@@ -21,6 +21,8 @@ from discover import (
     discover_overloading_groups,
 )
 
+########## register_types.cpp ##########
+
 
 def forge_register_abstracts(namespace_info: NamespaceInfo) -> str:
     register_abstracts = []
@@ -50,16 +52,7 @@ def forge_register_runtimes(namespace_info: NamespaceInfo) -> str:
     return register_runtimes
 
 
-def forge_enum_casts(namespace_info: NamespaceInfo) -> str:
-    enums_casts = [get_enum_cast(e.name) for e in namespace_info.enums]
-
-    for c in namespace_info.classes:
-        enums_casts += [get_enum_cast(c.name + e.name) for e in c.enums]
-
-    enums_casts = sorted(enums_casts)
-    enums_casts = "".join(enums_casts)
-
-    return enums_casts
+########## discord_enum.h ##########
 
 
 def forge_enum_definitions(namespace_info: NamespaceInfo) -> str:
@@ -90,13 +83,41 @@ def forge_enum_definitions(namespace_info: NamespaceInfo) -> str:
     return enums_definitions
 
 
+def forge_enum_casts(namespace_info: NamespaceInfo) -> str:
+    enums_casts = [get_enum_cast(e.name) for e in namespace_info.enums]
+
+    for c in namespace_info.classes:
+        enums_casts += [get_enum_cast(c.name + e.name) for e in c.enums]
+
+    enums_casts = sorted(enums_casts)
+    enums_casts = "".join(enums_casts)
+
+    return enums_casts
+
+
+########## discord_classes.h ##########
+
+
+def forge_classes_declarations(namespace_info: NamespaceInfo) -> str:
+    classes_declarations = []
+
+    for c in namespace_info.classes:
+        classes_declarations.append(get_class_declaration(c.name))
+
+    classes_declarations.append(get_class_declaration(""))  # "Discord" class.
+    classes_declarations = sorted(classes_declarations)
+    classes_declarations = "".join(classes_declarations)
+
+    return classes_declarations
+
+
 def forge_classes_definitions(namespace_info: NamespaceInfo) -> str:
     classes_definitions = []
 
     for c in namespace_info.classes:
         public = any([cc for cc in c.constructors if len(cc.params) == 0])
-        o = forge_overloadings_declaration(c)
-        f = forge_class_definition(c)
+        f = forge_functions_declarations(c)
+        o = forge_overloadings_declarations(c)
 
         if public:
             classes_definitions.append(
@@ -119,7 +140,7 @@ def forge_classes_definitions(namespace_info: NamespaceInfo) -> str:
 
     # "Discord" class.
     functions_declarations = forge_functions_declarations(namespace_info)
-    overloadings_declarations = forge_overloadings_declaration(namespace_info)
+    overloadings_declarations = forge_overloadings_declarations(namespace_info)
     namespace_declarations = get_class_definition_g(
         functions_declarations, overloadings=overloadings_declarations
     )
@@ -131,24 +152,10 @@ def forge_classes_definitions(namespace_info: NamespaceInfo) -> str:
     return classes_definitions
 
 
-def forge_class_definition(class_info: ClassInfo) -> str:
+def forge_functions_declarations(info: NamespaceInfo | ClassInfo) -> str:
     functions_declarations = []
 
-    for f in class_info.functions:
-        if not f.overloading:
-            functions_declarations.append(forge_function_declaration(f))
-        else:
-            functions_declarations.append("// TODO: Overloading in class")
-
-    functions_declarations = "\n".join(functions_declarations)
-
-    return functions_declarations
-
-
-def forge_functions_declarations(namespace_info: NamespaceInfo) -> str:
-    functions_declarations = []
-
-    for f in namespace_info.functions:
+    for f in info.functions:
         if not f.overloading:
             functions_declarations.append(forge_function_declaration(f))
 
@@ -171,7 +178,7 @@ def forge_function_declaration(function_info: FunctionInfo) -> str:
     return function_declaration
 
 
-def forge_overloadings_declaration(info: NamespaceInfo | ClassInfo) -> str:
+def forge_overloadings_declarations(info: NamespaceInfo | ClassInfo) -> str:
     overloading_groups = discover_overloading_groups(info)
     overloading_declarations = []
 
@@ -198,7 +205,7 @@ def forge_overloadings_declaration(info: NamespaceInfo | ClassInfo) -> str:
 
                 break  # Do once only.
         else:
-            # TODO: Create generic treatmente for overloadings.
+            # TODO: Create generic treatment for overloadings.
             assert False, "A new case of overloading needs to be created."
 
     overloading_declarations = sorted(overloading_declarations)
@@ -207,14 +214,7 @@ def forge_overloadings_declaration(info: NamespaceInfo | ClassInfo) -> str:
     return overloading_declarations
 
 
-def forge_classes_declarations(namespace_info: NamespaceInfo) -> str:
-    classes_declarations = []
+########## discord.cpp ##########
 
-    for c in namespace_info.classes:
-        classes_declarations.append(get_class_declaration(c.name))
 
-    classes_declarations.append(get_class_declaration(""))  # "Discord" class.
-    classes_declarations = sorted(classes_declarations)
-    classes_declarations = "".join(classes_declarations)
-
-    return classes_declarations
+########## <discord_class>.cpp ##########

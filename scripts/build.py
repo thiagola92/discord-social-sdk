@@ -82,8 +82,8 @@ class Builder:
         to represent the Discord enums.
         """
 
-        enums_casts = forge_enum_casts(namespace_info)
         enums_definitions = forge_enum_definitions(namespace_info)
+        enums_casts = forge_enum_casts(namespace_info)
         filepath = self.src_dir.joinpath("discord_enum.h")
         content = get_discord_enum_h(
             enums_definitions=enums_definitions,

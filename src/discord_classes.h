@@ -88,37 +88,37 @@ public:
 	}
 
 	// Functions.
-	void add_button(DiscordActivityButton button);
-	bool equals(DiscordActivity other);
-	TypedArray<DiscordActivityButton> get_buttons();
-	String name();
-	void set_name(String name);
-	DiscordActivityTypes type();
-	void set_type(DiscordActivityTypes type);
-	Variant status_display_type();
-	void set_status_display_type(Variant status_display_type);
-	Variant state();
-	void set_state(Variant state);
-	Variant state_url();
-	void set_state_url(Variant state_url);
-	Variant details();
-	void set_details(Variant details);
-	Variant details_url();
-	void set_details_url(Variant details_url);
-	Variant application_id();
-	void set_application_id(Variant application_id);
-	Variant parent_application_id();
-	void set_parent_application_id(Variant parent_application_id);
-	Variant assets();
-	void set_assets(Variant assets);
-	Variant timestamps();
-	void set_timestamps(Variant timestamps);
-	Variant party();
-	void set_party(Variant party);
-	Variant secrets();
-	void set_secrets(Variant secrets);
 	DiscordActivityGamePlatforms supported_platforms();
+	DiscordActivityTypes type();
+	String name();
+	TypedArray<DiscordActivityButton> get_buttons();
+	Variant application_id();
+	Variant assets();
+	Variant details();
+	Variant details_url();
+	Variant parent_application_id();
+	Variant party();
+	Variant secrets();
+	Variant state();
+	Variant state_url();
+	Variant status_display_type();
+	Variant timestamps();
+	bool equals(DiscordActivity other);
+	void add_button(DiscordActivityButton button);
+	void set_application_id(Variant application_id);
+	void set_assets(Variant assets);
+	void set_details(Variant details);
+	void set_details_url(Variant details_url);
+	void set_name(String name);
+	void set_parent_application_id(Variant parent_application_id);
+	void set_party(Variant party);
+	void set_secrets(Variant secrets);
+	void set_state(Variant state);
+	void set_state_url(Variant state_url);
+	void set_status_display_type(Variant status_display_type);
 	void set_supported_platforms(DiscordActivityGamePlatforms supported_platforms);
+	void set_timestamps(Variant timestamps);
+	void set_type(DiscordActivityTypes type);
 
 	// Overloading functions.
 
@@ -153,20 +153,20 @@ public:
 	}
 
 	// Functions.
-	Variant large_image();
-	void set_large_image(Variant large_image);
-	Variant large_text();
-	void set_large_text(Variant large_text);
-	Variant large_url();
-	void set_large_url(Variant large_url);
-	Variant small_image();
-	void set_small_image(Variant small_image);
-	Variant small_text();
-	void set_small_text(Variant small_text);
-	Variant small_url();
-	void set_small_url(Variant small_url);
 	Variant invite_cover_image();
+	Variant large_image();
+	Variant large_text();
+	Variant large_url();
+	Variant small_image();
+	Variant small_text();
+	Variant small_url();
 	void set_invite_cover_image(Variant invite_cover_image);
+	void set_large_image(Variant large_image);
+	void set_large_text(Variant large_text);
+	void set_large_url(Variant large_url);
+	void set_small_image(Variant small_image);
+	void set_small_text(Variant small_text);
+	void set_small_url(Variant small_url);
 
 	// Overloading functions.
 
@@ -202,8 +202,8 @@ public:
 
 	// Functions.
 	String label();
-	void set_label(String label);
 	String url();
+	void set_label(String label);
 	void set_url(String url);
 
 	// Overloading functions.
@@ -239,24 +239,24 @@ public:
 	}
 
 	// Functions.
-	int64_t sender_id();
-	void set_sender_id(int64_t sender_id);
-	int64_t channel_id();
-	void set_channel_id(int64_t channel_id);
-	int64_t message_id();
-	void set_message_id(int64_t message_id);
 	DiscordActivityActionTypes type();
-	void set_type(DiscordActivityActionTypes type);
-	int64_t application_id();
-	void set_application_id(int64_t application_id);
-	int64_t parent_application_id();
-	void set_parent_application_id(int64_t parent_application_id);
 	String party_id();
-	void set_party_id(String party_id);
 	String session_id();
-	void set_session_id(String session_id);
 	bool is_valid();
+	int64_t application_id();
+	int64_t channel_id();
+	int64_t message_id();
+	int64_t parent_application_id();
+	int64_t sender_id();
+	void set_application_id(int64_t application_id);
+	void set_channel_id(int64_t channel_id);
 	void set_is_valid(bool is_valid);
+	void set_message_id(int64_t message_id);
+	void set_parent_application_id(int64_t parent_application_id);
+	void set_party_id(String party_id);
+	void set_sender_id(int64_t sender_id);
+	void set_session_id(String session_id);
+	void set_type(DiscordActivityActionTypes type);
 
 	// Overloading functions.
 
@@ -291,13 +291,13 @@ public:
 	}
 
 	// Functions.
-	String id();
-	void set_id(String id);
-	int64_t current_size();
-	void set_current_size(int64_t current_size);
-	int64_t max_size();
-	void set_max_size(int64_t max_size);
 	DiscordActivityPartyPrivacy privacy();
+	String id();
+	int64_t current_size();
+	int64_t max_size();
+	void set_current_size(int64_t current_size);
+	void set_id(String id);
+	void set_max_size(int64_t max_size);
 	void set_privacy(DiscordActivityPartyPrivacy privacy);
 
 	// Overloading functions.
@@ -369,10 +369,10 @@ public:
 	}
 
 	// Functions.
-	int64_t start();
-	void set_start(int64_t start);
 	int64_t end();
+	int64_t start();
 	void set_end(int64_t end);
+	void set_start(int64_t start);
 
 	// Overloading functions.
 
@@ -407,14 +407,14 @@ public:
 	}
 
 	// Functions.
-	bool equals(DiscordAdditionalContent rhs);
 	DiscordAdditionalContentType type();
-	void set_type(DiscordAdditionalContentType type);
 	Variant title();
-	void set_title(Variant title);
+	bool equals(DiscordAdditionalContent rhs);
 	int64_t count();
-	void set_count(int64_t count);
 	static String type_to_string(DiscordAdditionalContentType type);
+	void set_count(int64_t count);
+	void set_title(Variant title);
+	void set_type(DiscordAdditionalContentType type);
 
 	// Overloading functions.
 
@@ -448,13 +448,13 @@ public:
 	// Constructors.
 
 	// Functions.
-	bool equals(DiscordAudioDevice rhs);
 	String id();
-	void set_id(String id);
 	String name();
-	void set_name(String name);
+	bool equals(DiscordAudioDevice rhs);
 	bool is_default();
+	void set_id(String id);
 	void set_is_default(bool is_default);
+	void set_name(String name);
 
 	// Overloading functions.
 
@@ -489,20 +489,20 @@ public:
 	}
 
 	// Functions.
+	String scopes();
+	Variant code_challenge();
+	Variant custom_scheme_param();
+	Variant integration_type();
+	Variant nonce();
+	Variant state();
 	int64_t client_id();
 	void set_client_id(int64_t client_id);
-	String scopes();
-	void set_scopes(String scopes);
-	Variant state();
-	void set_state(Variant state);
-	Variant nonce();
-	void set_nonce(Variant nonce);
-	Variant code_challenge();
 	void set_code_challenge(Variant code_challenge);
-	Variant integration_type();
-	void set_integration_type(Variant integration_type);
-	Variant custom_scheme_param();
 	void set_custom_scheme_param(Variant custom_scheme_param);
+	void set_integration_type(Variant integration_type);
+	void set_nonce(Variant nonce);
+	void set_scopes(String scopes);
+	void set_state(Variant state);
 
 	// Overloading functions.
 
@@ -538,9 +538,9 @@ public:
 
 	// Functions.
 	DiscordAuthenticationCodeChallengeMethod method();
-	void set_method(DiscordAuthenticationCodeChallengeMethod method);
 	String challenge();
 	void set_challenge(String challenge);
+	void set_method(DiscordAuthenticationCodeChallengeMethod method);
 
 	// Overloading functions.
 
@@ -575,8 +575,8 @@ public:
 
 	// Functions.
 	DiscordAuthorizationCodeChallenge challenge();
-	void set_challenge(DiscordAuthorizationCodeChallenge challenge);
 	String verifier();
+	void set_challenge(DiscordAuthorizationCodeChallenge challenge);
 	void set_verifier(String verifier);
 
 	// Overloading functions.
@@ -612,18 +612,20 @@ public:
 
 	// Functions.
 	DiscordAudioModeType get_audio_mode();
-	int64_t get_channel_id();
-	int64_t get_guild_id();
-	bool get_local_mute(int64_t user_id);
-	TypedArray<int64_t> get_participants();
-	float get_participant_volume(int64_t user_id);
-	bool get_pttactive();
-	int64_t get_pttrelease_delay();
-	bool get_self_deaf();
-	bool get_self_mute();
 	DiscordCallStatus get_status();
 	DiscordVADThresholdSettings get_vadthreshold();
+	TypedArray<int64_t> get_participants();
 	Variant get_voice_state_handle(int64_t user_id);
+	bool get_local_mute(int64_t user_id);
+	bool get_pttactive();
+	bool get_self_deaf();
+	bool get_self_mute();
+	float get_participant_volume(int64_t user_id);
+	int64_t get_channel_id();
+	int64_t get_guild_id();
+	int64_t get_pttrelease_delay();
+	static String error_to_string(DiscordCallError type);
+	static String status_to_string(DiscordCallStatus type);
 	void set_audio_mode(DiscordAudioModeType audio_mode);
 	void set_local_mute(int64_t user_id, bool mute);
 	void set_on_voice_state_changed_callback(Callable cb);
@@ -636,8 +638,6 @@ public:
 	void set_speaking_status_changed_callback(Callable cb);
 	void set_status_changed_callback(Callable cb);
 	void set_vadthreshold(bool automatic, float threshold);
-	static String error_to_string(DiscordCallError type);
-	static String status_to_string(DiscordCallStatus type);
 
 	// Overloading functions.
 
@@ -671,9 +671,9 @@ public:
 	// Constructors.
 
 	// Functions.
-	int64_t channel_id();
 	TypedArray<int64_t> get_participants();
 	Variant get_voice_state_handle(int64_t user_id);
+	int64_t channel_id();
 	int64_t guild_id();
 
 	// Overloading functions.
@@ -708,10 +708,10 @@ public:
 	// Constructors.
 
 	// Functions.
-	int64_t id();
+	DiscordChannelType type();
 	String name();
 	TypedArray<int64_t> recipients();
-	DiscordChannelType type();
+	int64_t id();
 
 	// Overloading functions.
 
@@ -746,159 +746,159 @@ public:
 	}
 
 	// Functions.
-	void end_call(int64_t channel_id, Callable callback);
-	void end_calls(Callable callback);
+	DiscordAuthorizationCodeVerifier create_authorization_code_verifier();
 	DiscordCall get_call(int64_t channel_id);
-	TypedArray<DiscordCall> get_calls();
-	void get_current_input_device(Callable cb);
-	void get_current_output_device(Callable cb);
-	void get_input_devices(Callable cb);
-	float get_input_volume();
-	void get_output_devices(Callable cb);
-	float get_output_volume();
-	bool get_self_deaf_all();
-	bool get_self_mute_all();
-	void set_aec_dump(bool on);
-	void set_automatic_gain_control(bool on);
-	void set_device_change_callback(Callable callback);
-	void set_echo_cancellation(bool on);
-	void set_engine_managed_audio_session(bool is_engine_managed);
-	void set_input_device(String device_id, Callable cb);
-	void set_input_volume(float input_volume);
-	void set_no_audio_input_callback(Callable callback);
-	void set_no_audio_input_threshold(float d_bfsthreshold);
-	void set_noise_suppression(bool on);
-	void set_opus_hardware_coding(bool encode, bool decode);
-	void set_output_device(String device_id, Callable cb);
-	void set_output_volume(float output_volume);
-	void set_self_deaf_all(bool deaf);
-	void set_self_mute_all(bool mute);
-	bool set_speaker_mode(bool speaker_mode);
-	void set_thread_priority(DiscordClientThread thread, int64_t priority);
-	void set_voice_participant_changed_callback(Callable cb);
-	bool show_audio_route_picker();
 	DiscordCall start_call(int64_t channel_id);
 	DiscordCall start_call_with_audio_callbacks(int64_t lobby_id, Callable received_cb, Callable captured_cb);
+	DiscordClientStatus get_status();
+	DiscordRelationshipHandle get_relationship_handle(int64_t user_id);
+	DiscordUserHandle get_current_user();
+	TypedArray<DiscordCall> get_calls();
+	TypedArray<DiscordRelationshipHandle> get_relationships();
+	TypedArray<DiscordRelationshipHandle> get_relationships_by_group(DiscordRelationshipGroupType group_type);
+	TypedArray<DiscordUserHandle> search_friends_by_username(String search_str);
+	TypedArray<int64_t> get_lobby_ids();
+	Variant get_channel_handle(int64_t channel_id);
+	Variant get_current_user_v();
+	Variant get_lobby_handle(int64_t lobby_id);
+	Variant get_message_handle(int64_t message_id);
+	Variant get_user(int64_t user_id);
+	bool can_open_message_in_discord(int64_t message_id);
+	bool get_self_deaf_all();
+	bool get_self_mute_all();
+	bool is_authenticated();
+	bool register_launch_command(int64_t application_id, String command);
+	bool register_launch_steam_application(int64_t application_id, int64_t steam_app_id);
+	bool set_log_dir(String path, DiscordLoggingSeverity min_severity);
+	bool set_speaker_mode(bool speaker_mode);
+	bool show_audio_route_picker();
+	float get_input_volume();
+	float get_output_volume();
+	int64_t get_application_id();
+	static String error_to_string(DiscordClientError type);
+	static String get_default_audio_device_id();
+	static String get_default_communication_scopes();
+	static String get_default_presence_scopes();
+	static String get_version_hash();
+	static String status_to_string(DiscordClientStatus type);
+	static String thread_to_string(DiscordClientThread type);
+	static int64_t get_version_major();
+	static int64_t get_version_minor();
+	static int64_t get_version_patch();
 	void abort_authorize();
 	void abort_get_token_from_device();
+	void accept_activity_invite(DiscordActivityInvite invite, Callable cb);
+	void accept_discord_friend_request(int64_t user_id, Callable cb);
+	void accept_game_friend_request(int64_t user_id, Callable cb);
+	void add_log_callback(Callable callback, DiscordLoggingSeverity min_severity);
+	void add_voice_log_callback(Callable callback, DiscordLoggingSeverity min_severity);
 	void authorize(DiscordAuthorizationArgs args, Callable callback);
+	void block_user(int64_t user_id, Callable cb);
+	void cancel_discord_friend_request(int64_t user_id, Callable cb);
+	void cancel_game_friend_request(int64_t user_id, Callable cb);
+	void clear_rich_presence();
 	void close_authorize_device_screen();
-	DiscordAuthorizationCodeVerifier create_authorization_code_verifier();
+	void connect_discord();
+	void create_or_join_lobby(String secret, Callable callback);
+	void create_or_join_lobby_with_metadata(String secret, TypedDictionary<String, String> lobby_metadata, TypedDictionary<String, String> member_metadata, Callable callback);
+	void delete_user_message(int64_t recipient_id, int64_t message_id, Callable cb);
+	void disconnect_discord();
+	void edit_user_message(int64_t recipient_id, int64_t message_id, String content, Callable cb);
+	void end_call(int64_t channel_id, Callable callback);
+	void end_calls(Callable callback);
 	void exchange_child_token(String parent_application_token, int64_t child_application_id, Callable callback);
 	void fetch_current_user(DiscordAuthorizationTokenType token_type, String token, Callable callback);
+	void get_current_input_device(Callable cb);
+	void get_current_output_device(Callable cb);
+	void get_discord_client_connected_user(int64_t application_id, Callable callback);
+	void get_guild_channels(int64_t guild_id, Callable cb);
+	void get_input_devices(Callable cb);
+	void get_lobby_messages_with_limit(int64_t lobby_id, int64_t limit, Callable cb);
+	void get_output_devices(Callable cb);
 	void get_provisional_token(int64_t application_id, DiscordAuthenticationExternalAuthType external_auth_type, String external_auth_token, Callable callback);
 	void get_token(int64_t application_id, String code, String code_verifier, String redirect_uri, Callable callback);
 	void get_token_from_device(DiscordDeviceAuthorizationArgs args, Callable callback);
 	void get_token_from_device_provisional_merge(DiscordDeviceAuthorizationArgs args, DiscordAuthenticationExternalAuthType external_auth_type, String external_auth_token, Callable callback);
 	void get_token_from_provisional_merge(int64_t application_id, String code, String code_verifier, String redirect_uri, DiscordAuthenticationExternalAuthType external_auth_type, String external_auth_token, Callable callback);
-	bool is_authenticated();
+	void get_user_guilds(Callable cb);
+	void get_user_message_summaries(Callable cb);
+	void get_user_messages_with_limit(int64_t recipient_id, int64_t limit, Callable cb);
+	void is_discord_app_installed(Callable callback);
+	void join_linked_lobby_guild(int64_t lobby_id, Callable provisional_user_merge_required_callback, Callable callback);
+	void leave_lobby(int64_t lobby_id, Callable callback);
+	void link_channel_to_lobby(int64_t lobby_id, int64_t channel_id, Callable callback);
 	void open_authorize_device_screen(int64_t client_id, String user_code);
+	void open_connected_games_settings_in_discord(Callable callback);
+	void open_message_in_discord(int64_t message_id, Callable provisional_user_merge_required_callback, Callable callback);
 	void provisional_user_merge_completed(bool success);
 	void refresh_token(int64_t application_id, String refresh_token, Callable callback);
 	void register_authorize_request_callback(Callable callback);
+	void reject_discord_friend_request(int64_t user_id, Callable cb);
+	void reject_game_friend_request(int64_t user_id, Callable cb);
 	void remove_authorize_request_callback();
+	void remove_discord_and_game_friend(int64_t user_id, Callable cb);
+	void remove_game_friend(int64_t user_id, Callable cb);
 	void revoke_token(int64_t application_id, String token, Callable callback);
-	void set_authorize_device_screen_closed_callback(Callable cb);
-	void set_game_window_pid(int64_t pid);
-	void set_token_expiration_callback(Callable callback);
-	void unmerge_into_provisional_account(int64_t application_id, DiscordAuthenticationExternalAuthType external_auth_type, String external_auth_token, Callable callback);
-	void update_provisional_account_display_name(String name, Callable callback);
-	void update_token(DiscordAuthorizationTokenType token_type, String token, Callable callback);
-	bool can_open_message_in_discord(int64_t message_id);
-	void delete_user_message(int64_t recipient_id, int64_t message_id, Callable cb);
-	void edit_user_message(int64_t recipient_id, int64_t message_id, String content, Callable cb);
-	Variant get_channel_handle(int64_t channel_id);
-	void get_lobby_messages_with_limit(int64_t lobby_id, int64_t limit, Callable cb);
-	Variant get_message_handle(int64_t message_id);
-	void get_user_message_summaries(Callable cb);
-	void get_user_messages_with_limit(int64_t recipient_id, int64_t limit, Callable cb);
-	void open_message_in_discord(int64_t message_id, Callable provisional_user_merge_required_callback, Callable callback);
+	void send_activity_invite(int64_t user_id, String content, Callable cb);
+	void send_activity_join_request(int64_t user_id, Callable cb);
+	void send_activity_join_request_reply(DiscordActivityInvite invite, Callable cb);
+	void send_discord_friend_request(String username, Callable cb);
+	void send_discord_friend_request_by_id(int64_t user_id, Callable cb);
+	void send_game_friend_request(String username, Callable cb);
+	void send_game_friend_request_by_id(int64_t user_id, Callable cb);
 	void send_lobby_message(int64_t lobby_id, String content, Callable cb);
 	void send_lobby_message_with_metadata(int64_t lobby_id, String content, TypedDictionary<String, String> metadata, Callable cb);
 	void send_user_message(int64_t recipient_id, String content, Callable cb);
 	void send_user_message_with_metadata(int64_t recipient_id, String content, TypedDictionary<String, String> metadata, Callable cb);
-	void set_message_created_callback(Callable cb);
-	void set_message_deleted_callback(Callable cb);
-	void set_message_updated_callback(Callable cb);
-	void set_showing_chat(bool showing_chat);
-	void add_log_callback(Callable callback, DiscordLoggingSeverity min_severity);
-	void add_voice_log_callback(Callable callback, DiscordLoggingSeverity min_severity);
-	void connect_discord();
-	void disconnect_discord();
-	DiscordClientStatus get_status();
-	void open_connected_games_settings_in_discord(Callable callback);
+	void set_activity_invite_created_callback(Callable cb);
+	void set_activity_invite_updated_callback(Callable cb);
+	void set_activity_join_callback(Callable cb);
+	void set_activity_join_with_application_callback(Callable cb);
+	void set_aec_dump(bool on);
 	void set_application_id(int64_t application_id);
-	bool set_log_dir(String path, DiscordLoggingSeverity min_severity);
-	void set_status_changed_callback(Callable cb);
-	void set_voice_log_dir(String path, DiscordLoggingSeverity min_severity);
-	void create_or_join_lobby(String secret, Callable callback);
-	void create_or_join_lobby_with_metadata(String secret, TypedDictionary<String, String> lobby_metadata, TypedDictionary<String, String> member_metadata, Callable callback);
-	void get_guild_channels(int64_t guild_id, Callable cb);
-	Variant get_lobby_handle(int64_t lobby_id);
-	TypedArray<int64_t> get_lobby_ids();
-	void get_user_guilds(Callable cb);
-	void join_linked_lobby_guild(int64_t lobby_id, Callable provisional_user_merge_required_callback, Callable callback);
-	void leave_lobby(int64_t lobby_id, Callable callback);
-	void link_channel_to_lobby(int64_t lobby_id, int64_t channel_id, Callable callback);
+	void set_authorize_device_screen_closed_callback(Callable cb);
+	void set_automatic_gain_control(bool on);
+	void set_device_change_callback(Callable callback);
+	void set_echo_cancellation(bool on);
+	void set_engine_managed_audio_session(bool is_engine_managed);
+	void set_game_window_pid(int64_t pid);
+	void set_http_request_timeout(int64_t http_timeout_in_milliseconds);
+	void set_input_device(String device_id, Callable cb);
+	void set_input_volume(float input_volume);
 	void set_lobby_created_callback(Callable cb);
 	void set_lobby_deleted_callback(Callable cb);
 	void set_lobby_member_added_callback(Callable cb);
 	void set_lobby_member_removed_callback(Callable cb);
 	void set_lobby_member_updated_callback(Callable cb);
 	void set_lobby_updated_callback(Callable cb);
-	void unlink_channel_from_lobby(int64_t lobby_id, Callable callback);
-	void is_discord_app_installed(Callable callback);
-	void accept_activity_invite(DiscordActivityInvite invite, Callable cb);
-	void clear_rich_presence();
-	bool register_launch_command(int64_t application_id, String command);
-	bool register_launch_steam_application(int64_t application_id, int64_t steam_app_id);
-	void send_activity_invite(int64_t user_id, String content, Callable cb);
-	void send_activity_join_request(int64_t user_id, Callable cb);
-	void send_activity_join_request_reply(DiscordActivityInvite invite, Callable cb);
-	void set_activity_invite_created_callback(Callable cb);
-	void set_activity_invite_updated_callback(Callable cb);
-	void set_activity_join_callback(Callable cb);
-	void set_activity_join_with_application_callback(Callable cb);
+	void set_message_created_callback(Callable cb);
+	void set_message_deleted_callback(Callable cb);
+	void set_message_updated_callback(Callable cb);
+	void set_no_audio_input_callback(Callable callback);
+	void set_no_audio_input_threshold(float d_bfsthreshold);
+	void set_noise_suppression(bool on);
 	void set_online_status(DiscordStatusType status, Callable callback);
-	void update_rich_presence(DiscordActivity activity, Callable cb);
-	void accept_discord_friend_request(int64_t user_id, Callable cb);
-	void accept_game_friend_request(int64_t user_id, Callable cb);
-	void block_user(int64_t user_id, Callable cb);
-	void cancel_discord_friend_request(int64_t user_id, Callable cb);
-	void cancel_game_friend_request(int64_t user_id, Callable cb);
-	DiscordRelationshipHandle get_relationship_handle(int64_t user_id);
-	TypedArray<DiscordRelationshipHandle> get_relationships();
-	TypedArray<DiscordRelationshipHandle> get_relationships_by_group(DiscordRelationshipGroupType group_type);
-	void reject_discord_friend_request(int64_t user_id, Callable cb);
-	void reject_game_friend_request(int64_t user_id, Callable cb);
-	void remove_discord_and_game_friend(int64_t user_id, Callable cb);
-	void remove_game_friend(int64_t user_id, Callable cb);
-	TypedArray<DiscordUserHandle> search_friends_by_username(String search_str);
-	void send_discord_friend_request(String username, Callable cb);
-	void send_discord_friend_request_by_id(int64_t user_id, Callable cb);
-	void send_game_friend_request(String username, Callable cb);
-	void send_game_friend_request_by_id(int64_t user_id, Callable cb);
+	void set_opus_hardware_coding(bool encode, bool decode);
+	void set_output_device(String device_id, Callable cb);
+	void set_output_volume(float output_volume);
 	void set_relationship_created_callback(Callable cb);
 	void set_relationship_deleted_callback(Callable cb);
-	void unblock_user(int64_t user_id, Callable cb);
-	Variant get_current_user_v();
-	void get_discord_client_connected_user(int64_t application_id, Callable callback);
-	Variant get_user(int64_t user_id);
 	void set_relationship_groups_updated_callback(Callable cb);
+	void set_self_deaf_all(bool deaf);
+	void set_self_mute_all(bool mute);
+	void set_showing_chat(bool showing_chat);
+	void set_status_changed_callback(Callable cb);
+	void set_thread_priority(DiscordClientThread thread, int64_t priority);
+	void set_token_expiration_callback(Callable callback);
 	void set_user_updated_callback(Callable cb);
-	int64_t get_application_id();
-	DiscordUserHandle get_current_user();
-	void set_http_request_timeout(int64_t http_timeout_in_milliseconds);
-	static String error_to_string(DiscordClientError type);
-	static String get_default_audio_device_id();
-	static String get_default_communication_scopes();
-	static String get_default_presence_scopes();
-	static String get_version_hash();
-	static int64_t get_version_major();
-	static int64_t get_version_minor();
-	static int64_t get_version_patch();
-	static String status_to_string(DiscordClientStatus type);
-	static String thread_to_string(DiscordClientThread type);
+	void set_voice_log_dir(String path, DiscordLoggingSeverity min_severity);
+	void set_voice_participant_changed_callback(Callable cb);
+	void unblock_user(int64_t user_id, Callable cb);
+	void unlink_channel_from_lobby(int64_t lobby_id, Callable callback);
+	void unmerge_into_provisional_account(int64_t application_id, DiscordAuthenticationExternalAuthType external_auth_type, String external_auth_token, Callable callback);
+	void update_provisional_account_display_name(String name, Callable callback);
+	void update_rich_presence(DiscordActivity activity, Callable cb);
+	void update_token(DiscordAuthorizationTokenType token_type, String token, Callable callback);
 
 	// Overloading functions.
 
@@ -933,16 +933,16 @@ public:
 	}
 
 	// Functions.
-	String web_base();
-	void set_web_base(String web_base);
-	String api_base();
-	void set_api_base(String api_base);
 	DiscordAudioSystem experimental_audio_system();
-	void set_experimental_audio_system(DiscordAudioSystem experimental_audio_system);
-	bool experimental_android_prevent_comms_for_bluetooth();
-	void set_experimental_android_prevent_comms_for_bluetooth(bool experimental_android_prevent_comms_for_bluetooth);
+	String api_base();
+	String web_base();
 	Variant cpu_affinity_mask();
+	bool experimental_android_prevent_comms_for_bluetooth();
+	void set_api_base(String api_base);
 	void set_cpu_affinity_mask(Variant cpu_affinity_mask);
+	void set_experimental_android_prevent_comms_for_bluetooth(bool experimental_android_prevent_comms_for_bluetooth);
+	void set_experimental_audio_system(DiscordAudioSystem experimental_audio_system);
+	void set_web_base(String web_base);
 
 	// Overloading functions.
 
@@ -976,23 +976,23 @@ public:
 	// Constructors.
 
 	// Functions.
-	String to_string_discord();
 	DiscordErrorType type();
-	void set_type(DiscordErrorType type);
-	String error();
-	void set_error(String error);
-	int64_t error_code();
-	void set_error_code(int64_t error_code);
 	DiscordHttpStatusCode status();
-	void set_status(DiscordHttpStatusCode status);
+	String error();
 	String response_body();
-	void set_response_body(String response_body);
-	bool successful();
-	void set_successful(bool successful);
+	String to_string_discord();
 	bool retryable();
-	void set_retryable(bool retryable);
+	bool successful();
 	float retry_after();
+	int64_t error_code();
+	void set_error(String error);
+	void set_error_code(int64_t error_code);
+	void set_response_body(String response_body);
 	void set_retry_after(float retry_after);
+	void set_retryable(bool retryable);
+	void set_status(DiscordHttpStatusCode status);
+	void set_successful(bool successful);
+	void set_type(DiscordErrorType type);
 
 	// Overloading functions.
 
@@ -1027,9 +1027,9 @@ public:
 	}
 
 	// Functions.
+	String scopes();
 	int64_t client_id();
 	void set_client_id(int64_t client_id);
-	String scopes();
 	void set_scopes(String scopes);
 
 	// Overloading functions.
@@ -1064,22 +1064,22 @@ public:
 	// Constructors.
 
 	// Functions.
-	int64_t id();
-	void set_id(int64_t id);
-	String name();
-	void set_name(String name);
 	DiscordChannelType type();
-	void set_type(DiscordChannelType type);
-	int64_t position();
-	void set_position(int64_t position);
-	Variant parent_id();
-	void set_parent_id(Variant parent_id);
-	bool is_linkable();
-	void set_is_linkable(bool is_linkable);
-	bool is_viewable_and_writeable_by_all_members();
-	void set_is_viewable_and_writeable_by_all_members(bool is_viewable_and_writeable_by_all_members);
+	String name();
 	Variant linked_lobby();
+	Variant parent_id();
+	bool is_linkable();
+	bool is_viewable_and_writeable_by_all_members();
+	int64_t id();
+	int64_t position();
+	void set_id(int64_t id);
+	void set_is_linkable(bool is_linkable);
+	void set_is_viewable_and_writeable_by_all_members(bool is_viewable_and_writeable_by_all_members);
 	void set_linked_lobby(Variant linked_lobby);
+	void set_name(String name);
+	void set_parent_id(Variant parent_id);
+	void set_position(int64_t position);
+	void set_type(DiscordChannelType type);
 
 	// Overloading functions.
 
@@ -1113,9 +1113,9 @@ public:
 	// Constructors.
 
 	// Functions.
+	String name();
 	int64_t id();
 	void set_id(int64_t id);
-	String name();
 	void set_name(String name);
 
 	// Overloading functions.
@@ -1150,12 +1150,12 @@ public:
 	// Constructors.
 
 	// Functions.
-	int64_t id();
-	void set_id(int64_t id);
 	String name();
-	void set_name(String name);
 	int64_t guild_id();
+	int64_t id();
 	void set_guild_id(int64_t guild_id);
+	void set_id(int64_t id);
+	void set_name(String name);
 
 	// Overloading functions.
 
@@ -1191,8 +1191,8 @@ public:
 
 	// Functions.
 	int64_t application_id();
-	void set_application_id(int64_t application_id);
 	int64_t lobby_id();
+	void set_application_id(int64_t application_id);
 	void set_lobby_id(int64_t lobby_id);
 
 	// Overloading functions.
@@ -1227,13 +1227,13 @@ public:
 	// Constructors.
 
 	// Functions.
+	TypedArray<DiscordLobbyMemberHandle> lobby_members();
+	TypedArray<int64_t> lobby_member_ids();
+	TypedDictionary<String, String> metadata();
 	Variant get_call_info_handle();
 	Variant get_lobby_member_handle(int64_t member_id);
-	int64_t id();
 	Variant linked_channel();
-	TypedArray<int64_t> lobby_member_ids();
-	TypedArray<DiscordLobbyMemberHandle> lobby_members();
-	TypedDictionary<String, String> metadata();
+	int64_t id();
 
 	// Overloading functions.
 
@@ -1267,11 +1267,11 @@ public:
 	// Constructors.
 
 	// Functions.
+	TypedDictionary<String, String> metadata();
+	Variant user();
 	bool can_link_lobby();
 	bool connected();
 	int64_t id();
-	TypedDictionary<String, String> metadata();
-	Variant user();
 
 	// Overloading functions.
 
@@ -1305,23 +1305,23 @@ public:
 	// Constructors.
 
 	// Functions.
+	String content();
+	String raw_content();
+	TypedDictionary<String, String> metadata();
+	TypedDictionary<String, String> moderation_metadata();
 	Variant additional_content();
 	Variant application_id();
 	Variant author();
-	int64_t author_id();
 	Variant channel();
-	int64_t channel_id();
-	String content();
 	Variant disclosure_type();
+	Variant lobby();
+	Variant recipient();
+	bool sent_from_game();
+	int64_t author_id();
+	int64_t channel_id();
 	int64_t edited_timestamp();
 	int64_t id();
-	Variant lobby();
-	TypedDictionary<String, String> metadata();
-	TypedDictionary<String, String> moderation_metadata();
-	String raw_content();
-	Variant recipient();
 	int64_t recipient_id();
-	bool sent_from_game();
 	int64_t sent_timestamp();
 
 	// Overloading functions.
@@ -1358,9 +1358,9 @@ public:
 	// Functions.
 	DiscordRelationshipType discord_relationship_type();
 	DiscordRelationshipType game_relationship_type();
-	int64_t id();
-	bool is_spam_request();
 	Variant user();
+	bool is_spam_request();
+	int64_t id();
 
 	// Overloading functions.
 
@@ -1394,12 +1394,12 @@ public:
 	// Constructors.
 
 	// Functions.
+	DiscordExternalIdentityProviderType provider_type();
 	String avatar_hash();
 	String metadata();
-	Variant provider_id();
 	String provider_issued_user_id();
-	DiscordExternalIdentityProviderType provider_type();
 	String username();
+	Variant provider_id();
 
 	// Overloading functions.
 
@@ -1433,17 +1433,17 @@ public:
 	// Constructors.
 
 	// Functions.
-	Variant avatar();
-	String avatar_url(DiscordUserHandleAvatarType animated_type, DiscordUserHandleAvatarType static_type);
-	String display_name();
-	Variant game_activity();
-	Variant global_name();
-	int64_t id();
-	bool is_provisional();
 	DiscordRelationshipHandle relationship();
 	DiscordStatusType status();
-	TypedArray<DiscordUserApplicationProfileHandle> user_application_profiles();
+	String avatar_url(DiscordUserHandleAvatarType animated_type, DiscordUserHandleAvatarType static_type);
+	String display_name();
 	String username();
+	TypedArray<DiscordUserApplicationProfileHandle> user_application_profiles();
+	Variant avatar();
+	Variant game_activity();
+	Variant global_name();
+	bool is_provisional();
+	int64_t id();
 	static String avatar_type_to_string(DiscordUserHandleAvatarType type);
 
 	// Overloading functions.
@@ -1513,10 +1513,10 @@ public:
 	// Constructors.
 
 	// Functions.
-	float vad_threshold();
-	void set_vad_threshold(float vad_threshold);
 	bool automatic();
+	float vad_threshold();
 	void set_automatic(bool automatic);
+	void set_vad_threshold(float vad_threshold);
 
 	// Overloading functions.
 
