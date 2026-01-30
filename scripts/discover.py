@@ -1,7 +1,7 @@
 # Responsible for discovering information.
 from enum import Enum
 
-from data import FunctionInfo
+from data import FunctionInfo, TypeInfo
 
 
 class OverloadingPattern(Enum):
@@ -24,20 +24,26 @@ def discover_overloading_type(functions: list[FunctionInfo]) -> OverloadingPatte
 
     only_enums = True
     match_quantity = True
-    params_quantity = []
+    match_return = True
+    first_quantity: None | int = None
+    first_return: None | TypeInfo = None
 
     for f in functions:
-        params_quantity.append(len(f.params))
+        if first_quantity is None:
+            first_quantity = len(f.params)
+        elif first_quantity != len(f.params):
+            match_quantity = False
+
+        if first_return is None:
+            first_return = f.type
+        elif first_return != f.type:
+            match_return = False
 
         for p in f.params:
             if not p.enum:
                 only_enums = False
-                print(f.name, p.type.name)
 
-    for c in params_quantity[:1]:
-        match_quantity = params_quantity.count(c) == len(params_quantity)
-
-    if only_enums and match_quantity:
+    if only_enums and match_quantity and match_return:
         return OverloadingPattern.ENUMS
 
     return OverloadingPattern.NONE
