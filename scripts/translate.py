@@ -11,6 +11,7 @@ from pprint import pprint
 
 from data import TypeInfo, FunctionInfo, ParamInfo
 from name import to_godot_class_name
+from template.code.discord_class_cpp.translate.optional import get_optional
 
 
 def is_discord_void(type_str: str) -> bool:
@@ -110,26 +111,122 @@ def discord_type_to_godot_type(info: TypeInfo | FunctionInfo) -> str:
     assert False, f'Fail to identify a good type for "{info.name}"'
 
 
-def discord_params_to_godot_params(params: list[ParamInfo]) -> str:
-    result = ""
+def discord_params_to_godot_params(params_info: list[ParamInfo]) -> str:
+    params = ""
 
-    for i, p in enumerate(params):
+    for i, p in enumerate(params_info):
         if p.callback:
-            result += "Callable"
+            params += "Callable"
         elif p.enum and p.fake:
-            result += "Variant"
+            params += "Variant"
         elif p.enum and p.overloading:
-            result += "int"
+            params += "int"
         elif p.enum:
-            result += discord_type_to_godot_type(p.type)
-            result += "::Enum"
+            params += discord_type_to_godot_type(p.type)
+            params += "::Enum"
         else:
-            result += discord_type_to_godot_type(p.type)
+            params += discord_type_to_godot_type(p.type)
 
-        result += " "
-        result += p.gdscript_name
+        params += " "
+        params += p.gdscript_name
 
-        if i != len(params) - 1:
-            result += ", "
+        if i != len(params_info) - 1:
+            params += ", "
 
-    return result
+    return params
+
+
+def discord_type_to_variant_type(info: TypeInfo | FunctionInfo) -> str:
+    if isinstance(info, FunctionInfo):
+        return "Variant::CALLABLE"
+
+    if is_discord_void(info.name):
+        return "Variant::NIL"
+
+    if is_discord_bool(info.name):
+        return "Variant::BOOL"
+
+    if is_discord_int(info.name):
+        return "Variant::INT"
+
+    if is_discord_float(info.name):
+        return "Variant::FLOAT"
+
+    if is_discord_string(info.name):
+        return "Variant::STRING"
+
+    if is_discord_char_array(info.name):
+        return "Variant::STRING"
+
+    if is_discord_vec(info.name):
+        return "Variant::ARRAY"
+
+    if is_discord_map(info.name):
+        return "Variant::DICTIONARY"
+
+    if is_discord_obj(info.name):
+        return "Variant::OBJECT"
+
+        assert False, f'Fail to identify a good Variant type for "{type_name}"'
+
+
+######################################################################
+# Translate Godot type to Discord type.
+######################################################################
+
+
+def godot_vars_to_discord_vars(params_info: list[ParamInfo]) -> str:
+    statements = ""
+
+    for i, p in enumerate(params_info):
+        statements += godot_var_to_discord_var(p.type, f"p{i}", p.name)
+
+    return statements
+
+
+def godot_var_to_discord_var(type_info: TypeInfo, target: str, source: str) -> str:
+    if is_discord_bool(type_info.name):
+        return f"bool {target} = {source};"
+
+    if is_discord_int(type_info.name):
+        return f"int64_t {target} = {source};"
+
+    if is_discord_float(type_info.name):
+        return f"float {target} = {source};"
+
+    if is_discord_string(type_info.name):
+        return f"std::string {target} = std::string({source}.utf8().get_data());"
+
+    if is_discord_char_array(type_info.name):
+        return f"std::string {target} = std::string({source}.utf8().get_data());"
+
+    if is_discord_opt(type_info.name):
+        return get_optional(
+            source="",
+            source_variant="",
+            statements="",
+            target="",
+            target_type="",
+        )
+
+    # if is_discord_vec(type_info.name):
+    #     return f"float {target} = {source};"
+
+    # if is_discord_map(type_info.name):
+    #     return f"float {target} = {source};"
+
+    # if is_discord_obj(type_info.name):
+    #     return f"float {target} = {source};"
+
+    return ""
+
+
+def godot_templates_to_discord_templates(infos: list[TypeInfo | FunctionInfo]) -> str:
+    templates = ""
+
+    for i, t in enumerate(infos):
+        # templates +=
+        if i != len(infos) - 1:
+            templates += ", "
+
+    return templates

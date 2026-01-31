@@ -243,18 +243,18 @@ def forge_functions_binds(info: NamespaceInfo | ClassInfo) -> str:
     return binds
 
 
-def forge_function_bind(function: FunctionInfo, class_name: str) -> str:
-    p = forge_params_bind(function.params)
+def forge_function_bind(function_info: FunctionInfo, class_name: str) -> str:
+    p = forge_params_bind(function_info.params)
 
-    if function.static:
+    if function_info.static:
         return get_bind_static(
-            function=function.gdscript_name,
+            function=function_info.gdscript_name,
             class_name=class_name,
             params=p,
         )
 
     return get_bind(
-        function=function.gdscript_name,
+        function=function_info.gdscript_name,
         class_name=class_name,
         params=p,
     )
@@ -315,25 +315,26 @@ def forge_functions_definitions(info: NamespaceInfo | ClassInfo) -> str:
     functions_definitions = []
 
     for f in info.functions:
-        if f.overloading:
-            continue
-
-        r = discord_type_to_godot_type(f.type)
-
-        functions_definitions.append(
-            get_function_definition(
-                ret=r,
-                class_name=class_name,
-                function=f.gdscript_name,
-                params="",
-                statements="",
-            )
-        )
+        if not f.overloading:
+            functions_definitions.append(forge_function_definition(f, class_name))
 
     functions_definitions = sorted(functions_definitions)
     functions_definitions = "".join(functions_definitions)
 
     return functions_definitions
+
+
+def forge_function_definition(function_info: FunctionInfo, class_name: str) -> str:
+    r = discord_type_to_godot_type(function_info.type)
+    p = discord_params_to_godot_params(function_info.params)
+
+    return get_function_definition(
+        ret=r,
+        class_name=class_name,
+        function=function_info.gdscript_name,
+        params=p,
+        statements="",
+    )
 
 
 ########## <discord_class>.cpp ##########
