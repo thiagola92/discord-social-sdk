@@ -3,7 +3,11 @@ from pprint import pprint
 
 from fake import fake_enums_params
 from collect import NamespaceInfo, FunctionInfo, ClassInfo, ParamInfo
-from translate import discord_type_to_godot_type, discord_params_to_godot_params
+from translate import (
+    discord_type_to_godot_type,
+    discord_params_to_godot_params,
+    godot_variables_to_discord_variables,
+)
 from template.code.register_types_cpp.register_abstract import get_register_abstract
 from template.code.register_types_cpp.register_runtime import get_register_runtime
 from template.code.discord_enum_h.enum_definition import get_enum_definition
@@ -325,15 +329,16 @@ def forge_functions_definitions(info: NamespaceInfo | ClassInfo) -> str:
 
 
 def forge_function_definition(function_info: FunctionInfo, class_name: str) -> str:
-    r = discord_type_to_godot_type(function_info.type)
-    p = discord_params_to_godot_params(function_info.params)
+    return_type = discord_type_to_godot_type(function_info.type)
+    params = discord_params_to_godot_params(function_info.params)
+    statements = godot_variables_to_discord_variables(function_info.params)
 
     return get_function_definition(
-        ret=r,
+        ret=return_type,
         class_name=class_name,
         function=function_info.gdscript_name,
-        params=p,
-        statements="",
+        params=params,
+        statements=statements,
     )
 
 

@@ -10,7 +10,7 @@
 from pprint import pprint
 
 from data import TypeInfo, FunctionInfo, ParamInfo
-from name import to_godot_class_name
+from name import to_godot_class_name, to_gdscript_variable_name
 from template.code.discord_class_cpp.translate.optional import get_optional
 
 
@@ -53,11 +53,11 @@ def is_discord_char_array(type_str: str) -> bool:
     return type_str in ["const char *"]
 
 
-def is_discord_opt(type_str: str) -> bool:
+def is_discord_optional(type_str: str) -> bool:
     return type_str.startswith("std::optional")
 
 
-def is_discord_vec(type_str: str) -> bool:
+def is_discord_vector(type_str: str) -> bool:
     return type_str.startswith("std::vector")
 
 
@@ -65,7 +65,7 @@ def is_discord_map(type_str: str) -> bool:
     return type_str.startswith("std::unordered_map")
 
 
-def is_discord_obj(type_str: str) -> bool:
+def is_discord_object(type_str: str) -> bool:
     return type_str.startswith("discordpp::")
 
 
@@ -93,10 +93,10 @@ def discord_type_to_godot_type(info: TypeInfo | FunctionInfo) -> str:
     if is_discord_char_array(info.name):
         return "String"
 
-    if is_discord_opt(info.name):
+    if is_discord_optional(info.name):
         return "Variant"
 
-    if is_discord_vec(info.name):
+    if is_discord_vector(info.name):
         t = discord_type_to_godot_type(info.templates[0])
         return f"TypedArray<{t}>"
 
@@ -105,7 +105,7 @@ def discord_type_to_godot_type(info: TypeInfo | FunctionInfo) -> str:
         t = ",".join(t)
         return f"TypedDictionary<{t}>"
 
-    if is_discord_obj(info.name):
+    if is_discord_object(info.name):
         return to_godot_class_name(info.name)
 
     assert False, f'Fail to identify a good type for "{info.name}"'
@@ -158,16 +158,16 @@ def discord_type_to_variant_type(info: TypeInfo | FunctionInfo) -> str:
     if is_discord_char_array(info.name):
         return "Variant::STRING"
 
-    if is_discord_vec(info.name):
+    if is_discord_vector(info.name):
         return "Variant::ARRAY"
 
     if is_discord_map(info.name):
         return "Variant::DICTIONARY"
 
-    if is_discord_obj(info.name):
+    if is_discord_object(info.name):
         return "Variant::OBJECT"
 
-        assert False, f'Fail to identify a good Variant type for "{type_name}"'
+    assert False, f'Fail to identify a good Variant type for "{info.name}"'
 
 
 ######################################################################
@@ -175,16 +175,21 @@ def discord_type_to_variant_type(info: TypeInfo | FunctionInfo) -> str:
 ######################################################################
 
 
-def godot_vars_to_discord_vars(params_info: list[ParamInfo]) -> str:
+def godot_variables_to_discord_variables(params_info: list[ParamInfo]) -> str:
     statements = ""
 
     for i, p in enumerate(params_info):
-        statements += godot_var_to_discord_var(p.type, f"p{i}", p.name)
+        n = to_gdscript_variable_name(p.name)
+        statements += godot_variable_to_discord_variable(p.type, f"p{i}", n)
 
     return statements
 
 
-def godot_var_to_discord_var(type_info: TypeInfo, target: str, source: str) -> str:
+def godot_variable_to_discord_variable(
+    type_info: TypeInfo,
+    target: str,
+    source: str,
+) -> str:
     if is_discord_bool(type_info.name):
         return f"bool {target} = {source};"
 
@@ -200,33 +205,38 @@ def godot_var_to_discord_var(type_info: TypeInfo, target: str, source: str) -> s
     if is_discord_char_array(type_info.name):
         return f"std::string {target} = std::string({source}.utf8().get_data());"
 
-    if is_discord_opt(type_info.name):
-        return get_optional(
-            source="",
-            source_variant="",
-            statements="",
-            target="",
-            target_type="",
-        )
+    if is_discord_optional(type_info.name):
+        return godot_variant_to_discord_optional(type_info, source, target)
 
-    # if is_discord_vec(type_info.name):
+    # if is_discord_vector(type_info.name):
     #     return f"float {target} = {source};"
 
     # if is_discord_map(type_info.name):
     #     return f"float {target} = {source};"
 
-    # if is_discord_obj(type_info.name):
+    # if is_discord_object(type_info.name):
     #     return f"float {target} = {source};"
 
-    return ""
+    return "TODO"
 
 
-def godot_templates_to_discord_templates(infos: list[TypeInfo | FunctionInfo]) -> str:
+def godot_variant_to_discord_optional(
+    type_info: TypeInfo,
+    source: str,
+    target: str,
+) -> str:
     templates = ""
 
-    for i, t in enumerate(infos):
-        # templates +=
-        if i != len(infos) - 1:
+    for i, t in enumerate(type_info.templates):
+        templates += t.name
+
+        if i != len(type_info.templates) - 1:
             templates += ", "
 
-    return templates
+    return get_optional(
+        templates=templates,
+        target=target,
+        source=source,
+        variant="",
+        statements="",
+    )

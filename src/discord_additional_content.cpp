@@ -1,0 +1,67 @@
+
+#include "discord_classes.h"
+
+using namespace godot;
+
+// Functions.
+
+DiscordAdditionalContentType DiscordAdditionalContent::type() {
+}
+
+String DiscordAdditionalContent::type_to_string(DiscordAdditionalContentType type){
+	TODO
+}
+
+Variant DiscordAdditionalContent::title() {
+}
+
+bool DiscordAdditionalContent::equals(DiscordAdditionalContent rhs){
+	TODO
+}
+
+int64_t DiscordAdditionalContent::count() {
+}
+
+void DiscordAdditionalContent::set_count(int64_t count) {
+	int64_t p0 = count;
+}
+
+void DiscordAdditionalContent::set_title(Variant title) {
+	std::optional<std::string> p0;
+
+	if (title.get_type() ==) {
+	}
+}
+
+void DiscordAdditionalContent::set_type(DiscordAdditionalContentType type) {
+	TODO
+}
+
+// Overload functions.
+
+// Binding.
+void DiscordAdditionalContent::_bind_methods() {
+	ClassDB::bind_method(D_METHOD("count"),
+			&DiscordAdditionalContent::count);
+
+	ClassDB::bind_method(D_METHOD("equals", "rhs"),
+			&DiscordAdditionalContent::equals);
+
+	ClassDB::bind_method(D_METHOD("set_count", "count"),
+			&DiscordAdditionalContent::set_count);
+
+	ClassDB::bind_method(D_METHOD("set_title", "title"),
+			&DiscordAdditionalContent::set_title);
+
+	ClassDB::bind_method(D_METHOD("set_type", "type"),
+			&DiscordAdditionalContent::set_type);
+
+	ClassDB::bind_method(D_METHOD("title"),
+			&DiscordAdditionalContent::title);
+
+	ClassDB::bind_method(D_METHOD("type"),
+			&DiscordAdditionalContent::type);
+
+	ClassDB::bind_static_method("DiscordAdditionalContent", D_METHOD("type_to_string", "type"),
+			&DiscordAdditionalContent::type_to_string);
+}

@@ -4,7 +4,7 @@ from xml.etree import ElementTree
 from xml.etree.ElementTree import Element
 
 from check import check_overloading, check_callbacks, check_enums
-from name import to_gdscript_var_name, to_snake_case
+from name import to_gdscript_variable_name, to_snake_case
 from parse import Parser
 from data import (
     CallbackInfo,
@@ -99,7 +99,7 @@ def collect_functions(tree: Element) -> list[FunctionInfo]:
         fi = FunctionInfo()
         fi.static = f.attrib.get("static") == "yes"
         fi.name = collect_text(f.find("name"))
-        fi.gdscript_name = to_gdscript_var_name(fi.name)
+        fi.gdscript_name = to_gdscript_variable_name(fi.name)
         fi.type = collect_type(f)
         fi.short_desc = collect_text(f.find("briefdescription"))
         fi.long_desc = collect_text(f.find("detaileddescription"))

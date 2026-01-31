@@ -75,7 +75,7 @@ RESERVED_NAMES = [
 ]
 
 
-def to_gdscript_var_name(string: str) -> str:
+def to_gdscript_variable_name(string: str) -> str:
     """Convert string to a valid gdscript name."""
     string = to_snake_case(string)
 

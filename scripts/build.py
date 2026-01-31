@@ -4,7 +4,8 @@ from pathlib import Path
 from xml.etree import ElementTree
 
 from help import clang_format
-from collect import NamespaceInfo, collect_namespace
+from name import to_snake_case
+from collect import NamespaceInfo, ClassInfo, collect_namespace
 from template.file.register_types_h import get_register_types_h
 from template.file.register_types_cpp import get_register_types_cpp
 from template.file.discord_enum_h import get_discord_enum_h
@@ -38,8 +39,8 @@ class Builder:
         self.build_discord_classes_h(namespace_info)
         self.build_discord_cpp(namespace_info)
 
-        # for c in classes:
-        #     self.build_discord_class_cpp()
+        for c in namespace_info.classes:
+            self.build_discord_class_cpp(c)
 
     def build_register_types_h(self):
         """
@@ -138,15 +139,23 @@ class Builder:
 
         clang_format(filepath)
 
-    def build_discord_class_cpp(self) -> None:
+    def build_discord_class_cpp(self, class_info: ClassInfo) -> None:
         """
-        Build a file to represent a discord classes.
+        Build a file to represent one of the discord classes.
+
+        This file contains all methods of the specific discord class.
         """
-        filepath = self.src_dir.joinpath("discord_class.cpp")
+
+        functions_definitions = forge_functions_definitions(class_info)
+        overloadings_definitions = ""
+        binds = forge_binds(class_info)
+        filename = to_snake_case(class_info.name)
+        filepath = self.src_dir.joinpath(f"discord_{filename}.cpp")
         content = get_discord_class_cpp(
-            class_name="",
-            methods="",
-            binds="",
+            class_name=class_info.name,
+            functions=functions_definitions,
+            overloadings=overloadings_definitions,
+            binds=binds,
         )
 
         filepath.write_text(content)

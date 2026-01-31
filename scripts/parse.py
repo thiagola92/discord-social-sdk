@@ -1,7 +1,7 @@
 # Responsible for parsing strings that doxygen didn't parsed.
 from pprint import pprint
 
-from name import to_gdscript_var_name
+from name import to_gdscript_variable_name
 from data import ParamInfo, TypeInfo, FunctionInfo
 
 
@@ -130,7 +130,7 @@ class Parser:
                 parser = Parser(self.content[: self.current_position])
                 param_info.name = self.content[self.current_position :]
                 param_info.name = param_info.name.strip()
-                param_info.gdscript_name = to_gdscript_var_name(param_info.name)
+                param_info.gdscript_name = to_gdscript_variable_name(param_info.name)
                 param_info.type = parser.parse_type()
                 return param_info
 
