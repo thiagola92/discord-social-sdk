@@ -18,6 +18,7 @@ from forge import (
     forge_classes_declarations,
     forge_classes_definitions,
     forge_binds,
+    forge_functions_definitions,
 )
 
 
@@ -122,7 +123,7 @@ class Builder:
         from the discordpp namespace.
         """
 
-        functions_definitions = ""
+        functions_definitions = forge_functions_definitions(namespace_info)
         overloadings_definitions = ""
         binds = forge_binds(namespace_info)
         filepath = self.src_dir.joinpath("discord.cpp")

@@ -19,6 +19,7 @@ from template.code.discord_classes_h.function_declaration import (
 )
 from template.code.discord_class_cpp.bind import get_bind
 from template.code.discord_class_cpp.bind_static import get_bind_static
+from template.code.discord_class_cpp.function_definition import get_function_definition
 from discover import (
     OverloadingPattern,
     discover_overloading_pattern,
@@ -247,13 +248,13 @@ def forge_function_bind(function: FunctionInfo, class_name: str) -> str:
 
     if function.static:
         return get_bind_static(
-            function=function.name,
+            function=function.gdscript_name,
             class_name=class_name,
             params=p,
         )
 
     return get_bind(
-        function=function.name,
+        function=function.gdscript_name,
         class_name=class_name,
         params=p,
     )
@@ -283,13 +284,13 @@ def forge_overloading_bind(group: list[FunctionInfo], class_name: str) -> str:
 
             if f.static:
                 return get_bind_static(
-                    function=f.name,
+                    function=f.gdscript_name,
                     class_name=class_name,
                     params=p,
                 )
 
             return get_bind(
-                function=f.name,
+                function=f.gdscript_name,
                 class_name=class_name,
                 params=p,
             )
@@ -302,7 +303,7 @@ def forge_params_bind(params_info: list[ParamInfo]) -> str:
     params = []
 
     for p in params_info:
-        params.append(f", {p.gdscript_name}")
+        params.append(f', "{p.gdscript_name}"')
 
     params = "".join(params)
 
@@ -310,10 +311,24 @@ def forge_params_bind(params_info: list[ParamInfo]) -> str:
 
 
 def forge_functions_definitions(info: NamespaceInfo | ClassInfo) -> str:
+    class_name = info.name if isinstance(info, ClassInfo) else ""
     functions_definitions = []
 
     for f in info.functions:
-        pass
+        if f.overloading:
+            continue
+
+        r = discord_type_to_godot_type(f.type)
+
+        functions_definitions.append(
+            get_function_definition(
+                ret=r,
+                class_name=class_name,
+                function=f.gdscript_name,
+                params="",
+                statements="",
+            )
+        )
 
     functions_definitions = sorted(functions_definitions)
     functions_definitions = "".join(functions_definitions)
