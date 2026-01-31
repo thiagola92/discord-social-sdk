@@ -14,7 +14,7 @@ class OverloadingPattern(Enum):
     ENUMS = 1
 
 
-def discover_overloading_type(functions: list[FunctionInfo]) -> OverloadingPattern:
+def discover_overloading_pattern(functions: list[FunctionInfo]) -> OverloadingPattern:
     """
     Discover the best strategy to deal with this overloading.
 

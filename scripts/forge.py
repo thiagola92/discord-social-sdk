@@ -21,7 +21,7 @@ from template.code.discord_class_cpp.bind import get_bind
 from template.code.discord_class_cpp.bind_static import get_bind_static
 from discover import (
     OverloadingPattern,
-    discover_overloading_type,
+    discover_overloading_pattern,
     discover_overloading_groups,
 )
 
@@ -187,35 +187,35 @@ def forge_overloadings_declarations(info: NamespaceInfo | ClassInfo) -> str:
     overloading_declarations = []
 
     for g in overloading_groups.values():
-        t = discover_overloading_type(g)
-
-        if t == OverloadingPattern.ENUMS:
-            for f in g:
-                for p in f.params:
-                    p.overloading = True
-
-                r = discord_type_to_godot_type(f.type)
-                p = f.params + fake_enums_params(f.params)
-                p = discord_params_to_godot_params(p)
-
-                overloading_declarations.append(
-                    get_function_declaration(
-                        modifier="static " if g[0].static else "",
-                        ret=r,
-                        name=f.gdscript_name,
-                        params=p,
-                    )
-                )
-
-                break  # Do once only.
-        else:
-            # TODO: Create generic treatment for overloadings.
-            assert False, "A new case of overloading needs to be created."
+        overloading_declarations.append(forge_overloading_declaration(g))
 
     overloading_declarations = sorted(overloading_declarations)
     overloading_declarations = "".join(overloading_declarations)
 
     return overloading_declarations
+
+
+def forge_overloading_declaration(group: list[FunctionInfo]) -> str:
+    overloading_pattern = discover_overloading_pattern(group)
+
+    if overloading_pattern == OverloadingPattern.ENUMS:
+        for f in group:
+            for p in f.params:
+                p.overloading = True
+
+            r = discord_type_to_godot_type(f.type)
+            p = f.params + fake_enums_params(f.params)
+            p = discord_params_to_godot_params(p)
+
+            return get_function_declaration(
+                modifier="static " if f.static else "",
+                ret=r,
+                name=f.gdscript_name,
+                params=p,
+            )
+    else:
+        # TODO: Create generic treatment for overloadings.
+        assert False, "A new case of overloading needs to be created."
 
 
 ########## discord.cpp ##########
@@ -233,32 +233,30 @@ def forge_functions_binds(info: NamespaceInfo | ClassInfo) -> str:
     binds = []
 
     for f in info.functions:
-        if f.overloading:
-            continue
-
-        p = forge_params_bind(f.params)
-
-        if f.static:
-            binds.append(
-                get_bind_static(
-                    function=f.name,
-                    class_name=class_name,
-                    params=p,
-                )
-            )
-        else:
-            binds.append(
-                get_bind(
-                    function=f.name,
-                    class_name=class_name,
-                    params=p,
-                )
-            )
+        if not f.overloading:
+            binds.append(forge_function_bind(f, class_name))
 
     binds = sorted(binds)
     binds = "".join(binds)
 
     return binds
+
+
+def forge_function_bind(function: FunctionInfo, class_name: str) -> str:
+    p = forge_params_bind(function.params)
+
+    if function.static:
+        return get_bind_static(
+            function=function.name,
+            class_name=class_name,
+            params=p,
+        )
+
+    return get_bind(
+        function=function.name,
+        class_name=class_name,
+        params=p,
+    )
 
 
 def forge_overloadings_binds(info: NamespaceInfo | ClassInfo) -> str:
@@ -267,39 +265,37 @@ def forge_overloadings_binds(info: NamespaceInfo | ClassInfo) -> str:
     binds = []
 
     for g in overloading_groups.values():
-        t = discover_overloading_type(g)
-
-        if t == OverloadingPattern.ENUMS:
-            for f in g:
-                p = f.params + fake_enums_params(f.params)
-                p = forge_params_bind(p)
-
-                if f.static:
-                    binds.append(
-                        get_bind_static(
-                            function=f.name,
-                            class_name=class_name,
-                            params=p,
-                        )
-                    )
-                else:
-                    binds.append(
-                        get_bind(
-                            function=f.name,
-                            class_name=class_name,
-                            params=p,
-                        )
-                    )
-
-                break
-        else:
-            # TODO: Create generic treatment for overloadings.
-            assert False, "A new case of overloading needs to be created."
+        binds.append(forge_overloading_bind(g, class_name))
 
     binds = sorted(binds)
     binds = "".join(binds)
 
     return binds
+
+
+def forge_overloading_bind(group: list[FunctionInfo], class_name: str) -> str:
+    overloading_pattern = discover_overloading_pattern(group)
+
+    if overloading_pattern == OverloadingPattern.ENUMS:
+        for f in group:
+            p = f.params + fake_enums_params(f.params)
+            p = forge_params_bind(p)
+
+            if f.static:
+                return get_bind_static(
+                    function=f.name,
+                    class_name=class_name,
+                    params=p,
+                )
+
+            return get_bind(
+                function=f.name,
+                class_name=class_name,
+                params=p,
+            )
+    else:
+        # TODO: Create generic treatment for overloadings.
+        assert False, "A new case of overloading needs to be created."
 
 
 def forge_params_bind(params_info: list[ParamInfo]) -> str:
@@ -311,6 +307,18 @@ def forge_params_bind(params_info: list[ParamInfo]) -> str:
     params = "".join(params)
 
     return params
+
+
+def forge_functions_definitions(info: NamespaceInfo | ClassInfo) -> str:
+    functions_definitions = []
+
+    for f in info.functions:
+        pass
+
+    functions_definitions = sorted(functions_definitions)
+    functions_definitions = "".join(functions_definitions)
+
+    return functions_definitions
 
 
 ########## <discord_class>.cpp ##########

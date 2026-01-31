@@ -309,10 +309,6 @@ cp -r /tmp/discord_social_sdk/bin/release/* lib/
 cp -r /tmp/discord_social_sdk/include/* include/
 rm -rf /tmp/discord_social_sdk
 
-# Clear files generated during previous execution.
-rm -rf doc_classes
-rm -rf src
-
 # Generate GDExtension API files.
 cd godot-cpp
 godot --dump-extension-api
