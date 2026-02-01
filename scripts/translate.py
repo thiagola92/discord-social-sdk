@@ -11,6 +11,7 @@ from pprint import pprint
 
 from data import TypeInfo, FunctionInfo, ParamInfo
 from name import to_godot_class_name, to_gdscript_variable_name
+from template.code.discord_class_cpp.translate.map import get_map
 from template.code.discord_class_cpp.translate.optional import get_optional
 
 
@@ -204,8 +205,8 @@ def godot_variable_to_discord_variable(
     target: str,
     source: str,
 ) -> str:
-    # if is_discord_function(info):
-    #     assert False, "Not implemented (implement if needed)"
+    if is_discord_function(info):
+        return "\n// TODO callable"
 
     if is_discord_bool(info):
         return f"bool {target} = {source};"
@@ -228,14 +229,14 @@ def godot_variable_to_discord_variable(
     if is_discord_optional(info):
         return godot_variant_to_discord_optional(info, source, target)
 
-    # if is_discord_vector(info):
-    #     return f"float {target} = {source};"
+    if is_discord_vector(info):
+        return "\n// TODO vect"
 
-    # if is_discord_map(info):
-    #     return f"float {target} = {source};"
+    if is_discord_map(info):
+        return godot_dictionary_to_discord_map(info, source, target)
 
-    # if is_discord_object(info):
-    #     return f"float {target} = {source};"
+    if is_discord_object(info):
+        return "\n// TODO object"
 
     return "\n// TODO"
 
@@ -247,32 +248,7 @@ def godot_variant_to_discord_optional(
 ) -> str:
     for t in type_info.templates:
         v = discord_type_to_variant_type(t)
-        s = []
-
-        if isinstance(type_info, FunctionInfo):
-            assert False, "Not implemented (implement if needed)"
-        elif is_discord_bool(t):
-            s = [f"{target} = {source};"]
-        elif is_discord_int(t):
-            s = [f"{target} = {source};"]
-        elif is_discord_float(t):
-            s = [f"{target} = {source};"]
-        elif is_discord_string(t):
-            s = [f"{target} = {source}.stringify().utf8().get_data();"]
-        elif is_discord_char_array(t):
-            s = [f"{target} = {source}.stringify().utf8().get_data();"]
-        elif is_discord_enum(t):
-            s = [
-                f"{target} = std::optional<{type_info.name}>{{ ({type_info.name})(uint64_t){source} }};"
-            ]
-        elif is_discord_vector(t):
-            assert False, "Not implemented (implement if needed)"
-        elif is_discord_map(t):
-            assert False, "Not implemented (implement if needed)"
-        elif is_discord_optional(t):
-            assert False, "Not implemented (implement if needed)"
-
-        s = "\n".join(s)
+        s = godot_variant_to_discord_variable(t, source, target)
 
         # Leave because std::optional will never have more than one template.
         return get_optional(
@@ -283,4 +259,56 @@ def godot_variant_to_discord_optional(
             statements=s,
         )
 
+    pprint(type_info)
     assert False, "An std::optional is missing it template"
+
+
+def godot_variant_to_discord_variable(type_info: TypeInfo, source: str, target: str):
+    statements = []
+
+    if isinstance(type_info, FunctionInfo):
+        assert False, "Not implemented (implement if needed)"
+    elif is_discord_bool(type_info):
+        statements = [f"{target} = {source};"]
+    elif is_discord_int(type_info):
+        statements = [f"{target} = {source};"]
+    elif is_discord_float(type_info):
+        statements = [f"{target} = {source};"]
+    elif is_discord_string(type_info):
+        statements = [f"{target} = {source}.stringify().utf8().get_data();"]
+    elif is_discord_char_array(type_info):
+        statements = [f"{target} = {source}.stringify().utf8().get_data();"]
+    elif is_discord_enum(type_info):
+        statements = [
+            f"{target} = std::optional<{type_info.name}>{{ ({type_info.name})(uint64_t){source} }};"
+        ]
+    elif is_discord_vector(type_info):
+        assert False, "Not implemented (implement if needed)"
+    elif is_discord_map(type_info):
+        assert False, "Not implemented (implement if needed)"
+    elif is_discord_optional(type_info):
+        assert False, "Not implemented (implement if needed)"
+
+    statements = "\n".join(statements)
+
+    return statements
+
+
+def godot_dictionary_to_discord_map(
+    type_info: TypeInfo,
+    source: str,
+    target: str,
+) -> str:
+    # Maps always have two templates.
+    template1 = type_info.templates[0]
+    template2 = type_info.templates[1]
+    statements = godot_variant_to_discord_variable(template1, "k", "kv")
+    statements += godot_variant_to_discord_variable(template2, "v", "vv")
+
+    return get_map(
+        template1=template1.name,
+        template2=template2.name,
+        target=target,
+        source=source,
+        statements=statements,
+    )

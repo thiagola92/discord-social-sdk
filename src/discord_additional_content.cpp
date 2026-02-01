@@ -16,7 +16,7 @@ Variant DiscordAdditionalContent::title() {
 }
 
 bool DiscordAdditionalContent::equals(DiscordAdditionalContent rhs) {
-	// TODO
+	// TODO object
 }
 
 int64_t DiscordAdditionalContent::count() {

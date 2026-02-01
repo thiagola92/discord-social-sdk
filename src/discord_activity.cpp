@@ -51,11 +51,11 @@ Variant DiscordActivity::timestamps() {
 }
 
 bool DiscordActivity::equals(DiscordActivity other) {
-	// TODO
+	// TODO object
 }
 
 void DiscordActivity::add_button(DiscordActivityButton button) {
-	// TODO
+	// TODO object
 }
 
 void DiscordActivity::set_application_id(Variant application_id) {

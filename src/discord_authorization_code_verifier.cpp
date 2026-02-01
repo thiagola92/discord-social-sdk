@@ -12,7 +12,7 @@ String DiscordAuthorizationCodeVerifier::verifier() {
 }
 
 void DiscordAuthorizationCodeVerifier::set_challenge(DiscordAuthorizationCodeChallenge challenge) {
-	// TODO
+	// TODO object
 }
 
 void DiscordAuthorizationCodeVerifier::set_verifier(String verifier) {
