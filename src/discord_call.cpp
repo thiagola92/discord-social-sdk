@@ -65,11 +65,15 @@ void DiscordCall::set_local_mute(int64_t user_id, bool mute) {
 }
 
 void DiscordCall::set_on_voice_state_changed_callback(Callable cb) {
-	// TODO callable
+	auto p0 = [cb]() {
+
+	};
 }
 
 void DiscordCall::set_participant_changed_callback(Callable cb) {
-	// TODO callable
+	auto p0 = [cb]() {
+
+	};
 }
 
 void DiscordCall::set_participant_volume(int64_t user_id, float volume) {
@@ -94,11 +98,15 @@ void DiscordCall::set_self_mute(bool mute) {
 }
 
 void DiscordCall::set_speaking_status_changed_callback(Callable cb) {
-	// TODO callable
+	auto p0 = [cb]() {
+
+	};
 }
 
 void DiscordCall::set_status_changed_callback(Callable cb) {
-	// TODO callable
+	auto p0 = [cb]() {
+
+	};
 }
 
 void DiscordCall::set_vadthreshold(bool automatic, float threshold) {

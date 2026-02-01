@@ -13,6 +13,7 @@ from data import TypeInfo, FunctionInfo, ParamInfo
 from name import to_godot_class_name, to_gdscript_variable_name
 from template.code.discord_class_cpp.translate.map import get_map
 from template.code.discord_class_cpp.translate.optional import get_optional
+from template.code.discord_class_cpp.translate.callback import get_callback
 
 
 def is_discord_void(type_info: TypeInfo) -> bool:
@@ -251,7 +252,7 @@ def godot_callable_to_discord_callback(
     source: str,
     target: str,
 ) -> str:
-    return "\n// TODO callable"
+    return get_callback(target=target, source=source, params="", statements="")
 
 
 def godot_variant_to_discord_optional(
