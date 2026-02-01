@@ -85,7 +85,10 @@ def is_discord_function(info: TypeInfo | FunctionInfo) -> bool:
 ######################################################################
 
 
-def discord_type_to_godot_type(info: TypeInfo | FunctionInfo) -> str:
+def discord_type_to_godot_type(
+    info: TypeInfo | FunctionInfo,
+    pointer: bool = True,
+) -> str:
     if is_discord_function(info):
         return "Callable"
 
@@ -120,15 +123,17 @@ def discord_type_to_godot_type(info: TypeInfo | FunctionInfo) -> str:
         return "Variant"
 
     if is_discord_vector(info):
-        t = discord_type_to_godot_type(info.templates[0])
+        t = discord_type_to_godot_type(info.templates[0], False)
         return f"TypedArray<{t}>"
 
     if is_discord_map(info):
-        t = [discord_type_to_godot_type(t) for t in info.templates]
+        t = [discord_type_to_godot_type(t, False) for t in info.templates]
         t = ",".join(t)
         return f"TypedDictionary<{t}>"
 
     if is_discord_object(info):
+        if pointer:
+            return to_godot_class_name(info.name) + " *"
         return to_godot_class_name(info.name)
 
     assert False, f'Fail to identify a good type for "{info.name}"'
@@ -206,7 +211,7 @@ def godot_variable_to_discord_variable(
     source: str,
 ) -> str:
     if is_discord_function(info):
-        return "\n// TODO callable"
+        return godot_callable_to_discord_callback(info, source, target)
 
     if is_discord_bool(info):
         return f"bool {target} = {source};"
@@ -230,21 +235,27 @@ def godot_variable_to_discord_variable(
         return godot_variant_to_discord_optional(info, source, target)
 
     if is_discord_vector(info):
-        return "\n// TODO vect"
+        return godot_array_to_discord_vector(info, source, target)
 
     if is_discord_map(info):
         return godot_dictionary_to_discord_map(info, source, target)
 
     if is_discord_object(info):
-        return "\n// TODO object"
+        return f"{info.name} {target} = *{source}->unwrap();"
 
-    return "\n// TODO"
+    assert False, f"Not implemented for {info.name} (implement if needed)"
 
 
-def godot_variant_to_discord_optional(
+def godot_callable_to_discord_callback(
     type_info: TypeInfo,
     source: str,
     target: str,
+) -> str:
+    return "\n// TODO callable"
+
+
+def godot_variant_to_discord_optional(
+    type_info: TypeInfo, source: str, target: str
 ) -> str:
     for t in type_info.templates:
         v = discord_type_to_variant_type(t)
@@ -259,7 +270,6 @@ def godot_variant_to_discord_optional(
             statements=s,
         )
 
-    pprint(type_info)
     assert False, "An std::optional is missing it template"
 
 
@@ -292,6 +302,10 @@ def godot_variant_to_discord_variable(type_info: TypeInfo, source: str, target: 
     statements = "\n".join(statements)
 
     return statements
+
+
+def godot_array_to_discord_vector(type_info: TypeInfo, source: str, target: str) -> str:
+    assert False, "Not implemented (implement if needed)"
 
 
 def godot_dictionary_to_discord_map(

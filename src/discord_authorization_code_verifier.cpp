@@ -5,14 +5,14 @@ using namespace godot;
 
 // Functions.
 
-DiscordAuthorizationCodeChallenge DiscordAuthorizationCodeVerifier::challenge() {
+DiscordAuthorizationCodeChallenge *DiscordAuthorizationCodeVerifier::challenge() {
 }
 
 String DiscordAuthorizationCodeVerifier::verifier() {
 }
 
-void DiscordAuthorizationCodeVerifier::set_challenge(DiscordAuthorizationCodeChallenge challenge) {
-	// TODO object
+void DiscordAuthorizationCodeVerifier::set_challenge(DiscordAuthorizationCodeChallenge *challenge) {
+	discordpp::AuthorizationCodeChallenge p0 = *challenge->unwrap();
 }
 
 void DiscordAuthorizationCodeVerifier::set_verifier(String verifier) {

@@ -5,18 +5,18 @@ using namespace godot;
 
 // Functions.
 
-DiscordAuthorizationCodeVerifier DiscordClient::create_authorization_code_verifier() {
+DiscordAuthorizationCodeVerifier *DiscordClient::create_authorization_code_verifier() {
 }
 
-DiscordCall DiscordClient::get_call(int64_t channel_id) {
+DiscordCall *DiscordClient::get_call(int64_t channel_id) {
 	int64_t p0 = channel_id;
 }
 
-DiscordCall DiscordClient::start_call(int64_t channel_id) {
+DiscordCall *DiscordClient::start_call(int64_t channel_id) {
 	int64_t p0 = channel_id;
 }
 
-DiscordCall DiscordClient::start_call_with_audio_callbacks(int64_t lobby_id, Callable received_cb, Callable captured_cb) {
+DiscordCall *DiscordClient::start_call_with_audio_callbacks(int64_t lobby_id, Callable received_cb, Callable captured_cb) {
 	int64_t p0 = lobby_id;
 	// TODO callable
 	// TODO callable
@@ -25,11 +25,11 @@ DiscordCall DiscordClient::start_call_with_audio_callbacks(int64_t lobby_id, Cal
 DiscordClientStatus::Enum DiscordClient::get_status() {
 }
 
-DiscordRelationshipHandle DiscordClient::get_relationship_handle(int64_t user_id) {
+DiscordRelationshipHandle *DiscordClient::get_relationship_handle(int64_t user_id) {
 	int64_t p0 = user_id;
 }
 
-DiscordUserHandle DiscordClient::get_current_user() {
+DiscordUserHandle *DiscordClient::get_current_user() {
 }
 
 String DiscordClient::error_to_string(DiscordClientError::Enum type) {
@@ -151,8 +151,8 @@ void DiscordClient::abort_authorize() {
 void DiscordClient::abort_get_token_from_device() {
 }
 
-void DiscordClient::accept_activity_invite(DiscordActivityInvite invite, Callable cb) {
-	// TODO object
+void DiscordClient::accept_activity_invite(DiscordActivityInvite *invite, Callable cb) {
+	discordpp::ActivityInvite p0 = *invite->unwrap();
 	// TODO callable
 }
 
@@ -174,8 +174,8 @@ void DiscordClient::add_voice_log_callback(Callable callback, DiscordLoggingSeve
 	// TODO callablediscordpp::LoggingSeverity p1 = (discordpp::LoggingSeverity)min_severity;
 }
 
-void DiscordClient::authorize(DiscordAuthorizationArgs args, Callable callback) {
-	// TODO object
+void DiscordClient::authorize(DiscordAuthorizationArgs *args, Callable callback) {
+	discordpp::AuthorizationArgs p0 = *args->unwrap();
 	// TODO callable
 }
 
@@ -327,13 +327,15 @@ void DiscordClient::get_token(int64_t application_id, String code, String code_v
 	// TODO callable
 }
 
-void DiscordClient::get_token_from_device(DiscordDeviceAuthorizationArgs args, Callable callback) {
-	// TODO object
+void DiscordClient::get_token_from_device(DiscordDeviceAuthorizationArgs *args, Callable callback) {
+	discordpp::DeviceAuthorizationArgs p0 = *args->unwrap();
 	// TODO callable
 }
 
-void DiscordClient::get_token_from_device_provisional_merge(DiscordDeviceAuthorizationArgs args, DiscordAuthenticationExternalAuthType::Enum external_auth_type, String external_auth_token, Callable callback) {
-	// TODO objectdiscordpp::AuthenticationExternalAuthType p1 = (discordpp::AuthenticationExternalAuthType)external_auth_type;std::string p2 = std::string(external_auth_token.utf8().get_data());
+void DiscordClient::get_token_from_device_provisional_merge(DiscordDeviceAuthorizationArgs *args, DiscordAuthenticationExternalAuthType::Enum external_auth_type, String external_auth_token, Callable callback) {
+	discordpp::DeviceAuthorizationArgs p0 = *args->unwrap();
+	discordpp::AuthenticationExternalAuthType p1 = (discordpp::AuthenticationExternalAuthType)external_auth_type;
+	std::string p2 = std::string(external_auth_token.utf8().get_data());
 	// TODO callable
 }
 
@@ -451,8 +453,8 @@ void DiscordClient::send_activity_join_request(int64_t user_id, Callable cb) {
 	// TODO callable
 }
 
-void DiscordClient::send_activity_join_request_reply(DiscordActivityInvite invite, Callable cb) {
-	// TODO object
+void DiscordClient::send_activity_join_request_reply(DiscordActivityInvite *invite, Callable cb) {
+	discordpp::ActivityInvite p0 = *invite->unwrap();
 	// TODO callable
 }
 
@@ -730,8 +732,8 @@ void DiscordClient::update_provisional_account_display_name(String name, Callabl
 	// TODO callable
 }
 
-void DiscordClient::update_rich_presence(DiscordActivity activity, Callable cb) {
-	// TODO object
+void DiscordClient::update_rich_presence(DiscordActivity *activity, Callable cb) {
+	discordpp::Activity p0 = *activity->unwrap();
 	// TODO callable
 }
 

@@ -103,8 +103,8 @@ public:
 	Variant state_url();
 	Variant status_display_type();
 	Variant timestamps();
-	bool equals(DiscordActivity other);
-	void add_button(DiscordActivityButton button);
+	bool equals(DiscordActivity *other);
+	void add_button(DiscordActivityButton *button);
 	void set_application_id(Variant application_id);
 	void set_assets(Variant assets);
 	void set_details(Variant details);
@@ -409,7 +409,7 @@ public:
 	// Functions.
 	DiscordAdditionalContentType::Enum type();
 	Variant title();
-	bool equals(DiscordAdditionalContent rhs);
+	bool equals(DiscordAdditionalContent *rhs);
 	int64_t count();
 	static String type_to_string(DiscordAdditionalContentType::Enum type);
 	void set_count(int64_t count);
@@ -450,7 +450,7 @@ public:
 	// Functions.
 	String id();
 	String name();
-	bool equals(DiscordAudioDevice rhs);
+	bool equals(DiscordAudioDevice *rhs);
 	bool is_default();
 	void set_id(String id);
 	void set_is_default(bool is_default);
@@ -574,9 +574,9 @@ public:
 	// Constructors.
 
 	// Functions.
-	DiscordAuthorizationCodeChallenge challenge();
+	DiscordAuthorizationCodeChallenge *challenge();
 	String verifier();
-	void set_challenge(DiscordAuthorizationCodeChallenge challenge);
+	void set_challenge(DiscordAuthorizationCodeChallenge *challenge);
 	void set_verifier(String verifier);
 
 	// Overloading functions.
@@ -613,7 +613,7 @@ public:
 	// Functions.
 	DiscordAudioModeType::Enum get_audio_mode();
 	DiscordCallStatus::Enum get_status();
-	DiscordVADThresholdSettings get_vadthreshold();
+	DiscordVADThresholdSettings *get_vadthreshold();
 	TypedArray<int64_t> get_participants();
 	Variant get_voice_state_handle(int64_t user_id);
 	bool get_local_mute(int64_t user_id);
@@ -746,13 +746,13 @@ public:
 	}
 
 	// Functions.
-	DiscordAuthorizationCodeVerifier create_authorization_code_verifier();
-	DiscordCall get_call(int64_t channel_id);
-	DiscordCall start_call(int64_t channel_id);
-	DiscordCall start_call_with_audio_callbacks(int64_t lobby_id, Callable received_cb, Callable captured_cb);
+	DiscordAuthorizationCodeVerifier *create_authorization_code_verifier();
+	DiscordCall *get_call(int64_t channel_id);
+	DiscordCall *start_call(int64_t channel_id);
+	DiscordCall *start_call_with_audio_callbacks(int64_t lobby_id, Callable received_cb, Callable captured_cb);
 	DiscordClientStatus::Enum get_status();
-	DiscordRelationshipHandle get_relationship_handle(int64_t user_id);
-	DiscordUserHandle get_current_user();
+	DiscordRelationshipHandle *get_relationship_handle(int64_t user_id);
+	DiscordUserHandle *get_current_user();
 	TypedArray<DiscordCall> get_calls();
 	TypedArray<DiscordRelationshipHandle> get_relationships();
 	TypedArray<DiscordRelationshipHandle> get_relationships_by_group(DiscordRelationshipGroupType::Enum group_type);
@@ -787,12 +787,12 @@ public:
 	static int64_t get_version_patch();
 	void abort_authorize();
 	void abort_get_token_from_device();
-	void accept_activity_invite(DiscordActivityInvite invite, Callable cb);
+	void accept_activity_invite(DiscordActivityInvite *invite, Callable cb);
 	void accept_discord_friend_request(int64_t user_id, Callable cb);
 	void accept_game_friend_request(int64_t user_id, Callable cb);
 	void add_log_callback(Callable callback, DiscordLoggingSeverity::Enum min_severity);
 	void add_voice_log_callback(Callable callback, DiscordLoggingSeverity::Enum min_severity);
-	void authorize(DiscordAuthorizationArgs args, Callable callback);
+	void authorize(DiscordAuthorizationArgs *args, Callable callback);
 	void block_user(int64_t user_id, Callable cb);
 	void cancel_discord_friend_request(int64_t user_id, Callable cb);
 	void cancel_game_friend_request(int64_t user_id, Callable cb);
@@ -817,8 +817,8 @@ public:
 	void get_output_devices(Callable cb);
 	void get_provisional_token(int64_t application_id, DiscordAuthenticationExternalAuthType::Enum external_auth_type, String external_auth_token, Callable callback);
 	void get_token(int64_t application_id, String code, String code_verifier, String redirect_uri, Callable callback);
-	void get_token_from_device(DiscordDeviceAuthorizationArgs args, Callable callback);
-	void get_token_from_device_provisional_merge(DiscordDeviceAuthorizationArgs args, DiscordAuthenticationExternalAuthType::Enum external_auth_type, String external_auth_token, Callable callback);
+	void get_token_from_device(DiscordDeviceAuthorizationArgs *args, Callable callback);
+	void get_token_from_device_provisional_merge(DiscordDeviceAuthorizationArgs *args, DiscordAuthenticationExternalAuthType::Enum external_auth_type, String external_auth_token, Callable callback);
 	void get_token_from_provisional_merge(int64_t application_id, String code, String code_verifier, String redirect_uri, DiscordAuthenticationExternalAuthType::Enum external_auth_type, String external_auth_token, Callable callback);
 	void get_user_guilds(Callable cb);
 	void get_user_message_summaries(Callable cb);
@@ -841,7 +841,7 @@ public:
 	void revoke_token(int64_t application_id, String token, Callable callback);
 	void send_activity_invite(int64_t user_id, String content, Callable cb);
 	void send_activity_join_request(int64_t user_id, Callable cb);
-	void send_activity_join_request_reply(DiscordActivityInvite invite, Callable cb);
+	void send_activity_join_request_reply(DiscordActivityInvite *invite, Callable cb);
 	void send_discord_friend_request(String username, Callable cb);
 	void send_discord_friend_request_by_id(int64_t user_id, Callable cb);
 	void send_game_friend_request(String username, Callable cb);
@@ -897,7 +897,7 @@ public:
 	void unlink_channel_from_lobby(int64_t lobby_id, Callable callback);
 	void unmerge_into_provisional_account(int64_t application_id, DiscordAuthenticationExternalAuthType::Enum external_auth_type, String external_auth_token, Callable callback);
 	void update_provisional_account_display_name(String name, Callable callback);
-	void update_rich_presence(DiscordActivity activity, Callable cb);
+	void update_rich_presence(DiscordActivity *activity, Callable cb);
 	void update_token(DiscordAuthorizationTokenType::Enum token_type, String token, Callable callback);
 
 	// Overloading functions.
@@ -1433,7 +1433,7 @@ public:
 	// Constructors.
 
 	// Functions.
-	DiscordRelationshipHandle relationship();
+	DiscordRelationshipHandle *relationship();
 	DiscordStatusType::Enum status();
 	String avatar_url(DiscordUserHandleAvatarType::Enum animated_type, DiscordUserHandleAvatarType::Enum static_type);
 	String display_name();

@@ -15,8 +15,8 @@ String DiscordAdditionalContent::type_to_string(DiscordAdditionalContentType::En
 Variant DiscordAdditionalContent::title() {
 }
 
-bool DiscordAdditionalContent::equals(DiscordAdditionalContent rhs) {
-	// TODO object
+bool DiscordAdditionalContent::equals(DiscordAdditionalContent *rhs) {
+	discordpp::AdditionalContent p0 = *rhs->unwrap();
 }
 
 int64_t DiscordAdditionalContent::count() {

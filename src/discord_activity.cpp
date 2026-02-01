@@ -50,12 +50,12 @@ Variant DiscordActivity::status_display_type() {
 Variant DiscordActivity::timestamps() {
 }
 
-bool DiscordActivity::equals(DiscordActivity other) {
-	// TODO object
+bool DiscordActivity::equals(DiscordActivity *other) {
+	discordpp::Activity p0 = *other->unwrap();
 }
 
-void DiscordActivity::add_button(DiscordActivityButton button) {
-	// TODO object
+void DiscordActivity::add_button(DiscordActivityButton *button) {
+	discordpp::ActivityButton p0 = *button->unwrap();
 }
 
 void DiscordActivity::set_application_id(Variant application_id) {

@@ -5,7 +5,7 @@ using namespace godot;
 
 // Functions.
 
-DiscordRelationshipHandle DiscordUserHandle::relationship() {
+DiscordRelationshipHandle *DiscordUserHandle::relationship() {
 }
 
 DiscordStatusType::Enum DiscordUserHandle::status() {

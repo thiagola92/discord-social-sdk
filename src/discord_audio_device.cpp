@@ -11,8 +11,8 @@ String DiscordAudioDevice::id() {
 String DiscordAudioDevice::name() {
 }
 
-bool DiscordAudioDevice::equals(DiscordAudioDevice rhs) {
-	// TODO object
+bool DiscordAudioDevice::equals(DiscordAudioDevice *rhs) {
+	discordpp::AudioDevice p0 = *rhs->unwrap();
 }
 
 bool DiscordAudioDevice::is_default() {

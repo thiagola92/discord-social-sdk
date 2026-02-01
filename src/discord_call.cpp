@@ -11,7 +11,7 @@ DiscordAudioModeType::Enum DiscordCall::get_audio_mode() {
 DiscordCallStatus::Enum DiscordCall::get_status() {
 }
 
-DiscordVADThresholdSettings DiscordCall::get_vadthreshold() {
+DiscordVADThresholdSettings *DiscordCall::get_vadthreshold() {
 }
 
 String DiscordCall::error_to_string(DiscordCallError::Enum type) {
