@@ -5,10 +5,10 @@ using namespace godot;
 
 // Functions.
 
-DiscordActivityGamePlatforms DiscordActivity::supported_platforms() {
+DiscordActivityGamePlatforms::Enum DiscordActivity::supported_platforms() {
 }
 
-DiscordActivityTypes DiscordActivity::type() {
+DiscordActivityTypes::Enum DiscordActivity::type() {
 }
 
 String DiscordActivity::name() {
@@ -138,8 +138,8 @@ void DiscordActivity::set_status_display_type(Variant status_display_type) {
 	}
 }
 
-void DiscordActivity::set_supported_platforms(DiscordActivityGamePlatforms supported_platforms) {
-	// TODO
+void DiscordActivity::set_supported_platforms(DiscordActivityGamePlatforms::Enum supported_platforms) {
+	discordpp::ActivityGamePlatforms p0 = (discordpp::ActivityGamePlatforms)supported_platforms;
 }
 
 void DiscordActivity::set_timestamps(Variant timestamps) {
@@ -149,8 +149,8 @@ void DiscordActivity::set_timestamps(Variant timestamps) {
 	}
 }
 
-void DiscordActivity::set_type(DiscordActivityTypes type) {
-	// TODO
+void DiscordActivity::set_type(DiscordActivityTypes::Enum type) {
+	discordpp::ActivityTypes p0 = (discordpp::ActivityTypes)type;
 }
 
 // Overload functions.

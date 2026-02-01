@@ -5,10 +5,10 @@ using namespace godot;
 
 // Functions.
 
-DiscordRelationshipType DiscordRelationshipHandle::discord_relationship_type() {
+DiscordRelationshipType::Enum DiscordRelationshipHandle::discord_relationship_type() {
 }
 
-DiscordRelationshipType DiscordRelationshipHandle::game_relationship_type() {
+DiscordRelationshipType::Enum DiscordRelationshipHandle::game_relationship_type() {
 }
 
 Variant DiscordRelationshipHandle::user() {

@@ -22,7 +22,7 @@ DiscordCall DiscordClient::start_call_with_audio_callbacks(int64_t lobby_id, Cal
 	// TODO
 }
 
-DiscordClientStatus DiscordClient::get_status() {
+DiscordClientStatus::Enum DiscordClient::get_status() {
 }
 
 DiscordRelationshipHandle DiscordClient::get_relationship_handle(int64_t user_id) {
@@ -32,8 +32,8 @@ DiscordRelationshipHandle DiscordClient::get_relationship_handle(int64_t user_id
 DiscordUserHandle DiscordClient::get_current_user() {
 }
 
-String DiscordClient::error_to_string(DiscordClientError type) {
-	// TODO
+String DiscordClient::error_to_string(DiscordClientError::Enum type) {
+	discordpp::Client::Error p0 = (discordpp::Client::Error)type;
 }
 
 String DiscordClient::get_default_audio_device_id() {
@@ -48,12 +48,12 @@ String DiscordClient::get_default_presence_scopes() {
 String DiscordClient::get_version_hash() {
 }
 
-String DiscordClient::status_to_string(DiscordClientStatus type) {
-	// TODO
+String DiscordClient::status_to_string(DiscordClientStatus::Enum type) {
+	discordpp::Client::Status p0 = (discordpp::Client::Status)type;
 }
 
-String DiscordClient::thread_to_string(DiscordClientThread type) {
-	// TODO
+String DiscordClient::thread_to_string(DiscordClientThread::Enum type) {
+	discordpp::Client::Thread p0 = (discordpp::Client::Thread)type;
 }
 
 TypedArray<DiscordCall> DiscordClient::get_calls() {
@@ -62,8 +62,8 @@ TypedArray<DiscordCall> DiscordClient::get_calls() {
 TypedArray<DiscordRelationshipHandle> DiscordClient::get_relationships() {
 }
 
-TypedArray<DiscordRelationshipHandle> DiscordClient::get_relationships_by_group(DiscordRelationshipGroupType group_type) {
-	// TODO
+TypedArray<DiscordRelationshipHandle> DiscordClient::get_relationships_by_group(DiscordRelationshipGroupType::Enum group_type) {
+	discordpp::RelationshipGroupType p0 = (discordpp::RelationshipGroupType)group_type;
 }
 
 TypedArray<DiscordUserHandle> DiscordClient::search_friends_by_username(String search_str) {
@@ -115,9 +115,9 @@ bool DiscordClient::register_launch_steam_application(int64_t application_id, in
 	int64_t p1 = steam_app_id;
 }
 
-bool DiscordClient::set_log_dir(String path, DiscordLoggingSeverity min_severity) {
+bool DiscordClient::set_log_dir(String path, DiscordLoggingSeverity::Enum min_severity) {
 	std::string p0 = std::string(path.utf8().get_data());
-	// TODO
+	discordpp::LoggingSeverity p1 = (discordpp::LoggingSeverity)min_severity;
 }
 
 bool DiscordClient::set_speaker_mode(bool speaker_mode) {
@@ -166,14 +166,12 @@ void DiscordClient::accept_game_friend_request(int64_t user_id, Callable cb) {
 	// TODO
 }
 
-void DiscordClient::add_log_callback(Callable callback, DiscordLoggingSeverity min_severity) {
-	// TODO
-	// TODO
+void DiscordClient::add_log_callback(Callable callback, DiscordLoggingSeverity::Enum min_severity) {
+	// TODOdiscordpp::LoggingSeverity p1 = (discordpp::LoggingSeverity)min_severity;
 }
 
-void DiscordClient::add_voice_log_callback(Callable callback, DiscordLoggingSeverity min_severity) {
-	// TODO
-	// TODO
+void DiscordClient::add_voice_log_callback(Callable callback, DiscordLoggingSeverity::Enum min_severity) {
+	// TODOdiscordpp::LoggingSeverity p1 = (discordpp::LoggingSeverity)min_severity;
 }
 
 void DiscordClient::authorize(DiscordAuthorizationArgs args, Callable callback) {
@@ -248,8 +246,9 @@ void DiscordClient::exchange_child_token(String parent_application_token, int64_
 	// TODO
 }
 
-void DiscordClient::fetch_current_user(DiscordAuthorizationTokenType token_type, String token, Callable callback) {
-	// TODOstd::string p1 = std::string(token.utf8().get_data());
+void DiscordClient::fetch_current_user(DiscordAuthorizationTokenType::Enum token_type, String token, Callable callback) {
+	discordpp::AuthorizationTokenType p0 = (discordpp::AuthorizationTokenType)token_type;
+	std::string p1 = std::string(token.utf8().get_data());
 	// TODO
 }
 
@@ -285,9 +284,10 @@ void DiscordClient::get_output_devices(Callable cb) {
 	// TODO
 }
 
-void DiscordClient::get_provisional_token(int64_t application_id, DiscordAuthenticationExternalAuthType external_auth_type, String external_auth_token, Callable callback) {
+void DiscordClient::get_provisional_token(int64_t application_id, DiscordAuthenticationExternalAuthType::Enum external_auth_type, String external_auth_token, Callable callback) {
 	int64_t p0 = application_id;
-	// TODOstd::string p2 = std::string(external_auth_token.utf8().get_data());
+	discordpp::AuthenticationExternalAuthType p1 = (discordpp::AuthenticationExternalAuthType)external_auth_type;
+	std::string p2 = std::string(external_auth_token.utf8().get_data());
 	// TODO
 }
 
@@ -304,18 +304,18 @@ void DiscordClient::get_token_from_device(DiscordDeviceAuthorizationArgs args, C
 	// TODO
 }
 
-void DiscordClient::get_token_from_device_provisional_merge(DiscordDeviceAuthorizationArgs args, DiscordAuthenticationExternalAuthType external_auth_type, String external_auth_token, Callable callback) {
-	// TODO
-	// TODOstd::string p2 = std::string(external_auth_token.utf8().get_data());
+void DiscordClient::get_token_from_device_provisional_merge(DiscordDeviceAuthorizationArgs args, DiscordAuthenticationExternalAuthType::Enum external_auth_type, String external_auth_token, Callable callback) {
+	// TODOdiscordpp::AuthenticationExternalAuthType p1 = (discordpp::AuthenticationExternalAuthType)external_auth_type;std::string p2 = std::string(external_auth_token.utf8().get_data());
 	// TODO
 }
 
-void DiscordClient::get_token_from_provisional_merge(int64_t application_id, String code, String code_verifier, String redirect_uri, DiscordAuthenticationExternalAuthType external_auth_type, String external_auth_token, Callable callback) {
+void DiscordClient::get_token_from_provisional_merge(int64_t application_id, String code, String code_verifier, String redirect_uri, DiscordAuthenticationExternalAuthType::Enum external_auth_type, String external_auth_token, Callable callback) {
 	int64_t p0 = application_id;
 	std::string p1 = std::string(code.utf8().get_data());
 	std::string p2 = std::string(code_verifier.utf8().get_data());
 	std::string p3 = std::string(redirect_uri.utf8().get_data());
-	// TODOstd::string p5 = std::string(external_auth_token.utf8().get_data());
+	discordpp::AuthenticationExternalAuthType p4 = (discordpp::AuthenticationExternalAuthType)external_auth_type;
+	std::string p5 = std::string(external_auth_token.utf8().get_data());
 	// TODO
 }
 
@@ -583,8 +583,8 @@ void DiscordClient::set_noise_suppression(bool on) {
 	bool p0 = on;
 }
 
-void DiscordClient::set_online_status(DiscordStatusType status, Callable callback) {
-	// TODO
+void DiscordClient::set_online_status(DiscordStatusType::Enum status, Callable callback) {
+	discordpp::StatusType p0 = (discordpp::StatusType)status;
 	// TODO
 }
 
@@ -630,8 +630,9 @@ void DiscordClient::set_status_changed_callback(Callable cb) {
 	// TODO
 }
 
-void DiscordClient::set_thread_priority(DiscordClientThread thread, int64_t priority) {
-	// TODOint64_t p1 = priority;
+void DiscordClient::set_thread_priority(DiscordClientThread::Enum thread, int64_t priority) {
+	discordpp::Client::Thread p0 = (discordpp::Client::Thread)thread;
+	int64_t p1 = priority;
 }
 
 void DiscordClient::set_token_expiration_callback(Callable callback) {
@@ -642,9 +643,9 @@ void DiscordClient::set_user_updated_callback(Callable cb) {
 	// TODO
 }
 
-void DiscordClient::set_voice_log_dir(String path, DiscordLoggingSeverity min_severity) {
+void DiscordClient::set_voice_log_dir(String path, DiscordLoggingSeverity::Enum min_severity) {
 	std::string p0 = std::string(path.utf8().get_data());
-	// TODO
+	discordpp::LoggingSeverity p1 = (discordpp::LoggingSeverity)min_severity;
 }
 
 void DiscordClient::set_voice_participant_changed_callback(Callable cb) {
@@ -661,9 +662,10 @@ void DiscordClient::unlink_channel_from_lobby(int64_t lobby_id, Callable callbac
 	// TODO
 }
 
-void DiscordClient::unmerge_into_provisional_account(int64_t application_id, DiscordAuthenticationExternalAuthType external_auth_type, String external_auth_token, Callable callback) {
+void DiscordClient::unmerge_into_provisional_account(int64_t application_id, DiscordAuthenticationExternalAuthType::Enum external_auth_type, String external_auth_token, Callable callback) {
 	int64_t p0 = application_id;
-	// TODOstd::string p2 = std::string(external_auth_token.utf8().get_data());
+	discordpp::AuthenticationExternalAuthType p1 = (discordpp::AuthenticationExternalAuthType)external_auth_type;
+	std::string p2 = std::string(external_auth_token.utf8().get_data());
 	// TODO
 }
 
@@ -677,8 +679,9 @@ void DiscordClient::update_rich_presence(DiscordActivity activity, Callable cb) 
 	// TODO
 }
 
-void DiscordClient::update_token(DiscordAuthorizationTokenType token_type, String token, Callable callback) {
-	// TODOstd::string p1 = std::string(token.utf8().get_data());
+void DiscordClient::update_token(DiscordAuthorizationTokenType::Enum token_type, String token, Callable callback) {
+	discordpp::AuthorizationTokenType p0 = (discordpp::AuthorizationTokenType)token_type;
+	std::string p1 = std::string(token.utf8().get_data());
 	// TODO
 }
 

@@ -5,7 +5,7 @@ using namespace godot;
 
 // Functions.
 
-DiscordActivityPartyPrivacy DiscordActivityParty::privacy() {
+DiscordActivityPartyPrivacy::Enum DiscordActivityParty::privacy() {
 }
 
 String DiscordActivityParty::id() {
@@ -29,8 +29,8 @@ void DiscordActivityParty::set_max_size(int64_t max_size) {
 	int64_t p0 = max_size;
 }
 
-void DiscordActivityParty::set_privacy(DiscordActivityPartyPrivacy privacy) {
-	// TODO
+void DiscordActivityParty::set_privacy(DiscordActivityPartyPrivacy::Enum privacy) {
+	discordpp::ActivityPartyPrivacy p0 = (discordpp::ActivityPartyPrivacy)privacy;
 }
 
 // Overload functions.

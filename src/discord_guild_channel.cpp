@@ -5,7 +5,7 @@ using namespace godot;
 
 // Functions.
 
-DiscordChannelType DiscordGuildChannel::type() {
+DiscordChannelType::Enum DiscordGuildChannel::type() {
 }
 
 String DiscordGuildChannel::name() {
@@ -64,8 +64,8 @@ void DiscordGuildChannel::set_position(int64_t position) {
 	int64_t p0 = position;
 }
 
-void DiscordGuildChannel::set_type(DiscordChannelType type) {
-	// TODO
+void DiscordGuildChannel::set_type(DiscordChannelType::Enum type) {
+	discordpp::ChannelType p0 = (discordpp::ChannelType)type;
 }
 
 // Overload functions.

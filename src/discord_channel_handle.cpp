@@ -5,7 +5,7 @@ using namespace godot;
 
 // Functions.
 
-DiscordChannelType DiscordChannelHandle::type() {
+DiscordChannelType::Enum DiscordChannelHandle::type() {
 }
 
 String DiscordChannelHandle::name() {

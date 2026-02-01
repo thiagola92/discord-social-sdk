@@ -27,11 +27,12 @@ def check_callbacks(class_info: ClassInfo) -> None:
 
 def check_enums(namespace_info: NamespaceInfo) -> None:
     """
-    Check every parameter that is an enum.
+    Check every type that is an enum.
 
     This contains only the logic for discovery,
     not for solving any complications from enums.
     """
+
     enums_name = [to_godot_class_name(e.name) for e in namespace_info.enums]
 
     for c in namespace_info.classes:
@@ -39,13 +40,31 @@ def check_enums(namespace_info: NamespaceInfo) -> None:
             enums_name.append(to_godot_class_name(c.name + e.name))
 
     for f in namespace_info.functions:
-        for p in f.params:
-            if not isinstance(p.type, TypeInfo):
-                continue
+        check_function_enums(f, enums_name)
 
-            if to_godot_class_name(p.type.name) in enums_name:
-                p.enum = True
-                p.type.enum = True
+    for c in namespace_info.classes:
+        for f in c.functions:
+            check_function_enums(f, enums_name)
+
+
+def check_function_enums(function: FunctionInfo, enums_name: list[str]) -> None:
+    """
+    Check function return type and parameters that are enums.
+
+    This contains only the logic for discovery,
+    not for solving any complications from enums.
+    """
+
+    if to_godot_class_name(function.type.name) in enums_name:
+        function.type.enum = True
+
+    for p in function.params:
+        if not isinstance(p.type, TypeInfo):
+            continue
+
+        if to_godot_class_name(p.type.name) in enums_name:
+            p.enum = True
+            p.type.enum = True
 
 
 def check_overloading(functions: list[FunctionInfo]) -> None:

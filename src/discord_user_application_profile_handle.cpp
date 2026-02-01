@@ -5,7 +5,7 @@ using namespace godot;
 
 // Functions.
 
-DiscordExternalIdentityProviderType DiscordUserApplicationProfileHandle::provider_type() {
+DiscordExternalIdentityProviderType::Enum DiscordUserApplicationProfileHandle::provider_type() {
 }
 
 String DiscordUserApplicationProfileHandle::avatar_hash() {

@@ -5,7 +5,7 @@ using namespace godot;
 
 // Functions.
 
-DiscordAudioSystem DiscordClientCreateOptions::experimental_audio_system() {
+DiscordAudioSystem::Enum DiscordClientCreateOptions::experimental_audio_system() {
 }
 
 String DiscordClientCreateOptions::api_base() {
@@ -36,8 +36,8 @@ void DiscordClientCreateOptions::set_experimental_android_prevent_comms_for_blue
 	bool p0 = experimental_android_prevent_comms_for_bluetooth;
 }
 
-void DiscordClientCreateOptions::set_experimental_audio_system(DiscordAudioSystem experimental_audio_system) {
-	// TODO
+void DiscordClientCreateOptions::set_experimental_audio_system(DiscordAudioSystem::Enum experimental_audio_system) {
+	discordpp::AudioSystem p0 = (discordpp::AudioSystem)experimental_audio_system;
 }
 
 void DiscordClientCreateOptions::set_web_base(String web_base) {

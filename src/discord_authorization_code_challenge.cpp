@@ -5,7 +5,7 @@ using namespace godot;
 
 // Functions.
 
-DiscordAuthenticationCodeChallengeMethod DiscordAuthorizationCodeChallenge::method() {
+DiscordAuthenticationCodeChallengeMethod::Enum DiscordAuthorizationCodeChallenge::method() {
 }
 
 String DiscordAuthorizationCodeChallenge::challenge() {
@@ -15,8 +15,8 @@ void DiscordAuthorizationCodeChallenge::set_challenge(String challenge) {
 	std::string p0 = std::string(challenge.utf8().get_data());
 }
 
-void DiscordAuthorizationCodeChallenge::set_method(DiscordAuthenticationCodeChallengeMethod method) {
-	// TODO
+void DiscordAuthorizationCodeChallenge::set_method(DiscordAuthenticationCodeChallengeMethod::Enum method) {
+	discordpp::AuthenticationCodeChallengeMethod p0 = (discordpp::AuthenticationCodeChallengeMethod)method;
 }
 
 // Overload functions.

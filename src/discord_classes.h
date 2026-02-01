@@ -88,8 +88,8 @@ public:
 	}
 
 	// Functions.
-	DiscordActivityGamePlatforms supported_platforms();
-	DiscordActivityTypes type();
+	DiscordActivityGamePlatforms::Enum supported_platforms();
+	DiscordActivityTypes::Enum type();
 	String name();
 	TypedArray<DiscordActivityButton> get_buttons();
 	Variant application_id();
@@ -116,9 +116,9 @@ public:
 	void set_state(Variant state);
 	void set_state_url(Variant state_url);
 	void set_status_display_type(Variant status_display_type);
-	void set_supported_platforms(DiscordActivityGamePlatforms supported_platforms);
+	void set_supported_platforms(DiscordActivityGamePlatforms::Enum supported_platforms);
 	void set_timestamps(Variant timestamps);
-	void set_type(DiscordActivityTypes type);
+	void set_type(DiscordActivityTypes::Enum type);
 
 	// Overloading functions.
 
@@ -239,7 +239,7 @@ public:
 	}
 
 	// Functions.
-	DiscordActivityActionTypes type();
+	DiscordActivityActionTypes::Enum type();
 	String party_id();
 	String session_id();
 	bool is_valid();
@@ -256,7 +256,7 @@ public:
 	void set_party_id(String party_id);
 	void set_sender_id(int64_t sender_id);
 	void set_session_id(String session_id);
-	void set_type(DiscordActivityActionTypes type);
+	void set_type(DiscordActivityActionTypes::Enum type);
 
 	// Overloading functions.
 
@@ -291,14 +291,14 @@ public:
 	}
 
 	// Functions.
-	DiscordActivityPartyPrivacy privacy();
+	DiscordActivityPartyPrivacy::Enum privacy();
 	String id();
 	int64_t current_size();
 	int64_t max_size();
 	void set_current_size(int64_t current_size);
 	void set_id(String id);
 	void set_max_size(int64_t max_size);
-	void set_privacy(DiscordActivityPartyPrivacy privacy);
+	void set_privacy(DiscordActivityPartyPrivacy::Enum privacy);
 
 	// Overloading functions.
 
@@ -407,14 +407,14 @@ public:
 	}
 
 	// Functions.
-	DiscordAdditionalContentType type();
+	DiscordAdditionalContentType::Enum type();
 	Variant title();
 	bool equals(DiscordAdditionalContent rhs);
 	int64_t count();
-	static String type_to_string(DiscordAdditionalContentType type);
+	static String type_to_string(DiscordAdditionalContentType::Enum type);
 	void set_count(int64_t count);
 	void set_title(Variant title);
-	void set_type(DiscordAdditionalContentType type);
+	void set_type(DiscordAdditionalContentType::Enum type);
 
 	// Overloading functions.
 
@@ -537,10 +537,10 @@ public:
 	}
 
 	// Functions.
-	DiscordAuthenticationCodeChallengeMethod method();
+	DiscordAuthenticationCodeChallengeMethod::Enum method();
 	String challenge();
 	void set_challenge(String challenge);
-	void set_method(DiscordAuthenticationCodeChallengeMethod method);
+	void set_method(DiscordAuthenticationCodeChallengeMethod::Enum method);
 
 	// Overloading functions.
 
@@ -611,8 +611,8 @@ public:
 	// Constructors.
 
 	// Functions.
-	DiscordAudioModeType get_audio_mode();
-	DiscordCallStatus get_status();
+	DiscordAudioModeType::Enum get_audio_mode();
+	DiscordCallStatus::Enum get_status();
 	DiscordVADThresholdSettings get_vadthreshold();
 	TypedArray<int64_t> get_participants();
 	Variant get_voice_state_handle(int64_t user_id);
@@ -624,9 +624,9 @@ public:
 	int64_t get_channel_id();
 	int64_t get_guild_id();
 	int64_t get_pttrelease_delay();
-	static String error_to_string(DiscordCallError type);
-	static String status_to_string(DiscordCallStatus type);
-	void set_audio_mode(DiscordAudioModeType audio_mode);
+	static String error_to_string(DiscordCallError::Enum type);
+	static String status_to_string(DiscordCallStatus::Enum type);
+	void set_audio_mode(DiscordAudioModeType::Enum audio_mode);
 	void set_local_mute(int64_t user_id, bool mute);
 	void set_on_voice_state_changed_callback(Callable cb);
 	void set_participant_changed_callback(Callable cb);
@@ -708,7 +708,7 @@ public:
 	// Constructors.
 
 	// Functions.
-	DiscordChannelType type();
+	DiscordChannelType::Enum type();
 	String name();
 	TypedArray<int64_t> recipients();
 	int64_t id();
@@ -750,12 +750,12 @@ public:
 	DiscordCall get_call(int64_t channel_id);
 	DiscordCall start_call(int64_t channel_id);
 	DiscordCall start_call_with_audio_callbacks(int64_t lobby_id, Callable received_cb, Callable captured_cb);
-	DiscordClientStatus get_status();
+	DiscordClientStatus::Enum get_status();
 	DiscordRelationshipHandle get_relationship_handle(int64_t user_id);
 	DiscordUserHandle get_current_user();
 	TypedArray<DiscordCall> get_calls();
 	TypedArray<DiscordRelationshipHandle> get_relationships();
-	TypedArray<DiscordRelationshipHandle> get_relationships_by_group(DiscordRelationshipGroupType group_type);
+	TypedArray<DiscordRelationshipHandle> get_relationships_by_group(DiscordRelationshipGroupType::Enum group_type);
 	TypedArray<DiscordUserHandle> search_friends_by_username(String search_str);
 	TypedArray<int64_t> get_lobby_ids();
 	Variant get_channel_handle(int64_t channel_id);
@@ -769,19 +769,19 @@ public:
 	bool is_authenticated();
 	bool register_launch_command(int64_t application_id, String command);
 	bool register_launch_steam_application(int64_t application_id, int64_t steam_app_id);
-	bool set_log_dir(String path, DiscordLoggingSeverity min_severity);
+	bool set_log_dir(String path, DiscordLoggingSeverity::Enum min_severity);
 	bool set_speaker_mode(bool speaker_mode);
 	bool show_audio_route_picker();
 	float get_input_volume();
 	float get_output_volume();
 	int64_t get_application_id();
-	static String error_to_string(DiscordClientError type);
+	static String error_to_string(DiscordClientError::Enum type);
 	static String get_default_audio_device_id();
 	static String get_default_communication_scopes();
 	static String get_default_presence_scopes();
 	static String get_version_hash();
-	static String status_to_string(DiscordClientStatus type);
-	static String thread_to_string(DiscordClientThread type);
+	static String status_to_string(DiscordClientStatus::Enum type);
+	static String thread_to_string(DiscordClientThread::Enum type);
 	static int64_t get_version_major();
 	static int64_t get_version_minor();
 	static int64_t get_version_patch();
@@ -790,8 +790,8 @@ public:
 	void accept_activity_invite(DiscordActivityInvite invite, Callable cb);
 	void accept_discord_friend_request(int64_t user_id, Callable cb);
 	void accept_game_friend_request(int64_t user_id, Callable cb);
-	void add_log_callback(Callable callback, DiscordLoggingSeverity min_severity);
-	void add_voice_log_callback(Callable callback, DiscordLoggingSeverity min_severity);
+	void add_log_callback(Callable callback, DiscordLoggingSeverity::Enum min_severity);
+	void add_voice_log_callback(Callable callback, DiscordLoggingSeverity::Enum min_severity);
 	void authorize(DiscordAuthorizationArgs args, Callable callback);
 	void block_user(int64_t user_id, Callable cb);
 	void cancel_discord_friend_request(int64_t user_id, Callable cb);
@@ -807,7 +807,7 @@ public:
 	void end_call(int64_t channel_id, Callable callback);
 	void end_calls(Callable callback);
 	void exchange_child_token(String parent_application_token, int64_t child_application_id, Callable callback);
-	void fetch_current_user(DiscordAuthorizationTokenType token_type, String token, Callable callback);
+	void fetch_current_user(DiscordAuthorizationTokenType::Enum token_type, String token, Callable callback);
 	void get_current_input_device(Callable cb);
 	void get_current_output_device(Callable cb);
 	void get_discord_client_connected_user(int64_t application_id, Callable callback);
@@ -815,11 +815,11 @@ public:
 	void get_input_devices(Callable cb);
 	void get_lobby_messages_with_limit(int64_t lobby_id, int64_t limit, Callable cb);
 	void get_output_devices(Callable cb);
-	void get_provisional_token(int64_t application_id, DiscordAuthenticationExternalAuthType external_auth_type, String external_auth_token, Callable callback);
+	void get_provisional_token(int64_t application_id, DiscordAuthenticationExternalAuthType::Enum external_auth_type, String external_auth_token, Callable callback);
 	void get_token(int64_t application_id, String code, String code_verifier, String redirect_uri, Callable callback);
 	void get_token_from_device(DiscordDeviceAuthorizationArgs args, Callable callback);
-	void get_token_from_device_provisional_merge(DiscordDeviceAuthorizationArgs args, DiscordAuthenticationExternalAuthType external_auth_type, String external_auth_token, Callable callback);
-	void get_token_from_provisional_merge(int64_t application_id, String code, String code_verifier, String redirect_uri, DiscordAuthenticationExternalAuthType external_auth_type, String external_auth_token, Callable callback);
+	void get_token_from_device_provisional_merge(DiscordDeviceAuthorizationArgs args, DiscordAuthenticationExternalAuthType::Enum external_auth_type, String external_auth_token, Callable callback);
+	void get_token_from_provisional_merge(int64_t application_id, String code, String code_verifier, String redirect_uri, DiscordAuthenticationExternalAuthType::Enum external_auth_type, String external_auth_token, Callable callback);
 	void get_user_guilds(Callable cb);
 	void get_user_message_summaries(Callable cb);
 	void get_user_messages_with_limit(int64_t recipient_id, int64_t limit, Callable cb);
@@ -877,7 +877,7 @@ public:
 	void set_no_audio_input_callback(Callable callback);
 	void set_no_audio_input_threshold(float d_bfsthreshold);
 	void set_noise_suppression(bool on);
-	void set_online_status(DiscordStatusType status, Callable callback);
+	void set_online_status(DiscordStatusType::Enum status, Callable callback);
 	void set_opus_hardware_coding(bool encode, bool decode);
 	void set_output_device(String device_id, Callable cb);
 	void set_output_volume(float output_volume);
@@ -888,17 +888,17 @@ public:
 	void set_self_mute_all(bool mute);
 	void set_showing_chat(bool showing_chat);
 	void set_status_changed_callback(Callable cb);
-	void set_thread_priority(DiscordClientThread thread, int64_t priority);
+	void set_thread_priority(DiscordClientThread::Enum thread, int64_t priority);
 	void set_token_expiration_callback(Callable callback);
 	void set_user_updated_callback(Callable cb);
-	void set_voice_log_dir(String path, DiscordLoggingSeverity min_severity);
+	void set_voice_log_dir(String path, DiscordLoggingSeverity::Enum min_severity);
 	void set_voice_participant_changed_callback(Callable cb);
 	void unblock_user(int64_t user_id, Callable cb);
 	void unlink_channel_from_lobby(int64_t lobby_id, Callable callback);
-	void unmerge_into_provisional_account(int64_t application_id, DiscordAuthenticationExternalAuthType external_auth_type, String external_auth_token, Callable callback);
+	void unmerge_into_provisional_account(int64_t application_id, DiscordAuthenticationExternalAuthType::Enum external_auth_type, String external_auth_token, Callable callback);
 	void update_provisional_account_display_name(String name, Callable callback);
 	void update_rich_presence(DiscordActivity activity, Callable cb);
-	void update_token(DiscordAuthorizationTokenType token_type, String token, Callable callback);
+	void update_token(DiscordAuthorizationTokenType::Enum token_type, String token, Callable callback);
 
 	// Overloading functions.
 
@@ -933,7 +933,7 @@ public:
 	}
 
 	// Functions.
-	DiscordAudioSystem experimental_audio_system();
+	DiscordAudioSystem::Enum experimental_audio_system();
 	String api_base();
 	String web_base();
 	Variant cpu_affinity_mask();
@@ -941,7 +941,7 @@ public:
 	void set_api_base(String api_base);
 	void set_cpu_affinity_mask(Variant cpu_affinity_mask);
 	void set_experimental_android_prevent_comms_for_bluetooth(bool experimental_android_prevent_comms_for_bluetooth);
-	void set_experimental_audio_system(DiscordAudioSystem experimental_audio_system);
+	void set_experimental_audio_system(DiscordAudioSystem::Enum experimental_audio_system);
 	void set_web_base(String web_base);
 
 	// Overloading functions.
@@ -976,8 +976,8 @@ public:
 	// Constructors.
 
 	// Functions.
-	DiscordErrorType type();
-	DiscordHttpStatusCode status();
+	DiscordErrorType::Enum type();
+	DiscordHttpStatusCode::Enum status();
 	String error();
 	String response_body();
 	String to_string_discord();
@@ -990,9 +990,9 @@ public:
 	void set_response_body(String response_body);
 	void set_retry_after(float retry_after);
 	void set_retryable(bool retryable);
-	void set_status(DiscordHttpStatusCode status);
+	void set_status(DiscordHttpStatusCode::Enum status);
 	void set_successful(bool successful);
-	void set_type(DiscordErrorType type);
+	void set_type(DiscordErrorType::Enum type);
 
 	// Overloading functions.
 
@@ -1064,7 +1064,7 @@ public:
 	// Constructors.
 
 	// Functions.
-	DiscordChannelType type();
+	DiscordChannelType::Enum type();
 	String name();
 	Variant linked_lobby();
 	Variant parent_id();
@@ -1079,7 +1079,7 @@ public:
 	void set_name(String name);
 	void set_parent_id(Variant parent_id);
 	void set_position(int64_t position);
-	void set_type(DiscordChannelType type);
+	void set_type(DiscordChannelType::Enum type);
 
 	// Overloading functions.
 
@@ -1356,8 +1356,8 @@ public:
 	// Constructors.
 
 	// Functions.
-	DiscordRelationshipType discord_relationship_type();
-	DiscordRelationshipType game_relationship_type();
+	DiscordRelationshipType::Enum discord_relationship_type();
+	DiscordRelationshipType::Enum game_relationship_type();
 	Variant user();
 	bool is_spam_request();
 	int64_t id();
@@ -1394,7 +1394,7 @@ public:
 	// Constructors.
 
 	// Functions.
-	DiscordExternalIdentityProviderType provider_type();
+	DiscordExternalIdentityProviderType::Enum provider_type();
 	String avatar_hash();
 	String metadata();
 	String provider_issued_user_id();
@@ -1434,8 +1434,8 @@ public:
 
 	// Functions.
 	DiscordRelationshipHandle relationship();
-	DiscordStatusType status();
-	String avatar_url(DiscordUserHandleAvatarType animated_type, DiscordUserHandleAvatarType static_type);
+	DiscordStatusType::Enum status();
+	String avatar_url(DiscordUserHandleAvatarType::Enum animated_type, DiscordUserHandleAvatarType::Enum static_type);
 	String display_name();
 	String username();
 	TypedArray<DiscordUserApplicationProfileHandle> user_application_profiles();
@@ -1444,7 +1444,7 @@ public:
 	Variant global_name();
 	bool is_provisional();
 	int64_t id();
-	static String avatar_type_to_string(DiscordUserHandleAvatarType type);
+	static String avatar_type_to_string(DiscordUserHandleAvatarType::Enum type);
 
 	// Overloading functions.
 

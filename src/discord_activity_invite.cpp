@@ -5,7 +5,7 @@ using namespace godot;
 
 // Functions.
 
-DiscordActivityActionTypes DiscordActivityInvite::type() {
+DiscordActivityActionTypes::Enum DiscordActivityInvite::type() {
 }
 
 String DiscordActivityInvite::party_id() {
@@ -64,8 +64,8 @@ void DiscordActivityInvite::set_session_id(String session_id) {
 	std::string p0 = std::string(session_id.utf8().get_data());
 }
 
-void DiscordActivityInvite::set_type(DiscordActivityActionTypes type) {
-	// TODO
+void DiscordActivityInvite::set_type(DiscordActivityActionTypes::Enum type) {
+	discordpp::ActivityActionTypes p0 = (discordpp::ActivityActionTypes)type;
 }
 
 // Overload functions.

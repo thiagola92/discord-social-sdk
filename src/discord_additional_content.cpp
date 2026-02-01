@@ -5,11 +5,11 @@ using namespace godot;
 
 // Functions.
 
-DiscordAdditionalContentType DiscordAdditionalContent::type() {
+DiscordAdditionalContentType::Enum DiscordAdditionalContent::type() {
 }
 
-String DiscordAdditionalContent::type_to_string(DiscordAdditionalContentType type) {
-	// TODO
+String DiscordAdditionalContent::type_to_string(DiscordAdditionalContentType::Enum type) {
+	discordpp::AdditionalContentType p0 = (discordpp::AdditionalContentType)type;
 }
 
 Variant DiscordAdditionalContent::title() {
@@ -34,8 +34,8 @@ void DiscordAdditionalContent::set_title(Variant title) {
 	}
 }
 
-void DiscordAdditionalContent::set_type(DiscordAdditionalContentType type) {
-	// TODO
+void DiscordAdditionalContent::set_type(DiscordAdditionalContentType::Enum type) {
+	discordpp::AdditionalContentType p0 = (discordpp::AdditionalContentType)type;
 }
 
 // Overload functions.

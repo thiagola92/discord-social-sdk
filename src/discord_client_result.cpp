@@ -5,10 +5,10 @@ using namespace godot;
 
 // Functions.
 
-DiscordErrorType DiscordClientResult::type() {
+DiscordErrorType::Enum DiscordClientResult::type() {
 }
 
-DiscordHttpStatusCode DiscordClientResult::status() {
+DiscordHttpStatusCode::Enum DiscordClientResult::status() {
 }
 
 String DiscordClientResult::error() {
@@ -52,16 +52,16 @@ void DiscordClientResult::set_retryable(bool retryable) {
 	bool p0 = retryable;
 }
 
-void DiscordClientResult::set_status(DiscordHttpStatusCode status) {
-	// TODO
+void DiscordClientResult::set_status(DiscordHttpStatusCode::Enum status) {
+	discordpp::HttpStatusCode p0 = (discordpp::HttpStatusCode)status;
 }
 
 void DiscordClientResult::set_successful(bool successful) {
 	bool p0 = successful;
 }
 
-void DiscordClientResult::set_type(DiscordErrorType type) {
-	// TODO
+void DiscordClientResult::set_type(DiscordErrorType::Enum type) {
+	discordpp::ErrorType p0 = (discordpp::ErrorType)type;
 }
 
 // Overload functions.

@@ -5,21 +5,21 @@ using namespace godot;
 
 // Functions.
 
-DiscordAudioModeType DiscordCall::get_audio_mode() {
+DiscordAudioModeType::Enum DiscordCall::get_audio_mode() {
 }
 
-DiscordCallStatus DiscordCall::get_status() {
+DiscordCallStatus::Enum DiscordCall::get_status() {
 }
 
 DiscordVADThresholdSettings DiscordCall::get_vadthreshold() {
 }
 
-String DiscordCall::error_to_string(DiscordCallError type) {
-	// TODO
+String DiscordCall::error_to_string(DiscordCallError::Enum type) {
+	discordpp::Call::Error p0 = (discordpp::Call::Error)type;
 }
 
-String DiscordCall::status_to_string(DiscordCallStatus type) {
-	// TODO
+String DiscordCall::status_to_string(DiscordCallStatus::Enum type) {
+	discordpp::Call::Status p0 = (discordpp::Call::Status)type;
 }
 
 TypedArray<int64_t> DiscordCall::get_participants() {
@@ -55,8 +55,8 @@ int64_t DiscordCall::get_guild_id() {
 int64_t DiscordCall::get_pttrelease_delay() {
 }
 
-void DiscordCall::set_audio_mode(DiscordAudioModeType audio_mode) {
-	// TODO
+void DiscordCall::set_audio_mode(DiscordAudioModeType::Enum audio_mode) {
+	discordpp::AudioModeType p0 = (discordpp::AudioModeType)audio_mode;
 }
 
 void DiscordCall::set_local_mute(int64_t user_id, bool mute) {

@@ -8,16 +8,16 @@ using namespace godot;
 DiscordRelationshipHandle DiscordUserHandle::relationship() {
 }
 
-DiscordStatusType DiscordUserHandle::status() {
+DiscordStatusType::Enum DiscordUserHandle::status() {
 }
 
-String DiscordUserHandle::avatar_type_to_string(DiscordUserHandleAvatarType type) {
-	// TODO
+String DiscordUserHandle::avatar_type_to_string(DiscordUserHandleAvatarType::Enum type) {
+	discordpp::UserHandle::AvatarType p0 = (discordpp::UserHandle::AvatarType)type;
 }
 
-String DiscordUserHandle::avatar_url(DiscordUserHandleAvatarType animated_type, DiscordUserHandleAvatarType static_type) {
-	// TODO
-	// TODO
+String DiscordUserHandle::avatar_url(DiscordUserHandleAvatarType::Enum animated_type, DiscordUserHandleAvatarType::Enum static_type) {
+	discordpp::UserHandle::AvatarType p0 = (discordpp::UserHandle::AvatarType)animated_type;
+	discordpp::UserHandle::AvatarType p1 = (discordpp::UserHandle::AvatarType)static_type;
 }
 
 String DiscordUserHandle::display_name() {

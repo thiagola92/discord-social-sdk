@@ -113,7 +113,7 @@ def discord_type_to_godot_type(info: TypeInfo | FunctionInfo) -> str:
         if info.overloading:
             return "int"
 
-        return discord_type_to_godot_type(info) + "::Enum"
+        return to_godot_class_name(info.name) + "::Enum"
 
     if is_discord_optional(info):
         return "Variant"
@@ -204,8 +204,8 @@ def godot_variable_to_discord_variable(
     target: str,
     source: str,
 ) -> str:
-    if isinstance(info, FunctionInfo):
-        assert False, "Not implemented (implement if needed)"
+    # if is_discord_function(info):
+    #     assert False, "Not implemented (implement if needed)"
 
     if is_discord_bool(info):
         return f"bool {target} = {source};"
@@ -221,6 +221,9 @@ def godot_variable_to_discord_variable(
 
     if is_discord_char_array(info):
         return f"std::string {target} = std::string({source}.utf8().get_data());"
+
+    if is_discord_enum(info):
+        return f"{info.name} {target} = ({info.name}){source};"
 
     if is_discord_optional(info):
         return godot_variant_to_discord_optional(info, source, target)
@@ -258,6 +261,10 @@ def godot_variant_to_discord_optional(
             s = [f"{target} = {source}.stringify().utf8().get_data();"]
         elif is_discord_char_array(t):
             s = [f"{target} = {source}.stringify().utf8().get_data();"]
+        elif is_discord_enum(t):
+            s = [
+                f"{target} = std::optional<{type_info.name}>{{ ({type_info.name})(uint64_t){source} }};"
+            ]
         elif is_discord_vector(t):
             assert False, "Not implemented (implement if needed)"
         elif is_discord_map(t):
