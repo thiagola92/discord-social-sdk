@@ -32,6 +32,12 @@ class TypeInfo:
     templates: list[TypeInfoR | FunctionInfoR] = field(default_factory=list)
     extra: str = ""  # TODO: Replace for useful fields.
 
+    # Utility.
+    callback: bool = False
+    enum: bool = False
+    fake: bool = False
+    overloading: bool = False
+
 
 @dataclass
 class ParamInfo:
@@ -60,6 +66,7 @@ class FunctionInfo:
 
     # Utility.
     gdscript_name: str = ""
+    fake: bool = False
     overloading: bool = False
 
 

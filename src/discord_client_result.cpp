@@ -53,7 +53,7 @@ void DiscordClientResult::set_retryable(bool retryable) {
 }
 
 void DiscordClientResult::set_status(DiscordHttpStatusCode status) {
-	TODO
+	// TODO
 }
 
 void DiscordClientResult::set_successful(bool successful) {
@@ -61,7 +61,7 @@ void DiscordClientResult::set_successful(bool successful) {
 }
 
 void DiscordClientResult::set_type(DiscordErrorType type) {
-	TODO
+	// TODO
 }
 
 // Overload functions.

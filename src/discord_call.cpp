@@ -14,12 +14,12 @@ DiscordCallStatus DiscordCall::get_status() {
 DiscordVADThresholdSettings DiscordCall::get_vadthreshold() {
 }
 
-String DiscordCall::error_to_string(DiscordCallError type){
-	TODO
+String DiscordCall::error_to_string(DiscordCallError type) {
+	// TODO
 }
 
-String DiscordCall::status_to_string(DiscordCallStatus type){
-	TODO
+String DiscordCall::status_to_string(DiscordCallStatus type) {
+	// TODO
 }
 
 TypedArray<int64_t> DiscordCall::get_participants() {
@@ -56,7 +56,7 @@ int64_t DiscordCall::get_pttrelease_delay() {
 }
 
 void DiscordCall::set_audio_mode(DiscordAudioModeType audio_mode) {
-	TODO
+	// TODO
 }
 
 void DiscordCall::set_local_mute(int64_t user_id, bool mute) {
@@ -65,11 +65,11 @@ void DiscordCall::set_local_mute(int64_t user_id, bool mute) {
 }
 
 void DiscordCall::set_on_voice_state_changed_callback(Callable cb) {
-	TODO
+	// TODO
 }
 
 void DiscordCall::set_participant_changed_callback(Callable cb) {
-	TODO
+	// TODO
 }
 
 void DiscordCall::set_participant_volume(int64_t user_id, float volume) {
@@ -94,11 +94,11 @@ void DiscordCall::set_self_mute(bool mute) {
 }
 
 void DiscordCall::set_speaking_status_changed_callback(Callable cb) {
-	TODO
+	// TODO
 }
 
 void DiscordCall::set_status_changed_callback(Callable cb) {
-	TODO
+	// TODO
 }
 
 void DiscordCall::set_vadthreshold(bool automatic, float threshold) {

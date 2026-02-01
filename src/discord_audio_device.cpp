@@ -12,7 +12,7 @@ String DiscordAudioDevice::name() {
 }
 
 bool DiscordAudioDevice::equals(DiscordAudioDevice rhs) {
-	TODO
+	// TODO
 }
 
 bool DiscordAudioDevice::is_default() {

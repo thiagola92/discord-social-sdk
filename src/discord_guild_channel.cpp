@@ -44,7 +44,7 @@ void DiscordGuildChannel::set_is_viewable_and_writeable_by_all_members(bool is_v
 void DiscordGuildChannel::set_linked_lobby(Variant linked_lobby) {
 	std::optional<discordpp::LinkedLobby> p0;
 
-	if (linked_lobby.get_type() ==) {
+	if (linked_lobby.get_type() == Variant::OBJECT) {
 	}
 }
 
@@ -55,7 +55,8 @@ void DiscordGuildChannel::set_name(String name) {
 void DiscordGuildChannel::set_parent_id(Variant parent_id) {
 	std::optional<uint64_t> p0;
 
-	if (parent_id.get_type() ==) {
+	if (parent_id.get_type() == Variant::INT) {
+		p0 = parent_id;
 	}
 }
 
@@ -64,7 +65,7 @@ void DiscordGuildChannel::set_position(int64_t position) {
 }
 
 void DiscordGuildChannel::set_type(DiscordChannelType type) {
-	TODO
+	// TODO
 }
 
 // Overload functions.

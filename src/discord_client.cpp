@@ -18,7 +18,8 @@ DiscordCall DiscordClient::start_call(int64_t channel_id) {
 
 DiscordCall DiscordClient::start_call_with_audio_callbacks(int64_t lobby_id, Callable received_cb, Callable captured_cb) {
 	int64_t p0 = lobby_id;
-	TODOTODO
+	// TODO
+	// TODO
 }
 
 DiscordClientStatus DiscordClient::get_status() {
@@ -31,8 +32,8 @@ DiscordRelationshipHandle DiscordClient::get_relationship_handle(int64_t user_id
 DiscordUserHandle DiscordClient::get_current_user() {
 }
 
-String DiscordClient::error_to_string(DiscordClientError type){
-	TODO
+String DiscordClient::error_to_string(DiscordClientError type) {
+	// TODO
 }
 
 String DiscordClient::get_default_audio_device_id() {
@@ -47,12 +48,12 @@ String DiscordClient::get_default_presence_scopes() {
 String DiscordClient::get_version_hash() {
 }
 
-String DiscordClient::status_to_string(DiscordClientStatus type){
-	TODO
+String DiscordClient::status_to_string(DiscordClientStatus type) {
+	// TODO
 }
 
-String DiscordClient::thread_to_string(DiscordClientThread type){
-	TODO
+String DiscordClient::thread_to_string(DiscordClientThread type) {
+	// TODO
 }
 
 TypedArray<DiscordCall> DiscordClient::get_calls() {
@@ -61,8 +62,8 @@ TypedArray<DiscordCall> DiscordClient::get_calls() {
 TypedArray<DiscordRelationshipHandle> DiscordClient::get_relationships() {
 }
 
-TypedArray<DiscordRelationshipHandle> DiscordClient::get_relationships_by_group(DiscordRelationshipGroupType group_type){
-	TODO
+TypedArray<DiscordRelationshipHandle> DiscordClient::get_relationships_by_group(DiscordRelationshipGroupType group_type) {
+	// TODO
 }
 
 TypedArray<DiscordUserHandle> DiscordClient::search_friends_by_username(String search_str) {
@@ -116,7 +117,7 @@ bool DiscordClient::register_launch_steam_application(int64_t application_id, in
 
 bool DiscordClient::set_log_dir(String path, DiscordLoggingSeverity min_severity) {
 	std::string p0 = std::string(path.utf8().get_data());
-	TODO
+	// TODO
 }
 
 bool DiscordClient::set_speaker_mode(bool speaker_mode) {
@@ -151,44 +152,48 @@ void DiscordClient::abort_get_token_from_device() {
 }
 
 void DiscordClient::accept_activity_invite(DiscordActivityInvite invite, Callable cb) {
-	TODOTODO
+	// TODO
+	// TODO
 }
 
 void DiscordClient::accept_discord_friend_request(int64_t user_id, Callable cb) {
 	int64_t p0 = user_id;
-	TODO
+	// TODO
 }
 
 void DiscordClient::accept_game_friend_request(int64_t user_id, Callable cb) {
 	int64_t p0 = user_id;
-	TODO
+	// TODO
 }
 
 void DiscordClient::add_log_callback(Callable callback, DiscordLoggingSeverity min_severity) {
-	TODOTODO
+	// TODO
+	// TODO
 }
 
 void DiscordClient::add_voice_log_callback(Callable callback, DiscordLoggingSeverity min_severity) {
-	TODOTODO
+	// TODO
+	// TODO
 }
 
 void DiscordClient::authorize(DiscordAuthorizationArgs args, Callable callback) {
-	TODOTODO
+	// TODO
+	// TODO
 }
 
 void DiscordClient::block_user(int64_t user_id, Callable cb) {
 	int64_t p0 = user_id;
-	TODO
+	// TODO
 }
 
 void DiscordClient::cancel_discord_friend_request(int64_t user_id, Callable cb) {
 	int64_t p0 = user_id;
-	TODO
+	// TODO
 }
 
 void DiscordClient::cancel_game_friend_request(int64_t user_id, Callable cb) {
 	int64_t p0 = user_id;
-	TODO
+	// TODO
 }
 
 void DiscordClient::clear_rich_presence() {
@@ -202,18 +207,20 @@ void DiscordClient::connect_discord() {
 
 void DiscordClient::create_or_join_lobby(String secret, Callable callback) {
 	std::string p0 = std::string(secret.utf8().get_data());
-	TODO
+	// TODO
 }
 
 void DiscordClient::create_or_join_lobby_with_metadata(String secret, TypedDictionary<String, String> lobby_metadata, TypedDictionary<String, String> member_metadata, Callable callback) {
 	std::string p0 = std::string(secret.utf8().get_data());
-	TODOTODOTODO
+	// TODO
+	// TODO
+	// TODO
 }
 
 void DiscordClient::delete_user_message(int64_t recipient_id, int64_t message_id, Callable cb) {
 	int64_t p0 = recipient_id;
 	int64_t p1 = message_id;
-	TODO
+	// TODO
 }
 
 void DiscordClient::disconnect_discord() {
@@ -223,65 +230,65 @@ void DiscordClient::edit_user_message(int64_t recipient_id, int64_t message_id, 
 	int64_t p0 = recipient_id;
 	int64_t p1 = message_id;
 	std::string p2 = std::string(content.utf8().get_data());
-	TODO
+	// TODO
 }
 
 void DiscordClient::end_call(int64_t channel_id, Callable callback) {
 	int64_t p0 = channel_id;
-	TODO
+	// TODO
 }
 
 void DiscordClient::end_calls(Callable callback) {
-	TODO
+	// TODO
 }
 
 void DiscordClient::exchange_child_token(String parent_application_token, int64_t child_application_id, Callable callback) {
 	std::string p0 = std::string(parent_application_token.utf8().get_data());
 	int64_t p1 = child_application_id;
-	TODO
+	// TODO
 }
 
 void DiscordClient::fetch_current_user(DiscordAuthorizationTokenType token_type, String token, Callable callback) {
-	TODOstd::string p1 = std::string(token.utf8().get_data());
-	TODO
+	// TODOstd::string p1 = std::string(token.utf8().get_data());
+	// TODO
 }
 
 void DiscordClient::get_current_input_device(Callable cb) {
-	TODO
+	// TODO
 }
 
 void DiscordClient::get_current_output_device(Callable cb) {
-	TODO
+	// TODO
 }
 
 void DiscordClient::get_discord_client_connected_user(int64_t application_id, Callable callback) {
 	int64_t p0 = application_id;
-	TODO
+	// TODO
 }
 
 void DiscordClient::get_guild_channels(int64_t guild_id, Callable cb) {
 	int64_t p0 = guild_id;
-	TODO
+	// TODO
 }
 
 void DiscordClient::get_input_devices(Callable cb) {
-	TODO
+	// TODO
 }
 
 void DiscordClient::get_lobby_messages_with_limit(int64_t lobby_id, int64_t limit, Callable cb) {
 	int64_t p0 = lobby_id;
 	int64_t p1 = limit;
-	TODO
+	// TODO
 }
 
 void DiscordClient::get_output_devices(Callable cb) {
-	TODO
+	// TODO
 }
 
 void DiscordClient::get_provisional_token(int64_t application_id, DiscordAuthenticationExternalAuthType external_auth_type, String external_auth_token, Callable callback) {
 	int64_t p0 = application_id;
-	TODOstd::string p2 = std::string(external_auth_token.utf8().get_data());
-	TODO
+	// TODOstd::string p2 = std::string(external_auth_token.utf8().get_data());
+	// TODO
 }
 
 void DiscordClient::get_token(int64_t application_id, String code, String code_verifier, String redirect_uri, Callable callback) {
@@ -289,16 +296,18 @@ void DiscordClient::get_token(int64_t application_id, String code, String code_v
 	std::string p1 = std::string(code.utf8().get_data());
 	std::string p2 = std::string(code_verifier.utf8().get_data());
 	std::string p3 = std::string(redirect_uri.utf8().get_data());
-	TODO
+	// TODO
 }
 
 void DiscordClient::get_token_from_device(DiscordDeviceAuthorizationArgs args, Callable callback) {
-	TODOTODO
+	// TODO
+	// TODO
 }
 
 void DiscordClient::get_token_from_device_provisional_merge(DiscordDeviceAuthorizationArgs args, DiscordAuthenticationExternalAuthType external_auth_type, String external_auth_token, Callable callback) {
-	TODOTODOstd::string p2 = std::string(external_auth_token.utf8().get_data());
-	TODO
+	// TODO
+	// TODOstd::string p2 = std::string(external_auth_token.utf8().get_data());
+	// TODO
 }
 
 void DiscordClient::get_token_from_provisional_merge(int64_t application_id, String code, String code_verifier, String redirect_uri, DiscordAuthenticationExternalAuthType external_auth_type, String external_auth_token, Callable callback) {
@@ -306,42 +315,43 @@ void DiscordClient::get_token_from_provisional_merge(int64_t application_id, Str
 	std::string p1 = std::string(code.utf8().get_data());
 	std::string p2 = std::string(code_verifier.utf8().get_data());
 	std::string p3 = std::string(redirect_uri.utf8().get_data());
-	TODOstd::string p5 = std::string(external_auth_token.utf8().get_data());
-	TODO
+	// TODOstd::string p5 = std::string(external_auth_token.utf8().get_data());
+	// TODO
 }
 
 void DiscordClient::get_user_guilds(Callable cb) {
-	TODO
+	// TODO
 }
 
 void DiscordClient::get_user_message_summaries(Callable cb) {
-	TODO
+	// TODO
 }
 
 void DiscordClient::get_user_messages_with_limit(int64_t recipient_id, int64_t limit, Callable cb) {
 	int64_t p0 = recipient_id;
 	int64_t p1 = limit;
-	TODO
+	// TODO
 }
 
 void DiscordClient::is_discord_app_installed(Callable callback) {
-	TODO
+	// TODO
 }
 
 void DiscordClient::join_linked_lobby_guild(int64_t lobby_id, Callable provisional_user_merge_required_callback, Callable callback) {
 	int64_t p0 = lobby_id;
-	TODOTODO
+	// TODO
+	// TODO
 }
 
 void DiscordClient::leave_lobby(int64_t lobby_id, Callable callback) {
 	int64_t p0 = lobby_id;
-	TODO
+	// TODO
 }
 
 void DiscordClient::link_channel_to_lobby(int64_t lobby_id, int64_t channel_id, Callable callback) {
 	int64_t p0 = lobby_id;
 	int64_t p1 = channel_id;
-	TODO
+	// TODO
 }
 
 void DiscordClient::open_authorize_device_screen(int64_t client_id, String user_code) {
@@ -350,12 +360,13 @@ void DiscordClient::open_authorize_device_screen(int64_t client_id, String user_
 }
 
 void DiscordClient::open_connected_games_settings_in_discord(Callable callback) {
-	TODO
+	// TODO
 }
 
 void DiscordClient::open_message_in_discord(int64_t message_id, Callable provisional_user_merge_required_callback, Callable callback) {
 	int64_t p0 = message_id;
-	TODOTODO
+	// TODO
+	// TODO
 }
 
 void DiscordClient::provisional_user_merge_completed(bool success) {
@@ -365,21 +376,21 @@ void DiscordClient::provisional_user_merge_completed(bool success) {
 void DiscordClient::refresh_token(int64_t application_id, String refresh_token, Callable callback) {
 	int64_t p0 = application_id;
 	std::string p1 = std::string(refresh_token.utf8().get_data());
-	TODO
+	// TODO
 }
 
 void DiscordClient::register_authorize_request_callback(Callable callback) {
-	TODO
+	// TODO
 }
 
 void DiscordClient::reject_discord_friend_request(int64_t user_id, Callable cb) {
 	int64_t p0 = user_id;
-	TODO
+	// TODO
 }
 
 void DiscordClient::reject_game_friend_request(int64_t user_id, Callable cb) {
 	int64_t p0 = user_id;
-	TODO
+	// TODO
 }
 
 void DiscordClient::remove_authorize_request_callback() {
@@ -387,93 +398,96 @@ void DiscordClient::remove_authorize_request_callback() {
 
 void DiscordClient::remove_discord_and_game_friend(int64_t user_id, Callable cb) {
 	int64_t p0 = user_id;
-	TODO
+	// TODO
 }
 
 void DiscordClient::remove_game_friend(int64_t user_id, Callable cb) {
 	int64_t p0 = user_id;
-	TODO
+	// TODO
 }
 
 void DiscordClient::revoke_token(int64_t application_id, String token, Callable callback) {
 	int64_t p0 = application_id;
 	std::string p1 = std::string(token.utf8().get_data());
-	TODO
+	// TODO
 }
 
 void DiscordClient::send_activity_invite(int64_t user_id, String content, Callable cb) {
 	int64_t p0 = user_id;
 	std::string p1 = std::string(content.utf8().get_data());
-	TODO
+	// TODO
 }
 
 void DiscordClient::send_activity_join_request(int64_t user_id, Callable cb) {
 	int64_t p0 = user_id;
-	TODO
+	// TODO
 }
 
 void DiscordClient::send_activity_join_request_reply(DiscordActivityInvite invite, Callable cb) {
-	TODOTODO
+	// TODO
+	// TODO
 }
 
 void DiscordClient::send_discord_friend_request(String username, Callable cb) {
 	std::string p0 = std::string(username.utf8().get_data());
-	TODO
+	// TODO
 }
 
 void DiscordClient::send_discord_friend_request_by_id(int64_t user_id, Callable cb) {
 	int64_t p0 = user_id;
-	TODO
+	// TODO
 }
 
 void DiscordClient::send_game_friend_request(String username, Callable cb) {
 	std::string p0 = std::string(username.utf8().get_data());
-	TODO
+	// TODO
 }
 
 void DiscordClient::send_game_friend_request_by_id(int64_t user_id, Callable cb) {
 	int64_t p0 = user_id;
-	TODO
+	// TODO
 }
 
 void DiscordClient::send_lobby_message(int64_t lobby_id, String content, Callable cb) {
 	int64_t p0 = lobby_id;
 	std::string p1 = std::string(content.utf8().get_data());
-	TODO
+	// TODO
 }
 
 void DiscordClient::send_lobby_message_with_metadata(int64_t lobby_id, String content, TypedDictionary<String, String> metadata, Callable cb) {
 	int64_t p0 = lobby_id;
 	std::string p1 = std::string(content.utf8().get_data());
-	TODOTODO
+	// TODO
+	// TODO
 }
 
 void DiscordClient::send_user_message(int64_t recipient_id, String content, Callable cb) {
 	int64_t p0 = recipient_id;
 	std::string p1 = std::string(content.utf8().get_data());
-	TODO
+	// TODO
 }
 
 void DiscordClient::send_user_message_with_metadata(int64_t recipient_id, String content, TypedDictionary<String, String> metadata, Callable cb) {
 	int64_t p0 = recipient_id;
 	std::string p1 = std::string(content.utf8().get_data());
-	TODOTODO
+	// TODO
+	// TODO
 }
 
 void DiscordClient::set_activity_invite_created_callback(Callable cb) {
-	TODO
+	// TODO
 }
 
 void DiscordClient::set_activity_invite_updated_callback(Callable cb) {
-	TODO
+	// TODO
 }
 
 void DiscordClient::set_activity_join_callback(Callable cb) {
-	TODO
+	// TODO
 }
 
 void DiscordClient::set_activity_join_with_application_callback(Callable cb) {
-	TODO
+	// TODO
 }
 
 void DiscordClient::set_aec_dump(bool on) {
@@ -485,7 +499,7 @@ void DiscordClient::set_application_id(int64_t application_id) {
 }
 
 void DiscordClient::set_authorize_device_screen_closed_callback(Callable cb) {
-	TODO
+	// TODO
 }
 
 void DiscordClient::set_automatic_gain_control(bool on) {
@@ -493,7 +507,7 @@ void DiscordClient::set_automatic_gain_control(bool on) {
 }
 
 void DiscordClient::set_device_change_callback(Callable callback) {
-	TODO
+	// TODO
 }
 
 void DiscordClient::set_echo_cancellation(bool on) {
@@ -514,7 +528,7 @@ void DiscordClient::set_http_request_timeout(int64_t http_timeout_in_millisecond
 
 void DiscordClient::set_input_device(String device_id, Callable cb) {
 	std::string p0 = std::string(device_id.utf8().get_data());
-	TODO
+	// TODO
 }
 
 void DiscordClient::set_input_volume(float input_volume) {
@@ -522,43 +536,43 @@ void DiscordClient::set_input_volume(float input_volume) {
 }
 
 void DiscordClient::set_lobby_created_callback(Callable cb) {
-	TODO
+	// TODO
 }
 
 void DiscordClient::set_lobby_deleted_callback(Callable cb) {
-	TODO
+	// TODO
 }
 
 void DiscordClient::set_lobby_member_added_callback(Callable cb) {
-	TODO
+	// TODO
 }
 
 void DiscordClient::set_lobby_member_removed_callback(Callable cb) {
-	TODO
+	// TODO
 }
 
 void DiscordClient::set_lobby_member_updated_callback(Callable cb) {
-	TODO
+	// TODO
 }
 
 void DiscordClient::set_lobby_updated_callback(Callable cb) {
-	TODO
+	// TODO
 }
 
 void DiscordClient::set_message_created_callback(Callable cb) {
-	TODO
+	// TODO
 }
 
 void DiscordClient::set_message_deleted_callback(Callable cb) {
-	TODO
+	// TODO
 }
 
 void DiscordClient::set_message_updated_callback(Callable cb) {
-	TODO
+	// TODO
 }
 
 void DiscordClient::set_no_audio_input_callback(Callable callback) {
-	TODO
+	// TODO
 }
 
 void DiscordClient::set_no_audio_input_threshold(float d_bfsthreshold) {
@@ -570,7 +584,8 @@ void DiscordClient::set_noise_suppression(bool on) {
 }
 
 void DiscordClient::set_online_status(DiscordStatusType status, Callable callback) {
-	TODOTODO
+	// TODO
+	// TODO
 }
 
 void DiscordClient::set_opus_hardware_coding(bool encode, bool decode) {
@@ -580,7 +595,7 @@ void DiscordClient::set_opus_hardware_coding(bool encode, bool decode) {
 
 void DiscordClient::set_output_device(String device_id, Callable cb) {
 	std::string p0 = std::string(device_id.utf8().get_data());
-	TODO
+	// TODO
 }
 
 void DiscordClient::set_output_volume(float output_volume) {
@@ -588,15 +603,15 @@ void DiscordClient::set_output_volume(float output_volume) {
 }
 
 void DiscordClient::set_relationship_created_callback(Callable cb) {
-	TODO
+	// TODO
 }
 
 void DiscordClient::set_relationship_deleted_callback(Callable cb) {
-	TODO
+	// TODO
 }
 
 void DiscordClient::set_relationship_groups_updated_callback(Callable cb) {
-	TODO
+	// TODO
 }
 
 void DiscordClient::set_self_deaf_all(bool deaf) {
@@ -612,58 +627,59 @@ void DiscordClient::set_showing_chat(bool showing_chat) {
 }
 
 void DiscordClient::set_status_changed_callback(Callable cb) {
-	TODO
+	// TODO
 }
 
 void DiscordClient::set_thread_priority(DiscordClientThread thread, int64_t priority) {
-	TODOint64_t p1 = priority;
+	// TODOint64_t p1 = priority;
 }
 
 void DiscordClient::set_token_expiration_callback(Callable callback) {
-	TODO
+	// TODO
 }
 
 void DiscordClient::set_user_updated_callback(Callable cb) {
-	TODO
+	// TODO
 }
 
 void DiscordClient::set_voice_log_dir(String path, DiscordLoggingSeverity min_severity) {
 	std::string p0 = std::string(path.utf8().get_data());
-	TODO
+	// TODO
 }
 
 void DiscordClient::set_voice_participant_changed_callback(Callable cb) {
-	TODO
+	// TODO
 }
 
 void DiscordClient::unblock_user(int64_t user_id, Callable cb) {
 	int64_t p0 = user_id;
-	TODO
+	// TODO
 }
 
 void DiscordClient::unlink_channel_from_lobby(int64_t lobby_id, Callable callback) {
 	int64_t p0 = lobby_id;
-	TODO
+	// TODO
 }
 
 void DiscordClient::unmerge_into_provisional_account(int64_t application_id, DiscordAuthenticationExternalAuthType external_auth_type, String external_auth_token, Callable callback) {
 	int64_t p0 = application_id;
-	TODOstd::string p2 = std::string(external_auth_token.utf8().get_data());
-	TODO
+	// TODOstd::string p2 = std::string(external_auth_token.utf8().get_data());
+	// TODO
 }
 
 void DiscordClient::update_provisional_account_display_name(String name, Callable callback) {
 	std::string p0 = std::string(name.utf8().get_data());
-	TODO
+	// TODO
 }
 
 void DiscordClient::update_rich_presence(DiscordActivity activity, Callable cb) {
-	TODOTODO
+	// TODO
+	// TODO
 }
 
 void DiscordClient::update_token(DiscordAuthorizationTokenType token_type, String token, Callable callback) {
-	TODOstd::string p1 = std::string(token.utf8().get_data());
-	TODO
+	// TODOstd::string p1 = std::string(token.utf8().get_data());
+	// TODO
 }
 
 // Overload functions.

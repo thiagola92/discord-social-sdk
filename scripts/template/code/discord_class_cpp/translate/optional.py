@@ -1,12 +1,12 @@
 def get_optional(
-    templates: str,
+    template: str,
     target: str,
     source: str,
     variant: str,
     statements: str,
 ) -> str:
     return f"""
-std::optional<{templates}> {target};
+std::optional<{template}> {target};
 
 if ({source}.get_type() == {variant}) {{
     {statements}

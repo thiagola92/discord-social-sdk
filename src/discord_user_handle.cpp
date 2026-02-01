@@ -11,12 +11,13 @@ DiscordRelationshipHandle DiscordUserHandle::relationship() {
 DiscordStatusType DiscordUserHandle::status() {
 }
 
-String DiscordUserHandle::avatar_type_to_string(DiscordUserHandleAvatarType type){
-	TODO
+String DiscordUserHandle::avatar_type_to_string(DiscordUserHandleAvatarType type) {
+	// TODO
 }
 
-String DiscordUserHandle::avatar_url(DiscordUserHandleAvatarType animated_type, DiscordUserHandleAvatarType static_type){
-	TODOTODO
+String DiscordUserHandle::avatar_url(DiscordUserHandleAvatarType animated_type, DiscordUserHandleAvatarType static_type) {
+	// TODO
+	// TODO
 }
 
 String DiscordUserHandle::display_name() {

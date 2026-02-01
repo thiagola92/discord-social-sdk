@@ -29,49 +29,56 @@ Variant DiscordActivityAssets::small_url() {
 void DiscordActivityAssets::set_invite_cover_image(Variant invite_cover_image) {
 	std::optional<std::string> p0;
 
-	if (invite_cover_image.get_type() ==) {
+	if (invite_cover_image.get_type() == Variant::STRING) {
+		p0 = invite_cover_image.stringify().utf8().get_data();
 	}
 }
 
 void DiscordActivityAssets::set_large_image(Variant large_image) {
 	std::optional<std::string> p0;
 
-	if (large_image.get_type() ==) {
+	if (large_image.get_type() == Variant::STRING) {
+		p0 = large_image.stringify().utf8().get_data();
 	}
 }
 
 void DiscordActivityAssets::set_large_text(Variant large_text) {
 	std::optional<std::string> p0;
 
-	if (large_text.get_type() ==) {
+	if (large_text.get_type() == Variant::STRING) {
+		p0 = large_text.stringify().utf8().get_data();
 	}
 }
 
 void DiscordActivityAssets::set_large_url(Variant large_url) {
 	std::optional<std::string> p0;
 
-	if (large_url.get_type() ==) {
+	if (large_url.get_type() == Variant::STRING) {
+		p0 = large_url.stringify().utf8().get_data();
 	}
 }
 
 void DiscordActivityAssets::set_small_image(Variant small_image) {
 	std::optional<std::string> p0;
 
-	if (small_image.get_type() ==) {
+	if (small_image.get_type() == Variant::STRING) {
+		p0 = small_image.stringify().utf8().get_data();
 	}
 }
 
 void DiscordActivityAssets::set_small_text(Variant small_text) {
 	std::optional<std::string> p0;
 
-	if (small_text.get_type() ==) {
+	if (small_text.get_type() == Variant::STRING) {
+		p0 = small_text.stringify().utf8().get_data();
 	}
 }
 
 void DiscordActivityAssets::set_small_url(Variant small_url) {
 	std::optional<std::string> p0;
 
-	if (small_url.get_type() ==) {
+	if (small_url.get_type() == Variant::STRING) {
+		p0 = small_url.stringify().utf8().get_data();
 	}
 }
 

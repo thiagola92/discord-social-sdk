@@ -8,15 +8,15 @@ using namespace godot;
 DiscordAdditionalContentType DiscordAdditionalContent::type() {
 }
 
-String DiscordAdditionalContent::type_to_string(DiscordAdditionalContentType type){
-	TODO
+String DiscordAdditionalContent::type_to_string(DiscordAdditionalContentType type) {
+	// TODO
 }
 
 Variant DiscordAdditionalContent::title() {
 }
 
-bool DiscordAdditionalContent::equals(DiscordAdditionalContent rhs){
-	TODO
+bool DiscordAdditionalContent::equals(DiscordAdditionalContent rhs) {
+	// TODO
 }
 
 int64_t DiscordAdditionalContent::count() {
@@ -29,12 +29,13 @@ void DiscordAdditionalContent::set_count(int64_t count) {
 void DiscordAdditionalContent::set_title(Variant title) {
 	std::optional<std::string> p0;
 
-	if (title.get_type() ==) {
+	if (title.get_type() == Variant::STRING) {
+		p0 = title.stringify().utf8().get_data();
 	}
 }
 
 void DiscordAdditionalContent::set_type(DiscordAdditionalContentType type) {
-	TODO
+	// TODO
 }
 
 // Overload functions.

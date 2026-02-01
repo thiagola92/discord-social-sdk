@@ -65,7 +65,7 @@ void DiscordActivityInvite::set_session_id(String session_id) {
 }
 
 void DiscordActivityInvite::set_type(DiscordActivityActionTypes type) {
-	TODO
+	// TODO
 }
 
 // Overload functions.

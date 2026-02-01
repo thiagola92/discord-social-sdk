@@ -207,6 +207,7 @@ def forge_overloading_declaration(group: list[FunctionInfo]) -> str:
         for f in group:
             for p in f.params:
                 p.overloading = True
+                p.type.overloading = True
 
             r = discord_type_to_godot_type(f.type)
             p = f.params + fake_enums_params(f.params)

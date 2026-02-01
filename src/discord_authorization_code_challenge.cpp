@@ -16,7 +16,7 @@ void DiscordAuthorizationCodeChallenge::set_challenge(String challenge) {
 }
 
 void DiscordAuthorizationCodeChallenge::set_method(DiscordAuthenticationCodeChallengeMethod method) {
-	TODO
+	// TODO
 }
 
 // Overload functions.

@@ -22,6 +22,7 @@ def check_callbacks(class_info: ClassInfo) -> None:
 
                 if n[-1] == c.name:
                     p.callback = True
+                    p.type.callback = True
 
 
 def check_enums(namespace_info: NamespaceInfo) -> None:
@@ -44,6 +45,7 @@ def check_enums(namespace_info: NamespaceInfo) -> None:
 
             if to_godot_class_name(p.type.name) in enums_name:
                 p.enum = True
+                p.type.enum = True
 
 
 def check_overloading(functions: list[FunctionInfo]) -> None:

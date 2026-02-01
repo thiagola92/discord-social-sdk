@@ -30,7 +30,7 @@ void DiscordActivityParty::set_max_size(int64_t max_size) {
 }
 
 void DiscordActivityParty::set_privacy(DiscordActivityPartyPrivacy privacy) {
-	TODO
+	// TODO
 }
 
 // Overload functions.

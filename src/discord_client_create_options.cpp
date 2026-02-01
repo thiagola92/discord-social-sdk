@@ -27,7 +27,8 @@ void DiscordClientCreateOptions::set_api_base(String api_base) {
 void DiscordClientCreateOptions::set_cpu_affinity_mask(Variant cpu_affinity_mask) {
 	std::optional<uint64_t> p0;
 
-	if (cpu_affinity_mask.get_type() ==) {
+	if (cpu_affinity_mask.get_type() == Variant::INT) {
+		p0 = cpu_affinity_mask;
 	}
 }
 
@@ -36,7 +37,7 @@ void DiscordClientCreateOptions::set_experimental_android_prevent_comms_for_blue
 }
 
 void DiscordClientCreateOptions::set_experimental_audio_system(DiscordAudioSystem experimental_audio_system) {
-	TODO
+	// TODO
 }
 
 void DiscordClientCreateOptions::set_web_base(String web_base) {
