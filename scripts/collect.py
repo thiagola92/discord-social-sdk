@@ -132,7 +132,7 @@ def collect_callbacks(tree: Element) -> list[CallbackInfo]:
     for t in tree.findall(".//memberdef[@kind='typedef']"):
         c = CallbackInfo()
         c.name = collect_text(t.find("name"))
-        c.params = collect_type(t)
+        c.type = collect_type(t)
         c.short_desc = collect_text(t.find("briefdescription"))
         c.long_desc = collect_text(t.find("detaileddescription"))
 

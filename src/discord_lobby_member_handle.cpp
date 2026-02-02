@@ -6,18 +6,23 @@ using namespace godot;
 // Functions.
 
 TypedDictionary<String, String> DiscordLobbyMemberHandle::metadata() {
+	auto r = obj->Metadata();
 }
 
 Variant DiscordLobbyMemberHandle::user() {
+	auto r = obj->User();
 }
 
 bool DiscordLobbyMemberHandle::can_link_lobby() {
+	auto r = obj->CanLinkLobby();
 }
 
 bool DiscordLobbyMemberHandle::connected() {
+	auto r = obj->Connected();
 }
 
 int64_t DiscordLobbyMemberHandle::id() {
+	auto r = obj->Id();
 }
 
 // Overload functions.

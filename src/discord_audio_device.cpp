@@ -6,28 +6,35 @@ using namespace godot;
 // Functions.
 
 String DiscordAudioDevice::id() {
+	auto r = obj->Id();
 }
 
 String DiscordAudioDevice::name() {
+	auto r = obj->Name();
 }
 
 bool DiscordAudioDevice::equals(DiscordAudioDevice *rhs) {
 	discordpp::AudioDevice p0 = *rhs->unwrap();
+	auto r = obj->Equals(p0);
 }
 
 bool DiscordAudioDevice::is_default() {
+	auto r = obj->IsDefault();
 }
 
 void DiscordAudioDevice::set_id(String id) {
 	std::string p0 = std::string(id.utf8().get_data());
+	obj->SetId(p0);
 }
 
 void DiscordAudioDevice::set_is_default(bool is_default) {
 	bool p0 = is_default;
+	obj->SetIsDefault(p0);
 }
 
 void DiscordAudioDevice::set_name(String name) {
 	std::string p0 = std::string(name.utf8().get_data());
+	obj->SetName(p0);
 }
 
 // Overload functions.

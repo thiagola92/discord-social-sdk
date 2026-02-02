@@ -6,24 +6,30 @@ using namespace godot;
 // Functions.
 
 DiscordAdditionalContentType::Enum DiscordAdditionalContent::type() {
+	auto r = obj->Type();
 }
 
 String DiscordAdditionalContent::type_to_string(DiscordAdditionalContentType::Enum type) {
 	discordpp::AdditionalContentType p0 = (discordpp::AdditionalContentType)type;
+	auto r = discordpp::AdditionalContent::TypeToString(p0);
 }
 
 Variant DiscordAdditionalContent::title() {
+	auto r = obj->Title();
 }
 
 bool DiscordAdditionalContent::equals(DiscordAdditionalContent *rhs) {
 	discordpp::AdditionalContent p0 = *rhs->unwrap();
+	auto r = obj->Equals(p0);
 }
 
 int64_t DiscordAdditionalContent::count() {
+	auto r = obj->Count();
 }
 
 void DiscordAdditionalContent::set_count(int64_t count) {
 	int64_t p0 = count;
+	obj->SetCount(p0);
 }
 
 void DiscordAdditionalContent::set_title(Variant title) {
@@ -32,10 +38,13 @@ void DiscordAdditionalContent::set_title(Variant title) {
 	if (title.get_type() == Variant::STRING) {
 		p0 = title.stringify().utf8().get_data();
 	}
+
+	obj->SetTitle(p0);
 }
 
 void DiscordAdditionalContent::set_type(DiscordAdditionalContentType::Enum type) {
 	discordpp::AdditionalContentType p0 = (discordpp::AdditionalContentType)type;
+	obj->SetType(p0);
 }
 
 // Overload functions.

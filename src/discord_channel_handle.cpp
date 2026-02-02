@@ -6,15 +6,19 @@ using namespace godot;
 // Functions.
 
 DiscordChannelType::Enum DiscordChannelHandle::type() {
+	auto r = obj->Type();
 }
 
 String DiscordChannelHandle::name() {
+	auto r = obj->Name();
 }
 
 TypedArray<int64_t> DiscordChannelHandle::recipients() {
+	auto r = obj->Recipients();
 }
 
 int64_t DiscordChannelHandle::id() {
+	auto r = obj->Id();
 }
 
 // Overload functions.

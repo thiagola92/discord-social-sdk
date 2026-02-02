@@ -4,6 +4,7 @@ from dataclasses import dataclass, field
 # Allow recursion.
 type TypeInfoR = TypeInfo
 type FunctionInfoR = FunctionInfo
+type CallbackInfoR = CallbackInfo
 
 
 @dataclass
@@ -34,6 +35,7 @@ class TypeInfo:
 
     # Utility.
     callback: bool = False
+    callback_ref: CallbackInfoR | None = None
     enum: bool = False
     fake: bool = False
     overloading: bool = False
@@ -73,7 +75,7 @@ class FunctionInfo:
 @dataclass
 class CallbackInfo:
     name: str = ""
-    params: list[ParamInfo] = field(default_factory=list)
+    type: TypeInfo = field(default_factory=TypeInfo)
 
     # Documentation.
     short_desc: str = ""

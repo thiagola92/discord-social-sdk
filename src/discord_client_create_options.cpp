@@ -6,22 +6,28 @@ using namespace godot;
 // Functions.
 
 DiscordAudioSystem::Enum DiscordClientCreateOptions::experimental_audio_system() {
+	auto r = obj->ExperimentalAudioSystem();
 }
 
 String DiscordClientCreateOptions::api_base() {
+	auto r = obj->ApiBase();
 }
 
 String DiscordClientCreateOptions::web_base() {
+	auto r = obj->WebBase();
 }
 
 Variant DiscordClientCreateOptions::cpu_affinity_mask() {
+	auto r = obj->CpuAffinityMask();
 }
 
 bool DiscordClientCreateOptions::experimental_android_prevent_comms_for_bluetooth() {
+	auto r = obj->ExperimentalAndroidPreventCommsForBluetooth();
 }
 
 void DiscordClientCreateOptions::set_api_base(String api_base) {
 	std::string p0 = std::string(api_base.utf8().get_data());
+	obj->SetApiBase(p0);
 }
 
 void DiscordClientCreateOptions::set_cpu_affinity_mask(Variant cpu_affinity_mask) {
@@ -30,18 +36,23 @@ void DiscordClientCreateOptions::set_cpu_affinity_mask(Variant cpu_affinity_mask
 	if (cpu_affinity_mask.get_type() == Variant::INT) {
 		p0 = cpu_affinity_mask;
 	}
+
+	obj->SetCpuAffinityMask(p0);
 }
 
 void DiscordClientCreateOptions::set_experimental_android_prevent_comms_for_bluetooth(bool experimental_android_prevent_comms_for_bluetooth) {
 	bool p0 = experimental_android_prevent_comms_for_bluetooth;
+	obj->SetExperimentalAndroidPreventCommsForBluetooth(p0);
 }
 
 void DiscordClientCreateOptions::set_experimental_audio_system(DiscordAudioSystem::Enum experimental_audio_system) {
 	discordpp::AudioSystem p0 = (discordpp::AudioSystem)experimental_audio_system;
+	obj->SetExperimentalAudioSystem(p0);
 }
 
 void DiscordClientCreateOptions::set_web_base(String web_base) {
 	std::string p0 = std::string(web_base.utf8().get_data());
+	obj->SetWebBase(p0);
 }
 
 // Overload functions.

@@ -3,10 +3,16 @@ from pprint import pprint
 
 from fake import fake_enums_params
 from collect import NamespaceInfo, FunctionInfo, ClassInfo, ParamInfo
+from discover import (
+    OverloadingPattern,
+    discover_overloading_pattern,
+    discover_overloading_groups,
+)
 from translate import (
     discord_type_to_godot_type,
     discord_params_to_godot_params,
     godot_variables_to_discord_variables,
+    is_discord_void,
 )
 from template.code.register_types_cpp.register_abstract import get_register_abstract
 from template.code.register_types_cpp.register_runtime import get_register_runtime
@@ -24,11 +30,7 @@ from template.code.discord_classes_h.function_declaration import (
 from template.code.discord_class_cpp.bind import get_bind
 from template.code.discord_class_cpp.bind_static import get_bind_static
 from template.code.discord_class_cpp.function_definition import get_function_definition
-from discover import (
-    OverloadingPattern,
-    discover_overloading_pattern,
-    discover_overloading_groups,
-)
+from template.code.discord_class_cpp.function_statements import get_function_statements
 
 ########## register_types.cpp ##########
 
@@ -332,7 +334,7 @@ def forge_functions_definitions(info: NamespaceInfo | ClassInfo) -> str:
 def forge_function_definition(function_info: FunctionInfo, class_name: str) -> str:
     return_type = discord_type_to_godot_type(function_info.type)
     params = discord_params_to_godot_params(function_info.params)
-    statements = godot_variables_to_discord_variables(function_info.params)
+    statements = forge_function_statements(function_info, class_name)
 
     return get_function_definition(
         ret=return_type,
@@ -341,6 +343,44 @@ def forge_function_definition(function_info: FunctionInfo, class_name: str) -> s
         params=params,
         statements=statements,
     )
+
+
+def forge_function_statements(function_info: FunctionInfo, class_name: str) -> str:
+    convertion_statements = godot_variables_to_discord_variables(function_info.params)
+    call_statement = forge_call_statement(function_info, class_name)
+    return_statements = forge_return_statements(function_info, class_name)
+
+    if not is_discord_void(function_info.type):
+        return_statements = ""
+
+    return get_function_statements(
+        convertion_statements=convertion_statements,
+        call_statement=call_statement,
+        return_statements=return_statements,
+    )
+
+
+def forge_call_statement(function_info: FunctionInfo, class_name: str) -> str:
+    params = []
+
+    for i, _ in enumerate(function_info.params):
+        params.append(f"p{i}")
+
+    params = ", ".join(params)
+
+    if function_info.static:
+        call = f"discordpp::{class_name}::{function_info.name}({params})"
+    else:
+        call = f"obj->{function_info.name}({params})"
+
+    if is_discord_void(function_info.type):
+        return f"{call};"
+
+    return f"auto r = {call};"
+
+
+def forge_return_statements(function_info: FunctionInfo, class_name: str) -> str:
+    return ""
 
 
 ########## <discord_class>.cpp ##########

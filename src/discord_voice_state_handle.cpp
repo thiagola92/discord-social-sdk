@@ -6,9 +6,11 @@ using namespace godot;
 // Functions.
 
 bool DiscordVoiceStateHandle::self_deaf() {
+	auto r = obj->SelfDeaf();
 }
 
 bool DiscordVoiceStateHandle::self_mute() {
+	auto r = obj->SelfMute();
 }
 
 // Overload functions.

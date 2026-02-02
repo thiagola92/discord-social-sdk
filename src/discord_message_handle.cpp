@@ -6,57 +6,75 @@ using namespace godot;
 // Functions.
 
 String DiscordMessageHandle::content() {
+	auto r = obj->Content();
 }
 
 String DiscordMessageHandle::raw_content() {
+	auto r = obj->RawContent();
 }
 
 TypedDictionary<String, String> DiscordMessageHandle::metadata() {
+	auto r = obj->Metadata();
 }
 
 TypedDictionary<String, String> DiscordMessageHandle::moderation_metadata() {
+	auto r = obj->ModerationMetadata();
 }
 
 Variant DiscordMessageHandle::additional_content() {
+	auto r = obj->AdditionalContent();
 }
 
 Variant DiscordMessageHandle::application_id() {
+	auto r = obj->ApplicationId();
 }
 
 Variant DiscordMessageHandle::author() {
+	auto r = obj->Author();
 }
 
 Variant DiscordMessageHandle::channel() {
+	auto r = obj->Channel();
 }
 
 Variant DiscordMessageHandle::disclosure_type() {
+	auto r = obj->DisclosureType();
 }
 
 Variant DiscordMessageHandle::lobby() {
+	auto r = obj->Lobby();
 }
 
 Variant DiscordMessageHandle::recipient() {
+	auto r = obj->Recipient();
 }
 
 bool DiscordMessageHandle::sent_from_game() {
+	auto r = obj->SentFromGame();
 }
 
 int64_t DiscordMessageHandle::author_id() {
+	auto r = obj->AuthorId();
 }
 
 int64_t DiscordMessageHandle::channel_id() {
+	auto r = obj->ChannelId();
 }
 
 int64_t DiscordMessageHandle::edited_timestamp() {
+	auto r = obj->EditedTimestamp();
 }
 
 int64_t DiscordMessageHandle::id() {
+	auto r = obj->Id();
 }
 
 int64_t DiscordMessageHandle::recipient_id() {
+	auto r = obj->RecipientId();
 }
 
 int64_t DiscordMessageHandle::sent_timestamp() {
+	auto r = obj->SentTimestamp();
 }
 
 // Overload functions.

@@ -6,56 +6,73 @@ using namespace godot;
 // Functions.
 
 DiscordActivityGamePlatforms::Enum DiscordActivity::supported_platforms() {
+	auto r = obj->SupportedPlatforms();
 }
 
 DiscordActivityTypes::Enum DiscordActivity::type() {
+	auto r = obj->Type();
 }
 
 String DiscordActivity::name() {
+	auto r = obj->Name();
 }
 
 TypedArray<DiscordActivityButton> DiscordActivity::get_buttons() {
+	auto r = obj->GetButtons();
 }
 
 Variant DiscordActivity::application_id() {
+	auto r = obj->ApplicationId();
 }
 
 Variant DiscordActivity::assets() {
+	auto r = obj->Assets();
 }
 
 Variant DiscordActivity::details() {
+	auto r = obj->Details();
 }
 
 Variant DiscordActivity::details_url() {
+	auto r = obj->DetailsUrl();
 }
 
 Variant DiscordActivity::parent_application_id() {
+	auto r = obj->ParentApplicationId();
 }
 
 Variant DiscordActivity::party() {
+	auto r = obj->Party();
 }
 
 Variant DiscordActivity::secrets() {
+	auto r = obj->Secrets();
 }
 
 Variant DiscordActivity::state() {
+	auto r = obj->State();
 }
 
 Variant DiscordActivity::state_url() {
+	auto r = obj->StateUrl();
 }
 
 Variant DiscordActivity::status_display_type() {
+	auto r = obj->StatusDisplayType();
 }
 
 Variant DiscordActivity::timestamps() {
+	auto r = obj->Timestamps();
 }
 
 bool DiscordActivity::equals(DiscordActivity *other) {
 	discordpp::Activity p0 = *other->unwrap();
+	auto r = obj->Equals(p0);
 }
 
 void DiscordActivity::add_button(DiscordActivityButton *button) {
 	discordpp::ActivityButton p0 = *button->unwrap();
+	obj->AddButton(p0);
 }
 
 void DiscordActivity::set_application_id(Variant application_id) {
@@ -64,6 +81,8 @@ void DiscordActivity::set_application_id(Variant application_id) {
 	if (application_id.get_type() == Variant::INT) {
 		p0 = application_id;
 	}
+
+	obj->SetApplicationId(p0);
 }
 
 void DiscordActivity::set_assets(Variant assets) {
@@ -71,6 +90,8 @@ void DiscordActivity::set_assets(Variant assets) {
 
 	if (assets.get_type() == Variant::OBJECT) {
 	}
+
+	obj->SetAssets(p0);
 }
 
 void DiscordActivity::set_details(Variant details) {
@@ -79,6 +100,8 @@ void DiscordActivity::set_details(Variant details) {
 	if (details.get_type() == Variant::STRING) {
 		p0 = details.stringify().utf8().get_data();
 	}
+
+	obj->SetDetails(p0);
 }
 
 void DiscordActivity::set_details_url(Variant details_url) {
@@ -87,10 +110,13 @@ void DiscordActivity::set_details_url(Variant details_url) {
 	if (details_url.get_type() == Variant::STRING) {
 		p0 = details_url.stringify().utf8().get_data();
 	}
+
+	obj->SetDetailsUrl(p0);
 }
 
 void DiscordActivity::set_name(String name) {
 	std::string p0 = std::string(name.utf8().get_data());
+	obj->SetName(p0);
 }
 
 void DiscordActivity::set_parent_application_id(Variant parent_application_id) {
@@ -99,6 +125,8 @@ void DiscordActivity::set_parent_application_id(Variant parent_application_id) {
 	if (parent_application_id.get_type() == Variant::INT) {
 		p0 = parent_application_id;
 	}
+
+	obj->SetParentApplicationId(p0);
 }
 
 void DiscordActivity::set_party(Variant party) {
@@ -106,6 +134,8 @@ void DiscordActivity::set_party(Variant party) {
 
 	if (party.get_type() == Variant::OBJECT) {
 	}
+
+	obj->SetParty(p0);
 }
 
 void DiscordActivity::set_secrets(Variant secrets) {
@@ -113,6 +143,8 @@ void DiscordActivity::set_secrets(Variant secrets) {
 
 	if (secrets.get_type() == Variant::OBJECT) {
 	}
+
+	obj->SetSecrets(p0);
 }
 
 void DiscordActivity::set_state(Variant state) {
@@ -121,6 +153,8 @@ void DiscordActivity::set_state(Variant state) {
 	if (state.get_type() == Variant::STRING) {
 		p0 = state.stringify().utf8().get_data();
 	}
+
+	obj->SetState(p0);
 }
 
 void DiscordActivity::set_state_url(Variant state_url) {
@@ -129,6 +163,8 @@ void DiscordActivity::set_state_url(Variant state_url) {
 	if (state_url.get_type() == Variant::STRING) {
 		p0 = state_url.stringify().utf8().get_data();
 	}
+
+	obj->SetStateUrl(p0);
 }
 
 void DiscordActivity::set_status_display_type(Variant status_display_type) {
@@ -136,10 +172,13 @@ void DiscordActivity::set_status_display_type(Variant status_display_type) {
 
 	if (status_display_type.get_type() == Variant::OBJECT) {
 	}
+
+	obj->SetStatusDisplayType(p0);
 }
 
 void DiscordActivity::set_supported_platforms(DiscordActivityGamePlatforms::Enum supported_platforms) {
 	discordpp::ActivityGamePlatforms p0 = (discordpp::ActivityGamePlatforms)supported_platforms;
+	obj->SetSupportedPlatforms(p0);
 }
 
 void DiscordActivity::set_timestamps(Variant timestamps) {
@@ -147,10 +186,13 @@ void DiscordActivity::set_timestamps(Variant timestamps) {
 
 	if (timestamps.get_type() == Variant::OBJECT) {
 	}
+
+	obj->SetTimestamps(p0);
 }
 
 void DiscordActivity::set_type(DiscordActivityTypes::Enum type) {
 	discordpp::ActivityTypes p0 = (discordpp::ActivityTypes)type;
+	obj->SetType(p0);
 }
 
 // Overload functions.

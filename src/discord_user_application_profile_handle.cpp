@@ -6,21 +6,27 @@ using namespace godot;
 // Functions.
 
 DiscordExternalIdentityProviderType::Enum DiscordUserApplicationProfileHandle::provider_type() {
+	auto r = obj->ProviderType();
 }
 
 String DiscordUserApplicationProfileHandle::avatar_hash() {
+	auto r = obj->AvatarHash();
 }
 
 String DiscordUserApplicationProfileHandle::metadata() {
+	auto r = obj->Metadata();
 }
 
 String DiscordUserApplicationProfileHandle::provider_issued_user_id() {
+	auto r = obj->ProviderIssuedUserId();
 }
 
 String DiscordUserApplicationProfileHandle::username() {
+	auto r = obj->Username();
 }
 
 Variant DiscordUserApplicationProfileHandle::provider_id() {
+	auto r = obj->ProviderId();
 }
 
 // Overload functions.

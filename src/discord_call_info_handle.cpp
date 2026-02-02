@@ -6,16 +6,20 @@ using namespace godot;
 // Functions.
 
 TypedArray<int64_t> DiscordCallInfoHandle::get_participants() {
+	auto r = obj->GetParticipants();
 }
 
 Variant DiscordCallInfoHandle::get_voice_state_handle(int64_t user_id) {
 	int64_t p0 = user_id;
+	auto r = obj->GetVoiceStateHandle(p0);
 }
 
 int64_t DiscordCallInfoHandle::channel_id() {
+	auto r = obj->ChannelId();
 }
 
 int64_t DiscordCallInfoHandle::guild_id() {
+	auto r = obj->GuildId();
 }
 
 // Overload functions.

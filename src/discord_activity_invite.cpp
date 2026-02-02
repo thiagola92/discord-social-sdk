@@ -6,66 +6,84 @@ using namespace godot;
 // Functions.
 
 DiscordActivityActionTypes::Enum DiscordActivityInvite::type() {
+	auto r = obj->Type();
 }
 
 String DiscordActivityInvite::party_id() {
+	auto r = obj->PartyId();
 }
 
 String DiscordActivityInvite::session_id() {
+	auto r = obj->SessionId();
 }
 
 bool DiscordActivityInvite::is_valid() {
+	auto r = obj->IsValid();
 }
 
 int64_t DiscordActivityInvite::application_id() {
+	auto r = obj->ApplicationId();
 }
 
 int64_t DiscordActivityInvite::channel_id() {
+	auto r = obj->ChannelId();
 }
 
 int64_t DiscordActivityInvite::message_id() {
+	auto r = obj->MessageId();
 }
 
 int64_t DiscordActivityInvite::parent_application_id() {
+	auto r = obj->ParentApplicationId();
 }
 
 int64_t DiscordActivityInvite::sender_id() {
+	auto r = obj->SenderId();
 }
 
 void DiscordActivityInvite::set_application_id(int64_t application_id) {
 	int64_t p0 = application_id;
+	obj->SetApplicationId(p0);
 }
 
 void DiscordActivityInvite::set_channel_id(int64_t channel_id) {
 	int64_t p0 = channel_id;
+	obj->SetChannelId(p0);
 }
 
 void DiscordActivityInvite::set_is_valid(bool is_valid) {
 	bool p0 = is_valid;
+	obj->SetIsValid(p0);
 }
 
 void DiscordActivityInvite::set_message_id(int64_t message_id) {
 	int64_t p0 = message_id;
+	obj->SetMessageId(p0);
 }
 
 void DiscordActivityInvite::set_parent_application_id(int64_t parent_application_id) {
 	int64_t p0 = parent_application_id;
+	obj->SetParentApplicationId(p0);
 }
 
 void DiscordActivityInvite::set_party_id(String party_id) {
 	std::string p0 = std::string(party_id.utf8().get_data());
+	obj->SetPartyId(p0);
 }
 
 void DiscordActivityInvite::set_sender_id(int64_t sender_id) {
 	int64_t p0 = sender_id;
+	obj->SetSenderId(p0);
 }
 
 void DiscordActivityInvite::set_session_id(String session_id) {
 	std::string p0 = std::string(session_id.utf8().get_data());
+	obj->SetSessionId(p0);
 }
 
 void DiscordActivityInvite::set_type(DiscordActivityActionTypes::Enum type) {
 	discordpp::ActivityActionTypes p0 = (discordpp::ActivityActionTypes)type;
+	obj->SetType(p0);
 }
 
 // Overload functions.

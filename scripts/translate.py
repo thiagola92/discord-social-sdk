@@ -77,8 +77,8 @@ def is_discord_object(type_info: TypeInfo) -> bool:
 
 # Use it first because it removes the possibility
 # of being FunctionInfo for the following checks.
-def is_discord_function(info: TypeInfo | FunctionInfo) -> bool:
-    return isinstance(info, FunctionInfo) or info.callback
+def is_discord_function(info: TypeInfo) -> bool:
+    return info.callback or info.name.startswith("std::function")
 
 
 ######################################################################
@@ -90,6 +90,9 @@ def discord_type_to_godot_type(
     info: TypeInfo | FunctionInfo,
     pointer: bool = True,
 ) -> str:
+    if isinstance(info, FunctionInfo):
+        return "Callable"
+
     if is_discord_function(info):
         return "Callable"
 
@@ -211,6 +214,9 @@ def godot_variable_to_discord_variable(
     target: str,
     source: str,
 ) -> str:
+    if isinstance(info, FunctionInfo):
+        return False, f"Not implemented for {info.name} (implement if needed)"
+
     if is_discord_function(info):
         return godot_callable_to_discord_callback(info, source, target)
 
@@ -252,7 +258,20 @@ def godot_callable_to_discord_callback(
     source: str,
     target: str,
 ) -> str:
-    return get_callback(target=target, source=source, params="", statements="")
+    if not type_info.callback:
+        assert False, f"Not implemented for {type_info.name} (implement if needed)"
+
+    # Complicate, use pprint() to better understand.
+    function_info = type_info.callback_ref.type.templates[0]
+
+    params = []
+
+    for p in function_info.params:
+        params.append(f"auto {p.gdscript_name}")
+
+    params = ", ".join(params)
+
+    return get_callback(target=target, source=source, params=params, statements="")
 
 
 def godot_variant_to_discord_optional(

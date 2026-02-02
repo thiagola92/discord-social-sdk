@@ -6,31 +6,39 @@ using namespace godot;
 // Functions.
 
 DiscordActivityPartyPrivacy::Enum DiscordActivityParty::privacy() {
+	auto r = obj->Privacy();
 }
 
 String DiscordActivityParty::id() {
+	auto r = obj->Id();
 }
 
 int64_t DiscordActivityParty::current_size() {
+	auto r = obj->CurrentSize();
 }
 
 int64_t DiscordActivityParty::max_size() {
+	auto r = obj->MaxSize();
 }
 
 void DiscordActivityParty::set_current_size(int64_t current_size) {
 	int64_t p0 = current_size;
+	obj->SetCurrentSize(p0);
 }
 
 void DiscordActivityParty::set_id(String id) {
 	std::string p0 = std::string(id.utf8().get_data());
+	obj->SetId(p0);
 }
 
 void DiscordActivityParty::set_max_size(int64_t max_size) {
 	int64_t p0 = max_size;
+	obj->SetMaxSize(p0);
 }
 
 void DiscordActivityParty::set_privacy(DiscordActivityPartyPrivacy::Enum privacy) {
 	discordpp::ActivityPartyPrivacy p0 = (discordpp::ActivityPartyPrivacy)privacy;
+	obj->SetPrivacy(p0);
 }
 
 // Overload functions.

@@ -6,17 +6,21 @@ using namespace godot;
 // Functions.
 
 String DiscordActivityButton::label() {
+	auto r = obj->Label();
 }
 
 String DiscordActivityButton::url() {
+	auto r = obj->Url();
 }
 
 void DiscordActivityButton::set_label(String label) {
 	std::string p0 = std::string(label.utf8().get_data());
+	obj->SetLabel(p0);
 }
 
 void DiscordActivityButton::set_url(String url) {
 	std::string p0 = std::string(url.utf8().get_data());
+	obj->SetUrl(p0);
 }
 
 // Overload functions.

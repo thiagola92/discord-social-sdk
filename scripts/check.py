@@ -23,6 +23,7 @@ def check_callbacks(class_info: ClassInfo) -> None:
                 if n[-1] == c.name:
                     p.callback = True
                     p.type.callback = True
+                    p.type.callback_ref = c
 
 
 def check_enums(namespace_info: NamespaceInfo) -> None:

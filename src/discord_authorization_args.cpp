@@ -6,28 +6,36 @@ using namespace godot;
 // Functions.
 
 String DiscordAuthorizationArgs::scopes() {
+	auto r = obj->Scopes();
 }
 
 Variant DiscordAuthorizationArgs::code_challenge() {
+	auto r = obj->CodeChallenge();
 }
 
 Variant DiscordAuthorizationArgs::custom_scheme_param() {
+	auto r = obj->CustomSchemeParam();
 }
 
 Variant DiscordAuthorizationArgs::integration_type() {
+	auto r = obj->IntegrationType();
 }
 
 Variant DiscordAuthorizationArgs::nonce() {
+	auto r = obj->Nonce();
 }
 
 Variant DiscordAuthorizationArgs::state() {
+	auto r = obj->State();
 }
 
 int64_t DiscordAuthorizationArgs::client_id() {
+	auto r = obj->ClientId();
 }
 
 void DiscordAuthorizationArgs::set_client_id(int64_t client_id) {
 	int64_t p0 = client_id;
+	obj->SetClientId(p0);
 }
 
 void DiscordAuthorizationArgs::set_code_challenge(Variant code_challenge) {
@@ -35,6 +43,8 @@ void DiscordAuthorizationArgs::set_code_challenge(Variant code_challenge) {
 
 	if (code_challenge.get_type() == Variant::OBJECT) {
 	}
+
+	obj->SetCodeChallenge(p0);
 }
 
 void DiscordAuthorizationArgs::set_custom_scheme_param(Variant custom_scheme_param) {
@@ -43,6 +53,8 @@ void DiscordAuthorizationArgs::set_custom_scheme_param(Variant custom_scheme_par
 	if (custom_scheme_param.get_type() == Variant::STRING) {
 		p0 = custom_scheme_param.stringify().utf8().get_data();
 	}
+
+	obj->SetCustomSchemeParam(p0);
 }
 
 void DiscordAuthorizationArgs::set_integration_type(Variant integration_type) {
@@ -50,6 +62,8 @@ void DiscordAuthorizationArgs::set_integration_type(Variant integration_type) {
 
 	if (integration_type.get_type() == Variant::OBJECT) {
 	}
+
+	obj->SetIntegrationType(p0);
 }
 
 void DiscordAuthorizationArgs::set_nonce(Variant nonce) {
@@ -58,10 +72,13 @@ void DiscordAuthorizationArgs::set_nonce(Variant nonce) {
 	if (nonce.get_type() == Variant::STRING) {
 		p0 = nonce.stringify().utf8().get_data();
 	}
+
+	obj->SetNonce(p0);
 }
 
 void DiscordAuthorizationArgs::set_scopes(String scopes) {
 	std::string p0 = std::string(scopes.utf8().get_data());
+	obj->SetScopes(p0);
 }
 
 void DiscordAuthorizationArgs::set_state(Variant state) {
@@ -70,6 +87,8 @@ void DiscordAuthorizationArgs::set_state(Variant state) {
 	if (state.get_type() == Variant::STRING) {
 		p0 = state.stringify().utf8().get_data();
 	}
+
+	obj->SetState(p0);
 }
 
 // Overload functions.

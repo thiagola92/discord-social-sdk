@@ -6,24 +6,31 @@ using namespace godot;
 // Functions.
 
 Variant DiscordActivityAssets::invite_cover_image() {
+	auto r = obj->InviteCoverImage();
 }
 
 Variant DiscordActivityAssets::large_image() {
+	auto r = obj->LargeImage();
 }
 
 Variant DiscordActivityAssets::large_text() {
+	auto r = obj->LargeText();
 }
 
 Variant DiscordActivityAssets::large_url() {
+	auto r = obj->LargeUrl();
 }
 
 Variant DiscordActivityAssets::small_image() {
+	auto r = obj->SmallImage();
 }
 
 Variant DiscordActivityAssets::small_text() {
+	auto r = obj->SmallText();
 }
 
 Variant DiscordActivityAssets::small_url() {
+	auto r = obj->SmallUrl();
 }
 
 void DiscordActivityAssets::set_invite_cover_image(Variant invite_cover_image) {
@@ -32,6 +39,8 @@ void DiscordActivityAssets::set_invite_cover_image(Variant invite_cover_image) {
 	if (invite_cover_image.get_type() == Variant::STRING) {
 		p0 = invite_cover_image.stringify().utf8().get_data();
 	}
+
+	obj->SetInviteCoverImage(p0);
 }
 
 void DiscordActivityAssets::set_large_image(Variant large_image) {
@@ -40,6 +49,8 @@ void DiscordActivityAssets::set_large_image(Variant large_image) {
 	if (large_image.get_type() == Variant::STRING) {
 		p0 = large_image.stringify().utf8().get_data();
 	}
+
+	obj->SetLargeImage(p0);
 }
 
 void DiscordActivityAssets::set_large_text(Variant large_text) {
@@ -48,6 +59,8 @@ void DiscordActivityAssets::set_large_text(Variant large_text) {
 	if (large_text.get_type() == Variant::STRING) {
 		p0 = large_text.stringify().utf8().get_data();
 	}
+
+	obj->SetLargeText(p0);
 }
 
 void DiscordActivityAssets::set_large_url(Variant large_url) {
@@ -56,6 +69,8 @@ void DiscordActivityAssets::set_large_url(Variant large_url) {
 	if (large_url.get_type() == Variant::STRING) {
 		p0 = large_url.stringify().utf8().get_data();
 	}
+
+	obj->SetLargeUrl(p0);
 }
 
 void DiscordActivityAssets::set_small_image(Variant small_image) {
@@ -64,6 +79,8 @@ void DiscordActivityAssets::set_small_image(Variant small_image) {
 	if (small_image.get_type() == Variant::STRING) {
 		p0 = small_image.stringify().utf8().get_data();
 	}
+
+	obj->SetSmallImage(p0);
 }
 
 void DiscordActivityAssets::set_small_text(Variant small_text) {
@@ -72,6 +89,8 @@ void DiscordActivityAssets::set_small_text(Variant small_text) {
 	if (small_text.get_type() == Variant::STRING) {
 		p0 = small_text.stringify().utf8().get_data();
 	}
+
+	obj->SetSmallText(p0);
 }
 
 void DiscordActivityAssets::set_small_url(Variant small_url) {
@@ -80,6 +99,8 @@ void DiscordActivityAssets::set_small_url(Variant small_url) {
 	if (small_url.get_type() == Variant::STRING) {
 		p0 = small_url.stringify().utf8().get_data();
 	}
+
+	obj->SetSmallUrl(p0);
 }
 
 // Overload functions.

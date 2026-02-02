@@ -6,17 +6,21 @@ using namespace godot;
 // Functions.
 
 int64_t DiscordLinkedLobby::application_id() {
+	auto r = obj->ApplicationId();
 }
 
 int64_t DiscordLinkedLobby::lobby_id() {
+	auto r = obj->LobbyId();
 }
 
 void DiscordLinkedLobby::set_application_id(int64_t application_id) {
 	int64_t p0 = application_id;
+	obj->SetApplicationId(p0);
 }
 
 void DiscordLinkedLobby::set_lobby_id(int64_t lobby_id) {
 	int64_t p0 = lobby_id;
+	obj->SetLobbyId(p0);
 }
 
 // Overload functions.

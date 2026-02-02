@@ -6,6 +6,7 @@ using namespace godot;
 // Functions.
 
 void Discord::run_callbacks() {
+	obj->RunCallbacks();
 }
 
 // Overload functions.
