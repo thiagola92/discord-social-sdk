@@ -22,11 +22,19 @@ DiscordCall *DiscordClient::start_call(int64_t channel_id) {
 DiscordCall *DiscordClient::start_call_with_audio_callbacks(int64_t lobby_id, Callable received_cb, Callable captured_cb) {
 	int64_t p0 = lobby_id;
 	auto p1 = [received_cb](auto user_id, auto data, auto samples_per_channel, auto sample_rate, auto channels, auto out_should_mute) {
-
+		int64_t p0 = (int64_t)user_id;
+		int64_t p1 = (int64_t)data;
+		int64_t p2 = (int64_t)samples_per_channel;
+		int64_t p3 = (int64_t)sample_rate;
+		int64_t p4 = (int64_t)channels;
+		bool p5 = out_should_mute;
 	};
 
 	auto p2 = [captured_cb](auto data, auto samples_per_channel, auto sample_rate, auto channels) {
-
+		int64_t p0 = (int64_t)data;
+		int64_t p1 = (int64_t)samples_per_channel;
+		int64_t p2 = (int64_t)sample_rate;
+		int64_t p3 = (int64_t)channels;
 	};
 
 	auto r = obj->StartCallWithAudioCallbacks(p0, p1, p2);
@@ -201,7 +209,10 @@ void DiscordClient::abort_get_token_from_device() {
 void DiscordClient::accept_activity_invite(DiscordActivityInvite *invite, Callable cb) {
 	discordpp::ActivityInvite p0 = *invite->unwrap();
 	auto p1 = [cb](auto result, auto join_secret) {
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 
+		String p1 = String(join_secret.c_str());
 	};
 
 	obj->AcceptActivityInvite(p0, p1);
@@ -210,7 +221,8 @@ void DiscordClient::accept_activity_invite(DiscordActivityInvite *invite, Callab
 void DiscordClient::accept_discord_friend_request(int64_t user_id, Callable cb) {
 	int64_t p0 = user_id;
 	auto p1 = [cb](auto result) {
-
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 	};
 
 	obj->AcceptDiscordFriendRequest(p0, p1);
@@ -219,7 +231,8 @@ void DiscordClient::accept_discord_friend_request(int64_t user_id, Callable cb) 
 void DiscordClient::accept_game_friend_request(int64_t user_id, Callable cb) {
 	int64_t p0 = user_id;
 	auto p1 = [cb](auto result) {
-
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 	};
 
 	obj->AcceptGameFriendRequest(p0, p1);
@@ -227,7 +240,10 @@ void DiscordClient::accept_game_friend_request(int64_t user_id, Callable cb) {
 
 void DiscordClient::add_log_callback(Callable callback, DiscordLoggingSeverity::Enum min_severity) {
 	auto p0 = [callback](auto message, auto severity) {
+		String p0 = String(message.c_str());
 
+		discordpp::LoggingSeverity *t_p1 = memnew(discordpp::LoggingSeverity(std::move(severity)));
+		DiscordLoggingSeverity *p1 = memnew(DiscordLoggingSeverity{ t_p1 });
 	};
 	discordpp::LoggingSeverity p1 = (discordpp::LoggingSeverity)min_severity;
 	obj->AddLogCallback(p0, p1);
@@ -235,7 +251,10 @@ void DiscordClient::add_log_callback(Callable callback, DiscordLoggingSeverity::
 
 void DiscordClient::add_voice_log_callback(Callable callback, DiscordLoggingSeverity::Enum min_severity) {
 	auto p0 = [callback](auto message, auto severity) {
+		String p0 = String(message.c_str());
 
+		discordpp::LoggingSeverity *t_p1 = memnew(discordpp::LoggingSeverity(std::move(severity)));
+		DiscordLoggingSeverity *p1 = memnew(DiscordLoggingSeverity{ t_p1 });
 	};
 	discordpp::LoggingSeverity p1 = (discordpp::LoggingSeverity)min_severity;
 	obj->AddVoiceLogCallback(p0, p1);
@@ -244,7 +263,11 @@ void DiscordClient::add_voice_log_callback(Callable callback, DiscordLoggingSeve
 void DiscordClient::authorize(DiscordAuthorizationArgs *args, Callable callback) {
 	discordpp::AuthorizationArgs p0 = *args->unwrap();
 	auto p1 = [callback](auto result, auto code, auto redirect_uri) {
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 
+		String p1 = String(code.c_str());
+		String p2 = String(redirect_uri.c_str());
 	};
 
 	obj->Authorize(p0, p1);
@@ -253,7 +276,8 @@ void DiscordClient::authorize(DiscordAuthorizationArgs *args, Callable callback)
 void DiscordClient::block_user(int64_t user_id, Callable cb) {
 	int64_t p0 = user_id;
 	auto p1 = [cb](auto result) {
-
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 	};
 
 	obj->BlockUser(p0, p1);
@@ -262,7 +286,8 @@ void DiscordClient::block_user(int64_t user_id, Callable cb) {
 void DiscordClient::cancel_discord_friend_request(int64_t user_id, Callable cb) {
 	int64_t p0 = user_id;
 	auto p1 = [cb](auto result) {
-
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 	};
 
 	obj->CancelDiscordFriendRequest(p0, p1);
@@ -271,7 +296,8 @@ void DiscordClient::cancel_discord_friend_request(int64_t user_id, Callable cb) 
 void DiscordClient::cancel_game_friend_request(int64_t user_id, Callable cb) {
 	int64_t p0 = user_id;
 	auto p1 = [cb](auto result) {
-
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 	};
 
 	obj->CancelGameFriendRequest(p0, p1);
@@ -292,7 +318,10 @@ void DiscordClient::connect_discord() {
 void DiscordClient::create_or_join_lobby(String secret, Callable callback) {
 	std::string p0 = std::string(secret.utf8().get_data());
 	auto p1 = [callback](auto result, auto lobby_id) {
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 
+		int64_t p1 = (int64_t)lobby_id;
 	};
 
 	obj->CreateOrJoinLobby(p0, p1);
@@ -331,7 +360,10 @@ void DiscordClient::create_or_join_lobby_with_metadata(String secret, TypedDicti
 	}
 
 	auto p3 = [callback](auto result, auto lobby_id) {
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 
+		int64_t p1 = (int64_t)lobby_id;
 	};
 
 	obj->CreateOrJoinLobbyWithMetadata(p0, p1, p2, p3);
@@ -341,7 +373,8 @@ void DiscordClient::delete_user_message(int64_t recipient_id, int64_t message_id
 	int64_t p0 = recipient_id;
 	int64_t p1 = message_id;
 	auto p2 = [cb](auto result) {
-
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 	};
 
 	obj->DeleteUserMessage(p0, p1, p2);
@@ -356,7 +389,8 @@ void DiscordClient::edit_user_message(int64_t recipient_id, int64_t message_id, 
 	int64_t p1 = message_id;
 	std::string p2 = std::string(content.utf8().get_data());
 	auto p3 = [cb](auto result) {
-
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 	};
 
 	obj->EditUserMessage(p0, p1, p2, p3);
@@ -383,7 +417,16 @@ void DiscordClient::exchange_child_token(String parent_application_token, int64_
 	std::string p0 = std::string(parent_application_token.utf8().get_data());
 	int64_t p1 = child_application_id;
 	auto p2 = [callback](auto result, auto access_token, auto token_type, auto expires_in, auto scopes) {
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 
+		String p1 = String(access_token.c_str());
+
+		discordpp::AuthorizationTokenType *t_p2 = memnew(discordpp::AuthorizationTokenType(std::move(token_type)));
+		DiscordAuthorizationTokenType *p2 = memnew(DiscordAuthorizationTokenType{ t_p2 });
+
+		int64_t p3 = (int64_t)expires_in;
+		String p4 = String(scopes.c_str());
 	};
 
 	obj->ExchangeChildToken(p0, p1, p2);
@@ -393,7 +436,11 @@ void DiscordClient::fetch_current_user(DiscordAuthorizationTokenType::Enum token
 	discordpp::AuthorizationTokenType p0 = (discordpp::AuthorizationTokenType)token_type;
 	std::string p1 = std::string(token.utf8().get_data());
 	auto p2 = [callback](auto result, auto id, auto name) {
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 
+		int64_t p1 = (int64_t)id;
+		String p2 = String(name.c_str());
 	};
 
 	obj->FetchCurrentUser(p0, p1, p2);
@@ -401,7 +448,8 @@ void DiscordClient::fetch_current_user(DiscordAuthorizationTokenType::Enum token
 
 void DiscordClient::get_current_input_device(Callable cb) {
 	auto p0 = [cb](auto device) {
-
+		discordpp::AudioDevice *t_p0 = memnew(discordpp::AudioDevice(std::move(device)));
+		DiscordAudioDevice *p0 = memnew(DiscordAudioDevice{ t_p0 });
 	};
 
 	obj->GetCurrentInputDevice(p0);
@@ -409,7 +457,8 @@ void DiscordClient::get_current_input_device(Callable cb) {
 
 void DiscordClient::get_current_output_device(Callable cb) {
 	auto p0 = [cb](auto device) {
-
+		discordpp::AudioDevice *t_p0 = memnew(discordpp::AudioDevice(std::move(device)));
+		DiscordAudioDevice *p0 = memnew(DiscordAudioDevice{ t_p0 });
 	};
 
 	obj->GetCurrentOutputDevice(p0);
@@ -418,7 +467,10 @@ void DiscordClient::get_current_output_device(Callable cb) {
 void DiscordClient::get_discord_client_connected_user(int64_t application_id, Callable callback) {
 	int64_t p0 = application_id;
 	auto p1 = [callback](auto result, auto user) {
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 
+		// TODO optional to Variant
 	};
 
 	obj->GetDiscordClientConnectedUser(p0, p1);
@@ -427,7 +479,10 @@ void DiscordClient::get_discord_client_connected_user(int64_t application_id, Ca
 void DiscordClient::get_guild_channels(int64_t guild_id, Callable cb) {
 	int64_t p0 = guild_id;
 	auto p1 = [cb](auto result, auto guild_channels) {
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 
+		// TODO vector to Array
 	};
 
 	obj->GetGuildChannels(p0, p1);
@@ -435,7 +490,7 @@ void DiscordClient::get_guild_channels(int64_t guild_id, Callable cb) {
 
 void DiscordClient::get_input_devices(Callable cb) {
 	auto p0 = [cb](auto devices) {
-
+		// TODO vector to Array
 	};
 
 	obj->GetInputDevices(p0);
@@ -445,7 +500,10 @@ void DiscordClient::get_lobby_messages_with_limit(int64_t lobby_id, int64_t limi
 	int64_t p0 = lobby_id;
 	int64_t p1 = limit;
 	auto p2 = [cb](auto result, auto messages) {
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 
+		// TODO vector to Array
 	};
 
 	obj->GetLobbyMessagesWithLimit(p0, p1, p2);
@@ -453,7 +511,7 @@ void DiscordClient::get_lobby_messages_with_limit(int64_t lobby_id, int64_t limi
 
 void DiscordClient::get_output_devices(Callable cb) {
 	auto p0 = [cb](auto devices) {
-
+		// TODO vector to Array
 	};
 
 	obj->GetOutputDevices(p0);
@@ -464,7 +522,17 @@ void DiscordClient::get_provisional_token(int64_t application_id, DiscordAuthent
 	discordpp::AuthenticationExternalAuthType p1 = (discordpp::AuthenticationExternalAuthType)external_auth_type;
 	std::string p2 = std::string(external_auth_token.utf8().get_data());
 	auto p3 = [callback](auto result, auto access_token, auto refresh_token, auto token_type, auto expires_in, auto scopes) {
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 
+		String p1 = String(access_token.c_str());
+		String p2 = String(refresh_token.c_str());
+
+		discordpp::AuthorizationTokenType *t_p3 = memnew(discordpp::AuthorizationTokenType(std::move(token_type)));
+		DiscordAuthorizationTokenType *p3 = memnew(DiscordAuthorizationTokenType{ t_p3 });
+
+		int64_t p4 = (int64_t)expires_in;
+		String p5 = String(scopes.c_str());
 	};
 
 	obj->GetProvisionalToken(p0, p1, p2, p3);
@@ -476,7 +544,17 @@ void DiscordClient::get_token(int64_t application_id, String code, String code_v
 	std::string p2 = std::string(code_verifier.utf8().get_data());
 	std::string p3 = std::string(redirect_uri.utf8().get_data());
 	auto p4 = [callback](auto result, auto access_token, auto refresh_token, auto token_type, auto expires_in, auto scopes) {
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 
+		String p1 = String(access_token.c_str());
+		String p2 = String(refresh_token.c_str());
+
+		discordpp::AuthorizationTokenType *t_p3 = memnew(discordpp::AuthorizationTokenType(std::move(token_type)));
+		DiscordAuthorizationTokenType *p3 = memnew(DiscordAuthorizationTokenType{ t_p3 });
+
+		int64_t p4 = (int64_t)expires_in;
+		String p5 = String(scopes.c_str());
 	};
 
 	obj->GetToken(p0, p1, p2, p3, p4);
@@ -485,7 +563,17 @@ void DiscordClient::get_token(int64_t application_id, String code, String code_v
 void DiscordClient::get_token_from_device(DiscordDeviceAuthorizationArgs *args, Callable callback) {
 	discordpp::DeviceAuthorizationArgs p0 = *args->unwrap();
 	auto p1 = [callback](auto result, auto access_token, auto refresh_token, auto token_type, auto expires_in, auto scopes) {
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 
+		String p1 = String(access_token.c_str());
+		String p2 = String(refresh_token.c_str());
+
+		discordpp::AuthorizationTokenType *t_p3 = memnew(discordpp::AuthorizationTokenType(std::move(token_type)));
+		DiscordAuthorizationTokenType *p3 = memnew(DiscordAuthorizationTokenType{ t_p3 });
+
+		int64_t p4 = (int64_t)expires_in;
+		String p5 = String(scopes.c_str());
 	};
 
 	obj->GetTokenFromDevice(p0, p1);
@@ -496,7 +584,17 @@ void DiscordClient::get_token_from_device_provisional_merge(DiscordDeviceAuthori
 	discordpp::AuthenticationExternalAuthType p1 = (discordpp::AuthenticationExternalAuthType)external_auth_type;
 	std::string p2 = std::string(external_auth_token.utf8().get_data());
 	auto p3 = [callback](auto result, auto access_token, auto refresh_token, auto token_type, auto expires_in, auto scopes) {
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 
+		String p1 = String(access_token.c_str());
+		String p2 = String(refresh_token.c_str());
+
+		discordpp::AuthorizationTokenType *t_p3 = memnew(discordpp::AuthorizationTokenType(std::move(token_type)));
+		DiscordAuthorizationTokenType *p3 = memnew(DiscordAuthorizationTokenType{ t_p3 });
+
+		int64_t p4 = (int64_t)expires_in;
+		String p5 = String(scopes.c_str());
 	};
 
 	obj->GetTokenFromDeviceProvisionalMerge(p0, p1, p2, p3);
@@ -510,7 +608,17 @@ void DiscordClient::get_token_from_provisional_merge(int64_t application_id, Str
 	discordpp::AuthenticationExternalAuthType p4 = (discordpp::AuthenticationExternalAuthType)external_auth_type;
 	std::string p5 = std::string(external_auth_token.utf8().get_data());
 	auto p6 = [callback](auto result, auto access_token, auto refresh_token, auto token_type, auto expires_in, auto scopes) {
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 
+		String p1 = String(access_token.c_str());
+		String p2 = String(refresh_token.c_str());
+
+		discordpp::AuthorizationTokenType *t_p3 = memnew(discordpp::AuthorizationTokenType(std::move(token_type)));
+		DiscordAuthorizationTokenType *p3 = memnew(DiscordAuthorizationTokenType{ t_p3 });
+
+		int64_t p4 = (int64_t)expires_in;
+		String p5 = String(scopes.c_str());
 	};
 
 	obj->GetTokenFromProvisionalMerge(p0, p1, p2, p3, p4, p5, p6);
@@ -518,7 +626,10 @@ void DiscordClient::get_token_from_provisional_merge(int64_t application_id, Str
 
 void DiscordClient::get_user_guilds(Callable cb) {
 	auto p0 = [cb](auto result, auto guilds) {
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 
+		// TODO vector to Array
 	};
 
 	obj->GetUserGuilds(p0);
@@ -526,7 +637,10 @@ void DiscordClient::get_user_guilds(Callable cb) {
 
 void DiscordClient::get_user_message_summaries(Callable cb) {
 	auto p0 = [cb](auto result, auto summaries) {
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 
+		// TODO vector to Array
 	};
 
 	obj->GetUserMessageSummaries(p0);
@@ -536,7 +650,10 @@ void DiscordClient::get_user_messages_with_limit(int64_t recipient_id, int64_t l
 	int64_t p0 = recipient_id;
 	int64_t p1 = limit;
 	auto p2 = [cb](auto result, auto messages) {
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 
+		// TODO vector to Array
 	};
 
 	obj->GetUserMessagesWithLimit(p0, p1, p2);
@@ -544,7 +661,7 @@ void DiscordClient::get_user_messages_with_limit(int64_t recipient_id, int64_t l
 
 void DiscordClient::is_discord_app_installed(Callable callback) {
 	auto p0 = [callback](auto installed) {
-
+		bool p0 = installed;
 	};
 
 	obj->IsDiscordAppInstalled(p0);
@@ -557,7 +674,10 @@ void DiscordClient::join_linked_lobby_guild(int64_t lobby_id, Callable provision
 	};
 
 	auto p2 = [callback](auto result, auto invite_url) {
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 
+		String p1 = String(invite_url.c_str());
 	};
 
 	obj->JoinLinkedLobbyGuild(p0, p1, p2);
@@ -566,7 +686,8 @@ void DiscordClient::join_linked_lobby_guild(int64_t lobby_id, Callable provision
 void DiscordClient::leave_lobby(int64_t lobby_id, Callable callback) {
 	int64_t p0 = lobby_id;
 	auto p1 = [callback](auto result) {
-
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 	};
 
 	obj->LeaveLobby(p0, p1);
@@ -576,7 +697,8 @@ void DiscordClient::link_channel_to_lobby(int64_t lobby_id, int64_t channel_id, 
 	int64_t p0 = lobby_id;
 	int64_t p1 = channel_id;
 	auto p2 = [callback](auto result) {
-
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 	};
 
 	obj->LinkChannelToLobby(p0, p1, p2);
@@ -590,7 +712,8 @@ void DiscordClient::open_authorize_device_screen(int64_t client_id, String user_
 
 void DiscordClient::open_connected_games_settings_in_discord(Callable callback) {
 	auto p0 = [callback](auto result) {
-
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 	};
 
 	obj->OpenConnectedGamesSettingsInDiscord(p0);
@@ -603,7 +726,8 @@ void DiscordClient::open_message_in_discord(int64_t message_id, Callable provisi
 	};
 
 	auto p2 = [callback](auto result) {
-
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 	};
 
 	obj->OpenMessageInDiscord(p0, p1, p2);
@@ -618,7 +742,17 @@ void DiscordClient::refresh_token(int64_t application_id, String refresh_token, 
 	int64_t p0 = application_id;
 	std::string p1 = std::string(refresh_token.utf8().get_data());
 	auto p2 = [callback](auto result, auto access_token, auto refresh_token, auto token_type, auto expires_in, auto scopes) {
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 
+		String p1 = String(access_token.c_str());
+		String p2 = String(refresh_token.c_str());
+
+		discordpp::AuthorizationTokenType *t_p3 = memnew(discordpp::AuthorizationTokenType(std::move(token_type)));
+		DiscordAuthorizationTokenType *p3 = memnew(DiscordAuthorizationTokenType{ t_p3 });
+
+		int64_t p4 = (int64_t)expires_in;
+		String p5 = String(scopes.c_str());
 	};
 
 	obj->RefreshToken(p0, p1, p2);
@@ -635,7 +769,8 @@ void DiscordClient::register_authorize_request_callback(Callable callback) {
 void DiscordClient::reject_discord_friend_request(int64_t user_id, Callable cb) {
 	int64_t p0 = user_id;
 	auto p1 = [cb](auto result) {
-
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 	};
 
 	obj->RejectDiscordFriendRequest(p0, p1);
@@ -644,7 +779,8 @@ void DiscordClient::reject_discord_friend_request(int64_t user_id, Callable cb) 
 void DiscordClient::reject_game_friend_request(int64_t user_id, Callable cb) {
 	int64_t p0 = user_id;
 	auto p1 = [cb](auto result) {
-
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 	};
 
 	obj->RejectGameFriendRequest(p0, p1);
@@ -657,7 +793,8 @@ void DiscordClient::remove_authorize_request_callback() {
 void DiscordClient::remove_discord_and_game_friend(int64_t user_id, Callable cb) {
 	int64_t p0 = user_id;
 	auto p1 = [cb](auto result) {
-
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 	};
 
 	obj->RemoveDiscordAndGameFriend(p0, p1);
@@ -666,7 +803,8 @@ void DiscordClient::remove_discord_and_game_friend(int64_t user_id, Callable cb)
 void DiscordClient::remove_game_friend(int64_t user_id, Callable cb) {
 	int64_t p0 = user_id;
 	auto p1 = [cb](auto result) {
-
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 	};
 
 	obj->RemoveGameFriend(p0, p1);
@@ -676,7 +814,8 @@ void DiscordClient::revoke_token(int64_t application_id, String token, Callable 
 	int64_t p0 = application_id;
 	std::string p1 = std::string(token.utf8().get_data());
 	auto p2 = [callback](auto result) {
-
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 	};
 
 	obj->RevokeToken(p0, p1, p2);
@@ -686,7 +825,8 @@ void DiscordClient::send_activity_invite(int64_t user_id, String content, Callab
 	int64_t p0 = user_id;
 	std::string p1 = std::string(content.utf8().get_data());
 	auto p2 = [cb](auto result) {
-
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 	};
 
 	obj->SendActivityInvite(p0, p1, p2);
@@ -695,7 +835,8 @@ void DiscordClient::send_activity_invite(int64_t user_id, String content, Callab
 void DiscordClient::send_activity_join_request(int64_t user_id, Callable cb) {
 	int64_t p0 = user_id;
 	auto p1 = [cb](auto result) {
-
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 	};
 
 	obj->SendActivityJoinRequest(p0, p1);
@@ -704,7 +845,8 @@ void DiscordClient::send_activity_join_request(int64_t user_id, Callable cb) {
 void DiscordClient::send_activity_join_request_reply(DiscordActivityInvite *invite, Callable cb) {
 	discordpp::ActivityInvite p0 = *invite->unwrap();
 	auto p1 = [cb](auto result) {
-
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 	};
 
 	obj->SendActivityJoinRequestReply(p0, p1);
@@ -713,7 +855,8 @@ void DiscordClient::send_activity_join_request_reply(DiscordActivityInvite *invi
 void DiscordClient::send_discord_friend_request(String username, Callable cb) {
 	std::string p0 = std::string(username.utf8().get_data());
 	auto p1 = [cb](auto result) {
-
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 	};
 
 	obj->SendDiscordFriendRequest(p0, p1);
@@ -722,7 +865,8 @@ void DiscordClient::send_discord_friend_request(String username, Callable cb) {
 void DiscordClient::send_discord_friend_request_by_id(int64_t user_id, Callable cb) {
 	int64_t p0 = user_id;
 	auto p1 = [cb](auto result) {
-
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 	};
 
 	obj->SendDiscordFriendRequestById(p0, p1);
@@ -731,7 +875,8 @@ void DiscordClient::send_discord_friend_request_by_id(int64_t user_id, Callable 
 void DiscordClient::send_game_friend_request(String username, Callable cb) {
 	std::string p0 = std::string(username.utf8().get_data());
 	auto p1 = [cb](auto result) {
-
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 	};
 
 	obj->SendGameFriendRequest(p0, p1);
@@ -740,7 +885,8 @@ void DiscordClient::send_game_friend_request(String username, Callable cb) {
 void DiscordClient::send_game_friend_request_by_id(int64_t user_id, Callable cb) {
 	int64_t p0 = user_id;
 	auto p1 = [cb](auto result) {
-
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 	};
 
 	obj->SendGameFriendRequestById(p0, p1);
@@ -750,7 +896,10 @@ void DiscordClient::send_lobby_message(int64_t lobby_id, String content, Callabl
 	int64_t p0 = lobby_id;
 	std::string p1 = std::string(content.utf8().get_data());
 	auto p2 = [cb](auto result, auto message_id) {
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 
+		int64_t p1 = (int64_t)message_id;
 	};
 
 	obj->SendLobbyMessage(p0, p1, p2);
@@ -775,7 +924,10 @@ void DiscordClient::send_lobby_message_with_metadata(int64_t lobby_id, String co
 	}
 
 	auto p3 = [cb](auto result, auto message_id) {
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 
+		int64_t p1 = (int64_t)message_id;
 	};
 
 	obj->SendLobbyMessageWithMetadata(p0, p1, p2, p3);
@@ -785,7 +937,10 @@ void DiscordClient::send_user_message(int64_t recipient_id, String content, Call
 	int64_t p0 = recipient_id;
 	std::string p1 = std::string(content.utf8().get_data());
 	auto p2 = [cb](auto result, auto message_id) {
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 
+		int64_t p1 = (int64_t)message_id;
 	};
 
 	obj->SendUserMessage(p0, p1, p2);
@@ -810,7 +965,10 @@ void DiscordClient::send_user_message_with_metadata(int64_t recipient_id, String
 	}
 
 	auto p3 = [cb](auto result, auto message_id) {
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 
+		int64_t p1 = (int64_t)message_id;
 	};
 
 	obj->SendUserMessageWithMetadata(p0, p1, p2, p3);
@@ -818,7 +976,8 @@ void DiscordClient::send_user_message_with_metadata(int64_t recipient_id, String
 
 void DiscordClient::set_activity_invite_created_callback(Callable cb) {
 	auto p0 = [cb](auto invite) {
-
+		discordpp::ActivityInvite *t_p0 = memnew(discordpp::ActivityInvite(std::move(invite)));
+		DiscordActivityInvite *p0 = memnew(DiscordActivityInvite{ t_p0 });
 	};
 
 	obj->SetActivityInviteCreatedCallback(p0);
@@ -826,7 +985,8 @@ void DiscordClient::set_activity_invite_created_callback(Callable cb) {
 
 void DiscordClient::set_activity_invite_updated_callback(Callable cb) {
 	auto p0 = [cb](auto invite) {
-
+		discordpp::ActivityInvite *t_p0 = memnew(discordpp::ActivityInvite(std::move(invite)));
+		DiscordActivityInvite *p0 = memnew(DiscordActivityInvite{ t_p0 });
 	};
 
 	obj->SetActivityInviteUpdatedCallback(p0);
@@ -834,7 +994,7 @@ void DiscordClient::set_activity_invite_updated_callback(Callable cb) {
 
 void DiscordClient::set_activity_join_callback(Callable cb) {
 	auto p0 = [cb](auto join_secret) {
-
+		String p0 = String(join_secret.c_str());
 	};
 
 	obj->SetActivityJoinCallback(p0);
@@ -842,7 +1002,8 @@ void DiscordClient::set_activity_join_callback(Callable cb) {
 
 void DiscordClient::set_activity_join_with_application_callback(Callable cb) {
 	auto p0 = [cb](auto application_id, auto join_secret) {
-
+		int64_t p0 = (int64_t)application_id;
+		String p1 = String(join_secret.c_str());
 	};
 
 	obj->SetActivityJoinWithApplicationCallback(p0);
@@ -873,7 +1034,8 @@ void DiscordClient::set_automatic_gain_control(bool on) {
 
 void DiscordClient::set_device_change_callback(Callable callback) {
 	auto p0 = [callback](auto input_devices, auto output_devices) {
-
+		// TODO vector to Array
+		// TODO vector to Array
 	};
 
 	obj->SetDeviceChangeCallback(p0);
@@ -902,7 +1064,8 @@ void DiscordClient::set_http_request_timeout(int64_t http_timeout_in_millisecond
 void DiscordClient::set_input_device(String device_id, Callable cb) {
 	std::string p0 = std::string(device_id.utf8().get_data());
 	auto p1 = [cb](auto result) {
-
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 	};
 
 	obj->SetInputDevice(p0, p1);
@@ -915,7 +1078,7 @@ void DiscordClient::set_input_volume(float input_volume) {
 
 void DiscordClient::set_lobby_created_callback(Callable cb) {
 	auto p0 = [cb](auto lobby_id) {
-
+		int64_t p0 = (int64_t)lobby_id;
 	};
 
 	obj->SetLobbyCreatedCallback(p0);
@@ -923,7 +1086,7 @@ void DiscordClient::set_lobby_created_callback(Callable cb) {
 
 void DiscordClient::set_lobby_deleted_callback(Callable cb) {
 	auto p0 = [cb](auto lobby_id) {
-
+		int64_t p0 = (int64_t)lobby_id;
 	};
 
 	obj->SetLobbyDeletedCallback(p0);
@@ -931,7 +1094,8 @@ void DiscordClient::set_lobby_deleted_callback(Callable cb) {
 
 void DiscordClient::set_lobby_member_added_callback(Callable cb) {
 	auto p0 = [cb](auto lobby_id, auto member_id) {
-
+		int64_t p0 = (int64_t)lobby_id;
+		int64_t p1 = (int64_t)member_id;
 	};
 
 	obj->SetLobbyMemberAddedCallback(p0);
@@ -939,7 +1103,8 @@ void DiscordClient::set_lobby_member_added_callback(Callable cb) {
 
 void DiscordClient::set_lobby_member_removed_callback(Callable cb) {
 	auto p0 = [cb](auto lobby_id, auto member_id) {
-
+		int64_t p0 = (int64_t)lobby_id;
+		int64_t p1 = (int64_t)member_id;
 	};
 
 	obj->SetLobbyMemberRemovedCallback(p0);
@@ -947,7 +1112,8 @@ void DiscordClient::set_lobby_member_removed_callback(Callable cb) {
 
 void DiscordClient::set_lobby_member_updated_callback(Callable cb) {
 	auto p0 = [cb](auto lobby_id, auto member_id) {
-
+		int64_t p0 = (int64_t)lobby_id;
+		int64_t p1 = (int64_t)member_id;
 	};
 
 	obj->SetLobbyMemberUpdatedCallback(p0);
@@ -955,7 +1121,7 @@ void DiscordClient::set_lobby_member_updated_callback(Callable cb) {
 
 void DiscordClient::set_lobby_updated_callback(Callable cb) {
 	auto p0 = [cb](auto lobby_id) {
-
+		int64_t p0 = (int64_t)lobby_id;
 	};
 
 	obj->SetLobbyUpdatedCallback(p0);
@@ -963,7 +1129,7 @@ void DiscordClient::set_lobby_updated_callback(Callable cb) {
 
 void DiscordClient::set_message_created_callback(Callable cb) {
 	auto p0 = [cb](auto message_id) {
-
+		int64_t p0 = (int64_t)message_id;
 	};
 
 	obj->SetMessageCreatedCallback(p0);
@@ -971,7 +1137,8 @@ void DiscordClient::set_message_created_callback(Callable cb) {
 
 void DiscordClient::set_message_deleted_callback(Callable cb) {
 	auto p0 = [cb](auto message_id, auto channel_id) {
-
+		int64_t p0 = (int64_t)message_id;
+		int64_t p1 = (int64_t)channel_id;
 	};
 
 	obj->SetMessageDeletedCallback(p0);
@@ -979,7 +1146,7 @@ void DiscordClient::set_message_deleted_callback(Callable cb) {
 
 void DiscordClient::set_message_updated_callback(Callable cb) {
 	auto p0 = [cb](auto message_id) {
-
+		int64_t p0 = (int64_t)message_id;
 	};
 
 	obj->SetMessageUpdatedCallback(p0);
@@ -987,7 +1154,7 @@ void DiscordClient::set_message_updated_callback(Callable cb) {
 
 void DiscordClient::set_no_audio_input_callback(Callable callback) {
 	auto p0 = [callback](auto input_detected) {
-
+		bool p0 = input_detected;
 	};
 
 	obj->SetNoAudioInputCallback(p0);
@@ -1006,7 +1173,8 @@ void DiscordClient::set_noise_suppression(bool on) {
 void DiscordClient::set_online_status(DiscordStatusType::Enum status, Callable callback) {
 	discordpp::StatusType p0 = (discordpp::StatusType)status;
 	auto p1 = [callback](auto result) {
-
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 	};
 
 	obj->SetOnlineStatus(p0, p1);
@@ -1021,7 +1189,8 @@ void DiscordClient::set_opus_hardware_coding(bool encode, bool decode) {
 void DiscordClient::set_output_device(String device_id, Callable cb) {
 	std::string p0 = std::string(device_id.utf8().get_data());
 	auto p1 = [cb](auto result) {
-
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 	};
 
 	obj->SetOutputDevice(p0, p1);
@@ -1034,7 +1203,8 @@ void DiscordClient::set_output_volume(float output_volume) {
 
 void DiscordClient::set_relationship_created_callback(Callable cb) {
 	auto p0 = [cb](auto user_id, auto is_discord_relationship_update) {
-
+		int64_t p0 = (int64_t)user_id;
+		bool p1 = is_discord_relationship_update;
 	};
 
 	obj->SetRelationshipCreatedCallback(p0);
@@ -1042,7 +1212,8 @@ void DiscordClient::set_relationship_created_callback(Callable cb) {
 
 void DiscordClient::set_relationship_deleted_callback(Callable cb) {
 	auto p0 = [cb](auto user_id, auto is_discord_relationship_update) {
-
+		int64_t p0 = (int64_t)user_id;
+		bool p1 = is_discord_relationship_update;
 	};
 
 	obj->SetRelationshipDeletedCallback(p0);
@@ -1050,7 +1221,7 @@ void DiscordClient::set_relationship_deleted_callback(Callable cb) {
 
 void DiscordClient::set_relationship_groups_updated_callback(Callable cb) {
 	auto p0 = [cb](auto user_id) {
-
+		int64_t p0 = (int64_t)user_id;
 	};
 
 	obj->SetRelationshipGroupsUpdatedCallback(p0);
@@ -1073,7 +1244,13 @@ void DiscordClient::set_showing_chat(bool showing_chat) {
 
 void DiscordClient::set_status_changed_callback(Callable cb) {
 	auto p0 = [cb](auto status, auto error, auto error_detail) {
+		discordpp::Client::Status *t_p0 = memnew(discordpp::Client::Status(std::move(status)));
+		DiscordClientStatus *p0 = memnew(DiscordClientStatus{ t_p0 });
 
+		discordpp::Client::Error *t_p1 = memnew(discordpp::Client::Error(std::move(error)));
+		DiscordClientError *p1 = memnew(DiscordClientError{ t_p1 });
+
+		int64_t p2 = (int64_t)error_detail;
 	};
 
 	obj->SetStatusChangedCallback(p0);
@@ -1095,7 +1272,7 @@ void DiscordClient::set_token_expiration_callback(Callable callback) {
 
 void DiscordClient::set_user_updated_callback(Callable cb) {
 	auto p0 = [cb](auto user_id) {
-
+		int64_t p0 = (int64_t)user_id;
 	};
 
 	obj->SetUserUpdatedCallback(p0);
@@ -1109,7 +1286,9 @@ void DiscordClient::set_voice_log_dir(String path, DiscordLoggingSeverity::Enum 
 
 void DiscordClient::set_voice_participant_changed_callback(Callable cb) {
 	auto p0 = [cb](auto lobby_id, auto member_id, auto added) {
-
+		int64_t p0 = (int64_t)lobby_id;
+		int64_t p1 = (int64_t)member_id;
+		bool p2 = added;
 	};
 
 	obj->SetVoiceParticipantChangedCallback(p0);
@@ -1118,7 +1297,8 @@ void DiscordClient::set_voice_participant_changed_callback(Callable cb) {
 void DiscordClient::unblock_user(int64_t user_id, Callable cb) {
 	int64_t p0 = user_id;
 	auto p1 = [cb](auto result) {
-
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 	};
 
 	obj->UnblockUser(p0, p1);
@@ -1127,7 +1307,8 @@ void DiscordClient::unblock_user(int64_t user_id, Callable cb) {
 void DiscordClient::unlink_channel_from_lobby(int64_t lobby_id, Callable callback) {
 	int64_t p0 = lobby_id;
 	auto p1 = [callback](auto result) {
-
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 	};
 
 	obj->UnlinkChannelFromLobby(p0, p1);
@@ -1138,7 +1319,8 @@ void DiscordClient::unmerge_into_provisional_account(int64_t application_id, Dis
 	discordpp::AuthenticationExternalAuthType p1 = (discordpp::AuthenticationExternalAuthType)external_auth_type;
 	std::string p2 = std::string(external_auth_token.utf8().get_data());
 	auto p3 = [callback](auto result) {
-
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 	};
 
 	obj->UnmergeIntoProvisionalAccount(p0, p1, p2, p3);
@@ -1147,7 +1329,8 @@ void DiscordClient::unmerge_into_provisional_account(int64_t application_id, Dis
 void DiscordClient::update_provisional_account_display_name(String name, Callable callback) {
 	std::string p0 = std::string(name.utf8().get_data());
 	auto p1 = [callback](auto result) {
-
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 	};
 
 	obj->UpdateProvisionalAccountDisplayName(p0, p1);
@@ -1156,7 +1339,8 @@ void DiscordClient::update_provisional_account_display_name(String name, Callabl
 void DiscordClient::update_rich_presence(DiscordActivity *activity, Callable cb) {
 	discordpp::Activity p0 = *activity->unwrap();
 	auto p1 = [cb](auto result) {
-
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 	};
 
 	obj->UpdateRichPresence(p0, p1);
@@ -1166,7 +1350,8 @@ void DiscordClient::update_token(DiscordAuthorizationTokenType::Enum token_type,
 	discordpp::AuthorizationTokenType p0 = (discordpp::AuthorizationTokenType)token_type;
 	std::string p1 = std::string(token.utf8().get_data());
 	auto p2 = [callback](auto result) {
-
+		discordpp::ClientResult *t_p0 = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 	};
 
 	obj->UpdateToken(p0, p1, p2);

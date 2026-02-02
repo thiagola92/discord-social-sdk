@@ -83,7 +83,7 @@ void DiscordCall::set_local_mute(int64_t user_id, bool mute) {
 
 void DiscordCall::set_on_voice_state_changed_callback(Callable cb) {
 	auto p0 = [cb](auto user_id) {
-
+		int64_t p0 = (int64_t)user_id;
 	};
 
 	obj->SetOnVoiceStateChangedCallback(p0);
@@ -91,7 +91,8 @@ void DiscordCall::set_on_voice_state_changed_callback(Callable cb) {
 
 void DiscordCall::set_participant_changed_callback(Callable cb) {
 	auto p0 = [cb](auto user_id, auto added) {
-
+		int64_t p0 = (int64_t)user_id;
+		bool p1 = added;
 	};
 
 	obj->SetParticipantChangedCallback(p0);
@@ -125,7 +126,8 @@ void DiscordCall::set_self_mute(bool mute) {
 
 void DiscordCall::set_speaking_status_changed_callback(Callable cb) {
 	auto p0 = [cb](auto user_id, auto is_playing_sound) {
-
+		int64_t p0 = (int64_t)user_id;
+		bool p1 = is_playing_sound;
 	};
 
 	obj->SetSpeakingStatusChangedCallback(p0);
@@ -133,7 +135,13 @@ void DiscordCall::set_speaking_status_changed_callback(Callable cb) {
 
 void DiscordCall::set_status_changed_callback(Callable cb) {
 	auto p0 = [cb](auto status, auto error, auto error_detail) {
+		discordpp::Call::Status *t_p0 = memnew(discordpp::Call::Status(std::move(status)));
+		DiscordCallStatus *p0 = memnew(DiscordCallStatus{ t_p0 });
 
+		discordpp::Call::Error *t_p1 = memnew(discordpp::Call::Error(std::move(error)));
+		DiscordCallError *p1 = memnew(DiscordCallError{ t_p1 });
+
+		int64_t p2 = (int64_t)error_detail;
 	};
 
 	obj->SetStatusChangedCallback(p0);

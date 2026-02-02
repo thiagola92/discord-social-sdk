@@ -1,4 +1,4 @@
-def get_optional(
+def get_discord_optional(
     template: str,
     target: str,
     source: str,

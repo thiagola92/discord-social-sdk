@@ -2,7 +2,7 @@
 from pprint import pprint
 
 from name import to_godot_class_name
-from data import FunctionInfo, ClassInfo, NamespaceInfo, TypeInfo
+from data import FunctionInfo, ClassInfo, NamespaceInfo, TypeInfo, CallbackInfo
 
 
 def check_callbacks(class_info: ClassInfo) -> None:
@@ -47,8 +47,11 @@ def check_enums(namespace_info: NamespaceInfo) -> None:
         for f in c.functions:
             check_function_enums(f, enums_name)
 
+    # for c in namespace_info.callbacks:
+    #     check_callback_enums(c, enums_name)
 
-def check_function_enums(function: FunctionInfo, enums_name: list[str]) -> None:
+
+def check_function_enums(function_info: FunctionInfo, enums_name: list[str]) -> None:
     """
     Check function return type and parameters that are enums.
 
@@ -56,10 +59,10 @@ def check_function_enums(function: FunctionInfo, enums_name: list[str]) -> None:
     not for solving any complications from enums.
     """
 
-    if to_godot_class_name(function.type.name) in enums_name:
-        function.type.enum = True
+    if to_godot_class_name(function_info.type.name) in enums_name:
+        function_info.type.enum = True
 
-    for p in function.params:
+    for p in function_info.params:
         if not isinstance(p.type, TypeInfo):
             continue
 
@@ -68,7 +71,23 @@ def check_function_enums(function: FunctionInfo, enums_name: list[str]) -> None:
             p.type.enum = True
 
 
-def check_overloading(functions: list[FunctionInfo]) -> None:
+def check_callback_enums(callback_info: CallbackInfo, enums_name: list[str]) -> None:
+    """
+    Check callback types that are enums.
+
+    This contains only the logic for discovery,
+    not for solving any complications from enums.
+    """
+
+    if to_godot_class_name(callback_info.type.name) in enums_name:
+        callback_info.type.enum = True
+
+    for t in callback_info.type.templates:
+        if isinstance(t, FunctionInfo):
+            check_function_enums(t, enums_name)
+
+
+def check_overloading(functions_info: list[FunctionInfo]) -> None:
     """
     Check every function that is overloading.
 
@@ -105,12 +124,12 @@ def check_overloading(functions: list[FunctionInfo]) -> None:
 
     counter: dict[str, int] = {}
 
-    for f in functions:
+    for f in functions_info:
         if f.gdscript_name in counter:
             counter[f.gdscript_name] += 1
         else:
             counter[f.gdscript_name] = 0
 
-    for f in functions:
+    for f in functions_info:
         if counter[f.gdscript_name] > 0:
             f.overloading = True

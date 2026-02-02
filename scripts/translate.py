@@ -11,9 +11,14 @@ from pprint import pprint
 
 from data import TypeInfo, FunctionInfo, ParamInfo
 from name import to_godot_class_name, to_gdscript_variable_name
-from template.code.discord_class_cpp.translate.map import get_map
-from template.code.discord_class_cpp.translate.optional import get_optional
-from template.code.discord_class_cpp.translate.callback import get_callback
+from template.code.discord_class_cpp.discord_to_godot.object import get_discord_object
+from template.code.discord_class_cpp.godot_to_discord.map import get_discord_map
+from template.code.discord_class_cpp.godot_to_discord.optional import (
+    get_discord_optional,
+)
+from template.code.discord_class_cpp.godot_to_discord.callback import (
+    get_discord_callback,
+)
 
 
 def is_discord_void(type_info: TypeInfo) -> bool:
@@ -27,6 +32,7 @@ def is_discord_bool(type_info: TypeInfo) -> bool:
 def is_discord_int(type_info: TypeInfo) -> bool:
     return type_info.name in [
         "uint8_t",
+        "int16_t",
         "int16_t *",
         "int16_t const*",
         "int16_t const *",
@@ -194,6 +200,75 @@ def discord_type_to_variant_type(info: TypeInfo | FunctionInfo) -> str:
     assert False, f'Fail to identify a good Variant type for "{info.name}"'
 
 
+def discord_variables_to_godot_variables(params_info: list[ParamInfo]) -> str:
+    statements = []
+
+    for i, p in enumerate(params_info):
+        n = to_gdscript_variable_name(p.name)
+        statements.append(discord_variable_to_godot_variable(p.type, f"p{i}", n))
+
+    statements = "\n".join(statements)
+
+    return statements
+
+
+def discord_variable_to_godot_variable(
+    info: TypeInfo | FunctionInfo,
+    target: str,
+    source: str,
+) -> str:
+    if isinstance(info, FunctionInfo):
+        return False, f"Not implemented for {info.name} (implement if needed)"
+
+    if is_discord_function(info):
+        return False, f"Not implemented for {info.name} (implement if needed)"
+
+    if is_discord_bool(info):
+        return f"bool {target} = {source};"
+
+    if is_discord_int(info):
+        return f"int64_t {target} = (int64_t){source};"
+
+    if is_discord_float(info):
+        return f"float {target} = (float){source};"
+
+    if is_discord_string(info):
+        return f"String {target} = String({source}.c_str());"
+
+    if is_discord_char_array(info):
+        return f"String {target} = String({source});"
+
+    if is_discord_enum(info):
+        return f"{info.name} {target} = ({info.name}){source};"
+
+    if is_discord_optional(info):
+        return "// TODO optional to Variant"
+
+    if is_discord_vector(info):
+        return "// TODO vector to Array"
+
+    if is_discord_map(info):
+        return "// TODO map to Dictionary"
+
+    if is_discord_object(info):
+        return discord_object_to_godot_object(info, target, source)
+
+    assert False, f"Not implemented for {info.name} (implement if needed)"
+
+
+def discord_object_to_godot_object(
+    type_info: TypeInfo, target: str, source: str
+) -> str:
+    godot_name = to_godot_class_name(type_info.name)
+
+    return get_discord_object(
+        discord_type=type_info.name,
+        godot_type=godot_name,
+        target=target,
+        source=source,
+    )
+
+
 ######################################################################
 # Translate Godot type to Discord type.
 ######################################################################
@@ -264,6 +339,7 @@ def godot_callable_to_discord_callback(
     # Complicate, use pprint() to better understand.
     function_info = type_info.callback_ref.type.templates[0]
 
+    statements = discord_variables_to_godot_variables(function_info.params)
     params = []
 
     for p in function_info.params:
@@ -271,7 +347,12 @@ def godot_callable_to_discord_callback(
 
     params = ", ".join(params)
 
-    return get_callback(target=target, source=source, params=params, statements="")
+    return get_discord_callback(
+        target=target,
+        source=source,
+        params=params,
+        statements=statements,
+    )
 
 
 def godot_variant_to_discord_optional(
@@ -282,7 +363,7 @@ def godot_variant_to_discord_optional(
         s = godot_variant_to_discord_variable(t, source, target)
 
         # Leave because std::optional will never have more than one template.
-        return get_optional(
+        return get_discord_optional(
             template=t.name,
             target=target,
             source=source,
@@ -339,7 +420,7 @@ def godot_dictionary_to_discord_map(
     statements = godot_variant_to_discord_variable(template1, "k", "kv")
     statements += godot_variant_to_discord_variable(template2, "v", "vv")
 
-    return get_map(
+    return get_discord_map(
         template1=template1.name,
         template2=template2.name,
         target=target,

@@ -1,4 +1,4 @@
-def get_map(
+def get_discord_map(
     template1: str,
     template2: str,
     target: str,
