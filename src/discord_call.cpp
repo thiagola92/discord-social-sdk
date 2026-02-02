@@ -135,12 +135,8 @@ void DiscordCall::set_speaking_status_changed_callback(Callable cb) {
 
 void DiscordCall::set_status_changed_callback(Callable cb) {
 	auto p0 = [cb](auto status, auto error, auto error_detail) {
-		discordpp::Call::Status *t_p0 = memnew(discordpp::Call::Status(std::move(status)));
-		DiscordCallStatus *p0 = memnew(DiscordCallStatus{ t_p0 });
-
-		discordpp::Call::Error *t_p1 = memnew(discordpp::Call::Error(std::move(error)));
-		DiscordCallError *p1 = memnew(DiscordCallError{ t_p1 });
-
+		DiscordCallStatus::Enum p0 = (DiscordCallStatus::Enum)status;
+		DiscordCallError::Enum p1 = (DiscordCallError::Enum)error;
 		int64_t p2 = (int64_t)error_detail;
 	};
 

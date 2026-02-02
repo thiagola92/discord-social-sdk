@@ -239,7 +239,8 @@ def discord_variable_to_godot_variable(
         return f"String {target} = String({source});"
 
     if is_discord_enum(info):
-        return f"{info.name} {target} = ({info.name}){source};"
+        name = to_godot_class_name(info.name) + "::Enum"
+        return f"{name} {target} = ({name}){source};"
 
     if is_discord_optional(info):
         return "// TODO optional to Variant"

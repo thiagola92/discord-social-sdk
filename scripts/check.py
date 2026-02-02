@@ -47,8 +47,12 @@ def check_enums(namespace_info: NamespaceInfo) -> None:
         for f in c.functions:
             check_function_enums(f, enums_name)
 
-    # for c in namespace_info.callbacks:
-    #     check_callback_enums(c, enums_name)
+    for c in namespace_info.callbacks:
+        check_callback_enums(c, enums_name)
+
+    for c in namespace_info.classes:
+        for cc in c.callbacks:
+            check_callback_enums(cc, enums_name)
 
 
 def check_function_enums(function_info: FunctionInfo, enums_name: list[str]) -> None:

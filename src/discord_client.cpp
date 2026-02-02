@@ -241,9 +241,7 @@ void DiscordClient::accept_game_friend_request(int64_t user_id, Callable cb) {
 void DiscordClient::add_log_callback(Callable callback, DiscordLoggingSeverity::Enum min_severity) {
 	auto p0 = [callback](auto message, auto severity) {
 		String p0 = String(message.c_str());
-
-		discordpp::LoggingSeverity *t_p1 = memnew(discordpp::LoggingSeverity(std::move(severity)));
-		DiscordLoggingSeverity *p1 = memnew(DiscordLoggingSeverity{ t_p1 });
+		DiscordLoggingSeverity::Enum p1 = (DiscordLoggingSeverity::Enum)severity;
 	};
 	discordpp::LoggingSeverity p1 = (discordpp::LoggingSeverity)min_severity;
 	obj->AddLogCallback(p0, p1);
@@ -252,9 +250,7 @@ void DiscordClient::add_log_callback(Callable callback, DiscordLoggingSeverity::
 void DiscordClient::add_voice_log_callback(Callable callback, DiscordLoggingSeverity::Enum min_severity) {
 	auto p0 = [callback](auto message, auto severity) {
 		String p0 = String(message.c_str());
-
-		discordpp::LoggingSeverity *t_p1 = memnew(discordpp::LoggingSeverity(std::move(severity)));
-		DiscordLoggingSeverity *p1 = memnew(DiscordLoggingSeverity{ t_p1 });
+		DiscordLoggingSeverity::Enum p1 = (DiscordLoggingSeverity::Enum)severity;
 	};
 	discordpp::LoggingSeverity p1 = (discordpp::LoggingSeverity)min_severity;
 	obj->AddVoiceLogCallback(p0, p1);
@@ -421,10 +417,7 @@ void DiscordClient::exchange_child_token(String parent_application_token, int64_
 		DiscordClientResult *p0 = memnew(DiscordClientResult{ t_p0 });
 
 		String p1 = String(access_token.c_str());
-
-		discordpp::AuthorizationTokenType *t_p2 = memnew(discordpp::AuthorizationTokenType(std::move(token_type)));
-		DiscordAuthorizationTokenType *p2 = memnew(DiscordAuthorizationTokenType{ t_p2 });
-
+		DiscordAuthorizationTokenType::Enum p2 = (DiscordAuthorizationTokenType::Enum)token_type;
 		int64_t p3 = (int64_t)expires_in;
 		String p4 = String(scopes.c_str());
 	};
@@ -527,10 +520,7 @@ void DiscordClient::get_provisional_token(int64_t application_id, DiscordAuthent
 
 		String p1 = String(access_token.c_str());
 		String p2 = String(refresh_token.c_str());
-
-		discordpp::AuthorizationTokenType *t_p3 = memnew(discordpp::AuthorizationTokenType(std::move(token_type)));
-		DiscordAuthorizationTokenType *p3 = memnew(DiscordAuthorizationTokenType{ t_p3 });
-
+		DiscordAuthorizationTokenType::Enum p3 = (DiscordAuthorizationTokenType::Enum)token_type;
 		int64_t p4 = (int64_t)expires_in;
 		String p5 = String(scopes.c_str());
 	};
@@ -549,10 +539,7 @@ void DiscordClient::get_token(int64_t application_id, String code, String code_v
 
 		String p1 = String(access_token.c_str());
 		String p2 = String(refresh_token.c_str());
-
-		discordpp::AuthorizationTokenType *t_p3 = memnew(discordpp::AuthorizationTokenType(std::move(token_type)));
-		DiscordAuthorizationTokenType *p3 = memnew(DiscordAuthorizationTokenType{ t_p3 });
-
+		DiscordAuthorizationTokenType::Enum p3 = (DiscordAuthorizationTokenType::Enum)token_type;
 		int64_t p4 = (int64_t)expires_in;
 		String p5 = String(scopes.c_str());
 	};
@@ -568,10 +555,7 @@ void DiscordClient::get_token_from_device(DiscordDeviceAuthorizationArgs *args, 
 
 		String p1 = String(access_token.c_str());
 		String p2 = String(refresh_token.c_str());
-
-		discordpp::AuthorizationTokenType *t_p3 = memnew(discordpp::AuthorizationTokenType(std::move(token_type)));
-		DiscordAuthorizationTokenType *p3 = memnew(DiscordAuthorizationTokenType{ t_p3 });
-
+		DiscordAuthorizationTokenType::Enum p3 = (DiscordAuthorizationTokenType::Enum)token_type;
 		int64_t p4 = (int64_t)expires_in;
 		String p5 = String(scopes.c_str());
 	};
@@ -589,10 +573,7 @@ void DiscordClient::get_token_from_device_provisional_merge(DiscordDeviceAuthori
 
 		String p1 = String(access_token.c_str());
 		String p2 = String(refresh_token.c_str());
-
-		discordpp::AuthorizationTokenType *t_p3 = memnew(discordpp::AuthorizationTokenType(std::move(token_type)));
-		DiscordAuthorizationTokenType *p3 = memnew(DiscordAuthorizationTokenType{ t_p3 });
-
+		DiscordAuthorizationTokenType::Enum p3 = (DiscordAuthorizationTokenType::Enum)token_type;
 		int64_t p4 = (int64_t)expires_in;
 		String p5 = String(scopes.c_str());
 	};
@@ -613,10 +594,7 @@ void DiscordClient::get_token_from_provisional_merge(int64_t application_id, Str
 
 		String p1 = String(access_token.c_str());
 		String p2 = String(refresh_token.c_str());
-
-		discordpp::AuthorizationTokenType *t_p3 = memnew(discordpp::AuthorizationTokenType(std::move(token_type)));
-		DiscordAuthorizationTokenType *p3 = memnew(DiscordAuthorizationTokenType{ t_p3 });
-
+		DiscordAuthorizationTokenType::Enum p3 = (DiscordAuthorizationTokenType::Enum)token_type;
 		int64_t p4 = (int64_t)expires_in;
 		String p5 = String(scopes.c_str());
 	};
@@ -747,10 +725,7 @@ void DiscordClient::refresh_token(int64_t application_id, String refresh_token, 
 
 		String p1 = String(access_token.c_str());
 		String p2 = String(refresh_token.c_str());
-
-		discordpp::AuthorizationTokenType *t_p3 = memnew(discordpp::AuthorizationTokenType(std::move(token_type)));
-		DiscordAuthorizationTokenType *p3 = memnew(DiscordAuthorizationTokenType{ t_p3 });
-
+		DiscordAuthorizationTokenType::Enum p3 = (DiscordAuthorizationTokenType::Enum)token_type;
 		int64_t p4 = (int64_t)expires_in;
 		String p5 = String(scopes.c_str());
 	};
@@ -1244,12 +1219,8 @@ void DiscordClient::set_showing_chat(bool showing_chat) {
 
 void DiscordClient::set_status_changed_callback(Callable cb) {
 	auto p0 = [cb](auto status, auto error, auto error_detail) {
-		discordpp::Client::Status *t_p0 = memnew(discordpp::Client::Status(std::move(status)));
-		DiscordClientStatus *p0 = memnew(DiscordClientStatus{ t_p0 });
-
-		discordpp::Client::Error *t_p1 = memnew(discordpp::Client::Error(std::move(error)));
-		DiscordClientError *p1 = memnew(DiscordClientError{ t_p1 });
-
+		DiscordClientStatus::Enum p0 = (DiscordClientStatus::Enum)status;
+		DiscordClientError::Enum p1 = (DiscordClientError::Enum)error;
 		int64_t p2 = (int64_t)error_detail;
 	};
 
