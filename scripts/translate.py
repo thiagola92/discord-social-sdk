@@ -12,6 +12,7 @@ from pprint import pprint
 from data import TypeInfo, FunctionInfo, ParamInfo
 from name import to_godot_class_name, to_gdscript_variable_name
 from template.code.discord_class_cpp.discord_to_godot.object import get_discord_object
+from template.code.discord_class_cpp.discord_to_godot.variant import get_discord_variant
 from template.code.discord_class_cpp.godot_to_discord.map import get_discord_map
 from template.code.discord_class_cpp.godot_to_discord.optional import (
     get_discord_optional,
@@ -243,7 +244,7 @@ def discord_variable_to_godot_variable(
         return f"{name} {target} = ({name}){source};"
 
     if is_discord_optional(info):
-        return "// TODO optional to Variant"
+        return discord_optional_to_godot_variant(info.templates[0], target, source)
 
     if is_discord_vector(info):
         return "// TODO vector to Array"
@@ -255,6 +256,22 @@ def discord_variable_to_godot_variable(
         return discord_object_to_godot_object(info, target, source)
 
     assert False, f"Not implemented for {info.name} (implement if needed)"
+
+
+def discord_optional_to_godot_variant(
+    type_info: TypeInfo, target: str, source: str
+) -> str:
+    convertion = discord_variable_to_godot_variable(
+        type_info,
+        f"{target}_v",
+        f"{source}_v",
+    )
+
+    return get_discord_variant(
+        target=target,
+        source=source,
+        convertion=convertion,
+    )
 
 
 def discord_object_to_godot_object(
@@ -321,7 +338,12 @@ def godot_variable_to_discord_variable(
         return godot_array_to_discord_vector(info, source, target)
 
     if is_discord_map(info):
-        return godot_dictionary_to_discord_map(info, source, target)
+        return godot_dictionary_to_discord_map(
+            info.templates[0],
+            info.templates[1],
+            source,
+            target,
+        )
 
     if is_discord_object(info):
         return f"{info.name} {target} = *{source}->unwrap();"
@@ -411,19 +433,17 @@ def godot_array_to_discord_vector(type_info: TypeInfo, source: str, target: str)
 
 
 def godot_dictionary_to_discord_map(
-    type_info: TypeInfo,
+    key_info: TypeInfo,
+    value_info: TypeInfo,
     source: str,
     target: str,
 ) -> str:
-    # Maps always have two templates.
-    template1 = type_info.templates[0]
-    template2 = type_info.templates[1]
-    statements = godot_variant_to_discord_variable(template1, "k", "kv")
-    statements += godot_variant_to_discord_variable(template2, "v", "vv")
+    statements = godot_variant_to_discord_variable(key_info, "k", "kv")
+    statements += godot_variant_to_discord_variable(value_info, "v", "vv")
 
     return get_discord_map(
-        template1=template1.name,
-        template2=template2.name,
+        template1=key_info.name,
+        template2=value_info.name,
         target=target,
         source=source,
         statements=statements,

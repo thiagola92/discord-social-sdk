@@ -100,6 +100,8 @@ def to_snake_case(string: str) -> str:
                 new_string += "_"
                 can_add_underscore = False
             new_string += c.lower()
+        else:
+            new_string += c
 
     return new_string
 

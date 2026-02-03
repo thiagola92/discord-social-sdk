@@ -759,7 +759,7 @@ public:
 	TypedArray<DiscordUserHandle> search_friends_by_username(String search_str);
 	TypedArray<int64_t> get_lobby_ids();
 	Variant get_channel_handle(int64_t channel_id);
-	Variant get_current_user_v();
+	Variant get_current_user_v2();
 	Variant get_lobby_handle(int64_t lobby_id);
 	Variant get_message_handle(int64_t message_id);
 	Variant get_user(int64_t user_id);

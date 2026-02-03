@@ -194,6 +194,10 @@ If I were to snake_case the `discordpp:Client` method, I would need to find anot
 
 I was not able to insert multiple enums in a same class when they contained values with the same name.  
 
+> Can't I disconnect my callback?
+
+No. This is how the SDK works.
+
 **Reference**: https://github.com/godotengine/godot-cpp/issues/1910#issuecomment-3811715068  
 
 # Development
