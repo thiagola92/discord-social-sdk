@@ -33,6 +33,9 @@ def collect_namespace(tree: Element, xml_dir: Path) -> NamespaceInfo:
         namespace_info.enums = collect_enums(nf)
         namespace_info.functions = collect_functions(nf)
 
+        for f in namespace_info.functions:
+            f.static = True
+
         check_overloading(namespace_info.functions)
 
     for c in tree.findall("compound[@kind='class']"):

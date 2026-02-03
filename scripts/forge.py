@@ -367,8 +367,10 @@ def forge_call_statement(function_info: FunctionInfo, class_name: str) -> str:
 
     params = ", ".join(params)
 
-    if function_info.static:
+    if function_info.static and class_name:
         call = f"discordpp::{class_name}::{function_info.name}({params})"
+    elif function_info.static:
+        call = f"discordpp::{function_info.name}({params})"
     else:
         call = f"obj->{function_info.name}({params})"
 
@@ -386,3 +388,33 @@ def forge_return_statements(function_info: FunctionInfo) -> str:
     convertion = discord_variable_to_godot_variable(function_info.type, target, "r")
 
     return get_return_statements(convertion=convertion, target=target)
+
+
+# TODO: I only copied the functions code.
+def forge_overloadings_definitions(info: NamespaceInfo | ClassInfo) -> str:
+    class_name = info.name if isinstance(info, ClassInfo) else ""
+    functions_definitions = []
+
+    for f in info.functions:
+        if not f.overloading:
+            functions_definitions.append(forge_function_definition(f, class_name))
+
+    functions_definitions = sorted(functions_definitions)
+    functions_definitions = "".join(functions_definitions)
+
+    return functions_definitions
+
+
+# TODO: I only copied the functions code.
+def forge_overloading_definition(function_info: FunctionInfo, class_name: str) -> str:
+    return_type = discord_type_to_godot_type(function_info.type)
+    params = discord_params_to_godot_params(function_info.params)
+    statements = forge_function_statements(function_info, class_name)
+
+    return get_function_definition(
+        ret=return_type,
+        class_name=class_name,
+        function=function_info.gdscript_name,
+        params=params,
+        statements=statements,
+    )

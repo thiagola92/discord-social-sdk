@@ -59,10 +59,10 @@ protected:
 
 public:
 	// Functions.
-	void run_callbacks();
+	static void run_callbacks();
 
 	// Overloading functions.
-	String enum_to_string(int value, Variant enum_type);
+	static String enum_to_string(int value, Variant enum_type);
 
 	~Discord() {}
 };
