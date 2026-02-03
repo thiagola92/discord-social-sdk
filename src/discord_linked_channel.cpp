@@ -7,14 +7,23 @@ using namespace godot;
 
 String DiscordLinkedChannel::name() {
 	auto r = obj->Name();
+
+	String cr = String(r.c_str());
+	return cr;
 }
 
 int64_t DiscordLinkedChannel::guild_id() {
 	auto r = obj->GuildId();
+
+	int64_t cr = (int64_t)r;
+	return cr;
 }
 
 int64_t DiscordLinkedChannel::id() {
 	auto r = obj->Id();
+
+	int64_t cr = (int64_t)r;
+	return cr;
 }
 
 void DiscordLinkedChannel::set_guild_id(int64_t guild_id) {

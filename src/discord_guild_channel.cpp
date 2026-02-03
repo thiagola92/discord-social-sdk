@@ -7,34 +7,79 @@ using namespace godot;
 
 DiscordChannelType::Enum DiscordGuildChannel::type() {
 	auto r = obj->Type();
+
+	DiscordChannelType::Enum cr = (DiscordChannelType::Enum)r;
+	return cr;
 }
 
 String DiscordGuildChannel::name() {
 	auto r = obj->Name();
+
+	String cr = String(r.c_str());
+	return cr;
 }
 
 Variant DiscordGuildChannel::linked_lobby() {
 	auto r = obj->LinkedLobby();
+
+	Variant cr;
+
+	if (!r.has_value()) {
+		cr = nullptr;
+	} else {
+		auto r_v = r.value();
+
+		discordpp::LinkedLobby *cr_v_t = memnew(discordpp::LinkedLobby(std::move(r_v)));
+		DiscordLinkedLobby *cr_v = memnew(DiscordLinkedLobby{ cr_v_t });
+
+		cr = Variant(cr_v);
+	}
+
+	return cr;
 }
 
 Variant DiscordGuildChannel::parent_id() {
 	auto r = obj->ParentId();
+
+	Variant cr;
+
+	if (!r.has_value()) {
+		cr = nullptr;
+	} else {
+		auto r_v = r.value();
+		int64_t cr_v = (int64_t)r_v;
+		cr = Variant(cr_v);
+	}
+
+	return cr;
 }
 
 bool DiscordGuildChannel::is_linkable() {
 	auto r = obj->IsLinkable();
+
+	bool cr = r;
+	return cr;
 }
 
 bool DiscordGuildChannel::is_viewable_and_writeable_by_all_members() {
 	auto r = obj->IsViewableAndWriteableByAllMembers();
+
+	bool cr = r;
+	return cr;
 }
 
 int64_t DiscordGuildChannel::id() {
 	auto r = obj->Id();
+
+	int64_t cr = (int64_t)r;
+	return cr;
 }
 
 int64_t DiscordGuildChannel::position() {
 	auto r = obj->Position();
+
+	int64_t cr = (int64_t)r;
+	return cr;
 }
 
 void DiscordGuildChannel::set_id(int64_t id) {

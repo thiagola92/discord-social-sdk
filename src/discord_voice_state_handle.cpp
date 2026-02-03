@@ -7,10 +7,16 @@ using namespace godot;
 
 bool DiscordVoiceStateHandle::self_deaf() {
 	auto r = obj->SelfDeaf();
+
+	bool cr = r;
+	return cr;
 }
 
 bool DiscordVoiceStateHandle::self_mute() {
 	auto r = obj->SelfMute();
+
+	bool cr = r;
+	return cr;
 }
 
 // Overload functions.

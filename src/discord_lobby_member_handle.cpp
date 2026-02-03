@@ -7,22 +7,49 @@ using namespace godot;
 
 TypedDictionary<String, String> DiscordLobbyMemberHandle::metadata() {
 	auto r = obj->Metadata();
+
+	// TODO map to Dictionary
+	return cr;
 }
 
 Variant DiscordLobbyMemberHandle::user() {
 	auto r = obj->User();
+
+	Variant cr;
+
+	if (!r.has_value()) {
+		cr = nullptr;
+	} else {
+		auto r_v = r.value();
+
+		discordpp::UserHandle *cr_v_t = memnew(discordpp::UserHandle(std::move(r_v)));
+		DiscordUserHandle *cr_v = memnew(DiscordUserHandle{ cr_v_t });
+
+		cr = Variant(cr_v);
+	}
+
+	return cr;
 }
 
 bool DiscordLobbyMemberHandle::can_link_lobby() {
 	auto r = obj->CanLinkLobby();
+
+	bool cr = r;
+	return cr;
 }
 
 bool DiscordLobbyMemberHandle::connected() {
 	auto r = obj->Connected();
+
+	bool cr = r;
+	return cr;
 }
 
 int64_t DiscordLobbyMemberHandle::id() {
 	auto r = obj->Id();
+
+	int64_t cr = (int64_t)r;
+	return cr;
 }
 
 // Overload functions.

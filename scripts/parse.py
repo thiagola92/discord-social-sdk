@@ -126,10 +126,11 @@ class Parser:
         while self.current_position >= 0:
             char = self.content[self.current_position]
 
-            if char == " ":
-                parser = Parser(self.content[: self.current_position])
-                param_info.name = self.content[self.current_position :]
-                param_info.name = param_info.name.strip()
+            if char in [" ", "*", "&"]:
+                type_str = self.content[: self.current_position + 1]
+                type_str = type_str.strip()
+                parser = Parser(type_str)
+                param_info.name = self.content[self.current_position + 1 :]
                 param_info.gdscript_name = to_gdscript_variable_name(param_info.name)
                 param_info.type = parser.parse_type()
                 return param_info

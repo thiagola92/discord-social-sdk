@@ -11,6 +11,7 @@ from discover import (
 from translate import (
     discord_type_to_godot_type,
     discord_params_to_godot_params,
+    discord_variable_to_godot_variable,
     godot_variables_to_discord_variables,
     is_discord_void,
 )
@@ -28,6 +29,7 @@ from template.code.discord_classes_h.function_declaration import (
     get_function_declaration,
 )
 from template.code.discord_class_cpp.bind import get_bind
+from template.code.discord_class_cpp.return_statements import get_return_statements
 from template.code.discord_class_cpp.bind_static import get_bind_static
 from template.code.discord_class_cpp.function_definition import get_function_definition
 from template.code.discord_class_cpp.function_statements import get_function_statements
@@ -226,7 +228,7 @@ def forge_overloading_declaration(group: list[FunctionInfo]) -> str:
         assert False, "A new case of overloading needs to be created."
 
 
-########## discord.cpp ##########
+########## <discord_class>.cpp ##########
 
 
 def forge_binds(info: NamespaceInfo | ClassInfo) -> str:
@@ -348,10 +350,7 @@ def forge_function_definition(function_info: FunctionInfo, class_name: str) -> s
 def forge_function_statements(function_info: FunctionInfo, class_name: str) -> str:
     convertion_statements = godot_variables_to_discord_variables(function_info.params)
     call_statement = forge_call_statement(function_info, class_name)
-    return_statements = forge_return_statements(function_info, class_name)
-
-    if not is_discord_void(function_info.type):
-        return_statements = ""
+    return_statements = forge_return_statements(function_info)
 
     return get_function_statements(
         convertion_statements=convertion_statements,
@@ -379,8 +378,11 @@ def forge_call_statement(function_info: FunctionInfo, class_name: str) -> str:
     return f"auto r = {call};"
 
 
-def forge_return_statements(function_info: FunctionInfo, class_name: str) -> str:
-    return ""
+def forge_return_statements(function_info: FunctionInfo) -> str:
+    if is_discord_void(function_info.type):
+        return ""
 
+    target = "cr"
+    convertion = discord_variable_to_godot_variable(function_info.type, target, "r")
 
-########## <discord_class>.cpp ##########
+    return get_return_statements(convertion=convertion, target=target)

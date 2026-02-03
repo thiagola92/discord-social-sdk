@@ -7,18 +7,30 @@ using namespace godot;
 
 DiscordActivityPartyPrivacy::Enum DiscordActivityParty::privacy() {
 	auto r = obj->Privacy();
+
+	DiscordActivityPartyPrivacy::Enum cr = (DiscordActivityPartyPrivacy::Enum)r;
+	return cr;
 }
 
 String DiscordActivityParty::id() {
 	auto r = obj->Id();
+
+	String cr = String(r.c_str());
+	return cr;
 }
 
 int64_t DiscordActivityParty::current_size() {
 	auto r = obj->CurrentSize();
+
+	int64_t cr = (int64_t)r;
+	return cr;
 }
 
 int64_t DiscordActivityParty::max_size() {
 	auto r = obj->MaxSize();
+
+	int64_t cr = (int64_t)r;
+	return cr;
 }
 
 void DiscordActivityParty::set_current_size(int64_t current_size) {

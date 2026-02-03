@@ -7,195 +7,422 @@ using namespace godot;
 
 DiscordAuthorizationCodeVerifier *DiscordClient::create_authorization_code_verifier() {
 	auto r = obj->CreateAuthorizationCodeVerifier();
+
+	discordpp::AuthorizationCodeVerifier *cr_t = memnew(discordpp::AuthorizationCodeVerifier(std::move(r)));
+	DiscordAuthorizationCodeVerifier *cr = memnew(DiscordAuthorizationCodeVerifier{ cr_t });
+
+	return cr;
 }
 
 DiscordCall *DiscordClient::get_call(int64_t channel_id) {
 	int64_t p0 = channel_id;
 	auto r = obj->GetCall(p0);
+
+	discordpp::Call *cr_t = memnew(discordpp::Call(std::move(r)));
+	DiscordCall *cr = memnew(DiscordCall{ cr_t });
+
+	return cr;
 }
 
 DiscordCall *DiscordClient::start_call(int64_t channel_id) {
 	int64_t p0 = channel_id;
 	auto r = obj->StartCall(p0);
+
+	discordpp::Call *cr_t = memnew(discordpp::Call(std::move(r)));
+	DiscordCall *cr = memnew(DiscordCall{ cr_t });
+
+	return cr;
 }
 
 DiscordCall *DiscordClient::start_call_with_audio_callbacks(int64_t lobby_id, Callable received_cb, Callable captured_cb) {
 	int64_t p0 = lobby_id;
-	auto p1 = [received_cb](auto user_id, auto *data, auto samples_per_channel, auto sample_rate, auto channels, auto &out_should_mute) {
+	auto p1 = [received_cb](auto user_id, auto data, auto samples_per_channel, auto sample_rate, auto channels, auto out_should_mute) {
 		int64_t p0 = (int64_t)user_id;
-		int64_t p1 = (int64_t)*data;
+		int64_t p1 = (int64_t)data;
 		int64_t p2 = (int64_t)samples_per_channel;
 		int64_t p3 = (int64_t)sample_rate;
 		int64_t p4 = (int64_t)channels;
-		bool p5 = &out_should_mute;
+		bool p5 = out_should_mute;
 	};
 
-	auto p2 = [captured_cb](auto *data, auto samples_per_channel, auto sample_rate, auto channels) {
-		int64_t p0 = (int64_t)*data;
+	auto p2 = [captured_cb](auto data, auto samples_per_channel, auto sample_rate, auto channels) {
+		int64_t p0 = (int64_t)data;
 		int64_t p1 = (int64_t)samples_per_channel;
 		int64_t p2 = (int64_t)sample_rate;
 		int64_t p3 = (int64_t)channels;
 	};
 
 	auto r = obj->StartCallWithAudioCallbacks(p0, p1, p2);
+
+	discordpp::Call *cr_t = memnew(discordpp::Call(std::move(r)));
+	DiscordCall *cr = memnew(DiscordCall{ cr_t });
+
+	return cr;
 }
 
 DiscordClientStatus::Enum DiscordClient::get_status() {
 	auto r = obj->GetStatus();
+
+	DiscordClientStatus::Enum cr = (DiscordClientStatus::Enum)r;
+	return cr;
 }
 
 DiscordRelationshipHandle *DiscordClient::get_relationship_handle(int64_t user_id) {
 	int64_t p0 = user_id;
 	auto r = obj->GetRelationshipHandle(p0);
+
+	discordpp::RelationshipHandle *cr_t = memnew(discordpp::RelationshipHandle(std::move(r)));
+	DiscordRelationshipHandle *cr = memnew(DiscordRelationshipHandle{ cr_t });
+
+	return cr;
 }
 
 DiscordUserHandle *DiscordClient::get_current_user() {
 	auto r = obj->GetCurrentUser();
+
+	discordpp::UserHandle *cr_t = memnew(discordpp::UserHandle(std::move(r)));
+	DiscordUserHandle *cr = memnew(DiscordUserHandle{ cr_t });
+
+	return cr;
 }
 
 String DiscordClient::error_to_string(DiscordClientError::Enum type) {
 	discordpp::Client::Error p0 = (discordpp::Client::Error)type;
 	auto r = discordpp::Client::ErrorToString(p0);
+
+	String cr = String(r.c_str());
+	return cr;
 }
 
 String DiscordClient::get_default_audio_device_id() {
 	auto r = discordpp::Client::GetDefaultAudioDeviceId();
+
+	String cr = String(r.c_str());
+	return cr;
 }
 
 String DiscordClient::get_default_communication_scopes() {
 	auto r = discordpp::Client::GetDefaultCommunicationScopes();
+
+	String cr = String(r.c_str());
+	return cr;
 }
 
 String DiscordClient::get_default_presence_scopes() {
 	auto r = discordpp::Client::GetDefaultPresenceScopes();
+
+	String cr = String(r.c_str());
+	return cr;
 }
 
 String DiscordClient::get_version_hash() {
 	auto r = discordpp::Client::GetVersionHash();
+
+	String cr = String(r.c_str());
+	return cr;
 }
 
 String DiscordClient::status_to_string(DiscordClientStatus::Enum type) {
 	discordpp::Client::Status p0 = (discordpp::Client::Status)type;
 	auto r = discordpp::Client::StatusToString(p0);
+
+	String cr = String(r.c_str());
+	return cr;
 }
 
 String DiscordClient::thread_to_string(DiscordClientThread::Enum type) {
 	discordpp::Client::Thread p0 = (discordpp::Client::Thread)type;
 	auto r = discordpp::Client::ThreadToString(p0);
+
+	String cr = String(r.c_str());
+	return cr;
 }
 
 TypedArray<DiscordCall> DiscordClient::get_calls() {
 	auto r = obj->GetCalls();
+
+	TypedArray<DiscordCall> cr = TypedArray<DiscordCall>();
+
+	for (auto i : r) {
+		discordpp::Call *cr_t_t = memnew(discordpp::Call(std::move(i)));
+		DiscordCall *cr_t = memnew(DiscordCall{ cr_t_t });
+
+		cr.push_back(cr_t);
+	}
+
+	return cr;
 }
 
 TypedArray<DiscordRelationshipHandle> DiscordClient::get_relationships() {
 	auto r = obj->GetRelationships();
+
+	TypedArray<DiscordRelationshipHandle> cr = TypedArray<DiscordRelationshipHandle>();
+
+	for (auto i : r) {
+		discordpp::RelationshipHandle *cr_t_t = memnew(discordpp::RelationshipHandle(std::move(i)));
+		DiscordRelationshipHandle *cr_t = memnew(DiscordRelationshipHandle{ cr_t_t });
+
+		cr.push_back(cr_t);
+	}
+
+	return cr;
 }
 
 TypedArray<DiscordRelationshipHandle> DiscordClient::get_relationships_by_group(DiscordRelationshipGroupType::Enum group_type) {
 	discordpp::RelationshipGroupType p0 = (discordpp::RelationshipGroupType)group_type;
 	auto r = obj->GetRelationshipsByGroup(p0);
+
+	TypedArray<DiscordRelationshipHandle> cr = TypedArray<DiscordRelationshipHandle>();
+
+	for (auto i : r) {
+		discordpp::RelationshipHandle *cr_t_t = memnew(discordpp::RelationshipHandle(std::move(i)));
+		DiscordRelationshipHandle *cr_t = memnew(DiscordRelationshipHandle{ cr_t_t });
+
+		cr.push_back(cr_t);
+	}
+
+	return cr;
 }
 
 TypedArray<DiscordUserHandle> DiscordClient::search_friends_by_username(String search_str) {
 	std::string p0 = std::string(search_str.utf8().get_data());
 	auto r = obj->SearchFriendsByUsername(p0);
+
+	TypedArray<DiscordUserHandle> cr = TypedArray<DiscordUserHandle>();
+
+	for (auto i : r) {
+		discordpp::UserHandle *cr_t_t = memnew(discordpp::UserHandle(std::move(i)));
+		DiscordUserHandle *cr_t = memnew(DiscordUserHandle{ cr_t_t });
+
+		cr.push_back(cr_t);
+	}
+
+	return cr;
 }
 
 TypedArray<int64_t> DiscordClient::get_lobby_ids() {
 	auto r = obj->GetLobbyIds();
+
+	TypedArray<int64_t> cr = TypedArray<int64_t>();
+
+	for (auto i : r) {
+		int64_t cr_t = (int64_t)i;
+		cr.push_back(cr_t);
+	}
+
+	return cr;
 }
 
 Variant DiscordClient::get_channel_handle(int64_t channel_id) {
 	int64_t p0 = channel_id;
 	auto r = obj->GetChannelHandle(p0);
+
+	Variant cr;
+
+	if (!r.has_value()) {
+		cr = nullptr;
+	} else {
+		auto r_v = r.value();
+
+		discordpp::ChannelHandle *cr_v_t = memnew(discordpp::ChannelHandle(std::move(r_v)));
+		DiscordChannelHandle *cr_v = memnew(DiscordChannelHandle{ cr_v_t });
+
+		cr = Variant(cr_v);
+	}
+
+	return cr;
 }
 
 Variant DiscordClient::get_current_user_v2() {
 	auto r = obj->GetCurrentUserV2();
+
+	Variant cr;
+
+	if (!r.has_value()) {
+		cr = nullptr;
+	} else {
+		auto r_v = r.value();
+
+		discordpp::UserHandle *cr_v_t = memnew(discordpp::UserHandle(std::move(r_v)));
+		DiscordUserHandle *cr_v = memnew(DiscordUserHandle{ cr_v_t });
+
+		cr = Variant(cr_v);
+	}
+
+	return cr;
 }
 
 Variant DiscordClient::get_lobby_handle(int64_t lobby_id) {
 	int64_t p0 = lobby_id;
 	auto r = obj->GetLobbyHandle(p0);
+
+	Variant cr;
+
+	if (!r.has_value()) {
+		cr = nullptr;
+	} else {
+		auto r_v = r.value();
+
+		discordpp::LobbyHandle *cr_v_t = memnew(discordpp::LobbyHandle(std::move(r_v)));
+		DiscordLobbyHandle *cr_v = memnew(DiscordLobbyHandle{ cr_v_t });
+
+		cr = Variant(cr_v);
+	}
+
+	return cr;
 }
 
 Variant DiscordClient::get_message_handle(int64_t message_id) {
 	int64_t p0 = message_id;
 	auto r = obj->GetMessageHandle(p0);
+
+	Variant cr;
+
+	if (!r.has_value()) {
+		cr = nullptr;
+	} else {
+		auto r_v = r.value();
+
+		discordpp::MessageHandle *cr_v_t = memnew(discordpp::MessageHandle(std::move(r_v)));
+		DiscordMessageHandle *cr_v = memnew(DiscordMessageHandle{ cr_v_t });
+
+		cr = Variant(cr_v);
+	}
+
+	return cr;
 }
 
 Variant DiscordClient::get_user(int64_t user_id) {
 	int64_t p0 = user_id;
 	auto r = obj->GetUser(p0);
+
+	Variant cr;
+
+	if (!r.has_value()) {
+		cr = nullptr;
+	} else {
+		auto r_v = r.value();
+
+		discordpp::UserHandle *cr_v_t = memnew(discordpp::UserHandle(std::move(r_v)));
+		DiscordUserHandle *cr_v = memnew(DiscordUserHandle{ cr_v_t });
+
+		cr = Variant(cr_v);
+	}
+
+	return cr;
 }
 
 bool DiscordClient::can_open_message_in_discord(int64_t message_id) {
 	int64_t p0 = message_id;
 	auto r = obj->CanOpenMessageInDiscord(p0);
+
+	bool cr = r;
+	return cr;
 }
 
 bool DiscordClient::get_self_deaf_all() {
 	auto r = obj->GetSelfDeafAll();
+
+	bool cr = r;
+	return cr;
 }
 
 bool DiscordClient::get_self_mute_all() {
 	auto r = obj->GetSelfMuteAll();
+
+	bool cr = r;
+	return cr;
 }
 
 bool DiscordClient::is_authenticated() {
 	auto r = obj->IsAuthenticated();
+
+	bool cr = r;
+	return cr;
 }
 
 bool DiscordClient::register_launch_command(int64_t application_id, String command) {
 	int64_t p0 = application_id;
 	std::string p1 = std::string(command.utf8().get_data());
 	auto r = obj->RegisterLaunchCommand(p0, p1);
+
+	bool cr = r;
+	return cr;
 }
 
 bool DiscordClient::register_launch_steam_application(int64_t application_id, int64_t steam_app_id) {
 	int64_t p0 = application_id;
 	int64_t p1 = steam_app_id;
 	auto r = obj->RegisterLaunchSteamApplication(p0, p1);
+
+	bool cr = r;
+	return cr;
 }
 
 bool DiscordClient::set_log_dir(String path, DiscordLoggingSeverity::Enum min_severity) {
 	std::string p0 = std::string(path.utf8().get_data());
 	discordpp::LoggingSeverity p1 = (discordpp::LoggingSeverity)min_severity;
 	auto r = obj->SetLogDir(p0, p1);
+
+	bool cr = r;
+	return cr;
 }
 
 bool DiscordClient::set_speaker_mode(bool speaker_mode) {
 	bool p0 = speaker_mode;
 	auto r = obj->SetSpeakerMode(p0);
+
+	bool cr = r;
+	return cr;
 }
 
 bool DiscordClient::show_audio_route_picker() {
 	auto r = obj->ShowAudioRoutePicker();
+
+	bool cr = r;
+	return cr;
 }
 
 float DiscordClient::get_input_volume() {
 	auto r = obj->GetInputVolume();
+
+	float cr = (float)r;
+	return cr;
 }
 
 float DiscordClient::get_output_volume() {
 	auto r = obj->GetOutputVolume();
+
+	float cr = (float)r;
+	return cr;
 }
 
 int64_t DiscordClient::get_application_id() {
 	auto r = obj->GetApplicationId();
+
+	int64_t cr = (int64_t)r;
+	return cr;
 }
 
 int64_t DiscordClient::get_version_major() {
 	auto r = discordpp::Client::GetVersionMajor();
+
+	int64_t cr = (int64_t)r;
+	return cr;
 }
 
 int64_t DiscordClient::get_version_minor() {
 	auto r = discordpp::Client::GetVersionMinor();
+
+	int64_t cr = (int64_t)r;
+	return cr;
 }
 
 int64_t DiscordClient::get_version_patch() {
 	auto r = discordpp::Client::GetVersionPatch();
+
+	int64_t cr = (int64_t)r;
+	return cr;
 }
 
 void DiscordClient::abort_authorize() {
@@ -486,7 +713,14 @@ void DiscordClient::get_guild_channels(int64_t guild_id, Callable cb) {
 		discordpp::ClientResult *p0_t = memnew(discordpp::ClientResult(std::move(result)));
 		DiscordClientResult *p0 = memnew(DiscordClientResult{ p0_t });
 
-		// TODO vector to Array
+		TypedArray<DiscordGuildChannel> p1 = TypedArray<DiscordGuildChannel>();
+
+		for (auto i : guild_channels) {
+			discordpp::GuildChannel *p1_t_t = memnew(discordpp::GuildChannel(std::move(i)));
+			DiscordGuildChannel *p1_t = memnew(DiscordGuildChannel{ p1_t_t });
+
+			p1.push_back(p1_t);
+		}
 	};
 
 	obj->GetGuildChannels(p0, p1);
@@ -494,7 +728,14 @@ void DiscordClient::get_guild_channels(int64_t guild_id, Callable cb) {
 
 void DiscordClient::get_input_devices(Callable cb) {
 	auto p0 = [cb](auto devices) {
-		// TODO vector to Array
+		TypedArray<DiscordAudioDevice> p0 = TypedArray<DiscordAudioDevice>();
+
+		for (auto i : devices) {
+			discordpp::AudioDevice *p0_t_t = memnew(discordpp::AudioDevice(std::move(i)));
+			DiscordAudioDevice *p0_t = memnew(DiscordAudioDevice{ p0_t_t });
+
+			p0.push_back(p0_t);
+		}
 	};
 
 	obj->GetInputDevices(p0);
@@ -507,7 +748,14 @@ void DiscordClient::get_lobby_messages_with_limit(int64_t lobby_id, int64_t limi
 		discordpp::ClientResult *p0_t = memnew(discordpp::ClientResult(std::move(result)));
 		DiscordClientResult *p0 = memnew(DiscordClientResult{ p0_t });
 
-		// TODO vector to Array
+		TypedArray<DiscordMessageHandle> p1 = TypedArray<DiscordMessageHandle>();
+
+		for (auto i : messages) {
+			discordpp::MessageHandle *p1_t_t = memnew(discordpp::MessageHandle(std::move(i)));
+			DiscordMessageHandle *p1_t = memnew(DiscordMessageHandle{ p1_t_t });
+
+			p1.push_back(p1_t);
+		}
 	};
 
 	obj->GetLobbyMessagesWithLimit(p0, p1, p2);
@@ -515,7 +763,14 @@ void DiscordClient::get_lobby_messages_with_limit(int64_t lobby_id, int64_t limi
 
 void DiscordClient::get_output_devices(Callable cb) {
 	auto p0 = [cb](auto devices) {
-		// TODO vector to Array
+		TypedArray<DiscordAudioDevice> p0 = TypedArray<DiscordAudioDevice>();
+
+		for (auto i : devices) {
+			discordpp::AudioDevice *p0_t_t = memnew(discordpp::AudioDevice(std::move(i)));
+			DiscordAudioDevice *p0_t = memnew(DiscordAudioDevice{ p0_t_t });
+
+			p0.push_back(p0_t);
+		}
 	};
 
 	obj->GetOutputDevices(p0);
@@ -618,7 +873,14 @@ void DiscordClient::get_user_guilds(Callable cb) {
 		discordpp::ClientResult *p0_t = memnew(discordpp::ClientResult(std::move(result)));
 		DiscordClientResult *p0 = memnew(DiscordClientResult{ p0_t });
 
-		// TODO vector to Array
+		TypedArray<DiscordGuildMinimal> p1 = TypedArray<DiscordGuildMinimal>();
+
+		for (auto i : guilds) {
+			discordpp::GuildMinimal *p1_t_t = memnew(discordpp::GuildMinimal(std::move(i)));
+			DiscordGuildMinimal *p1_t = memnew(DiscordGuildMinimal{ p1_t_t });
+
+			p1.push_back(p1_t);
+		}
 	};
 
 	obj->GetUserGuilds(p0);
@@ -629,7 +891,14 @@ void DiscordClient::get_user_message_summaries(Callable cb) {
 		discordpp::ClientResult *p0_t = memnew(discordpp::ClientResult(std::move(result)));
 		DiscordClientResult *p0 = memnew(DiscordClientResult{ p0_t });
 
-		// TODO vector to Array
+		TypedArray<DiscordUserMessageSummary> p1 = TypedArray<DiscordUserMessageSummary>();
+
+		for (auto i : summaries) {
+			discordpp::UserMessageSummary *p1_t_t = memnew(discordpp::UserMessageSummary(std::move(i)));
+			DiscordUserMessageSummary *p1_t = memnew(DiscordUserMessageSummary{ p1_t_t });
+
+			p1.push_back(p1_t);
+		}
 	};
 
 	obj->GetUserMessageSummaries(p0);
@@ -642,7 +911,14 @@ void DiscordClient::get_user_messages_with_limit(int64_t recipient_id, int64_t l
 		discordpp::ClientResult *p0_t = memnew(discordpp::ClientResult(std::move(result)));
 		DiscordClientResult *p0 = memnew(DiscordClientResult{ p0_t });
 
-		// TODO vector to Array
+		TypedArray<DiscordMessageHandle> p1 = TypedArray<DiscordMessageHandle>();
+
+		for (auto i : messages) {
+			discordpp::MessageHandle *p1_t_t = memnew(discordpp::MessageHandle(std::move(i)));
+			DiscordMessageHandle *p1_t = memnew(DiscordMessageHandle{ p1_t_t });
+
+			p1.push_back(p1_t);
+		}
 	};
 
 	obj->GetUserMessagesWithLimit(p0, p1, p2);
@@ -1020,8 +1296,23 @@ void DiscordClient::set_automatic_gain_control(bool on) {
 
 void DiscordClient::set_device_change_callback(Callable callback) {
 	auto p0 = [callback](auto input_devices, auto output_devices) {
-		// TODO vector to Array
-		// TODO vector to Array
+		TypedArray<DiscordAudioDevice> p0 = TypedArray<DiscordAudioDevice>();
+
+		for (auto i : input_devices) {
+			discordpp::AudioDevice *p0_t_t = memnew(discordpp::AudioDevice(std::move(i)));
+			DiscordAudioDevice *p0_t = memnew(DiscordAudioDevice{ p0_t_t });
+
+			p0.push_back(p0_t);
+		}
+
+		TypedArray<DiscordAudioDevice> p1 = TypedArray<DiscordAudioDevice>();
+
+		for (auto i : output_devices) {
+			discordpp::AudioDevice *p1_t_t = memnew(discordpp::AudioDevice(std::move(i)));
+			DiscordAudioDevice *p1_t = memnew(DiscordAudioDevice{ p1_t_t });
+
+			p1.push_back(p1_t);
+		}
 	};
 
 	obj->SetDeviceChangeCallback(p0);

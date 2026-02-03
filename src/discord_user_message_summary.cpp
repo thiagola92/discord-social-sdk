@@ -7,10 +7,16 @@ using namespace godot;
 
 int64_t DiscordUserMessageSummary::last_message_id() {
 	auto r = obj->LastMessageId();
+
+	int64_t cr = (int64_t)r;
+	return cr;
 }
 
 int64_t DiscordUserMessageSummary::user_id() {
 	auto r = obj->UserId();
+
+	int64_t cr = (int64_t)r;
+	return cr;
 }
 
 // Overload functions.

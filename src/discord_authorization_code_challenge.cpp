@@ -7,10 +7,16 @@ using namespace godot;
 
 DiscordAuthenticationCodeChallengeMethod::Enum DiscordAuthorizationCodeChallenge::method() {
 	auto r = obj->Method();
+
+	DiscordAuthenticationCodeChallengeMethod::Enum cr = (DiscordAuthenticationCodeChallengeMethod::Enum)r;
+	return cr;
 }
 
 String DiscordAuthorizationCodeChallenge::challenge() {
 	auto r = obj->Challenge();
+
+	String cr = String(r.c_str());
+	return cr;
 }
 
 void DiscordAuthorizationCodeChallenge::set_challenge(String challenge) {

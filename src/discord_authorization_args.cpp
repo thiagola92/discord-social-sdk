@@ -7,30 +7,102 @@ using namespace godot;
 
 String DiscordAuthorizationArgs::scopes() {
 	auto r = obj->Scopes();
+
+	String cr = String(r.c_str());
+	return cr;
 }
 
 Variant DiscordAuthorizationArgs::code_challenge() {
 	auto r = obj->CodeChallenge();
+
+	Variant cr;
+
+	if (!r.has_value()) {
+		cr = nullptr;
+	} else {
+		auto r_v = r.value();
+
+		discordpp::AuthorizationCodeChallenge *cr_v_t = memnew(discordpp::AuthorizationCodeChallenge(std::move(r_v)));
+		DiscordAuthorizationCodeChallenge *cr_v = memnew(DiscordAuthorizationCodeChallenge{ cr_v_t });
+
+		cr = Variant(cr_v);
+	}
+
+	return cr;
 }
 
 Variant DiscordAuthorizationArgs::custom_scheme_param() {
 	auto r = obj->CustomSchemeParam();
+
+	Variant cr;
+
+	if (!r.has_value()) {
+		cr = nullptr;
+	} else {
+		auto r_v = r.value();
+		String cr_v = String(r_v.c_str());
+		cr = Variant(cr_v);
+	}
+
+	return cr;
 }
 
 Variant DiscordAuthorizationArgs::integration_type() {
 	auto r = obj->IntegrationType();
+
+	Variant cr;
+
+	if (!r.has_value()) {
+		cr = nullptr;
+	} else {
+		auto r_v = r.value();
+
+		discordpp::IntegrationType *cr_v_t = memnew(discordpp::IntegrationType(std::move(r_v)));
+		DiscordIntegrationType *cr_v = memnew(DiscordIntegrationType{ cr_v_t });
+
+		cr = Variant(cr_v);
+	}
+
+	return cr;
 }
 
 Variant DiscordAuthorizationArgs::nonce() {
 	auto r = obj->Nonce();
+
+	Variant cr;
+
+	if (!r.has_value()) {
+		cr = nullptr;
+	} else {
+		auto r_v = r.value();
+		String cr_v = String(r_v.c_str());
+		cr = Variant(cr_v);
+	}
+
+	return cr;
 }
 
 Variant DiscordAuthorizationArgs::state() {
 	auto r = obj->State();
+
+	Variant cr;
+
+	if (!r.has_value()) {
+		cr = nullptr;
+	} else {
+		auto r_v = r.value();
+		String cr_v = String(r_v.c_str());
+		cr = Variant(cr_v);
+	}
+
+	return cr;
 }
 
 int64_t DiscordAuthorizationArgs::client_id() {
 	auto r = obj->ClientId();
+
+	int64_t cr = (int64_t)r;
+	return cr;
 }
 
 void DiscordAuthorizationArgs::set_client_id(int64_t client_id) {

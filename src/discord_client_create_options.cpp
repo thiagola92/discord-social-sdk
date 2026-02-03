@@ -7,22 +7,46 @@ using namespace godot;
 
 DiscordAudioSystem::Enum DiscordClientCreateOptions::experimental_audio_system() {
 	auto r = obj->ExperimentalAudioSystem();
+
+	DiscordAudioSystem::Enum cr = (DiscordAudioSystem::Enum)r;
+	return cr;
 }
 
 String DiscordClientCreateOptions::api_base() {
 	auto r = obj->ApiBase();
+
+	String cr = String(r.c_str());
+	return cr;
 }
 
 String DiscordClientCreateOptions::web_base() {
 	auto r = obj->WebBase();
+
+	String cr = String(r.c_str());
+	return cr;
 }
 
 Variant DiscordClientCreateOptions::cpu_affinity_mask() {
 	auto r = obj->CpuAffinityMask();
+
+	Variant cr;
+
+	if (!r.has_value()) {
+		cr = nullptr;
+	} else {
+		auto r_v = r.value();
+		int64_t cr_v = (int64_t)r_v;
+		cr = Variant(cr_v);
+	}
+
+	return cr;
 }
 
 bool DiscordClientCreateOptions::experimental_android_prevent_comms_for_bluetooth() {
 	auto r = obj->ExperimentalAndroidPreventCommsForBluetooth();
+
+	bool cr = r;
+	return cr;
 }
 
 void DiscordClientCreateOptions::set_api_base(String api_base) {

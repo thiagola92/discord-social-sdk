@@ -7,6 +7,9 @@ using namespace godot;
 
 String DiscordActivitySecrets::join() {
 	auto r = obj->Join();
+
+	String cr = String(r.c_str());
+	return cr;
 }
 
 void DiscordActivitySecrets::set_join(String join) {

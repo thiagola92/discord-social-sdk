@@ -7,67 +7,237 @@ using namespace godot;
 
 DiscordActivityGamePlatforms::Enum DiscordActivity::supported_platforms() {
 	auto r = obj->SupportedPlatforms();
+
+	DiscordActivityGamePlatforms::Enum cr = (DiscordActivityGamePlatforms::Enum)r;
+	return cr;
 }
 
 DiscordActivityTypes::Enum DiscordActivity::type() {
 	auto r = obj->Type();
+
+	DiscordActivityTypes::Enum cr = (DiscordActivityTypes::Enum)r;
+	return cr;
 }
 
 String DiscordActivity::name() {
 	auto r = obj->Name();
+
+	String cr = String(r.c_str());
+	return cr;
 }
 
 TypedArray<DiscordActivityButton> DiscordActivity::get_buttons() {
 	auto r = obj->GetButtons();
+
+	TypedArray<DiscordActivityButton> cr = TypedArray<DiscordActivityButton>();
+
+	for (auto i : r) {
+		discordpp::ActivityButton *cr_t_t = memnew(discordpp::ActivityButton(std::move(i)));
+		DiscordActivityButton *cr_t = memnew(DiscordActivityButton{ cr_t_t });
+
+		cr.push_back(cr_t);
+	}
+
+	return cr;
 }
 
 Variant DiscordActivity::application_id() {
 	auto r = obj->ApplicationId();
+
+	Variant cr;
+
+	if (!r.has_value()) {
+		cr = nullptr;
+	} else {
+		auto r_v = r.value();
+		int64_t cr_v = (int64_t)r_v;
+		cr = Variant(cr_v);
+	}
+
+	return cr;
 }
 
 Variant DiscordActivity::assets() {
 	auto r = obj->Assets();
+
+	Variant cr;
+
+	if (!r.has_value()) {
+		cr = nullptr;
+	} else {
+		auto r_v = r.value();
+
+		discordpp::ActivityAssets *cr_v_t = memnew(discordpp::ActivityAssets(std::move(r_v)));
+		DiscordActivityAssets *cr_v = memnew(DiscordActivityAssets{ cr_v_t });
+
+		cr = Variant(cr_v);
+	}
+
+	return cr;
 }
 
 Variant DiscordActivity::details() {
 	auto r = obj->Details();
+
+	Variant cr;
+
+	if (!r.has_value()) {
+		cr = nullptr;
+	} else {
+		auto r_v = r.value();
+		String cr_v = String(r_v.c_str());
+		cr = Variant(cr_v);
+	}
+
+	return cr;
 }
 
 Variant DiscordActivity::details_url() {
 	auto r = obj->DetailsUrl();
+
+	Variant cr;
+
+	if (!r.has_value()) {
+		cr = nullptr;
+	} else {
+		auto r_v = r.value();
+		String cr_v = String(r_v.c_str());
+		cr = Variant(cr_v);
+	}
+
+	return cr;
 }
 
 Variant DiscordActivity::parent_application_id() {
 	auto r = obj->ParentApplicationId();
+
+	Variant cr;
+
+	if (!r.has_value()) {
+		cr = nullptr;
+	} else {
+		auto r_v = r.value();
+		int64_t cr_v = (int64_t)r_v;
+		cr = Variant(cr_v);
+	}
+
+	return cr;
 }
 
 Variant DiscordActivity::party() {
 	auto r = obj->Party();
+
+	Variant cr;
+
+	if (!r.has_value()) {
+		cr = nullptr;
+	} else {
+		auto r_v = r.value();
+
+		discordpp::ActivityParty *cr_v_t = memnew(discordpp::ActivityParty(std::move(r_v)));
+		DiscordActivityParty *cr_v = memnew(DiscordActivityParty{ cr_v_t });
+
+		cr = Variant(cr_v);
+	}
+
+	return cr;
 }
 
 Variant DiscordActivity::secrets() {
 	auto r = obj->Secrets();
+
+	Variant cr;
+
+	if (!r.has_value()) {
+		cr = nullptr;
+	} else {
+		auto r_v = r.value();
+
+		discordpp::ActivitySecrets *cr_v_t = memnew(discordpp::ActivitySecrets(std::move(r_v)));
+		DiscordActivitySecrets *cr_v = memnew(DiscordActivitySecrets{ cr_v_t });
+
+		cr = Variant(cr_v);
+	}
+
+	return cr;
 }
 
 Variant DiscordActivity::state() {
 	auto r = obj->State();
+
+	Variant cr;
+
+	if (!r.has_value()) {
+		cr = nullptr;
+	} else {
+		auto r_v = r.value();
+		String cr_v = String(r_v.c_str());
+		cr = Variant(cr_v);
+	}
+
+	return cr;
 }
 
 Variant DiscordActivity::state_url() {
 	auto r = obj->StateUrl();
+
+	Variant cr;
+
+	if (!r.has_value()) {
+		cr = nullptr;
+	} else {
+		auto r_v = r.value();
+		String cr_v = String(r_v.c_str());
+		cr = Variant(cr_v);
+	}
+
+	return cr;
 }
 
 Variant DiscordActivity::status_display_type() {
 	auto r = obj->StatusDisplayType();
+
+	Variant cr;
+
+	if (!r.has_value()) {
+		cr = nullptr;
+	} else {
+		auto r_v = r.value();
+
+		discordpp::StatusDisplayTypes *cr_v_t = memnew(discordpp::StatusDisplayTypes(std::move(r_v)));
+		DiscordStatusDisplayTypes *cr_v = memnew(DiscordStatusDisplayTypes{ cr_v_t });
+
+		cr = Variant(cr_v);
+	}
+
+	return cr;
 }
 
 Variant DiscordActivity::timestamps() {
 	auto r = obj->Timestamps();
+
+	Variant cr;
+
+	if (!r.has_value()) {
+		cr = nullptr;
+	} else {
+		auto r_v = r.value();
+
+		discordpp::ActivityTimestamps *cr_v_t = memnew(discordpp::ActivityTimestamps(std::move(r_v)));
+		DiscordActivityTimestamps *cr_v = memnew(DiscordActivityTimestamps{ cr_v_t });
+
+		cr = Variant(cr_v);
+	}
+
+	return cr;
 }
 
 bool DiscordActivity::equals(DiscordActivity *other) {
 	discordpp::Activity p0 = *other->unwrap();
 	auto r = obj->Equals(p0);
+
+	bool cr = r;
+	return cr;
 }
 
 void DiscordActivity::add_button(DiscordActivityButton *button) {

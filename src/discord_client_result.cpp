@@ -7,38 +7,65 @@ using namespace godot;
 
 DiscordErrorType::Enum DiscordClientResult::type() {
 	auto r = obj->Type();
+
+	DiscordErrorType::Enum cr = (DiscordErrorType::Enum)r;
+	return cr;
 }
 
 DiscordHttpStatusCode::Enum DiscordClientResult::status() {
 	auto r = obj->Status();
+
+	DiscordHttpStatusCode::Enum cr = (DiscordHttpStatusCode::Enum)r;
+	return cr;
 }
 
 String DiscordClientResult::error() {
 	auto r = obj->Error();
+
+	String cr = String(r.c_str());
+	return cr;
 }
 
 String DiscordClientResult::response_body() {
 	auto r = obj->ResponseBody();
+
+	String cr = String(r.c_str());
+	return cr;
 }
 
 String DiscordClientResult::to_string_discord() {
 	auto r = obj->ToString();
+
+	String cr = String(r.c_str());
+	return cr;
 }
 
 bool DiscordClientResult::retryable() {
 	auto r = obj->Retryable();
+
+	bool cr = r;
+	return cr;
 }
 
 bool DiscordClientResult::successful() {
 	auto r = obj->Successful();
+
+	bool cr = r;
+	return cr;
 }
 
 float DiscordClientResult::retry_after() {
 	auto r = obj->RetryAfter();
+
+	float cr = (float)r;
+	return cr;
 }
 
 int64_t DiscordClientResult::error_code() {
 	auto r = obj->ErrorCode();
+
+	int64_t cr = (int64_t)r;
+	return cr;
 }
 
 void DiscordClientResult::set_error(String error) {

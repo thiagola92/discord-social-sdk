@@ -7,10 +7,16 @@ using namespace godot;
 
 String DiscordActivityButton::label() {
 	auto r = obj->Label();
+
+	String cr = String(r.c_str());
+	return cr;
 }
 
 String DiscordActivityButton::url() {
 	auto r = obj->Url();
+
+	String cr = String(r.c_str());
+	return cr;
 }
 
 void DiscordActivityButton::set_label(String label) {

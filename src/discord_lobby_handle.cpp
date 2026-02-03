@@ -7,31 +7,102 @@ using namespace godot;
 
 TypedArray<DiscordLobbyMemberHandle> DiscordLobbyHandle::lobby_members() {
 	auto r = obj->LobbyMembers();
+
+	TypedArray<DiscordLobbyMemberHandle> cr = TypedArray<DiscordLobbyMemberHandle>();
+
+	for (auto i : r) {
+		discordpp::LobbyMemberHandle *cr_t_t = memnew(discordpp::LobbyMemberHandle(std::move(i)));
+		DiscordLobbyMemberHandle *cr_t = memnew(DiscordLobbyMemberHandle{ cr_t_t });
+
+		cr.push_back(cr_t);
+	}
+
+	return cr;
 }
 
 TypedArray<int64_t> DiscordLobbyHandle::lobby_member_ids() {
 	auto r = obj->LobbyMemberIds();
+
+	TypedArray<int64_t> cr = TypedArray<int64_t>();
+
+	for (auto i : r) {
+		int64_t cr_t = (int64_t)i;
+		cr.push_back(cr_t);
+	}
+
+	return cr;
 }
 
 TypedDictionary<String, String> DiscordLobbyHandle::metadata() {
 	auto r = obj->Metadata();
+
+	// TODO map to Dictionary
+	return cr;
 }
 
 Variant DiscordLobbyHandle::get_call_info_handle() {
 	auto r = obj->GetCallInfoHandle();
+
+	Variant cr;
+
+	if (!r.has_value()) {
+		cr = nullptr;
+	} else {
+		auto r_v = r.value();
+
+		discordpp::CallInfoHandle *cr_v_t = memnew(discordpp::CallInfoHandle(std::move(r_v)));
+		DiscordCallInfoHandle *cr_v = memnew(DiscordCallInfoHandle{ cr_v_t });
+
+		cr = Variant(cr_v);
+	}
+
+	return cr;
 }
 
 Variant DiscordLobbyHandle::get_lobby_member_handle(int64_t member_id) {
 	int64_t p0 = member_id;
 	auto r = obj->GetLobbyMemberHandle(p0);
+
+	Variant cr;
+
+	if (!r.has_value()) {
+		cr = nullptr;
+	} else {
+		auto r_v = r.value();
+
+		discordpp::LobbyMemberHandle *cr_v_t = memnew(discordpp::LobbyMemberHandle(std::move(r_v)));
+		DiscordLobbyMemberHandle *cr_v = memnew(DiscordLobbyMemberHandle{ cr_v_t });
+
+		cr = Variant(cr_v);
+	}
+
+	return cr;
 }
 
 Variant DiscordLobbyHandle::linked_channel() {
 	auto r = obj->LinkedChannel();
+
+	Variant cr;
+
+	if (!r.has_value()) {
+		cr = nullptr;
+	} else {
+		auto r_v = r.value();
+
+		discordpp::LinkedChannel *cr_v_t = memnew(discordpp::LinkedChannel(std::move(r_v)));
+		DiscordLinkedChannel *cr_v = memnew(DiscordLinkedChannel{ cr_v_t });
+
+		cr = Variant(cr_v);
+	}
+
+	return cr;
 }
 
 int64_t DiscordLobbyHandle::id() {
 	auto r = obj->Id();
+
+	int64_t cr = (int64_t)r;
+	return cr;
 }
 
 // Overload functions.

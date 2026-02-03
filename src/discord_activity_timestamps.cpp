@@ -7,10 +7,16 @@ using namespace godot;
 
 int64_t DiscordActivityTimestamps::end() {
 	auto r = obj->End();
+
+	int64_t cr = (int64_t)r;
+	return cr;
 }
 
 int64_t DiscordActivityTimestamps::start() {
 	auto r = obj->Start();
+
+	int64_t cr = (int64_t)r;
+	return cr;
 }
 
 void DiscordActivityTimestamps::set_end(int64_t end) {

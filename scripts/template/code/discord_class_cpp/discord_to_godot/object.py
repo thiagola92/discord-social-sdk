@@ -1,4 +1,4 @@
-def get_discord_object(
+def get_godot_object(
     discord_type: str, godot_type: str, target: str, source: str
 ) -> str:
     return f"""

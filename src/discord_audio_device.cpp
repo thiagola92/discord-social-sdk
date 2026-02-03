@@ -7,19 +7,31 @@ using namespace godot;
 
 String DiscordAudioDevice::id() {
 	auto r = obj->Id();
+
+	String cr = String(r.c_str());
+	return cr;
 }
 
 String DiscordAudioDevice::name() {
 	auto r = obj->Name();
+
+	String cr = String(r.c_str());
+	return cr;
 }
 
 bool DiscordAudioDevice::equals(DiscordAudioDevice *rhs) {
 	discordpp::AudioDevice p0 = *rhs->unwrap();
 	auto r = obj->Equals(p0);
+
+	bool cr = r;
+	return cr;
 }
 
 bool DiscordAudioDevice::is_default() {
 	auto r = obj->IsDefault();
+
+	bool cr = r;
+	return cr;
 }
 
 void DiscordAudioDevice::set_id(String id) {

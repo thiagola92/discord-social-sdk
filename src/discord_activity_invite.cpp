@@ -7,38 +7,65 @@ using namespace godot;
 
 DiscordActivityActionTypes::Enum DiscordActivityInvite::type() {
 	auto r = obj->Type();
+
+	DiscordActivityActionTypes::Enum cr = (DiscordActivityActionTypes::Enum)r;
+	return cr;
 }
 
 String DiscordActivityInvite::party_id() {
 	auto r = obj->PartyId();
+
+	String cr = String(r.c_str());
+	return cr;
 }
 
 String DiscordActivityInvite::session_id() {
 	auto r = obj->SessionId();
+
+	String cr = String(r.c_str());
+	return cr;
 }
 
 bool DiscordActivityInvite::is_valid() {
 	auto r = obj->IsValid();
+
+	bool cr = r;
+	return cr;
 }
 
 int64_t DiscordActivityInvite::application_id() {
 	auto r = obj->ApplicationId();
+
+	int64_t cr = (int64_t)r;
+	return cr;
 }
 
 int64_t DiscordActivityInvite::channel_id() {
 	auto r = obj->ChannelId();
+
+	int64_t cr = (int64_t)r;
+	return cr;
 }
 
 int64_t DiscordActivityInvite::message_id() {
 	auto r = obj->MessageId();
+
+	int64_t cr = (int64_t)r;
+	return cr;
 }
 
 int64_t DiscordActivityInvite::parent_application_id() {
 	auto r = obj->ParentApplicationId();
+
+	int64_t cr = (int64_t)r;
+	return cr;
 }
 
 int64_t DiscordActivityInvite::sender_id() {
 	auto r = obj->SenderId();
+
+	int64_t cr = (int64_t)r;
+	return cr;
 }
 
 void DiscordActivityInvite::set_application_id(int64_t application_id) {

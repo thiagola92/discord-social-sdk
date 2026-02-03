@@ -7,10 +7,16 @@ using namespace godot;
 
 bool DiscordVADThresholdSettings::automatic() {
 	auto r = obj->Automatic();
+
+	bool cr = r;
+	return cr;
 }
 
 float DiscordVADThresholdSettings::vad_threshold() {
 	auto r = obj->VadThreshold();
+
+	float cr = (float)r;
+	return cr;
 }
 
 void DiscordVADThresholdSettings::set_automatic(bool automatic) {

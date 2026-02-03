@@ -7,30 +7,114 @@ using namespace godot;
 
 Variant DiscordActivityAssets::invite_cover_image() {
 	auto r = obj->InviteCoverImage();
+
+	Variant cr;
+
+	if (!r.has_value()) {
+		cr = nullptr;
+	} else {
+		auto r_v = r.value();
+		String cr_v = String(r_v.c_str());
+		cr = Variant(cr_v);
+	}
+
+	return cr;
 }
 
 Variant DiscordActivityAssets::large_image() {
 	auto r = obj->LargeImage();
+
+	Variant cr;
+
+	if (!r.has_value()) {
+		cr = nullptr;
+	} else {
+		auto r_v = r.value();
+		String cr_v = String(r_v.c_str());
+		cr = Variant(cr_v);
+	}
+
+	return cr;
 }
 
 Variant DiscordActivityAssets::large_text() {
 	auto r = obj->LargeText();
+
+	Variant cr;
+
+	if (!r.has_value()) {
+		cr = nullptr;
+	} else {
+		auto r_v = r.value();
+		String cr_v = String(r_v.c_str());
+		cr = Variant(cr_v);
+	}
+
+	return cr;
 }
 
 Variant DiscordActivityAssets::large_url() {
 	auto r = obj->LargeUrl();
+
+	Variant cr;
+
+	if (!r.has_value()) {
+		cr = nullptr;
+	} else {
+		auto r_v = r.value();
+		String cr_v = String(r_v.c_str());
+		cr = Variant(cr_v);
+	}
+
+	return cr;
 }
 
 Variant DiscordActivityAssets::small_image() {
 	auto r = obj->SmallImage();
+
+	Variant cr;
+
+	if (!r.has_value()) {
+		cr = nullptr;
+	} else {
+		auto r_v = r.value();
+		String cr_v = String(r_v.c_str());
+		cr = Variant(cr_v);
+	}
+
+	return cr;
 }
 
 Variant DiscordActivityAssets::small_text() {
 	auto r = obj->SmallText();
+
+	Variant cr;
+
+	if (!r.has_value()) {
+		cr = nullptr;
+	} else {
+		auto r_v = r.value();
+		String cr_v = String(r_v.c_str());
+		cr = Variant(cr_v);
+	}
+
+	return cr;
 }
 
 Variant DiscordActivityAssets::small_url() {
 	auto r = obj->SmallUrl();
+
+	Variant cr;
+
+	if (!r.has_value()) {
+		cr = nullptr;
+	} else {
+		auto r_v = r.value();
+		String cr_v = String(r_v.c_str());
+		cr = Variant(cr_v);
+	}
+
+	return cr;
 }
 
 void DiscordActivityAssets::set_invite_cover_image(Variant invite_cover_image) {

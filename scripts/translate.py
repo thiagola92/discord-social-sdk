@@ -11,8 +11,9 @@ from pprint import pprint
 
 from data import TypeInfo, FunctionInfo, ParamInfo
 from name import to_godot_class_name, to_gdscript_variable_name
-from template.code.discord_class_cpp.discord_to_godot.object import get_discord_object
-from template.code.discord_class_cpp.discord_to_godot.variant import get_discord_variant
+from template.code.discord_class_cpp.discord_to_godot.object import get_godot_object
+from template.code.discord_class_cpp.discord_to_godot.variant import get_godot_variant
+from template.code.discord_class_cpp.discord_to_godot.array import get_godot_array
 from template.code.discord_class_cpp.godot_to_discord.map import get_discord_map
 from template.code.discord_class_cpp.godot_to_discord.optional import (
     get_discord_optional,
@@ -247,7 +248,7 @@ def discord_variable_to_godot_variable(
         return discord_optional_to_godot_variant(info.templates[0], target, source)
 
     if is_discord_vector(info):
-        return "// TODO vector to Array"
+        return discord_vector_to_godot_array(info, target, source)
 
     if is_discord_map(info):
         return "// TODO map to Dictionary"
@@ -267,7 +268,23 @@ def discord_optional_to_godot_variant(
         f"{source}_v",
     )
 
-    return get_discord_variant(
+    return get_godot_variant(
+        target=target,
+        source=source,
+        convertion=convertion,
+    )
+
+
+def discord_vector_to_godot_array(type_info: TypeInfo, target: str, source: str) -> str:
+    typed_array = discord_type_to_godot_type(type_info)
+    convertion = discord_variable_to_godot_variable(
+        type_info.templates[0],
+        f"{target}_t",
+        "i",
+    )
+
+    return get_godot_array(
+        typed_array=typed_array,
         target=target,
         source=source,
         convertion=convertion,
@@ -279,7 +296,7 @@ def discord_object_to_godot_object(
 ) -> str:
     godot_name = to_godot_class_name(type_info.name)
 
-    return get_discord_object(
+    return get_godot_object(
         discord_type=type_info.name,
         godot_type=godot_name,
         target=target,

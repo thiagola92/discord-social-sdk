@@ -1,4 +1,4 @@
-def get_discord_variant(target: str, source: str, convertion: str) -> str:
+def get_godot_variant(target: str, source: str, convertion: str) -> str:
     return f"""
 Variant {target};
 

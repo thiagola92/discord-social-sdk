@@ -7,10 +7,16 @@ using namespace godot;
 
 String DiscordDeviceAuthorizationArgs::scopes() {
 	auto r = obj->Scopes();
+
+	String cr = String(r.c_str());
+	return cr;
 }
 
 int64_t DiscordDeviceAuthorizationArgs::client_id() {
 	auto r = obj->ClientId();
+
+	int64_t cr = (int64_t)r;
+	return cr;
 }
 
 void DiscordDeviceAuthorizationArgs::set_client_id(int64_t client_id) {

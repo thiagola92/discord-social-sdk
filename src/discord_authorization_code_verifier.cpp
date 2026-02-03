@@ -7,10 +7,18 @@ using namespace godot;
 
 DiscordAuthorizationCodeChallenge *DiscordAuthorizationCodeVerifier::challenge() {
 	auto r = obj->Challenge();
+
+	discordpp::AuthorizationCodeChallenge *cr_t = memnew(discordpp::AuthorizationCodeChallenge(std::move(r)));
+	DiscordAuthorizationCodeChallenge *cr = memnew(DiscordAuthorizationCodeChallenge{ cr_t });
+
+	return cr;
 }
 
 String DiscordAuthorizationCodeVerifier::verifier() {
 	auto r = obj->Verifier();
+
+	String cr = String(r.c_str());
+	return cr;
 }
 
 void DiscordAuthorizationCodeVerifier::set_challenge(DiscordAuthorizationCodeChallenge *challenge) {
