@@ -100,11 +100,11 @@ def check_overloading(functions_info: list[FunctionInfo]) -> None:
 
     ### Context
     GDScript doesn't support function overloading.This means that,
-    we can't have two functions having the same name but different parameters:
+    we can't have two functions having the same name but different parameters and return:
 
-        func example(a: int)
-        func example(a: int, b: int)
-        func example(a: float)
+        func example(a: int) -> String
+        func example(a: int, b: int) -> String
+        func example(a: float) -> String
 
     An enum parameter is nothing more than an integer. This means that,
     we can't indentify an enum after receiving it value:

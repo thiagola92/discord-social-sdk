@@ -207,7 +207,7 @@ def forge_overloadings_declarations(info: NamespaceInfo | ClassInfo) -> str:
 def forge_overloading_declaration(group: list[FunctionInfo]) -> str:
     overloading_pattern = discover_overloading_pattern(group)
 
-    if overloading_pattern == OverloadingPattern.ENUMS:
+    if overloading_pattern == OverloadingPattern.RET_SAME_ARGS_ENUMS:
         for f in group:
             for p in f.params:
                 p.overloading = True
@@ -286,7 +286,7 @@ def forge_overloadings_binds(info: NamespaceInfo | ClassInfo) -> str:
 def forge_overloading_bind(group: list[FunctionInfo], class_name: str) -> str:
     overloading_pattern = discover_overloading_pattern(group)
 
-    if overloading_pattern == OverloadingPattern.ENUMS:
+    if overloading_pattern == OverloadingPattern.RET_SAME_ARGS_ENUMS:
         for f in group:
             p = f.params + fake_enums_params(f.params)
             p = forge_params_bind(p)
@@ -390,31 +390,37 @@ def forge_return_statements(function_info: FunctionInfo) -> str:
     return get_return_statements(convertion=convertion, target=target)
 
 
-# TODO: I only copied the functions code.
 def forge_overloadings_definitions(info: NamespaceInfo | ClassInfo) -> str:
     class_name = info.name if isinstance(info, ClassInfo) else ""
-    functions_definitions = []
+    overloading_groups = discover_overloading_groups(info)
+    overloadings_definitions = []
 
-    for f in info.functions:
-        if not f.overloading:
-            functions_definitions.append(forge_function_definition(f, class_name))
+    for g in overloading_groups.values():
+        overloadings_definitions.append(forge_overloading_definition(g, class_name))
 
-    functions_definitions = sorted(functions_definitions)
-    functions_definitions = "".join(functions_definitions)
+    overloadings_definitions = sorted(overloadings_definitions)
+    overloadings_definitions = "".join(overloadings_definitions)
 
-    return functions_definitions
+    return overloadings_definitions
 
 
-# TODO: I only copied the functions code.
-def forge_overloading_definition(function_info: FunctionInfo, class_name: str) -> str:
-    return_type = discord_type_to_godot_type(function_info.type)
-    params = discord_params_to_godot_params(function_info.params)
-    statements = forge_function_statements(function_info, class_name)
+def forge_overloading_definition(group: list[FunctionInfo], class_name: str) -> str:
+    overloading_pattern = discover_overloading_pattern(group)
 
-    return get_function_definition(
-        ret=return_type,
-        class_name=class_name,
-        function=function_info.gdscript_name,
-        params=params,
-        statements=statements,
-    )
+    if overloading_pattern == OverloadingPattern.RET_SAME_ARGS_ENUMS:
+        for f in group:
+            r = discord_type_to_godot_type(f.type)
+            p = f.params + fake_enums_params(f.params)
+            p = discord_params_to_godot_params(p)
+            s = forge_function_statements(f, class_name)
+
+            return get_function_definition(
+                ret=r,
+                class_name=class_name,
+                function=f.gdscript_name,
+                params=p,
+                statements=s,
+            )
+    else:
+        # TODO: Create generic treatment for overloadings.
+        assert False, "A new case of overloading needs to be created."

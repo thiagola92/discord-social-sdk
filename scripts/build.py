@@ -20,6 +20,7 @@ from forge import (
     forge_classes_definitions,
     forge_binds,
     forge_functions_definitions,
+    forge_overloadings_definitions,
 )
 
 
@@ -125,7 +126,7 @@ class Builder:
         """
 
         functions_definitions = forge_functions_definitions(namespace_info)
-        overloadings_definitions = ""
+        overloadings_definitions = forge_overloadings_definitions(namespace_info)
         binds = forge_binds(namespace_info)
         filepath = self.src_dir.joinpath("discord.cpp")
         content = get_discord_class_cpp(
@@ -147,7 +148,7 @@ class Builder:
         """
 
         functions_definitions = forge_functions_definitions(class_info)
-        overloadings_definitions = ""
+        overloadings_definitions = forge_overloadings_definitions(class_info)
         binds = forge_binds(class_info)
         filename = to_snake_case(class_info.name)
         filepath = self.src_dir.joinpath(f"discord_{filename}.cpp")

@@ -5,13 +5,18 @@ from data import FunctionInfo, TypeInfo, NamespaceInfo, ClassInfo
 
 
 class OverloadingPattern(Enum):
-    # Was not possible to detect a pattern,
-    # solve using a generic approach.
+    # Was not possible to detect a pattern! Try solving with:
+    #       function(arg0: Variant, arg1: Variant, types: Dictionary[String, String]) -> String
     NONE = 0
 
-    # Overloading is just switching between
-    # types of enums.
-    ENUMS = 1
+    # Use an extra argument to discover the enum.
+    #       function(arg0: int, type: Variant) -> String
+    RET_SAME_ARGS_ENUMS = 1
+
+    # The order of types tell us which function to use.
+    #       function(arg0: int, arg1: float) -> float
+    #       function(arg0: float, arg1: int) -> float
+    RET_SAME_ARGS_TYPES = 2
 
 
 def discover_overloading_pattern(functions: list[FunctionInfo]) -> OverloadingPattern:
@@ -22,7 +27,7 @@ def discover_overloading_pattern(functions: list[FunctionInfo]) -> OverloadingPa
     best solve this problem.
     """
 
-    only_enums = True
+    only_enum_params = True
     match_quantity = True
     match_return = True
     first_quantity: None | int = None
@@ -41,10 +46,10 @@ def discover_overloading_pattern(functions: list[FunctionInfo]) -> OverloadingPa
 
         for p in f.params:
             if not p.enum:
-                only_enums = False
+                only_enum_params = False
 
-    if only_enums and match_quantity and match_return:
-        return OverloadingPattern.ENUMS
+    if only_enum_params and match_quantity and match_return:
+        return OverloadingPattern.RET_SAME_ARGS_ENUMS
 
     return OverloadingPattern.NONE
 

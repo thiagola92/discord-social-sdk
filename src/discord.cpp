@@ -11,6 +11,14 @@ void Discord::run_callbacks() {
 
 // Overload functions.
 
+String Discord::enum_to_string(int value, Variant enum_type) {
+	discordpp::ActivityActionTypes p0 = (discordpp::ActivityActionTypes)value;
+	auto r = discordpp::EnumToString(p0);
+
+	String cr = String(r);
+	return cr;
+}
+
 // Binding.
 void Discord::_bind_methods() {
 	ClassDB::bind_static_method("Discord", D_METHOD("run_callbacks"),
