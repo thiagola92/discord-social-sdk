@@ -10,7 +10,7 @@ class OverloadingPattern(Enum):
     NONE = 0
 
     # Use an extra argument to discover the enum.
-    #       function(arg0: int, type: Variant) -> String
+    #       function(arg0: int, type: String) -> String
     RET_SAME_ARGS_ENUMS = 1
 
     # The order of types tell us which function to use.

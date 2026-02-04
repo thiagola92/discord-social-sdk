@@ -124,7 +124,7 @@ def discord_type_to_godot_type(
 
     if is_discord_enum(info):
         if info.fake:
-            return "Variant"
+            return "String"
 
         if info.overloading:
             return "int"
@@ -202,10 +202,13 @@ def discord_type_to_variant_type(info: TypeInfo | FunctionInfo) -> str:
     assert False, f'Fail to identify a good Variant type for "{info.name}"'
 
 
-def discord_variables_to_godot_variables(params_info: list[ParamInfo]) -> str:
+def discord_variables_to_godot_variables(
+    params_info: list[ParamInfo],
+    skip: int = 0,
+) -> str:
     statements = []
 
-    for i, p in enumerate(params_info):
+    for i, p in enumerate(params_info, skip):
         n = to_gdscript_variable_name(p.name)
         statements.append(discord_variable_to_godot_variable(p.type, f"p{i}", n))
 
@@ -241,6 +244,9 @@ def discord_variable_to_godot_variable(
         return f"String {target} = String({source});"
 
     if is_discord_enum(info):
+        if info.fake:
+            return f"String {target} = {source};"
+
         name = to_godot_class_name(info.name) + "::Enum"
         return f"{name} {target} = ({name}){source};"
 
@@ -251,6 +257,7 @@ def discord_variable_to_godot_variable(
         return discord_vector_to_godot_array(info, target, source)
 
     if is_discord_map(info):
+        pprint(info)
         return "// TODO map to Dictionary"
 
     if is_discord_object(info):
@@ -346,6 +353,12 @@ def godot_variable_to_discord_variable(
         return f"std::string {target} = std::string({source}.utf8().get_data());"
 
     if is_discord_enum(info):
+        if info.fake:
+            return f"std::string {target} = std::string({source}.utf8().get_data());"
+
+        # if info.overloading:
+        #     return f"int64_t {target} = {source};"
+
         return f"{info.name} {target} = ({info.name}){source};"
 
     if is_discord_optional(info):

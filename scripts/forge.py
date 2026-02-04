@@ -2,6 +2,7 @@
 from pprint import pprint
 
 from fake import fake_enums_params
+from name import to_gdscript_variable_name
 from collect import NamespaceInfo, FunctionInfo, ClassInfo, ParamInfo
 from discover import (
     OverloadingPattern,
@@ -14,6 +15,7 @@ from translate import (
     discord_variable_to_godot_variable,
     godot_variables_to_discord_variables,
     is_discord_void,
+    discord_variables_to_godot_variables,
 )
 from template.code.register_types_cpp.register_abstract import get_register_abstract
 from template.code.register_types_cpp.register_runtime import get_register_runtime
@@ -33,6 +35,8 @@ from template.code.discord_class_cpp.return_statements import get_return_stateme
 from template.code.discord_class_cpp.bind_static import get_bind_static
 from template.code.discord_class_cpp.function_definition import get_function_definition
 from template.code.discord_class_cpp.function_statements import get_function_statements
+from template.code.discord_class_cpp.overloading.if_statement import get_if_statement
+from template.code.discord_class_cpp.overloading.condition import get_condition
 
 ########## register_types.cpp ##########
 
@@ -223,9 +227,8 @@ def forge_overloading_declaration(group: list[FunctionInfo]) -> str:
                 name=f.gdscript_name,
                 params=p,
             )
-    else:
-        # TODO: Create generic treatment for overloadings.
-        assert False, "A new case of overloading needs to be created."
+
+    assert False, "A new case of overloading needs to be created."
 
 
 ########## <discord_class>.cpp ##########
@@ -303,9 +306,8 @@ def forge_overloading_bind(group: list[FunctionInfo], class_name: str) -> str:
                 class_name=class_name,
                 params=p,
             )
-    else:
-        # TODO: Create generic treatment for overloadings.
-        assert False, "A new case of overloading needs to be created."
+
+    assert False, "A new case of overloading needs to be created."
 
 
 def forge_params_bind(params_info: list[ParamInfo]) -> str:
@@ -359,6 +361,8 @@ def forge_function_statements(function_info: FunctionInfo, class_name: str) -> s
     )
 
 
+# TODO: Below this function I started to using too much strings,
+# maybe there is something that can be moved to translate.py.
 def forge_call_statement(function_info: FunctionInfo, class_name: str) -> str:
     params = []
 
@@ -412,7 +416,7 @@ def forge_overloading_definition(group: list[FunctionInfo], class_name: str) -> 
             r = discord_type_to_godot_type(f.type)
             p = f.params + fake_enums_params(f.params)
             p = discord_params_to_godot_params(p)
-            s = forge_function_statements(f, class_name)
+            s = forge_overloading_statements(group, class_name, overloading_pattern)
 
             return get_function_definition(
                 ret=r,
@@ -421,6 +425,55 @@ def forge_overloading_definition(group: list[FunctionInfo], class_name: str) -> 
                 params=p,
                 statements=s,
             )
-    else:
-        # TODO: Create generic treatment for overloadings.
-        assert False, "A new case of overloading needs to be created."
+
+    assert False, "A new case of overloading needs to be created."
+
+
+def forge_overloading_statements(
+    group: list[FunctionInfo],
+    class_name: str,
+    overloading_pattern: OverloadingPattern,
+) -> str:
+    statements = []
+    fake_params = fake_enums_params(group[0].params)
+
+    if overloading_pattern == OverloadingPattern.RET_SAME_ARGS_ENUMS:
+        c = forge_overloading_condition(fake_params)
+
+        statements.append(
+            discord_variables_to_godot_variables(fake_params, len(fake_params))
+        )
+
+        for f in group:
+            s = forge_function_statements(f, class_name)
+
+            statements.append(
+                get_if_statement(
+                    condition=c,
+                    statements=s,
+                )
+            )
+
+        statements.append('return "";')
+
+        return "\n".join(statements)
+
+    assert False, "A new case of overloading needs to be created."
+
+
+def forge_overloading_condition(fake_params: list[ParamInfo]) -> str:
+    length = len(fake_params)
+    conditions = []
+
+    for i, fp in enumerate(fake_params):
+        conditions.append(
+            get_condition(
+                value0=f"p{length + i}",
+                operator="==",
+                value1=f'"{fp.type.name}"',
+            )
+        )
+
+    conditions = " && ".join(conditions)
+
+    return conditions

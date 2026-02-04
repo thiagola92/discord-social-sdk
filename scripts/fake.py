@@ -2,7 +2,7 @@
 from data import ParamInfo, TypeInfo, FunctionInfo
 
 
-def fake_enums_params(params: list[ParamInfo]) -> ParamInfo:
+def fake_enums_params(params: list[ParamInfo]) -> list[ParamInfo]:
     """
     Create fake parameters that are later used to discover
     the enum type of others parameters.
@@ -11,8 +11,8 @@ def fake_enums_params(params: list[ParamInfo]) -> ParamInfo:
         enum_to_string(EnumA x)
         enum_to_string(EnumB x)
         enum_to_string(EnumC x)
-    When it transform to one function, it will look like:
-        enum_to_string(int x, Variant enum_type)
+    When transformed, it will look like:
+        enum_to_string(int x, String enum_type)
 
     Fake parameter and it type are marked as fake
     so we can later decide how to represent them.
