@@ -21,6 +21,12 @@ from template.code.discord_class_cpp.godot_to_discord.map import get_discord_map
 from template.code.discord_class_cpp.godot_to_discord.optional import (
     get_discord_optional,
 )
+from template.code.discord_class_cpp.godot_to_discord.optional_enum import (
+    get_discord_optional_enum,
+)
+from template.code.discord_class_cpp.godot_to_discord.optional_object import (
+    get_discord_optional_object,
+)
 from template.code.discord_class_cpp.godot_to_discord.callback import (
     get_discord_callback,
 )
@@ -466,30 +472,49 @@ def godot_variant_to_discord_variable(type_info: TypeInfo, source: str, target: 
 
     if isinstance(type_info, FunctionInfo):
         assert False, "Not implemented (implement if needed)"
-    elif is_discord_bool(type_info):
-        statements = [f"{target} = {source};"]
-    elif is_discord_int(type_info):
-        statements = [f"{target} = {source};"]
-    elif is_discord_float(type_info):
-        statements = [f"{target} = {source};"]
-    elif is_discord_string(type_info):
-        statements = [f"{target} = {source}.stringify().utf8().get_data();"]
-    elif is_discord_char_array(type_info):
-        statements = [f"{target} = {source}.stringify().utf8().get_data();"]
-    elif is_discord_enum(type_info):
-        statements = [
-            f"{target} = std::optional<{type_info.name}>{{ ({type_info.name})(uint64_t){source} }};"
-        ]
-    elif is_discord_vector(type_info):
-        assert False, "Not implemented (implement if needed)"
-    elif is_discord_map(type_info):
-        assert False, "Not implemented (implement if needed)"
-    elif is_discord_optional(type_info):
+
+    if is_discord_bool(type_info):
+        return f"{target} = {source};"
+
+    if is_discord_int(type_info):
+        return f"{target} = {source};"
+
+    if is_discord_float(type_info):
+        return f"{target} = {source};"
+
+    if is_discord_string(type_info):
+        return f"{target} = {source}.stringify().utf8().get_data();"
+
+    if is_discord_char_array(type_info):
+        return f"{target} = {source}.stringify().utf8().get_data();"
+
+    if is_discord_enum(type_info):
+        return get_discord_optional_enum(
+            target=target,
+            template=type_info.name,
+            source=source,
+        )
+
+    if is_discord_vector(type_info):
         assert False, "Not implemented (implement if needed)"
 
-    statements = "\n".join(statements)
+    if is_discord_map(type_info):
+        assert False, "Not implemented (implement if needed)"
 
-    return statements
+    if is_discord_optional(type_info):
+        assert False, "Not implemented (implement if needed)"
+
+    if is_discord_object(type_info):
+        n = to_godot_class_name(type_info.name)
+
+        return get_discord_optional_object(
+            godot_type=n,
+            target=target,
+            source=source,
+            discord_type=type_info.name,
+        )
+
+    assert False, f"Not implemented for {type_info.name} (implement if needed)"
 
 
 def godot_array_to_discord_vector(type_info: TypeInfo, source: str, target: str) -> str:

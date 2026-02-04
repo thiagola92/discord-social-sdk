@@ -260,6 +260,8 @@ void DiscordActivity::set_assets(Variant assets) {
 	std::optional<discordpp::ActivityAssets> p0;
 
 	if (assets.get_type() == Variant::OBJECT) {
+		DiscordActivityAssets *p0_t = Object::cast_to<DiscordActivityAssets>(assets);
+		p0 = std::optional<discordpp::ActivityAssets>{ *p0_t->unwrap() };
 	}
 
 	obj->SetAssets(p0);
@@ -304,6 +306,8 @@ void DiscordActivity::set_party(Variant party) {
 	std::optional<discordpp::ActivityParty> p0;
 
 	if (party.get_type() == Variant::OBJECT) {
+		DiscordActivityParty *p0_t = Object::cast_to<DiscordActivityParty>(party);
+		p0 = std::optional<discordpp::ActivityParty>{ *p0_t->unwrap() };
 	}
 
 	obj->SetParty(p0);
@@ -313,6 +317,8 @@ void DiscordActivity::set_secrets(Variant secrets) {
 	std::optional<discordpp::ActivitySecrets> p0;
 
 	if (secrets.get_type() == Variant::OBJECT) {
+		DiscordActivitySecrets *p0_t = Object::cast_to<DiscordActivitySecrets>(secrets);
+		p0 = std::optional<discordpp::ActivitySecrets>{ *p0_t->unwrap() };
 	}
 
 	obj->SetSecrets(p0);
@@ -357,6 +363,8 @@ void DiscordActivity::set_timestamps(Variant timestamps) {
 	std::optional<discordpp::ActivityTimestamps> p0;
 
 	if (timestamps.get_type() == Variant::OBJECT) {
+		DiscordActivityTimestamps *p0_t = Object::cast_to<DiscordActivityTimestamps>(timestamps);
+		p0 = std::optional<discordpp::ActivityTimestamps>{ *p0_t->unwrap() };
 	}
 
 	obj->SetTimestamps(p0);

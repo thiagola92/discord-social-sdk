@@ -18,10 +18,10 @@ if __name__ == "__main__":
 
     clear_dir(DOC_DIR)
     clear_dir(SRC_DIR)
-    clear_dir(XML_DIR)  # TODO: uncomment
+    clear_dir(XML_DIR)
 
     clang_format(CDISCORD_PATH)
     clang_format(DISCORDPP_PATH)
-    doxygen(XML_DIR)  # TODO: uncomment
+    doxygen(XML_DIR)
 
     Builder(XML_DIR, SRC_DIR).build_files()

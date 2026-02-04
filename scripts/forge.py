@@ -38,7 +38,9 @@ from template.code.discord_class_cpp.function_statements import get_function_sta
 from template.code.discord_class_cpp.overloading.if_statement import get_if_statement
 from template.code.discord_class_cpp.overloading.condition import get_condition
 
-########## register_types.cpp ##########
+######################################################################
+# register_types.cpp
+######################################################################
 
 
 def forge_register_abstracts(namespace_info: NamespaceInfo) -> str:
@@ -69,7 +71,9 @@ def forge_register_runtimes(namespace_info: NamespaceInfo) -> str:
     return register_runtimes
 
 
-########## discord_enum.h ##########
+######################################################################
+# discord_enum.h
+######################################################################
 
 
 def forge_enum_definitions(namespace_info: NamespaceInfo) -> str:
@@ -112,7 +116,9 @@ def forge_enum_casts(namespace_info: NamespaceInfo) -> str:
     return enums_casts
 
 
-########## discord_classes.h ##########
+######################################################################
+# discord_classes.h
+######################################################################
 
 
 def forge_classes_declarations(namespace_info: NamespaceInfo) -> str:
@@ -231,7 +237,9 @@ def forge_overloading_declaration(group: list[FunctionInfo]) -> str:
     assert False, "A new case of overloading needs to be created."
 
 
-########## <discord_class>.cpp ##########
+######################################################################
+# <discord_class>.cpp
+######################################################################
 
 
 def forge_binds(info: NamespaceInfo | ClassInfo) -> str:

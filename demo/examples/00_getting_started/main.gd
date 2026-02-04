@@ -34,7 +34,7 @@ func _on_status_changed(status: DiscordClientStatus.Enum, error: DiscordClientEr
 	
 	if status == DiscordClientStatus.Ready:
 		print("✅ Client is ready! You can now call SDK functions.")
-		print("👥 Friends Count: %s" % client.GetRelationships().size())
+		print("👥 Friends Count: %s" % client.get_relationships().size())
 		
 		var activity := DiscordActivity.new()
 		activity.set_type(DiscordActivityTypes.Playing)
@@ -56,7 +56,7 @@ func _on_authorized(result: DiscordClientResult, code: String, redirect_uri: Str
 		print("❌ Authentication Error: %s" % result.error())
 	else:
 		print("✅ Authorization successful! Getting access token...")
-	
+		
 		client.get_token(APPLICATION_ID, code, code_verifier.verifier(), redirect_uri, _on_token_received)
 
 func _on_token_received(
@@ -66,12 +66,8 @@ func _on_token_received(
 		_token_type: DiscordAuthorizationTokenType.Enum,
 		_expires_in: int,
 		_scopes: String
-	) -> void:
+) -> void:
 	print("🔓 Access token received! Establishing connection...")
-	print("_result ", _result.to_string_discord())
-	print("access_token ", access_token)
-	print("_refresh_token ", _refresh_token)
-	print("_expires_in ", _expires_in)
 	
 	client.update_token(DiscordAuthorizationTokenType.Bearer, access_token, _on_token_updated)
 
