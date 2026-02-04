@@ -1,6 +1,4 @@
 # Responsible for checking conditions.
-from pprint import pprint
-
 from name import to_godot_class_name
 from data import (
     FunctionInfo,

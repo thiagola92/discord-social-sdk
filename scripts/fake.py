@@ -47,7 +47,6 @@ def fake_enums_params(params: list[ParamInfo]) -> list[ParamInfo]:
 def fake_type(type_info: TypeInfo) -> str:
     fake_type = TypeInfo()
     fake_type.name = type_info.name
-    fake_type.extra = type_info.extra
 
     # Utility.
     fake_type.callback = type_info.callback

@@ -31,7 +31,6 @@ class EnumInfo:
 class TypeInfo:
     name: str = ""
     templates: list[TypeInfoR | FunctionInfoR] = field(default_factory=list)
-    extra: str = ""  # TODO: Replace for useful fields.
 
     # Utility.
     callback: bool = False

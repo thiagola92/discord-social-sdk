@@ -7,8 +7,6 @@
 #   godot_type_to_discord_type()
 #   godot_variant_to_discord_optional()
 #   godot_array_to_discord_vector()
-from pprint import pprint
-
 from data import TypeInfo, FunctionInfo, ParamInfo
 from name import to_godot_class_name, to_gdscript_variable_name
 from template.code.discord_class_cpp.discord_to_godot.object import get_godot_object
@@ -391,10 +389,6 @@ def godot_variable_to_discord_variable(
         if info.fake:
             return f"std::string {target} = std::string({source}.utf8().get_data());"
 
-        # TODO: Remove?
-        # if info.overloading:
-        #     return f"int64_t {target} = {source};"
-
         return f"{info.name} {target} = ({info.name}){source};"
 
     if is_discord_optional(info):
@@ -468,8 +462,6 @@ def godot_variant_to_discord_optional(
 
 
 def godot_variant_to_discord_variable(type_info: TypeInfo, source: str, target: str):
-    statements = []
-
     if isinstance(type_info, FunctionInfo):
         assert False, "Not implemented (implement if needed)"
 
