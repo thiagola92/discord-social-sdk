@@ -6,54 +6,59 @@ using namespace godot;
 // Functions.
 
 DiscordExternalIdentityProviderType::Enum DiscordUserApplicationProfileHandle::provider_type() {
-	auto r = obj->ProviderType();
+	auto r0 = obj->ProviderType();
 
-	DiscordExternalIdentityProviderType::Enum cr = (DiscordExternalIdentityProviderType::Enum)r;
-	return cr;
+	DiscordExternalIdentityProviderType::Enum r1 = (DiscordExternalIdentityProviderType::Enum)r0;
+
+	return r1;
 }
 
 String DiscordUserApplicationProfileHandle::avatar_hash() {
-	auto r = obj->AvatarHash();
+	auto r0 = obj->AvatarHash();
 
-	String cr = String(r.c_str());
-	return cr;
+	String r1 = String(r0.c_str());
+
+	return r1;
 }
 
 String DiscordUserApplicationProfileHandle::metadata() {
-	auto r = obj->Metadata();
+	auto r0 = obj->Metadata();
 
-	String cr = String(r.c_str());
-	return cr;
+	String r1 = String(r0.c_str());
+
+	return r1;
 }
 
 String DiscordUserApplicationProfileHandle::provider_issued_user_id() {
-	auto r = obj->ProviderIssuedUserId();
+	auto r0 = obj->ProviderIssuedUserId();
 
-	String cr = String(r.c_str());
-	return cr;
+	String r1 = String(r0.c_str());
+
+	return r1;
 }
 
 String DiscordUserApplicationProfileHandle::username() {
-	auto r = obj->Username();
+	auto r0 = obj->Username();
 
-	String cr = String(r.c_str());
-	return cr;
+	String r1 = String(r0.c_str());
+
+	return r1;
 }
 
 Variant DiscordUserApplicationProfileHandle::provider_id() {
-	auto r = obj->ProviderId();
+	auto r0 = obj->ProviderId();
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
-		String cr_v = String(r_v.c_str());
-		cr = Variant(cr_v);
+		auto r0_v = r0.value();
+		String r1_v = String(r0_v.c_str());
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 // Overload functions.

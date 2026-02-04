@@ -6,32 +6,32 @@ using namespace godot;
 // Functions.
 
 DiscordAuthorizationCodeVerifier *DiscordClient::create_authorization_code_verifier() {
-	auto r = obj->CreateAuthorizationCodeVerifier();
+	auto r0 = obj->CreateAuthorizationCodeVerifier();
 
-	discordpp::AuthorizationCodeVerifier *cr_t = memnew(discordpp::AuthorizationCodeVerifier(std::move(r)));
-	DiscordAuthorizationCodeVerifier *cr = memnew(DiscordAuthorizationCodeVerifier{ cr_t });
+	discordpp::AuthorizationCodeVerifier *r1_t = memnew(discordpp::AuthorizationCodeVerifier(std::move(r0)));
+	DiscordAuthorizationCodeVerifier *r1 = memnew(DiscordAuthorizationCodeVerifier{ r1_t });
 
-	return cr;
+	return r1;
 }
 
 DiscordCall *DiscordClient::get_call(int64_t channel_id) {
 	int64_t p0 = channel_id;
-	auto r = obj->GetCall(p0);
+	auto r0 = obj->GetCall(p0);
 
-	discordpp::Call *cr_t = memnew(discordpp::Call(std::move(r)));
-	DiscordCall *cr = memnew(DiscordCall{ cr_t });
+	discordpp::Call *r1_t = memnew(discordpp::Call(std::move(r0)));
+	DiscordCall *r1 = memnew(DiscordCall{ r1_t });
 
-	return cr;
+	return r1;
 }
 
 DiscordCall *DiscordClient::start_call(int64_t channel_id) {
 	int64_t p0 = channel_id;
-	auto r = obj->StartCall(p0);
+	auto r0 = obj->StartCall(p0);
 
-	discordpp::Call *cr_t = memnew(discordpp::Call(std::move(r)));
-	DiscordCall *cr = memnew(DiscordCall{ cr_t });
+	discordpp::Call *r1_t = memnew(discordpp::Call(std::move(r0)));
+	DiscordCall *r1 = memnew(DiscordCall{ r1_t });
 
-	return cr;
+	return r1;
 }
 
 DiscordCall *DiscordClient::start_call_with_audio_callbacks(int64_t lobby_id, Callable received_cb, Callable captured_cb) {
@@ -52,377 +52,400 @@ DiscordCall *DiscordClient::start_call_with_audio_callbacks(int64_t lobby_id, Ca
 		int64_t p3 = (int64_t)channels;
 	};
 
-	auto r = obj->StartCallWithAudioCallbacks(p0, p1, p2);
+	auto r0 = obj->StartCallWithAudioCallbacks(p0, p1, p2);
 
-	discordpp::Call *cr_t = memnew(discordpp::Call(std::move(r)));
-	DiscordCall *cr = memnew(DiscordCall{ cr_t });
+	discordpp::Call *r1_t = memnew(discordpp::Call(std::move(r0)));
+	DiscordCall *r1 = memnew(DiscordCall{ r1_t });
 
-	return cr;
+	return r1;
 }
 
 DiscordClientStatus::Enum DiscordClient::get_status() {
-	auto r = obj->GetStatus();
+	auto r0 = obj->GetStatus();
 
-	DiscordClientStatus::Enum cr = (DiscordClientStatus::Enum)r;
-	return cr;
+	DiscordClientStatus::Enum r1 = (DiscordClientStatus::Enum)r0;
+
+	return r1;
 }
 
 DiscordRelationshipHandle *DiscordClient::get_relationship_handle(int64_t user_id) {
 	int64_t p0 = user_id;
-	auto r = obj->GetRelationshipHandle(p0);
+	auto r0 = obj->GetRelationshipHandle(p0);
 
-	discordpp::RelationshipHandle *cr_t = memnew(discordpp::RelationshipHandle(std::move(r)));
-	DiscordRelationshipHandle *cr = memnew(DiscordRelationshipHandle{ cr_t });
+	discordpp::RelationshipHandle *r1_t = memnew(discordpp::RelationshipHandle(std::move(r0)));
+	DiscordRelationshipHandle *r1 = memnew(DiscordRelationshipHandle{ r1_t });
 
-	return cr;
+	return r1;
 }
 
 DiscordUserHandle *DiscordClient::get_current_user() {
-	auto r = obj->GetCurrentUser();
+	auto r0 = obj->GetCurrentUser();
 
-	discordpp::UserHandle *cr_t = memnew(discordpp::UserHandle(std::move(r)));
-	DiscordUserHandle *cr = memnew(DiscordUserHandle{ cr_t });
+	discordpp::UserHandle *r1_t = memnew(discordpp::UserHandle(std::move(r0)));
+	DiscordUserHandle *r1 = memnew(DiscordUserHandle{ r1_t });
 
-	return cr;
+	return r1;
 }
 
 String DiscordClient::error_to_string(DiscordClientError::Enum type) {
 	discordpp::Client::Error p0 = (discordpp::Client::Error)type;
-	auto r = discordpp::Client::ErrorToString(p0);
+	auto r0 = discordpp::Client::ErrorToString(p0);
 
-	String cr = String(r.c_str());
-	return cr;
+	String r1 = String(r0.c_str());
+
+	return r1;
 }
 
 String DiscordClient::get_default_audio_device_id() {
-	auto r = discordpp::Client::GetDefaultAudioDeviceId();
+	auto r0 = discordpp::Client::GetDefaultAudioDeviceId();
 
-	String cr = String(r.c_str());
-	return cr;
+	String r1 = String(r0.c_str());
+
+	return r1;
 }
 
 String DiscordClient::get_default_communication_scopes() {
-	auto r = discordpp::Client::GetDefaultCommunicationScopes();
+	auto r0 = discordpp::Client::GetDefaultCommunicationScopes();
 
-	String cr = String(r.c_str());
-	return cr;
+	String r1 = String(r0.c_str());
+
+	return r1;
 }
 
 String DiscordClient::get_default_presence_scopes() {
-	auto r = discordpp::Client::GetDefaultPresenceScopes();
+	auto r0 = discordpp::Client::GetDefaultPresenceScopes();
 
-	String cr = String(r.c_str());
-	return cr;
+	String r1 = String(r0.c_str());
+
+	return r1;
 }
 
 String DiscordClient::get_version_hash() {
-	auto r = discordpp::Client::GetVersionHash();
+	auto r0 = discordpp::Client::GetVersionHash();
 
-	String cr = String(r.c_str());
-	return cr;
+	String r1 = String(r0.c_str());
+
+	return r1;
 }
 
 String DiscordClient::status_to_string(DiscordClientStatus::Enum type) {
 	discordpp::Client::Status p0 = (discordpp::Client::Status)type;
-	auto r = discordpp::Client::StatusToString(p0);
+	auto r0 = discordpp::Client::StatusToString(p0);
 
-	String cr = String(r.c_str());
-	return cr;
+	String r1 = String(r0.c_str());
+
+	return r1;
 }
 
 String DiscordClient::thread_to_string(DiscordClientThread::Enum type) {
 	discordpp::Client::Thread p0 = (discordpp::Client::Thread)type;
-	auto r = discordpp::Client::ThreadToString(p0);
+	auto r0 = discordpp::Client::ThreadToString(p0);
 
-	String cr = String(r.c_str());
-	return cr;
+	String r1 = String(r0.c_str());
+
+	return r1;
 }
 
 TypedArray<DiscordCall> DiscordClient::get_calls() {
-	auto r = obj->GetCalls();
+	auto r0 = obj->GetCalls();
 
-	TypedArray<DiscordCall> cr = TypedArray<DiscordCall>();
+	TypedArray<DiscordCall> r1 = TypedArray<DiscordCall>();
 
-	for (auto i : r) {
-		discordpp::Call *cr_t_t = memnew(discordpp::Call(std::move(i)));
-		DiscordCall *cr_t = memnew(DiscordCall{ cr_t_t });
+	for (auto i : r0) {
+		discordpp::Call *r1_t_t = memnew(discordpp::Call(std::move(i)));
+		DiscordCall *r1_t = memnew(DiscordCall{ r1_t_t });
 
-		cr.push_back(cr_t);
+		r1.push_back(r1_t);
 	}
 
-	return cr;
+	return r1;
 }
 
 TypedArray<DiscordRelationshipHandle> DiscordClient::get_relationships() {
-	auto r = obj->GetRelationships();
+	auto r0 = obj->GetRelationships();
 
-	TypedArray<DiscordRelationshipHandle> cr = TypedArray<DiscordRelationshipHandle>();
+	TypedArray<DiscordRelationshipHandle> r1 = TypedArray<DiscordRelationshipHandle>();
 
-	for (auto i : r) {
-		discordpp::RelationshipHandle *cr_t_t = memnew(discordpp::RelationshipHandle(std::move(i)));
-		DiscordRelationshipHandle *cr_t = memnew(DiscordRelationshipHandle{ cr_t_t });
+	for (auto i : r0) {
+		discordpp::RelationshipHandle *r1_t_t = memnew(discordpp::RelationshipHandle(std::move(i)));
+		DiscordRelationshipHandle *r1_t = memnew(DiscordRelationshipHandle{ r1_t_t });
 
-		cr.push_back(cr_t);
+		r1.push_back(r1_t);
 	}
 
-	return cr;
+	return r1;
 }
 
 TypedArray<DiscordRelationshipHandle> DiscordClient::get_relationships_by_group(DiscordRelationshipGroupType::Enum group_type) {
 	discordpp::RelationshipGroupType p0 = (discordpp::RelationshipGroupType)group_type;
-	auto r = obj->GetRelationshipsByGroup(p0);
+	auto r0 = obj->GetRelationshipsByGroup(p0);
 
-	TypedArray<DiscordRelationshipHandle> cr = TypedArray<DiscordRelationshipHandle>();
+	TypedArray<DiscordRelationshipHandle> r1 = TypedArray<DiscordRelationshipHandle>();
 
-	for (auto i : r) {
-		discordpp::RelationshipHandle *cr_t_t = memnew(discordpp::RelationshipHandle(std::move(i)));
-		DiscordRelationshipHandle *cr_t = memnew(DiscordRelationshipHandle{ cr_t_t });
+	for (auto i : r0) {
+		discordpp::RelationshipHandle *r1_t_t = memnew(discordpp::RelationshipHandle(std::move(i)));
+		DiscordRelationshipHandle *r1_t = memnew(DiscordRelationshipHandle{ r1_t_t });
 
-		cr.push_back(cr_t);
+		r1.push_back(r1_t);
 	}
 
-	return cr;
+	return r1;
 }
 
 TypedArray<DiscordUserHandle> DiscordClient::search_friends_by_username(String search_str) {
 	std::string p0 = std::string(search_str.utf8().get_data());
-	auto r = obj->SearchFriendsByUsername(p0);
+	auto r0 = obj->SearchFriendsByUsername(p0);
 
-	TypedArray<DiscordUserHandle> cr = TypedArray<DiscordUserHandle>();
+	TypedArray<DiscordUserHandle> r1 = TypedArray<DiscordUserHandle>();
 
-	for (auto i : r) {
-		discordpp::UserHandle *cr_t_t = memnew(discordpp::UserHandle(std::move(i)));
-		DiscordUserHandle *cr_t = memnew(DiscordUserHandle{ cr_t_t });
+	for (auto i : r0) {
+		discordpp::UserHandle *r1_t_t = memnew(discordpp::UserHandle(std::move(i)));
+		DiscordUserHandle *r1_t = memnew(DiscordUserHandle{ r1_t_t });
 
-		cr.push_back(cr_t);
+		r1.push_back(r1_t);
 	}
 
-	return cr;
+	return r1;
 }
 
 TypedArray<int64_t> DiscordClient::get_lobby_ids() {
-	auto r = obj->GetLobbyIds();
+	auto r0 = obj->GetLobbyIds();
 
-	TypedArray<int64_t> cr = TypedArray<int64_t>();
+	TypedArray<int64_t> r1 = TypedArray<int64_t>();
 
-	for (auto i : r) {
-		int64_t cr_t = (int64_t)i;
-		cr.push_back(cr_t);
+	for (auto i : r0) {
+		int64_t r1_t = (int64_t)i;
+		r1.push_back(r1_t);
 	}
 
-	return cr;
+	return r1;
 }
 
 Variant DiscordClient::get_channel_handle(int64_t channel_id) {
 	int64_t p0 = channel_id;
-	auto r = obj->GetChannelHandle(p0);
+	auto r0 = obj->GetChannelHandle(p0);
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
+		auto r0_v = r0.value();
 
-		discordpp::ChannelHandle *cr_v_t = memnew(discordpp::ChannelHandle(std::move(r_v)));
-		DiscordChannelHandle *cr_v = memnew(DiscordChannelHandle{ cr_v_t });
+		discordpp::ChannelHandle *r1_v_t = memnew(discordpp::ChannelHandle(std::move(r0_v)));
+		DiscordChannelHandle *r1_v = memnew(DiscordChannelHandle{ r1_v_t });
 
-		cr = Variant(cr_v);
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 Variant DiscordClient::get_current_user_v2() {
-	auto r = obj->GetCurrentUserV2();
+	auto r0 = obj->GetCurrentUserV2();
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
+		auto r0_v = r0.value();
 
-		discordpp::UserHandle *cr_v_t = memnew(discordpp::UserHandle(std::move(r_v)));
-		DiscordUserHandle *cr_v = memnew(DiscordUserHandle{ cr_v_t });
+		discordpp::UserHandle *r1_v_t = memnew(discordpp::UserHandle(std::move(r0_v)));
+		DiscordUserHandle *r1_v = memnew(DiscordUserHandle{ r1_v_t });
 
-		cr = Variant(cr_v);
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 Variant DiscordClient::get_lobby_handle(int64_t lobby_id) {
 	int64_t p0 = lobby_id;
-	auto r = obj->GetLobbyHandle(p0);
+	auto r0 = obj->GetLobbyHandle(p0);
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
+		auto r0_v = r0.value();
 
-		discordpp::LobbyHandle *cr_v_t = memnew(discordpp::LobbyHandle(std::move(r_v)));
-		DiscordLobbyHandle *cr_v = memnew(DiscordLobbyHandle{ cr_v_t });
+		discordpp::LobbyHandle *r1_v_t = memnew(discordpp::LobbyHandle(std::move(r0_v)));
+		DiscordLobbyHandle *r1_v = memnew(DiscordLobbyHandle{ r1_v_t });
 
-		cr = Variant(cr_v);
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 Variant DiscordClient::get_message_handle(int64_t message_id) {
 	int64_t p0 = message_id;
-	auto r = obj->GetMessageHandle(p0);
+	auto r0 = obj->GetMessageHandle(p0);
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
+		auto r0_v = r0.value();
 
-		discordpp::MessageHandle *cr_v_t = memnew(discordpp::MessageHandle(std::move(r_v)));
-		DiscordMessageHandle *cr_v = memnew(DiscordMessageHandle{ cr_v_t });
+		discordpp::MessageHandle *r1_v_t = memnew(discordpp::MessageHandle(std::move(r0_v)));
+		DiscordMessageHandle *r1_v = memnew(DiscordMessageHandle{ r1_v_t });
 
-		cr = Variant(cr_v);
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 Variant DiscordClient::get_user(int64_t user_id) {
 	int64_t p0 = user_id;
-	auto r = obj->GetUser(p0);
+	auto r0 = obj->GetUser(p0);
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
+		auto r0_v = r0.value();
 
-		discordpp::UserHandle *cr_v_t = memnew(discordpp::UserHandle(std::move(r_v)));
-		DiscordUserHandle *cr_v = memnew(DiscordUserHandle{ cr_v_t });
+		discordpp::UserHandle *r1_v_t = memnew(discordpp::UserHandle(std::move(r0_v)));
+		DiscordUserHandle *r1_v = memnew(DiscordUserHandle{ r1_v_t });
 
-		cr = Variant(cr_v);
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 bool DiscordClient::can_open_message_in_discord(int64_t message_id) {
 	int64_t p0 = message_id;
-	auto r = obj->CanOpenMessageInDiscord(p0);
+	auto r0 = obj->CanOpenMessageInDiscord(p0);
 
-	bool cr = r;
-	return cr;
+	bool r1 = r0;
+
+	return r1;
 }
 
 bool DiscordClient::get_self_deaf_all() {
-	auto r = obj->GetSelfDeafAll();
+	auto r0 = obj->GetSelfDeafAll();
 
-	bool cr = r;
-	return cr;
+	bool r1 = r0;
+
+	return r1;
 }
 
 bool DiscordClient::get_self_mute_all() {
-	auto r = obj->GetSelfMuteAll();
+	auto r0 = obj->GetSelfMuteAll();
 
-	bool cr = r;
-	return cr;
+	bool r1 = r0;
+
+	return r1;
 }
 
 bool DiscordClient::is_authenticated() {
-	auto r = obj->IsAuthenticated();
+	auto r0 = obj->IsAuthenticated();
 
-	bool cr = r;
-	return cr;
+	bool r1 = r0;
+
+	return r1;
 }
 
 bool DiscordClient::register_launch_command(int64_t application_id, String command) {
 	int64_t p0 = application_id;
 	std::string p1 = std::string(command.utf8().get_data());
-	auto r = obj->RegisterLaunchCommand(p0, p1);
+	auto r0 = obj->RegisterLaunchCommand(p0, p1);
 
-	bool cr = r;
-	return cr;
+	bool r1 = r0;
+
+	return r1;
 }
 
 bool DiscordClient::register_launch_steam_application(int64_t application_id, int64_t steam_app_id) {
 	int64_t p0 = application_id;
 	int64_t p1 = steam_app_id;
-	auto r = obj->RegisterLaunchSteamApplication(p0, p1);
+	auto r0 = obj->RegisterLaunchSteamApplication(p0, p1);
 
-	bool cr = r;
-	return cr;
+	bool r1 = r0;
+
+	return r1;
 }
 
 bool DiscordClient::set_log_dir(String path, DiscordLoggingSeverity::Enum min_severity) {
 	std::string p0 = std::string(path.utf8().get_data());
 	discordpp::LoggingSeverity p1 = (discordpp::LoggingSeverity)min_severity;
-	auto r = obj->SetLogDir(p0, p1);
+	auto r0 = obj->SetLogDir(p0, p1);
 
-	bool cr = r;
-	return cr;
+	bool r1 = r0;
+
+	return r1;
 }
 
 bool DiscordClient::set_speaker_mode(bool speaker_mode) {
 	bool p0 = speaker_mode;
-	auto r = obj->SetSpeakerMode(p0);
+	auto r0 = obj->SetSpeakerMode(p0);
 
-	bool cr = r;
-	return cr;
+	bool r1 = r0;
+
+	return r1;
 }
 
 bool DiscordClient::show_audio_route_picker() {
-	auto r = obj->ShowAudioRoutePicker();
+	auto r0 = obj->ShowAudioRoutePicker();
 
-	bool cr = r;
-	return cr;
+	bool r1 = r0;
+
+	return r1;
 }
 
 float DiscordClient::get_input_volume() {
-	auto r = obj->GetInputVolume();
+	auto r0 = obj->GetInputVolume();
 
-	float cr = (float)r;
-	return cr;
+	float r1 = (float)r0;
+
+	return r1;
 }
 
 float DiscordClient::get_output_volume() {
-	auto r = obj->GetOutputVolume();
+	auto r0 = obj->GetOutputVolume();
 
-	float cr = (float)r;
-	return cr;
+	float r1 = (float)r0;
+
+	return r1;
 }
 
 int64_t DiscordClient::get_application_id() {
-	auto r = obj->GetApplicationId();
+	auto r0 = obj->GetApplicationId();
 
-	int64_t cr = (int64_t)r;
-	return cr;
+	int64_t r1 = (int64_t)r0;
+
+	return r1;
 }
 
 int64_t DiscordClient::get_version_major() {
-	auto r = discordpp::Client::GetVersionMajor();
+	auto r0 = discordpp::Client::GetVersionMajor();
 
-	int64_t cr = (int64_t)r;
-	return cr;
+	int64_t r1 = (int64_t)r0;
+
+	return r1;
 }
 
 int64_t DiscordClient::get_version_minor() {
-	auto r = discordpp::Client::GetVersionMinor();
+	auto r0 = discordpp::Client::GetVersionMinor();
 
-	int64_t cr = (int64_t)r;
-	return cr;
+	int64_t r1 = (int64_t)r0;
+
+	return r1;
 }
 
 int64_t DiscordClient::get_version_patch() {
-	auto r = discordpp::Client::GetVersionPatch();
+	auto r0 = discordpp::Client::GetVersionPatch();
 
-	int64_t cr = (int64_t)r;
-	return cr;
+	int64_t r1 = (int64_t)r0;
+
+	return r1;
 }
 
 void DiscordClient::abort_authorize() {

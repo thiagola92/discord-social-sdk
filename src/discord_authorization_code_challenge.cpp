@@ -6,17 +6,19 @@ using namespace godot;
 // Functions.
 
 DiscordAuthenticationCodeChallengeMethod::Enum DiscordAuthorizationCodeChallenge::method() {
-	auto r = obj->Method();
+	auto r0 = obj->Method();
 
-	DiscordAuthenticationCodeChallengeMethod::Enum cr = (DiscordAuthenticationCodeChallengeMethod::Enum)r;
-	return cr;
+	DiscordAuthenticationCodeChallengeMethod::Enum r1 = (DiscordAuthenticationCodeChallengeMethod::Enum)r0;
+
+	return r1;
 }
 
 String DiscordAuthorizationCodeChallenge::challenge() {
-	auto r = obj->Challenge();
+	auto r0 = obj->Challenge();
 
-	String cr = String(r.c_str());
-	return cr;
+	String r1 = String(r0.c_str());
+
+	return r1;
 }
 
 void DiscordAuthorizationCodeChallenge::set_challenge(String challenge) {

@@ -6,50 +6,52 @@ using namespace godot;
 // Functions.
 
 TypedArray<int64_t> DiscordCallInfoHandle::get_participants() {
-	auto r = obj->GetParticipants();
+	auto r0 = obj->GetParticipants();
 
-	TypedArray<int64_t> cr = TypedArray<int64_t>();
+	TypedArray<int64_t> r1 = TypedArray<int64_t>();
 
-	for (auto i : r) {
-		int64_t cr_t = (int64_t)i;
-		cr.push_back(cr_t);
+	for (auto i : r0) {
+		int64_t r1_t = (int64_t)i;
+		r1.push_back(r1_t);
 	}
 
-	return cr;
+	return r1;
 }
 
 Variant DiscordCallInfoHandle::get_voice_state_handle(int64_t user_id) {
 	int64_t p0 = user_id;
-	auto r = obj->GetVoiceStateHandle(p0);
+	auto r0 = obj->GetVoiceStateHandle(p0);
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
+		auto r0_v = r0.value();
 
-		discordpp::VoiceStateHandle *cr_v_t = memnew(discordpp::VoiceStateHandle(std::move(r_v)));
-		DiscordVoiceStateHandle *cr_v = memnew(DiscordVoiceStateHandle{ cr_v_t });
+		discordpp::VoiceStateHandle *r1_v_t = memnew(discordpp::VoiceStateHandle(std::move(r0_v)));
+		DiscordVoiceStateHandle *r1_v = memnew(DiscordVoiceStateHandle{ r1_v_t });
 
-		cr = Variant(cr_v);
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 int64_t DiscordCallInfoHandle::channel_id() {
-	auto r = obj->ChannelId();
+	auto r0 = obj->ChannelId();
 
-	int64_t cr = (int64_t)r;
-	return cr;
+	int64_t r1 = (int64_t)r0;
+
+	return r1;
 }
 
 int64_t DiscordCallInfoHandle::guild_id() {
-	auto r = obj->GuildId();
+	auto r0 = obj->GuildId();
 
-	int64_t cr = (int64_t)r;
-	return cr;
+	int64_t r1 = (int64_t)r0;
+
+	return r1;
 }
 
 // Overload functions.

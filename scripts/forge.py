@@ -361,8 +361,6 @@ def forge_function_statements(function_info: FunctionInfo, class_name: str) -> s
     )
 
 
-# TODO: Below this function I started to using too much strings,
-# maybe there is something that can be moved to translate.py.
 def forge_call_statement(function_info: FunctionInfo, class_name: str) -> str:
     params = []
 
@@ -381,15 +379,15 @@ def forge_call_statement(function_info: FunctionInfo, class_name: str) -> str:
     if is_discord_void(function_info.type):
         return f"{call};"
 
-    return f"auto r = {call};"
+    return f"auto r0 = {call};"
 
 
 def forge_return_statements(function_info: FunctionInfo) -> str:
     if is_discord_void(function_info.type):
         return ""
 
-    target = "cr"
-    convertion = discord_variable_to_godot_variable(function_info.type, target, "r")
+    target = "r1"
+    convertion = discord_variable_to_godot_variable(function_info.type, target, "r0")
 
     return get_return_statements(convertion=convertion, target=target)
 

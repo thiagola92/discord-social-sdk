@@ -6,17 +6,19 @@ using namespace godot;
 // Functions.
 
 String DiscordGuildMinimal::name() {
-	auto r = obj->Name();
+	auto r0 = obj->Name();
 
-	String cr = String(r.c_str());
-	return cr;
+	String r1 = String(r0.c_str());
+
+	return r1;
 }
 
 int64_t DiscordGuildMinimal::id() {
-	auto r = obj->Id();
+	auto r0 = obj->Id();
 
-	int64_t cr = (int64_t)r;
-	return cr;
+	int64_t r1 = (int64_t)r0;
+
+	return r1;
 }
 
 void DiscordGuildMinimal::set_id(int64_t id) {

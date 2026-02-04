@@ -6,66 +6,75 @@ using namespace godot;
 // Functions.
 
 DiscordErrorType::Enum DiscordClientResult::type() {
-	auto r = obj->Type();
+	auto r0 = obj->Type();
 
-	DiscordErrorType::Enum cr = (DiscordErrorType::Enum)r;
-	return cr;
+	DiscordErrorType::Enum r1 = (DiscordErrorType::Enum)r0;
+
+	return r1;
 }
 
 DiscordHttpStatusCode::Enum DiscordClientResult::status() {
-	auto r = obj->Status();
+	auto r0 = obj->Status();
 
-	DiscordHttpStatusCode::Enum cr = (DiscordHttpStatusCode::Enum)r;
-	return cr;
+	DiscordHttpStatusCode::Enum r1 = (DiscordHttpStatusCode::Enum)r0;
+
+	return r1;
 }
 
 String DiscordClientResult::error() {
-	auto r = obj->Error();
+	auto r0 = obj->Error();
 
-	String cr = String(r.c_str());
-	return cr;
+	String r1 = String(r0.c_str());
+
+	return r1;
 }
 
 String DiscordClientResult::response_body() {
-	auto r = obj->ResponseBody();
+	auto r0 = obj->ResponseBody();
 
-	String cr = String(r.c_str());
-	return cr;
+	String r1 = String(r0.c_str());
+
+	return r1;
 }
 
 String DiscordClientResult::to_string_discord() {
-	auto r = obj->ToString();
+	auto r0 = obj->ToString();
 
-	String cr = String(r.c_str());
-	return cr;
+	String r1 = String(r0.c_str());
+
+	return r1;
 }
 
 bool DiscordClientResult::retryable() {
-	auto r = obj->Retryable();
+	auto r0 = obj->Retryable();
 
-	bool cr = r;
-	return cr;
+	bool r1 = r0;
+
+	return r1;
 }
 
 bool DiscordClientResult::successful() {
-	auto r = obj->Successful();
+	auto r0 = obj->Successful();
 
-	bool cr = r;
-	return cr;
+	bool r1 = r0;
+
+	return r1;
 }
 
 float DiscordClientResult::retry_after() {
-	auto r = obj->RetryAfter();
+	auto r0 = obj->RetryAfter();
 
-	float cr = (float)r;
-	return cr;
+	float r1 = (float)r0;
+
+	return r1;
 }
 
 int64_t DiscordClientResult::error_code() {
-	auto r = obj->ErrorCode();
+	auto r0 = obj->ErrorCode();
 
-	int64_t cr = (int64_t)r;
-	return cr;
+	int64_t r1 = (int64_t)r0;
+
+	return r1;
 }
 
 void DiscordClientResult::set_error(String error) {

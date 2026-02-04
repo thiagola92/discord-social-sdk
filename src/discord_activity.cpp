@@ -6,238 +6,239 @@ using namespace godot;
 // Functions.
 
 DiscordActivityGamePlatforms::Enum DiscordActivity::supported_platforms() {
-	auto r = obj->SupportedPlatforms();
+	auto r0 = obj->SupportedPlatforms();
 
-	DiscordActivityGamePlatforms::Enum cr = (DiscordActivityGamePlatforms::Enum)r;
-	return cr;
+	DiscordActivityGamePlatforms::Enum r1 = (DiscordActivityGamePlatforms::Enum)r0;
+
+	return r1;
 }
 
 DiscordActivityTypes::Enum DiscordActivity::type() {
-	auto r = obj->Type();
+	auto r0 = obj->Type();
 
-	DiscordActivityTypes::Enum cr = (DiscordActivityTypes::Enum)r;
-	return cr;
+	DiscordActivityTypes::Enum r1 = (DiscordActivityTypes::Enum)r0;
+
+	return r1;
 }
 
 String DiscordActivity::name() {
-	auto r = obj->Name();
+	auto r0 = obj->Name();
 
-	String cr = String(r.c_str());
-	return cr;
+	String r1 = String(r0.c_str());
+
+	return r1;
 }
 
 TypedArray<DiscordActivityButton> DiscordActivity::get_buttons() {
-	auto r = obj->GetButtons();
+	auto r0 = obj->GetButtons();
 
-	TypedArray<DiscordActivityButton> cr = TypedArray<DiscordActivityButton>();
+	TypedArray<DiscordActivityButton> r1 = TypedArray<DiscordActivityButton>();
 
-	for (auto i : r) {
-		discordpp::ActivityButton *cr_t_t = memnew(discordpp::ActivityButton(std::move(i)));
-		DiscordActivityButton *cr_t = memnew(DiscordActivityButton{ cr_t_t });
+	for (auto i : r0) {
+		discordpp::ActivityButton *r1_t_t = memnew(discordpp::ActivityButton(std::move(i)));
+		DiscordActivityButton *r1_t = memnew(DiscordActivityButton{ r1_t_t });
 
-		cr.push_back(cr_t);
+		r1.push_back(r1_t);
 	}
 
-	return cr;
+	return r1;
 }
 
 Variant DiscordActivity::application_id() {
-	auto r = obj->ApplicationId();
+	auto r0 = obj->ApplicationId();
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
-		int64_t cr_v = (int64_t)r_v;
-		cr = Variant(cr_v);
+		auto r0_v = r0.value();
+		int64_t r1_v = (int64_t)r0_v;
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 Variant DiscordActivity::assets() {
-	auto r = obj->Assets();
+	auto r0 = obj->Assets();
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
+		auto r0_v = r0.value();
 
-		discordpp::ActivityAssets *cr_v_t = memnew(discordpp::ActivityAssets(std::move(r_v)));
-		DiscordActivityAssets *cr_v = memnew(DiscordActivityAssets{ cr_v_t });
+		discordpp::ActivityAssets *r1_v_t = memnew(discordpp::ActivityAssets(std::move(r0_v)));
+		DiscordActivityAssets *r1_v = memnew(DiscordActivityAssets{ r1_v_t });
 
-		cr = Variant(cr_v);
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 Variant DiscordActivity::details() {
-	auto r = obj->Details();
+	auto r0 = obj->Details();
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
-		String cr_v = String(r_v.c_str());
-		cr = Variant(cr_v);
+		auto r0_v = r0.value();
+		String r1_v = String(r0_v.c_str());
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 Variant DiscordActivity::details_url() {
-	auto r = obj->DetailsUrl();
+	auto r0 = obj->DetailsUrl();
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
-		String cr_v = String(r_v.c_str());
-		cr = Variant(cr_v);
+		auto r0_v = r0.value();
+		String r1_v = String(r0_v.c_str());
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 Variant DiscordActivity::parent_application_id() {
-	auto r = obj->ParentApplicationId();
+	auto r0 = obj->ParentApplicationId();
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
-		int64_t cr_v = (int64_t)r_v;
-		cr = Variant(cr_v);
+		auto r0_v = r0.value();
+		int64_t r1_v = (int64_t)r0_v;
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 Variant DiscordActivity::party() {
-	auto r = obj->Party();
+	auto r0 = obj->Party();
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
+		auto r0_v = r0.value();
 
-		discordpp::ActivityParty *cr_v_t = memnew(discordpp::ActivityParty(std::move(r_v)));
-		DiscordActivityParty *cr_v = memnew(DiscordActivityParty{ cr_v_t });
+		discordpp::ActivityParty *r1_v_t = memnew(discordpp::ActivityParty(std::move(r0_v)));
+		DiscordActivityParty *r1_v = memnew(DiscordActivityParty{ r1_v_t });
 
-		cr = Variant(cr_v);
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 Variant DiscordActivity::secrets() {
-	auto r = obj->Secrets();
+	auto r0 = obj->Secrets();
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
+		auto r0_v = r0.value();
 
-		discordpp::ActivitySecrets *cr_v_t = memnew(discordpp::ActivitySecrets(std::move(r_v)));
-		DiscordActivitySecrets *cr_v = memnew(DiscordActivitySecrets{ cr_v_t });
+		discordpp::ActivitySecrets *r1_v_t = memnew(discordpp::ActivitySecrets(std::move(r0_v)));
+		DiscordActivitySecrets *r1_v = memnew(DiscordActivitySecrets{ r1_v_t });
 
-		cr = Variant(cr_v);
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 Variant DiscordActivity::state() {
-	auto r = obj->State();
+	auto r0 = obj->State();
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
-		String cr_v = String(r_v.c_str());
-		cr = Variant(cr_v);
+		auto r0_v = r0.value();
+		String r1_v = String(r0_v.c_str());
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 Variant DiscordActivity::state_url() {
-	auto r = obj->StateUrl();
+	auto r0 = obj->StateUrl();
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
-		String cr_v = String(r_v.c_str());
-		cr = Variant(cr_v);
+		auto r0_v = r0.value();
+		String r1_v = String(r0_v.c_str());
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 Variant DiscordActivity::status_display_type() {
-	auto r = obj->StatusDisplayType();
+	auto r0 = obj->StatusDisplayType();
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
-
-		discordpp::StatusDisplayTypes *cr_v_t = memnew(discordpp::StatusDisplayTypes(std::move(r_v)));
-		DiscordStatusDisplayTypes *cr_v = memnew(DiscordStatusDisplayTypes{ cr_v_t });
-
-		cr = Variant(cr_v);
+		auto r0_v = r0.value();
+		DiscordStatusDisplayTypes::Enum r1_v = (DiscordStatusDisplayTypes::Enum)r0_v;
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 Variant DiscordActivity::timestamps() {
-	auto r = obj->Timestamps();
+	auto r0 = obj->Timestamps();
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
+		auto r0_v = r0.value();
 
-		discordpp::ActivityTimestamps *cr_v_t = memnew(discordpp::ActivityTimestamps(std::move(r_v)));
-		DiscordActivityTimestamps *cr_v = memnew(DiscordActivityTimestamps{ cr_v_t });
+		discordpp::ActivityTimestamps *r1_v_t = memnew(discordpp::ActivityTimestamps(std::move(r0_v)));
+		DiscordActivityTimestamps *r1_v = memnew(DiscordActivityTimestamps{ r1_v_t });
 
-		cr = Variant(cr_v);
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 bool DiscordActivity::equals(DiscordActivity *other) {
 	discordpp::Activity p0 = *other->unwrap();
-	auto r = obj->Equals(p0);
+	auto r0 = obj->Equals(p0);
 
-	bool cr = r;
-	return cr;
+	bool r1 = r0;
+
+	return r1;
 }
 
 void DiscordActivity::add_button(DiscordActivityButton *button) {
@@ -341,6 +342,7 @@ void DiscordActivity::set_status_display_type(Variant status_display_type) {
 	std::optional<discordpp::StatusDisplayTypes> p0;
 
 	if (status_display_type.get_type() == Variant::OBJECT) {
+		p0 = std::optional<discordpp::StatusDisplayTypes>{ (discordpp::StatusDisplayTypes)(uint64_t)status_display_type };
 	}
 
 	obj->SetStatusDisplayType(p0);

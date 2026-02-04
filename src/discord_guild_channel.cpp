@@ -6,80 +6,86 @@ using namespace godot;
 // Functions.
 
 DiscordChannelType::Enum DiscordGuildChannel::type() {
-	auto r = obj->Type();
+	auto r0 = obj->Type();
 
-	DiscordChannelType::Enum cr = (DiscordChannelType::Enum)r;
-	return cr;
+	DiscordChannelType::Enum r1 = (DiscordChannelType::Enum)r0;
+
+	return r1;
 }
 
 String DiscordGuildChannel::name() {
-	auto r = obj->Name();
+	auto r0 = obj->Name();
 
-	String cr = String(r.c_str());
-	return cr;
+	String r1 = String(r0.c_str());
+
+	return r1;
 }
 
 Variant DiscordGuildChannel::linked_lobby() {
-	auto r = obj->LinkedLobby();
+	auto r0 = obj->LinkedLobby();
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
+		auto r0_v = r0.value();
 
-		discordpp::LinkedLobby *cr_v_t = memnew(discordpp::LinkedLobby(std::move(r_v)));
-		DiscordLinkedLobby *cr_v = memnew(DiscordLinkedLobby{ cr_v_t });
+		discordpp::LinkedLobby *r1_v_t = memnew(discordpp::LinkedLobby(std::move(r0_v)));
+		DiscordLinkedLobby *r1_v = memnew(DiscordLinkedLobby{ r1_v_t });
 
-		cr = Variant(cr_v);
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 Variant DiscordGuildChannel::parent_id() {
-	auto r = obj->ParentId();
+	auto r0 = obj->ParentId();
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
-		int64_t cr_v = (int64_t)r_v;
-		cr = Variant(cr_v);
+		auto r0_v = r0.value();
+		int64_t r1_v = (int64_t)r0_v;
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 bool DiscordGuildChannel::is_linkable() {
-	auto r = obj->IsLinkable();
+	auto r0 = obj->IsLinkable();
 
-	bool cr = r;
-	return cr;
+	bool r1 = r0;
+
+	return r1;
 }
 
 bool DiscordGuildChannel::is_viewable_and_writeable_by_all_members() {
-	auto r = obj->IsViewableAndWriteableByAllMembers();
+	auto r0 = obj->IsViewableAndWriteableByAllMembers();
 
-	bool cr = r;
-	return cr;
+	bool r1 = r0;
+
+	return r1;
 }
 
 int64_t DiscordGuildChannel::id() {
-	auto r = obj->Id();
+	auto r0 = obj->Id();
 
-	int64_t cr = (int64_t)r;
-	return cr;
+	int64_t r1 = (int64_t)r0;
+
+	return r1;
 }
 
 int64_t DiscordGuildChannel::position() {
-	auto r = obj->Position();
+	auto r0 = obj->Position();
 
-	int64_t cr = (int64_t)r;
-	return cr;
+	int64_t r1 = (int64_t)r0;
+
+	return r1;
 }
 
 void DiscordGuildChannel::set_id(int64_t id) {

@@ -6,17 +6,19 @@ using namespace godot;
 // Functions.
 
 bool DiscordVoiceStateHandle::self_deaf() {
-	auto r = obj->SelfDeaf();
+	auto r0 = obj->SelfDeaf();
 
-	bool cr = r;
-	return cr;
+	bool r1 = r0;
+
+	return r1;
 }
 
 bool DiscordVoiceStateHandle::self_mute() {
-	auto r = obj->SelfMute();
+	auto r0 = obj->SelfMute();
 
-	bool cr = r;
-	return cr;
+	bool r1 = r0;
+
+	return r1;
 }
 
 // Overload functions.

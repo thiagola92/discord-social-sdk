@@ -2,7 +2,14 @@
 from pprint import pprint
 
 from name import to_godot_class_name
-from data import FunctionInfo, ClassInfo, NamespaceInfo, TypeInfo, CallbackInfo
+from data import (
+    FunctionInfo,
+    ClassInfo,
+    NamespaceInfo,
+    TypeInfo,
+    CallbackInfo,
+    ParamInfo,
+)
 
 
 def check_callbacks(class_info: ClassInfo) -> None:
@@ -41,18 +48,18 @@ def check_enums(namespace_info: NamespaceInfo) -> None:
             enums_name.append(to_godot_class_name(c.name + e.name))
 
     for f in namespace_info.functions:
-        check_function_enums(f, enums_name)
+        check_type_enums(f, enums_name)
 
     for c in namespace_info.classes:
         for f in c.functions:
-            check_function_enums(f, enums_name)
+            check_type_enums(f, enums_name)
 
     for c in namespace_info.callbacks:
-        check_callback_enums(c, enums_name)
+        check_type_enums(c, enums_name)
 
     for c in namespace_info.classes:
         for cc in c.callbacks:
-            check_callback_enums(cc, enums_name)
+            check_type_enums(cc, enums_name)
 
 
 def check_function_enums(function_info: FunctionInfo, enums_name: list[str]) -> None:
@@ -89,6 +96,34 @@ def check_callback_enums(callback_info: CallbackInfo, enums_name: list[str]) -> 
     for t in callback_info.type.templates:
         if isinstance(t, FunctionInfo):
             check_function_enums(t, enums_name)
+
+
+def check_type_enums(
+    info: TypeInfo | FunctionInfo | CallbackInfo | ParamInfo,
+    enums_name: list[str],
+) -> None:
+    """
+    Check types that are enums.
+
+    This contains only the logic for discovery,
+    not for solving any complications from enums.
+    """
+    if isinstance(info, FunctionInfo):
+        for p in info.params:
+            check_type_enums(p, enums_name)
+
+        check_type_enums(info.type, enums_name)
+    elif isinstance(info, CallbackInfo):
+        check_type_enums(info.type, enums_name)
+    elif isinstance(info, ParamInfo):
+        check_type_enums(info.type, enums_name)
+        info.enum = info.type.enum
+    elif isinstance(info, TypeInfo):
+        for t in info.templates:
+            check_type_enums(t, enums_name)
+
+        if to_godot_class_name(info.name) in enums_name:
+            info.enum = True
 
 
 def check_overloading(functions_info: list[FunctionInfo]) -> None:

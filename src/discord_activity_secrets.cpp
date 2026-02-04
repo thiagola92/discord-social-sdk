@@ -6,10 +6,11 @@ using namespace godot;
 // Functions.
 
 String DiscordActivitySecrets::join() {
-	auto r = obj->Join();
+	auto r0 = obj->Join();
 
-	String cr = String(r.c_str());
-	return cr;
+	String r1 = String(r0.c_str());
+
+	return r1;
 }
 
 void DiscordActivitySecrets::set_join(String join) {

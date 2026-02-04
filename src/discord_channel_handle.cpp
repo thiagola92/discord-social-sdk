@@ -6,37 +6,40 @@ using namespace godot;
 // Functions.
 
 DiscordChannelType::Enum DiscordChannelHandle::type() {
-	auto r = obj->Type();
+	auto r0 = obj->Type();
 
-	DiscordChannelType::Enum cr = (DiscordChannelType::Enum)r;
-	return cr;
+	DiscordChannelType::Enum r1 = (DiscordChannelType::Enum)r0;
+
+	return r1;
 }
 
 String DiscordChannelHandle::name() {
-	auto r = obj->Name();
+	auto r0 = obj->Name();
 
-	String cr = String(r.c_str());
-	return cr;
+	String r1 = String(r0.c_str());
+
+	return r1;
 }
 
 TypedArray<int64_t> DiscordChannelHandle::recipients() {
-	auto r = obj->Recipients();
+	auto r0 = obj->Recipients();
 
-	TypedArray<int64_t> cr = TypedArray<int64_t>();
+	TypedArray<int64_t> r1 = TypedArray<int64_t>();
 
-	for (auto i : r) {
-		int64_t cr_t = (int64_t)i;
-		cr.push_back(cr_t);
+	for (auto i : r0) {
+		int64_t r1_t = (int64_t)i;
+		r1.push_back(r1_t);
 	}
 
-	return cr;
+	return r1;
 }
 
 int64_t DiscordChannelHandle::id() {
-	auto r = obj->Id();
+	auto r0 = obj->Id();
 
-	int64_t cr = (int64_t)r;
-	return cr;
+	int64_t r1 = (int64_t)r0;
+
+	return r1;
 }
 
 // Overload functions.

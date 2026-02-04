@@ -6,47 +6,51 @@ using namespace godot;
 // Functions.
 
 DiscordAudioSystem::Enum DiscordClientCreateOptions::experimental_audio_system() {
-	auto r = obj->ExperimentalAudioSystem();
+	auto r0 = obj->ExperimentalAudioSystem();
 
-	DiscordAudioSystem::Enum cr = (DiscordAudioSystem::Enum)r;
-	return cr;
+	DiscordAudioSystem::Enum r1 = (DiscordAudioSystem::Enum)r0;
+
+	return r1;
 }
 
 String DiscordClientCreateOptions::api_base() {
-	auto r = obj->ApiBase();
+	auto r0 = obj->ApiBase();
 
-	String cr = String(r.c_str());
-	return cr;
+	String r1 = String(r0.c_str());
+
+	return r1;
 }
 
 String DiscordClientCreateOptions::web_base() {
-	auto r = obj->WebBase();
+	auto r0 = obj->WebBase();
 
-	String cr = String(r.c_str());
-	return cr;
+	String r1 = String(r0.c_str());
+
+	return r1;
 }
 
 Variant DiscordClientCreateOptions::cpu_affinity_mask() {
-	auto r = obj->CpuAffinityMask();
+	auto r0 = obj->CpuAffinityMask();
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
-		int64_t cr_v = (int64_t)r_v;
-		cr = Variant(cr_v);
+		auto r0_v = r0.value();
+		int64_t r1_v = (int64_t)r0_v;
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 bool DiscordClientCreateOptions::experimental_android_prevent_comms_for_bluetooth() {
-	auto r = obj->ExperimentalAndroidPreventCommsForBluetooth();
+	auto r0 = obj->ExperimentalAndroidPreventCommsForBluetooth();
 
-	bool cr = r;
-	return cr;
+	bool r1 = r0;
+
+	return r1;
 }
 
 void DiscordClientCreateOptions::set_api_base(String api_base) {

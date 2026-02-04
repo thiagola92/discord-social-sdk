@@ -6,115 +6,115 @@ using namespace godot;
 // Functions.
 
 Variant DiscordActivityAssets::invite_cover_image() {
-	auto r = obj->InviteCoverImage();
+	auto r0 = obj->InviteCoverImage();
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
-		String cr_v = String(r_v.c_str());
-		cr = Variant(cr_v);
+		auto r0_v = r0.value();
+		String r1_v = String(r0_v.c_str());
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 Variant DiscordActivityAssets::large_image() {
-	auto r = obj->LargeImage();
+	auto r0 = obj->LargeImage();
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
-		String cr_v = String(r_v.c_str());
-		cr = Variant(cr_v);
+		auto r0_v = r0.value();
+		String r1_v = String(r0_v.c_str());
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 Variant DiscordActivityAssets::large_text() {
-	auto r = obj->LargeText();
+	auto r0 = obj->LargeText();
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
-		String cr_v = String(r_v.c_str());
-		cr = Variant(cr_v);
+		auto r0_v = r0.value();
+		String r1_v = String(r0_v.c_str());
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 Variant DiscordActivityAssets::large_url() {
-	auto r = obj->LargeUrl();
+	auto r0 = obj->LargeUrl();
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
-		String cr_v = String(r_v.c_str());
-		cr = Variant(cr_v);
+		auto r0_v = r0.value();
+		String r1_v = String(r0_v.c_str());
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 Variant DiscordActivityAssets::small_image() {
-	auto r = obj->SmallImage();
+	auto r0 = obj->SmallImage();
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
-		String cr_v = String(r_v.c_str());
-		cr = Variant(cr_v);
+		auto r0_v = r0.value();
+		String r1_v = String(r0_v.c_str());
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 Variant DiscordActivityAssets::small_text() {
-	auto r = obj->SmallText();
+	auto r0 = obj->SmallText();
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
-		String cr_v = String(r_v.c_str());
-		cr = Variant(cr_v);
+		auto r0_v = r0.value();
+		String r1_v = String(r0_v.c_str());
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 Variant DiscordActivityAssets::small_url() {
-	auto r = obj->SmallUrl();
+	auto r0 = obj->SmallUrl();
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
-		String cr_v = String(r_v.c_str());
-		cr = Variant(cr_v);
+		auto r0_v = r0.value();
+		String r1_v = String(r0_v.c_str());
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 void DiscordActivityAssets::set_invite_cover_image(Variant invite_cover_image) {

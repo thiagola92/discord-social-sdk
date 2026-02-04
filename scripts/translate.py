@@ -385,6 +385,7 @@ def godot_variable_to_discord_variable(
         if info.fake:
             return f"std::string {target} = std::string({source}.utf8().get_data());"
 
+        # TODO: Remove?
         # if info.overloading:
         #     return f"int64_t {target} = {source};"
 

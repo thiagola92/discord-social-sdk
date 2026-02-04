@@ -6,50 +6,54 @@ using namespace godot;
 // Functions.
 
 DiscordRelationshipType::Enum DiscordRelationshipHandle::discord_relationship_type() {
-	auto r = obj->DiscordRelationshipType();
+	auto r0 = obj->DiscordRelationshipType();
 
-	DiscordRelationshipType::Enum cr = (DiscordRelationshipType::Enum)r;
-	return cr;
+	DiscordRelationshipType::Enum r1 = (DiscordRelationshipType::Enum)r0;
+
+	return r1;
 }
 
 DiscordRelationshipType::Enum DiscordRelationshipHandle::game_relationship_type() {
-	auto r = obj->GameRelationshipType();
+	auto r0 = obj->GameRelationshipType();
 
-	DiscordRelationshipType::Enum cr = (DiscordRelationshipType::Enum)r;
-	return cr;
+	DiscordRelationshipType::Enum r1 = (DiscordRelationshipType::Enum)r0;
+
+	return r1;
 }
 
 Variant DiscordRelationshipHandle::user() {
-	auto r = obj->User();
+	auto r0 = obj->User();
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
+		auto r0_v = r0.value();
 
-		discordpp::UserHandle *cr_v_t = memnew(discordpp::UserHandle(std::move(r_v)));
-		DiscordUserHandle *cr_v = memnew(DiscordUserHandle{ cr_v_t });
+		discordpp::UserHandle *r1_v_t = memnew(discordpp::UserHandle(std::move(r0_v)));
+		DiscordUserHandle *r1_v = memnew(DiscordUserHandle{ r1_v_t });
 
-		cr = Variant(cr_v);
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 bool DiscordRelationshipHandle::is_spam_request() {
-	auto r = obj->IsSpamRequest();
+	auto r0 = obj->IsSpamRequest();
 
-	bool cr = r;
-	return cr;
+	bool r1 = r0;
+
+	return r1;
 }
 
 int64_t DiscordRelationshipHandle::id() {
-	auto r = obj->Id();
+	auto r0 = obj->Id();
 
-	int64_t cr = (int64_t)r;
-	return cr;
+	int64_t r1 = (int64_t)r0;
+
+	return r1;
 }
 
 // Overload functions.

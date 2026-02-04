@@ -6,57 +6,60 @@ using namespace godot;
 // Functions.
 
 TypedDictionary<String, String> DiscordLobbyMemberHandle::metadata() {
-	auto r = obj->Metadata();
+	auto r0 = obj->Metadata();
 
-	TypedDictionary<String, String> cr = TypedDictionary<String, String>();
+	TypedDictionary<String, String> r1 = TypedDictionary<String, String>();
 
-	for (auto i : r) {
+	for (auto i : r0) {
 		String k = String(i.first.c_str());
 		String v = String(i.second.c_str());
-		cr[k] = v;
+		r1[k] = v;
 	}
 
-	return cr;
+	return r1;
 }
 
 Variant DiscordLobbyMemberHandle::user() {
-	auto r = obj->User();
+	auto r0 = obj->User();
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
+		auto r0_v = r0.value();
 
-		discordpp::UserHandle *cr_v_t = memnew(discordpp::UserHandle(std::move(r_v)));
-		DiscordUserHandle *cr_v = memnew(DiscordUserHandle{ cr_v_t });
+		discordpp::UserHandle *r1_v_t = memnew(discordpp::UserHandle(std::move(r0_v)));
+		DiscordUserHandle *r1_v = memnew(DiscordUserHandle{ r1_v_t });
 
-		cr = Variant(cr_v);
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 bool DiscordLobbyMemberHandle::can_link_lobby() {
-	auto r = obj->CanLinkLobby();
+	auto r0 = obj->CanLinkLobby();
 
-	bool cr = r;
-	return cr;
+	bool r1 = r0;
+
+	return r1;
 }
 
 bool DiscordLobbyMemberHandle::connected() {
-	auto r = obj->Connected();
+	auto r0 = obj->Connected();
 
-	bool cr = r;
-	return cr;
+	bool r1 = r0;
+
+	return r1;
 }
 
 int64_t DiscordLobbyMemberHandle::id() {
-	auto r = obj->Id();
+	auto r0 = obj->Id();
 
-	int64_t cr = (int64_t)r;
-	return cr;
+	int64_t r1 = (int64_t)r0;
+
+	return r1;
 }
 
 // Overload functions.

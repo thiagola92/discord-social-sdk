@@ -6,49 +6,53 @@ using namespace godot;
 // Functions.
 
 DiscordAdditionalContentType::Enum DiscordAdditionalContent::type() {
-	auto r = obj->Type();
+	auto r0 = obj->Type();
 
-	DiscordAdditionalContentType::Enum cr = (DiscordAdditionalContentType::Enum)r;
-	return cr;
+	DiscordAdditionalContentType::Enum r1 = (DiscordAdditionalContentType::Enum)r0;
+
+	return r1;
 }
 
 String DiscordAdditionalContent::type_to_string(DiscordAdditionalContentType::Enum type) {
 	discordpp::AdditionalContentType p0 = (discordpp::AdditionalContentType)type;
-	auto r = discordpp::AdditionalContent::TypeToString(p0);
+	auto r0 = discordpp::AdditionalContent::TypeToString(p0);
 
-	String cr = String(r.c_str());
-	return cr;
+	String r1 = String(r0.c_str());
+
+	return r1;
 }
 
 Variant DiscordAdditionalContent::title() {
-	auto r = obj->Title();
+	auto r0 = obj->Title();
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
-		String cr_v = String(r_v.c_str());
-		cr = Variant(cr_v);
+		auto r0_v = r0.value();
+		String r1_v = String(r0_v.c_str());
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 bool DiscordAdditionalContent::equals(DiscordAdditionalContent *rhs) {
 	discordpp::AdditionalContent p0 = *rhs->unwrap();
-	auto r = obj->Equals(p0);
+	auto r0 = obj->Equals(p0);
 
-	bool cr = r;
-	return cr;
+	bool r1 = r0;
+
+	return r1;
 }
 
 int64_t DiscordAdditionalContent::count() {
-	auto r = obj->Count();
+	auto r0 = obj->Count();
 
-	int64_t cr = (int64_t)r;
-	return cr;
+	int64_t r1 = (int64_t)r0;
+
+	return r1;
 }
 
 void DiscordAdditionalContent::set_count(int64_t count) {

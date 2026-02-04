@@ -5,9 +5,9 @@ extends Control
 # This only exist so I don't accidentally use my ID.
 var APPLICATION_ID: int = DotEnv.read_int("APPLICATION_ID")
 
-#var client := DiscordClient.new()
-#
-#
+var client := DiscordClient.new()
+
+
 #func _ready() -> void:
 	#print("🚀 Initializing Discord SDK...")
 	#

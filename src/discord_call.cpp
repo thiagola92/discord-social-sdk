@@ -6,133 +6,145 @@ using namespace godot;
 // Functions.
 
 DiscordAudioModeType::Enum DiscordCall::get_audio_mode() {
-	auto r = obj->GetAudioMode();
+	auto r0 = obj->GetAudioMode();
 
-	DiscordAudioModeType::Enum cr = (DiscordAudioModeType::Enum)r;
-	return cr;
+	DiscordAudioModeType::Enum r1 = (DiscordAudioModeType::Enum)r0;
+
+	return r1;
 }
 
 DiscordCallStatus::Enum DiscordCall::get_status() {
-	auto r = obj->GetStatus();
+	auto r0 = obj->GetStatus();
 
-	DiscordCallStatus::Enum cr = (DiscordCallStatus::Enum)r;
-	return cr;
+	DiscordCallStatus::Enum r1 = (DiscordCallStatus::Enum)r0;
+
+	return r1;
 }
 
 DiscordVADThresholdSettings *DiscordCall::get_vadthreshold() {
-	auto r = obj->GetVADThreshold();
+	auto r0 = obj->GetVADThreshold();
 
-	discordpp::VADThresholdSettings *cr_t = memnew(discordpp::VADThresholdSettings(std::move(r)));
-	DiscordVADThresholdSettings *cr = memnew(DiscordVADThresholdSettings{ cr_t });
+	discordpp::VADThresholdSettings *r1_t = memnew(discordpp::VADThresholdSettings(std::move(r0)));
+	DiscordVADThresholdSettings *r1 = memnew(DiscordVADThresholdSettings{ r1_t });
 
-	return cr;
+	return r1;
 }
 
 String DiscordCall::error_to_string(DiscordCallError::Enum type) {
 	discordpp::Call::Error p0 = (discordpp::Call::Error)type;
-	auto r = discordpp::Call::ErrorToString(p0);
+	auto r0 = discordpp::Call::ErrorToString(p0);
 
-	String cr = String(r.c_str());
-	return cr;
+	String r1 = String(r0.c_str());
+
+	return r1;
 }
 
 String DiscordCall::status_to_string(DiscordCallStatus::Enum type) {
 	discordpp::Call::Status p0 = (discordpp::Call::Status)type;
-	auto r = discordpp::Call::StatusToString(p0);
+	auto r0 = discordpp::Call::StatusToString(p0);
 
-	String cr = String(r.c_str());
-	return cr;
+	String r1 = String(r0.c_str());
+
+	return r1;
 }
 
 TypedArray<int64_t> DiscordCall::get_participants() {
-	auto r = obj->GetParticipants();
+	auto r0 = obj->GetParticipants();
 
-	TypedArray<int64_t> cr = TypedArray<int64_t>();
+	TypedArray<int64_t> r1 = TypedArray<int64_t>();
 
-	for (auto i : r) {
-		int64_t cr_t = (int64_t)i;
-		cr.push_back(cr_t);
+	for (auto i : r0) {
+		int64_t r1_t = (int64_t)i;
+		r1.push_back(r1_t);
 	}
 
-	return cr;
+	return r1;
 }
 
 Variant DiscordCall::get_voice_state_handle(int64_t user_id) {
 	int64_t p0 = user_id;
-	auto r = obj->GetVoiceStateHandle(p0);
+	auto r0 = obj->GetVoiceStateHandle(p0);
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
+		auto r0_v = r0.value();
 
-		discordpp::VoiceStateHandle *cr_v_t = memnew(discordpp::VoiceStateHandle(std::move(r_v)));
-		DiscordVoiceStateHandle *cr_v = memnew(DiscordVoiceStateHandle{ cr_v_t });
+		discordpp::VoiceStateHandle *r1_v_t = memnew(discordpp::VoiceStateHandle(std::move(r0_v)));
+		DiscordVoiceStateHandle *r1_v = memnew(DiscordVoiceStateHandle{ r1_v_t });
 
-		cr = Variant(cr_v);
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 bool DiscordCall::get_local_mute(int64_t user_id) {
 	int64_t p0 = user_id;
-	auto r = obj->GetLocalMute(p0);
+	auto r0 = obj->GetLocalMute(p0);
 
-	bool cr = r;
-	return cr;
+	bool r1 = r0;
+
+	return r1;
 }
 
 bool DiscordCall::get_pttactive() {
-	auto r = obj->GetPTTActive();
+	auto r0 = obj->GetPTTActive();
 
-	bool cr = r;
-	return cr;
+	bool r1 = r0;
+
+	return r1;
 }
 
 bool DiscordCall::get_self_deaf() {
-	auto r = obj->GetSelfDeaf();
+	auto r0 = obj->GetSelfDeaf();
 
-	bool cr = r;
-	return cr;
+	bool r1 = r0;
+
+	return r1;
 }
 
 bool DiscordCall::get_self_mute() {
-	auto r = obj->GetSelfMute();
+	auto r0 = obj->GetSelfMute();
 
-	bool cr = r;
-	return cr;
+	bool r1 = r0;
+
+	return r1;
 }
 
 float DiscordCall::get_participant_volume(int64_t user_id) {
 	int64_t p0 = user_id;
-	auto r = obj->GetParticipantVolume(p0);
+	auto r0 = obj->GetParticipantVolume(p0);
 
-	float cr = (float)r;
-	return cr;
+	float r1 = (float)r0;
+
+	return r1;
 }
 
 int64_t DiscordCall::get_channel_id() {
-	auto r = obj->GetChannelId();
+	auto r0 = obj->GetChannelId();
 
-	int64_t cr = (int64_t)r;
-	return cr;
+	int64_t r1 = (int64_t)r0;
+
+	return r1;
 }
 
 int64_t DiscordCall::get_guild_id() {
-	auto r = obj->GetGuildId();
+	auto r0 = obj->GetGuildId();
 
-	int64_t cr = (int64_t)r;
-	return cr;
+	int64_t r1 = (int64_t)r0;
+
+	return r1;
 }
 
 int64_t DiscordCall::get_pttrelease_delay() {
-	auto r = obj->GetPTTReleaseDelay();
+	auto r0 = obj->GetPTTReleaseDelay();
 
-	int64_t cr = (int64_t)r;
-	return cr;
+	int64_t r1 = (int64_t)r0;
+
+	return r1;
 }
 
 void DiscordCall::set_audio_mode(DiscordAudioModeType::Enum audio_mode) {

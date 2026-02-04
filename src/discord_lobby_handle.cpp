@@ -6,110 +6,111 @@ using namespace godot;
 // Functions.
 
 TypedArray<DiscordLobbyMemberHandle> DiscordLobbyHandle::lobby_members() {
-	auto r = obj->LobbyMembers();
+	auto r0 = obj->LobbyMembers();
 
-	TypedArray<DiscordLobbyMemberHandle> cr = TypedArray<DiscordLobbyMemberHandle>();
+	TypedArray<DiscordLobbyMemberHandle> r1 = TypedArray<DiscordLobbyMemberHandle>();
 
-	for (auto i : r) {
-		discordpp::LobbyMemberHandle *cr_t_t = memnew(discordpp::LobbyMemberHandle(std::move(i)));
-		DiscordLobbyMemberHandle *cr_t = memnew(DiscordLobbyMemberHandle{ cr_t_t });
+	for (auto i : r0) {
+		discordpp::LobbyMemberHandle *r1_t_t = memnew(discordpp::LobbyMemberHandle(std::move(i)));
+		DiscordLobbyMemberHandle *r1_t = memnew(DiscordLobbyMemberHandle{ r1_t_t });
 
-		cr.push_back(cr_t);
+		r1.push_back(r1_t);
 	}
 
-	return cr;
+	return r1;
 }
 
 TypedArray<int64_t> DiscordLobbyHandle::lobby_member_ids() {
-	auto r = obj->LobbyMemberIds();
+	auto r0 = obj->LobbyMemberIds();
 
-	TypedArray<int64_t> cr = TypedArray<int64_t>();
+	TypedArray<int64_t> r1 = TypedArray<int64_t>();
 
-	for (auto i : r) {
-		int64_t cr_t = (int64_t)i;
-		cr.push_back(cr_t);
+	for (auto i : r0) {
+		int64_t r1_t = (int64_t)i;
+		r1.push_back(r1_t);
 	}
 
-	return cr;
+	return r1;
 }
 
 TypedDictionary<String, String> DiscordLobbyHandle::metadata() {
-	auto r = obj->Metadata();
+	auto r0 = obj->Metadata();
 
-	TypedDictionary<String, String> cr = TypedDictionary<String, String>();
+	TypedDictionary<String, String> r1 = TypedDictionary<String, String>();
 
-	for (auto i : r) {
+	for (auto i : r0) {
 		String k = String(i.first.c_str());
 		String v = String(i.second.c_str());
-		cr[k] = v;
+		r1[k] = v;
 	}
 
-	return cr;
+	return r1;
 }
 
 Variant DiscordLobbyHandle::get_call_info_handle() {
-	auto r = obj->GetCallInfoHandle();
+	auto r0 = obj->GetCallInfoHandle();
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
+		auto r0_v = r0.value();
 
-		discordpp::CallInfoHandle *cr_v_t = memnew(discordpp::CallInfoHandle(std::move(r_v)));
-		DiscordCallInfoHandle *cr_v = memnew(DiscordCallInfoHandle{ cr_v_t });
+		discordpp::CallInfoHandle *r1_v_t = memnew(discordpp::CallInfoHandle(std::move(r0_v)));
+		DiscordCallInfoHandle *r1_v = memnew(DiscordCallInfoHandle{ r1_v_t });
 
-		cr = Variant(cr_v);
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 Variant DiscordLobbyHandle::get_lobby_member_handle(int64_t member_id) {
 	int64_t p0 = member_id;
-	auto r = obj->GetLobbyMemberHandle(p0);
+	auto r0 = obj->GetLobbyMemberHandle(p0);
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
+		auto r0_v = r0.value();
 
-		discordpp::LobbyMemberHandle *cr_v_t = memnew(discordpp::LobbyMemberHandle(std::move(r_v)));
-		DiscordLobbyMemberHandle *cr_v = memnew(DiscordLobbyMemberHandle{ cr_v_t });
+		discordpp::LobbyMemberHandle *r1_v_t = memnew(discordpp::LobbyMemberHandle(std::move(r0_v)));
+		DiscordLobbyMemberHandle *r1_v = memnew(DiscordLobbyMemberHandle{ r1_v_t });
 
-		cr = Variant(cr_v);
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 Variant DiscordLobbyHandle::linked_channel() {
-	auto r = obj->LinkedChannel();
+	auto r0 = obj->LinkedChannel();
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
+		auto r0_v = r0.value();
 
-		discordpp::LinkedChannel *cr_v_t = memnew(discordpp::LinkedChannel(std::move(r_v)));
-		DiscordLinkedChannel *cr_v = memnew(DiscordLinkedChannel{ cr_v_t });
+		discordpp::LinkedChannel *r1_v_t = memnew(discordpp::LinkedChannel(std::move(r0_v)));
+		DiscordLinkedChannel *r1_v = memnew(DiscordLinkedChannel{ r1_v_t });
 
-		cr = Variant(cr_v);
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 int64_t DiscordLobbyHandle::id() {
-	auto r = obj->Id();
+	auto r0 = obj->Id();
 
-	int64_t cr = (int64_t)r;
-	return cr;
+	int64_t r1 = (int64_t)r0;
+
+	return r1;
 }
 
 // Overload functions.

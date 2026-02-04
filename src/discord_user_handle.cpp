@@ -6,130 +6,137 @@ using namespace godot;
 // Functions.
 
 DiscordRelationshipHandle *DiscordUserHandle::relationship() {
-	auto r = obj->Relationship();
+	auto r0 = obj->Relationship();
 
-	discordpp::RelationshipHandle *cr_t = memnew(discordpp::RelationshipHandle(std::move(r)));
-	DiscordRelationshipHandle *cr = memnew(DiscordRelationshipHandle{ cr_t });
+	discordpp::RelationshipHandle *r1_t = memnew(discordpp::RelationshipHandle(std::move(r0)));
+	DiscordRelationshipHandle *r1 = memnew(DiscordRelationshipHandle{ r1_t });
 
-	return cr;
+	return r1;
 }
 
 DiscordStatusType::Enum DiscordUserHandle::status() {
-	auto r = obj->Status();
+	auto r0 = obj->Status();
 
-	DiscordStatusType::Enum cr = (DiscordStatusType::Enum)r;
-	return cr;
+	DiscordStatusType::Enum r1 = (DiscordStatusType::Enum)r0;
+
+	return r1;
 }
 
 String DiscordUserHandle::avatar_type_to_string(DiscordUserHandleAvatarType::Enum type) {
 	discordpp::UserHandle::AvatarType p0 = (discordpp::UserHandle::AvatarType)type;
-	auto r = discordpp::UserHandle::AvatarTypeToString(p0);
+	auto r0 = discordpp::UserHandle::AvatarTypeToString(p0);
 
-	String cr = String(r.c_str());
-	return cr;
+	String r1 = String(r0.c_str());
+
+	return r1;
 }
 
 String DiscordUserHandle::avatar_url(DiscordUserHandleAvatarType::Enum animated_type, DiscordUserHandleAvatarType::Enum static_type) {
 	discordpp::UserHandle::AvatarType p0 = (discordpp::UserHandle::AvatarType)animated_type;
 	discordpp::UserHandle::AvatarType p1 = (discordpp::UserHandle::AvatarType)static_type;
-	auto r = obj->AvatarUrl(p0, p1);
+	auto r0 = obj->AvatarUrl(p0, p1);
 
-	String cr = String(r.c_str());
-	return cr;
+	String r1 = String(r0.c_str());
+
+	return r1;
 }
 
 String DiscordUserHandle::display_name() {
-	auto r = obj->DisplayName();
+	auto r0 = obj->DisplayName();
 
-	String cr = String(r.c_str());
-	return cr;
+	String r1 = String(r0.c_str());
+
+	return r1;
 }
 
 String DiscordUserHandle::username() {
-	auto r = obj->Username();
+	auto r0 = obj->Username();
 
-	String cr = String(r.c_str());
-	return cr;
+	String r1 = String(r0.c_str());
+
+	return r1;
 }
 
 TypedArray<DiscordUserApplicationProfileHandle> DiscordUserHandle::user_application_profiles() {
-	auto r = obj->UserApplicationProfiles();
+	auto r0 = obj->UserApplicationProfiles();
 
-	TypedArray<DiscordUserApplicationProfileHandle> cr = TypedArray<DiscordUserApplicationProfileHandle>();
+	TypedArray<DiscordUserApplicationProfileHandle> r1 = TypedArray<DiscordUserApplicationProfileHandle>();
 
-	for (auto i : r) {
-		discordpp::UserApplicationProfileHandle *cr_t_t = memnew(discordpp::UserApplicationProfileHandle(std::move(i)));
-		DiscordUserApplicationProfileHandle *cr_t = memnew(DiscordUserApplicationProfileHandle{ cr_t_t });
+	for (auto i : r0) {
+		discordpp::UserApplicationProfileHandle *r1_t_t = memnew(discordpp::UserApplicationProfileHandle(std::move(i)));
+		DiscordUserApplicationProfileHandle *r1_t = memnew(DiscordUserApplicationProfileHandle{ r1_t_t });
 
-		cr.push_back(cr_t);
+		r1.push_back(r1_t);
 	}
 
-	return cr;
+	return r1;
 }
 
 Variant DiscordUserHandle::avatar() {
-	auto r = obj->Avatar();
+	auto r0 = obj->Avatar();
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
-		String cr_v = String(r_v.c_str());
-		cr = Variant(cr_v);
+		auto r0_v = r0.value();
+		String r1_v = String(r0_v.c_str());
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 Variant DiscordUserHandle::game_activity() {
-	auto r = obj->GameActivity();
+	auto r0 = obj->GameActivity();
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
+		auto r0_v = r0.value();
 
-		discordpp::Activity *cr_v_t = memnew(discordpp::Activity(std::move(r_v)));
-		DiscordActivity *cr_v = memnew(DiscordActivity{ cr_v_t });
+		discordpp::Activity *r1_v_t = memnew(discordpp::Activity(std::move(r0_v)));
+		DiscordActivity *r1_v = memnew(DiscordActivity{ r1_v_t });
 
-		cr = Variant(cr_v);
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 Variant DiscordUserHandle::global_name() {
-	auto r = obj->GlobalName();
+	auto r0 = obj->GlobalName();
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
-		String cr_v = String(r_v.c_str());
-		cr = Variant(cr_v);
+		auto r0_v = r0.value();
+		String r1_v = String(r0_v.c_str());
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 bool DiscordUserHandle::is_provisional() {
-	auto r = obj->IsProvisional();
+	auto r0 = obj->IsProvisional();
 
-	bool cr = r;
-	return cr;
+	bool r1 = r0;
+
+	return r1;
 }
 
 int64_t DiscordUserHandle::id() {
-	auto r = obj->Id();
+	auto r0 = obj->Id();
 
-	int64_t cr = (int64_t)r;
-	return cr;
+	int64_t r1 = (int64_t)r0;
+
+	return r1;
 }
 
 // Overload functions.

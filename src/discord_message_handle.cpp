@@ -6,224 +6,230 @@ using namespace godot;
 // Functions.
 
 String DiscordMessageHandle::content() {
-	auto r = obj->Content();
+	auto r0 = obj->Content();
 
-	String cr = String(r.c_str());
-	return cr;
+	String r1 = String(r0.c_str());
+
+	return r1;
 }
 
 String DiscordMessageHandle::raw_content() {
-	auto r = obj->RawContent();
+	auto r0 = obj->RawContent();
 
-	String cr = String(r.c_str());
-	return cr;
+	String r1 = String(r0.c_str());
+
+	return r1;
 }
 
 TypedDictionary<String, String> DiscordMessageHandle::metadata() {
-	auto r = obj->Metadata();
+	auto r0 = obj->Metadata();
 
-	TypedDictionary<String, String> cr = TypedDictionary<String, String>();
+	TypedDictionary<String, String> r1 = TypedDictionary<String, String>();
 
-	for (auto i : r) {
+	for (auto i : r0) {
 		String k = String(i.first.c_str());
 		String v = String(i.second.c_str());
-		cr[k] = v;
+		r1[k] = v;
 	}
 
-	return cr;
+	return r1;
 }
 
 TypedDictionary<String, String> DiscordMessageHandle::moderation_metadata() {
-	auto r = obj->ModerationMetadata();
+	auto r0 = obj->ModerationMetadata();
 
-	TypedDictionary<String, String> cr = TypedDictionary<String, String>();
+	TypedDictionary<String, String> r1 = TypedDictionary<String, String>();
 
-	for (auto i : r) {
+	for (auto i : r0) {
 		String k = String(i.first.c_str());
 		String v = String(i.second.c_str());
-		cr[k] = v;
+		r1[k] = v;
 	}
 
-	return cr;
+	return r1;
 }
 
 Variant DiscordMessageHandle::additional_content() {
-	auto r = obj->AdditionalContent();
+	auto r0 = obj->AdditionalContent();
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
+		auto r0_v = r0.value();
 
-		discordpp::AdditionalContent *cr_v_t = memnew(discordpp::AdditionalContent(std::move(r_v)));
-		DiscordAdditionalContent *cr_v = memnew(DiscordAdditionalContent{ cr_v_t });
+		discordpp::AdditionalContent *r1_v_t = memnew(discordpp::AdditionalContent(std::move(r0_v)));
+		DiscordAdditionalContent *r1_v = memnew(DiscordAdditionalContent{ r1_v_t });
 
-		cr = Variant(cr_v);
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 Variant DiscordMessageHandle::application_id() {
-	auto r = obj->ApplicationId();
+	auto r0 = obj->ApplicationId();
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
-		int64_t cr_v = (int64_t)r_v;
-		cr = Variant(cr_v);
+		auto r0_v = r0.value();
+		int64_t r1_v = (int64_t)r0_v;
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 Variant DiscordMessageHandle::author() {
-	auto r = obj->Author();
+	auto r0 = obj->Author();
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
+		auto r0_v = r0.value();
 
-		discordpp::UserHandle *cr_v_t = memnew(discordpp::UserHandle(std::move(r_v)));
-		DiscordUserHandle *cr_v = memnew(DiscordUserHandle{ cr_v_t });
+		discordpp::UserHandle *r1_v_t = memnew(discordpp::UserHandle(std::move(r0_v)));
+		DiscordUserHandle *r1_v = memnew(DiscordUserHandle{ r1_v_t });
 
-		cr = Variant(cr_v);
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 Variant DiscordMessageHandle::channel() {
-	auto r = obj->Channel();
+	auto r0 = obj->Channel();
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
+		auto r0_v = r0.value();
 
-		discordpp::ChannelHandle *cr_v_t = memnew(discordpp::ChannelHandle(std::move(r_v)));
-		DiscordChannelHandle *cr_v = memnew(DiscordChannelHandle{ cr_v_t });
+		discordpp::ChannelHandle *r1_v_t = memnew(discordpp::ChannelHandle(std::move(r0_v)));
+		DiscordChannelHandle *r1_v = memnew(DiscordChannelHandle{ r1_v_t });
 
-		cr = Variant(cr_v);
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 Variant DiscordMessageHandle::disclosure_type() {
-	auto r = obj->DisclosureType();
+	auto r0 = obj->DisclosureType();
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
-
-		discordpp::DisclosureTypes *cr_v_t = memnew(discordpp::DisclosureTypes(std::move(r_v)));
-		DiscordDisclosureTypes *cr_v = memnew(DiscordDisclosureTypes{ cr_v_t });
-
-		cr = Variant(cr_v);
+		auto r0_v = r0.value();
+		DiscordDisclosureTypes::Enum r1_v = (DiscordDisclosureTypes::Enum)r0_v;
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 Variant DiscordMessageHandle::lobby() {
-	auto r = obj->Lobby();
+	auto r0 = obj->Lobby();
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
+		auto r0_v = r0.value();
 
-		discordpp::LobbyHandle *cr_v_t = memnew(discordpp::LobbyHandle(std::move(r_v)));
-		DiscordLobbyHandle *cr_v = memnew(DiscordLobbyHandle{ cr_v_t });
+		discordpp::LobbyHandle *r1_v_t = memnew(discordpp::LobbyHandle(std::move(r0_v)));
+		DiscordLobbyHandle *r1_v = memnew(DiscordLobbyHandle{ r1_v_t });
 
-		cr = Variant(cr_v);
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 Variant DiscordMessageHandle::recipient() {
-	auto r = obj->Recipient();
+	auto r0 = obj->Recipient();
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
+		auto r0_v = r0.value();
 
-		discordpp::UserHandle *cr_v_t = memnew(discordpp::UserHandle(std::move(r_v)));
-		DiscordUserHandle *cr_v = memnew(DiscordUserHandle{ cr_v_t });
+		discordpp::UserHandle *r1_v_t = memnew(discordpp::UserHandle(std::move(r0_v)));
+		DiscordUserHandle *r1_v = memnew(DiscordUserHandle{ r1_v_t });
 
-		cr = Variant(cr_v);
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 bool DiscordMessageHandle::sent_from_game() {
-	auto r = obj->SentFromGame();
+	auto r0 = obj->SentFromGame();
 
-	bool cr = r;
-	return cr;
+	bool r1 = r0;
+
+	return r1;
 }
 
 int64_t DiscordMessageHandle::author_id() {
-	auto r = obj->AuthorId();
+	auto r0 = obj->AuthorId();
 
-	int64_t cr = (int64_t)r;
-	return cr;
+	int64_t r1 = (int64_t)r0;
+
+	return r1;
 }
 
 int64_t DiscordMessageHandle::channel_id() {
-	auto r = obj->ChannelId();
+	auto r0 = obj->ChannelId();
 
-	int64_t cr = (int64_t)r;
-	return cr;
+	int64_t r1 = (int64_t)r0;
+
+	return r1;
 }
 
 int64_t DiscordMessageHandle::edited_timestamp() {
-	auto r = obj->EditedTimestamp();
+	auto r0 = obj->EditedTimestamp();
 
-	int64_t cr = (int64_t)r;
-	return cr;
+	int64_t r1 = (int64_t)r0;
+
+	return r1;
 }
 
 int64_t DiscordMessageHandle::id() {
-	auto r = obj->Id();
+	auto r0 = obj->Id();
 
-	int64_t cr = (int64_t)r;
-	return cr;
+	int64_t r1 = (int64_t)r0;
+
+	return r1;
 }
 
 int64_t DiscordMessageHandle::recipient_id() {
-	auto r = obj->RecipientId();
+	auto r0 = obj->RecipientId();
 
-	int64_t cr = (int64_t)r;
-	return cr;
+	int64_t r1 = (int64_t)r0;
+
+	return r1;
 }
 
 int64_t DiscordMessageHandle::sent_timestamp() {
-	auto r = obj->SentTimestamp();
+	auto r0 = obj->SentTimestamp();
 
-	int64_t cr = (int64_t)r;
-	return cr;
+	int64_t r1 = (int64_t)r0;
+
+	return r1;
 }
 
 // Overload functions.

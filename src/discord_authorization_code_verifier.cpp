@@ -6,19 +6,20 @@ using namespace godot;
 // Functions.
 
 DiscordAuthorizationCodeChallenge *DiscordAuthorizationCodeVerifier::challenge() {
-	auto r = obj->Challenge();
+	auto r0 = obj->Challenge();
 
-	discordpp::AuthorizationCodeChallenge *cr_t = memnew(discordpp::AuthorizationCodeChallenge(std::move(r)));
-	DiscordAuthorizationCodeChallenge *cr = memnew(DiscordAuthorizationCodeChallenge{ cr_t });
+	discordpp::AuthorizationCodeChallenge *r1_t = memnew(discordpp::AuthorizationCodeChallenge(std::move(r0)));
+	DiscordAuthorizationCodeChallenge *r1 = memnew(DiscordAuthorizationCodeChallenge{ r1_t });
 
-	return cr;
+	return r1;
 }
 
 String DiscordAuthorizationCodeVerifier::verifier() {
-	auto r = obj->Verifier();
+	auto r0 = obj->Verifier();
 
-	String cr = String(r.c_str());
-	return cr;
+	String r1 = String(r0.c_str());
+
+	return r1;
 }
 
 void DiscordAuthorizationCodeVerifier::set_challenge(DiscordAuthorizationCodeChallenge *challenge) {

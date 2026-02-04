@@ -6,103 +6,102 @@ using namespace godot;
 // Functions.
 
 String DiscordAuthorizationArgs::scopes() {
-	auto r = obj->Scopes();
+	auto r0 = obj->Scopes();
 
-	String cr = String(r.c_str());
-	return cr;
+	String r1 = String(r0.c_str());
+
+	return r1;
 }
 
 Variant DiscordAuthorizationArgs::code_challenge() {
-	auto r = obj->CodeChallenge();
+	auto r0 = obj->CodeChallenge();
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
+		auto r0_v = r0.value();
 
-		discordpp::AuthorizationCodeChallenge *cr_v_t = memnew(discordpp::AuthorizationCodeChallenge(std::move(r_v)));
-		DiscordAuthorizationCodeChallenge *cr_v = memnew(DiscordAuthorizationCodeChallenge{ cr_v_t });
+		discordpp::AuthorizationCodeChallenge *r1_v_t = memnew(discordpp::AuthorizationCodeChallenge(std::move(r0_v)));
+		DiscordAuthorizationCodeChallenge *r1_v = memnew(DiscordAuthorizationCodeChallenge{ r1_v_t });
 
-		cr = Variant(cr_v);
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 Variant DiscordAuthorizationArgs::custom_scheme_param() {
-	auto r = obj->CustomSchemeParam();
+	auto r0 = obj->CustomSchemeParam();
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
-		String cr_v = String(r_v.c_str());
-		cr = Variant(cr_v);
+		auto r0_v = r0.value();
+		String r1_v = String(r0_v.c_str());
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 Variant DiscordAuthorizationArgs::integration_type() {
-	auto r = obj->IntegrationType();
+	auto r0 = obj->IntegrationType();
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
-
-		discordpp::IntegrationType *cr_v_t = memnew(discordpp::IntegrationType(std::move(r_v)));
-		DiscordIntegrationType *cr_v = memnew(DiscordIntegrationType{ cr_v_t });
-
-		cr = Variant(cr_v);
+		auto r0_v = r0.value();
+		DiscordIntegrationType::Enum r1_v = (DiscordIntegrationType::Enum)r0_v;
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 Variant DiscordAuthorizationArgs::nonce() {
-	auto r = obj->Nonce();
+	auto r0 = obj->Nonce();
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
-		String cr_v = String(r_v.c_str());
-		cr = Variant(cr_v);
+		auto r0_v = r0.value();
+		String r1_v = String(r0_v.c_str());
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 Variant DiscordAuthorizationArgs::state() {
-	auto r = obj->State();
+	auto r0 = obj->State();
 
-	Variant cr;
+	Variant r1;
 
-	if (!r.has_value()) {
-		cr = nullptr;
+	if (!r0.has_value()) {
+		r1 = nullptr;
 	} else {
-		auto r_v = r.value();
-		String cr_v = String(r_v.c_str());
-		cr = Variant(cr_v);
+		auto r0_v = r0.value();
+		String r1_v = String(r0_v.c_str());
+		r1 = Variant(r1_v);
 	}
 
-	return cr;
+	return r1;
 }
 
 int64_t DiscordAuthorizationArgs::client_id() {
-	auto r = obj->ClientId();
+	auto r0 = obj->ClientId();
 
-	int64_t cr = (int64_t)r;
-	return cr;
+	int64_t r1 = (int64_t)r0;
+
+	return r1;
 }
 
 void DiscordAuthorizationArgs::set_client_id(int64_t client_id) {
@@ -133,6 +132,7 @@ void DiscordAuthorizationArgs::set_integration_type(Variant integration_type) {
 	std::optional<discordpp::IntegrationType> p0;
 
 	if (integration_type.get_type() == Variant::OBJECT) {
+		p0 = std::optional<discordpp::IntegrationType>{ (discordpp::IntegrationType)(uint64_t)integration_type };
 	}
 
 	obj->SetIntegrationType(p0);

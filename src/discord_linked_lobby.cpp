@@ -6,17 +6,19 @@ using namespace godot;
 // Functions.
 
 int64_t DiscordLinkedLobby::application_id() {
-	auto r = obj->ApplicationId();
+	auto r0 = obj->ApplicationId();
 
-	int64_t cr = (int64_t)r;
-	return cr;
+	int64_t r1 = (int64_t)r0;
+
+	return r1;
 }
 
 int64_t DiscordLinkedLobby::lobby_id() {
-	auto r = obj->LobbyId();
+	auto r0 = obj->LobbyId();
 
-	int64_t cr = (int64_t)r;
-	return cr;
+	int64_t r1 = (int64_t)r0;
+
+	return r1;
 }
 
 void DiscordLinkedLobby::set_application_id(int64_t application_id) {
