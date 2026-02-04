@@ -22,14 +22,28 @@ String DiscordMessageHandle::raw_content() {
 TypedDictionary<String, String> DiscordMessageHandle::metadata() {
 	auto r = obj->Metadata();
 
-	// TODO map to Dictionary
+	TypedDictionary<String, String> cr = TypedDictionary<String, String>();
+
+	for (auto i : r) {
+		String k = String(i.first.c_str());
+		String v = String(i.second.c_str());
+		cr[k] = v;
+	}
+
 	return cr;
 }
 
 TypedDictionary<String, String> DiscordMessageHandle::moderation_metadata() {
 	auto r = obj->ModerationMetadata();
 
-	// TODO map to Dictionary
+	TypedDictionary<String, String> cr = TypedDictionary<String, String>();
+
+	for (auto i : r) {
+		String k = String(i.first.c_str());
+		String v = String(i.second.c_str());
+		cr[k] = v;
+	}
+
 	return cr;
 }
 

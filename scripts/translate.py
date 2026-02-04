@@ -14,6 +14,9 @@ from name import to_godot_class_name, to_gdscript_variable_name
 from template.code.discord_class_cpp.discord_to_godot.object import get_godot_object
 from template.code.discord_class_cpp.discord_to_godot.variant import get_godot_variant
 from template.code.discord_class_cpp.discord_to_godot.array import get_godot_array
+from template.code.discord_class_cpp.discord_to_godot.dictionary import (
+    get_godot_dictionary,
+)
 from template.code.discord_class_cpp.godot_to_discord.map import get_discord_map
 from template.code.discord_class_cpp.godot_to_discord.optional import (
     get_discord_optional,
@@ -257,8 +260,7 @@ def discord_variable_to_godot_variable(
         return discord_vector_to_godot_array(info, target, source)
 
     if is_discord_map(info):
-        pprint(info)
-        return "// TODO map to Dictionary"
+        return discord_map_to_godot_dictionary(info, target, source)
 
     if is_discord_object(info):
         return discord_object_to_godot_object(info, target, source)
@@ -295,6 +297,33 @@ def discord_vector_to_godot_array(type_info: TypeInfo, target: str, source: str)
         target=target,
         source=source,
         convertion=convertion,
+    )
+
+
+def discord_map_to_godot_dictionary(
+    type_info: TypeInfo, target: str, source: str
+) -> str:
+    typed_dictionary = discord_type_to_godot_type(type_info)
+    convertions = [
+        discord_variable_to_godot_variable(
+            type_info.templates[0],
+            "k",
+            "i.first",
+        ),
+        discord_variable_to_godot_variable(
+            type_info.templates[1],
+            "v",
+            "i.second",
+        ),
+    ]
+
+    convertions = "\n".join(convertions)
+
+    return get_godot_dictionary(
+        typed_dictionary=typed_dictionary,
+        target=target,
+        source=source,
+        convertion=convertions,
     )
 
 
