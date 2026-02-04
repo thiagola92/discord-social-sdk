@@ -1,6 +1,6 @@
-def get_return_statements(convertion: str, target: str) -> str:
+def get_return_statements(conversion: str, target: str) -> str:
     return f"""
-{convertion}
+{conversion}
 
 return {target};
 """

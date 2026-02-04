@@ -350,12 +350,12 @@ def forge_function_definition(function_info: FunctionInfo, class_name: str) -> s
 
 
 def forge_function_statements(function_info: FunctionInfo, class_name: str) -> str:
-    convertion_statements = godot_variables_to_discord_variables(function_info.params)
+    conversion_statements = godot_variables_to_discord_variables(function_info.params)
     call_statement = forge_call_statement(function_info, class_name)
     return_statements = forge_return_statements(function_info)
 
     return get_function_statements(
-        convertion_statements=convertion_statements,
+        conversion_statements=conversion_statements,
         call_statement=call_statement,
         return_statements=return_statements,
     )
@@ -387,9 +387,9 @@ def forge_return_statements(function_info: FunctionInfo) -> str:
         return ""
 
     target = "r1"
-    convertion = discord_variable_to_godot_variable(function_info.type, target, "r0")
+    conversion = discord_variable_to_godot_variable(function_info.type, target, "r0")
 
-    return get_return_statements(convertion=convertion, target=target)
+    return get_return_statements(conversion=conversion, target=target)
 
 
 def forge_overloadings_definitions(info: NamespaceInfo | ClassInfo) -> str:

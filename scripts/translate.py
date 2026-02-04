@@ -271,7 +271,7 @@ def discord_variable_to_godot_variable(
 def discord_optional_to_godot_variant(
     type_info: TypeInfo, target: str, source: str
 ) -> str:
-    convertion = discord_variable_to_godot_variable(
+    conversion = discord_variable_to_godot_variable(
         type_info,
         f"{target}_v",
         f"{source}_v",
@@ -280,13 +280,13 @@ def discord_optional_to_godot_variant(
     return get_godot_variant(
         target=target,
         source=source,
-        convertion=convertion,
+        conversion=conversion,
     )
 
 
 def discord_vector_to_godot_array(type_info: TypeInfo, target: str, source: str) -> str:
     typed_array = discord_type_to_godot_type(type_info)
-    convertion = discord_variable_to_godot_variable(
+    conversion = discord_variable_to_godot_variable(
         type_info.templates[0],
         f"{target}_t",
         "i",
@@ -296,7 +296,7 @@ def discord_vector_to_godot_array(type_info: TypeInfo, target: str, source: str)
         typed_array=typed_array,
         target=target,
         source=source,
-        convertion=convertion,
+        conversion=conversion,
     )
 
 
@@ -304,7 +304,7 @@ def discord_map_to_godot_dictionary(
     type_info: TypeInfo, target: str, source: str
 ) -> str:
     typed_dictionary = discord_type_to_godot_type(type_info)
-    convertions = [
+    conversions = [
         discord_variable_to_godot_variable(
             type_info.templates[0],
             "k",
@@ -317,13 +317,13 @@ def discord_map_to_godot_dictionary(
         ),
     ]
 
-    convertions = "\n".join(convertions)
+    conversions = "\n".join(conversions)
 
     return get_godot_dictionary(
         typed_dictionary=typed_dictionary,
         target=target,
         source=source,
-        convertion=convertions,
+        conversion=conversions,
     )
 
 
@@ -422,19 +422,23 @@ def godot_callable_to_discord_callback(
     # Complicate, use pprint() to better understand.
     function_info = type_info.callback_ref.type.templates[0]
 
-    statements = discord_variables_to_godot_variables(function_info.params)
-    params = []
+    conversions = discord_variables_to_godot_variables(function_info.params)
+    callback_params = []
+    call_params = []
 
-    for p in function_info.params:
-        params.append(f"auto {p.gdscript_name}")
+    for i, p in enumerate(function_info.params):
+        callback_params.append(f"auto {p.gdscript_name}")
+        call_params.append(f"p{i}")
 
-    params = ", ".join(params)
+    callback_params = ", ".join(callback_params)
+    call_params = ", ".join(call_params)
 
     return get_discord_callback(
         target=target,
         source=source,
-        params=params,
-        statements=statements,
+        callback_params=callback_params,
+        conversions=conversions,
+        call_params=call_params,
     )
 
 

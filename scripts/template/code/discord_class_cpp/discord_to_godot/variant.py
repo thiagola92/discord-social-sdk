@@ -1,4 +1,4 @@
-def get_godot_variant(target: str, source: str, convertion: str) -> str:
+def get_godot_variant(target: str, source: str, conversion: str) -> str:
     return f"""
 Variant {target};
 
@@ -6,7 +6,7 @@ if (!{source}.has_value()) {{
     {target} = nullptr;
 }} else {{
     auto {source}_v = {source}.value();
-    {convertion}
+    {conversion}
     {target} = Variant({target}_v);
 }}
 """
