@@ -1,4 +1,5 @@
 # Responsible for forging parts of the code.
+from name import to_godot_class_name
 from fake import fake_enums_params
 from collect import NamespaceInfo, FunctionInfo, ClassInfo, ParamInfo
 from discover import (
@@ -469,11 +470,12 @@ def forge_overloading_condition(fake_params: list[ParamInfo]) -> str:
     conditions = []
 
     for i, fp in enumerate(fake_params):
+        n = to_godot_class_name(fp.type.name)
         conditions.append(
             get_condition(
                 value0=f"p{length + i}",
                 operator="==",
-                value1=f'"{fp.type.name}"',
+                value1=f'"{n}"',
             )
         )
 
