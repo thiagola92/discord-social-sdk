@@ -39,5 +39,7 @@
 		</constant>
 		<constant name="EphemeralDm" value="18" enum="Enum">
 		</constant>
+		<constant name="id" value="9">
+		</constant>
 	</constants>
 </class>

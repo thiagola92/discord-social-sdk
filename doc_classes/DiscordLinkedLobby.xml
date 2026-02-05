@@ -1,7 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<class name="DiscordLinkedLobby" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
-	<brief_description>
-	</brief_description>
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordLinkedLobby" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>&lt;para&gt;Struct that stores information about the lobby linked to a channel. &lt;/para&gt;</brief_description>
 	<description>
 	</description>
 	<tutorials>
@@ -10,23 +8,27 @@
 		<method name="application_id">
 			<return type="int" />
 			<description>
+			&lt;para&gt;The ID of the application that owns the lobby. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="lobby_id">
 			<return type="int" />
 			<description>
+			&lt;para&gt;The ID of the lobby. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="set_application_id">
 			<return type="void" />
 			<param index="0" name="application_id" type="int" />
 			<description>
+			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1LinkedLobby_1a54f7d406aa6290b623dd201b367d2672" kindref="member"&gt;LinkedLobby::ApplicationId&lt;/ref&gt;. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="set_lobby_id">
 			<return type="void" />
 			<param index="0" name="lobby_id" type="int" />
 			<description>
+			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1LinkedLobby_1aac0fd786fa7fa9fab342887a2988cdef" kindref="member"&gt;LinkedLobby::LobbyId&lt;/ref&gt;. &lt;/para&gt;
 			</description>
 		</method>
 	</methods>

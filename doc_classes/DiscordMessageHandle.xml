@@ -1,100 +1,153 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<class name="DiscordMessageHandle" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
-	<brief_description>
-	</brief_description>
-	<description>
-	</description>
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordMessageHandle" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>&lt;para&gt;A &lt;ref refid="classdiscordpp_1_1MessageHandle" kindref="compound"&gt;MessageHandle&lt;/ref&gt; represents a single message received by the SDK. &lt;/para&gt;</brief_description>
+	<description>&lt;sect1 id="classdiscordpp_1_1MessageHandle_1autotoc_md13"&gt;
+&lt;title&gt;Chat types&lt;/title&gt;&lt;para&gt;The SDK supports two types of chat:&lt;orderedlist&gt;
+&lt;listitem&gt;&lt;para&gt;1 on 1 chat between two users&lt;/para&gt;
+&lt;/listitem&gt;&lt;listitem&gt;&lt;para&gt;Chat within a lobby&lt;/para&gt;
+&lt;/listitem&gt;&lt;/orderedlist&gt;
+&lt;/para&gt;
+&lt;para&gt;You can determine the context a message was sent in with the &lt;ref refid="classdiscordpp_1_1MessageHandle_1a1e32d54fe034821cc9bc9fd626d7f069" kindref="member"&gt;MessageHandle::Channel&lt;/ref&gt; and &lt;ref refid="classdiscordpp_1_1ChannelHandle_1aff3b40ab2690c966532fc4d8709a9e85" kindref="member"&gt;ChannelHandle::Type&lt;/ref&gt; methods. The SDK should only be receiving messages in the following channel types:&lt;itemizedlist&gt;
+&lt;listitem&gt;&lt;para&gt;DM&lt;/para&gt;
+&lt;/listitem&gt;&lt;listitem&gt;&lt;para&gt;Ephemeral DM&lt;/para&gt;
+&lt;/listitem&gt;&lt;listitem&gt;&lt;para&gt;Lobby&lt;/para&gt;
+&lt;/listitem&gt;&lt;/itemizedlist&gt;
+&lt;/para&gt;
+&lt;/sect1&gt;
+&lt;sect1 id="classdiscordpp_1_1MessageHandle_1autotoc_md14"&gt;
+&lt;title&gt;Syncing with Discord&lt;/title&gt;&lt;para&gt;In some situations messages sent from the SDK will also show up in Discord. In general this will happen for:&lt;itemizedlist&gt;
+&lt;listitem&gt;&lt;para&gt;1 on 1 chat when at least one of the users is a full Discord user&lt;/para&gt;
+&lt;/listitem&gt;&lt;listitem&gt;&lt;para&gt;Lobby chat when the lobby is linked to a Discord channel&lt;/para&gt;
+&lt;/listitem&gt;&lt;/itemizedlist&gt;
+&lt;/para&gt;
+&lt;para&gt;Additionally the message must have been sent by a user who is not banned on the Discord side.&lt;/para&gt;
+&lt;/sect1&gt;
+&lt;sect1 id="classdiscordpp_1_1MessageHandle_1autotoc_md15"&gt;
+&lt;title&gt;Legal disclosures&lt;/title&gt;&lt;para&gt;As a convenience for game developers, the first time a user sends a message in game, and that message will show up on the Discord client, the SDK will inject a "fake" message into the chat, that contains a basic English explanation of what is happening to the user. You can identify these messages with the &lt;ref refid="classdiscordpp_1_1MessageHandle_1abefb9be7836951a6acf78a4bb1676638" kindref="member"&gt;MessageHandle::DisclosureType&lt;/ref&gt; method. We encourage you to customize the rendering of these messages, possibly changing the wording, translating them, and making them look more "official". You can choose to avoid rendering these as well.&lt;/para&gt;
+&lt;/sect1&gt;
+&lt;sect1 id="classdiscordpp_1_1MessageHandle_1autotoc_md16"&gt;
+&lt;title&gt;History&lt;/title&gt;&lt;para&gt;The SDK keeps the 25 most recent messages in each channel in memory, but it does not have access to any historical messages sent before the SDK was connected. A &lt;ref refid="classdiscordpp_1_1MessageHandle" kindref="compound"&gt;MessageHandle&lt;/ref&gt; will keep working though even after the SDK has discarded the message for being too old, you just won't be able to create a new &lt;ref refid="classdiscordpp_1_1MessageHandle" kindref="compound"&gt;MessageHandle&lt;/ref&gt; objects for that message.&lt;/para&gt;
+&lt;/sect1&gt;
+&lt;sect1 id="classdiscordpp_1_1MessageHandle_1autotoc_md17"&gt;
+&lt;title&gt;Unrenderable Content&lt;/title&gt;&lt;para&gt;Messages sent on Discord can contain content that may not be renderable in game, such as images, videos, embeds, polls, and more. The game isn't expected to render these, but instead show a small notice so the user is aware there is more content and a way to view that content on Discord. The &lt;ref refid="classdiscordpp_1_1MessageHandle_1af4497491a95fda65402b6acf7a8b42e5" kindref="member"&gt;MessageHandle::AdditionalContent&lt;/ref&gt; method will contain data about the non-text content in this message.&lt;/para&gt;
+&lt;para&gt;There is also more information about the struct of messages on Discord here: &lt;ulink url="https://discord.com/developers/docs/resources/message"&gt;https://discord.com/developers/docs/resources/message&lt;/ulink&gt;&lt;/para&gt;
+&lt;para&gt;Note: While the SDK allows you to send messages on behalf of a user, you must only do so in response to a user action. You should never automatically send messages.&lt;/para&gt;
+&lt;para&gt;Handle objects in the SDK hold a reference both to the underlying data, and to the SDK instance. Changes to the underlying data will generally be available on existing handles objects without having to re-create them. If the SDK instance is destroyed, but you still have a reference to a handle object, note that it will return the default value for all method calls (ie an empty string for methods that return a string). &lt;/para&gt;
+&lt;/sect1&gt;</description>
 	<tutorials>
 	</tutorials>
 	<methods>
 		<method name="additional_content">
 			<return type="Variant" />
 			<description>
+			&lt;para&gt;If the message contains non-text content, such as images, videos, embeds, polls, etc, this method will return information about that content. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="application_id">
 			<return type="Variant" />
 			<description>
+			&lt;para&gt;Returns the application ID associated with this message, if any. You can use this to identify if the mesage was sent from another child application in your catalog. &lt;/para&gt;
+			&lt;para&gt;Note: Parent / child applications are in limited access and the SentFromGame field should be relied on for the common case. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="author">
 			<return type="Variant" />
 			<description>
+			&lt;para&gt;Returns the &lt;ref refid="classdiscordpp_1_1UserHandle" kindref="compound"&gt;UserHandle&lt;/ref&gt; for the author of this message. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="author_id">
 			<return type="int" />
 			<description>
+			&lt;para&gt;Returns the user ID of the user who sent this message. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="channel">
 			<return type="Variant" />
 			<description>
+			&lt;para&gt;Returns the &lt;ref refid="classdiscordpp_1_1ChannelHandle" kindref="compound"&gt;ChannelHandle&lt;/ref&gt; for the channel this message was sent in. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="channel_id">
 			<return type="int" />
 			<description>
+			&lt;para&gt;Returns the channel ID this message was sent in. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="content">
 			<return type="String" />
 			<description>
+			&lt;para&gt;Returns the content of this message, if any. &lt;/para&gt;
+			&lt;para&gt;A message can be blank if it was sent from Discord but only contains content such as image attachments. Certain types of markup, such as markup for emojis and mentions, will be auto replaced with a more human readable form, such as &lt;computeroutput&gt;@username&lt;/computeroutput&gt; or &lt;computeroutput&gt;:emoji_name:&lt;/computeroutput&gt;. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="disclosure_type">
 			<return type="Variant" />
 			<description>
+			&lt;para&gt;If this is an auto-generated message that is explaining some integration behavior to users, this method will return the type of disclosure so you can customize it. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="edited_timestamp">
 			<return type="int" />
 			<description>
+			&lt;para&gt;The timestamp in millis since the epoch when the message was most recently edited. &lt;/para&gt;
+			&lt;para&gt;Returns 0 if the message has not been edited yet. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="id">
 			<return type="int" />
 			<description>
+			&lt;para&gt;Returns the ID of this message. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="lobby">
 			<return type="Variant" />
 			<description>
+			&lt;para&gt;Returns the &lt;ref refid="classdiscordpp_1_1LobbyHandle" kindref="compound"&gt;LobbyHandle&lt;/ref&gt; this message was sent in, if it was sent in a lobby. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="metadata">
 			<return type="Dictionary[String, String]" />
 			<description>
+			&lt;para&gt;Returns any metadata the developer included with this message. &lt;/para&gt;
+			&lt;para&gt;Metadata is just a set of simple string key/value pairs. An example use case might be to include a character name so you can customize how a message renders in game. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="moderation_metadata">
 			<return type="Dictionary[String, String]" />
 			<description>
+			&lt;para&gt;Returns any moderation metadata the developer set on this message. &lt;/para&gt;
+			&lt;para&gt;Moderation metadata is just a set of simple string key/value pairs. An example use case might be to include a flag that indicates the moderation status of the message. Another example would be to include a re-written message that is more appropriate for the game's audience. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="raw_content">
 			<return type="String" />
 			<description>
+			&lt;para&gt;Returns the content of this message, if any, but without replacing any markup from emojis and mentions. &lt;/para&gt;
+			&lt;para&gt;A message can be blank if it was sent from Discord but only contains content such as image attachments. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="recipient">
 			<return type="Variant" />
 			<description>
+			&lt;para&gt;Returns the &lt;ref refid="classdiscordpp_1_1UserHandle" kindref="compound"&gt;UserHandle&lt;/ref&gt; for the other participant in a DM, if this message was sent in a DM. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="recipient_id">
 			<return type="int" />
 			<description>
+			&lt;para&gt;When this message was sent in a DM or Ephemeral DM, this method will return the ID of the other user in that DM. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="sent_from_game">
 			<return type="bool" />
 			<description>
+			&lt;para&gt;Returns true if this message was sent in-game, otherwise false (i.e. from Discord itself). If you are using parent / child applications, this will be true if the message was sent from any child application. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="sent_timestamp">
 			<return type="int" />
 			<description>
+			&lt;para&gt;The timestamp in millis since the epoch when the message was sent. &lt;/para&gt;
 			</description>
 		</method>
 	</methods>

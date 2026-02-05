@@ -11,5 +11,7 @@
 		</constant>
 		<constant name="UserInstall" value="1" enum="Enum">
 		</constant>
+		<constant name="id" value="8">
+		</constant>
 	</constants>
 </class>

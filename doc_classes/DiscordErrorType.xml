@@ -27,5 +27,7 @@
 		</constant>
 		<constant name="RPCError" value="9" enum="Enum">
 		</constant>
+		<constant name="id" value="5">
+		</constant>
 	</constants>
 </class>

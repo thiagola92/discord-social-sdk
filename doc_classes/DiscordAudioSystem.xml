@@ -11,5 +11,7 @@
 		</constant>
 		<constant name="Game" value="1" enum="Enum">
 		</constant>
+		<constant name="id" value="11">
+		</constant>
 	</constants>
 </class>

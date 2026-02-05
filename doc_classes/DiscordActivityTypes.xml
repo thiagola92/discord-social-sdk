@@ -21,5 +21,7 @@
 		</constant>
 		<constant name="HangStatus" value="6" enum="Enum">
 		</constant>
+		<constant name="id" value="2">
+		</constant>
 	</constants>
 </class>

@@ -15,5 +15,7 @@
 		</constant>
 		<constant name="ConnectionCanceled" value="3" enum="Enum">
 		</constant>
+		<constant name="id" value="23">
+		</constant>
 	</constants>
 </class>

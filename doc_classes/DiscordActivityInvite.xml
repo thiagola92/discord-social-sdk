@@ -1,7 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<class name="DiscordActivityInvite" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
-	<brief_description>
-	</brief_description>
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordActivityInvite" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>&lt;para&gt;When one user invites another to join their game on Discord, it will send a message to that user. The SDK will parse those messages for you automatically, and this struct contains all of the relevant invite information which is needed to later accept that invite. &lt;/para&gt;</brief_description>
 	<description>
 	</description>
 	<tutorials>
@@ -10,100 +8,118 @@
 		<method name="application_id">
 			<return type="int" />
 			<description>
+			&lt;para&gt;The target application of the invite. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="channel_id">
 			<return type="int" />
 			<description>
+			&lt;para&gt;The id of the Discord channel in which the invite was sent. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="is_valid">
 			<return type="bool" />
 			<description>
+			&lt;para&gt;Whether or not this invite is currently joinable. An invite becomes invalid if it was sent more than 6 hours ago or if the sender is no longer playing the game the invite is for. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="message_id">
 			<return type="int" />
 			<description>
+			&lt;para&gt;The id of the Discord message that contains the invite. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="parent_application_id">
 			<return type="int" />
 			<description>
+			&lt;para&gt;The application id of the parent - this is only applicable if there is a parent for a publisher's suite of applications. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="party_id">
 			<return type="String" />
 			<description>
+			&lt;para&gt;The id of the party the invite was sent for. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="sender_id">
 			<return type="int" />
 			<description>
+			&lt;para&gt;The user id of the user who sent the invite. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="session_id">
 			<return type="String" />
 			<description>
+			&lt;para&gt;The session id of the user who sent the invite. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="set_application_id">
 			<return type="void" />
 			<param index="0" name="application_id" type="int" />
 			<description>
+			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1ActivityInvite_1a38ff19dd954a406c8a21434a081f1c33" kindref="member"&gt;ActivityInvite::ApplicationId&lt;/ref&gt;. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="set_channel_id">
 			<return type="void" />
 			<param index="0" name="channel_id" type="int" />
 			<description>
+			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1ActivityInvite_1aa74d7a03e46c5ae5f0ee720b70836f0e" kindref="member"&gt;ActivityInvite::ChannelId&lt;/ref&gt;. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="set_is_valid">
 			<return type="void" />
 			<param index="0" name="is_valid" type="bool" />
 			<description>
+			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1ActivityInvite_1a92e24e683870b13e8f464d6b93312433" kindref="member"&gt;ActivityInvite::IsValid&lt;/ref&gt;. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="set_message_id">
 			<return type="void" />
 			<param index="0" name="message_id" type="int" />
 			<description>
+			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1ActivityInvite_1a4c1747cc8655bc583d00e8d13d4888c2" kindref="member"&gt;ActivityInvite::MessageId&lt;/ref&gt;. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="set_parent_application_id">
 			<return type="void" />
 			<param index="0" name="parent_application_id" type="int" />
 			<description>
+			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1ActivityInvite_1acffc092f6a3d069c24cd4f36bdd40318" kindref="member"&gt;ActivityInvite::ParentApplicationId&lt;/ref&gt;. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="set_party_id">
 			<return type="void" />
 			<param index="0" name="party_id" type="String" />
 			<description>
+			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1ActivityInvite_1ab4d0b0ccc568941375458518fb571176" kindref="member"&gt;ActivityInvite::PartyId&lt;/ref&gt;. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="set_sender_id">
 			<return type="void" />
 			<param index="0" name="sender_id" type="int" />
 			<description>
+			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1ActivityInvite_1a58153cc37c7bcb733a28f143dc1ed5a8" kindref="member"&gt;ActivityInvite::SenderId&lt;/ref&gt;. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="set_session_id">
 			<return type="void" />
 			<param index="0" name="session_id" type="String" />
 			<description>
+			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1ActivityInvite_1a0c947f356db2b20a68a9ad536bbd4f5c" kindref="member"&gt;ActivityInvite::SessionId&lt;/ref&gt;. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="set_type">
 			<return type="void" />
 			<param index="0" name="type" type="int" enum="DiscordActivityActionTypes.Enum" />
 			<description>
+			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1ActivityInvite_1af5ecd0fa6a4ce8435929c086894471e2" kindref="member"&gt;ActivityInvite::Type&lt;/ref&gt;. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="type">
 			<return type="int" enum="DiscordActivityActionTypes.Enum" />
 			<description>
+			&lt;para&gt;The type of invite that was sent. &lt;/para&gt;
 			</description>
 		</method>
 	</methods>

@@ -1,7 +1,7 @@
 # Responsible for collecting informations from XML tree.
 from pathlib import Path
 from xml.etree import ElementTree
-from xml.etree.ElementTree import Element
+from xml.etree.ElementTree import Element, tostring
 
 from check import check_overloading, check_callbacks, check_enums
 from name import to_gdscript_variable_name, to_snake_case
@@ -23,6 +23,16 @@ ENUMS_FOUND = 0
 
 def collect_text(tree: Element) -> str:
     return "".join(tree.itertext()).strip()
+
+
+def collect_content(tree: Element) -> str:
+    text = str(tostring(tree, "unicode"))
+    text = text.strip()
+    text = text.removeprefix(f"<{tree.tag}>")
+    text = text.removesuffix(f"</{tree.tag}>")
+    text = text.strip()
+
+    return text
 
 
 def collect_namespace(tree: Element, xml_dir: Path) -> NamespaceInfo:
@@ -57,8 +67,8 @@ def collect_class(tree: Element) -> ClassInfo:
     class_info = ClassInfo()
     class_info.name = collect_text(tree.find("compounddef/compoundname"))
     class_info.name = class_info.name.removeprefix("discordpp::")
-    class_info.short_desc = collect_text(tree.find("compounddef/briefdescription"))
-    class_info.long_desc = collect_text(tree.find("compounddef/detaileddescription"))
+    class_info.short_desc = collect_content(tree.find("compounddef/briefdescription"))
+    class_info.long_desc = collect_content(tree.find("compounddef/detaileddescription"))
     class_info.enums = collect_enums(tree)
     class_info.functions = collect_functions(tree)
     class_info.constructors = collect_constructors(class_info)
@@ -81,16 +91,16 @@ def collect_enums(tree: Element) -> list[EnumInfo]:
 
         ei = EnumInfo()
         ei.name = collect_text(e.find("name"))
-        ei.short_desc = collect_text(e.find("briefdescription"))
-        ei.long_desc = collect_text(e.find("detaileddescription"))
+        ei.short_desc = collect_content(e.find("briefdescription"))
+        ei.long_desc = collect_content(e.find("detaileddescription"))
         ei.identifier = ENUMS_FOUND
         ENUMS_FOUND += 1
 
         for ev in e.findall("enumvalue"):
             evi = EnumValueInfo()
             evi.name = collect_text(ev.find("name"))
-            evi.short_desc = collect_text(ev.find("briefdescription"))
-            evi.long_desc = collect_text(ev.find("detaileddescription"))
+            evi.short_desc = collect_content(ev.find("briefdescription"))
+            evi.long_desc = collect_content(ev.find("detaileddescription"))
 
             if ev.find("initializer") is not None:
                 evi.init = collect_text(ev.find("initializer")) + ","
@@ -111,8 +121,8 @@ def collect_functions(tree: Element) -> list[FunctionInfo]:
         fi.name = collect_text(f.find("name"))
         fi.gdscript_name = to_gdscript_variable_name(fi.name)
         fi.type = collect_type(f)
-        fi.short_desc = collect_text(f.find("briefdescription"))
-        fi.long_desc = collect_text(f.find("detaileddescription"))
+        fi.short_desc = collect_content(f.find("briefdescription"))
+        fi.long_desc = collect_content(f.find("detaileddescription"))
         fi.params = collect_params(f)
 
         if fi.name.startswith("operator"):  # Exclude.
@@ -143,8 +153,8 @@ def collect_callbacks(tree: Element) -> list[CallbackInfo]:
         c = CallbackInfo()
         c.name = collect_text(t.find("name"))
         c.type = collect_type(t)
-        c.short_desc = collect_text(t.find("briefdescription"))
-        c.long_desc = collect_text(t.find("detaileddescription"))
+        c.short_desc = collect_content(t.find("briefdescription"))
+        c.long_desc = collect_content(t.find("detaileddescription"))
 
         callbacks.append(c)
 

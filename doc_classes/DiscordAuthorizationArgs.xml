@@ -1,7 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<class name="DiscordAuthorizationArgs" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
-	<brief_description>
-	</brief_description>
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordAuthorizationArgs" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>&lt;para&gt;Arguments to the &lt;ref refid="classdiscordpp_1_1Client_1ace94a58e27545a933d79db32b387a468" kindref="member"&gt;Client::Authorize&lt;/ref&gt; function. &lt;/para&gt;</brief_description>
 	<description>
 	</description>
 	<tutorials>
@@ -10,78 +8,102 @@
 		<method name="client_id">
 			<return type="int" />
 			<description>
+			&lt;para&gt;Optional. The Discord application ID for your game. Defaults to the value set by &lt;ref refid="classdiscordpp_1_1Client_1ad452335c06b28be0406dab824acccc49" kindref="member"&gt;Client::SetApplicationId&lt;/ref&gt;. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="code_challenge">
 			<return type="Variant" />
 			<description>
+			&lt;para&gt;If using the &lt;ref refid="classdiscordpp_1_1Client_1aaee636f91fb1ea3465157c20313b702c" kindref="member"&gt;Client::GetToken&lt;/ref&gt; flow, you will need to generate a code challenge and verifier. &lt;/para&gt;
+			&lt;para&gt;Use &lt;ref refid="classdiscordpp_1_1Client_1aba6adc1f978e7bf4c5433c560e1ad704" kindref="member"&gt;Client::CreateAuthorizationCodeVerifier&lt;/ref&gt; to generate these values and pass the challenge property here. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="custom_scheme_param">
 			<return type="Variant" />
 			<description>
+			&lt;para&gt;Custom URI scheme for mobile redirects. &lt;/para&gt;
+			&lt;para&gt;This allows games to specify a completely custom URI scheme for OAuth redirects. For example, setting this to "mygame" will result in a URI scheme like: mygame:/authorize/callback&lt;/para&gt;
+&lt;para&gt;If not provided, defaults to the standard Discord format: discord-123456789:/authorize/callback&lt;/para&gt;
+&lt;para&gt;This is particularly useful for distinguishing between multiple games from the same developer or for avoiding conflicts with other apps. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="integration_type">
 			<return type="Variant" />
 			<description>
+			&lt;para&gt;The type of integration the app will be installed as. &lt;/para&gt;
+			&lt;para&gt;&lt;ulink url="https://discord.com/developers/docs/resources/application#installation-context"&gt;https://discord.com/developers/docs/resources/application#installation-context&lt;/ulink&gt; &lt;/para&gt;
 			</description>
 		</method>
 		<method name="nonce">
 			<return type="Variant" />
 			<description>
+			&lt;para&gt;The nonce field is generally only useful for backend integrations using ID tokens. &lt;/para&gt;
+			&lt;para&gt;For more information, see: &lt;ulink url="https://openid.net/specs/openid-connect-core-1_0.html#rfc.section.2~nonce:~:text=auth_time%20response%20parameter"&gt;https://openid.net/specs/openid-connect-core-1_0.html#rfc.section.2~nonce:~:text=auth_time%20response%20parameter&lt;/ulink&gt;.)-,nonce,-String%20value%20used &lt;/para&gt;
 			</description>
 		</method>
 		<method name="scopes">
 			<return type="String" />
 			<description>
+			&lt;para&gt;Scopes is a space separated string of the oauth scopes your game is requesting. &lt;/para&gt;
+			&lt;para&gt;Most games should just pass in &lt;ref refid="classdiscordpp_1_1Client_1a71499da752fbdc2d4326ae0fd36c0dd1" kindref="member"&gt;Client::GetDefaultCommunicationScopes&lt;/ref&gt; or &lt;ref refid="classdiscordpp_1_1Client_1a7648bd1d2f7d9a86ebd0edb8bef12b5c" kindref="member"&gt;Client::GetDefaultPresenceScopes&lt;/ref&gt; which will include these scopes, respectively: &lt;computeroutput&gt;openid sdk.social_layer&lt;/computeroutput&gt; or &lt;computeroutput&gt;openid sdk.social_layer_presence&lt;/computeroutput&gt;&lt;/para&gt;
+&lt;para&gt;&lt;computeroutput&gt;sdk.social_layer&lt;/computeroutput&gt; and &lt;computeroutput&gt;sdk.social_layer_presence&lt;/computeroutput&gt; automatically expand to include all the necessary scopes for the integration.&lt;/para&gt;
+&lt;para&gt;You can pass in additional scopes if you need to, but as a general rule you should only request the scopes you actually need, and the user will need to grant access to those additional scopes as well. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="set_client_id">
 			<return type="void" />
 			<param index="0" name="client_id" type="int" />
 			<description>
+			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1AuthorizationArgs_1a7579dadf3052c4ea4379131ac9e2e30b" kindref="member"&gt;AuthorizationArgs::ClientId&lt;/ref&gt;. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="set_code_challenge">
 			<return type="void" />
 			<param index="0" name="code_challenge" type="Variant" />
 			<description>
+			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1AuthorizationArgs_1a59930370c7ab835cf09fb6d8f893dd96" kindref="member"&gt;AuthorizationArgs::CodeChallenge&lt;/ref&gt;. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="set_custom_scheme_param">
 			<return type="void" />
 			<param index="0" name="custom_scheme_param" type="Variant" />
 			<description>
+			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1AuthorizationArgs_1abfe84accfc44740ffb36a408ac17277f" kindref="member"&gt;AuthorizationArgs::CustomSchemeParam&lt;/ref&gt;. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="set_integration_type">
 			<return type="void" />
 			<param index="0" name="integration_type" type="Variant" />
 			<description>
+			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1AuthorizationArgs_1ac1ab5d5840789b48896d427cd78102d3" kindref="member"&gt;AuthorizationArgs::IntegrationType&lt;/ref&gt;. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="set_nonce">
 			<return type="void" />
 			<param index="0" name="nonce" type="Variant" />
 			<description>
+			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1AuthorizationArgs_1a1dff6b488e573fc4eaa63f4ddb6262aa" kindref="member"&gt;AuthorizationArgs::Nonce&lt;/ref&gt;. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="set_scopes">
 			<return type="void" />
 			<param index="0" name="scopes" type="String" />
 			<description>
+			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1AuthorizationArgs_1ae5989180022eccc3bfdf65dda4877771" kindref="member"&gt;AuthorizationArgs::Scopes&lt;/ref&gt;. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="set_state">
 			<return type="void" />
 			<param index="0" name="state" type="Variant" />
 			<description>
+			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1AuthorizationArgs_1a0c85866ae01ac14ad0f9038fc2559a05" kindref="member"&gt;AuthorizationArgs::State&lt;/ref&gt;. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="state">
 			<return type="Variant" />
 			<description>
+			&lt;para&gt;See &lt;ulink url="https://discord.com/developers/docs/topics/oauth2#state-and-security"&gt;https://discord.com/developers/docs/topics/oauth2#state-and-security&lt;/ulink&gt; for details on this field. &lt;/para&gt;
+			&lt;para&gt;We recommend leaving this unset, and the SDK will automatically generate a secure random value for you. &lt;/para&gt;
 			</description>
 		</method>
 	</methods>

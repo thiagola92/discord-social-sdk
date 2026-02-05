@@ -1,7 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<class name="DiscordCallInfoHandle" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
-	<brief_description>
-	</brief_description>
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordCallInfoHandle" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>&lt;para&gt;Convenience class that represents the state of a single Discord call in a lobby. &lt;/para&gt;</brief_description>
 	<description>
 	</description>
 	<tutorials>
@@ -10,22 +8,26 @@
 		<method name="channel_id">
 			<return type="int" />
 			<description>
+			&lt;para&gt;Returns the lobby ID of the call. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="get_participants">
 			<return type="int[]" />
 			<description>
+			&lt;para&gt;Returns a list of the user IDs of the participants in the call. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="get_voice_state_handle">
 			<return type="Variant" />
 			<param index="0" name="user_id" type="int" />
 			<description>
+			&lt;para&gt;Accesses the voice state for a single user so you can know if they have muted or deafened themselves. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="guild_id">
 			<return type="int" />
 			<description>
+			&lt;para&gt;Returns the lobby ID of the call. &lt;/para&gt;
 			</description>
 		</method>
 	</methods>

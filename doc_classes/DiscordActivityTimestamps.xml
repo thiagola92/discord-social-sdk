@@ -1,32 +1,38 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<class name="DiscordActivityTimestamps" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordActivityTimestamps" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
 	</brief_description>
-	<description>
-	</description>
+	<description>&lt;para&gt;&lt;simplesect kind="see"&gt;&lt;para&gt;&lt;ref refid="classdiscordpp_1_1Activity" kindref="compound"&gt;Activity&lt;/ref&gt; &lt;/para&gt;
+&lt;/simplesect&gt;
+&lt;/para&gt;</description>
 	<tutorials>
 	</tutorials>
 	<methods>
 		<method name="end">
 			<return type="int" />
 			<description>
+			&lt;para&gt;The time the activity will end at, in milliseconds since Unix epoch. &lt;/para&gt;
+			&lt;para&gt;The SDK will try to convert seconds to milliseconds if a small-ish value is passed in. If specified, the Discord client will render a countdown timer showing how long until the activity ends. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="set_end">
 			<return type="void" />
 			<param index="0" name="end" type="int" />
 			<description>
+			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1ActivityTimestamps_1aba1847d3e0223ff1bb7695ab58c5d097" kindref="member"&gt;ActivityTimestamps::End&lt;/ref&gt;. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="set_start">
 			<return type="void" />
 			<param index="0" name="start" type="int" />
 			<description>
+			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1ActivityTimestamps_1a4806e31609893206e81c1963857ef829" kindref="member"&gt;ActivityTimestamps::Start&lt;/ref&gt;. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="start">
 			<return type="int" />
 			<description>
+			&lt;para&gt;The time the activity started, in milliseconds since Unix epoch. &lt;/para&gt;
+			&lt;para&gt;The SDK will try to convert seconds to milliseconds if a small-ish value is passed in. If specified, the Discord client will render a count up timer showing how long the user has been playing this activity. &lt;/para&gt;
 			</description>
 		</method>
 	</methods>

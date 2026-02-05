@@ -1,7 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<class name="DiscordAuthorizationCodeChallenge" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
-	<brief_description>
-	</brief_description>
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordAuthorizationCodeChallenge" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>&lt;para&gt;Struct that encapsulates the challenge part of the code verification flow. &lt;/para&gt;</brief_description>
 	<description>
 	</description>
 	<tutorials>
@@ -10,23 +8,27 @@
 		<method name="challenge">
 			<return type="String" />
 			<description>
+			&lt;para&gt;The challenge value. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="method">
 			<return type="int" enum="DiscordAuthenticationCodeChallengeMethod.Enum" />
 			<description>
+			&lt;para&gt;The method used to generate the challenge. The only method used by the SDK is sha256. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="set_challenge">
 			<return type="void" />
 			<param index="0" name="challenge" type="String" />
 			<description>
+			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1AuthorizationCodeChallenge_1a0faf6b1bd98ea1c7b34534a2a7586f88" kindref="member"&gt;AuthorizationCodeChallenge::Challenge&lt;/ref&gt;. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="set_method">
 			<return type="void" />
 			<param index="0" name="method" type="int" enum="DiscordAuthenticationCodeChallengeMethod.Enum" />
 			<description>
+			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1AuthorizationCodeChallenge_1a044c58aee91ba4c992418c2326837290" kindref="member"&gt;AuthorizationCodeChallenge::Method&lt;/ref&gt;. &lt;/para&gt;
 			</description>
 		</method>
 	</methods>

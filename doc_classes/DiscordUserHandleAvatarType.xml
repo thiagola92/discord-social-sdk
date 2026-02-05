@@ -15,5 +15,7 @@
 		</constant>
 		<constant name="Jpeg" value="3" enum="Enum">
 		</constant>
+		<constant name="id" value="26">
+		</constant>
 	</constants>
 </class>

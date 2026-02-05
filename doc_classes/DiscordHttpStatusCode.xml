@@ -127,5 +127,7 @@
 		</constant>
 		<constant name="NetworkAuthorizationRequired" value="511" enum="Enum">
 		</constant>
+		<constant name="id" value="6">
+		</constant>
 	</constants>
 </class>

@@ -13,5 +13,7 @@
 		</constant>
 		<constant name="Details" value="2" enum="Enum">
 		</constant>
+		<constant name="id" value="3">
+		</constant>
 	</constants>
 </class>

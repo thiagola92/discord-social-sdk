@@ -13,5 +13,7 @@
 		</constant>
 		<constant name="JoinRequest" value="5" enum="Enum">
 		</constant>
+		<constant name="id" value="0">
+		</constant>
 	</constants>
 </class>

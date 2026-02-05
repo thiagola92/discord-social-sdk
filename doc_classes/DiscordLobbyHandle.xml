@@ -1,46 +1,92 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<class name="DiscordLobbyHandle" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
-	<brief_description>
-	</brief_description>
-	<description>
-	</description>
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordLobbyHandle" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>&lt;para&gt;A &lt;ref refid="classdiscordpp_1_1LobbyHandle" kindref="compound"&gt;LobbyHandle&lt;/ref&gt; represents a single lobby in the SDK. A lobby can be thought of as just an arbitrary, developer-controlled group of users that can communicate with each other. &lt;/para&gt;</brief_description>
+	<description>&lt;sect1 id="classdiscordpp_1_1LobbyHandle_1autotoc_md6_1s1"&gt;&lt;sect2 id="classdiscordpp_1_1LobbyHandle_1autotoc_md6"&gt;
+&lt;title&gt;Managing Lobbies&lt;/title&gt;&lt;para&gt;Lobbies can be managed through a set of server_apis that are documented elsewhere, which allow you to create lobbies, add and remove users from lobbies, and delete them.&lt;/para&gt;
+&lt;para&gt;There is also an API to create lobbies without any server side component using the &lt;ref refid="classdiscordpp_1_1Client_1a8b4e195555ecaa89ccdfc0acd28d3512" kindref="member"&gt;Client::CreateOrJoinLobby&lt;/ref&gt; function, which accepts a game-generated secret and will join the user to the lobby associated with that secret, creating it if necessary.&lt;/para&gt;
+&lt;para&gt;NOTE: When using this API the secret will auto-expire in 30 days, at which point the existing lobby can no longer be joined, but will still exist. We recommend using this for short term lobbies and not permanent lobbies. Use the Server API for more permanent lobbies.&lt;/para&gt;
+&lt;para&gt;Members of a lobby are not automatically removed when they close the game or temporarily disconnect. When the SDK connects, it will attempt to re-connect to any lobbies it is currently a member of.&lt;/para&gt;
+&lt;/sect2&gt;&lt;/sect1&gt;
+&lt;sect1 id="classdiscordpp_1_1LobbyHandle_1autotoc_md7"&gt;
+&lt;title&gt;Lobby Auto-Deletion&lt;/title&gt;&lt;para&gt;Lobbies are generally ephemeral and will be auto-deleted if they have been idle (meaning no users are actively connected to them) for some amount of time. The default is to auto delete after 5 minutes, but this can be customized when creating the lobby. As long as one user is connected to the lobby though it will not be auto-deleted (meaning they have the SDK running and status is set to Ready). Additionally, lobbies that are linked to a channel on Discord will not be auto deleted.&lt;/para&gt;
+&lt;para&gt;You can also use the server_apis to customize this timeout, it can be raised to as high as 7 days, meaning the lobby only gets deleted if no one connects to it for an entire week. This should give a good amount of permanence to lobbies when needed, but there may be rare cases where a lobby does need to be "rebuilt" if everyone is offline for an extended period.&lt;/para&gt;
+&lt;/sect1&gt;
+&lt;sect1 id="classdiscordpp_1_1LobbyHandle_1autotoc_md8"&gt;
+&lt;title&gt;Membership Limits&lt;/title&gt;&lt;para&gt;Lobbies may have a maximum of 1,000 members, and each user may be in a maximum of 200 lobbies per game.&lt;/para&gt;
+&lt;sect2 id="classdiscordpp_1_1LobbyHandle_1autotoc_md9"&gt;
+&lt;title&gt;Audio&lt;/title&gt;&lt;para&gt;Lobbies support voice calls. Although a lobby is allowed to have 1,000 members, you should not try to start voice calls in lobbies that large. We strongly recommend sticking to around 25 members or fewer for voice calls.&lt;/para&gt;
+&lt;para&gt;See &lt;ref refid="classdiscordpp_1_1Client_1aef4f25d761fe198fbe9bc721fc24d83f" kindref="member"&gt;Client::StartCall&lt;/ref&gt; for more information on how to start a voice call in a lobby.&lt;/para&gt;
+&lt;/sect2&gt;
+&lt;sect2 id="classdiscordpp_1_1LobbyHandle_1autotoc_md10"&gt;
+&lt;title&gt;Channel Linking&lt;/title&gt;&lt;para&gt;Lobbies can be linked to a channel on Discord, which allows messages sent in one place to show up in the other. Any lobby can be linked to a channel, but only lobby members with the LobbyMemberFlags::CanLinkLobby flag are allowed to a link a lobby. This flag must be set using the server APIs, which allows you to ensure that only clan/guild/group leaders can link lobbies to Discord channels.&lt;/para&gt;
+&lt;para&gt;To setup a link you'll need to use methods in the &lt;ref refid="classdiscordpp_1_1Client" kindref="compound"&gt;Client&lt;/ref&gt; class to fetch the servers (aka guilds) and channels a user is a member of and setup the link. The &lt;ref refid="classdiscordpp_1_1Client_1aac1ec02df6074ed9213ce230e6a42fe1" kindref="member"&gt;Client::GetUserGuilds&lt;/ref&gt; and &lt;ref refid="classdiscordpp_1_1Client_1adba1e5a83c219a9c4f6dab1657778017" kindref="member"&gt;Client::GetGuildChannels&lt;/ref&gt; methods are used to fetch the servers and channels respectively. You can use these to show a UI for the user to pick which server and channel they want to link to.&lt;/para&gt;
+&lt;para&gt;Not all channels are linkable. To be linked:&lt;itemizedlist&gt;
+&lt;listitem&gt;&lt;para&gt;The channel must be a guild text channel&lt;/para&gt;
+&lt;/listitem&gt;&lt;listitem&gt;&lt;para&gt;The channel may not be marked as NSFW&lt;/para&gt;
+&lt;/listitem&gt;&lt;listitem&gt;&lt;para&gt;The channel must not be currently linked to a different lobby&lt;/para&gt;
+&lt;/listitem&gt;&lt;listitem&gt;&lt;para&gt;The user must have the following permissions in the channel in order to link it:&lt;itemizedlist&gt;
+&lt;listitem&gt;&lt;para&gt;Manage Channels&lt;/para&gt;
+&lt;/listitem&gt;&lt;listitem&gt;&lt;para&gt;View Channel&lt;/para&gt;
+&lt;/listitem&gt;&lt;listitem&gt;&lt;para&gt;Send Messages&lt;/para&gt;
+&lt;/listitem&gt;&lt;/itemizedlist&gt;
+&lt;/para&gt;
+&lt;/listitem&gt;&lt;/itemizedlist&gt;
+&lt;/para&gt;
+&lt;sect3 id="classdiscordpp_1_1LobbyHandle_1autotoc_md11"&gt;
+&lt;title&gt;Linking Private Channels&lt;/title&gt;&lt;para&gt;Discord is allowing all channels the user has access to in a server to be linked in game, even if that channel is private to other members of the server. This means that a user could choose to link a private "admins chat" channel (assuming they are an admin) in game if they wanted.&lt;/para&gt;
+&lt;para&gt;It's not really possible for the game to know which users should have access to that channel or not though. So in this implementation, every member of a lobby will be able to view all messages sent in the linked channel and reply to them. If you are going to allow private channels to be linked in game, you must make sure that users are aware that their private channel will be viewable by everyone in the lobby!&lt;/para&gt;
+&lt;para&gt;To help you identify which channels are public or private, we have added a isViewableAndWriteableByAllMembers boolean which is described more in &lt;ref refid="classdiscordpp_1_1GuildChannel" kindref="compound"&gt;GuildChannel&lt;/ref&gt;. You can use that to just not allow private channels to be linked, or to know when to show a clear warning, it's up to you!&lt;/para&gt;
+&lt;/sect3&gt;
+&lt;/sect2&gt;
+&lt;sect2 id="classdiscordpp_1_1LobbyHandle_1autotoc_md12"&gt;
+&lt;title&gt;Misc&lt;/title&gt;&lt;para&gt;Handle objects in the SDK hold a reference both to the underlying data, and to the SDK instance. Changes to the underlying data will generally be available on existing handles objects without having to re-create them. If the SDK instance is destroyed, but you still have a reference to a handle object, note that it will return the default value for all method calls (ie an empty string for methods that return a string). &lt;/para&gt;
+&lt;/sect2&gt;
+&lt;/sect1&gt;</description>
 	<tutorials>
 	</tutorials>
 	<methods>
 		<method name="get_call_info_handle">
 			<return type="Variant" />
 			<description>
+			&lt;para&gt;Returns a reference to the &lt;ref refid="classdiscordpp_1_1CallInfoHandle" kindref="compound"&gt;CallInfoHandle&lt;/ref&gt; if there is an active voice call in this lobby. &lt;/para&gt;
+			&lt;para&gt;This can allow you to display which lobby members are in voice, even if the current user has not yet joined the voice call. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="get_lobby_member_handle">
 			<return type="Variant" />
 			<param index="0" name="member_id" type="int" />
 			<description>
+			&lt;para&gt;Returns a reference to the &lt;ref refid="classdiscordpp_1_1LobbyMemberHandle" kindref="compound"&gt;LobbyMemberHandle&lt;/ref&gt; for the given user ID, if they are a member of this lobby. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="id">
 			<return type="int" />
 			<description>
+			&lt;para&gt;Returns the id of the lobby. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="linked_channel">
 			<return type="Variant" />
 			<description>
+			&lt;para&gt;Returns information about the channel linked to this lobby, if any. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="lobby_member_ids">
 			<return type="int[]" />
 			<description>
+			&lt;para&gt;Returns a list of the user IDs that are members of this lobby. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="lobby_members">
 			<return type="DiscordLobbyMemberHandle[]" />
 			<description>
+			&lt;para&gt;Returns a list of the &lt;ref refid="classdiscordpp_1_1LobbyMemberHandle" kindref="compound"&gt;LobbyMemberHandle&lt;/ref&gt; objects for each member of this lobby. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="metadata">
 			<return type="Dictionary[String, String]" />
 			<description>
+			&lt;para&gt;Returns any developer supplied metadata for this lobby. &lt;/para&gt;
+			&lt;para&gt;Metadata is simple string key/value pairs and is a way to associate internal game information with the lobby so each lobby member can have easy access to. &lt;/para&gt;
 			</description>
 		</method>
 	</methods>

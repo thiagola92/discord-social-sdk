@@ -1,30 +1,32 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<class name="DiscordChannelHandle" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
-	<brief_description>
-	</brief_description>
-	<description>
-	</description>
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordChannelHandle" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>&lt;para&gt;All messages sent on Discord are done so in a Channel. &lt;ref refid="classdiscordpp_1_1MessageHandle_1ad8b8ccfab8c8e06dc9fc3201284db1ce" kindref="member"&gt;MessageHandle::ChannelId&lt;/ref&gt; will contain the ID of the channel a message was sent in, and &lt;ref refid="classdiscordpp_1_1Client_1a6ab6f4217d04d84935d012af88ce5752" kindref="member"&gt;Client::GetChannelHandle&lt;/ref&gt; will return an instance of this class. &lt;/para&gt;</brief_description>
+	<description>&lt;para&gt;Handle objects in the SDK hold a reference both to the underlying data, and to the SDK instance. Changes to the underlying data will generally be available on existing handles objects without having to re-create them. If the SDK instance is destroyed, but you still have a reference to a handle object, note that it will return the default value for all method calls (ie an empty string for methods that return a string). &lt;/para&gt;</description>
 	<tutorials>
 	</tutorials>
 	<methods>
 		<method name="id">
 			<return type="int" />
 			<description>
+			&lt;para&gt;Returns the ID of the channel. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="name">
 			<return type="String" />
 			<description>
+			&lt;para&gt;Returns the name of the channel. &lt;/para&gt;
+			&lt;para&gt;Generally only channels in servers have names, although Discord may generate a display name for some channels as well. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="recipients">
 			<return type="int[]" />
 			<description>
+			&lt;para&gt;For DMs and GroupDMs, returns the user IDs of the members of the channel. For all other channels returns an empty list. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="type">
 			<return type="int" enum="DiscordChannelType.Enum" />
 			<description>
+			&lt;para&gt;Returns the type of the channel. &lt;/para&gt;
 			</description>
 		</method>
 	</methods>

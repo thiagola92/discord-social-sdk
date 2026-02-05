@@ -11,5 +11,7 @@
 		</constant>
 		<constant name="Public" value="1" enum="Enum">
 		</constant>
+		<constant name="id" value="1">
+		</constant>
 	</constants>
 </class>

@@ -5,6 +5,7 @@ from xml.etree import ElementTree
 from help import clang_format
 from name import to_snake_case, to_godot_class_name
 from collect import NamespaceInfo, ClassInfo, collect_namespace
+from documentation import document_xml
 from template.file.register_types_h import get_register_types_h
 from template.file.register_types_cpp import get_register_types_cpp
 from template.file.discord_enum_h import get_discord_enum_h
@@ -173,15 +174,17 @@ class Builder:
     ######################################################################
 
     def update_documentations(self) -> None:
-        self.update_discord_doc()
+        self.update_class_documentation(self.namespace_info)
 
         for c in self.namespace_info.classes:
-            self.update_discord_class_doc(c)
+            self.update_class_documentation(c)
 
-    def update_discord_doc(self) -> None:
-        filename = to_godot_class_name("")
+    def update_class_documentation(self, info: NamespaceInfo | ClassInfo) -> None:
+        class_name = info.name if isinstance(info, ClassInfo) else ""
+        filename = to_godot_class_name(class_name)
         filepath = self.doc_dir.joinpath(f"{filename}.xml")
+        tree = ElementTree.parse(filepath)
 
-    def update_discord_class_doc(self, class_info: ClassInfo) -> None:
-        filename = to_godot_class_name(class_info.name)
-        filepath = self.doc_dir.joinpath(f"{filename}.xml")
+        document_xml(tree, info)
+
+        tree.write(filepath)

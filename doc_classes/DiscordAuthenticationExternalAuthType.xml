@@ -23,5 +23,7 @@
 		</constant>
 		<constant name="PlayStationNetworkIdToken" value="7" enum="Enum">
 		</constant>
+		<constant name="id" value="18">
+		</constant>
 	</constants>
 </class>

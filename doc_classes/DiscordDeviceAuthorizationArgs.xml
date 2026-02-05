@@ -1,7 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<class name="DiscordDeviceAuthorizationArgs" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
-	<brief_description>
-	</brief_description>
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordDeviceAuthorizationArgs" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>&lt;para&gt;Arguments to the &lt;ref refid="classdiscordpp_1_1Client_1a4a9c666b2d30bae0a16f5afd7ccee60d" kindref="member"&gt;Client::GetTokenFromDevice&lt;/ref&gt; function. &lt;/para&gt;</brief_description>
 	<description>
 	</description>
 	<tutorials>
@@ -10,23 +8,30 @@
 		<method name="client_id">
 			<return type="int" />
 			<description>
+			&lt;para&gt;Optional. The Discord application ID for your game. Defaults to the value set by &lt;ref refid="classdiscordpp_1_1Client_1ad452335c06b28be0406dab824acccc49" kindref="member"&gt;Client::SetApplicationId&lt;/ref&gt;. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="scopes">
 			<return type="String" />
 			<description>
+			&lt;para&gt;Scopes is a space separated string of the oauth scopes your game is requesting. &lt;/para&gt;
+			&lt;para&gt;Most games should just pass in &lt;ref refid="classdiscordpp_1_1Client_1a71499da752fbdc2d4326ae0fd36c0dd1" kindref="member"&gt;Client::GetDefaultCommunicationScopes&lt;/ref&gt; or &lt;ref refid="classdiscordpp_1_1Client_1a7648bd1d2f7d9a86ebd0edb8bef12b5c" kindref="member"&gt;Client::GetDefaultPresenceScopes&lt;/ref&gt; which will include these scopes, respectively: &lt;computeroutput&gt;openid sdk.social_layer&lt;/computeroutput&gt; or &lt;computeroutput&gt;openid sdk.social_layer_presence&lt;/computeroutput&gt;&lt;/para&gt;
+&lt;para&gt;&lt;computeroutput&gt;sdk.social_layer&lt;/computeroutput&gt; and &lt;computeroutput&gt;sdk.social_layer_presence&lt;/computeroutput&gt; automatically expand to include all the necessary scopes for the integration.&lt;/para&gt;
+&lt;para&gt;You can pass in additional scopes if you need to, but as a general rule you should only request the scopes you actually need, and the user will need to grant access to those additional scopes as well. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="set_client_id">
 			<return type="void" />
 			<param index="0" name="client_id" type="int" />
 			<description>
+			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1DeviceAuthorizationArgs_1a5c8d15b74d6e5fdcfaed01e6e58a9377" kindref="member"&gt;DeviceAuthorizationArgs::ClientId&lt;/ref&gt;. &lt;/para&gt;
 			</description>
 		</method>
 		<method name="set_scopes">
 			<return type="void" />
 			<param index="0" name="scopes" type="String" />
 			<description>
+			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1DeviceAuthorizationArgs_1ab68f041359323131d7bb33228ddd2f15" kindref="member"&gt;DeviceAuthorizationArgs::Scopes&lt;/ref&gt;. &lt;/para&gt;
 			</description>
 		</method>
 	</methods>

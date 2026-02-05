@@ -13,5 +13,7 @@
 		</constant>
 		<constant name="Offline" value="2" enum="Enum">
 		</constant>
+		<constant name="id" value="20">
+		</constant>
 	</constants>
 </class>

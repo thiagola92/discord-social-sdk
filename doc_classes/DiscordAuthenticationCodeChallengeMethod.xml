@@ -9,5 +9,7 @@
 	<constants>
 		<constant name="S256" value="0" enum="Enum">
 		</constant>
+		<constant name="id" value="7">
+		</constant>
 	</constants>
 </class>

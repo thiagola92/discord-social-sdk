@@ -9,5 +9,7 @@
 	<constants>
 		<constant name="MessageDataVisibleOnDiscord" value="3" enum="Enum">
 		</constant>
+		<constant name="id" value="16">
+		</constant>
 	</constants>
 </class>
