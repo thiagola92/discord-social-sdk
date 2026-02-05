@@ -62,7 +62,7 @@ public:
 	static void run_callbacks();
 
 	// Overloading functions.
-	static String enum_to_string(int value, String enum_type);
+	static String enum_to_string(int64_t value, int64_t enum_type);
 
 	~Discord() {}
 };

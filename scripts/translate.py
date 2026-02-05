@@ -131,10 +131,10 @@ def discord_type_to_godot_type(
 
     if is_discord_enum(info):
         if info.fake:
-            return "String"
+            return "int64_t"
 
         if info.overloading:
-            return "int"
+            return "int64_t"
 
         return to_godot_class_name(info.name) + "::Enum"
 
@@ -252,7 +252,7 @@ def discord_variable_to_godot_variable(
 
     if is_discord_enum(info):
         if info.fake:
-            return f"String {target} = {source};"
+            return f"int64_t {target} = {source};"
 
         name = to_godot_class_name(info.name) + "::Enum"
         return f"{name} {target} = ({name}){source};"
@@ -386,9 +386,6 @@ def godot_variable_to_discord_variable(
         return f"std::string {target} = std::string({source}.utf8().get_data());"
 
     if is_discord_enum(info):
-        if info.fake:
-            return f"std::string {target} = std::string({source}.utf8().get_data());"
-
         return f"{info.name} {target} = ({info.name}){source};"
 
     if is_discord_optional(info):

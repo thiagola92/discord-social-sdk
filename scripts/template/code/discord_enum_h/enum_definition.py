@@ -23,7 +23,7 @@ protected:
 	}}
 
 public:
-	static const int id = {enum_id};
+	static const int64_t id = {enum_id};
 
 	enum Enum {{
 		{values}

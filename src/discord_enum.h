@@ -30,7 +30,7 @@ protected:
 	}
 
 public:
-	static const int id = 0;
+	static const int64_t id = 0;
 
 	enum Enum {
 		Invalid = 0,
@@ -63,7 +63,7 @@ protected:
 	}
 
 public:
-	static const int id = 4;
+	static const int64_t id = 4;
 
 	enum Enum {
 		Desktop = 1,
@@ -95,7 +95,7 @@ protected:
 	}
 
 public:
-	static const int id = 1;
+	static const int64_t id = 1;
 
 	enum Enum {
 		Private = 0,
@@ -126,7 +126,7 @@ protected:
 	}
 
 public:
-	static const int id = 2;
+	static const int64_t id = 2;
 
 	enum Enum {
 		Playing = 0,
@@ -162,7 +162,7 @@ protected:
 	}
 
 public:
-	static const int id = 10;
+	static const int64_t id = 10;
 
 	enum Enum {
 		Other = 0,
@@ -194,7 +194,7 @@ protected:
 	}
 
 public:
-	static const int id = 12;
+	static const int64_t id = 12;
 
 	enum Enum {
 		MODE_UNINIT = 0,
@@ -221,7 +221,7 @@ protected:
 	}
 
 public:
-	static const int id = 11;
+	static const int64_t id = 11;
 
 	enum Enum {
 		Standard = 0,
@@ -246,7 +246,7 @@ protected:
 	}
 
 public:
-	static const int id = 7;
+	static const int64_t id = 7;
 
 	enum Enum {
 		S256 = 0,
@@ -277,7 +277,7 @@ protected:
 	}
 
 public:
-	static const int id = 18;
+	static const int64_t id = 18;
 
 	enum Enum {
 		OIDC = 0,
@@ -309,7 +309,7 @@ protected:
 	}
 
 public:
-	static const int id = 17;
+	static const int64_t id = 17;
 
 	enum Enum {
 		User = 0,
@@ -339,7 +339,7 @@ protected:
 	}
 
 public:
-	static const int id = 21;
+	static const int64_t id = 21;
 
 	enum Enum {
 		None = 0,
@@ -374,7 +374,7 @@ protected:
 	}
 
 public:
-	static const int id = 22;
+	static const int64_t id = 22;
 
 	enum Enum {
 		Disconnected = 0,
@@ -419,7 +419,7 @@ protected:
 	}
 
 public:
-	static const int id = 9;
+	static const int64_t id = 9;
 
 	enum Enum {
 		GuildText = 0,
@@ -461,7 +461,7 @@ protected:
 	}
 
 public:
-	static const int id = 23;
+	static const int64_t id = 23;
 
 	enum Enum {
 		None = 0,
@@ -494,7 +494,7 @@ protected:
 	}
 
 public:
-	static const int id = 24;
+	static const int64_t id = 24;
 
 	enum Enum {
 		Disconnected = 0,
@@ -526,7 +526,7 @@ protected:
 	}
 
 public:
-	static const int id = 25;
+	static const int64_t id = 25;
 
 	enum Enum {
 		Client = 0,
@@ -552,7 +552,7 @@ protected:
 	}
 
 public:
-	static const int id = 16;
+	static const int64_t id = 16;
 
 	enum Enum {
 		MessageDataVisibleOnDiscord = 3,
@@ -585,7 +585,7 @@ protected:
 	}
 
 public:
-	static const int id = 5;
+	static const int64_t id = 5;
 
 	enum Enum {
 		None = 0,
@@ -624,7 +624,7 @@ protected:
 	}
 
 public:
-	static const int id = 14;
+	static const int64_t id = 14;
 
 	enum Enum {
 		OIDC = 0,
@@ -713,7 +713,7 @@ protected:
 	}
 
 public:
-	static const int id = 6;
+	static const int64_t id = 6;
 
 	enum Enum {
 		None = 0,
@@ -797,7 +797,7 @@ protected:
 	}
 
 public:
-	static const int id = 8;
+	static const int64_t id = 8;
 
 	enum Enum {
 		GuildInstall = 0,
@@ -826,7 +826,7 @@ protected:
 	}
 
 public:
-	static const int id = 19;
+	static const int64_t id = 19;
 
 	enum Enum {
 		Verbose = 1,
@@ -856,7 +856,7 @@ protected:
 	}
 
 public:
-	static const int id = 20;
+	static const int64_t id = 20;
 
 	enum Enum {
 		OnlinePlayingGame = 0,
@@ -888,7 +888,7 @@ protected:
 	}
 
 public:
-	static const int id = 13;
+	static const int64_t id = 13;
 
 	enum Enum {
 		None = 0,
@@ -920,7 +920,7 @@ protected:
 	}
 
 public:
-	static const int id = 3;
+	static const int64_t id = 3;
 
 	enum Enum {
 		Name = 0,
@@ -953,7 +953,7 @@ protected:
 	}
 
 public:
-	static const int id = 15;
+	static const int64_t id = 15;
 
 	enum Enum {
 		Online = 0,
@@ -987,7 +987,7 @@ protected:
 	}
 
 public:
-	static const int id = 26;
+	static const int64_t id = 26;
 
 	enum Enum {
 		Gif = 0,

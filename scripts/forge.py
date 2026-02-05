@@ -453,7 +453,7 @@ def forge_overloading_statements(
 
         for f in group:
             fp = fake_enums_params(f.params)
-            c = forge_overloading_condition(fp)
+            c = forge_overloading_condition(fp, overloading_pattern)
             s = forge_function_statements(f, class_name)
 
             statements.append(
@@ -470,20 +470,27 @@ def forge_overloading_statements(
     assert False, "A new case of overloading needs to be created."
 
 
-def forge_overloading_condition(fake_params: list[ParamInfo]) -> str:
+def forge_overloading_condition(
+    fake_params: list[ParamInfo],
+    overloading_pattern: OverloadingPattern,
+) -> str:
     length = len(fake_params)
     conditions = []
 
-    for i, fp in enumerate(fake_params):
-        n = to_godot_class_name(fp.type.name)
-        conditions.append(
-            get_condition(
-                value0=f"p{length + i}",
-                operator="==",
-                value1=f'"{n}"',
+    if overloading_pattern == OverloadingPattern.RET_SAME_ARGS_ENUMS:
+        for i, fp in enumerate(fake_params):
+            n = to_godot_class_name(fp.type.name)
+
+            conditions.append(
+                get_condition(
+                    value0=f"p{length + i}",
+                    operator="==",
+                    value1=f"{n}::id",
+                )
             )
-        )
 
-    conditions = " && ".join(conditions)
+        conditions = " && ".join(conditions)
 
-    return conditions
+        return conditions
+
+    assert False, "A new case of overloading needs to be created."

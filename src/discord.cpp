@@ -11,10 +11,10 @@ void Discord::run_callbacks() {
 
 // Overload functions.
 
-String Discord::enum_to_string(int value, String enum_type) {
-	String p1 = enum_type;
+String Discord::enum_to_string(int64_t value, int64_t enum_type) {
+	int64_t p1 = enum_type;
 
-	if (p1 == "DiscordActivityActionTypes") {
+	if (p1 == DiscordActivityActionTypes::id) {
 		discordpp::ActivityActionTypes p0 = (discordpp::ActivityActionTypes)value;
 		auto r0 = discordpp::EnumToString(p0);
 
@@ -23,7 +23,7 @@ String Discord::enum_to_string(int value, String enum_type) {
 		return r1;
 	}
 
-	if (p1 == "DiscordActivityPartyPrivacy") {
+	if (p1 == DiscordActivityPartyPrivacy::id) {
 		discordpp::ActivityPartyPrivacy p0 = (discordpp::ActivityPartyPrivacy)value;
 		auto r0 = discordpp::EnumToString(p0);
 
@@ -32,7 +32,7 @@ String Discord::enum_to_string(int value, String enum_type) {
 		return r1;
 	}
 
-	if (p1 == "DiscordActivityTypes") {
+	if (p1 == DiscordActivityTypes::id) {
 		discordpp::ActivityTypes p0 = (discordpp::ActivityTypes)value;
 		auto r0 = discordpp::EnumToString(p0);
 
@@ -41,7 +41,7 @@ String Discord::enum_to_string(int value, String enum_type) {
 		return r1;
 	}
 
-	if (p1 == "DiscordStatusDisplayTypes") {
+	if (p1 == DiscordStatusDisplayTypes::id) {
 		discordpp::StatusDisplayTypes p0 = (discordpp::StatusDisplayTypes)value;
 		auto r0 = discordpp::EnumToString(p0);
 
@@ -50,7 +50,7 @@ String Discord::enum_to_string(int value, String enum_type) {
 		return r1;
 	}
 
-	if (p1 == "DiscordActivityGamePlatforms") {
+	if (p1 == DiscordActivityGamePlatforms::id) {
 		discordpp::ActivityGamePlatforms p0 = (discordpp::ActivityGamePlatforms)value;
 		auto r0 = discordpp::EnumToString(p0);
 
@@ -59,7 +59,7 @@ String Discord::enum_to_string(int value, String enum_type) {
 		return r1;
 	}
 
-	if (p1 == "DiscordErrorType") {
+	if (p1 == DiscordErrorType::id) {
 		discordpp::ErrorType p0 = (discordpp::ErrorType)value;
 		auto r0 = discordpp::EnumToString(p0);
 
@@ -68,7 +68,7 @@ String Discord::enum_to_string(int value, String enum_type) {
 		return r1;
 	}
 
-	if (p1 == "DiscordHttpStatusCode") {
+	if (p1 == DiscordHttpStatusCode::id) {
 		discordpp::HttpStatusCode p0 = (discordpp::HttpStatusCode)value;
 		auto r0 = discordpp::EnumToString(p0);
 
@@ -77,7 +77,7 @@ String Discord::enum_to_string(int value, String enum_type) {
 		return r1;
 	}
 
-	if (p1 == "DiscordAuthenticationCodeChallengeMethod") {
+	if (p1 == DiscordAuthenticationCodeChallengeMethod::id) {
 		discordpp::AuthenticationCodeChallengeMethod p0 = (discordpp::AuthenticationCodeChallengeMethod)value;
 		auto r0 = discordpp::EnumToString(p0);
 
@@ -86,7 +86,7 @@ String Discord::enum_to_string(int value, String enum_type) {
 		return r1;
 	}
 
-	if (p1 == "DiscordIntegrationType") {
+	if (p1 == DiscordIntegrationType::id) {
 		discordpp::IntegrationType p0 = (discordpp::IntegrationType)value;
 		auto r0 = discordpp::EnumToString(p0);
 
@@ -95,7 +95,7 @@ String Discord::enum_to_string(int value, String enum_type) {
 		return r1;
 	}
 
-	if (p1 == "DiscordChannelType") {
+	if (p1 == DiscordChannelType::id) {
 		discordpp::ChannelType p0 = (discordpp::ChannelType)value;
 		auto r0 = discordpp::EnumToString(p0);
 
@@ -104,7 +104,7 @@ String Discord::enum_to_string(int value, String enum_type) {
 		return r1;
 	}
 
-	if (p1 == "DiscordAdditionalContentType") {
+	if (p1 == DiscordAdditionalContentType::id) {
 		discordpp::AdditionalContentType p0 = (discordpp::AdditionalContentType)value;
 		auto r0 = discordpp::EnumToString(p0);
 
@@ -113,7 +113,7 @@ String Discord::enum_to_string(int value, String enum_type) {
 		return r1;
 	}
 
-	if (p1 == "DiscordAudioSystem") {
+	if (p1 == DiscordAudioSystem::id) {
 		discordpp::AudioSystem p0 = (discordpp::AudioSystem)value;
 		auto r0 = discordpp::EnumToString(p0);
 
@@ -122,7 +122,7 @@ String Discord::enum_to_string(int value, String enum_type) {
 		return r1;
 	}
 
-	if (p1 == "DiscordCallError") {
+	if (p1 == DiscordCallError::id) {
 		discordpp::Call::Error p0 = (discordpp::Call::Error)value;
 		auto r0 = discordpp::EnumToString(p0);
 
@@ -131,7 +131,7 @@ String Discord::enum_to_string(int value, String enum_type) {
 		return r1;
 	}
 
-	if (p1 == "DiscordAudioModeType") {
+	if (p1 == DiscordAudioModeType::id) {
 		discordpp::AudioModeType p0 = (discordpp::AudioModeType)value;
 		auto r0 = discordpp::EnumToString(p0);
 
@@ -140,7 +140,7 @@ String Discord::enum_to_string(int value, String enum_type) {
 		return r1;
 	}
 
-	if (p1 == "DiscordCallStatus") {
+	if (p1 == DiscordCallStatus::id) {
 		discordpp::Call::Status p0 = (discordpp::Call::Status)value;
 		auto r0 = discordpp::EnumToString(p0);
 
@@ -149,7 +149,7 @@ String Discord::enum_to_string(int value, String enum_type) {
 		return r1;
 	}
 
-	if (p1 == "DiscordRelationshipType") {
+	if (p1 == DiscordRelationshipType::id) {
 		discordpp::RelationshipType p0 = (discordpp::RelationshipType)value;
 		auto r0 = discordpp::EnumToString(p0);
 
@@ -158,7 +158,7 @@ String Discord::enum_to_string(int value, String enum_type) {
 		return r1;
 	}
 
-	if (p1 == "DiscordExternalIdentityProviderType") {
+	if (p1 == DiscordExternalIdentityProviderType::id) {
 		discordpp::ExternalIdentityProviderType p0 = (discordpp::ExternalIdentityProviderType)value;
 		auto r0 = discordpp::EnumToString(p0);
 
@@ -167,7 +167,7 @@ String Discord::enum_to_string(int value, String enum_type) {
 		return r1;
 	}
 
-	if (p1 == "DiscordUserHandleAvatarType") {
+	if (p1 == DiscordUserHandleAvatarType::id) {
 		discordpp::UserHandle::AvatarType p0 = (discordpp::UserHandle::AvatarType)value;
 		auto r0 = discordpp::EnumToString(p0);
 
@@ -176,7 +176,7 @@ String Discord::enum_to_string(int value, String enum_type) {
 		return r1;
 	}
 
-	if (p1 == "DiscordStatusType") {
+	if (p1 == DiscordStatusType::id) {
 		discordpp::StatusType p0 = (discordpp::StatusType)value;
 		auto r0 = discordpp::EnumToString(p0);
 
@@ -185,7 +185,7 @@ String Discord::enum_to_string(int value, String enum_type) {
 		return r1;
 	}
 
-	if (p1 == "DiscordDisclosureTypes") {
+	if (p1 == DiscordDisclosureTypes::id) {
 		discordpp::DisclosureTypes p0 = (discordpp::DisclosureTypes)value;
 		auto r0 = discordpp::EnumToString(p0);
 
@@ -194,7 +194,7 @@ String Discord::enum_to_string(int value, String enum_type) {
 		return r1;
 	}
 
-	if (p1 == "DiscordClientError") {
+	if (p1 == DiscordClientError::id) {
 		discordpp::Client::Error p0 = (discordpp::Client::Error)value;
 		auto r0 = discordpp::EnumToString(p0);
 
@@ -203,7 +203,7 @@ String Discord::enum_to_string(int value, String enum_type) {
 		return r1;
 	}
 
-	if (p1 == "DiscordClientStatus") {
+	if (p1 == DiscordClientStatus::id) {
 		discordpp::Client::Status p0 = (discordpp::Client::Status)value;
 		auto r0 = discordpp::EnumToString(p0);
 
@@ -212,7 +212,7 @@ String Discord::enum_to_string(int value, String enum_type) {
 		return r1;
 	}
 
-	if (p1 == "DiscordClientThread") {
+	if (p1 == DiscordClientThread::id) {
 		discordpp::Client::Thread p0 = (discordpp::Client::Thread)value;
 		auto r0 = discordpp::EnumToString(p0);
 
@@ -221,7 +221,7 @@ String Discord::enum_to_string(int value, String enum_type) {
 		return r1;
 	}
 
-	if (p1 == "DiscordAuthorizationTokenType") {
+	if (p1 == DiscordAuthorizationTokenType::id) {
 		discordpp::AuthorizationTokenType p0 = (discordpp::AuthorizationTokenType)value;
 		auto r0 = discordpp::EnumToString(p0);
 
@@ -230,7 +230,7 @@ String Discord::enum_to_string(int value, String enum_type) {
 		return r1;
 	}
 
-	if (p1 == "DiscordAuthenticationExternalAuthType") {
+	if (p1 == DiscordAuthenticationExternalAuthType::id) {
 		discordpp::AuthenticationExternalAuthType p0 = (discordpp::AuthenticationExternalAuthType)value;
 		auto r0 = discordpp::EnumToString(p0);
 
@@ -239,7 +239,7 @@ String Discord::enum_to_string(int value, String enum_type) {
 		return r1;
 	}
 
-	if (p1 == "DiscordLoggingSeverity") {
+	if (p1 == DiscordLoggingSeverity::id) {
 		discordpp::LoggingSeverity p0 = (discordpp::LoggingSeverity)value;
 		auto r0 = discordpp::EnumToString(p0);
 
@@ -248,7 +248,7 @@ String Discord::enum_to_string(int value, String enum_type) {
 		return r1;
 	}
 
-	if (p1 == "DiscordRelationshipGroupType") {
+	if (p1 == DiscordRelationshipGroupType::id) {
 		discordpp::RelationshipGroupType p0 = (discordpp::RelationshipGroupType)value;
 		auto r0 = discordpp::EnumToString(p0);
 

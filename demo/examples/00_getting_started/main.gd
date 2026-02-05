@@ -27,7 +27,7 @@ func _process(_delta: float) -> void:
 	Discord.run_callbacks()
 
 func _on_log(message: String, severity: DiscordLoggingSeverity.Enum) -> void:
-	print("[%s] %s" % [Discord.enum_to_string(severity, "DiscordLoggingSeverity"), message])
+	print("[%s] %s" % [Discord.enum_to_string(severity, DiscordLoggingSeverity.id), message])
 
 func _on_status_changed(status: DiscordClientStatus.Enum, error: DiscordClientError.Enum, error_detail: int) -> void:
 	print("🔄 Status changed: %s" % status)
