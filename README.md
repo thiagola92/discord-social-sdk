@@ -331,11 +331,6 @@ scons platform=windows target=template_release    # Release
 # Open project, at least once, to be able to generate GDExtension documentation.
 godot ./demo/project.godot
 
-# Generate GDExtension documentation.
-cd demo
-godot --doctool ../ --gdextension-docs
-cd ..
-
 # Rerun to update GDExtension documentation.
 python3 scripts/main.py
 
