@@ -441,13 +441,13 @@ def forge_overloading_statements(
     fake_params = fake_enums_params(group[0].params)
 
     if overloading_pattern == OverloadingPattern.RET_SAME_ARGS_ENUMS:
-        c = forge_overloading_condition(fake_params)
-
         statements.append(
             discord_variables_to_godot_variables(fake_params, len(fake_params))
         )
 
         for f in group:
+            fp = fake_enums_params(f.params)
+            c = forge_overloading_condition(fp)
             s = forge_function_statements(f, class_name)
 
             statements.append(
