@@ -20,6 +20,7 @@ from template.code.register_types_cpp.register_runtime import get_register_runti
 from template.code.discord_enum_h.enum_definition import get_enum_definition
 from template.code.discord_enum_h.enum_bind import get_enum_bind
 from template.code.discord_enum_h.enum_cast import get_enum_cast
+from template.code.discord_enum_h.const_bind import get_const_bind
 from template.code.discord_classes_h.class_declaration import get_class_declaration
 from template.code.discord_classes_h.class_definition import get_class_definition
 from template.code.discord_classes_h.class_definition_g import get_class_definition_g
@@ -28,9 +29,9 @@ from template.code.discord_classes_h.constructor_public import get_constructor_p
 from template.code.discord_classes_h.function_declaration import (
     get_function_declaration,
 )
-from template.code.discord_class_cpp.bind import get_bind
+from template.code.discord_class_cpp.bind_method import get_bind_method
 from template.code.discord_class_cpp.return_statements import get_return_statements
-from template.code.discord_class_cpp.bind_static import get_bind_static
+from template.code.discord_class_cpp.bind_static_method import get_bind_static_method
 from template.code.discord_class_cpp.function_definition import get_function_definition
 from template.code.discord_class_cpp.function_statements import get_function_statements
 from template.code.discord_class_cpp.overloading.if_statement import get_if_statement
@@ -81,7 +82,9 @@ def forge_enum_definitions(namespace_info: NamespaceInfo) -> str:
         enums_definitions.append(
             get_enum_definition(
                 enum_name=e.name,
-                binds="".join([get_enum_bind(v.name) for v in e.values]),
+                enums_binds="".join([get_enum_bind(v.name) for v in e.values]),
+                const_binds=get_const_bind("id"),
+                enum_id=str(e.identifier),
                 values="".join([v.name + v.init for v in e.values]),
             )
         )
@@ -91,7 +94,9 @@ def forge_enum_definitions(namespace_info: NamespaceInfo) -> str:
             enums_definitions.append(
                 get_enum_definition(
                     enum_name=c.name + e.name,
-                    binds="".join([get_enum_bind(v.name) for v in e.values]),
+                    enums_binds="".join([get_enum_bind(v.name) for v in e.values]),
+                    const_binds=get_const_bind("id"),
+                    enum_id=str(e.identifier),
                     values="".join([v.name + v.init for v in e.values]),
                 )
             )
@@ -265,13 +270,13 @@ def forge_function_bind(function_info: FunctionInfo, class_name: str) -> str:
     p = forge_params_bind(function_info.params)
 
     if function_info.static:
-        return get_bind_static(
+        return get_bind_static_method(
             function=function_info.gdscript_name,
             class_name=class_name,
             params=p,
         )
 
-    return get_bind(
+    return get_bind_method(
         function=function_info.gdscript_name,
         class_name=class_name,
         params=p,
@@ -301,13 +306,13 @@ def forge_overloading_bind(group: list[FunctionInfo], class_name: str) -> str:
             p = forge_params_bind(p)
 
             if f.static:
-                return get_bind_static(
+                return get_bind_static_method(
                     function=f.gdscript_name,
                     class_name=class_name,
                     params=p,
                 )
 
-            return get_bind(
+            return get_bind_method(
                 function=f.gdscript_name,
                 class_name=class_name,
                 params=p,

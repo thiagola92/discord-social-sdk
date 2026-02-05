@@ -18,6 +18,9 @@ from data import (
 )
 
 
+ENUMS_FOUND = 0
+
+
 def collect_text(tree: Element) -> str:
     return "".join(tree.itertext()).strip()
 
@@ -68,6 +71,8 @@ def collect_class(tree: Element) -> ClassInfo:
 
 
 def collect_enums(tree: Element) -> list[EnumInfo]:
+    global ENUMS_FOUND
+
     enums = []
 
     for e in tree.findall(".//memberdef[@kind='enum']"):
@@ -78,6 +83,8 @@ def collect_enums(tree: Element) -> list[EnumInfo]:
         ei.name = collect_text(e.find("name"))
         ei.short_desc = collect_text(e.find("briefdescription"))
         ei.long_desc = collect_text(e.find("detaileddescription"))
+        ei.identifier = ENUMS_FOUND
+        ENUMS_FOUND += 1
 
         for ev in e.findall("enumvalue"):
             evi = EnumValueInfo()

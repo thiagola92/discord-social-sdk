@@ -26,6 +26,9 @@ class EnumInfo:
     short_desc: str = ""
     long_desc: str = ""
 
+    # Utility
+    identifier: int = -1
+
 
 @dataclass
 class TypeInfo:
@@ -36,6 +39,7 @@ class TypeInfo:
     callback: bool = False
     callback_ref: CallbackInfoR | None = None
     enum: bool = False
+    enum_ref: EnumInfo | None = None
     fake: bool = False
     overloading: bool = False
 

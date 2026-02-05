@@ -20,12 +20,18 @@ private:
 
 protected:
 	static void _bind_methods() {
+		// Enums binds.
 		BIND_ENUM_CONSTANT(Invalid);
 		BIND_ENUM_CONSTANT(Join);
 		BIND_ENUM_CONSTANT(JoinRequest);
+
+		// Constant binds.
+		BIND_CONSTANT(id);
 	}
 
 public:
+	static const int id = 0;
+
 	enum Enum {
 		Invalid = 0,
 		Join = 1,
@@ -42,6 +48,7 @@ private:
 
 protected:
 	static void _bind_methods() {
+		// Enums binds.
 		BIND_ENUM_CONSTANT(Desktop);
 		BIND_ENUM_CONSTANT(Xbox);
 		BIND_ENUM_CONSTANT(Samsung);
@@ -50,9 +57,14 @@ protected:
 		BIND_ENUM_CONSTANT(Embedded);
 		BIND_ENUM_CONSTANT(PS4);
 		BIND_ENUM_CONSTANT(PS5);
+
+		// Constant binds.
+		BIND_CONSTANT(id);
 	}
 
 public:
+	static const int id = 4;
+
 	enum Enum {
 		Desktop = 1,
 		Xbox = 2,
@@ -74,11 +86,17 @@ private:
 
 protected:
 	static void _bind_methods() {
+		// Enums binds.
 		BIND_ENUM_CONSTANT(Private);
 		BIND_ENUM_CONSTANT(Public);
+
+		// Constant binds.
+		BIND_CONSTANT(id);
 	}
 
 public:
+	static const int id = 1;
+
 	enum Enum {
 		Private = 0,
 		Public = 1,
@@ -94,6 +112,7 @@ private:
 
 protected:
 	static void _bind_methods() {
+		// Enums binds.
 		BIND_ENUM_CONSTANT(Playing);
 		BIND_ENUM_CONSTANT(Streaming);
 		BIND_ENUM_CONSTANT(Listening);
@@ -101,9 +120,14 @@ protected:
 		BIND_ENUM_CONSTANT(CustomStatus);
 		BIND_ENUM_CONSTANT(Competing);
 		BIND_ENUM_CONSTANT(HangStatus);
+
+		// Constant binds.
+		BIND_CONSTANT(id);
 	}
 
 public:
+	static const int id = 2;
+
 	enum Enum {
 		Playing = 0,
 		Streaming = 1,
@@ -124,6 +148,7 @@ private:
 
 protected:
 	static void _bind_methods() {
+		// Enums binds.
 		BIND_ENUM_CONSTANT(Other);
 		BIND_ENUM_CONSTANT(Attachment);
 		BIND_ENUM_CONSTANT(Poll);
@@ -131,9 +156,14 @@ protected:
 		BIND_ENUM_CONSTANT(Thread);
 		BIND_ENUM_CONSTANT(Embed);
 		BIND_ENUM_CONSTANT(Sticker);
+
+		// Constant binds.
+		BIND_CONSTANT(id);
 	}
 
 public:
+	static const int id = 10;
+
 	enum Enum {
 		Other = 0,
 		Attachment = 1,
@@ -154,12 +184,18 @@ private:
 
 protected:
 	static void _bind_methods() {
+		// Enums binds.
 		BIND_ENUM_CONSTANT(MODE_UNINIT);
 		BIND_ENUM_CONSTANT(MODE_VAD);
 		BIND_ENUM_CONSTANT(MODE_PTT);
+
+		// Constant binds.
+		BIND_CONSTANT(id);
 	}
 
 public:
+	static const int id = 12;
+
 	enum Enum {
 		MODE_UNINIT = 0,
 		MODE_VAD = 1,
@@ -176,11 +212,17 @@ private:
 
 protected:
 	static void _bind_methods() {
+		// Enums binds.
 		BIND_ENUM_CONSTANT(Standard);
 		BIND_ENUM_CONSTANT(Game);
+
+		// Constant binds.
+		BIND_CONSTANT(id);
 	}
 
 public:
+	static const int id = 11;
+
 	enum Enum {
 		Standard = 0,
 		Game = 1,
@@ -196,10 +238,16 @@ private:
 
 protected:
 	static void _bind_methods() {
+		// Enums binds.
 		BIND_ENUM_CONSTANT(S256);
+
+		// Constant binds.
+		BIND_CONSTANT(id);
 	}
 
 public:
+	static const int id = 7;
+
 	enum Enum {
 		S256 = 0,
 	};
@@ -214,6 +262,7 @@ private:
 
 protected:
 	static void _bind_methods() {
+		// Enums binds.
 		BIND_ENUM_CONSTANT(OIDC);
 		BIND_ENUM_CONSTANT(EpicOnlineServicesAccessToken);
 		BIND_ENUM_CONSTANT(EpicOnlineServicesIdToken);
@@ -222,9 +271,14 @@ protected:
 		BIND_ENUM_CONSTANT(DiscordBotIssuedAccessToken);
 		BIND_ENUM_CONSTANT(AppleIdToken);
 		BIND_ENUM_CONSTANT(PlayStationNetworkIdToken);
+
+		// Constant binds.
+		BIND_CONSTANT(id);
 	}
 
 public:
+	static const int id = 18;
+
 	enum Enum {
 		OIDC = 0,
 		EpicOnlineServicesAccessToken = 1,
@@ -246,11 +300,17 @@ private:
 
 protected:
 	static void _bind_methods() {
+		// Enums binds.
 		BIND_ENUM_CONSTANT(User);
 		BIND_ENUM_CONSTANT(Bearer);
+
+		// Constant binds.
+		BIND_CONSTANT(id);
 	}
 
 public:
+	static const int id = 17;
+
 	enum Enum {
 		User = 0,
 		Bearer = 1,
@@ -266,15 +326,21 @@ private:
 
 protected:
 	static void _bind_methods() {
+		// Enums binds.
 		BIND_ENUM_CONSTANT(None);
 		BIND_ENUM_CONSTANT(SignalingConnectionFailed);
 		BIND_ENUM_CONSTANT(SignalingUnexpectedClose);
 		BIND_ENUM_CONSTANT(VoiceConnectionFailed);
 		BIND_ENUM_CONSTANT(JoinTimeout);
 		BIND_ENUM_CONSTANT(Forbidden);
+
+		// Constant binds.
+		BIND_CONSTANT(id);
 	}
 
 public:
+	static const int id = 21;
+
 	enum Enum {
 		None = 0,
 		SignalingConnectionFailed = 1,
@@ -294,6 +360,7 @@ private:
 
 protected:
 	static void _bind_methods() {
+		// Enums binds.
 		BIND_ENUM_CONSTANT(Disconnected);
 		BIND_ENUM_CONSTANT(Joining);
 		BIND_ENUM_CONSTANT(Connecting);
@@ -301,9 +368,14 @@ protected:
 		BIND_ENUM_CONSTANT(Connected);
 		BIND_ENUM_CONSTANT(Reconnecting);
 		BIND_ENUM_CONSTANT(Disconnecting);
+
+		// Constant binds.
+		BIND_CONSTANT(id);
 	}
 
 public:
+	static const int id = 22;
+
 	enum Enum {
 		Disconnected = 0,
 		Joining = 1,
@@ -324,6 +396,7 @@ private:
 
 protected:
 	static void _bind_methods() {
+		// Enums binds.
 		BIND_ENUM_CONSTANT(GuildText);
 		BIND_ENUM_CONSTANT(Dm);
 		BIND_ENUM_CONSTANT(GuildVoice);
@@ -340,9 +413,14 @@ protected:
 		BIND_ENUM_CONSTANT(GuildMedia);
 		BIND_ENUM_CONSTANT(Lobby);
 		BIND_ENUM_CONSTANT(EphemeralDm);
+
+		// Constant binds.
+		BIND_CONSTANT(id);
 	}
 
 public:
+	static const int id = 9;
+
 	enum Enum {
 		GuildText = 0,
 		Dm = 1,
@@ -372,13 +450,19 @@ private:
 
 protected:
 	static void _bind_methods() {
+		// Enums binds.
 		BIND_ENUM_CONSTANT(None);
 		BIND_ENUM_CONSTANT(ConnectionFailed);
 		BIND_ENUM_CONSTANT(UnexpectedClose);
 		BIND_ENUM_CONSTANT(ConnectionCanceled);
+
+		// Constant binds.
+		BIND_CONSTANT(id);
 	}
 
 public:
+	static const int id = 23;
+
 	enum Enum {
 		None = 0,
 		ConnectionFailed = 1,
@@ -396,6 +480,7 @@ private:
 
 protected:
 	static void _bind_methods() {
+		// Enums binds.
 		BIND_ENUM_CONSTANT(Disconnected);
 		BIND_ENUM_CONSTANT(Connecting);
 		BIND_ENUM_CONSTANT(Connected);
@@ -403,9 +488,14 @@ protected:
 		BIND_ENUM_CONSTANT(Reconnecting);
 		BIND_ENUM_CONSTANT(Disconnecting);
 		BIND_ENUM_CONSTANT(HttpWait);
+
+		// Constant binds.
+		BIND_CONSTANT(id);
 	}
 
 public:
+	static const int id = 24;
+
 	enum Enum {
 		Disconnected = 0,
 		Connecting = 1,
@@ -426,12 +516,18 @@ private:
 
 protected:
 	static void _bind_methods() {
+		// Enums binds.
 		BIND_ENUM_CONSTANT(Client);
 		BIND_ENUM_CONSTANT(Voice);
 		BIND_ENUM_CONSTANT(Network);
+
+		// Constant binds.
+		BIND_CONSTANT(id);
 	}
 
 public:
+	static const int id = 25;
+
 	enum Enum {
 		Client = 0,
 		Voice = 1,
@@ -448,10 +544,16 @@ private:
 
 protected:
 	static void _bind_methods() {
+		// Enums binds.
 		BIND_ENUM_CONSTANT(MessageDataVisibleOnDiscord);
+
+		// Constant binds.
+		BIND_CONSTANT(id);
 	}
 
 public:
+	static const int id = 16;
+
 	enum Enum {
 		MessageDataVisibleOnDiscord = 3,
 	};
@@ -466,6 +568,7 @@ private:
 
 protected:
 	static void _bind_methods() {
+		// Enums binds.
 		BIND_ENUM_CONSTANT(None);
 		BIND_ENUM_CONSTANT(NetworkError);
 		BIND_ENUM_CONSTANT(HTTPError);
@@ -476,9 +579,14 @@ protected:
 		BIND_ENUM_CONSTANT(Aborted);
 		BIND_ENUM_CONSTANT(AuthorizationFailed);
 		BIND_ENUM_CONSTANT(RPCError);
+
+		// Constant binds.
+		BIND_CONSTANT(id);
 	}
 
 public:
+	static const int id = 5;
+
 	enum Enum {
 		None = 0,
 		NetworkError = 1,
@@ -502,6 +610,7 @@ private:
 
 protected:
 	static void _bind_methods() {
+		// Enums binds.
 		BIND_ENUM_CONSTANT(OIDC);
 		BIND_ENUM_CONSTANT(EpicOnlineServices);
 		BIND_ENUM_CONSTANT(Steam);
@@ -509,9 +618,14 @@ protected:
 		BIND_ENUM_CONSTANT(DiscordBot);
 		BIND_ENUM_CONSTANT(None);
 		BIND_ENUM_CONSTANT(Unknown);
+
+		// Constant binds.
+		BIND_CONSTANT(id);
 	}
 
 public:
+	static const int id = 14;
+
 	enum Enum {
 		OIDC = 0,
 		EpicOnlineServices = 1,
@@ -532,6 +646,7 @@ private:
 
 protected:
 	static void _bind_methods() {
+		// Enums binds.
 		BIND_ENUM_CONSTANT(None);
 		BIND_ENUM_CONSTANT(Continue);
 		BIND_ENUM_CONSTANT(SwitchingProtocols);
@@ -592,9 +707,14 @@ protected:
 		BIND_ENUM_CONSTANT(LoopDetected);
 		BIND_ENUM_CONSTANT(NotExtended);
 		BIND_ENUM_CONSTANT(NetworkAuthorizationRequired);
+
+		// Constant binds.
+		BIND_CONSTANT(id);
 	}
 
 public:
+	static const int id = 6;
+
 	enum Enum {
 		None = 0,
 		Continue = 100,
@@ -668,11 +788,17 @@ private:
 
 protected:
 	static void _bind_methods() {
+		// Enums binds.
 		BIND_ENUM_CONSTANT(GuildInstall);
 		BIND_ENUM_CONSTANT(UserInstall);
+
+		// Constant binds.
+		BIND_CONSTANT(id);
 	}
 
 public:
+	static const int id = 8;
+
 	enum Enum {
 		GuildInstall = 0,
 		UserInstall = 1,
@@ -688,14 +814,20 @@ private:
 
 protected:
 	static void _bind_methods() {
+		// Enums binds.
 		BIND_ENUM_CONSTANT(Verbose);
 		BIND_ENUM_CONSTANT(Info);
 		BIND_ENUM_CONSTANT(Warning);
 		BIND_ENUM_CONSTANT(Error);
 		BIND_ENUM_CONSTANT(None);
+
+		// Constant binds.
+		BIND_CONSTANT(id);
 	}
 
 public:
+	static const int id = 19;
+
 	enum Enum {
 		Verbose = 1,
 		Info = 2,
@@ -714,12 +846,18 @@ private:
 
 protected:
 	static void _bind_methods() {
+		// Enums binds.
 		BIND_ENUM_CONSTANT(OnlinePlayingGame);
 		BIND_ENUM_CONSTANT(OnlineElsewhere);
 		BIND_ENUM_CONSTANT(Offline);
+
+		// Constant binds.
+		BIND_CONSTANT(id);
 	}
 
 public:
+	static const int id = 20;
+
 	enum Enum {
 		OnlinePlayingGame = 0,
 		OnlineElsewhere = 1,
@@ -736,6 +874,7 @@ private:
 
 protected:
 	static void _bind_methods() {
+		// Enums binds.
 		BIND_ENUM_CONSTANT(None);
 		BIND_ENUM_CONSTANT(Friend);
 		BIND_ENUM_CONSTANT(Blocked);
@@ -743,9 +882,14 @@ protected:
 		BIND_ENUM_CONSTANT(PendingOutgoing);
 		BIND_ENUM_CONSTANT(Implicit);
 		BIND_ENUM_CONSTANT(Suggestion);
+
+		// Constant binds.
+		BIND_CONSTANT(id);
 	}
 
 public:
+	static const int id = 13;
+
 	enum Enum {
 		None = 0,
 		Friend = 1,
@@ -766,12 +910,18 @@ private:
 
 protected:
 	static void _bind_methods() {
+		// Enums binds.
 		BIND_ENUM_CONSTANT(Name);
 		BIND_ENUM_CONSTANT(State);
 		BIND_ENUM_CONSTANT(Details);
+
+		// Constant binds.
+		BIND_CONSTANT(id);
 	}
 
 public:
+	static const int id = 3;
+
 	enum Enum {
 		Name = 0,
 		State = 1,
@@ -788,6 +938,7 @@ private:
 
 protected:
 	static void _bind_methods() {
+		// Enums binds.
 		BIND_ENUM_CONSTANT(Online);
 		BIND_ENUM_CONSTANT(Offline);
 		BIND_ENUM_CONSTANT(Blocked);
@@ -796,9 +947,14 @@ protected:
 		BIND_ENUM_CONSTANT(Invisible);
 		BIND_ENUM_CONSTANT(Streaming);
 		BIND_ENUM_CONSTANT(Unknown);
+
+		// Constant binds.
+		BIND_CONSTANT(id);
 	}
 
 public:
+	static const int id = 15;
+
 	enum Enum {
 		Online = 0,
 		Offline = 1,
@@ -820,13 +976,19 @@ private:
 
 protected:
 	static void _bind_methods() {
+		// Enums binds.
 		BIND_ENUM_CONSTANT(Gif);
 		BIND_ENUM_CONSTANT(Webp);
 		BIND_ENUM_CONSTANT(Png);
 		BIND_ENUM_CONSTANT(Jpeg);
+
+		// Constant binds.
+		BIND_CONSTANT(id);
 	}
 
 public:
+	static const int id = 26;
+
 	enum Enum {
 		Gif = 0,
 		Webp = 1,

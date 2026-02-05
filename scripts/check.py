@@ -7,6 +7,7 @@ from data import (
     TypeInfo,
     CallbackInfo,
     ParamInfo,
+    EnumInfo,
 )
 
 
@@ -39,28 +40,36 @@ def check_enums(namespace_info: NamespaceInfo) -> None:
     not for solving any complications from enums.
     """
 
-    enums_name = [to_godot_class_name(e.name) for e in namespace_info.enums]
+    # Create dictionary with searched enums.
+    enums: dict[str, EnumInfo] = {}
+
+    for e in namespace_info.enums:
+        enums[to_godot_class_name(e.name)] = e
 
     for c in namespace_info.classes:
         for e in c.enums:
-            enums_name.append(to_godot_class_name(c.name + e.name))
+            enums[to_godot_class_name(c.name + e.name)] = e
 
+    # Start checking enum everywhere.
     for f in namespace_info.functions:
-        check_type_enums(f, enums_name)
+        check_type_enums(f, enums)
 
     for c in namespace_info.classes:
         for f in c.functions:
-            check_type_enums(f, enums_name)
+            check_type_enums(f, enums)
 
     for c in namespace_info.callbacks:
-        check_type_enums(c, enums_name)
+        check_type_enums(c, enums)
 
     for c in namespace_info.classes:
         for cc in c.callbacks:
-            check_type_enums(cc, enums_name)
+            check_type_enums(cc, enums)
 
 
-def check_function_enums(function_info: FunctionInfo, enums_name: list[str]) -> None:
+def check_function_enums(
+    function_info: FunctionInfo,
+    enums: dict[str, EnumInfo],
+) -> None:
     """
     Check function return type and parameters that are enums.
 
@@ -68,19 +77,28 @@ def check_function_enums(function_info: FunctionInfo, enums_name: list[str]) -> 
     not for solving any complications from enums.
     """
 
-    if to_godot_class_name(function_info.type.name) in enums_name:
+    name = to_godot_class_name(function_info.type.name)
+
+    if name in enums.keys():
         function_info.type.enum = True
+        function_info.type.enum_ref = enums[name]
 
     for p in function_info.params:
         if not isinstance(p.type, TypeInfo):
             continue
 
-        if to_godot_class_name(p.type.name) in enums_name:
+        n = to_godot_class_name(p.type.name)
+
+        if n in enums.keys():
             p.enum = True
             p.type.enum = True
+            p.type.enum_ref = enums[n]
 
 
-def check_callback_enums(callback_info: CallbackInfo, enums_name: list[str]) -> None:
+def check_callback_enums(
+    callback_info: CallbackInfo,
+    enums: dict[str, EnumInfo],
+) -> None:
     """
     Check callback types that are enums.
 
@@ -88,17 +106,20 @@ def check_callback_enums(callback_info: CallbackInfo, enums_name: list[str]) -> 
     not for solving any complications from enums.
     """
 
-    if to_godot_class_name(callback_info.type.name) in enums_name:
+    name = to_godot_class_name(callback_info.type.name)
+
+    if name in enums.keys():
         callback_info.type.enum = True
+        callback_info.type.enum_ref = enums[name]
 
     for t in callback_info.type.templates:
         if isinstance(t, FunctionInfo):
-            check_function_enums(t, enums_name)
+            check_function_enums(t, enums)
 
 
 def check_type_enums(
     info: TypeInfo | FunctionInfo | CallbackInfo | ParamInfo,
-    enums_name: list[str],
+    enums: dict[str, EnumInfo],
 ) -> None:
     """
     Check types that are enums.
@@ -108,20 +129,23 @@ def check_type_enums(
     """
     if isinstance(info, FunctionInfo):
         for p in info.params:
-            check_type_enums(p, enums_name)
+            check_type_enums(p, enums)
 
-        check_type_enums(info.type, enums_name)
+        check_type_enums(info.type, enums)
     elif isinstance(info, CallbackInfo):
-        check_type_enums(info.type, enums_name)
+        check_type_enums(info.type, enums)
     elif isinstance(info, ParamInfo):
-        check_type_enums(info.type, enums_name)
+        check_type_enums(info.type, enums)
         info.enum = info.type.enum
     elif isinstance(info, TypeInfo):
         for t in info.templates:
-            check_type_enums(t, enums_name)
+            check_type_enums(t, enums)
 
-        if to_godot_class_name(info.name) in enums_name:
+        n = to_godot_class_name(info.name)
+
+        if n in enums.keys():
             info.enum = True
+            info.enum_ref = enums[n]
 
 
 def check_overloading(functions_info: list[FunctionInfo]) -> None:
