@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="Discord" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="enum_to_string" qualifiers="static">
+			<return type="String" />
+			<param index="0" name="value" type="int" />
+			<param index="1" name="enum_type" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="run_callbacks" qualifiers="static">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+	</methods>
+</class>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="DiscordUserHandle" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="avatar">
+			<return type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="avatar_type_to_string" qualifiers="static">
+			<return type="String" />
+			<param index="0" name="type" type="int" enum="DiscordUserHandleAvatarType.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="avatar_url">
+			<return type="String" />
+			<param index="0" name="animated_type" type="int" enum="DiscordUserHandleAvatarType.Enum" />
+			<param index="1" name="static_type" type="int" enum="DiscordUserHandleAvatarType.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="display_name">
+			<return type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="game_activity">
+			<return type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="global_name">
+			<return type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="id">
+			<return type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="is_provisional">
+			<return type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="relationship">
+			<return type="DiscordRelationshipHandle" />
+			<description>
+			</description>
+		</method>
+		<method name="status">
+			<return type="int" enum="DiscordStatusType.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="user_application_profiles">
+			<return type="DiscordUserApplicationProfileHandle[]" />
+			<description>
+			</description>
+		</method>
+		<method name="username">
+			<return type="String" />
+			<description>
+			</description>
+		</method>
+	</methods>
+</class>

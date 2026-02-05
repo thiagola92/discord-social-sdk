@@ -3,7 +3,7 @@ from pathlib import Path
 from xml.etree import ElementTree
 
 from help import clang_format
-from name import to_snake_case
+from name import to_snake_case, to_godot_class_name
 from collect import NamespaceInfo, ClassInfo, collect_namespace
 from template.file.register_types_h import get_register_types_h
 from template.file.register_types_cpp import get_register_types_cpp
@@ -24,22 +24,28 @@ from forge import (
 
 
 class Builder:
-    def __init__(self, xml_dir: str, src_dir: str) -> None:
+    def __init__(self, xml_dir: str, src_dir: str, doc_dir: str) -> None:
         self.src_dir = Path(src_dir)
         self.xml_dir = Path(xml_dir)
+        self.doc_dir = Path(doc_dir)
+        self.namespace_info: NamespaceInfo = None
+
+    ######################################################################
+    # Build C++ files.
+    ######################################################################
 
     def build_files(self) -> None:
         file = self.xml_dir.joinpath("index.xml")
         tree = ElementTree.parse(file)
-        namespace_info = collect_namespace(tree, self.xml_dir)
+        self.namespace_info = collect_namespace(tree, self.xml_dir)
 
         self.build_register_types_h()
-        self.build_register_types_cpp(namespace_info)
-        self.build_discord_enum_h(namespace_info)
-        self.build_discord_classes_h(namespace_info)
-        self.build_discord_cpp(namespace_info)
+        self.build_register_types_cpp()
+        self.build_discord_enum_h()
+        self.build_discord_classes_h()
+        self.build_discord_cpp()
 
-        for c in namespace_info.classes:
+        for c in self.namespace_info.classes:
             self.build_discord_class_cpp(c)
 
     def build_register_types_h(self):
@@ -57,7 +63,7 @@ class Builder:
 
         clang_format(filepath)
 
-    def build_register_types_cpp(self, namespace_info: NamespaceInfo) -> None:
+    def build_register_types_cpp(self) -> None:
         """
         Build register_types.cpp
 
@@ -65,8 +71,8 @@ class Builder:
         which can be initialized (like "Example.new()").
         """
 
-        register_abstracts = forge_register_abstracts(namespace_info)
-        register_runtimes = forge_register_runtimes(namespace_info)
+        register_abstracts = forge_register_abstracts(self.namespace_info)
+        register_runtimes = forge_register_runtimes(self.namespace_info)
         filepath = self.src_dir.joinpath("register_types.cpp")
         content = get_register_types_cpp(
             register_abstracts=register_abstracts,
@@ -77,7 +83,7 @@ class Builder:
 
         clang_format(filepath)
 
-    def build_discord_enum_h(self, namespace_info: NamespaceInfo) -> None:
+    def build_discord_enum_h(self) -> None:
         """
         Build discord_enum.h
 
@@ -85,8 +91,8 @@ class Builder:
         to represent the Discord enums.
         """
 
-        enums_definitions = forge_enum_definitions(namespace_info)
-        enums_casts = forge_enum_casts(namespace_info)
+        enums_definitions = forge_enum_definitions(self.namespace_info)
+        enums_casts = forge_enum_casts(self.namespace_info)
         filepath = self.src_dir.joinpath("discord_enum.h")
         content = get_discord_enum_h(
             enums_definitions=enums_definitions,
@@ -97,15 +103,15 @@ class Builder:
 
         clang_format(filepath)
 
-    def build_discord_classes_h(self, namespace_info: NamespaceInfo) -> None:
+    def build_discord_classes_h(self) -> None:
         """
         Build discord_classes.h
 
         This file contains are classes signatures.
         """
 
-        classes_declarations = forge_classes_declarations(namespace_info)
-        classes_definitions = forge_classes_definitions(namespace_info)
+        classes_declarations = forge_classes_declarations(self.namespace_info)
+        classes_definitions = forge_classes_definitions(self.namespace_info)
         filepath = self.src_dir.joinpath("discord_classes.h")
         content = get_discord_classes_h(
             classes_declarations=classes_declarations,
@@ -116,7 +122,7 @@ class Builder:
 
         clang_format(filepath)
 
-    def build_discord_cpp(self, namespace_info: NamespaceInfo) -> None:
+    def build_discord_cpp(self) -> None:
         """
         Build discord.cpp
 
@@ -124,9 +130,9 @@ class Builder:
         from the discordpp namespace.
         """
 
-        functions_definitions = forge_functions_definitions(namespace_info)
-        overloadings_definitions = forge_overloadings_definitions(namespace_info)
-        binds = forge_binds(namespace_info)
+        functions_definitions = forge_functions_definitions(self.namespace_info)
+        overloadings_definitions = forge_overloadings_definitions(self.namespace_info)
+        binds = forge_binds(self.namespace_info)
         filepath = self.src_dir.joinpath("discord.cpp")
         content = get_discord_class_cpp(
             class_name="",
@@ -161,3 +167,21 @@ class Builder:
         filepath.write_text(content)
 
         clang_format(filepath)
+
+    ######################################################################
+    # Update XML documentation.
+    ######################################################################
+
+    def update_documentations(self) -> None:
+        self.update_discord_doc()
+
+        for c in self.namespace_info.classes:
+            self.update_discord_class_doc(c)
+
+    def update_discord_doc(self) -> None:
+        filename = to_godot_class_name("")
+        filepath = self.doc_dir.joinpath(f"{filename}.xml")
+
+    def update_discord_class_doc(self, class_info: ClassInfo) -> None:
+        filename = to_godot_class_name(class_info.name)
+        filepath = self.doc_dir.joinpath(f"{filename}.xml")

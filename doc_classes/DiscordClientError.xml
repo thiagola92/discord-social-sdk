@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="DiscordClientError" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<constants>
+		<constant name="None" value="0" enum="Enum">
+		</constant>
+		<constant name="ConnectionFailed" value="1" enum="Enum">
+		</constant>
+		<constant name="UnexpectedClose" value="2" enum="Enum">
+		</constant>
+		<constant name="ConnectionCanceled" value="3" enum="Enum">
+		</constant>
+	</constants>
+</class>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="DiscordVADThresholdSettings" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="automatic">
+			<return type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="set_automatic">
+			<return type="void" />
+			<param index="0" name="automatic" type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="set_vad_threshold">
+			<return type="void" />
+			<param index="0" name="vad_threshold" type="float" />
+			<description>
+			</description>
+		</method>
+		<method name="vad_threshold">
+			<return type="float" />
+			<description>
+			</description>
+		</method>
+	</methods>
+</class>

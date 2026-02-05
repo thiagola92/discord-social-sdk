@@ -458,7 +458,7 @@ def forge_overloading_statements(
                 )
             )
 
-        statements.append('return "";')
+        statements.append('return "Not a valid enum_type";')
 
         return "\n".join(statements)
 

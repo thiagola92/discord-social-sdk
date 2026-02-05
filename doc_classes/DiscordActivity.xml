@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="DiscordActivity" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="add_button">
+			<return type="void" />
+			<param index="0" name="button" type="DiscordActivityButton" />
+			<description>
+			</description>
+		</method>
+		<method name="application_id">
+			<return type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="assets">
+			<return type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="details">
+			<return type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="details_url">
+			<return type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="equals">
+			<return type="bool" />
+			<param index="0" name="other" type="DiscordActivity" />
+			<description>
+			</description>
+		</method>
+		<method name="get_buttons">
+			<return type="DiscordActivityButton[]" />
+			<description>
+			</description>
+		</method>
+		<method name="name">
+			<return type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="parent_application_id">
+			<return type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="party">
+			<return type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="secrets">
+			<return type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="set_application_id">
+			<return type="void" />
+			<param index="0" name="application_id" type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="set_assets">
+			<return type="void" />
+			<param index="0" name="assets" type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="set_details">
+			<return type="void" />
+			<param index="0" name="details" type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="set_details_url">
+			<return type="void" />
+			<param index="0" name="details_url" type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="set_name">
+			<return type="void" />
+			<param index="0" name="name" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="set_parent_application_id">
+			<return type="void" />
+			<param index="0" name="parent_application_id" type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="set_party">
+			<return type="void" />
+			<param index="0" name="party" type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="set_secrets">
+			<return type="void" />
+			<param index="0" name="secrets" type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="set_state">
+			<return type="void" />
+			<param index="0" name="state" type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="set_state_url">
+			<return type="void" />
+			<param index="0" name="state_url" type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="set_status_display_type">
+			<return type="void" />
+			<param index="0" name="status_display_type" type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="set_supported_platforms">
+			<return type="void" />
+			<param index="0" name="supported_platforms" type="int" enum="DiscordActivityGamePlatforms.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="set_timestamps">
+			<return type="void" />
+			<param index="0" name="timestamps" type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="set_type">
+			<return type="void" />
+			<param index="0" name="type" type="int" enum="DiscordActivityTypes.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="state">
+			<return type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="state_url">
+			<return type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="status_display_type">
+			<return type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="supported_platforms">
+			<return type="int" enum="DiscordActivityGamePlatforms.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="timestamps">
+			<return type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="type">
+			<return type="int" enum="DiscordActivityTypes.Enum" />
+			<description>
+			</description>
+		</method>
+	</methods>
+</class>

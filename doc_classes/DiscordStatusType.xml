@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="DiscordStatusType" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<constants>
+		<constant name="Online" value="0" enum="Enum">
+		</constant>
+		<constant name="Offline" value="1" enum="Enum">
+		</constant>
+		<constant name="Blocked" value="2" enum="Enum">
+		</constant>
+		<constant name="Idle" value="3" enum="Enum">
+		</constant>
+		<constant name="Dnd" value="4" enum="Enum">
+		</constant>
+		<constant name="Invisible" value="5" enum="Enum">
+		</constant>
+		<constant name="Streaming" value="6" enum="Enum">
+		</constant>
+		<constant name="Unknown" value="7" enum="Enum">
+		</constant>
+	</constants>
+</class>

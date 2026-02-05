@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="DiscordAdditionalContentType" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<constants>
+		<constant name="Other" value="0" enum="Enum">
+		</constant>
+		<constant name="Attachment" value="1" enum="Enum">
+		</constant>
+		<constant name="Poll" value="2" enum="Enum">
+		</constant>
+		<constant name="VoiceMessage" value="3" enum="Enum">
+		</constant>
+		<constant name="Thread" value="4" enum="Enum">
+		</constant>
+		<constant name="Embed" value="5" enum="Enum">
+		</constant>
+		<constant name="Sticker" value="6" enum="Enum">
+		</constant>
+	</constants>
+</class>

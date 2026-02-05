@@ -257,7 +257,7 @@ String Discord::enum_to_string(int value, String enum_type) {
 		return r1;
 	}
 
-	return "";
+	return "Not a valid enum_type";
 }
 
 // Binding.

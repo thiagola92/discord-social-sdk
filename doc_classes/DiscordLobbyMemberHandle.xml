@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="DiscordLobbyMemberHandle" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="can_link_lobby">
+			<return type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="connected">
+			<return type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="id">
+			<return type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="metadata">
+			<return type="Dictionary[String, String]" />
+			<description>
+			</description>
+		</method>
+		<method name="user">
+			<return type="Variant" />
+			<description>
+			</description>
+		</method>
+	</methods>
+</class>

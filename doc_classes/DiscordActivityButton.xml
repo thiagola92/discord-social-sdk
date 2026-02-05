@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="DiscordActivityButton" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="label">
+			<return type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="set_label">
+			<return type="void" />
+			<param index="0" name="label" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="set_url">
+			<return type="void" />
+			<param index="0" name="url" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="url">
+			<return type="String" />
+			<description>
+			</description>
+		</method>
+	</methods>
+</class>

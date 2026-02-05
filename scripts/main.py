@@ -1,7 +1,7 @@
 from pathlib import Path
 
 from build import Builder
-from help import clang_format, doxygen, clear_dir
+from help import clang_format, doxygen, clear_dir, doctool
 
 
 CDISCORD_PATH = "include/cdiscord.h"
@@ -22,6 +22,10 @@ if __name__ == "__main__":
 
     clang_format(CDISCORD_PATH)
     clang_format(DISCORDPP_PATH)
-    doxygen(XML_DIR)
+    doxygen()
 
-    Builder(XML_DIR, SRC_DIR).build_files()
+    builder = Builder(XML_DIR, SRC_DIR, DOC_DIR)
+
+    builder.build_files()
+    doctool()
+    builder.update_documentations()

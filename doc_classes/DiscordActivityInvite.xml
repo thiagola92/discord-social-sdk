@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="DiscordActivityInvite" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="application_id">
+			<return type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="channel_id">
+			<return type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="is_valid">
+			<return type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="message_id">
+			<return type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="parent_application_id">
+			<return type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="party_id">
+			<return type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="sender_id">
+			<return type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="session_id">
+			<return type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="set_application_id">
+			<return type="void" />
+			<param index="0" name="application_id" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="set_channel_id">
+			<return type="void" />
+			<param index="0" name="channel_id" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="set_is_valid">
+			<return type="void" />
+			<param index="0" name="is_valid" type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="set_message_id">
+			<return type="void" />
+			<param index="0" name="message_id" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="set_parent_application_id">
+			<return type="void" />
+			<param index="0" name="parent_application_id" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="set_party_id">
+			<return type="void" />
+			<param index="0" name="party_id" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="set_sender_id">
+			<return type="void" />
+			<param index="0" name="sender_id" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="set_session_id">
+			<return type="void" />
+			<param index="0" name="session_id" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="set_type">
+			<return type="void" />
+			<param index="0" name="type" type="int" enum="DiscordActivityActionTypes.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="type">
+			<return type="int" enum="DiscordActivityActionTypes.Enum" />
+			<description>
+			</description>
+		</method>
+	</methods>
+</class>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="DiscordClientCreateOptions" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="api_base">
+			<return type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="cpu_affinity_mask">
+			<return type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="experimental_android_prevent_comms_for_bluetooth">
+			<return type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="experimental_audio_system">
+			<return type="int" enum="DiscordAudioSystem.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="set_api_base">
+			<return type="void" />
+			<param index="0" name="api_base" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="set_cpu_affinity_mask">
+			<return type="void" />
+			<param index="0" name="cpu_affinity_mask" type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="set_experimental_android_prevent_comms_for_bluetooth">
+			<return type="void" />
+			<param index="0" name="experimental_android_prevent_comms_for_bluetooth" type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="set_experimental_audio_system">
+			<return type="void" />
+			<param index="0" name="experimental_audio_system" type="int" enum="DiscordAudioSystem.Enum" />
+			<description>
+			</description>
+		</method>
+		<method name="set_web_base">
+			<return type="void" />
+			<param index="0" name="web_base" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="web_base">
+			<return type="String" />
+			<description>
+			</description>
+		</method>
+	</methods>
+</class>

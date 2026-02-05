@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="DiscordActivityAssets" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="invite_cover_image">
+			<return type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="large_image">
+			<return type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="large_text">
+			<return type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="large_url">
+			<return type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="set_invite_cover_image">
+			<return type="void" />
+			<param index="0" name="invite_cover_image" type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="set_large_image">
+			<return type="void" />
+			<param index="0" name="large_image" type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="set_large_text">
+			<return type="void" />
+			<param index="0" name="large_text" type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="set_large_url">
+			<return type="void" />
+			<param index="0" name="large_url" type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="set_small_image">
+			<return type="void" />
+			<param index="0" name="small_image" type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="set_small_text">
+			<return type="void" />
+			<param index="0" name="small_text" type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="set_small_url">
+			<return type="void" />
+			<param index="0" name="small_url" type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="small_image">
+			<return type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="small_text">
+			<return type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="small_url">
+			<return type="Variant" />
+			<description>
+			</description>
+		</method>
+	</methods>
+</class>
