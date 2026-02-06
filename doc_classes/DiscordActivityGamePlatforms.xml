@@ -1,27 +1,34 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<class name="DiscordActivityGamePlatforms" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordActivityGamePlatforms" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	</brief_description>
+	Represents the type of platforms that an activity invite can be accepted on.</brief_description>
 	<description>
 	</description>
 	<tutorials>
 	</tutorials>
 	<constants>
 		<constant name="Desktop" value="1" enum="Enum">
+		Desktop.
 		</constant>
 		<constant name="Xbox" value="2" enum="Enum">
+		Xbox.
 		</constant>
 		<constant name="Samsung" value="4" enum="Enum">
+		Samsung.
 		</constant>
 		<constant name="IOS" value="8" enum="Enum">
+		IOS.
 		</constant>
 		<constant name="Android" value="16" enum="Enum">
+		Android.
 		</constant>
 		<constant name="Embedded" value="32" enum="Enum">
+		Embedded.
 		</constant>
 		<constant name="PS4" value="64" enum="Enum">
+		PS4.
 		</constant>
 		<constant name="PS5" value="128" enum="Enum">
+		PS5.
 		</constant>
 		<constant name="id" value="4">
 		</constant>

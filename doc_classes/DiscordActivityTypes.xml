@@ -1,25 +1,32 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<class name="DiscordActivityTypes" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordActivityTypes" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	</brief_description>
+	Discord RichPresence supports multiple types of activities that a user can be doing.</brief_description>
 	<description>
-	</description>
+	For the SDK, the only activity type that is really relevant is [code]Playing[/code]. The others are provided for completeness.
+See [url=https://discord.com/developers/docs/rich-presence/overview]https://discord.com/developers/docs/rich-presence/overview[/url] for more information.</description>
 	<tutorials>
 	</tutorials>
 	<constants>
 		<constant name="Playing" value="0" enum="Enum">
+		Playing.
 		</constant>
 		<constant name="Streaming" value="1" enum="Enum">
+		Streaming.
 		</constant>
 		<constant name="Listening" value="2" enum="Enum">
+		Listening.
 		</constant>
 		<constant name="Watching" value="3" enum="Enum">
+		Watching.
 		</constant>
 		<constant name="CustomStatus" value="4" enum="Enum">
+		CustomStatus.
 		</constant>
 		<constant name="Competing" value="5" enum="Enum">
+		Competing.
 		</constant>
 		<constant name="HangStatus" value="6" enum="Enum">
+		HangStatus.
 		</constant>
 		<constant name="id" value="2">
 		</constant>

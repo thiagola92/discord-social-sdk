@@ -1,6 +1,8 @@
 <class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordAudioDevice" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
-	<brief_description>&lt;para&gt;Represents a single input or output audio device available to the user. &lt;/para&gt;</brief_description>
-	<description>&lt;para&gt;Discord will initialize the audio engine with the system default input and output devices. You can change the device through the &lt;ref refid="classdiscordpp_1_1Client" kindref="compound"&gt;Client&lt;/ref&gt; by passing the id of the desired audio device. &lt;/para&gt;</description>
+	<brief_description>
+	Represents a single input or output audio device available to the user.</brief_description>
+	<description>
+	Discord will initialize the audio engine with the system default input and output devices. You can change the device through the [DiscordClient] by passing the id of the desired audio device.</description>
 	<tutorials>
 	</tutorials>
 	<methods>
@@ -8,46 +10,46 @@
 			<return type="bool" />
 			<param index="0" name="rhs" type="DiscordAudioDevice" />
 			<description>
-			&lt;para&gt;Compares the ID of two &lt;ref refid="classdiscordpp_1_1AudioDevice" kindref="compound"&gt;AudioDevice&lt;/ref&gt; objects for equality. &lt;/para&gt;
+			Compares the ID of two [DiscordAudioDevice] objects for equality.
 			</description>
 		</method>
 		<method name="id">
 			<return type="String" />
 			<description>
-			&lt;para&gt;The ID of the audio device. &lt;/para&gt;
+			The ID of the audio device.
 			</description>
 		</method>
 		<method name="is_default">
 			<return type="bool" />
 			<description>
-			&lt;para&gt;Whether the audio device is the system default device. &lt;/para&gt;
+			Whether the audio device is the system default device.
 			</description>
 		</method>
 		<method name="name">
 			<return type="String" />
 			<description>
-			&lt;para&gt;The display name of the audio device. &lt;/para&gt;
+			The display name of the audio device.
 			</description>
 		</method>
 		<method name="set_id">
 			<return type="void" />
 			<param index="0" name="id" type="String" />
 			<description>
-			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1AudioDevice_1a3f85e5323b6a5d6ce8b6b2abb05490b6" kindref="member"&gt;AudioDevice::Id&lt;/ref&gt;. &lt;/para&gt;
+			Setter for &lt;ref refid="classdiscordpp_1_1AudioDevice_1a3f85e5323b6a5d6ce8b6b2abb05490b6" kindref="member"&gt;AudioDevice::Id&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="set_is_default">
 			<return type="void" />
 			<param index="0" name="is_default" type="bool" />
 			<description>
-			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1AudioDevice_1a39f19c6eb7774ffd939811a3484e0475" kindref="member"&gt;AudioDevice::IsDefault&lt;/ref&gt;. &lt;/para&gt;
+			Setter for &lt;ref refid="classdiscordpp_1_1AudioDevice_1a39f19c6eb7774ffd939811a3484e0475" kindref="member"&gt;AudioDevice::IsDefault&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="set_name">
 			<return type="void" />
 			<param index="0" name="name" type="String" />
 			<description>
-			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1AudioDevice_1a1f021287a4bf98992d3c9b27589c5f59" kindref="member"&gt;AudioDevice::Name&lt;/ref&gt;. &lt;/para&gt;
+			Setter for &lt;ref refid="classdiscordpp_1_1AudioDevice_1a1f021287a4bf98992d3c9b27589c5f59" kindref="member"&gt;AudioDevice::Name&lt;/ref&gt;.
 			</description>
 		</method>
 	</methods>

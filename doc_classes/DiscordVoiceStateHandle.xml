@@ -1,20 +1,22 @@
 <class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordVoiceStateHandle" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
-	<brief_description>&lt;para&gt;A &lt;ref refid="classdiscordpp_1_1VoiceStateHandle" kindref="compound"&gt;VoiceStateHandle&lt;/ref&gt; represents the state of a single participant in a Discord voice call. &lt;/para&gt;</brief_description>
-	<description>&lt;para&gt;The main use case for &lt;ref refid="classdiscordpp_1_1VoiceStateHandle" kindref="compound"&gt;VoiceStateHandle&lt;/ref&gt; in the SDK is communicate whether a user has muted or defeaned themselves.&lt;/para&gt;
-&lt;para&gt;Handle objects in the SDK hold a reference both to the underlying data, and to the SDK instance. Changes to the underlying data will generally be available on existing handles objects without having to re-create them. If the SDK instance is destroyed, but you still have a reference to a handle object, note that it will return the default value for all method calls (ie an empty string for methods that return a string). &lt;/para&gt;</description>
+	<brief_description>
+	A [DiscordVoiceStateHandle] represents the state of a single participant in a Discord voice call.</brief_description>
+	<description>
+	The main use case for [DiscordVoiceStateHandle] in the SDK is communicate whether a user has muted or defeaned themselves.
+Handle objects in the SDK hold a reference both to the underlying data, and to the SDK instance. Changes to the underlying data will generally be available on existing handles objects without having to re-create them. If the SDK instance is destroyed, but you still have a reference to a handle object, note that it will return the default value for all method calls (ie an empty string for methods that return a string).</description>
 	<tutorials>
 	</tutorials>
 	<methods>
 		<method name="self_deaf">
 			<return type="bool" />
 			<description>
-			&lt;para&gt;Returns true if the given user has deafened themselves so that no one else in the call can hear them and so that they do not hear anyone else in the call either. &lt;/para&gt;
+			Returns true if the given user has deafened themselves so that no one else in the call can hear them and so that they do not hear anyone else in the call either.
 			</description>
 		</method>
 		<method name="self_mute">
 			<return type="bool" />
 			<description>
-			&lt;para&gt;Returns true if the given user has muted themselves so that no one else in the call can hear them. &lt;/para&gt;
+			Returns true if the given user has muted themselves so that no one else in the call can hear them.
 			</description>
 		</method>
 	</methods>

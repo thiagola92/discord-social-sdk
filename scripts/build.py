@@ -4,8 +4,8 @@ from xml.etree import ElementTree
 
 from help import clang_format
 from name import to_snake_case, to_godot_class_name
-from collect import NamespaceInfo, ClassInfo, collect_namespace
-from documentation import document_xml
+from collect import NamespaceInfo, ClassInfo, EnumInfo, collect_namespace
+from documentation import document_functions, document_class, document_enum
 from template.file.register_types_h import get_register_types_h
 from template.file.register_types_cpp import get_register_types_cpp
 from template.file.discord_enum_h import get_discord_enum_h
@@ -174,17 +174,41 @@ class Builder:
     ######################################################################
 
     def update_documentations(self) -> None:
-        self.update_class_documentation(self.namespace_info)
+        self.update_namespace_class(self.namespace_info)
+
+        for e in self.namespace_info.enums:
+            self.update_enum_class(e, "")
 
         for c in self.namespace_info.classes:
-            self.update_class_documentation(c)
+            self.update_object_class(c)
 
-    def update_class_documentation(self, info: NamespaceInfo | ClassInfo) -> None:
-        class_name = info.name if isinstance(info, ClassInfo) else ""
-        filename = to_godot_class_name(class_name)
+            for e in c.enums:
+                self.update_enum_class(e, c.name)
+
+    def update_namespace_class(self, namespace_info: NamespaceInfo) -> None:
+        filename = to_godot_class_name("")
         filepath = self.doc_dir.joinpath(f"{filename}.xml")
         tree = ElementTree.parse(filepath)
 
-        document_xml(tree, info)
+        document_functions(tree, namespace_info)
+
+        tree.write(filepath)
+
+    def update_object_class(self, class_info: ClassInfo) -> None:
+        filename = to_godot_class_name(class_info.name)
+        filepath = self.doc_dir.joinpath(f"{filename}.xml")
+        tree = ElementTree.parse(filepath)
+
+        document_class(tree, class_info)
+        document_functions(tree, class_info)
+
+        tree.write(filepath)
+
+    def update_enum_class(self, enum_info: EnumInfo, class_name: str = "") -> None:
+        filename = to_godot_class_name(class_name + enum_info.name)
+        filepath = self.doc_dir.joinpath(f"{filename}.xml")
+        tree = ElementTree.parse(filepath)
+
+        document_enum(tree, enum_info)
 
         tree.write(filepath)

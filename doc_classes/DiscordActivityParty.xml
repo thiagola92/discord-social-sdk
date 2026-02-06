@@ -1,63 +1,63 @@
 <class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordActivityParty" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
 	</brief_description>
-	<description>&lt;para&gt;&lt;simplesect kind="see"&gt;&lt;para&gt;&lt;ref refid="classdiscordpp_1_1Activity" kindref="compound"&gt;Activity&lt;/ref&gt; &lt;/para&gt;
-&lt;/simplesect&gt;
-&lt;/para&gt;</description>
+	<description>
+	&lt;simplesect kind="see"&gt;[DiscordActivity] 
+&lt;/simplesect&gt;</description>
 	<tutorials>
 	</tutorials>
 	<methods>
 		<method name="current_size">
 			<return type="int" />
 			<description>
-			&lt;para&gt;The number of people currently in the party, must be at least 1. &lt;/para&gt;
+			The number of people currently in the party, must be at least 1.
 			</description>
 		</method>
 		<method name="id">
 			<return type="String" />
 			<description>
-			&lt;para&gt;Specifies the id of the party. "Party" is used colloquially to refer to a group of players in a shared context. This could be a lobby id, server id, team id, etc. &lt;/para&gt;
-			&lt;para&gt;All party members should specify a RichPresence update using the same party id so that the Discord client knows how to group them together. If specified, must be a string between 2 and 128 characters. &lt;/para&gt;
+			Specifies the id of the party. "Party" is used colloquially to refer to a group of players in a shared context. This could be a lobby id, server id, team id, etc.
+			All party members should specify a RichPresence update using the same party id so that the Discord client knows how to group them together. If specified, must be a string between 2 and 128 characters.
 			</description>
 		</method>
 		<method name="max_size">
 			<return type="int" />
 			<description>
-			&lt;para&gt;The maximum number of people that can be in the party, must be at least 0. When 0, the UI will not display a maximum. &lt;/para&gt;
+			The maximum number of people that can be in the party, must be at least 0. When 0, the UI will not display a maximum.
 			</description>
 		</method>
 		<method name="privacy">
 			<return type="int" enum="DiscordActivityPartyPrivacy.Enum" />
 			<description>
-			&lt;para&gt;The privacy of the party. &lt;/para&gt;
+			The privacy of the party.
 			</description>
 		</method>
 		<method name="set_current_size">
 			<return type="void" />
 			<param index="0" name="current_size" type="int" />
 			<description>
-			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1ActivityParty_1a532fdee79a3adcc8f9a01fd2cf957595" kindref="member"&gt;ActivityParty::CurrentSize&lt;/ref&gt;. &lt;/para&gt;
+			Setter for &lt;ref refid="classdiscordpp_1_1ActivityParty_1a532fdee79a3adcc8f9a01fd2cf957595" kindref="member"&gt;ActivityParty::CurrentSize&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="set_id">
 			<return type="void" />
 			<param index="0" name="id" type="String" />
 			<description>
-			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1ActivityParty_1ad5b269834e93f9d2b794a48cc7fb95f3" kindref="member"&gt;ActivityParty::Id&lt;/ref&gt;. &lt;/para&gt;
+			Setter for &lt;ref refid="classdiscordpp_1_1ActivityParty_1ad5b269834e93f9d2b794a48cc7fb95f3" kindref="member"&gt;ActivityParty::Id&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="set_max_size">
 			<return type="void" />
 			<param index="0" name="max_size" type="int" />
 			<description>
-			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1ActivityParty_1a60d20e2272f1d66156c191152f7e4ced" kindref="member"&gt;ActivityParty::MaxSize&lt;/ref&gt;. &lt;/para&gt;
+			Setter for &lt;ref refid="classdiscordpp_1_1ActivityParty_1a60d20e2272f1d66156c191152f7e4ced" kindref="member"&gt;ActivityParty::MaxSize&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="set_privacy">
 			<return type="void" />
 			<param index="0" name="privacy" type="int" enum="DiscordActivityPartyPrivacy.Enum" />
 			<description>
-			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1ActivityParty_1ac57169df0239478d2e79c7d5cee5df34" kindref="member"&gt;ActivityParty::Privacy&lt;/ref&gt;. &lt;/para&gt;
+			Setter for &lt;ref refid="classdiscordpp_1_1ActivityParty_1ac57169df0239478d2e79c7d5cee5df34" kindref="member"&gt;ActivityParty::Privacy&lt;/ref&gt;.
 			</description>
 		</method>
 	</methods>

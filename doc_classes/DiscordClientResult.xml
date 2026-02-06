@@ -1,129 +1,129 @@
 <class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordClientResult" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
-	<brief_description>&lt;para&gt;Struct that stores information about the result of an SDK function call. &lt;/para&gt;</brief_description>
-	<description>&lt;para&gt;Functions can fail for a few reasons including:&lt;itemizedlist&gt;
-&lt;listitem&gt;&lt;para&gt;The &lt;ref refid="classdiscordpp_1_1Client" kindref="compound"&gt;Client&lt;/ref&gt; is not yet ready and able to perform the action.&lt;/para&gt;
-&lt;/listitem&gt;&lt;listitem&gt;&lt;para&gt;The inputs passed to the function are invalid.&lt;/para&gt;
-&lt;/listitem&gt;&lt;listitem&gt;&lt;para&gt;The function makes an API call to Discord's backend which returns an error.&lt;/para&gt;
-&lt;/listitem&gt;&lt;listitem&gt;&lt;para&gt;The user is offline.&lt;/para&gt;
-&lt;/listitem&gt;&lt;/itemizedlist&gt;
-&lt;/para&gt;
-&lt;para&gt;The &lt;ref refid="classdiscordpp_1_1ClientResult_1a4fb34d5bb67e2e742e1878c6d07a05ac" kindref="member"&gt;ClientResult::Type&lt;/ref&gt; field is used to to distinguish between the above types of failures &lt;/para&gt;</description>
+	<brief_description>
+	Struct that stores information about the result of an SDK function call.</brief_description>
+	<description>
+	Functions can fail for a few reasons including:
+- The [DiscordClient] is not yet ready and able to perform the action.
+- The inputs passed to the function are invalid.
+- The function makes an API call to Discord's backend which returns an error.
+- The user is offline.
+The &lt;ref refid="classdiscordpp_1_1ClientResult_1a4fb34d5bb67e2e742e1878c6d07a05ac" kindref="member"&gt;ClientResult::Type&lt;/ref&gt; field is used to to distinguish between the above types of failures</description>
 	<tutorials>
 	</tutorials>
 	<methods>
 		<method name="error">
 			<return type="String" />
 			<description>
-			&lt;para&gt;A description of the error that occurred. &lt;/para&gt;
+			A description of the error that occurred.
 			</description>
 		</method>
 		<method name="error_code">
 			<return type="int" />
 			<description>
-			&lt;para&gt;A more detailed error code for this failure. Currently the only use of this is when an API request is made to Discord's backend and that fails with a specific error, that error will be included in this field. &lt;/para&gt;
-			&lt;para&gt;Many of these error codes are documented at: &lt;ulink url="https://discord.com/developers/docs/topics/opcodes-and-status-codes#json"&gt;https://discord.com/developers/docs/topics/opcodes-and-status-codes#json&lt;/ulink&gt;&lt;/para&gt;
-&lt;para&gt;This will only be set if the type of error is &lt;ref refid="namespacediscordpp_1ae19a5aed498bc40359e4d89d14ffb446a28e2aeb21c361fc1c2d3d5a7c964812f" kindref="member"&gt;ErrorType::HTTPError&lt;/ref&gt; &lt;/para&gt;
+			A more detailed error code for this failure. Currently the only use of this is when an API request is made to Discord's backend and that fails with a specific error, that error will be included in this field.
+			Many of these error codes are documented at: [url=https://discord.com/developers/docs/topics/opcodes-and-status-codes#json]https://discord.com/developers/docs/topics/opcodes-and-status-codes#json[/url]
+This will only be set if the type of error is &lt;ref refid="namespacediscordpp_1ae19a5aed498bc40359e4d89d14ffb446a28e2aeb21c361fc1c2d3d5a7c964812f" kindref="member"&gt;ErrorType::HTTPError&lt;/ref&gt;
 			</description>
 		</method>
 		<method name="response_body">
 			<return type="String" />
 			<description>
-			&lt;para&gt;The full HTTP response body, which will usually be a JSON string. &lt;/para&gt;
-			&lt;para&gt;The error format here is a bit more complicated because Discord's API tries to make it clear which field from the request is causing the error. Documentation on the format of these errors is here: &lt;ulink url="https://discord.com/developers/docs/reference#error-messages"&gt;https://discord.com/developers/docs/reference#error-messages&lt;/ulink&gt;&lt;/para&gt;
-&lt;para&gt;This will only be set if the type of error is &lt;ref refid="namespacediscordpp_1ae19a5aed498bc40359e4d89d14ffb446a28e2aeb21c361fc1c2d3d5a7c964812f" kindref="member"&gt;ErrorType::HTTPError&lt;/ref&gt; &lt;/para&gt;
+			The full HTTP response body, which will usually be a JSON string.
+			The error format here is a bit more complicated because Discord's API tries to make it clear which field from the request is causing the error. Documentation on the format of these errors is here: [url=https://discord.com/developers/docs/reference#error-messages]https://discord.com/developers/docs/reference#error-messages[/url]
+This will only be set if the type of error is &lt;ref refid="namespacediscordpp_1ae19a5aed498bc40359e4d89d14ffb446a28e2aeb21c361fc1c2d3d5a7c964812f" kindref="member"&gt;ErrorType::HTTPError&lt;/ref&gt;
 			</description>
 		</method>
 		<method name="retry_after">
 			<return type="float" />
 			<description>
-			&lt;para&gt;When a user is being rate limited by Discord (and so status == 429), this field should be set and is the number of seconds to wait before trying again. &lt;/para&gt;
+			When a user is being rate limited by Discord (and so status == 429), this field should be set and is the number of seconds to wait before trying again.
 			</description>
 		</method>
 		<method name="retryable">
 			<return type="bool" />
 			<description>
-			&lt;para&gt;Indicates if, although an API request failed, it is safe and recommended to retry it. &lt;/para&gt;
+			Indicates if, although an API request failed, it is safe and recommended to retry it.
 			</description>
 		</method>
 		<method name="set_error">
 			<return type="void" />
 			<param index="0" name="error" type="String" />
 			<description>
-			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1ClientResult_1a3175ab59cd9268a3b2c6484129c89e04" kindref="member"&gt;ClientResult::Error&lt;/ref&gt;. &lt;/para&gt;
+			Setter for &lt;ref refid="classdiscordpp_1_1ClientResult_1a3175ab59cd9268a3b2c6484129c89e04" kindref="member"&gt;ClientResult::Error&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="set_error_code">
 			<return type="void" />
 			<param index="0" name="error_code" type="int" />
 			<description>
-			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1ClientResult_1ab361cb3d3381401f0d73736d5f49b3f5" kindref="member"&gt;ClientResult::ErrorCode&lt;/ref&gt;. &lt;/para&gt;
+			Setter for &lt;ref refid="classdiscordpp_1_1ClientResult_1ab361cb3d3381401f0d73736d5f49b3f5" kindref="member"&gt;ClientResult::ErrorCode&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="set_response_body">
 			<return type="void" />
 			<param index="0" name="response_body" type="String" />
 			<description>
-			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1ClientResult_1acc890e84f91a54bfa4e6257442fba9ed" kindref="member"&gt;ClientResult::ResponseBody&lt;/ref&gt;. &lt;/para&gt;
+			Setter for &lt;ref refid="classdiscordpp_1_1ClientResult_1acc890e84f91a54bfa4e6257442fba9ed" kindref="member"&gt;ClientResult::ResponseBody&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="set_retry_after">
 			<return type="void" />
 			<param index="0" name="retry_after" type="float" />
 			<description>
-			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1ClientResult_1ac739adca52b90d6b4cbed5753c30fd65" kindref="member"&gt;ClientResult::RetryAfter&lt;/ref&gt;. &lt;/para&gt;
+			Setter for &lt;ref refid="classdiscordpp_1_1ClientResult_1ac739adca52b90d6b4cbed5753c30fd65" kindref="member"&gt;ClientResult::RetryAfter&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="set_retryable">
 			<return type="void" />
 			<param index="0" name="retryable" type="bool" />
 			<description>
-			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1ClientResult_1a0d220638f4a36c0b8b731f601e0ac02d" kindref="member"&gt;ClientResult::Retryable&lt;/ref&gt;. &lt;/para&gt;
+			Setter for &lt;ref refid="classdiscordpp_1_1ClientResult_1a0d220638f4a36c0b8b731f601e0ac02d" kindref="member"&gt;ClientResult::Retryable&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="set_status">
 			<return type="void" />
 			<param index="0" name="status" type="int" enum="DiscordHttpStatusCode.Enum" />
 			<description>
-			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1ClientResult_1adbd9aeece922b420d020987e8c4afbcd" kindref="member"&gt;ClientResult::Status&lt;/ref&gt;. &lt;/para&gt;
+			Setter for &lt;ref refid="classdiscordpp_1_1ClientResult_1adbd9aeece922b420d020987e8c4afbcd" kindref="member"&gt;ClientResult::Status&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="set_successful">
 			<return type="void" />
 			<param index="0" name="successful" type="bool" />
 			<description>
-			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1ClientResult_1aef3b1aca3cd156daf488ca13ae87313b" kindref="member"&gt;ClientResult::Successful&lt;/ref&gt;. &lt;/para&gt;
+			Setter for &lt;ref refid="classdiscordpp_1_1ClientResult_1aef3b1aca3cd156daf488ca13ae87313b" kindref="member"&gt;ClientResult::Successful&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="set_type">
 			<return type="void" />
 			<param index="0" name="type" type="int" enum="DiscordErrorType.Enum" />
 			<description>
-			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1ClientResult_1a4fb34d5bb67e2e742e1878c6d07a05ac" kindref="member"&gt;ClientResult::Type&lt;/ref&gt;. &lt;/para&gt;
+			Setter for &lt;ref refid="classdiscordpp_1_1ClientResult_1a4fb34d5bb67e2e742e1878c6d07a05ac" kindref="member"&gt;ClientResult::Type&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="status">
 			<return type="int" enum="DiscordHttpStatusCode.Enum" />
 			<description>
-			&lt;para&gt;The HTTP status code of the API call. &lt;/para&gt;
-			&lt;para&gt;This will only be set if the type of error is &lt;ref refid="namespacediscordpp_1ae19a5aed498bc40359e4d89d14ffb446a28e2aeb21c361fc1c2d3d5a7c964812f" kindref="member"&gt;ErrorType::HTTPError&lt;/ref&gt; &lt;/para&gt;
+			The HTTP status code of the API call.
+			This will only be set if the type of error is &lt;ref refid="namespacediscordpp_1ae19a5aed498bc40359e4d89d14ffb446a28e2aeb21c361fc1c2d3d5a7c964812f" kindref="member"&gt;ErrorType::HTTPError&lt;/ref&gt;
 			</description>
 		</method>
 		<method name="successful">
 			<return type="bool" />
 			<description>
-			&lt;para&gt;Equivalent to type == &lt;ref refid="namespacediscordpp_1ae19a5aed498bc40359e4d89d14ffb446a6adf97f83acf6453d4a6a4b1070f3754" kindref="member"&gt;ErrorType::None&lt;/ref&gt;. &lt;/para&gt;
+			Equivalent to type == &lt;ref refid="namespacediscordpp_1ae19a5aed498bc40359e4d89d14ffb446a6adf97f83acf6453d4a6a4b1070f3754" kindref="member"&gt;ErrorType::None&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="to_string_discord">
 			<return type="String" />
 			<description>
-			&lt;para&gt;Returns the error message if any of the &lt;ref refid="classdiscordpp_1_1ClientResult" kindref="compound"&gt;ClientResult&lt;/ref&gt;. &lt;/para&gt;
+			Returns the error message if any of the [DiscordClientResult].
 			</description>
 		</method>
 		<method name="type">
 			<return type="int" enum="DiscordErrorType.Enum" />
 			<description>
-			&lt;para&gt;The type of error that occurred. See &lt;ref refid="namespacediscordpp_1ae19a5aed498bc40359e4d89d14ffb446" kindref="member"&gt;ErrorType&lt;/ref&gt; for more information. &lt;/para&gt;
+			The type of error that occurred. See &lt;ref refid="namespacediscordpp_1ae19a5aed498bc40359e4d89d14ffb446" kindref="member"&gt;ErrorType&lt;/ref&gt; for more information.
 			</description>
 		</method>
 	</methods>

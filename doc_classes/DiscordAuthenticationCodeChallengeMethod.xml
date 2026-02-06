@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<class name="DiscordAuthenticationCodeChallengeMethod" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordAuthenticationCodeChallengeMethod" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	</brief_description>
+	Represents the crypto method used to generate a code challenge.</brief_description>
 	<description>
-	</description>
+	The only method used by the SDK is sha256.</description>
 	<tutorials>
 	</tutorials>
 	<constants>
 		<constant name="S256" value="0" enum="Enum">
+		S256.
 		</constant>
 		<constant name="id" value="7">
 		</constant>

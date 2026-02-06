@@ -1,15 +1,16 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<class name="DiscordAudioSystem" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordAudioSystem" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	</brief_description>
+	The Discord Voice audio system to use.</brief_description>
 	<description>
 	</description>
 	<tutorials>
 	</tutorials>
 	<constants>
 		<constant name="Standard" value="0" enum="Enum">
+		Use the standard audio system.
 		</constant>
 		<constant name="Game" value="1" enum="Enum">
+		Use the game audio system.
 		</constant>
 		<constant name="id" value="11">
 		</constant>

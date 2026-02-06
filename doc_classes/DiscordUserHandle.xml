@@ -1,20 +1,22 @@
 <class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordUserHandle" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
-	<brief_description>&lt;para&gt;A &lt;ref refid="classdiscordpp_1_1UserHandle" kindref="compound"&gt;UserHandle&lt;/ref&gt; represents a single user on Discord that the SDK knows about and contains basic account information for them such as id, name, and avatar, as well as their "status" information which includes both whether they are online/offline/etc as well as whether they are playing this game. &lt;/para&gt;</brief_description>
-	<description>&lt;para&gt;Handle objects in the SDK hold a reference both to the underlying data, and to the SDK instance. Changes to the underlying data will generally be available on existing handles objects without having to re-create them. If the SDK instance is destroyed, but you still have a reference to a handle object, note that it will return the default value for all method calls (ie an empty string for methods that return a string). &lt;/para&gt;</description>
+	<brief_description>
+	A [DiscordUserHandle] represents a single user on Discord that the SDK knows about and contains basic account information for them such as id, name, and avatar, as well as their "status" information which includes both whether they are online/offline/etc as well as whether they are playing this game.</brief_description>
+	<description>
+	Handle objects in the SDK hold a reference both to the underlying data, and to the SDK instance. Changes to the underlying data will generally be available on existing handles objects without having to re-create them. If the SDK instance is destroyed, but you still have a reference to a handle object, note that it will return the default value for all method calls (ie an empty string for methods that return a string).</description>
 	<tutorials>
 	</tutorials>
 	<methods>
 		<method name="avatar">
 			<return type="Variant" />
 			<description>
-			&lt;para&gt;Returns the hash of the user's Discord profile avatar, if one is set. &lt;/para&gt;
+			Returns the hash of the user's Discord profile avatar, if one is set.
 			</description>
 		</method>
 		<method name="avatar_type_to_string" qualifiers="static">
 			<return type="String" />
 			<param index="0" name="type" type="int" enum="DiscordUserHandleAvatarType.Enum" />
 			<description>
-			&lt;para&gt;Converts the &lt;ref refid="classdiscordpp_1_1UserHandle_1a9cbf5933bc6181eb1900574f6eda9b18" kindref="member"&gt;AvatarType&lt;/ref&gt; enum to a string. &lt;/para&gt;
+			Converts the &lt;ref refid="classdiscordpp_1_1UserHandle_1a9cbf5933bc6181eb1900574f6eda9b18" kindref="member"&gt;AvatarType&lt;/ref&gt; enum to a string.
 			</description>
 		</method>
 		<method name="avatar_url">
@@ -22,70 +24,70 @@
 			<param index="0" name="animated_type" type="int" enum="DiscordUserHandleAvatarType.Enum" />
 			<param index="1" name="static_type" type="int" enum="DiscordUserHandleAvatarType.Enum" />
 			<description>
-			&lt;para&gt;Returns a CDN url to the user's Discord profile avatar. &lt;/para&gt;
-			&lt;para&gt;If the user does not have an avatar set, a url to one of Discord's default avatars is returned instead. &lt;/para&gt;
+			Returns a CDN url to the user's Discord profile avatar.
+			If the user does not have an avatar set, a url to one of Discord's default avatars is returned instead.
 			</description>
 		</method>
 		<method name="display_name">
 			<return type="String" />
 			<description>
-			&lt;para&gt;Returns the user's preferred name, if one is set, otherwise returns their unique username. &lt;/para&gt;
+			Returns the user's preferred name, if one is set, otherwise returns their unique username.
 			</description>
 		</method>
 		<method name="game_activity">
 			<return type="Variant" />
 			<description>
-			&lt;para&gt;Returns the user's rich presence activity that is associated with the current game, if one is set. &lt;/para&gt;
-			&lt;para&gt;On Discord, users can have multiple rich presence activities at once, but the SDK will only expose the activity that is associated with your game. You can use this to know about the party the user is in, if any, and what the user is doing in the game.&lt;/para&gt;
-&lt;para&gt;For more information see the &lt;ref refid="classdiscordpp_1_1Activity" kindref="compound"&gt;Activity&lt;/ref&gt; class and check out &lt;ulink url="https://discord.com/developers/docs/rich-presence/overview"&gt;https://discord.com/developers/docs/rich-presence/overview&lt;/ulink&gt; &lt;/para&gt;
+			Returns the user's rich presence activity that is associated with the current game, if one is set.
+			On Discord, users can have multiple rich presence activities at once, but the SDK will only expose the activity that is associated with your game. You can use this to know about the party the user is in, if any, and what the user is doing in the game.
+For more information see the [DiscordActivity] class and check out [url=https://discord.com/developers/docs/rich-presence/overview]https://discord.com/developers/docs/rich-presence/overview[/url]
 			</description>
 		</method>
 		<method name="global_name">
 			<return type="Variant" />
 			<description>
-			&lt;para&gt;Returns the preferred display name of this user, if one is set. &lt;/para&gt;
-			&lt;para&gt;Discord's public API refers to this as a "global name" instead of "display name".&lt;/para&gt;
-&lt;para&gt;Discord users can set their preferred name to almost any string.&lt;/para&gt;
-&lt;para&gt;For more information about usernames on Discord, see: &lt;ulink url="https://discord.com/developers/docs/resources/user"&gt;https://discord.com/developers/docs/resources/user&lt;/ulink&gt; &lt;/para&gt;
+			Returns the preferred display name of this user, if one is set.
+			Discord's public API refers to this as a "global name" instead of "display name".
+Discord users can set their preferred name to almost any string.
+For more information about usernames on Discord, see: [url=https://discord.com/developers/docs/resources/user]https://discord.com/developers/docs/resources/user[/url]
 			</description>
 		</method>
 		<method name="id">
 			<return type="int" />
 			<description>
-			&lt;para&gt;Returns the ID of this user. &lt;/para&gt;
-			&lt;para&gt;If this returns 0 then the &lt;ref refid="classdiscordpp_1_1UserHandle" kindref="compound"&gt;UserHandle&lt;/ref&gt; is no longer valid. &lt;/para&gt;
+			Returns the ID of this user.
+			If this returns 0 then the [DiscordUserHandle] is no longer valid.
 			</description>
 		</method>
 		<method name="is_provisional">
 			<return type="bool" />
 			<description>
-			&lt;para&gt;Returns true if this user is a provisional account. &lt;/para&gt;
+			Returns true if this user is a provisional account.
 			</description>
 		</method>
 		<method name="relationship">
 			<return type="DiscordRelationshipHandle" />
 			<description>
-			&lt;para&gt;Returns a reference to the &lt;ref refid="classdiscordpp_1_1RelationshipHandle" kindref="compound"&gt;RelationshipHandle&lt;/ref&gt; between the currently authenticated user and this user, if any. &lt;/para&gt;
+			Returns a reference to the [DiscordRelationshipHandle] between the currently authenticated user and this user, if any.
 			</description>
 		</method>
 		<method name="status">
 			<return type="int" enum="DiscordStatusType.Enum" />
 			<description>
-			&lt;para&gt;Returns the user's online/offline/idle status. &lt;/para&gt;
+			Returns the user's online/offline/idle status.
 			</description>
 		</method>
 		<method name="user_application_profiles">
 			<return type="DiscordUserApplicationProfileHandle[]" />
 			<description>
-			&lt;para&gt;Returns a list of UserApplicationProfileHandles for this user. Currently, a user can only have a single profile per application, so this list will always contain at most one &lt;ref refid="classdiscordpp_1_1UserApplicationProfileHandle" kindref="compound"&gt;UserApplicationProfileHandle&lt;/ref&gt;. &lt;/para&gt;
+			Returns a list of UserApplicationProfileHandles for this user. Currently, a user can only have a single profile per application, so this list will always contain at most one [DiscordUserApplicationProfileHandle].
 			</description>
 		</method>
 		<method name="username">
 			<return type="String" />
 			<description>
-			&lt;para&gt;Returns the globally unique username of this user. &lt;/para&gt;
-			&lt;para&gt;For provisional accounts this is an auto-generated string.&lt;/para&gt;
-&lt;para&gt;For more information about usernames on Discord, see: &lt;ulink url="https://discord.com/developers/docs/resources/user"&gt;https://discord.com/developers/docs/resources/user&lt;/ulink&gt; &lt;/para&gt;
+			Returns the globally unique username of this user.
+			For provisional accounts this is an auto-generated string.
+For more information about usernames on Discord, see: [url=https://discord.com/developers/docs/resources/user]https://discord.com/developers/docs/resources/user[/url]
 			</description>
 		</method>
 	</methods>

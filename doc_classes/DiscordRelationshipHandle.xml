@@ -1,47 +1,47 @@
 <class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordRelationshipHandle" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
-	<brief_description>&lt;para&gt;A &lt;ref refid="classdiscordpp_1_1RelationshipHandle" kindref="compound"&gt;RelationshipHandle&lt;/ref&gt; represents the relationship between the current user and a target user on Discord. Relationships include friends, blocked users, and friend invites. &lt;/para&gt;</brief_description>
-	<description>&lt;para&gt;The SDK supports two types of relationships:&lt;itemizedlist&gt;
-&lt;listitem&gt;&lt;para&gt;Discord: These are relationships that persist across games and on the Discord client. Both users will be able to see whether each other is online regardless of whether they are in the same game or not.&lt;/para&gt;
-&lt;/listitem&gt;&lt;listitem&gt;&lt;para&gt;Game: These are per-game relationships and do not carry over to other games. The two users will only be able to see if the other is online if they are playing a game in which they are friends.&lt;/para&gt;
-&lt;/listitem&gt;&lt;/itemizedlist&gt;
-&lt;/para&gt;
-&lt;para&gt;If someone is a game friend they can later choose to "upgrade" to a full Discord friend. In this case, the user has two relationships at the same time, which is why there are two different type fields on &lt;ref refid="classdiscordpp_1_1RelationshipHandle" kindref="compound"&gt;RelationshipHandle&lt;/ref&gt;. In this example, their &lt;ref refid="classdiscordpp_1_1RelationshipHandle_1a5fecfb79a4a2b6f3dc5f73b09d0c3881" kindref="member"&gt;RelationshipHandle::DiscordRelationshipType&lt;/ref&gt; would be set to &lt;ref refid="namespacediscordpp_1a28fc5199b9211c24124c06f30c1d0cbba07817206b999d94b5f4b49187fd7b8d9" kindref="member"&gt;RelationshipType::PendingIncoming&lt;/ref&gt; or &lt;ref refid="namespacediscordpp_1a28fc5199b9211c24124c06f30c1d0cbba4832d123938e53f19fa19ace533333ec" kindref="member"&gt;RelationshipType::PendingOutgoing&lt;/ref&gt; (based on whether they are receiving or sending the invite respectively), and their &lt;ref refid="classdiscordpp_1_1RelationshipHandle_1aa60146eb72ede07e3e615565f61f97eb" kindref="member"&gt;RelationshipHandle::GameRelationshipType&lt;/ref&gt; would remain as &lt;ref refid="namespacediscordpp_1a28fc5199b9211c24124c06f30c1d0cbba930a91848917f92cf7e2f8d744fa4177" kindref="member"&gt;RelationshipType::Friend&lt;/ref&gt;.&lt;/para&gt;
-&lt;para&gt;When a user blocks another user, it is always stored on the &lt;ref refid="classdiscordpp_1_1RelationshipHandle_1a5fecfb79a4a2b6f3dc5f73b09d0c3881" kindref="member"&gt;RelationshipHandle::DiscordRelationshipType&lt;/ref&gt; field, and will persist across games. It is not possible to block a user in only one game.&lt;/para&gt;
-&lt;para&gt;See the friends documentation for more information.&lt;/para&gt;
-&lt;para&gt;Note: While the SDK allows you to manage a user's relationships, you should never take an action without their explicit consent. You should not automatically send or accept friend requests. Only invoke APIs to manage relationships in response to a user action such as clicking a "Send
-Friend Request" button.&lt;/para&gt;
-&lt;para&gt;Handle objects in the SDK hold a reference both to the underlying data, and to the SDK instance. Changes to the underlying data will generally be available on existing handles objects without having to re-create them. If the SDK instance is destroyed, but you still have a reference to a handle object, note that it will return the default value for all method calls (ie an empty string for methods that return a string). &lt;/para&gt;</description>
+	<brief_description>
+	A [DiscordRelationshipHandle] represents the relationship between the current user and a target user on Discord. Relationships include friends, blocked users, and friend invites.</brief_description>
+	<description>
+	The SDK supports two types of relationships:
+- Discord: These are relationships that persist across games and on the Discord client. Both users will be able to see whether each other is online regardless of whether they are in the same game or not.
+- Game: These are per-game relationships and do not carry over to other games. The two users will only be able to see if the other is online if they are playing a game in which they are friends.
+If someone is a game friend they can later choose to "upgrade" to a full Discord friend. In this case, the user has two relationships at the same time, which is why there are two different type fields on [DiscordRelationshipType::Friend].
+When a user blocks another user, it is always stored on the &lt;ref refid="classdiscordpp_1_1RelationshipHandle_1a5fecfb79a4a2b6f3dc5f73b09d0c3881" kindref="member"&gt;RelationshipHandle::DiscordRelationshipType&lt;/ref&gt; field, and will persist across games. It is not possible to block a user in only one game.
+See the friends documentation for more information.
+Note: While the SDK allows you to manage a user's relationships, you should never take an action without their explicit consent. You should not automatically send or accept friend requests. Only invoke APIs to manage relationships in response to a user action such as clicking a "Send
+Friend Request" button.
+Handle objects in the SDK hold a reference both to the underlying data, and to the SDK instance. Changes to the underlying data will generally be available on existing handles objects without having to re-create them. If the SDK instance is destroyed, but you still have a reference to a handle object, note that it will return the default value for all method calls (ie an empty string for methods that return a string).</description>
 	<tutorials>
 	</tutorials>
 	<methods>
 		<method name="discord_relationship_type">
 			<return type="int" enum="DiscordRelationshipType.Enum" />
 			<description>
-			&lt;para&gt;Returns the type of the Discord relationship. &lt;/para&gt;
+			Returns the type of the Discord relationship.
 			</description>
 		</method>
 		<method name="game_relationship_type">
 			<return type="int" enum="DiscordRelationshipType.Enum" />
 			<description>
-			&lt;para&gt;Returns the type of the Game relationship. &lt;/para&gt;
+			Returns the type of the Game relationship.
 			</description>
 		</method>
 		<method name="id">
 			<return type="int" />
 			<description>
-			&lt;para&gt;Returns the ID of the target user in this relationship. &lt;/para&gt;
+			Returns the ID of the target user in this relationship.
 			</description>
 		</method>
 		<method name="is_spam_request">
 			<return type="bool" />
 			<description>
-			&lt;para&gt;Returns whether this relationship is a spam request. &lt;/para&gt;
+			Returns whether this relationship is a spam request.
 			</description>
 		</method>
 		<method name="user">
 			<return type="Variant" />
 			<description>
-			&lt;para&gt;Returns a handle to the target user in this relationship, if one is available. This would be the user with the same ID as the one returned by the &lt;ref refid="classdiscordpp_1_1RelationshipHandle_1a3a14b6cfa9a9fffc61e500d8329be587" kindref="member"&gt;Id()&lt;/ref&gt; method. &lt;/para&gt;
+			Returns a handle to the target user in this relationship, if one is available. This would be the user with the same ID as the one returned by the &lt;ref refid="classdiscordpp_1_1RelationshipHandle_1a3a14b6cfa9a9fffc61e500d8329be587" kindref="member"&gt;Id()&lt;/ref&gt; method.
 			</description>
 		</method>
 	</methods>

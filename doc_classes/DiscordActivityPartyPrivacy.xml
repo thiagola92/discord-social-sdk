@@ -1,15 +1,17 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<class name="DiscordActivityPartyPrivacy" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordActivityPartyPrivacy" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	</brief_description>
+	Allows your game to control the privacy of the party the user is in.</brief_description>
 	<description>
 	</description>
 	<tutorials>
 	</tutorials>
 	<constants>
 		<constant name="Private" value="0" enum="Enum">
+		The party is private (or unknown), which means that the user is in a party but it is not joinable without sending a request to join the party.
+		This is the default value. You will also receive this value when receiving other users' activities as the party privacy for other users is not exposed.
 		</constant>
 		<constant name="Public" value="1" enum="Enum">
+		The party is public, which means that the user is in a party which [i]could[/i] be joinable by either friends or mutual voice participants without sending a request to join the party. This depends on a user's desired Discord account privacy settings.
 		</constant>
 		<constant name="id" value="1">
 		</constant>

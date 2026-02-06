@@ -1,27 +1,34 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<class name="DiscordStatusType" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordStatusType" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	</brief_description>
+	Enum that specifies the various online statuses for a user.</brief_description>
 	<description>
-	</description>
+	Generally a user is online or offline, but in Discord users are able to further customize their status such as turning on "Do not Disturb" mode or "Dnd" to silence notifications.</description>
 	<tutorials>
 	</tutorials>
 	<constants>
 		<constant name="Online" value="0" enum="Enum">
+		The user is online and recently active.
 		</constant>
 		<constant name="Offline" value="1" enum="Enum">
+		The user is offline and not connected to Discord.
 		</constant>
 		<constant name="Blocked" value="2" enum="Enum">
+		Blocked.
 		</constant>
 		<constant name="Idle" value="3" enum="Enum">
+		The user is online, but has not been active for a while and may be away from their computer.
 		</constant>
 		<constant name="Dnd" value="4" enum="Enum">
+		The user is online, but wishes to suppress notifications for the time being.
 		</constant>
 		<constant name="Invisible" value="5" enum="Enum">
+		The user is online, but wishes to appear as if they are offline to other users.
 		</constant>
 		<constant name="Streaming" value="6" enum="Enum">
+		The user is online and is actively streaming content.
 		</constant>
 		<constant name="Unknown" value="7" enum="Enum">
+		Unknown.
 		</constant>
 		<constant name="id" value="15">
 		</constant>

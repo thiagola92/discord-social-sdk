@@ -1,21 +1,25 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<class name="DiscordLoggingSeverity" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordLoggingSeverity" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	</brief_description>
+	Enum that represents the various log levels supported by the SDK.</brief_description>
 	<description>
 	</description>
 	<tutorials>
 	</tutorials>
 	<constants>
 		<constant name="Verbose" value="1" enum="Enum">
+		Verbose.
 		</constant>
 		<constant name="Info" value="2" enum="Enum">
+		Info.
 		</constant>
 		<constant name="Warning" value="3" enum="Enum">
+		Warning.
 		</constant>
 		<constant name="Error" value="4" enum="Enum">
+		Error.
 		</constant>
 		<constant name="None" value="5" enum="Enum">
+		None.
 		</constant>
 		<constant name="id" value="19">
 		</constant>

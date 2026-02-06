@@ -1,107 +1,109 @@
 <class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordActivityAssets" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
-	<brief_description>&lt;para&gt;Struct which controls what your rich presence looks like in the Discord client. If you don't specify any values, the icon and name of your application will be used as defaults. &lt;/para&gt;</brief_description>
-	<description>&lt;para&gt;Image assets can be either the unique identifier for an image you uploaded to your application via the &lt;computeroutput&gt;Rich Presence&lt;/computeroutput&gt; page in the Developer portal, or they can be an external image URL.&lt;/para&gt;
-&lt;para&gt;As an example, if I uploaded an asset and name it &lt;computeroutput&gt;goofy-icon&lt;/computeroutput&gt;, I could set either image field to the string &lt;computeroutput&gt;goofy-icon&lt;/computeroutput&gt;. Alternatively, if my icon was hosted at &lt;computeroutput&gt;&lt;ulink url="http://my-site.com/goofy.jpg"&gt;http://my-site.com/goofy.jpg&lt;/ulink&gt;&lt;/computeroutput&gt;, I could pass that URL into either image field.&lt;/para&gt;
-&lt;para&gt;See &lt;ulink url="https://discord.com/developers/docs/rich-presence/overview#adding-custom-art-assets"&gt;https://discord.com/developers/docs/rich-presence/overview#adding-custom-art-assets&lt;/ulink&gt; for more information on using custom art assets, as well as for visual examples of what each field does. &lt;/para&gt;</description>
+	<brief_description>
+	Struct which controls what your rich presence looks like in the Discord client. If you don't specify any values, the icon and name of your application will be used as defaults.</brief_description>
+	<description>
+	Image assets can be either the unique identifier for an image you uploaded to your application via the [code]Rich Presence[/code] page in the Developer portal, or they can be an external image URL.
+As an example, if I uploaded an asset and name it [code]goofy-icon[/code], I could set either image field to the string [code]goofy-icon[/code]. Alternatively, if my icon was hosted at [url=http://my-site.com/goofy.jpg][code]http://my-site.com/goofy.jpg[/code][/url], I could pass that URL into either image field.
+See [url=https://discord.com/developers/docs/rich-presence/overview#adding-custom-art-assets]https://discord.com/developers/docs/rich-presence/overview#adding-custom-art-assets[/url] for more information on using custom art assets, as well as for visual examples of what each field does.</description>
 	<tutorials>
 	</tutorials>
 	<methods>
 		<method name="invite_cover_image">
 			<return type="Variant" />
 			<description>
-			&lt;para&gt;The invite cover image identifier or URL, rendered as a banner image on activity invites. &lt;/para&gt;
-			&lt;para&gt;If specified, must be a string between 1 and 300 characters. &lt;/para&gt;
+			The invite cover image identifier or URL, rendered as a banner image on activity invites.
+			If specified, must be a string between 1 and 300 characters.
 			</description>
 		</method>
 		<method name="large_image">
 			<return type="Variant" />
 			<description>
-			&lt;para&gt;The primary image identifier or URL, rendered as a large square icon on a user's rich presence. &lt;/para&gt;
-			&lt;para&gt;If specified, must be a string between 1 and 300 characters. &lt;/para&gt;
+			The primary image identifier or URL, rendered as a large square icon on a user's rich presence.
+			If specified, must be a string between 1 and 300 characters.
 			</description>
 		</method>
 		<method name="large_text">
 			<return type="Variant" />
 			<description>
-			&lt;para&gt;A tooltip string that is shown when the user hovers over the large image. &lt;/para&gt;
-			&lt;para&gt;If specified, must be a string between 2 and 128 characters. &lt;/para&gt;
+			A tooltip string that is shown when the user hovers over the large image.
+			If specified, must be a string between 2 and 128 characters.
 			</description>
 		</method>
 		<method name="large_url">
 			<return type="Variant" />
 			<description>
-			&lt;para&gt;A URL that opens when the user clicks/taps the large image. &lt;/para&gt;
-			&lt;para&gt;If specified, must be a string between 1 and 256 characters. &lt;/para&gt;
+			A URL that opens when the user clicks/taps the large image.
+			If specified, must be a string between 1 and 256 characters.
 			</description>
 		</method>
 		<method name="set_invite_cover_image">
 			<return type="void" />
 			<param index="0" name="invite_cover_image" type="Variant" />
 			<description>
-			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1ActivityAssets_1a0910e12ce7708db7aee9296cc56d947c" kindref="member"&gt;ActivityAssets::InviteCoverImage&lt;/ref&gt;. &lt;/para&gt;
+			Setter for &lt;ref refid="classdiscordpp_1_1ActivityAssets_1a0910e12ce7708db7aee9296cc56d947c" kindref="member"&gt;ActivityAssets::InviteCoverImage&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="set_large_image">
 			<return type="void" />
 			<param index="0" name="large_image" type="Variant" />
 			<description>
-			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1ActivityAssets_1a90ec2ac7102c8f99d233e95858603962" kindref="member"&gt;ActivityAssets::LargeImage&lt;/ref&gt;. &lt;/para&gt;
+			Setter for &lt;ref refid="classdiscordpp_1_1ActivityAssets_1a90ec2ac7102c8f99d233e95858603962" kindref="member"&gt;ActivityAssets::LargeImage&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="set_large_text">
 			<return type="void" />
 			<param index="0" name="large_text" type="Variant" />
 			<description>
-			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1ActivityAssets_1a7e0e5680e47954c3131702cd8dfacd18" kindref="member"&gt;ActivityAssets::LargeText&lt;/ref&gt;. &lt;/para&gt;
+			Setter for &lt;ref refid="classdiscordpp_1_1ActivityAssets_1a7e0e5680e47954c3131702cd8dfacd18" kindref="member"&gt;ActivityAssets::LargeText&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="set_large_url">
 			<return type="void" />
 			<param index="0" name="large_url" type="Variant" />
 			<description>
-			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1ActivityAssets_1aaa7725c0ebefcda564fdfbddf7df628a" kindref="member"&gt;ActivityAssets::LargeUrl&lt;/ref&gt;. &lt;/para&gt;
+			Setter for &lt;ref refid="classdiscordpp_1_1ActivityAssets_1aaa7725c0ebefcda564fdfbddf7df628a" kindref="member"&gt;ActivityAssets::LargeUrl&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="set_small_image">
 			<return type="void" />
 			<param index="0" name="small_image" type="Variant" />
 			<description>
-			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1ActivityAssets_1a4a76a48496ed5c9661e4a0551b324de8" kindref="member"&gt;ActivityAssets::SmallImage&lt;/ref&gt;. &lt;/para&gt;
+			Setter for &lt;ref refid="classdiscordpp_1_1ActivityAssets_1a4a76a48496ed5c9661e4a0551b324de8" kindref="member"&gt;ActivityAssets::SmallImage&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="set_small_text">
 			<return type="void" />
 			<param index="0" name="small_text" type="Variant" />
 			<description>
-			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1ActivityAssets_1a27f61aebf3ef5c2357d2d99cb4dcfeac" kindref="member"&gt;ActivityAssets::SmallText&lt;/ref&gt;. &lt;/para&gt;
+			Setter for &lt;ref refid="classdiscordpp_1_1ActivityAssets_1a27f61aebf3ef5c2357d2d99cb4dcfeac" kindref="member"&gt;ActivityAssets::SmallText&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="set_small_url">
 			<return type="void" />
 			<param index="0" name="small_url" type="Variant" />
 			<description>
-			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1ActivityAssets_1a862e2fe4b209d18f7633c3436af2860c" kindref="member"&gt;ActivityAssets::SmallUrl&lt;/ref&gt;. &lt;/para&gt;
+			Setter for &lt;ref refid="classdiscordpp_1_1ActivityAssets_1a862e2fe4b209d18f7633c3436af2860c" kindref="member"&gt;ActivityAssets::SmallUrl&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="small_image">
 			<return type="Variant" />
 			<description>
-			&lt;para&gt;The secondary image, rendered as a small circle over the &lt;computeroutput&gt;largeImage&lt;/computeroutput&gt;. &lt;/para&gt;
-			&lt;para&gt;If specified, must be a string between 1 and 300 characters. &lt;/para&gt;
+			The secondary image, rendered as a small circle over the [code]largeImage[/code].
+			If specified, must be a string between 1 and 300 characters.
 			</description>
 		</method>
 		<method name="small_text">
 			<return type="Variant" />
 			<description>
-			&lt;para&gt;A tooltip string that is shown when the user hovers over the small image. &lt;/para&gt;
-			&lt;para&gt;If specified, must be a string between 2 and 128 characters. &lt;/para&gt;
+			A tooltip string that is shown when the user hovers over the small image.
+			If specified, must be a string between 2 and 128 characters.
 			</description>
 		</method>
 		<method name="small_url">
 			<return type="Variant" />
 			<description>
-			&lt;para&gt;A URL that opens when the user clicks/taps the small image. &lt;/para&gt;
-			&lt;para&gt;If specified, must be a string between 1 and 256 characters. &lt;/para&gt;
+			A URL that opens when the user clicks/taps the small image.
+			If specified, must be a string between 1 and 256 characters.
 			</description>
 		</method>
 	</methods>

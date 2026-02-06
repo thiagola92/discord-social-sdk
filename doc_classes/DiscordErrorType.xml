@@ -1,31 +1,42 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<class name="DiscordErrorType" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordErrorType" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	</brief_description>
+	Enum representing various types of errors the SDK returns.</brief_description>
 	<description>
 	</description>
 	<tutorials>
 	</tutorials>
 	<constants>
 		<constant name="None" value="0" enum="Enum">
+		No error, the operation was successful.
 		</constant>
 		<constant name="NetworkError" value="1" enum="Enum">
+		The user is offline or there was some network issue that prevented an underlying HTTP call from succeeding.
 		</constant>
 		<constant name="HTTPError" value="2" enum="Enum">
+		An HTTP call was made to Discord's servers but a non success HTTP status code was returned. In some cases this may be retryable, and if so &lt;ref refid="classdiscordpp_1_1ClientResult_1a0d220638f4a36c0b8b731f601e0ac02d" kindref="member"&gt;ClientResult::Retryable&lt;/ref&gt; will be true. In most cases though the failure is due to a validation or permissions error, and the request is not retryable. &lt;ref refid="classdiscordpp_1_1ClientResult_1a3175ab59cd9268a3b2c6484129c89e04" kindref="member"&gt;ClientResult::Error&lt;/ref&gt; and &lt;ref refid="classdiscordpp_1_1ClientResult_1ab361cb3d3381401f0d73736d5f49b3f5" kindref="member"&gt;ClientResult::ErrorCode&lt;/ref&gt; will have more information.
 		</constant>
 		<constant name="ClientNotReady" value="3" enum="Enum">
+		An operation such as sending a friend request or joining a lobby was attempted but the [DiscordClient::Status::Ready] before trying again.
+		Also be sure to call [DiscordClient] will never become ready.
 		</constant>
 		<constant name="Disabled" value="4" enum="Enum">
+		An operation was temporarily disabled for stability reasons.
 		</constant>
 		<constant name="ClientDestroyed" value="5" enum="Enum">
+		The [DiscordClient] has been destroyed and so this operation cannot complete.
 		</constant>
 		<constant name="ValidationError" value="6" enum="Enum">
+		Used when an SDK method is called but the inputs don't pass local validation. For example if one attempts to accept a friend request when there is no pending friend request for that user, this &lt;ref refid="namespacediscordpp_1ae19a5aed498bc40359e4d89d14ffb446" kindref="member"&gt;ErrorType&lt;/ref&gt; would be used.
+		The specific validation error will be included in the [code]error[/code] field, and no other [DiscordClientResult] fields will be set.
 		</constant>
 		<constant name="Aborted" value="7" enum="Enum">
+		The user or developer aborted an operation, such as an authorization flow.
 		</constant>
 		<constant name="AuthorizationFailed" value="8" enum="Enum">
+		An authorization function failed, but not necessarily as the result of an HTTP call that returned an error.
 		</constant>
 		<constant name="RPCError" value="9" enum="Enum">
+		An RPC call was made to Discord's desktop application, but it returned a non-success result. The error and errorCode fields should both be set with more information.
 		</constant>
 		<constant name="id" value="5">
 		</constant>

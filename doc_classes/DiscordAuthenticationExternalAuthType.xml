@@ -1,27 +1,34 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<class name="DiscordAuthenticationExternalAuthType" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordAuthenticationExternalAuthType" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	</brief_description>
+	Represents the various identity providers that can be used to authenticate a provisional account user for public clients.</brief_description>
 	<description>
 	</description>
 	<tutorials>
 	</tutorials>
 	<constants>
 		<constant name="OIDC" value="0" enum="Enum">
+		OIDC.
 		</constant>
 		<constant name="EpicOnlineServicesAccessToken" value="1" enum="Enum">
+		EpicOnlineServicesAccessToken.
 		</constant>
 		<constant name="EpicOnlineServicesIdToken" value="2" enum="Enum">
+		EpicOnlineServicesIdToken.
 		</constant>
 		<constant name="SteamSessionTicket" value="3" enum="Enum">
+		SteamSessionTicket.
 		</constant>
 		<constant name="UnityServicesIdToken" value="4" enum="Enum">
+		UnityServicesIdToken.
 		</constant>
 		<constant name="DiscordBotIssuedAccessToken" value="5" enum="Enum">
+		DiscordBotIssuedAccessToken.
 		</constant>
 		<constant name="AppleIdToken" value="6" enum="Enum">
+		AppleIdToken.
 		</constant>
 		<constant name="PlayStationNetworkIdToken" value="7" enum="Enum">
+		PlayStationNetworkIdToken.
 		</constant>
 		<constant name="id" value="18">
 		</constant>

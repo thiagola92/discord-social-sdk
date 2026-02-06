@@ -1,25 +1,36 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<class name="DiscordClientStatus" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordClientStatus" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	</brief_description>
+	This enum refers to the status of the internal websocket the SDK uses to communicate with Discord There are ~2 phases for "launching" the client:</brief_description>
 	<description>
-	</description>
+	&lt;orderedlist&gt;
+- The socket has to connect to Discord and exchange an auth token. This is indicated by the [code]Connecting[/code] and [code]Connected[/code] values.
+- The socket has to receive an initial payload of data that describes the current user, what lobbies they are in, who their friends are, etc. This is the [code]Ready[/code] status. Many [DiscordGetCurrentUser()].
+&lt;/orderedlist&gt;
+&lt;ref refid="classdiscordpp_1_1Client_1a6f714c5d6aebefa91c1ff8ba97bcce22ae7d31fc0602fb2ede144d18cdffd816b" kindref="member"&gt;Status::Ready&lt;/ref&gt; is the one you want to wait for!
+Additionally, sometimes the socket will be disconnected, such as through temporary network blips. But it will try to automatically reconnect, as indicated by the [code]Reconnecting[/code] status.</description>
 	<tutorials>
 	</tutorials>
 	<constants>
 		<constant name="Disconnected" value="0" enum="Enum">
+		Disconnected.
 		</constant>
 		<constant name="Connecting" value="1" enum="Enum">
+		Connecting.
 		</constant>
 		<constant name="Connected" value="2" enum="Enum">
+		Connected.
 		</constant>
 		<constant name="Ready" value="3" enum="Enum">
+		Ready.
 		</constant>
 		<constant name="Reconnecting" value="4" enum="Enum">
+		Reconnecting.
 		</constant>
 		<constant name="Disconnecting" value="5" enum="Enum">
+		Disconnecting.
 		</constant>
 		<constant name="HttpWait" value="6" enum="Enum">
+		HttpWait.
 		</constant>
 		<constant name="id" value="24">
 		</constant>

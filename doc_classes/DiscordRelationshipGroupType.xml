@@ -1,17 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<class name="DiscordRelationshipGroupType" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordRelationshipGroupType" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	</brief_description>
+	Enum that represents the logical groups of relationships based on online status and game activity.</brief_description>
 	<description>
 	</description>
 	<tutorials>
 	</tutorials>
 	<constants>
 		<constant name="OnlinePlayingGame" value="0" enum="Enum">
+		Users who are online and currently playing the game.
 		</constant>
 		<constant name="OnlineElsewhere" value="1" enum="Enum">
+		Users who are online but not playing the game.
 		</constant>
 		<constant name="Offline" value="2" enum="Enum">
+		Users who are offline.
 		</constant>
 		<constant name="id" value="20">
 		</constant>

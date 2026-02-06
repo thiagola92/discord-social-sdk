@@ -1,5 +1,6 @@
 <class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordVADThresholdSettings" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
-	<brief_description>&lt;para&gt;Settings for the void auto detection threshold for picking up activity from a user's mic. &lt;/para&gt;</brief_description>
+	<brief_description>
+	Settings for the void auto detection threshold for picking up activity from a user's mic.</brief_description>
 	<description>
 	</description>
 	<tutorials>
@@ -8,27 +9,27 @@
 		<method name="automatic">
 			<return type="bool" />
 			<description>
-			&lt;para&gt;Whether or not Discord is currently automatically setting and detecting the appropriate threshold to use. &lt;/para&gt;
+			Whether or not Discord is currently automatically setting and detecting the appropriate threshold to use.
 			</description>
 		</method>
 		<method name="set_automatic">
 			<return type="void" />
 			<param index="0" name="automatic" type="bool" />
 			<description>
-			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1VADThresholdSettings_1a7f28f03efbb001bc0468762a7f3a5b5c" kindref="member"&gt;VADThresholdSettings::Automatic&lt;/ref&gt;. &lt;/para&gt;
+			Setter for &lt;ref refid="classdiscordpp_1_1VADThresholdSettings_1a7f28f03efbb001bc0468762a7f3a5b5c" kindref="member"&gt;VADThresholdSettings::Automatic&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="set_vad_threshold">
 			<return type="void" />
 			<param index="0" name="vad_threshold" type="float" />
 			<description>
-			&lt;para&gt;Setter for &lt;ref refid="classdiscordpp_1_1VADThresholdSettings_1a92ddf7ac4143d02c5fb895b11474c15c" kindref="member"&gt;VADThresholdSettings::VadThreshold&lt;/ref&gt;. &lt;/para&gt;
+			Setter for &lt;ref refid="classdiscordpp_1_1VADThresholdSettings_1a92ddf7ac4143d02c5fb895b11474c15c" kindref="member"&gt;VADThresholdSettings::VadThreshold&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="vad_threshold">
 			<return type="float" />
 			<description>
-			&lt;para&gt;The current void auto detection threshold value, has a range of -100, 0 and defaults to -60. &lt;/para&gt;
+			The current void auto detection threshold value, has a range of -100, 0 and defaults to -60.
 			</description>
 		</method>
 	</methods>

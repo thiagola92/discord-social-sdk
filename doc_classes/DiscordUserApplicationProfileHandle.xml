@@ -1,43 +1,45 @@
 <class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordUserApplicationProfileHandle" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
-	<brief_description>&lt;para&gt;A &lt;ref refid="classdiscordpp_1_1UserApplicationProfileHandle" kindref="compound"&gt;UserApplicationProfileHandle&lt;/ref&gt; represents a profile from an external identity provider, such as Steam or Epic Online Services. &lt;/para&gt;</brief_description>
-	<description>&lt;para&gt;Handle objects in the SDK hold a reference both to the underlying data, and to the SDK instance. Changes to the underlying data will generally be available on existing handles objects without having to re-create them. If the SDK instance is destroyed, but you still have a reference to a handle object, note that it will return the default value for all method calls (ie an empty string for methods that return a string). &lt;/para&gt;</description>
+	<brief_description>
+	A [DiscordUserApplicationProfileHandle] represents a profile from an external identity provider, such as Steam or Epic Online Services.</brief_description>
+	<description>
+	Handle objects in the SDK hold a reference both to the underlying data, and to the SDK instance. Changes to the underlying data will generally be available on existing handles objects without having to re-create them. If the SDK instance is destroyed, but you still have a reference to a handle object, note that it will return the default value for all method calls (ie an empty string for methods that return a string).</description>
 	<tutorials>
 	</tutorials>
 	<methods>
 		<method name="avatar_hash">
 			<return type="String" />
 			<description>
-			&lt;para&gt;Returns the user's in-game avatar hash. &lt;/para&gt;
+			Returns the user's in-game avatar hash.
 			</description>
 		</method>
 		<method name="metadata">
 			<return type="String" />
 			<description>
-			&lt;para&gt;Returns any metadata set by the developer. &lt;/para&gt;
+			Returns any metadata set by the developer.
 			</description>
 		</method>
 		<method name="provider_id">
 			<return type="Variant" />
 			<description>
-			&lt;para&gt;Returns the user's external identity provider ID if it exists. &lt;/para&gt;
+			Returns the user's external identity provider ID if it exists.
 			</description>
 		</method>
 		<method name="provider_issued_user_id">
 			<return type="String" />
 			<description>
-			&lt;para&gt;Returns the user's external identity provider issued user ID. &lt;/para&gt;
+			Returns the user's external identity provider issued user ID.
 			</description>
 		</method>
 		<method name="provider_type">
 			<return type="int" enum="DiscordExternalIdentityProviderType.Enum" />
 			<description>
-			&lt;para&gt;Returns the type of the external identity provider. &lt;/para&gt;
+			Returns the type of the external identity provider.
 			</description>
 		</method>
 		<method name="username">
 			<return type="String" />
 			<description>
-			&lt;para&gt;Returns the user's in-game username. &lt;/para&gt;
+			Returns the user's in-game username.
 			</description>
 		</method>
 	</methods>

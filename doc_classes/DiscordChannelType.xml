@@ -1,43 +1,58 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<class name="DiscordChannelType" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordChannelType" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	</brief_description>
+	Enum that represents the various channel types on Discord.</brief_description>
 	<description>
-	</description>
+	For more information see: [url=https://discord.com/developers/docs/resources/channel]https://discord.com/developers/docs/resources/channel[/url]</description>
 	<tutorials>
 	</tutorials>
 	<constants>
 		<constant name="GuildText" value="0" enum="Enum">
+		GuildText.
 		</constant>
 		<constant name="Dm" value="1" enum="Enum">
+		Dm.
 		</constant>
 		<constant name="GuildVoice" value="2" enum="Enum">
+		GuildVoice.
 		</constant>
 		<constant name="GroupDm" value="3" enum="Enum">
+		GroupDm.
 		</constant>
 		<constant name="GuildCategory" value="4" enum="Enum">
+		GuildCategory.
 		</constant>
 		<constant name="GuildNews" value="5" enum="Enum">
+		GuildNews.
 		</constant>
 		<constant name="GuildStore" value="6" enum="Enum">
+		GuildStore.
 		</constant>
 		<constant name="GuildNewsThread" value="10" enum="Enum">
+		GuildNewsThread.
 		</constant>
 		<constant name="GuildPublicThread" value="11" enum="Enum">
+		GuildPublicThread.
 		</constant>
 		<constant name="GuildPrivateThread" value="12" enum="Enum">
+		GuildPrivateThread.
 		</constant>
 		<constant name="GuildStageVoice" value="13" enum="Enum">
+		GuildStageVoice.
 		</constant>
 		<constant name="GuildDirectory" value="14" enum="Enum">
+		GuildDirectory.
 		</constant>
 		<constant name="GuildForum" value="15" enum="Enum">
+		GuildForum.
 		</constant>
 		<constant name="GuildMedia" value="16" enum="Enum">
+		GuildMedia.
 		</constant>
 		<constant name="Lobby" value="17" enum="Enum">
+		Lobby.
 		</constant>
 		<constant name="EphemeralDm" value="18" enum="Enum">
+		EphemeralDm.
 		</constant>
 		<constant name="id" value="9">
 		</constant>

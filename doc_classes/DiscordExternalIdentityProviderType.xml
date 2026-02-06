@@ -1,25 +1,31 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<class name="DiscordExternalIdentityProviderType" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordExternalIdentityProviderType" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	</brief_description>
+	The type of external identity provider.</brief_description>
 	<description>
 	</description>
 	<tutorials>
 	</tutorials>
 	<constants>
 		<constant name="OIDC" value="0" enum="Enum">
+		OIDC.
 		</constant>
 		<constant name="EpicOnlineServices" value="1" enum="Enum">
+		EpicOnlineServices.
 		</constant>
 		<constant name="Steam" value="2" enum="Enum">
+		Steam.
 		</constant>
 		<constant name="Unity" value="3" enum="Enum">
+		Unity.
 		</constant>
 		<constant name="DiscordBot" value="4" enum="Enum">
+		DiscordBot.
 		</constant>
 		<constant name="None" value="5" enum="Enum">
+		None.
 		</constant>
 		<constant name="Unknown" value="6" enum="Enum">
+		Unknown.
 		</constant>
 		<constant name="id" value="14">
 		</constant>

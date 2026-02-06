@@ -1,23 +1,28 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<class name="DiscordCallError" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordCallError" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	</brief_description>
+	Enum that represents any network errors with the [DiscordCall].</brief_description>
 	<description>
 	</description>
 	<tutorials>
 	</tutorials>
 	<constants>
 		<constant name="None" value="0" enum="Enum">
+		None.
 		</constant>
 		<constant name="SignalingConnectionFailed" value="1" enum="Enum">
+		SignalingConnectionFailed.
 		</constant>
 		<constant name="SignalingUnexpectedClose" value="2" enum="Enum">
+		SignalingUnexpectedClose.
 		</constant>
 		<constant name="VoiceConnectionFailed" value="3" enum="Enum">
+		VoiceConnectionFailed.
 		</constant>
 		<constant name="JoinTimeout" value="4" enum="Enum">
+		JoinTimeout.
 		</constant>
 		<constant name="Forbidden" value="5" enum="Enum">
+		Forbidden.
 		</constant>
 		<constant name="id" value="21">
 		</constant>
