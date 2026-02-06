@@ -17,7 +17,7 @@ Lobbies support voice calls. Although a lobby is allowed to have 1,000 members, 
 See &lt;ref refid="classdiscordpp_1_1Client_1aef4f25d761fe198fbe9bc721fc24d83f" kindref="member"&gt;Client::StartCall&lt;/ref&gt; for more information on how to start a voice call in a lobby.
 [u][b]Channel Linking[/b][/u]
 Lobbies can be linked to a channel on Discord, which allows messages sent in one place to show up in the other. Any lobby can be linked to a channel, but only lobby members with the LobbyMemberFlags::CanLinkLobby flag are allowed to a link a lobby. This flag must be set using the server APIs, which allows you to ensure that only clan/guild/group leaders can link lobbies to Discord channels.
-To setup a link you'll need to use methods in the [DiscordClient::GetGuildChannels] methods are used to fetch the servers and channels respectively. You can use these to show a UI for the user to pick which server and channel they want to link to.
+To setup a link you'll need to use methods in the [DiscordClient] class to fetch the servers (aka guilds) and channels a user is a member of and setup the link. The &lt;ref refid="classdiscordpp_1_1Client_1aac1ec02df6074ed9213ce230e6a42fe1" kindref="member"&gt;Client::GetUserGuilds&lt;/ref&gt; and &lt;ref refid="classdiscordpp_1_1Client_1adba1e5a83c219a9c4f6dab1657778017" kindref="member"&gt;Client::GetGuildChannels&lt;/ref&gt; methods are used to fetch the servers and channels respectively. You can use these to show a UI for the user to pick which server and channel they want to link to.
 Not all channels are linkable. To be linked:
 - The channel must be a guild text channel
 - The channel may not be marked as NSFW

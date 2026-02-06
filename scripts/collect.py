@@ -19,7 +19,8 @@ from data import (
 )
 
 
-ENUMS_FOUND = 0
+# Give enums an id so we later identify them during overloadings.
+ENUM_ID = 0
 
 
 def collect_text(tree: Element) -> str:
@@ -38,6 +39,8 @@ def collect_content(tree: Element) -> str:
     text = re.sub(r"</sect.*?>", "", text)
     text = re.sub(r"<itemizedlist>", "", text)
     text = re.sub(r"</itemizedlist>", "", text)
+    text = re.sub(r"<orderedlist>", "", text)
+    text = re.sub(r"</orderedlist>", "", text)
     text = re.sub(r"</listitem>", "", text)
 
     # Fix weird situations.
@@ -60,7 +63,7 @@ def collect_content(tree: Element) -> str:
     text = re.sub(r"</programlisting>", r"[/codeblock]", text, re.DOTALL)
 
     # Linking to documentation.
-    text = re.sub(r'<ref .*kindref="compound".*>(.*)</ref>', r"[Discord\1]", text)
+    text = re.sub(r'<ref .*?kindref="compound".*?>(.*?)</ref>', r"[Discord\1]", text)
 
     # Too much newline.
     text = re.sub(r"\n\n\n\n", "\n", text)
@@ -116,7 +119,7 @@ def collect_class(tree: Element) -> ClassInfo:
 
 
 def collect_enums(tree: Element) -> list[EnumInfo]:
-    global ENUMS_FOUND
+    global ENUM_ID
 
     enums = []
 
@@ -128,8 +131,8 @@ def collect_enums(tree: Element) -> list[EnumInfo]:
         ei.name = collect_text(e.find("name"))
         ei.short_desc = collect_content(e.find("briefdescription"))
         ei.long_desc = collect_content(e.find("detaileddescription"))
-        ei.identifier = ENUMS_FOUND
-        ENUMS_FOUND += 1
+        ei.identifier = ENUM_ID
+        ENUM_ID += 1
 
         for ev in e.findall("enumvalue"):
             evi = EnumValueInfo()

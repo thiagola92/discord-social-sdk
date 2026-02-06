@@ -162,7 +162,7 @@ For more information see: [url=https://discord.com/developers/docs/topics/oauth2
 			<return type="void" />
 			<description>
 			Asynchronously connects the client to Discord.
-			If a client is disconnecting, this will wait for the disconnect before reconnecting. You should use the [DiscordStatus::Ready].
+			If a client is disconnecting, this will wait for the disconnect before reconnecting. You should use the [DiscordClient] is only safe to use once the status changes to &lt;ref refid="classdiscordpp_1_1Client_1a6f714c5d6aebefa91c1ff8ba97bcce22ae7d31fc0602fb2ede144d18cdffd816b" kindref="member"&gt;Status::Ready&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="create_authorization_code_verifier">
@@ -1111,7 +1111,7 @@ Returns true if the log file was successfully opened, false otherwise.
 			<param index="0" name="cb" type="Callable" />
 			<description>
 			Sets a callback to be invoked whenever a new message is received in either a lobby or a DM.
-			From the messageId you can fetch the [DiscordChannelHandle] to determine the location the message was sent as well.
+			From the messageId you can fetch the [DiscordMessageHandle] and then the [DiscordChannelHandle] to determine the location the message was sent as well.
 If the user has the Discord desktop application open on the same machine as the game, then they will hear notifications from the Discord application, even though they are able to see those messages in game. So to avoid double-notifying users, you should call &lt;ref refid="classdiscordpp_1_1Client_1acdf400ecb926392d1a110da73152b594" kindref="member"&gt;Client::SetShowingChat&lt;/ref&gt; whenever the chat is shown or hidden to suppress those duplicate notifications.
 			</description>
 		</method>
@@ -1390,7 +1390,7 @@ When first testing the SDK, it can be a lot easier to use a public client to get
 			<description>
 			Updates the rich presence for the current user.
 			You should use rich presence so that other users on Discord know this user is playing a game and you can include some hints of what they are playing such as a character name or map name. Rich presence also enables Discord game invites to work too!
-Note: On Desktop, rich presence can be set before calling [DiscordClient] is not connected, this sets the rich presence in the current user's Discord client when available.
+Note: On Desktop, rich presence can be set before calling [DiscordClient] connects. When [DiscordClient] is not connected, this sets the rich presence in the current user's Discord client when available.
 See the docs on the [DiscordActivity] struct for more details.
 Note: The [DiscordActivity] object here is a partial object, fields such as name, and applicationId cannot be set and will be overwritten by the SDK. See [url=https://discord.com/developers/docs/rich-presence/using-with-the-game-sdk#partial-activity-struct]https://discord.com/developers/docs/rich-presence/using-with-the-game-sdk#partial-activity-struct[/url] for more information.
 			</description>

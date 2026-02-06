@@ -8,11 +8,10 @@
 - [url=https://discord.com/developers/docs/rich-presence/best-practices]https://discord.com/developers/docs/rich-presence/best-practices[/url]
 While RichPresence supports multiple types of activities, the only activity type that is really relevant for the SDK is &lt;ref refid="namespacediscordpp_1a6c76a8cbbc9270f025fd6854d5558660ac9dbb2b7c84159b632d71e512eba8428" kindref="member"&gt;ActivityTypes::Playing&lt;/ref&gt;. Additionally, the SDK will only expose Activities that are associated with the current game (or application). So for example, a field like [code]name[/code] below, will always be set to the current game's name from the view of the SDK.
 [u][b]Customization[/b][/u]
-When an activity shows up on Discord, it will look something like this:&lt;orderedlist&gt;
+When an activity shows up on Discord, it will look something like this:
 - Playing "game name"
 - Capture the flag | 2 - 1
 - In a group (2 of 3)
-&lt;/orderedlist&gt;
 You can control how lines 2 and 3 are rendered in Discord, here's the breakdown:
 - Line 1, [code]Playing "game name"[/code] is powered by the name of your game (or application) on Discord.
 - Line 2, [code]Capture the flag | 2 - 1[/code] is powered by the [code]details[/code] field in the activity, and this should generally try to describe what the [i]player[/i] is currently doing. You can even include dynamic data such as a match score here.
@@ -26,17 +25,15 @@ You can also specify up to two custom buttons to display on the rich presence. T
 &lt;codeline&gt;&lt;highlight class="normal"&gt;activity.AddButton(button);&lt;/highlight&gt;&lt;/codeline&gt;
 [/codeblock]
 [u][b]Invites / Joinable Activities[/b][/u]
-Other users can be invited to join the current player's activity (or request to join it too), but that does require certain fields to be set:&lt;orderedlist&gt;
-- [DiscordActivityParty::Id] field. All users in the party should set the same id field too!
+Other users can be invited to join the current player's activity (or request to join it too), but that does require certain fields to be set:
+- [DiscordActivityParty] must be set and have a non-empty &lt;ref refid="classdiscordpp_1_1ActivityParty_1ad5b269834e93f9d2b794a48cc7fb95f3" kindref="member"&gt;ActivityParty::Id&lt;/ref&gt; field. All users in the party should set the same id field too!
 - [DiscordActivityParty] must specify the size of the group, and there must be room in the group for another person to join.
 - &lt;ref refid="classdiscordpp_1_1ActivitySecrets_1a46e512adb1fa1238280b6d009d7767df" kindref="member"&gt;ActivitySecrets::Join&lt;/ref&gt; must be set to a non-empty string. The join secret is only shared with users who are accepted into the party by an existing member, so it is truly a secret. You can use this so that when the user is accepted your game knows how to join them to the party. For example it could be an internal game ID, or a Discord lobby ID/secret that the client could join.
-&lt;/orderedlist&gt;
 There is additional information about game invites here: [url=https://support.discord.com/hc/en-us/articles/115001557452-Game-Invites]https://support.discord.com/hc/en-us/articles/115001557452-Game-Invites[/url]
 [u][b]Mobile Invites[/b][/u]
-[DiscordActivity] invites are handled via a deep link. To enable users to join your game via an invite in the Discord client, you must do two things:&lt;orderedlist&gt;
+[DiscordActivity] invites are handled via a deep link. To enable users to join your game via an invite in the Discord client, you must do two things:
 - Set your deep link URL in the Discord developer portal. This will be available on the General tab of your application once Social Layer integration is enabled for your app.
 - Set the desired supported platforms when reporting the activity info in your rich presence, e.g.:
-&lt;/orderedlist&gt;
 [codeblock]&lt;codeline&gt;&lt;highlight class="normal"&gt;activity.SetSupportedPlatforms(&lt;/highlight&gt;&lt;/codeline&gt;
 &lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;ref refid="namespacediscordpp_1a591ad54a3029d15c9c58d6064770fe87" kindref="member"&gt;ActivityGamePlatforms&lt;/ref&gt;.Desktop&lt;sp /&gt;|&lt;/highlight&gt;&lt;/codeline&gt;
 &lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;ref refid="namespacediscordpp_1a591ad54a3029d15c9c58d6064770fe87" kindref="member"&gt;ActivityGamePlatforms&lt;/ref&gt;.IOS&lt;sp /&gt;|&lt;/highlight&gt;&lt;/codeline&gt;
