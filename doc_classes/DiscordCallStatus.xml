@@ -1,6 +1,7 @@
 <class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordCallStatus" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	Enum that respresents the state of the [DiscordCall]'s network connection.</brief_description>
+	Enum that respresents the state of the [DiscordCall]'s network connection.
+</brief_description>
 	<description>
 	</description>
 	<tutorials>

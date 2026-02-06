@@ -1,8 +1,10 @@
 <class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordUserHandle" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	A [DiscordUserHandle] represents a single user on Discord that the SDK knows about and contains basic account information for them such as id, name, and avatar, as well as their "status" information which includes both whether they are online/offline/etc as well as whether they are playing this game.</brief_description>
+	A [DiscordUserHandle] represents a single user on Discord that the SDK knows about and contains basic account information for them such as id, name, and avatar, as well as their "status" information which includes both whether they are online/offline/etc as well as whether they are playing this game.
+</brief_description>
 	<description>
-	Handle objects in the SDK hold a reference both to the underlying data, and to the SDK instance. Changes to the underlying data will generally be available on existing handles objects without having to re-create them. If the SDK instance is destroyed, but you still have a reference to a handle object, note that it will return the default value for all method calls (ie an empty string for methods that return a string).</description>
+	Handle objects in the SDK hold a reference both to the underlying data, and to the SDK instance. Changes to the underlying data will generally be available on existing handles objects without having to re-create them. If the SDK instance is destroyed, but you still have a reference to a handle object, note that it will return the default value for all method calls (ie an empty string for methods that return a string).
+</description>
 	<tutorials>
 	</tutorials>
 	<methods>
@@ -16,7 +18,7 @@
 			<return type="String" />
 			<param index="0" name="type" type="int" enum="DiscordUserHandleAvatarType.Enum" />
 			<description>
-			Converts the &lt;ref refid="classdiscordpp_1_1UserHandle_1a9cbf5933bc6181eb1900574f6eda9b18" kindref="member"&gt;AvatarType&lt;/ref&gt; enum to a string.
+			Converts the [TODO:] enum to a string.
 			</description>
 		</method>
 		<method name="avatar_url">

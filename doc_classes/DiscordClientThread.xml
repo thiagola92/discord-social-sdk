@@ -1,6 +1,7 @@
 <class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordClientThread" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	Represents the type of thread to control thread priority on.</brief_description>
+	Represents the type of thread to control thread priority on.
+</brief_description>
 	<description>
 	</description>
 	<tutorials>

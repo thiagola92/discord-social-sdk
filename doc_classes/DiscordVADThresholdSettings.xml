@@ -1,6 +1,7 @@
 <class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordVADThresholdSettings" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	Settings for the void auto detection threshold for picking up activity from a user's mic.</brief_description>
+	Settings for the void auto detection threshold for picking up activity from a user's mic.
+</brief_description>
 	<description>
 	</description>
 	<tutorials>
@@ -16,14 +17,14 @@
 			<return type="void" />
 			<param index="0" name="automatic" type="bool" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1VADThresholdSettings_1a7f28f03efbb001bc0468762a7f3a5b5c" kindref="member"&gt;VADThresholdSettings::Automatic&lt;/ref&gt;.
+			Setter for [TODO:].
 			</description>
 		</method>
 		<method name="set_vad_threshold">
 			<return type="void" />
 			<param index="0" name="vad_threshold" type="float" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1VADThresholdSettings_1a92ddf7ac4143d02c5fb895b11474c15c" kindref="member"&gt;VADThresholdSettings::VadThreshold&lt;/ref&gt;.
+			Setter for [TODO:].
 			</description>
 		</method>
 		<method name="vad_threshold">

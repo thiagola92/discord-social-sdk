@@ -1,8 +1,10 @@
 <class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordChannelHandle" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	All messages sent on Discord are done so in a Channel. &lt;ref refid="classdiscordpp_1_1MessageHandle_1ad8b8ccfab8c8e06dc9fc3201284db1ce" kindref="member"&gt;MessageHandle::ChannelId&lt;/ref&gt; will contain the ID of the channel a message was sent in, and &lt;ref refid="classdiscordpp_1_1Client_1a6ab6f4217d04d84935d012af88ce5752" kindref="member"&gt;Client::GetChannelHandle&lt;/ref&gt; will return an instance of this class.</brief_description>
+	All messages sent on Discord are done so in a Channel. [TODO:] will contain the ID of the channel a message was sent in, and [TODO:] will return an instance of this class.
+</brief_description>
 	<description>
-	Handle objects in the SDK hold a reference both to the underlying data, and to the SDK instance. Changes to the underlying data will generally be available on existing handles objects without having to re-create them. If the SDK instance is destroyed, but you still have a reference to a handle object, note that it will return the default value for all method calls (ie an empty string for methods that return a string).</description>
+	Handle objects in the SDK hold a reference both to the underlying data, and to the SDK instance. Changes to the underlying data will generally be available on existing handles objects without having to re-create them. If the SDK instance is destroyed, but you still have a reference to a handle object, note that it will return the default value for all method calls (ie an empty string for methods that return a string).
+</description>
 	<tutorials>
 	</tutorials>
 	<methods>

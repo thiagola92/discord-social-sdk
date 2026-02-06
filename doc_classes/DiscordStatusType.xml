@@ -1,8 +1,10 @@
 <class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordStatusType" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	Enum that specifies the various online statuses for a user.</brief_description>
+	Enum that specifies the various online statuses for a user.
+</brief_description>
 	<description>
-	Generally a user is online or offline, but in Discord users are able to further customize their status such as turning on "Do not Disturb" mode or "Dnd" to silence notifications.</description>
+	Generally a user is online or offline, but in Discord users are able to further customize their status such as turning on "Do not Disturb" mode or "Dnd" to silence notifications.
+</description>
 	<tutorials>
 	</tutorials>
 	<constants>

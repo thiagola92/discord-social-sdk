@@ -1,6 +1,7 @@
 <class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordAdditionalContent" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	Contains information about non-text content in a message that likely cannot be rendered in game such as images, videos, embeds, polls, and more.</brief_description>
+	Contains information about non-text content in a message that likely cannot be rendered in game such as images, videos, embeds, polls, and more.
+</brief_description>
 	<description>
 	</description>
 	<tutorials>
@@ -23,21 +24,21 @@
 			<return type="void" />
 			<param index="0" name="count" type="int" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1AdditionalContent_1a67f810f29c69d51eff30eb424e17428c" kindref="member"&gt;AdditionalContent::Count&lt;/ref&gt;.
+			Setter for [TODO:].
 			</description>
 		</method>
 		<method name="set_title">
 			<return type="void" />
 			<param index="0" name="title" type="Variant" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1AdditionalContent_1a5162c8a105790c4a654ace2a0fba7b6c" kindref="member"&gt;AdditionalContent::Title&lt;/ref&gt;.
+			Setter for [TODO:].
 			</description>
 		</method>
 		<method name="set_type">
 			<return type="void" />
 			<param index="0" name="type" type="int" enum="DiscordAdditionalContentType.Enum" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1AdditionalContent_1a5f71d7a58bfcf125e32cff555f6dd032" kindref="member"&gt;AdditionalContent::Type&lt;/ref&gt;.
+			Setter for [TODO:].
 			</description>
 		</method>
 		<method name="title">

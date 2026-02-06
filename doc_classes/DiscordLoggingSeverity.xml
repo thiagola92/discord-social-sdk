@@ -1,6 +1,7 @@
 <class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordLoggingSeverity" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	Enum that represents the various log levels supported by the SDK.</brief_description>
+	Enum that represents the various log levels supported by the SDK.
+</brief_description>
 	<description>
 	</description>
 	<tutorials>

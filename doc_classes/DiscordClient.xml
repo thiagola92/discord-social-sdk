@@ -1,8 +1,10 @@
 <class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordClient" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	The [DiscordClient] class is the main entry point for the Discord SDK. All functionality is exposed through this class.</brief_description>
+	The [DiscordClient] class is the main entry point for the Discord SDK. All functionality is exposed through this class.
+</brief_description>
 	<description>
-	See Getting Started for more information on how to use the [DiscordClient] class.</description>
+	See Getting Started for more information on how to use the [DiscordClient] class.
+</description>
 	<tutorials>
 	</tutorials>
 	<methods>
@@ -70,7 +72,7 @@ We strongly recommend invoking this function immediately after constructing the 
 			<param index="0" name="args" type="DiscordAuthorizationArgs" />
 			<param index="1" name="callback" type="Callable" />
 			<description>
-			Initiates an OAuth2 flow for a user to "sign in with Discord". This flow is intended for desktop and mobile devices. If you are implementing for the console, leverage the device auth flow instead (&lt;ref refid="classdiscordpp_1_1Client_1a4a9c666b2d30bae0a16f5afd7ccee60d" kindref="member"&gt;Client::GetTokenFromDevice&lt;/ref&gt; or &lt;ref refid="classdiscordpp_1_1Client_1af29a13acc992a75fc0870051ff68575b" kindref="member"&gt;Client::OpenAuthorizeDeviceScreen&lt;/ref&gt;).
+			Initiates an OAuth2 flow for a user to "sign in with Discord". This flow is intended for desktop and mobile devices. If you are implementing for the console, leverage the device auth flow instead ([TODO:] or [TODO:]).
 			[u][b]Overview[/b][/u]
 If you're not familiar with OAuth2, some basic background: At a high level the goal of OAuth2 is to allow a user to connect two applications together and share data between them. In this case, allowing a game to access some of their Discord data. The high level flow is:
 - This function, Authorize, is invoked to start the OAuth2 process, and the user is sent to Discord
@@ -83,7 +85,7 @@ If desired, you can instead change your Discord application in the developer por
 [u][b]Overlay[/b][/u]
 To streamline the authentication process, the SDK will attempt to use the Discord overlay if it is enabled. This will allow the user to authenticate without leaving the game, enabling a more seamless experience.
 You should check to see if the Discord overlay works with your game before shipping. It's ok if it doesn't though, the SDK will fall back to using a browser window. Once you're ready to ship, you can work with us to have the overlay enabled by default for your game too.
-If your game's main window is not the same process that the SDK is running in, then you need to tell the SDK the PID of the window that the overlay should attach to. You can do this by calling &lt;ref refid="classdiscordpp_1_1Client_1aae200241796a779e4b9e8cb2d22138c2" kindref="member"&gt;Client::SetGameWindowPid&lt;/ref&gt;.
+If your game's main window is not the same process that the SDK is running in, then you need to tell the SDK the PID of the window that the overlay should attach to. You can do this by calling [TODO:].
 [u][b]Redirects[/b][/u]
 For the Authorize function to work, you must configure a redirect url in your Discord application in the developer portal, (it is located on the OAuth2 tab).
 - For desktop applications, add [url=http://127.0.0.1/callback][code]http://127.0.0.1/callback[/code][/url]
@@ -92,9 +94,9 @@ The SDK will then spin up a local webserver to handle the OAuth2 redirects for y
 [u][b]Security[/b][/u]
 This function accepts an args object, and two of those values are important for security:
 - To prevent CSRF attacks during auth, the SDK automatically attaches a state and checks it for you when performing the authorization. You can override state if you want for your own flow, but please be mindful to keep it a secure, random value.
-- If you are using the &lt;ref refid="classdiscordpp_1_1Client_1aaee636f91fb1ea3465157c20313b702c" kindref="member"&gt;Client::GetToken&lt;/ref&gt; function you will need to provide a "code challenge" or "code verifier". We'll spare you the boring details of how that works (woo&#8230; crypto), as we've made a simple function to create these for you, &lt;ref refid="classdiscordpp_1_1Client_1aba6adc1f978e7bf4c5433c560e1ad704" kindref="member"&gt;Client::CreateAuthorizationCodeVerifier&lt;/ref&gt;. That returns a struct with two items, a [code]challenge[/code] value to pass into this function and a [code]verifier[/code] value to pass into &lt;ref refid="classdiscordpp_1_1Client_1aaee636f91fb1ea3465157c20313b702c" kindref="member"&gt;Client::GetToken&lt;/ref&gt;.
+- If you are using the [TODO:] function you will need to provide a "code challenge" or "code verifier". We'll spare you the boring details of how that works (woo&#8230; crypto), as we've made a simple function to create these for you, [TODO:]. That returns a struct with two items, a [code]challenge[/code] value to pass into this function and a [code]verifier[/code] value to pass into [TODO:].
 [u][b]Callbacks &amp; Code Exchange[/b][/u]
-When this flow completes, the given callback function will be invoked with a "code". That code must be exchanged for an actual authorization token before it can be used. To start, you can use the &lt;ref refid="classdiscordpp_1_1Client_1aaee636f91fb1ea3465157c20313b702c" kindref="member"&gt;Client::GetToken&lt;/ref&gt; function to perform this exchange. Longer term private apps will want to move to the server side API for this, since that enables provisional accounts to "upgrade" to full Discord accounts.
+When this flow completes, the given callback function will be invoked with a "code". That code must be exchanged for an actual authorization token before it can be used. To start, you can use the [TODO:] function to perform this exchange. Longer term private apps will want to move to the server side API for this, since that enables provisional accounts to "upgrade" to full Discord accounts.
 [u][b]Android[/b][/u]
 You must add the appropriate intent filter to your [code]AndroidManifest.xml[/code]. [code]AndroidBuildPostProcessor[/code] in the sample demonstrates how to do this automatically.
 If you'd like to manage it yourself, the required entry in your [code]&lt;application&gt;[/code] looks like this: [codeblock]&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;&lt;/highlight&gt;&lt;highlight class="keywordtype"&gt;activity&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;sp /&gt;&lt;/highlight&gt;&lt;highlight class="keyword"&gt;android:name&lt;/highlight&gt;&lt;highlight class="normal"&gt;=&lt;/highlight&gt;&lt;highlight class="stringliteral"&gt;"com.discord.socialsdk.AuthenticationActivity"&lt;/highlight&gt;&lt;highlight class="normal" /&gt;&lt;/codeline&gt;
@@ -155,20 +157,20 @@ For more information see: [url=https://discord.com/developers/docs/topics/oauth2
 		<method name="close_authorize_device_screen">
 			<return type="void" />
 			<description>
-			This function is used to hide the device authorization screen and is used for the case where the user is on a limited input device, such as a console or smart TV. This function should be used in conjunction with a backend server to handle the device authorization flow. For a public client, you can use &lt;ref refid="classdiscordpp_1_1Client_1a219c7bca16f34dbdf2bc273cdba0c80b" kindref="member"&gt;Client::AbortGetTokenFromDevice&lt;/ref&gt; instead.
+			This function is used to hide the device authorization screen and is used for the case where the user is on a limited input device, such as a console or smart TV. This function should be used in conjunction with a backend server to handle the device authorization flow. For a public client, you can use [TODO:] instead.
 			</description>
 		</method>
 		<method name="connect_discord">
 			<return type="void" />
 			<description>
 			Asynchronously connects the client to Discord.
-			If a client is disconnecting, this will wait for the disconnect before reconnecting. You should use the [DiscordClient] is only safe to use once the status changes to &lt;ref refid="classdiscordpp_1_1Client_1a6f714c5d6aebefa91c1ff8ba97bcce22ae7d31fc0602fb2ede144d18cdffd816b" kindref="member"&gt;Status::Ready&lt;/ref&gt;.
+			If a client is disconnecting, this will wait for the disconnect before reconnecting. You should use the [TODO:] and [TODO:] functions to receive updates on the client status. The [DiscordClient] is only safe to use once the status changes to [TODO:].
 			</description>
 		</method>
 		<method name="create_authorization_code_verifier">
 			<return type="DiscordAuthorizationCodeVerifier" />
 			<description>
-			Helper function that can create a code challenge and verifier for use in the &lt;ref refid="classdiscordpp_1_1Client_1ace94a58e27545a933d79db32b387a468" kindref="member"&gt;Client::Authorize&lt;/ref&gt; + &lt;ref refid="classdiscordpp_1_1Client_1aaee636f91fb1ea3465157c20313b702c" kindref="member"&gt;Client::GetToken&lt;/ref&gt; flow. This returns a struct with two items, a [code]challenge[/code] value to pass into &lt;ref refid="classdiscordpp_1_1Client_1ace94a58e27545a933d79db32b387a468" kindref="member"&gt;Client::Authorize&lt;/ref&gt; and a [code]verifier[/code] value to pass into GetToken.
+			Helper function that can create a code challenge and verifier for use in the [TODO:] + [TODO:] flow. This returns a struct with two items, a [code]challenge[/code] value to pass into [TODO:] and a [code]verifier[/code] value to pass into GetToken.
 			</description>
 		</method>
 		<method name="create_or_join_lobby">
@@ -190,7 +192,7 @@ This function shouldn't be used for long lived lobbies. The "secret" value expir
 			<param index="2" name="member_metadata" type="Dictionary[String, String]" />
 			<param index="3" name="callback" type="Callable" />
 			<description>
-			Variant of &lt;ref refid="classdiscordpp_1_1Client_1a8b4e195555ecaa89ccdfc0acd28d3512" kindref="member"&gt;Client::CreateOrJoinLobby&lt;/ref&gt; that also accepts developer-supplied metadata.
+			Variant of [TODO:] that also accepts developer-supplied metadata.
 			Metadata is just simple string key/value pairs. An example use case for this might be to the internal game ID of the user of each lobby so all members of the lobby can have a mapping of discord IDs to game IDs. Subsequent calls to CreateOrJoinLobby will overwrite the metadata for the lobby and member.
 			</description>
 		</method>
@@ -207,7 +209,7 @@ This function shouldn't be used for long lived lobbies. The "secret" value expir
 			<return type="void" />
 			<description>
 			Asynchronously disconnects the client.
-			You can leverage &lt;ref refid="classdiscordpp_1_1Client_1a9d0e8824570b93149d5d1c65bb3fb97f" kindref="member"&gt;Client::SetStatusChangedCallback&lt;/ref&gt; and &lt;ref refid="classdiscordpp_1_1Client_1aff09cced22a1b08cbd85b3ef25aa5f22" kindref="member"&gt;Client::GetStatus&lt;/ref&gt; to receive updates on the client status. It is fully disconnected when the status changes to &lt;ref refid="classdiscordpp_1_1Client_1a6f714c5d6aebefa91c1ff8ba97bcce22aef70e46fd3bbc21e3e1f0b6815e750c0" kindref="member"&gt;Client::Status::Disconnected&lt;/ref&gt;.
+			You can leverage [TODO:] and [TODO:] to receive updates on the client status. It is fully disconnected when the status changes to [TODO:].
 			</description>
 		</method>
 		<method name="edit_user_message">
@@ -240,7 +242,7 @@ This function shouldn't be used for long lived lobbies. The "secret" value expir
 			<return type="String" />
 			<param index="0" name="type" type="int" enum="DiscordClientError.Enum" />
 			<description>
-			Converts the &lt;ref refid="classdiscordpp_1_1Client_1ac8d8140b9e1251e59e59a267f8a6295f" kindref="member"&gt;Error&lt;/ref&gt; enum to a string.
+			Converts the [TODO:] enum to a string.
 			</description>
 		</method>
 		<method name="exchange_child_token">
@@ -268,7 +270,7 @@ When first testing the SDK, it can be a lot easier to use a public client to get
 		<method name="get_application_id">
 			<return type="int" />
 			<description>
-			This function is used to get the application ID for the client. This is used to identify the application to the Discord client. This is used for things like authentication, rich presence, and activity invites when [i]not[/i] connected with &lt;ref refid="classdiscordpp_1_1Client_1a873a844c7c4c72e9e693419bb3e290aa" kindref="member"&gt;Client::Connect&lt;/ref&gt;. When calling &lt;ref refid="classdiscordpp_1_1Client_1a873a844c7c4c72e9e693419bb3e290aa" kindref="member"&gt;Client::Connect&lt;/ref&gt;, the application ID is set automatically.
+			This function is used to get the application ID for the client. This is used to identify the application to the Discord client. This is used for things like authentication, rich presence, and activity invites when [i]not[/i] connected with [TODO:]. When calling [TODO:], the application ID is set automatically.
 			</description>
 		</method>
 		<method name="get_call">
@@ -317,7 +319,7 @@ When first testing the SDK, it can be a lot easier to use a public client to get
 		<method name="get_current_user_v2">
 			<return type="Variant" />
 			<description>
-			Unlike &lt;ref refid="classdiscordpp_1_1Client_1a7edea2a3dfe9ae560d5fa5ba8663b5cc" kindref="member"&gt;GetCurrentUser()&lt;/ref&gt;, this method returns std::nullopt instead of a dummy object when no user is authenticated or available. This provides clearer intent about when the user data is actually available.
+			Unlike [TODO:], this method returns std::nullopt instead of a dummy object when no user is authenticated or available. This provides clearer intent about when the user data is actually available.
 			</description>
 		</method>
 		<method name="get_default_audio_device_id" qualifiers="static">
@@ -329,16 +331,16 @@ When first testing the SDK, it can be a lot easier to use a public client to get
 		<method name="get_default_communication_scopes" qualifiers="static">
 			<return type="String" />
 			<description>
-			Returns the default set of OAuth2 scopes that should be used with the Discord SDK when making use of the full SDK capabilities, including communications-related features (e.g. user DMs, lobbies, voice chat). If your application does not make use of these features, you should use &lt;ref refid="classdiscordpp_1_1Client_1a7648bd1d2f7d9a86ebd0edb8bef12b5c" kindref="member"&gt;Client::GetDefaultPresenceScopes&lt;/ref&gt; instead.
+			Returns the default set of OAuth2 scopes that should be used with the Discord SDK when making use of the full SDK capabilities, including communications-related features (e.g. user DMs, lobbies, voice chat). If your application does not make use of these features, you should use [TODO:] instead.
 			Communications-related features are currently in limited access and are not available to all applications, however, they can be demoed in limited capacity by all applications. If you are interested in using these features in your game, please reach out to the Discord team.
-It's ok to further customize your requested oauth2 scopes to add additional scopes if you have legitimate usages for them. However, we strongly recommend always using &lt;ref refid="classdiscordpp_1_1Client_1a71499da752fbdc2d4326ae0fd36c0dd1" kindref="member"&gt;Client::GetDefaultCommunicationScopes&lt;/ref&gt; or &lt;ref refid="classdiscordpp_1_1Client_1a7648bd1d2f7d9a86ebd0edb8bef12b5c" kindref="member"&gt;Client::GetDefaultPresenceScopes&lt;/ref&gt; as a baseline to enable a better authorization experience for users!
+It's ok to further customize your requested oauth2 scopes to add additional scopes if you have legitimate usages for them. However, we strongly recommend always using [TODO:] or [TODO:] as a baseline to enable a better authorization experience for users!
 			</description>
 		</method>
 		<method name="get_default_presence_scopes" qualifiers="static">
 			<return type="String" />
 			<description>
-			Returns the default set of OAuth2 scopes that should be used with the Discord SDK when leveraging baseline presence-related features (e.g. friends list, rich presence, provisional accounts, activity invites). If your application is using communications-related features, which are currently available in limited access, you should use &lt;ref refid="classdiscordpp_1_1Client_1a71499da752fbdc2d4326ae0fd36c0dd1" kindref="member"&gt;Client::GetDefaultCommunicationScopes&lt;/ref&gt; instead.
-			It's ok to further customize your requested oauth2 scopes to add additional scopes if you have legitimate usages for them. However, we strongly recommend always using &lt;ref refid="classdiscordpp_1_1Client_1a71499da752fbdc2d4326ae0fd36c0dd1" kindref="member"&gt;Client::GetDefaultCommunicationScopes&lt;/ref&gt; or &lt;ref refid="classdiscordpp_1_1Client_1a7648bd1d2f7d9a86ebd0edb8bef12b5c" kindref="member"&gt;Client::GetDefaultPresenceScopes&lt;/ref&gt; as a baseline to enable a better authorization experience for users!
+			Returns the default set of OAuth2 scopes that should be used with the Discord SDK when leveraging baseline presence-related features (e.g. friends list, rich presence, provisional accounts, activity invites). If your application is using communications-related features, which are currently available in limited access, you should use [TODO:] instead.
+			It's ok to further customize your requested oauth2 scopes to add additional scopes if you have legitimate usages for them. However, we strongly recommend always using [TODO:] or [TODO:] as a baseline to enable a better authorization experience for users!
 			</description>
 		</method>
 		<method name="get_discord_client_connected_user">
@@ -383,7 +385,7 @@ It's ok to further customize your requested oauth2 scopes to add additional scop
 			<return type="int[]" />
 			<description>
 			Returns a list of all the lobbies that the user is a member of and the SDK has loaded.
-			Lobbies are optimistically loaded when the SDK starts but in some cases may not be available immediately after the SDK status changes to &lt;ref refid="classdiscordpp_1_1Client_1a6f714c5d6aebefa91c1ff8ba97bcce22ae7d31fc0602fb2ede144d18cdffd816b" kindref="member"&gt;Status::Ready&lt;/ref&gt;.
+			Lobbies are optimistically loaded when the SDK starts but in some cases may not be available immediately after the SDK status changes to [TODO:].
 			</description>
 		</method>
 		<method name="get_lobby_messages_with_limit">
@@ -474,7 +476,7 @@ When first testing the SDK, it can be a lot easier to use a public client to get
 		<method name="get_status">
 			<return type="int" enum="DiscordClientStatus.Enum" />
 			<description>
-			Returns the current status of the client, see the &lt;ref refid="classdiscordpp_1_1Client_1a6f714c5d6aebefa91c1ff8ba97bcce22" kindref="member"&gt;Status&lt;/ref&gt; enum for an explanation of the possible values.
+			Returns the current status of the client, see the [TODO:] enum for an explanation of the possible values.
 			</description>
 		</method>
 		<method name="get_token">
@@ -485,7 +487,7 @@ When first testing the SDK, it can be a lot easier to use a public client to get
 			<param index="3" name="redirect_uri" type="String" />
 			<param index="4" name="callback" type="Callable" />
 			<description>
-			Exchanges an authorization code that was returned from the &lt;ref refid="classdiscordpp_1_1Client_1ace94a58e27545a933d79db32b387a468" kindref="member"&gt;Client::Authorize&lt;/ref&gt; function for an access token which can be used to authenticate with the SDK.
+			Exchanges an authorization code that was returned from the [TODO:] function for an access token which can be used to authenticate with the SDK.
 			The callback function will be invoked with two tokens:
 - An access token which can be used to authenticate with the SDK, but expires after 7 days.
 - A refresh token, which cannot be used to authenticate, but can be used to get a new access token later. Refresh tokens do not currently expire.
@@ -500,13 +502,13 @@ When first testing the SDK, it can be a lot easier to use a public client to get
 			<param index="0" name="args" type="DiscordDeviceAuthorizationArgs" />
 			<param index="1" name="callback" type="Callable" />
 			<description>
-			This function is a combination of &lt;ref refid="classdiscordpp_1_1Client_1ace94a58e27545a933d79db32b387a468" kindref="member"&gt;Client::Authorize&lt;/ref&gt; and &lt;ref refid="classdiscordpp_1_1Client_1aaee636f91fb1ea3465157c20313b702c" kindref="member"&gt;Client::GetToken&lt;/ref&gt;, but is used for the case where the user is on a limited input device, such as a console or smart TV.
+			This function is a combination of [TODO:] and [TODO:], but is used for the case where the user is on a limited input device, such as a console or smart TV.
 			The callback function will be invoked with two tokens:
 - An access token which can be used to authenticate with the SDK, but expires after 7 days.
 - A refresh token, which cannot be used to authenticate, but can be used to get a new access token later. Refresh tokens do not currently expire.
 It will also include when the access token expires in seconds. You will want to store this value as well and refresh the token when it gets close to expiring (for example if the user launches the game and the token expires within 24 hours, it would be good to refresh it).
 For more information see [url=https://discord.com/developers/docs/topics/oauth2]https://discord.com/developers/docs/topics/oauth2[/url]
-NOTE: This function only works for public clients. Public clients are ones that do not have a backend server or their own concept of user accounts and simply rely on a separate system for authentication like Steam/Epic. If you have a backend server for auth, you can use &lt;ref refid="classdiscordpp_1_1Client_1af29a13acc992a75fc0870051ff68575b" kindref="member"&gt;Client::OpenAuthorizeDeviceScreen&lt;/ref&gt; and &lt;ref refid="classdiscordpp_1_1Client_1a4fcdd697702d086a8170a2d60a69acb8" kindref="member"&gt;Client::CloseAuthorizeDeviceScreen&lt;/ref&gt; to show/hide the UI for the device auth flow.
+NOTE: This function only works for public clients. Public clients are ones that do not have a backend server or their own concept of user accounts and simply rely on a separate system for authentication like Steam/Epic. If you have a backend server for auth, you can use [TODO:] and [TODO:] to show/hide the UI for the device auth flow.
 When first testing the SDK, it can be a lot easier to use a public client to get a proof of concept going, and change it to a confidential client later. You can toggle that setting on the OAuth2 page for your application in the Discord developer portal, [url=https://discord.com/developers/applications]https://discord.com/developers/applications[/url]
 			</description>
 		</method>
@@ -517,14 +519,14 @@ When first testing the SDK, it can be a lot easier to use a public client to get
 			<param index="2" name="external_auth_token" type="String" />
 			<param index="3" name="callback" type="Callable" />
 			<description>
-			This function is a combination of &lt;ref refid="classdiscordpp_1_1Client_1ace94a58e27545a933d79db32b387a468" kindref="member"&gt;Client::Authorize&lt;/ref&gt; and &lt;ref refid="classdiscordpp_1_1Client_1a41062b7dafa331ddd2320daf1b4b273b" kindref="member"&gt;Client::GetTokenFromProvisionalMerge&lt;/ref&gt;, but is used for the case where the user is on a limited input device, such as a console or smart TV.
+			This function is a combination of [TODO:] and [TODO:], but is used for the case where the user is on a limited input device, such as a console or smart TV.
 			This function should be used whenever a user with a provisional account wants to link to an existing Discord account or "upgrade" their provisional account into a "full" Discord account.
 In this case, data from the provisional account should be "migrated" to the Discord account, a process we call "account merging". Specifically relationships, DMs, and lobby memberships are transferred to the Discord account.
 The provisional account will be deleted once this merging process completes. If the user later unlinks, then a new provisional account with a new unique ID is created.
 The account merging process starts the same as the normal login flow, by invoking the GetTokenFromDevice. But instead of calling GetTokenFromDevice, call this function and pass in the provisional user's identity as well.
 The Discord backend can then find both the provisional account with that identity and the new Discord account and merge any data as necessary.
 See the documentation for GetTokenFromDevice for more details on the callback. Note that the callback will be invoked when the token exchange completes, but the process of merging accounts happens asynchronously so will not be complete yet.
-NOTE: This function only works for public clients. Public clients are ones that do not have a backend server or their own concept of user accounts and simply rely on a separate system for authentication like Steam/Epic. If you have a backend server for auth, you can use &lt;ref refid="classdiscordpp_1_1Client_1af29a13acc992a75fc0870051ff68575b" kindref="member"&gt;Client::OpenAuthorizeDeviceScreen&lt;/ref&gt; and &lt;ref refid="classdiscordpp_1_1Client_1a4fcdd697702d086a8170a2d60a69acb8" kindref="member"&gt;Client::CloseAuthorizeDeviceScreen&lt;/ref&gt; to show/hide the UI for the device auth flow.
+NOTE: This function only works for public clients. Public clients are ones that do not have a backend server or their own concept of user accounts and simply rely on a separate system for authentication like Steam/Epic. If you have a backend server for auth, you can use [TODO:] and [TODO:] to show/hide the UI for the device auth flow.
 When first testing the SDK, it can be a lot easier to use a public client to get a proof of concept going, and change it to a confidential client later. You can toggle that setting on the OAuth2 page for your application in the Discord developer portal, [url=https://discord.com/developers/applications]https://discord.com/developers/applications[/url]
 			</description>
 		</method>
@@ -538,7 +540,7 @@ When first testing the SDK, it can be a lot easier to use a public client to get
 			<param index="5" name="external_auth_token" type="String" />
 			<param index="6" name="callback" type="Callable" />
 			<description>
-			This function should be used with the &lt;ref refid="classdiscordpp_1_1Client_1ace94a58e27545a933d79db32b387a468" kindref="member"&gt;Client::Authorize&lt;/ref&gt; function whenever a user with a provisional account wants to link to an existing Discord account or "upgrade" their provisional account into a "full" Discord account.
+			This function should be used with the [TODO:] function whenever a user with a provisional account wants to link to an existing Discord account or "upgrade" their provisional account into a "full" Discord account.
 			In this case, data from the provisional account should be "migrated" to the Discord account, a process we call "account merging". Specifically relationships, DMs, and lobby memberships are transferred to the Discord account.
 The provisional account will be deleted once this merging process completes. If the user later unlinks, then a new provisional account with a new unique ID is created.
 The account merging process starts the same as the normal login flow, by invoking the Authorize method to get an authorization code back. But instead of calling GetToken, call this function and pass in the provisional user's identity as well.
@@ -644,7 +646,7 @@ Platform Requirements:
 			<param index="1" name="callback" type="Callable" />
 			<description>
 			Removes the current user from the specified lobby.
-			Only lobbies that contain a "secret" can be left. In other words, only lobbies created with &lt;ref refid="classdiscordpp_1_1Client_1a8b4e195555ecaa89ccdfc0acd28d3512" kindref="member"&gt;Client::CreateOrJoinLobby&lt;/ref&gt; can be left. Lobbies created using the server API may not be manipulated by clients, so you must use the server API to remove them too.
+			Only lobbies that contain a "secret" can be left. In other words, only lobbies created with [TODO:] can be left. Lobbies created using the server API may not be manipulated by clients, so you must use the server API to remove them too.
 			</description>
 		</method>
 		<method name="link_channel_to_lobby">
@@ -662,7 +664,7 @@ Platform Requirements:
 			<param index="0" name="client_id" type="int" />
 			<param index="1" name="user_code" type="String" />
 			<description>
-			This function is used to show the device authorization screen and is used for the case where the user is on a limited input device, such as a console or smart TV. This function should be used in conjunction with a backend server to handle the device authorization flow. For a public client, you can use &lt;ref refid="classdiscordpp_1_1Client_1a4a9c666b2d30bae0a16f5afd7ccee60d" kindref="member"&gt;Client::GetTokenFromDevice&lt;/ref&gt; instead.
+			This function is used to show the device authorization screen and is used for the case where the user is on a limited input device, such as a console or smart TV. This function should be used in conjunction with a backend server to handle the device authorization flow. For a public client, you can use [TODO:] instead.
 			</description>
 		</method>
 		<method name="open_connected_games_settings_in_discord">
@@ -688,7 +690,7 @@ It is always a no-op for console platforms.
 			<return type="void" />
 			<param index="0" name="success" type="bool" />
 			<description>
-			Some functions don't work for provisional accounts, and require the user merge their account into a full Discord account before proceeding. This callback is invoked when an account merge must take place before proceeding. The developer is responsible for initiating the account merge, and then calling &lt;ref refid="classdiscordpp_1_1Client_1af836d40617bb6d74648309c768234184" kindref="member"&gt;Client::ProvisionalUserMergeCompleted&lt;/ref&gt; to signal to the SDK that the pending operation can continue with the new account.
+			Some functions don't work for provisional accounts, and require the user merge their account into a full Discord account before proceeding. This callback is invoked when an account merge must take place before proceeding. The developer is responsible for initiating the account merge, and then calling [TODO:] to signal to the SDK that the pending operation can continue with the new account.
 			</description>
 		</method>
 		<method name="refresh_token">
@@ -831,8 +833,8 @@ That user will basically receive an activity invite which they can accept or rej
 			<description>
 			Sends a Discord friend request to the target user.
 			The target user is identified by their Discord unique username (not their DisplayName).
-After the friend request is sent, each user will have a new Discord relationship created. For the current user the &lt;ref refid="classdiscordpp_1_1RelationshipHandle_1a5fecfb79a4a2b6f3dc5f73b09d0c3881" kindref="member"&gt;RelationshipHandle::DiscordRelationshipType&lt;/ref&gt; will be &lt;ref refid="namespacediscordpp_1a28fc5199b9211c24124c06f30c1d0cbba4832d123938e53f19fa19ace533333ec" kindref="member"&gt;RelationshipType::PendingOutgoing&lt;/ref&gt; and for the target user it will be &lt;ref refid="namespacediscordpp_1a28fc5199b9211c24124c06f30c1d0cbba07817206b999d94b5f4b49187fd7b8d9" kindref="member"&gt;RelationshipType::PendingIncoming&lt;/ref&gt;.
-If the current user already has received a Discord friend request from the target user (meaning &lt;ref refid="classdiscordpp_1_1RelationshipHandle_1a5fecfb79a4a2b6f3dc5f73b09d0c3881" kindref="member"&gt;RelationshipHandle::DiscordRelationshipType&lt;/ref&gt; is &lt;ref refid="namespacediscordpp_1a28fc5199b9211c24124c06f30c1d0cbba07817206b999d94b5f4b49187fd7b8d9" kindref="member"&gt;RelationshipType::PendingIncoming&lt;/ref&gt;), then the two users will become Discord friends.
+After the friend request is sent, each user will have a new Discord relationship created. For the current user the [TODO:] will be &lt;ref refid="namespacediscordpp_1a28fc5199b9211c24124c06f30c1d0cbba4832d123938e53f19fa19ace533333ec" kindref="member"&gt;RelationshipType::PendingOutgoing&lt;/ref&gt; and for the target user it will be &lt;ref refid="namespacediscordpp_1a28fc5199b9211c24124c06f30c1d0cbba07817206b999d94b5f4b49187fd7b8d9" kindref="member"&gt;RelationshipType::PendingIncoming&lt;/ref&gt;.
+If the current user already has received a Discord friend request from the target user (meaning [TODO:] is &lt;ref refid="namespacediscordpp_1a28fc5199b9211c24124c06f30c1d0cbba07817206b999d94b5f4b49187fd7b8d9" kindref="member"&gt;RelationshipType::PendingIncoming&lt;/ref&gt;), then the two users will become Discord friends.
 See [DiscordRelationshipHandle] for more information on the difference between Discord and Game relationships.
 			</description>
 		</method>
@@ -843,8 +845,8 @@ See [DiscordRelationshipHandle] for more information on the difference between D
 			<description>
 			Sends a Discord friend request to the target user.
 			The target user is identified by their Discord ID.
-After the friend request is sent, each user will have a new Discord relationship created. For the current user the &lt;ref refid="classdiscordpp_1_1RelationshipHandle_1a5fecfb79a4a2b6f3dc5f73b09d0c3881" kindref="member"&gt;RelationshipHandle::DiscordRelationshipType&lt;/ref&gt; will be &lt;ref refid="namespacediscordpp_1a28fc5199b9211c24124c06f30c1d0cbba4832d123938e53f19fa19ace533333ec" kindref="member"&gt;RelationshipType::PendingOutgoing&lt;/ref&gt; and for the target user it will be &lt;ref refid="namespacediscordpp_1a28fc5199b9211c24124c06f30c1d0cbba07817206b999d94b5f4b49187fd7b8d9" kindref="member"&gt;RelationshipType::PendingIncoming&lt;/ref&gt;.
-If the current user already has received a Discord friend request from the target user (meaning &lt;ref refid="classdiscordpp_1_1RelationshipHandle_1a5fecfb79a4a2b6f3dc5f73b09d0c3881" kindref="member"&gt;RelationshipHandle::DiscordRelationshipType&lt;/ref&gt; is &lt;ref refid="namespacediscordpp_1a28fc5199b9211c24124c06f30c1d0cbba07817206b999d94b5f4b49187fd7b8d9" kindref="member"&gt;RelationshipType::PendingIncoming&lt;/ref&gt;), then the two users will become Discord friends.
+After the friend request is sent, each user will have a new Discord relationship created. For the current user the [TODO:] will be &lt;ref refid="namespacediscordpp_1a28fc5199b9211c24124c06f30c1d0cbba4832d123938e53f19fa19ace533333ec" kindref="member"&gt;RelationshipType::PendingOutgoing&lt;/ref&gt; and for the target user it will be &lt;ref refid="namespacediscordpp_1a28fc5199b9211c24124c06f30c1d0cbba07817206b999d94b5f4b49187fd7b8d9" kindref="member"&gt;RelationshipType::PendingIncoming&lt;/ref&gt;.
+If the current user already has received a Discord friend request from the target user (meaning [TODO:] is &lt;ref refid="namespacediscordpp_1a28fc5199b9211c24124c06f30c1d0cbba07817206b999d94b5f4b49187fd7b8d9" kindref="member"&gt;RelationshipType::PendingIncoming&lt;/ref&gt;), then the two users will become Discord friends.
 See [DiscordRelationshipHandle] for more information on the difference between Discord and Game relationships.
 			</description>
 		</method>
@@ -855,8 +857,8 @@ See [DiscordRelationshipHandle] for more information on the difference between D
 			<description>
 			Sends (or accepts) a game friend request to the target user.
 			The target user is identified by their Discord unique username (not their DisplayName).
-After the friend request is sent, each user will have a new game relationship created. For the current user the &lt;ref refid="classdiscordpp_1_1RelationshipHandle_1aa60146eb72ede07e3e615565f61f97eb" kindref="member"&gt;RelationshipHandle::GameRelationshipType&lt;/ref&gt; will be &lt;ref refid="namespacediscordpp_1a28fc5199b9211c24124c06f30c1d0cbba4832d123938e53f19fa19ace533333ec" kindref="member"&gt;RelationshipType::PendingOutgoing&lt;/ref&gt; and for the target user it will be &lt;ref refid="namespacediscordpp_1a28fc5199b9211c24124c06f30c1d0cbba07817206b999d94b5f4b49187fd7b8d9" kindref="member"&gt;RelationshipType::PendingIncoming&lt;/ref&gt;.
-If the current user already has received a game friend request from the target user (meaning &lt;ref refid="classdiscordpp_1_1RelationshipHandle_1aa60146eb72ede07e3e615565f61f97eb" kindref="member"&gt;RelationshipHandle::GameRelationshipType&lt;/ref&gt; is &lt;ref refid="namespacediscordpp_1a28fc5199b9211c24124c06f30c1d0cbba07817206b999d94b5f4b49187fd7b8d9" kindref="member"&gt;RelationshipType::PendingIncoming&lt;/ref&gt;), then the two users will become game friends.
+After the friend request is sent, each user will have a new game relationship created. For the current user the [TODO:] will be &lt;ref refid="namespacediscordpp_1a28fc5199b9211c24124c06f30c1d0cbba4832d123938e53f19fa19ace533333ec" kindref="member"&gt;RelationshipType::PendingOutgoing&lt;/ref&gt; and for the target user it will be &lt;ref refid="namespacediscordpp_1a28fc5199b9211c24124c06f30c1d0cbba07817206b999d94b5f4b49187fd7b8d9" kindref="member"&gt;RelationshipType::PendingIncoming&lt;/ref&gt;.
+If the current user already has received a game friend request from the target user (meaning [TODO:] is &lt;ref refid="namespacediscordpp_1a28fc5199b9211c24124c06f30c1d0cbba07817206b999d94b5f4b49187fd7b8d9" kindref="member"&gt;RelationshipType::PendingIncoming&lt;/ref&gt;), then the two users will become game friends.
 See [DiscordRelationshipHandle] for more information on the difference between Discord and Game relationships.
 			</description>
 		</method>
@@ -867,8 +869,8 @@ See [DiscordRelationshipHandle] for more information on the difference between D
 			<description>
 			Sends (or accepts) a game friend request to the target user.
 			The target user is identified by their Discord ID.
-After the friend request is sent, each user will have a new game relationship created. For the current user the &lt;ref refid="classdiscordpp_1_1RelationshipHandle_1aa60146eb72ede07e3e615565f61f97eb" kindref="member"&gt;RelationshipHandle::GameRelationshipType&lt;/ref&gt; will be &lt;ref refid="namespacediscordpp_1a28fc5199b9211c24124c06f30c1d0cbba4832d123938e53f19fa19ace533333ec" kindref="member"&gt;RelationshipType::PendingOutgoing&lt;/ref&gt; and for the target user it will be &lt;ref refid="namespacediscordpp_1a28fc5199b9211c24124c06f30c1d0cbba07817206b999d94b5f4b49187fd7b8d9" kindref="member"&gt;RelationshipType::PendingIncoming&lt;/ref&gt;.
-If the current user already has received a game friend request from the target user (meaning &lt;ref refid="classdiscordpp_1_1RelationshipHandle_1aa60146eb72ede07e3e615565f61f97eb" kindref="member"&gt;RelationshipHandle::GameRelationshipType&lt;/ref&gt; is &lt;ref refid="namespacediscordpp_1a28fc5199b9211c24124c06f30c1d0cbba07817206b999d94b5f4b49187fd7b8d9" kindref="member"&gt;RelationshipType::PendingIncoming&lt;/ref&gt;), then the two users will become game friends.
+After the friend request is sent, each user will have a new game relationship created. For the current user the [TODO:] will be &lt;ref refid="namespacediscordpp_1a28fc5199b9211c24124c06f30c1d0cbba4832d123938e53f19fa19ace533333ec" kindref="member"&gt;RelationshipType::PendingOutgoing&lt;/ref&gt; and for the target user it will be &lt;ref refid="namespacediscordpp_1a28fc5199b9211c24124c06f30c1d0cbba07817206b999d94b5f4b49187fd7b8d9" kindref="member"&gt;RelationshipType::PendingIncoming&lt;/ref&gt;.
+If the current user already has received a game friend request from the target user (meaning [TODO:] is &lt;ref refid="namespacediscordpp_1a28fc5199b9211c24124c06f30c1d0cbba07817206b999d94b5f4b49187fd7b8d9" kindref="member"&gt;RelationshipType::PendingIncoming&lt;/ref&gt;), then the two users will become game friends.
 See [DiscordRelationshipHandle] for more information on the difference between Discord and Game relationships.
 			</description>
 		</method>
@@ -891,7 +893,7 @@ If the lobby is linked to a channel, the message will also be sent to that chann
 			<param index="2" name="metadata" type="Dictionary[String, String]" />
 			<param index="3" name="cb" type="Callable" />
 			<description>
-			Variant of &lt;ref refid="classdiscordpp_1_1Client_1a779e0483f51dc99f0db3dd761d22ab6f" kindref="member"&gt;Client::SendLobbyMessage&lt;/ref&gt; that also accepts metadata to be sent with the message.
+			Variant of [TODO:] that also accepts metadata to be sent with the message.
 			Metadata is just simple string key/value pairs. An example use case for this might be to include the name of the character that sent a message.
 			</description>
 		</method>
@@ -917,7 +919,7 @@ A message can be sent between two users in the following situations:
 			<param index="2" name="metadata" type="Dictionary[String, String]" />
 			<param index="3" name="cb" type="Callable" />
 			<description>
-			Variant of &lt;ref refid="classdiscordpp_1_1Client_1a3cf9d2b1b5a4a61dcad995dfc1009703" kindref="member"&gt;Client::SendUserMessage&lt;/ref&gt; that also accepts metadata to be sent with the message.
+			Variant of [TODO:] that also accepts metadata to be sent with the message.
 			Metadata is just simple string key/value pairs. An example use case for this might be to include the name of the character that sent a message.
 			</description>
 		</method>
@@ -926,7 +928,7 @@ A message can be sent between two users in the following situations:
 			<param index="0" name="cb" type="Callable" />
 			<description>
 			Sets a callback function that is invoked when the current user receives an activity invite from another user.
-			These invites are always sent as messages, so the SDK is parsing these messages to look for invites and invokes this callback instead. The message create callback will not be invoked for these messages. The invite object contains all the necessary information to identity the invite, which you can later pass to &lt;ref refid="classdiscordpp_1_1Client_1ad12cf35065e4d2b303ee470af7c6ef37" kindref="member"&gt;Client::AcceptActivityInvite&lt;/ref&gt;.
+			These invites are always sent as messages, so the SDK is parsing these messages to look for invites and invokes this callback instead. The message create callback will not be invoked for these messages. The invite object contains all the necessary information to identity the invite, which you can later pass to [TODO:].
 			</description>
 		</method>
 		<method name="set_activity_invite_updated_callback">
@@ -964,7 +966,7 @@ A message can be sent between two users in the following situations:
 			<return type="void" />
 			<param index="0" name="application_id" type="int" />
 			<description>
-			This function is used to set the application ID for the client. This is used to identify the application to the Discord client. This is used for things like authentication, rich presence, and activity invites when [i]not[/i] connected with &lt;ref refid="classdiscordpp_1_1Client_1a873a844c7c4c72e9e693419bb3e290aa" kindref="member"&gt;Client::Connect&lt;/ref&gt;. When calling &lt;ref refid="classdiscordpp_1_1Client_1a873a844c7c4c72e9e693419bb3e290aa" kindref="member"&gt;Client::Connect&lt;/ref&gt;, the application ID is set automatically.
+			This function is used to set the application ID for the client. This is used to identify the application to the Discord client. This is used for things like authentication, rich presence, and activity invites when [i]not[/i] connected with [TODO:]. When calling [TODO:], the application ID is set automatically.
 			</description>
 		</method>
 		<method name="set_authorize_device_screen_closed_callback">
@@ -1027,7 +1029,7 @@ The Unity plugin automatically calls this method if the native Unity audio engin
 			<param index="0" name="device_id" type="String" />
 			<param index="1" name="cb" type="Callable" />
 			<description>
-			Asynchronously changes the audio input device in use by the client to the specified device. You can find the list of device IDs that can be passed in with the &lt;ref refid="classdiscordpp_1_1Client_1a1ee5c3d6e4efbb49a31177914c789b2b" kindref="member"&gt;Client::GetInputDevices&lt;/ref&gt; function.
+			Asynchronously changes the audio input device in use by the client to the specified device. You can find the list of device IDs that can be passed in with the [TODO:] function.
 			</description>
 		</method>
 		<method name="set_input_volume">
@@ -1075,7 +1077,7 @@ This means that this callback might be invoked even though the lobby still exist
 			<param index="0" name="cb" type="Callable" />
 			<description>
 			Sets a callback function to be invoked whenever a member of a lobby is removed and can no longer connect to it.
-			This callback will not be invoked when the current user is removed from a lobby, instead LobbyDeleted callback will be invoked. Additionally this is not invoked when a user simply exits the game. That would cause the [DiscordLobbyMemberHandle] object will indicate they are not connected now.
+			This callback will not be invoked when the current user is removed from a lobby, instead LobbyDeleted callback will be invoked. Additionally this is not invoked when a user simply exits the game. That would cause the [TODO:] to be invoked, and the [DiscordLobbyMemberHandle] object will indicate they are not connected now.
 			</description>
 		</method>
 		<method name="set_lobby_member_updated_callback">
@@ -1112,7 +1114,7 @@ Returns true if the log file was successfully opened, false otherwise.
 			<description>
 			Sets a callback to be invoked whenever a new message is received in either a lobby or a DM.
 			From the messageId you can fetch the [DiscordMessageHandle] and then the [DiscordChannelHandle] to determine the location the message was sent as well.
-If the user has the Discord desktop application open on the same machine as the game, then they will hear notifications from the Discord application, even though they are able to see those messages in game. So to avoid double-notifying users, you should call &lt;ref refid="classdiscordpp_1_1Client_1acdf400ecb926392d1a110da73152b594" kindref="member"&gt;Client::SetShowingChat&lt;/ref&gt; whenever the chat is shown or hidden to suppress those duplicate notifications.
+If the user has the Discord desktop application open on the same machine as the game, then they will hear notifications from the Discord application, even though they are able to see those messages in game. So to avoid double-notifying users, you should call [TODO:] whenever the chat is shown or hidden to suppress those duplicate notifications.
 			</description>
 		</method>
 		<method name="set_message_deleted_callback">
@@ -1178,7 +1180,7 @@ This must be called immediately after constructing the [DiscordClient]. If calle
 			<param index="0" name="device_id" type="String" />
 			<param index="1" name="cb" type="Callable" />
 			<description>
-			Asynchronously changes the audio output device in use by the client to the specified device. You can find the list of device IDs that can be passed in with the &lt;ref refid="classdiscordpp_1_1Client_1a58f864ff0a0c49be34701f8d0f7bcf72" kindref="member"&gt;Client::GetOutputDevices&lt;/ref&gt; function.
+			Asynchronously changes the audio output device in use by the client to the specified device. You can find the list of device IDs that can be passed in with the [TODO:] function.
 			</description>
 		</method>
 		<method name="set_output_volume">
@@ -1202,14 +1204,14 @@ This must be called immediately after constructing the [DiscordClient]. If calle
 			<param index="0" name="cb" type="Callable" />
 			<description>
 			Sets a callback to be invoked whenever a relationship for this user is removed, such as when the user rejects a friend request or removes a friend.
-			When a relationship is removed, &lt;ref refid="classdiscordpp_1_1Client_1ab8dd47239817ffbe268db4c596de1346" kindref="member"&gt;Client::GetRelationshipHandle&lt;/ref&gt; will return a relationship with the type set to &lt;ref refid="namespacediscordpp_1a28fc5199b9211c24124c06f30c1d0cbba6adf97f83acf6453d4a6a4b1070f3754" kindref="member"&gt;RelationshipType::None&lt;/ref&gt;.
+			When a relationship is removed, [TODO:] will return a relationship with the type set to &lt;ref refid="namespacediscordpp_1a28fc5199b9211c24124c06f30c1d0cbba6adf97f83acf6453d4a6a4b1070f3754" kindref="member"&gt;RelationshipType::None&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="set_relationship_groups_updated_callback">
 			<return type="void" />
 			<param index="0" name="cb" type="Callable" />
 			<description>
-			The &lt;ref refid="classdiscordpp_1_1Client_1a0cd38fcef306a9d9c869129bc7059940" kindref="member"&gt;RelationshipGroupsUpdatedCallback&lt;/ref&gt; is invoked whenever any user in the friends list changes. This is intended to be the callback used to ensure the friends list is kept fresh. This can be used in tandem with &lt;ref refid="classdiscordpp_1_1Client_1a9f7898d3f3d1ec92b06c662df70746d5" kindref="member"&gt;Client::GetRelationshipsByGroup&lt;/ref&gt; to build and update the friends list.
+			The [TODO:] is invoked whenever any user in the friends list changes. This is intended to be the callback used to ensure the friends list is kept fresh. This can be used in tandem with [TODO:] to build and update the friends list.
 			</description>
 		</method>
 		<method name="set_self_deaf_all">
@@ -1240,7 +1242,7 @@ Keep in mind, if the game stops showing chat for a period of time, or the game l
 			<param index="0" name="speaker_mode" type="bool" />
 			<description>
 			(deprecated) On mobile devices, enable speakerphone mode.
-			&lt;xrefsect id="deprecated_1_deprecated000002"&gt;&lt;xreftitle&gt;Deprecated&lt;/xreftitle&gt;&lt;xrefdescription&gt;Calling &lt;ref refid="classdiscordpp_1_1Client_1ac269ab57407e3b83e2bb2d30895e666d" kindref="member"&gt;Client::SetSpeakerMode&lt;/ref&gt; is DEPRECATED. 
+			&lt;xrefsect id="deprecated_1_deprecated000002"&gt;&lt;xreftitle&gt;Deprecated&lt;/xreftitle&gt;&lt;xrefdescription&gt;Calling [TODO:] is DEPRECATED. 
 &lt;/xrefdescription&gt;&lt;/xrefsect&gt;
 			</description>
 		</method>
@@ -1268,8 +1270,8 @@ Keep in mind, if the game stops showing chat for a period of time, or the game l
 			<param index="0" name="callback" type="Callable" />
 			<description>
 			Get a notification when the current token is about to expire or expired.
-			This callback is invoked when the SDK detects that the last token passed to &lt;ref refid="classdiscordpp_1_1Client_1a606b32cef7796f7fb91c2497bc31afc4" kindref="member"&gt;Client::UpdateToken&lt;/ref&gt; is nearing expiration or has expired. This is a signal to the developer to refresh the token. The callback is invoked once per token, and will not be invoked again until a new token is passed to &lt;ref refid="classdiscordpp_1_1Client_1a606b32cef7796f7fb91c2497bc31afc4" kindref="member"&gt;Client::UpdateToken&lt;/ref&gt;.
-If the token is refreshed before the expiration callback is invoked, call &lt;ref refid="classdiscordpp_1_1Client_1a606b32cef7796f7fb91c2497bc31afc4" kindref="member"&gt;Client::UpdateToken&lt;/ref&gt; to pass in the new token and reconfigure the token expiration.
+			This callback is invoked when the SDK detects that the last token passed to [TODO:] is nearing expiration or has expired. This is a signal to the developer to refresh the token. The callback is invoked once per token, and will not be invoked again until a new token is passed to [TODO:].
+If the token is refreshed before the expiration callback is invoked, call [TODO:] to pass in the new token and reconfigure the token expiration.
 If your client is disconnected (the token was expired when connecting or was revoked while connected), the expiration callback will not be invoked.
 			</description>
 		</method>
@@ -1277,7 +1279,7 @@ If your client is disconnected (the token was expired when connecting or was rev
 			<return type="void" />
 			<param index="0" name="cb" type="Callable" />
 			<description>
-			The &lt;ref refid="classdiscordpp_1_1Client_1ad05fa5b49cb55873fdb7e3ad75111fd7" kindref="member"&gt;UserUpdatedCallback&lt;/ref&gt; is invoked whenever [i]any[/i] user the current session knows about changes, not just if the current user changes. For example if one of your Discord friends changes their name or avatar the &lt;ref refid="classdiscordpp_1_1Client_1ad05fa5b49cb55873fdb7e3ad75111fd7" kindref="member"&gt;UserUpdatedCallback&lt;/ref&gt; will be invoked. It is also invoked when users come online, go offline, or start playing your game.
+			The [TODO:] is invoked whenever [i]any[/i] user the current session knows about changes, not just if the current user changes. For example if one of your Discord friends changes their name or avatar the [TODO:] will be invoked. It is also invoked when users come online, go offline, or start playing your game.
 			</description>
 		</method>
 		<method name="set_voice_log_dir">
@@ -1333,14 +1335,14 @@ Returns null if the user is already in the given voice channel.
 			<return type="String" />
 			<param index="0" name="type" type="int" enum="DiscordClientStatus.Enum" />
 			<description>
-			Converts the &lt;ref refid="classdiscordpp_1_1Client_1a6f714c5d6aebefa91c1ff8ba97bcce22" kindref="member"&gt;Status&lt;/ref&gt; enum to a string.
+			Converts the [TODO:] enum to a string.
 			</description>
 		</method>
 		<method name="thread_to_string" qualifiers="static">
 			<return type="String" />
 			<param index="0" name="type" type="int" enum="DiscordClientThread.Enum" />
 			<description>
-			Converts the &lt;ref refid="classdiscordpp_1_1Client_1adadf74b4796b37cf738bdaa61993f0ba" kindref="member"&gt;Thread&lt;/ref&gt; enum to a string.
+			Converts the [TODO:] enum to a string.
 			</description>
 		</method>
 		<method name="unblock_user">
@@ -1369,7 +1371,7 @@ Returns null if the user is already in the given voice channel.
 			<param index="3" name="callback" type="Callable" />
 			<description>
 			This function is used to unlink/unmerge a external identity from a Discord account. This is useful if the user wants to unlink their external identity from their Discord account and create a new provisional account for that identity. This will invalidate all access/refresh tokens for the user and they cannot be used again.
-			This function should be used with the &lt;ref refid="classdiscordpp_1_1Client_1a8003130b6c46e54ac68442483bf0480c" kindref="member"&gt;Client::GetProvisionalToken&lt;/ref&gt; function to get a provisional token for the newly created provisional account.
+			This function should be used with the [TODO:] function to get a provisional token for the newly created provisional account.
 NOTE: This function only works for public clients. Public clients are ones that do not have a backend server or their own concept of user accounts and simply rely on a separate system for authentication like Steam/Epic.
 When first testing the SDK, it can be a lot easier to use a public client to get a proof of concept going, and change it to a confidential client later. You can toggle that setting on the OAuth2 page for your application in the Discord developer portal, [url=https://discord.com/developers/applications]https://discord.com/developers/applications[/url]
 			</description>
@@ -1390,7 +1392,7 @@ When first testing the SDK, it can be a lot easier to use a public client to get
 			<description>
 			Updates the rich presence for the current user.
 			You should use rich presence so that other users on Discord know this user is playing a game and you can include some hints of what they are playing such as a character name or map name. Rich presence also enables Discord game invites to work too!
-Note: On Desktop, rich presence can be set before calling [DiscordClient] connects. When [DiscordClient] is not connected, this sets the rich presence in the current user's Discord client when available.
+Note: On Desktop, rich presence can be set before calling [TODO:], but it will be cleared if the [DiscordClient] connects. When [DiscordClient] is not connected, this sets the rich presence in the current user's Discord client when available.
 See the docs on the [DiscordActivity] struct for more details.
 Note: The [DiscordActivity] object here is a partial object, fields such as name, and applicationId cannot be set and will be overwritten by the SDK. See [url=https://discord.com/developers/docs/rich-presence/using-with-the-game-sdk#partial-activity-struct]https://discord.com/developers/docs/rich-presence/using-with-the-game-sdk#partial-activity-struct[/url] for more information.
 			</description>
@@ -1402,7 +1404,7 @@ Note: The [DiscordActivity] object here is a partial object, fields such as name
 			<param index="2" name="callback" type="Callable" />
 			<description>
 			Asynchronously sets a new auth token for this client to use.
-			If your client is already connected, this function [i]may[/i] trigger a reconnect. If your client is not connected, this function will only update the auth token, and so you must invoke &lt;ref refid="classdiscordpp_1_1Client_1a873a844c7c4c72e9e693419bb3e290aa" kindref="member"&gt;Client::Connect&lt;/ref&gt; as well. You should wait for the given callback function to be invoked though so that the next &lt;ref refid="classdiscordpp_1_1Client_1a873a844c7c4c72e9e693419bb3e290aa" kindref="member"&gt;Client::Connect&lt;/ref&gt; attempt uses the updated token.
+			If your client is already connected, this function [i]may[/i] trigger a reconnect. If your client is not connected, this function will only update the auth token, and so you must invoke [TODO:] as well. You should wait for the given callback function to be invoked though so that the next [TODO:] attempt uses the updated token.
 			</description>
 		</method>
 	</methods>

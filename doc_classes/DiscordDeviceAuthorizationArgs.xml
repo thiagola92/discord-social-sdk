@@ -1,6 +1,7 @@
 <class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordDeviceAuthorizationArgs" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	Arguments to the &lt;ref refid="classdiscordpp_1_1Client_1a4a9c666b2d30bae0a16f5afd7ccee60d" kindref="member"&gt;Client::GetTokenFromDevice&lt;/ref&gt; function.</brief_description>
+	Arguments to the [TODO:] function.
+</brief_description>
 	<description>
 	</description>
 	<tutorials>
@@ -9,14 +10,14 @@
 		<method name="client_id">
 			<return type="int" />
 			<description>
-			Optional. The Discord application ID for your game. Defaults to the value set by &lt;ref refid="classdiscordpp_1_1Client_1ad452335c06b28be0406dab824acccc49" kindref="member"&gt;Client::SetApplicationId&lt;/ref&gt;.
+			Optional. The Discord application ID for your game. Defaults to the value set by [TODO:].
 			</description>
 		</method>
 		<method name="scopes">
 			<return type="String" />
 			<description>
 			Scopes is a space separated string of the oauth scopes your game is requesting.
-			Most games should just pass in &lt;ref refid="classdiscordpp_1_1Client_1a71499da752fbdc2d4326ae0fd36c0dd1" kindref="member"&gt;Client::GetDefaultCommunicationScopes&lt;/ref&gt; or &lt;ref refid="classdiscordpp_1_1Client_1a7648bd1d2f7d9a86ebd0edb8bef12b5c" kindref="member"&gt;Client::GetDefaultPresenceScopes&lt;/ref&gt; which will include these scopes, respectively: [code]openid sdk.social_layer[/code] or [code]openid sdk.social_layer_presence[/code]
+			Most games should just pass in [TODO:] or [TODO:] which will include these scopes, respectively: [code]openid sdk.social_layer[/code] or [code]openid sdk.social_layer_presence[/code]
 [code]sdk.social_layer[/code] and [code]sdk.social_layer_presence[/code] automatically expand to include all the necessary scopes for the integration.
 You can pass in additional scopes if you need to, but as a general rule you should only request the scopes you actually need, and the user will need to grant access to those additional scopes as well.
 			</description>
@@ -25,14 +26,14 @@ You can pass in additional scopes if you need to, but as a general rule you shou
 			<return type="void" />
 			<param index="0" name="client_id" type="int" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1DeviceAuthorizationArgs_1a5c8d15b74d6e5fdcfaed01e6e58a9377" kindref="member"&gt;DeviceAuthorizationArgs::ClientId&lt;/ref&gt;.
+			Setter for [TODO:].
 			</description>
 		</method>
 		<method name="set_scopes">
 			<return type="void" />
 			<param index="0" name="scopes" type="String" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1DeviceAuthorizationArgs_1ab68f041359323131d7bb33228ddd2f15" kindref="member"&gt;DeviceAuthorizationArgs::Scopes&lt;/ref&gt;.
+			Setter for [TODO:].
 			</description>
 		</method>
 	</methods>

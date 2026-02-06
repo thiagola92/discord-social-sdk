@@ -1,6 +1,7 @@
 <class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordActivity" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	An [DiscordActivity] represents one "thing" a user is doing on Discord and is part of their rich presence.</brief_description>
+	An [DiscordActivity] represents one "thing" a user is doing on Discord and is part of their rich presence.
+</brief_description>
 	<description>
 	Additional information is located on the Discord Developer Portal:
 - [url=https://discord.com/developers/docs/rich-presence/overview]https://discord.com/developers/docs/rich-presence/overview[/url]
@@ -20,15 +21,15 @@ This diagram visually shows the field mapping:
 &lt;image type="html" name="rich_presence.png" width="1070px"&gt;Rich presence field diagram&lt;/image&gt;
 You can also specify up to two custom buttons to display on the rich presence. These buttons will open the URL in the user's default browser.
 [codeblock]&lt;codeline&gt;&lt;highlight class="normal"&gt;discordpp::ActivityButton&lt;sp /&gt;button;&lt;/highlight&gt;&lt;/codeline&gt;
-&lt;codeline&gt;&lt;highlight class="normal"&gt;button.&lt;ref refid="classdiscordpp_1_1ActivityButton_1a9b8d70b0f65fe094b571ef221b11e259" kindref="member"&gt;SetLabel&lt;/ref&gt;(&lt;/highlight&gt;&lt;highlight class="stringliteral"&gt;"Button&lt;sp /&gt;1"&lt;/highlight&gt;&lt;highlight class="normal"&gt;);&lt;/highlight&gt;&lt;/codeline&gt;
-&lt;codeline&gt;&lt;highlight class="normal"&gt;button.&lt;ref refid="classdiscordpp_1_1ActivityButton_1abbeb2fc8eefae9e956d91fb42b9d48a4" kindref="member"&gt;SetUrl&lt;/ref&gt;(&lt;/highlight&gt;&lt;highlight class="stringliteral"&gt;"https://example.com"&lt;/highlight&gt;&lt;highlight class="normal"&gt;);&lt;/highlight&gt;&lt;/codeline&gt;
+&lt;codeline&gt;&lt;highlight class="normal"&gt;button.[TODO:](&lt;/highlight&gt;&lt;highlight class="stringliteral"&gt;"Button&lt;sp /&gt;1"&lt;/highlight&gt;&lt;highlight class="normal"&gt;);&lt;/highlight&gt;&lt;/codeline&gt;
+&lt;codeline&gt;&lt;highlight class="normal"&gt;button.[TODO:](&lt;/highlight&gt;&lt;highlight class="stringliteral"&gt;"https://example.com"&lt;/highlight&gt;&lt;highlight class="normal"&gt;);&lt;/highlight&gt;&lt;/codeline&gt;
 &lt;codeline&gt;&lt;highlight class="normal"&gt;activity.AddButton(button);&lt;/highlight&gt;&lt;/codeline&gt;
 [/codeblock]
 [u][b]Invites / Joinable Activities[/b][/u]
 Other users can be invited to join the current player's activity (or request to join it too), but that does require certain fields to be set:
-- [DiscordActivityParty] must be set and have a non-empty &lt;ref refid="classdiscordpp_1_1ActivityParty_1ad5b269834e93f9d2b794a48cc7fb95f3" kindref="member"&gt;ActivityParty::Id&lt;/ref&gt; field. All users in the party should set the same id field too!
+- [DiscordActivityParty] must be set and have a non-empty [TODO:] field. All users in the party should set the same id field too!
 - [DiscordActivityParty] must specify the size of the group, and there must be room in the group for another person to join.
-- &lt;ref refid="classdiscordpp_1_1ActivitySecrets_1a46e512adb1fa1238280b6d009d7767df" kindref="member"&gt;ActivitySecrets::Join&lt;/ref&gt; must be set to a non-empty string. The join secret is only shared with users who are accepted into the party by an existing member, so it is truly a secret. You can use this so that when the user is accepted your game knows how to join them to the party. For example it could be an internal game ID, or a Discord lobby ID/secret that the client could join.
+- [TODO:] must be set to a non-empty string. The join secret is only shared with users who are accepted into the party by an existing member, so it is truly a secret. You can use this so that when the user is accepted your game knows how to join them to the party. For example it could be an internal game ID, or a Discord lobby ID/secret that the client could join.
 There is additional information about game invites here: [url=https://support.discord.com/hc/en-us/articles/115001557452-Game-Invites]https://support.discord.com/hc/en-us/articles/115001557452-Game-Invites[/url]
 [u][b]Mobile Invites[/b][/u]
 [DiscordActivity] invites are handled via a deep link. To enable users to join your game via an invite in the Discord client, you must do two things:
@@ -42,7 +43,7 @@ There is additional information about game invites here: [url=https://support.di
 When the user accepts the invite, the Discord client will open: [code][your url]/_discord/join?secret=[the join secret you set][/code]
 [u][b]Example Invites Flow[/b][/u]
 If you are using Discord lobbies for your game, a neat flow would look like this:
-- When a user starts playing the game, they create a lobby with a random secret string, using &lt;ref refid="classdiscordpp_1_1Client_1a8b4e195555ecaa89ccdfc0acd28d3512" kindref="member"&gt;Client::CreateOrJoinLobby&lt;/ref&gt;
+- When a user starts playing the game, they create a lobby with a random secret string, using [TODO:]
 - That user publishes their RichPresence with the join secret set to the lobby secret, along with party size information
 - Another use can then see that RichPresence on Discord and join off of it
 - Once accepted the new user receives the join secret and their client can call CreateOrJoinLobby(joinSecret) to join the lobby
@@ -56,8 +57,8 @@ If you are using Discord lobbies for your game, a neat flow would look like this
 &lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;discordpp::Activity&lt;sp /&gt;activity{};&lt;/highlight&gt;&lt;/codeline&gt;
 &lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;set&lt;sp /&gt;name,&lt;sp /&gt;state,&lt;sp /&gt;party&lt;sp /&gt;size&lt;sp /&gt;...&lt;/highlight&gt;&lt;highlight class="normal" /&gt;&lt;/codeline&gt;
 &lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;discordpp::ActivitySecrets&lt;sp /&gt;secrets{};&lt;/highlight&gt;&lt;/codeline&gt;
-&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;secrets.&lt;ref refid="classdiscordpp_1_1ActivitySecrets_1aaa0c717654d3b11c15b186b245b899e7" kindref="member"&gt;SetJoin&lt;/ref&gt;(lobbySecret);&lt;/highlight&gt;&lt;/codeline&gt;
-&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;activity.&lt;ref refid="classdiscordpp_1_1Activity_1a6c61c1231b00562606bbb7d18fb697b7" kindref="member"&gt;SetSecrets&lt;/ref&gt;(secrets);&lt;/highlight&gt;&lt;/codeline&gt;
+&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;secrets.[TODO:](lobbySecret);&lt;/highlight&gt;&lt;/codeline&gt;
+&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;activity.[TODO:](secrets);&lt;/highlight&gt;&lt;/codeline&gt;
 &lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;client-&gt;UpdateRichPresence(std::move(activity),&lt;sp /&gt;[](discordpp::ClientResult&lt;sp /&gt;result)&lt;sp /&gt;{});&lt;/highlight&gt;&lt;/codeline&gt;
 &lt;codeline&gt;&lt;highlight class="normal"&gt;});&lt;/highlight&gt;&lt;/codeline&gt;
 &lt;codeline&gt;&lt;highlight class="normal" /&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;3.&lt;sp /&gt;Some&lt;sp /&gt;time&lt;sp /&gt;later,&lt;sp /&gt;send&lt;sp /&gt;an&lt;sp /&gt;invite&lt;/highlight&gt;&lt;highlight class="normal" /&gt;&lt;/codeline&gt;
@@ -71,7 +72,7 @@ If you are using Discord lobbies for your game, a neat flow would look like this
 &lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;If&lt;sp /&gt;they&lt;sp /&gt;choose&lt;sp /&gt;to&lt;sp /&gt;do&lt;sp /&gt;so&lt;sp /&gt;then&lt;sp /&gt;go&lt;sp /&gt;ahead&lt;sp /&gt;and&lt;sp /&gt;invoke&lt;sp /&gt;AcceptActivityInvite&lt;/highlight&gt;&lt;highlight class="normal" /&gt;&lt;/codeline&gt;
 &lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;client-&gt;AcceptActivityInvite(invite,&lt;/highlight&gt;&lt;/codeline&gt;
 &lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;[client](discordpp::ClientResult&lt;sp /&gt;result,&lt;sp /&gt;std::string&lt;sp /&gt;secret)&lt;sp /&gt;{&lt;/highlight&gt;&lt;/codeline&gt;
-&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;/highlight&gt;&lt;highlight class="keywordflow"&gt;if&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;sp /&gt;(result.&lt;ref refid="classdiscordpp_1_1ClientResult_1aef3b1aca3cd156daf488ca13ae87313b" kindref="member"&gt;Successful&lt;/ref&gt;())&lt;sp /&gt;{&lt;/highlight&gt;&lt;/codeline&gt;
+&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;/highlight&gt;&lt;highlight class="keywordflow"&gt;if&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;sp /&gt;(result.[TODO:]())&lt;sp /&gt;{&lt;/highlight&gt;&lt;/codeline&gt;
 &lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;5.&lt;sp /&gt;Join&lt;sp /&gt;the&lt;sp /&gt;lobby&lt;sp /&gt;using&lt;sp /&gt;the&lt;sp /&gt;joinSecret&lt;/highlight&gt;&lt;highlight class="normal" /&gt;&lt;/codeline&gt;
 &lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;client-&gt;CreateOrJoinLobby(secret,&lt;sp /&gt;[](discordpp::ClientResult&lt;sp /&gt;result,&lt;sp /&gt;uint64_t&lt;/highlight&gt;&lt;/codeline&gt;
 &lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;lobbyId)&lt;sp /&gt;{&lt;/highlight&gt;&lt;/codeline&gt;
@@ -91,8 +92,8 @@ Users can also request to join each others parties. This code snippet shows how 
 &lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;discordpp::Activity&lt;sp /&gt;activity{};&lt;/highlight&gt;&lt;/codeline&gt;
 &lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;set&lt;sp /&gt;name,&lt;sp /&gt;state,&lt;sp /&gt;party&lt;sp /&gt;size&lt;sp /&gt;...&lt;/highlight&gt;&lt;highlight class="normal" /&gt;&lt;/codeline&gt;
 &lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;discordpp::ActivitySecrets&lt;sp /&gt;secrets{};&lt;/highlight&gt;&lt;/codeline&gt;
-&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;secrets.&lt;ref refid="classdiscordpp_1_1ActivitySecrets_1aaa0c717654d3b11c15b186b245b899e7" kindref="member"&gt;SetJoin&lt;/ref&gt;(lobbySecret);&lt;/highlight&gt;&lt;/codeline&gt;
-&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;activity.&lt;ref refid="classdiscordpp_1_1Activity_1a6c61c1231b00562606bbb7d18fb697b7" kindref="member"&gt;SetSecrets&lt;/ref&gt;(secrets);&lt;/highlight&gt;&lt;/codeline&gt;
+&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;secrets.[TODO:](lobbySecret);&lt;/highlight&gt;&lt;/codeline&gt;
+&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;activity.[TODO:](secrets);&lt;/highlight&gt;&lt;/codeline&gt;
 &lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;client-&gt;UpdateRichPresence(std::move(activity),&lt;sp /&gt;[](discordpp::ClientResult&lt;sp /&gt;result)&lt;sp /&gt;{});&lt;/highlight&gt;&lt;/codeline&gt;
 &lt;codeline&gt;&lt;highlight class="normal"&gt;});&lt;/highlight&gt;&lt;/codeline&gt;
 &lt;codeline&gt;&lt;highlight class="normal" /&gt;&lt;/codeline&gt;
@@ -116,7 +117,7 @@ Users can also request to join each others parties. This code snippet shows how 
 &lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;If&lt;sp /&gt;they&lt;sp /&gt;choose&lt;sp /&gt;to&lt;sp /&gt;do&lt;sp /&gt;so&lt;sp /&gt;then&lt;sp /&gt;go&lt;sp /&gt;ahead&lt;sp /&gt;and&lt;sp /&gt;invoke&lt;sp /&gt;AcceptActivityInvite&lt;/highlight&gt;&lt;highlight class="normal" /&gt;&lt;/codeline&gt;
 &lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;client-&gt;AcceptActivityInvite(invite,&lt;/highlight&gt;&lt;/codeline&gt;
 &lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;[client](discordpp::ClientResult&lt;sp /&gt;result,&lt;sp /&gt;std::string&lt;sp /&gt;secret)&lt;sp /&gt;{&lt;/highlight&gt;&lt;/codeline&gt;
-&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;/highlight&gt;&lt;highlight class="keywordflow"&gt;if&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;sp /&gt;(result.&lt;ref refid="classdiscordpp_1_1ClientResult_1aef3b1aca3cd156daf488ca13ae87313b" kindref="member"&gt;Successful&lt;/ref&gt;())&lt;sp /&gt;{&lt;/highlight&gt;&lt;/codeline&gt;
+&lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;/highlight&gt;&lt;highlight class="keywordflow"&gt;if&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;sp /&gt;(result.[TODO:]())&lt;sp /&gt;{&lt;/highlight&gt;&lt;/codeline&gt;
 &lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;5.&lt;sp /&gt;Join&lt;sp /&gt;the&lt;sp /&gt;lobby&lt;sp /&gt;using&lt;sp /&gt;the&lt;sp /&gt;joinSecret&lt;/highlight&gt;&lt;highlight class="normal" /&gt;&lt;/codeline&gt;
 &lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;client-&gt;CreateOrJoinLobby(secret,&lt;sp /&gt;[](&lt;/highlight&gt;&lt;highlight class="keyword"&gt;auto&lt;/highlight&gt;&lt;highlight class="normal"&gt;&lt;sp /&gt;result,&lt;sp /&gt;uint64_t&lt;sp /&gt;lobbyId)&lt;sp /&gt;{&lt;/highlight&gt;&lt;/codeline&gt;
 &lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;/highlight&gt;&lt;highlight class="comment"&gt;//&lt;sp /&gt;Successfully&lt;sp /&gt;joined&lt;sp /&gt;lobby!&lt;/highlight&gt;&lt;highlight class="normal" /&gt;&lt;/codeline&gt;
@@ -124,7 +125,8 @@ Users can also request to join each others parties. This code snippet shows how 
 &lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;}&lt;/highlight&gt;&lt;/codeline&gt;
 &lt;codeline&gt;&lt;highlight class="normal"&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;&lt;sp /&gt;});&lt;/highlight&gt;&lt;/codeline&gt;
 &lt;codeline&gt;&lt;highlight class="normal"&gt;});&lt;/highlight&gt;&lt;/codeline&gt;
-[/codeblock]</description>
+[/codeblock]
+</description>
 	<tutorials>
 	</tutorials>
 	<methods>
@@ -205,98 +207,98 @@ Users can also request to join each others parties. This code snippet shows how 
 			<return type="void" />
 			<param index="0" name="application_id" type="Variant" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1Activity_1a1203f29b82e9716cdce9151c7ea3b2db" kindref="member"&gt;Activity::ApplicationId&lt;/ref&gt;.
+			Setter for [TODO:].
 			</description>
 		</method>
 		<method name="set_assets">
 			<return type="void" />
 			<param index="0" name="assets" type="Variant" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1Activity_1a3fb85cc97867d2bf01e7e1a9a6414d95" kindref="member"&gt;Activity::Assets&lt;/ref&gt;.
+			Setter for [TODO:].
 			</description>
 		</method>
 		<method name="set_details">
 			<return type="void" />
 			<param index="0" name="details" type="Variant" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1Activity_1abe3446f06b53f4358e0efdc2878fa3d0" kindref="member"&gt;Activity::Details&lt;/ref&gt;.
+			Setter for [TODO:].
 			</description>
 		</method>
 		<method name="set_details_url">
 			<return type="void" />
 			<param index="0" name="details_url" type="Variant" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1Activity_1ab5cc7690e9fd84b56443ec3c6e358af0" kindref="member"&gt;Activity::DetailsUrl&lt;/ref&gt;.
+			Setter for [TODO:].
 			</description>
 		</method>
 		<method name="set_name">
 			<return type="void" />
 			<param index="0" name="name" type="String" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1Activity_1a13d323c3454fe32f5d33c94fac5bc11c" kindref="member"&gt;Activity::Name&lt;/ref&gt;.
+			Setter for [TODO:].
 			</description>
 		</method>
 		<method name="set_parent_application_id">
 			<return type="void" />
 			<param index="0" name="parent_application_id" type="Variant" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1Activity_1a091058291278bf1ff0250b28bf311786" kindref="member"&gt;Activity::ParentApplicationId&lt;/ref&gt;.
+			Setter for [TODO:].
 			</description>
 		</method>
 		<method name="set_party">
 			<return type="void" />
 			<param index="0" name="party" type="Variant" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1Activity_1aa1a0a3f5d20579c2dbc2502065c8a09f" kindref="member"&gt;Activity::Party&lt;/ref&gt;.
+			Setter for [TODO:].
 			</description>
 		</method>
 		<method name="set_secrets">
 			<return type="void" />
 			<param index="0" name="secrets" type="Variant" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1Activity_1af4ec01eeb75f394f0019ae839145a0a2" kindref="member"&gt;Activity::Secrets&lt;/ref&gt;.
+			Setter for [TODO:].
 			</description>
 		</method>
 		<method name="set_state">
 			<return type="void" />
 			<param index="0" name="state" type="Variant" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1Activity_1af7c8802a7df283dbe5ba06ba1c00ca5a" kindref="member"&gt;Activity::State&lt;/ref&gt;.
+			Setter for [TODO:].
 			</description>
 		</method>
 		<method name="set_state_url">
 			<return type="void" />
 			<param index="0" name="state_url" type="Variant" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1Activity_1af3a6411c8ec4ee24845c6114b21aab3d" kindref="member"&gt;Activity::StateUrl&lt;/ref&gt;.
+			Setter for [TODO:].
 			</description>
 		</method>
 		<method name="set_status_display_type">
 			<return type="void" />
 			<param index="0" name="status_display_type" type="Variant" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1Activity_1a837741f6a574a23536b208c8f44630c7" kindref="member"&gt;Activity::StatusDisplayType&lt;/ref&gt;.
+			Setter for [TODO:].
 			</description>
 		</method>
 		<method name="set_supported_platforms">
 			<return type="void" />
 			<param index="0" name="supported_platforms" type="int" enum="DiscordActivityGamePlatforms.Enum" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1Activity_1af19a7afb979550d9323be2146bd372e0" kindref="member"&gt;Activity::SupportedPlatforms&lt;/ref&gt;.
+			Setter for [TODO:].
 			</description>
 		</method>
 		<method name="set_timestamps">
 			<return type="void" />
 			<param index="0" name="timestamps" type="Variant" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1Activity_1a912e6e9f685f9e7003731222016ed1a2" kindref="member"&gt;Activity::Timestamps&lt;/ref&gt;.
+			Setter for [TODO:].
 			</description>
 		</method>
 		<method name="set_type">
 			<return type="void" />
 			<param index="0" name="type" type="int" enum="DiscordActivityTypes.Enum" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1Activity_1afbab0968c2cbef94691b3996fe3d6ea4" kindref="member"&gt;Activity::Type&lt;/ref&gt;.
+			Setter for [TODO:].
 			</description>
 		</method>
 		<method name="state">

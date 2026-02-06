@@ -1,6 +1,7 @@
 <class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordActivityGamePlatforms" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	Represents the type of platforms that an activity invite can be accepted on.</brief_description>
+	Represents the type of platforms that an activity invite can be accepted on.
+</brief_description>
 	<description>
 	</description>
 	<tutorials>

@@ -1,6 +1,7 @@
 <class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordGuildMinimal" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	Represents a guild (also knowns as a Discord server), that the current user is a member of, that contains channels that can be linked to a lobby.</brief_description>
+	Represents a guild (also knowns as a Discord server), that the current user is a member of, that contains channels that can be linked to a lobby.
+</brief_description>
 	<description>
 	</description>
 	<tutorials>
@@ -22,14 +23,14 @@
 			<return type="void" />
 			<param index="0" name="id" type="int" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1GuildMinimal_1ae31b9a80af6e404325dda37007056263" kindref="member"&gt;GuildMinimal::Id&lt;/ref&gt;.
+			Setter for [TODO:].
 			</description>
 		</method>
 		<method name="set_name">
 			<return type="void" />
 			<param index="0" name="name" type="String" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1GuildMinimal_1a27c6a10f72b07d46dc14292115f9ab72" kindref="member"&gt;GuildMinimal::Name&lt;/ref&gt;.
+			Setter for [TODO:].
 			</description>
 		</method>
 	</methods>

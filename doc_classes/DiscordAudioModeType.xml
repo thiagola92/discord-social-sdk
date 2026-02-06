@@ -1,6 +1,7 @@
 <class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordAudioModeType" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	Represents whether a voice call is using push to talk or auto voice detection.</brief_description>
+	Represents whether a voice call is using push to talk or auto voice detection.
+</brief_description>
 	<description>
 	</description>
 	<tutorials>

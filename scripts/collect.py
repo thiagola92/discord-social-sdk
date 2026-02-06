@@ -1,5 +1,6 @@
 # Responsible for collecting informations from XML tree.
 import re
+from re import Match
 from pathlib import Path
 from xml.etree import ElementTree
 from xml.etree.ElementTree import Element, tostring
@@ -29,46 +30,8 @@ def collect_text(tree: Element) -> str:
 
 def collect_content(tree: Element) -> str:
     text = str(tostring(tree, "unicode"))
-
-    # Remove unnecessary tags.
     text = re.sub(rf"<{tree.tag}>", "", text)
     text = re.sub(rf"</{tree.tag}>", "", text)
-    text = re.sub(r"<para>", "", text)
-    text = re.sub(r"</para>", "", text)
-    text = re.sub(r"<sect.*?>", "", text)
-    text = re.sub(r"</sect.*?>", "", text)
-    text = re.sub(r"<itemizedlist>", "", text)
-    text = re.sub(r"</itemizedlist>", "", text)
-    text = re.sub(r"<orderedlist>", "", text)
-    text = re.sub(r"</orderedlist>", "", text)
-    text = re.sub(r"</listitem>", "", text)
-
-    # Fix weird situations.
-    text = re.sub(r"&amp;", "&", text)
-    text = re.sub(r"&lt;", "<", text)
-    text = re.sub(r"&gt;", ">", text)
-    text = re.sub(r"(<computeroutput>)(<ulink .*?>)", r"\2\1", text)
-    text = re.sub(r"(</ulink>)(</computeroutput>)", r"\2\1", text)
-
-    # Adaptation.
-    text = re.sub(r"<title>(.*?)</title>", r"[u][b]\1[/b][/u]\n", text)
-    text = re.sub(r"<listitem>", r"- ", text)
-
-    # To BBCode.
-    text = re.sub(r'<ulink .*url="(.*?)">(.*?)</ulink>', r"[url=\1]\2[/url]", text)
-    text = re.sub(r"<computeroutput>(.*?)</computeroutput>", r"[code]\1[/code]", text)
-    text = re.sub(r"<emphasis>(.*?)</emphasis>", r"[i]\1[/i]", text)
-
-    text = re.sub(r"<programlisting.*?>", r"[codeblock]", text, re.DOTALL)
-    text = re.sub(r"</programlisting>", r"[/codeblock]", text, re.DOTALL)
-
-    # Linking to documentation.
-    text = re.sub(r'<ref .*?kindref="compound".*?>(.*?)</ref>', r"[Discord\1]", text)
-
-    # Too much newline.
-    text = re.sub(r"\n\n\n\n", "\n", text)
-    text = re.sub(r"\n\n\n", "\n", text)
-    text = re.sub(r"\n\n", "\n", text)
 
     return text.strip()
 

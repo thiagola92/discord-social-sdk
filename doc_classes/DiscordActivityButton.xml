@@ -3,7 +3,8 @@
 	</brief_description>
 	<description>
 	&lt;simplesect kind="see"&gt;[DiscordActivity] 
-&lt;/simplesect&gt;</description>
+&lt;/simplesect&gt;
+</description>
 	<tutorials>
 	</tutorials>
 	<methods>
@@ -17,14 +18,14 @@
 			<return type="void" />
 			<param index="0" name="label" type="String" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1ActivityButton_1afb79ff9903a3aa609548f90e942e166e" kindref="member"&gt;ActivityButton::Label&lt;/ref&gt;.
+			Setter for [TODO:].
 			</description>
 		</method>
 		<method name="set_url">
 			<return type="void" />
 			<param index="0" name="url" type="String" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1ActivityButton_1a3e4af76071bff97a4954b57fec59a628" kindref="member"&gt;ActivityButton::Url&lt;/ref&gt;.
+			Setter for [TODO:].
 			</description>
 		</method>
 		<method name="url">

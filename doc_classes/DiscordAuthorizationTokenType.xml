@@ -1,6 +1,7 @@
 <class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordAuthorizationTokenType" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	Represents the type of auth token used by the SDK, either the normal tokens produced by the Discord desktop app, or an oauth2 bearer token. Only the latter can be used by the SDK.</brief_description>
+	Represents the type of auth token used by the SDK, either the normal tokens produced by the Discord desktop app, or an oauth2 bearer token. Only the latter can be used by the SDK.
+</brief_description>
 	<description>
 	</description>
 	<tutorials>

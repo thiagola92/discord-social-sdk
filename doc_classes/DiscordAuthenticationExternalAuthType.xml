@@ -1,6 +1,7 @@
 <class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordAuthenticationExternalAuthType" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	Represents the various identity providers that can be used to authenticate a provisional account user for public clients.</brief_description>
+	Represents the various identity providers that can be used to authenticate a provisional account user for public clients.
+</brief_description>
 	<description>
 	</description>
 	<tutorials>

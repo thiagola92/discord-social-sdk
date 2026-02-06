@@ -1,6 +1,7 @@
 <class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordCall" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	Class that manages an active voice session in a Lobby.</brief_description>
+	Class that manages an active voice session in a Lobby.
+</brief_description>
 	<description>
 	</description>
 	<tutorials>
@@ -10,7 +11,7 @@
 			<return type="String" />
 			<param index="0" name="type" type="int" enum="DiscordCallError.Enum" />
 			<description>
-			Converts the &lt;ref refid="classdiscordpp_1_1Call_1a92b477828e777e1cab576821a170dff0" kindref="member"&gt;Error&lt;/ref&gt; enum to a string.
+			Converts the [TODO:] enum to a string.
 			</description>
 		</method>
 		<method name="get_audio_mode">
@@ -102,7 +103,7 @@
 			<param index="0" name="audio_mode" type="int" enum="DiscordAudioModeType.Enum" />
 			<description>
 			Sets whether to use voice auto detection or push to talk for the current user on this call.
-			If using push to talk you should call &lt;ref refid="classdiscordpp_1_1Call_1ac442b1d69b9256abbb188583c0c81c41" kindref="member"&gt;SetPTTActive()&lt;/ref&gt; whenever the user presses their confused push to talk key.
+			If using push to talk you should call [TODO:] whenever the user presses their confused push to talk key.
 			</description>
 		</method>
 		<method name="set_local_mute">
@@ -196,7 +197,7 @@
 			<return type="String" />
 			<param index="0" name="type" type="int" enum="DiscordCallStatus.Enum" />
 			<description>
-			Converts the &lt;ref refid="classdiscordpp_1_1Call_1a9a8311653be2263ad61243749ff44d4e" kindref="member"&gt;Status&lt;/ref&gt; enum to a string.
+			Converts the [TODO:] enum to a string.
 			</description>
 		</method>
 	</methods>

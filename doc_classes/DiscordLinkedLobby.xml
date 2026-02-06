@@ -1,6 +1,7 @@
 <class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordLinkedLobby" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	Struct that stores information about the lobby linked to a channel.</brief_description>
+	Struct that stores information about the lobby linked to a channel.
+</brief_description>
 	<description>
 	</description>
 	<tutorials>
@@ -22,14 +23,14 @@
 			<return type="void" />
 			<param index="0" name="application_id" type="int" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1LinkedLobby_1a54f7d406aa6290b623dd201b367d2672" kindref="member"&gt;LinkedLobby::ApplicationId&lt;/ref&gt;.
+			Setter for [TODO:].
 			</description>
 		</method>
 		<method name="set_lobby_id">
 			<return type="void" />
 			<param index="0" name="lobby_id" type="int" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1LinkedLobby_1aac0fd786fa7fa9fab342887a2988cdef" kindref="member"&gt;LinkedLobby::LobbyId&lt;/ref&gt;.
+			Setter for [TODO:].
 			</description>
 		</method>
 	</methods>

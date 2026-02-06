@@ -1,6 +1,7 @@
 <class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordErrorType" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	Enum representing various types of errors the SDK returns.</brief_description>
+	Enum representing various types of errors the SDK returns.
+</brief_description>
 	<description>
 	</description>
 	<tutorials>
@@ -13,11 +14,11 @@
 		The user is offline or there was some network issue that prevented an underlying HTTP call from succeeding.
 		</constant>
 		<constant name="HTTPError" value="2" enum="Enum">
-		An HTTP call was made to Discord's servers but a non success HTTP status code was returned. In some cases this may be retryable, and if so &lt;ref refid="classdiscordpp_1_1ClientResult_1a0d220638f4a36c0b8b731f601e0ac02d" kindref="member"&gt;ClientResult::Retryable&lt;/ref&gt; will be true. In most cases though the failure is due to a validation or permissions error, and the request is not retryable. &lt;ref refid="classdiscordpp_1_1ClientResult_1a3175ab59cd9268a3b2c6484129c89e04" kindref="member"&gt;ClientResult::Error&lt;/ref&gt; and &lt;ref refid="classdiscordpp_1_1ClientResult_1ab361cb3d3381401f0d73736d5f49b3f5" kindref="member"&gt;ClientResult::ErrorCode&lt;/ref&gt; will have more information.
+		An HTTP call was made to Discord's servers but a non success HTTP status code was returned. In some cases this may be retryable, and if so [TODO:] will be true. In most cases though the failure is due to a validation or permissions error, and the request is not retryable. [TODO:] and [TODO:] will have more information.
 		</constant>
 		<constant name="ClientNotReady" value="3" enum="Enum">
-		An operation such as sending a friend request or joining a lobby was attempted but the [DiscordClient] is not yet ready. Wait for &lt;ref refid="classdiscordpp_1_1Client_1a6f714c5d6aebefa91c1ff8ba97bcce22" kindref="member"&gt;Client::Status&lt;/ref&gt; to change to &lt;ref refid="classdiscordpp_1_1Client_1a6f714c5d6aebefa91c1ff8ba97bcce22ae7d31fc0602fb2ede144d18cdffd816b" kindref="member"&gt;Client::Status::Ready&lt;/ref&gt; before trying again.
-		Also be sure to call [DiscordClient] will never become ready.
+		An operation such as sending a friend request or joining a lobby was attempted but the [DiscordClient] is not yet ready. Wait for [TODO:] to change to [TODO:] before trying again.
+		Also be sure to call [TODO:] to begin the process of connecting to Discord's servers, otherwise the [DiscordClient] will never become ready.
 		</constant>
 		<constant name="Disabled" value="4" enum="Enum">
 		An operation was temporarily disabled for stability reasons.

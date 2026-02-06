@@ -1,8 +1,10 @@
 <class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordAudioDevice" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	Represents a single input or output audio device available to the user.</brief_description>
+	Represents a single input or output audio device available to the user.
+</brief_description>
 	<description>
-	Discord will initialize the audio engine with the system default input and output devices. You can change the device through the [DiscordClient] by passing the id of the desired audio device.</description>
+	Discord will initialize the audio engine with the system default input and output devices. You can change the device through the [DiscordClient] by passing the id of the desired audio device.
+</description>
 	<tutorials>
 	</tutorials>
 	<methods>
@@ -35,21 +37,21 @@
 			<return type="void" />
 			<param index="0" name="id" type="String" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1AudioDevice_1a3f85e5323b6a5d6ce8b6b2abb05490b6" kindref="member"&gt;AudioDevice::Id&lt;/ref&gt;.
+			Setter for [TODO:].
 			</description>
 		</method>
 		<method name="set_is_default">
 			<return type="void" />
 			<param index="0" name="is_default" type="bool" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1AudioDevice_1a39f19c6eb7774ffd939811a3484e0475" kindref="member"&gt;AudioDevice::IsDefault&lt;/ref&gt;.
+			Setter for [TODO:].
 			</description>
 		</method>
 		<method name="set_name">
 			<return type="void" />
 			<param index="0" name="name" type="String" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1AudioDevice_1a1f021287a4bf98992d3c9b27589c5f59" kindref="member"&gt;AudioDevice::Name&lt;/ref&gt;.
+			Setter for [TODO:].
 			</description>
 		</method>
 	</methods>

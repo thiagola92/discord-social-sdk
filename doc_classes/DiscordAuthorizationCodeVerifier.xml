@@ -1,6 +1,7 @@
 <class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordAuthorizationCodeVerifier" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	Struct that encapsulates both parts of the code verification flow.</brief_description>
+	Struct that encapsulates both parts of the code verification flow.
+</brief_description>
 	<description>
 	</description>
 	<tutorials>
@@ -16,14 +17,14 @@
 			<return type="void" />
 			<param index="0" name="challenge" type="DiscordAuthorizationCodeChallenge" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1AuthorizationCodeVerifier_1ae439edf58719b8da93054e39014d106a" kindref="member"&gt;AuthorizationCodeVerifier::Challenge&lt;/ref&gt;.
+			Setter for [TODO:].
 			</description>
 		</method>
 		<method name="set_verifier">
 			<return type="void" />
 			<param index="0" name="verifier" type="String" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1AuthorizationCodeVerifier_1a4b43a10fb1297c3400f67198d00c73d1" kindref="member"&gt;AuthorizationCodeVerifier::Verifier&lt;/ref&gt;.
+			Setter for [TODO:].
 			</description>
 		</method>
 		<method name="verifier">

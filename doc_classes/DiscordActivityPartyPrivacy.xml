@@ -1,6 +1,7 @@
 <class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordActivityPartyPrivacy" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	Allows your game to control the privacy of the party the user is in.</brief_description>
+	Allows your game to control the privacy of the party the user is in.
+</brief_description>
 	<description>
 	</description>
 	<tutorials>

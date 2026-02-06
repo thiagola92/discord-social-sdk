@@ -23,17 +23,17 @@
 			Converts a &lt;ref refid="namespacediscordpp_1a1b68b260e8659da9a7792b2b2046fe58" kindref="member"&gt;discordpp::ChannelType&lt;/ref&gt; to a string.
 			Converts a &lt;ref refid="namespacediscordpp_1aee4b786af6ac9cd4ade73eb2f873177b" kindref="member"&gt;discordpp::AdditionalContentType&lt;/ref&gt; to a string.
 			Converts a &lt;ref refid="namespacediscordpp_1a566c99cfc3b8ee94ca322d35bc008633" kindref="member"&gt;discordpp::AudioSystem&lt;/ref&gt; to a string.
-			Converts a &lt;ref refid="classdiscordpp_1_1Call_1a92b477828e777e1cab576821a170dff0" kindref="member"&gt;discordpp::Call::Error&lt;/ref&gt; to a string.
+			Converts a [TODO:] to a string.
 			Converts a &lt;ref refid="namespacediscordpp_1ad12f4e0df799c97f417320ef861fcffb" kindref="member"&gt;discordpp::AudioModeType&lt;/ref&gt; to a string.
-			Converts a &lt;ref refid="classdiscordpp_1_1Call_1a9a8311653be2263ad61243749ff44d4e" kindref="member"&gt;discordpp::Call::Status&lt;/ref&gt; to a string.
+			Converts a [TODO:] to a string.
 			Converts a &lt;ref refid="namespacediscordpp_1a28fc5199b9211c24124c06f30c1d0cbb" kindref="member"&gt;discordpp::RelationshipType&lt;/ref&gt; to a string.
 			Converts a &lt;ref refid="namespacediscordpp_1aa206a1e72b76e940f53bb3ff0dbca6ca" kindref="member"&gt;discordpp::ExternalIdentityProviderType&lt;/ref&gt; to a string.
-			Converts a &lt;ref refid="classdiscordpp_1_1UserHandle_1a9cbf5933bc6181eb1900574f6eda9b18" kindref="member"&gt;discordpp::UserHandle::AvatarType&lt;/ref&gt; to a string.
+			Converts a [TODO:] to a string.
 			Converts a &lt;ref refid="namespacediscordpp_1a7e874dde2b41420ed5d26d4bc3ea5b43" kindref="member"&gt;discordpp::StatusType&lt;/ref&gt; to a string.
 			Converts a &lt;ref refid="namespacediscordpp_1a0d3a4099faa1d5870eb8a49828e05d34" kindref="member"&gt;discordpp::DisclosureTypes&lt;/ref&gt; to a string.
-			Converts a &lt;ref refid="classdiscordpp_1_1Client_1ac8d8140b9e1251e59e59a267f8a6295f" kindref="member"&gt;discordpp::Client::Error&lt;/ref&gt; to a string.
-			Converts a &lt;ref refid="classdiscordpp_1_1Client_1a6f714c5d6aebefa91c1ff8ba97bcce22" kindref="member"&gt;discordpp::Client::Status&lt;/ref&gt; to a string.
-			Converts a &lt;ref refid="classdiscordpp_1_1Client_1adadf74b4796b37cf738bdaa61993f0ba" kindref="member"&gt;discordpp::Client::Thread&lt;/ref&gt; to a string.
+			Converts a [TODO:] to a string.
+			Converts a [TODO:] to a string.
+			Converts a [TODO:] to a string.
 			Converts a &lt;ref refid="namespacediscordpp_1a1968a8b2eabcbe41a254cc88ab330a89" kindref="member"&gt;discordpp::AuthorizationTokenType&lt;/ref&gt; to a string.
 			Converts a &lt;ref refid="namespacediscordpp_1a4783ed8cd71c53439960e035527988ad" kindref="member"&gt;discordpp::AuthenticationExternalAuthType&lt;/ref&gt; to a string.
 			Converts a &lt;ref refid="namespacediscordpp_1a4b50332ce64ddd00391c442b60c99a35" kindref="member"&gt;discordpp::LoggingSeverity&lt;/ref&gt; to a string.

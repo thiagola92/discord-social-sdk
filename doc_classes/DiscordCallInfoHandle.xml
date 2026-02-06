@@ -1,6 +1,7 @@
 <class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordCallInfoHandle" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	Convenience class that represents the state of a single Discord call in a lobby.</brief_description>
+	Convenience class that represents the state of a single Discord call in a lobby.
+</brief_description>
 	<description>
 	</description>
 	<tutorials>

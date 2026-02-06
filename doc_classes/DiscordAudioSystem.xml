@@ -1,6 +1,7 @@
 <class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordAudioSystem" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	The Discord Voice audio system to use.</brief_description>
+	The Discord Voice audio system to use.
+</brief_description>
 	<description>
 	</description>
 	<tutorials>

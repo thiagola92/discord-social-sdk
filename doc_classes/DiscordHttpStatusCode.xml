@@ -1,8 +1,10 @@
 <class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordHttpStatusCode" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	Enum that represents the various HTTP status codes that can be returned.</brief_description>
+	Enum that represents the various HTTP status codes that can be returned.
+</brief_description>
 	<description>
-	You can read more about these at: [url=https://developer.mozilla.org/en-US/docs/Web/HTTP/Status]https://developer.mozilla.org/en-US/docs/Web/HTTP/Status[/url] For convenience, we have defined a couple of enum values that are non-standard HTTP codes to represent certain types of errors.</description>
+	You can read more about these at: [url=https://developer.mozilla.org/en-US/docs/Web/HTTP/Status]https://developer.mozilla.org/en-US/docs/Web/HTTP/Status[/url] For convenience, we have defined a couple of enum values that are non-standard HTTP codes to represent certain types of errors.
+</description>
 	<tutorials>
 	</tutorials>
 	<constants>

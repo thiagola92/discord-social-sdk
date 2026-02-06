@@ -1,8 +1,10 @@
 <class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordChannelType" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	Enum that represents the various channel types on Discord.</brief_description>
+	Enum that represents the various channel types on Discord.
+</brief_description>
 	<description>
-	For more information see: [url=https://discord.com/developers/docs/resources/channel]https://discord.com/developers/docs/resources/channel[/url]</description>
+	For more information see: [url=https://discord.com/developers/docs/resources/channel]https://discord.com/developers/docs/resources/channel[/url]
+</description>
 	<tutorials>
 	</tutorials>
 	<constants>
