@@ -64,56 +64,56 @@ This may be more complexity than a game wants to take on, so instead you can onl
 			<return type="void" />
 			<param index="0" name="id" type="int" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1GuildChannel_1a2fe6d0dbf525d4ff07ee5b3b11919c9b" kindref="member"&gt;GuildChannel::Id&lt;/ref&gt;.
+			Setter for [method DiscordGuildChannel.id].
 			</description>
 		</method>
 		<method name="set_is_linkable">
 			<return type="void" />
 			<param index="0" name="is_linkable" type="bool" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1GuildChannel_1ad69573b499384939e41cc45e6cbc151c" kindref="member"&gt;GuildChannel::IsLinkable&lt;/ref&gt;.
+			Setter for [method DiscordGuildChannel.is_linkable].
 			</description>
 		</method>
 		<method name="set_is_viewable_and_writeable_by_all_members">
 			<return type="void" />
 			<param index="0" name="is_viewable_and_writeable_by_all_members" type="bool" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1GuildChannel_1a0a5655eda07dea3fc4b8643334fdee28" kindref="member"&gt;GuildChannel::IsViewableAndWriteableByAllMembers&lt;/ref&gt;.
+			Setter for [method DiscordGuildChannel.is_viewable_and_writeable_by_all_members].
 			</description>
 		</method>
 		<method name="set_linked_lobby">
 			<return type="void" />
 			<param index="0" name="linked_lobby" type="Variant" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1GuildChannel_1a24a02a757b1c34f057776f2e633ab624" kindref="member"&gt;GuildChannel::LinkedLobby&lt;/ref&gt;.
+			Setter for [method DiscordGuildChannel.linked_lobby].
 			</description>
 		</method>
 		<method name="set_name">
 			<return type="void" />
 			<param index="0" name="name" type="String" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1GuildChannel_1a60ea639d62e0a24b2a59ff7afce35a97" kindref="member"&gt;GuildChannel::Name&lt;/ref&gt;.
+			Setter for [method DiscordGuildChannel.name].
 			</description>
 		</method>
 		<method name="set_parent_id">
 			<return type="void" />
 			<param index="0" name="parent_id" type="Variant" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1GuildChannel_1a56a251fe1df193a95de654df96e0b8bf" kindref="member"&gt;GuildChannel::ParentId&lt;/ref&gt;.
+			Setter for [method DiscordGuildChannel.parent_id].
 			</description>
 		</method>
 		<method name="set_position">
 			<return type="void" />
 			<param index="0" name="position" type="int" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1GuildChannel_1ae0749779d6a9b708af2bfa1c06bc40ba" kindref="member"&gt;GuildChannel::Position&lt;/ref&gt;.
+			Setter for [method DiscordGuildChannel.position].
 			</description>
 		</method>
 		<method name="set_type">
 			<return type="void" />
 			<param index="0" name="type" type="int" enum="DiscordChannelType.Enum" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1GuildChannel_1a9cf329c0ae46c5509666543839cbfa33" kindref="member"&gt;GuildChannel::Type&lt;/ref&gt;.
+			Setter for [method DiscordGuildChannel.type].
 			</description>
 		</method>
 		<method name="type">

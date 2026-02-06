@@ -16,11 +16,15 @@ from data import (
     NamespaceInfo,
     ParamInfo,
     TypeInfo,
+    ReferencesInfo,
 )
 
 
 # Give enums an id so we later identify them during overloadings.
 ENUM_ID = 0
+
+# Link attribute "refid" to attribute "kind".
+REFERENCES: ReferencesInfo = ReferencesInfo()
 
 
 def collect_text(tree: Element) -> str:
@@ -59,6 +63,7 @@ def collect_namespace(tree: Element, xml_dir: Path) -> NamespaceInfo:
         namespace_info.classes.append(collect_class(cf))
 
     check_enums(namespace_info)
+    collect_references(tree)
 
     return namespace_info
 
@@ -183,3 +188,15 @@ def collect_type(tree: Element) -> TypeInfo | FunctionInfo:
     type_info = Parser(type_str).parse_type()
 
     return type_info
+
+
+def collect_references(tree: Element) -> ReferencesInfo:
+    global REFERENCES
+
+    for e in tree.findall(".//compound"):
+        REFERENCES.compound[e.attrib["refid"]] = e.attrib["kind"]
+
+    for e in tree.findall(".//member"):
+        REFERENCES.member[e.attrib["refid"]] = e.attrib["kind"]
+
+    return REFERENCES

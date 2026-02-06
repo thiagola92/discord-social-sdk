@@ -3,7 +3,7 @@
 	Represents an error state for the socket connection that the Discord SDK maintains with the Discord backend.
 </brief_description>
 	<description>
-	Generic network failures will use the ConnectionFailed and ConnectionCanceled enum values. Other errors such as if the user's auth token is invalid or out of date will be UnexpectedClose and you should look at the other &lt;ref refid="classdiscordpp_1_1Client_1ac8d8140b9e1251e59e59a267f8a6295f" kindref="member"&gt;Error&lt;/ref&gt; fields for the specific details.
+	Generic network failures will use the ConnectionFailed and ConnectionCanceled enum values. Other errors such as if the user's auth token is invalid or out of date will be UnexpectedClose and you should look at the other [DiscordClientError] fields for the specific details.
 </description>
 	<tutorials>
 	</tutorials>

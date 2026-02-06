@@ -2,7 +2,7 @@
 	<brief_description>
 	</brief_description>
 	<description>
-	&lt;simplesect kind="see"&gt;&lt;ref refid="classdiscordpp_1_1Activity" kindref="compound"&gt;Activity&lt;/ref&gt; 
+	&lt;simplesect kind="see"&gt;[DiscordActivity] 
 &lt;/simplesect&gt;
 </description>
 	<tutorials>
@@ -37,28 +37,28 @@
 			<return type="void" />
 			<param index="0" name="current_size" type="int" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1ActivityParty_1a532fdee79a3adcc8f9a01fd2cf957595" kindref="member"&gt;ActivityParty::CurrentSize&lt;/ref&gt;.
+			Setter for [method DiscordActivityParty.current_size].
 			</description>
 		</method>
 		<method name="set_id">
 			<return type="void" />
 			<param index="0" name="id" type="String" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1ActivityParty_1ad5b269834e93f9d2b794a48cc7fb95f3" kindref="member"&gt;ActivityParty::Id&lt;/ref&gt;.
+			Setter for [method DiscordActivityParty.id].
 			</description>
 		</method>
 		<method name="set_max_size">
 			<return type="void" />
 			<param index="0" name="max_size" type="int" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1ActivityParty_1a60d20e2272f1d66156c191152f7e4ced" kindref="member"&gt;ActivityParty::MaxSize&lt;/ref&gt;.
+			Setter for [method DiscordActivityParty.max_size].
 			</description>
 		</method>
 		<method name="set_privacy">
 			<return type="void" />
 			<param index="0" name="privacy" type="int" enum="DiscordActivityPartyPrivacy.Enum" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1ActivityParty_1ac57169df0239478d2e79c7d5cee5df34" kindref="member"&gt;ActivityParty::Privacy&lt;/ref&gt;.
+			Setter for [method DiscordActivityParty.privacy].
 			</description>
 		</method>
 	</methods>

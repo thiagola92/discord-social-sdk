@@ -1,6 +1,6 @@
 <class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordActivityActionTypes" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	&lt;ref refid="namespacediscordpp_1afff4c537aa07d869a4576c87a28f36b8" kindref="member"&gt;ActivityActionTypes&lt;/ref&gt; represents the type of invite being sent to a user.
+	[DiscordActivityActionTypes] represents the type of invite being sent to a user.
 </brief_description>
 	<description>
 	There are essentially two types of invites: 1: A user with an existing activity party can invite another user to join that existing party 2: A user can request to join the existing activity party of another user

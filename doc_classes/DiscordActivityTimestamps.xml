@@ -2,7 +2,7 @@
 	<brief_description>
 	</brief_description>
 	<description>
-	&lt;simplesect kind="see"&gt;&lt;ref refid="classdiscordpp_1_1Activity" kindref="compound"&gt;Activity&lt;/ref&gt; 
+	&lt;simplesect kind="see"&gt;[DiscordActivity] 
 &lt;/simplesect&gt;
 </description>
 	<tutorials>
@@ -19,14 +19,14 @@
 			<return type="void" />
 			<param index="0" name="end" type="int" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1ActivityTimestamps_1aba1847d3e0223ff1bb7695ab58c5d097" kindref="member"&gt;ActivityTimestamps::End&lt;/ref&gt;.
+			Setter for [method DiscordActivityTimestamps.end].
 			</description>
 		</method>
 		<method name="set_start">
 			<return type="void" />
 			<param index="0" name="start" type="int" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1ActivityTimestamps_1a4806e31609893206e81c1963857ef829" kindref="member"&gt;ActivityTimestamps::Start&lt;/ref&gt;.
+			Setter for [method DiscordActivityTimestamps.start].
 			</description>
 		</method>
 		<method name="start">

@@ -4,8 +4,9 @@ import re
 from re import Match
 from xml.etree.ElementTree import Element
 
-from name import to_godot_class_name, to_gdscript_variable_name, to_constant_case
+from name import to_gdscript_class_name, to_gdscript_variable_name, to_constant_case
 from data import FunctionInfo, ClassInfo, NamespaceInfo, EnumInfo
+from collect import REFERENCES
 
 
 def document_class(tree: Element, class_info: ClassInfo) -> None:
@@ -103,7 +104,7 @@ def to_bbcode(text: str) -> str:
     text = re.sub(r"<programlisting.*?>", r"[codeblock]", text, re.DOTALL)
     text = re.sub(r"</programlisting>", r"[/codeblock]", text, re.DOTALL)
     text = re.sub(
-        r'<ref .*?refid="classdiscordpp_1_1([^_"]+).*?kindref="(.*?)".*?>(.*?)</ref>',
+        r'<ref .*?refid="(.*?)".*?kindref="(.*?)".*?>(.*?)</ref>',
         link_class,
         text,
     )
@@ -117,29 +118,59 @@ def to_bbcode(text: str) -> str:
 
 
 def link_class(match: Match) -> str:
-    class_name: str = match.group(1)
-    ref_type: str = match.group(2)
+    global REFERENCES
+
+    refid: str = match.group(1)
+    kindref: str = match.group(2)
     content: str = match.group(3)
 
-    if ref_type == "compound":
-        class_name = to_godot_class_name(class_name)
-        return f"[{class_name}]"
+    if kindref == "compound":
+        k = REFERENCES.compound[refid]
 
-    if ref_type == "member":
-        content = content.removeprefix("discordpp::")
-        content = content.removeprefix(f"{class_name}::")
-        class_name = to_godot_class_name(class_name)
+        if k == "class":
+            class_name = to_gdscript_class_name(content)
+            return f"[{class_name}]"
 
-        # print(match.string.strip())
-        print((class_name, content))
+        assert False, f"Kind not implemented: {k}"
 
-        if "::" in content:
+    if kindref == "member":
+        k = REFERENCES.member[refid]
+
+        if k == "enum":
+            class_name = refid.removeprefix("classdiscordpp_1_1")
+            class_name = class_name.removeprefix("namespacediscordpp")
+            class_name, _, _ = class_name.partition("_")
+            class_name = to_gdscript_class_name(class_name)
+            content = content.removeprefix("discordpp::")
+            _, _, content = content.rpartition("::")
+            return f"[{class_name}{content}]"
+
+        if k == "enumvalue":
+            class_name = refid.removeprefix("classdiscordpp_1_1")
+            class_name = class_name.removeprefix("namespacediscordpp")
+            class_name, _, _ = class_name.partition("_")
+            class_name = to_gdscript_class_name(class_name)
             enum_name, _, enum_value = content.partition("::")
             enum_value = to_constant_case(enum_value)
             return f"[enum {class_name}{enum_name}.{enum_value}]"
 
-        content = content.removesuffix("()")
-        content = to_gdscript_variable_name(content)
-        return f"[method {class_name}.{content}]"
+        if k == "function":
+            class_name = refid.removeprefix("classdiscordpp_1_1")
+            class_name = class_name.removeprefix("namespacediscordpp")
+            class_name, _, _ = class_name.partition("_")
+            class_name = to_gdscript_class_name(class_name)
+            content = content.removesuffix("()")
+            _, _, function_name = content.rpartition("::")
+            function_name = to_gdscript_variable_name(function_name)
+            return f"[method {class_name}.{function_name}]"
 
-    assert False, f"New reference type: {ref_type}"
+        if k == "typedef":
+            class_name = refid.removeprefix("classdiscordpp_1_1")
+            class_name = class_name.removeprefix("namespacediscordpp")
+            class_name, _, _ = class_name.partition("_")
+            class_name = to_gdscript_class_name(class_name)
+            return f"[member {class_name}.{content}]"
+
+        assert False, f"Kind not implemented: {k}"
+
+    assert False, f"Reference kind not implemented: {kindref}"

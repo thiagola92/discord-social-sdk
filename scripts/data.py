@@ -108,3 +108,9 @@ class NamespaceInfo:
     functions: list[FunctionInfo] = field(default_factory=list)
     constructors: list[FunctionInfo] = field(default_factory=list)
     callbacks: list[CallbackInfo] = field(default_factory=list)
+
+
+@dataclass
+class ReferencesInfo:
+    compound: dict[str, str] = field(default_factory=dict)
+    member: dict[str, str] = field(default_factory=dict)

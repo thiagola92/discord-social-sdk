@@ -1,5 +1,5 @@
 # Responsible for checking conditions.
-from name import to_godot_class_name
+from name import to_gdscript_class_name
 from data import (
     FunctionInfo,
     ClassInfo,
@@ -44,11 +44,11 @@ def check_enums(namespace_info: NamespaceInfo) -> None:
     enums: dict[str, EnumInfo] = {}
 
     for e in namespace_info.enums:
-        enums[to_godot_class_name(e.name)] = e
+        enums[to_gdscript_class_name(e.name)] = e
 
     for c in namespace_info.classes:
         for e in c.enums:
-            enums[to_godot_class_name(c.name + e.name)] = e
+            enums[to_gdscript_class_name(c.name + e.name)] = e
 
     # Start checking enum everywhere.
     for f in namespace_info.functions:
@@ -77,7 +77,7 @@ def check_function_enums(
     not for solving any complications from enums.
     """
 
-    name = to_godot_class_name(function_info.type.name)
+    name = to_gdscript_class_name(function_info.type.name)
 
     if name in enums.keys():
         function_info.type.enum = True
@@ -87,7 +87,7 @@ def check_function_enums(
         if not isinstance(p.type, TypeInfo):
             continue
 
-        n = to_godot_class_name(p.type.name)
+        n = to_gdscript_class_name(p.type.name)
 
         if n in enums.keys():
             p.enum = True
@@ -106,7 +106,7 @@ def check_callback_enums(
     not for solving any complications from enums.
     """
 
-    name = to_godot_class_name(callback_info.type.name)
+    name = to_gdscript_class_name(callback_info.type.name)
 
     if name in enums.keys():
         callback_info.type.enum = True
@@ -141,7 +141,7 @@ def check_type_enums(
         for t in info.templates:
             check_type_enums(t, enums)
 
-        n = to_godot_class_name(info.name)
+        n = to_gdscript_class_name(info.name)
 
         if n in enums.keys():
             info.enum = True

@@ -4,8 +4,8 @@
 </brief_description>
 	<description>
 	- The socket has to connect to Discord and exchange an auth token. This is indicated by the [code]Connecting[/code] and [code]Connected[/code] values.
-- The socket has to receive an initial payload of data that describes the current user, what lobbies they are in, who their friends are, etc. This is the [code]Ready[/code] status. Many &lt;ref refid="classdiscordpp_1_1Client" kindref="compound"&gt;Client&lt;/ref&gt; functions will not work until the status changes to [code]Ready[/code], such as &lt;ref refid="classdiscordpp_1_1Client_1a7edea2a3dfe9ae560d5fa5ba8663b5cc" kindref="member"&gt;GetCurrentUser()&lt;/ref&gt;.
-&lt;ref refid="classdiscordpp_1_1Client_1a6f714c5d6aebefa91c1ff8ba97bcce22ae7d31fc0602fb2ede144d18cdffd816b" kindref="member"&gt;Status::Ready&lt;/ref&gt; is the one you want to wait for!
+- The socket has to receive an initial payload of data that describes the current user, what lobbies they are in, who their friends are, etc. This is the [code]Ready[/code] status. Many [DiscordClient] functions will not work until the status changes to [code]Ready[/code], such as [method DiscordClient.get_current_user].
+[enum DiscordClientStatus.READY] is the one you want to wait for!
 Additionally, sometimes the socket will be disconnected, such as through temporary network blips. But it will try to automatically reconnect, as indicated by the [code]Reconnecting[/code] status.
 </description>
 	<tutorials>

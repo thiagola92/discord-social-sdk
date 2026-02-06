@@ -1,5 +1,5 @@
 # Responsible for forging parts of the code.
-from name import to_godot_class_name
+from name import to_gdscript_class_name
 from fake import fake_enums_params
 from collect import NamespaceInfo, FunctionInfo, ClassInfo, ParamInfo
 from discover import (
@@ -485,7 +485,7 @@ def forge_overloading_condition(
 
     if overloading_pattern == OverloadingPattern.RET_SAME_ARGS_ENUMS:
         for i, fp in enumerate(fake_params):
-            n = to_godot_class_name(fp.type.name)
+            n = to_gdscript_class_name(fp.type.name)
 
             conditions.append(
                 get_condition(

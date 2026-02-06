@@ -1,9 +1,9 @@
 <class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordClientCreateOptions" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	Options for creating a new &lt;ref refid="classdiscordpp_1_1Client" kindref="compound"&gt;Client&lt;/ref&gt; instance.
+	Options for creating a new [DiscordClient] instance.
 </brief_description>
 	<description>
-	This class may be used to set advanced initialization-time options on &lt;ref refid="classdiscordpp_1_1Client" kindref="compound"&gt;Client&lt;/ref&gt;.
+	This class may be used to set advanced initialization-time options on [DiscordClient].
 </description>
 	<tutorials>
 	</tutorials>
@@ -31,7 +31,7 @@ When set to true, the SDK will not enter communications mode when Bluetooth is c
 		<method name="experimental_audio_system">
 			<return type="int" enum="DiscordAudioSystem.Enum" />
 			<description>
-			The audio system to use. Defaults to &lt;ref refid="namespacediscordpp_1a566c99cfc3b8ee94ca322d35bc008633aeb6d8ae6f20283755b339c0dc273988b" kindref="member"&gt;AudioSystem::Standard&lt;/ref&gt;.
+			The audio system to use. Defaults to [enum DiscordAudioSystem.STANDARD].
 			This is an experimental API which may be removed or changed in a future release.
 The game audio system alters the behavior of Discord Voice on mobile platforms to use standard media-type streams instead of voice-specific audio APIs when possible. Currently this will be used on iOS 18.2+ on devices which return true from [code]-[AVAudioSession isEchoCancelledInputAvailable][/code] and on Android devices.
 			</description>
@@ -40,35 +40,35 @@ The game audio system alters the behavior of Discord Voice on mobile platforms t
 			<return type="void" />
 			<param index="0" name="api_base" type="String" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1ClientCreateOptions_1ab75bc5cb2fba2679be638eaa77d33b53" kindref="member"&gt;ClientCreateOptions::ApiBase&lt;/ref&gt;.
+			Setter for [method DiscordClientCreateOptions.api_base].
 			</description>
 		</method>
 		<method name="set_cpu_affinity_mask">
 			<return type="void" />
 			<param index="0" name="cpu_affinity_mask" type="Variant" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1ClientCreateOptions_1ae803723e9c57a0714a813b54dcf6540c" kindref="member"&gt;ClientCreateOptions::CpuAffinityMask&lt;/ref&gt;.
+			Setter for [method DiscordClientCreateOptions.cpu_affinity_mask].
 			</description>
 		</method>
 		<method name="set_experimental_android_prevent_comms_for_bluetooth">
 			<return type="void" />
 			<param index="0" name="experimental_android_prevent_comms_for_bluetooth" type="bool" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1ClientCreateOptions_1aa9a720bd4f7f3ff12d0c1a3054d00a85" kindref="member"&gt;ClientCreateOptions::ExperimentalAndroidPreventCommsForBluetooth&lt;/ref&gt;.
+			Setter for [method DiscordClientCreateOptions.experimental_android_prevent_comms_for_bluetooth].
 			</description>
 		</method>
 		<method name="set_experimental_audio_system">
 			<return type="void" />
 			<param index="0" name="experimental_audio_system" type="int" enum="DiscordAudioSystem.Enum" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1ClientCreateOptions_1a4a5859333e09347aef91f9bbda4ca08b" kindref="member"&gt;ClientCreateOptions::ExperimentalAudioSystem&lt;/ref&gt;.
+			Setter for [method DiscordClientCreateOptions.experimental_audio_system].
 			</description>
 		</method>
 		<method name="set_web_base">
 			<return type="void" />
 			<param index="0" name="web_base" type="String" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1ClientCreateOptions_1aae3dfb794e5cb64a5b7c4185fc21be4a" kindref="member"&gt;ClientCreateOptions::WebBase&lt;/ref&gt;.
+			Setter for [method DiscordClientCreateOptions.web_base].
 			</description>
 		</method>
 		<method name="web_base">

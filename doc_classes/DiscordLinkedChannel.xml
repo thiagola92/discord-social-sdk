@@ -29,21 +29,21 @@
 			<return type="void" />
 			<param index="0" name="guild_id" type="int" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1LinkedChannel_1a2c08e7248f5a9de42d6105aef7cfed86" kindref="member"&gt;LinkedChannel::GuildId&lt;/ref&gt;.
+			Setter for [method DiscordLinkedChannel.guild_id].
 			</description>
 		</method>
 		<method name="set_id">
 			<return type="void" />
 			<param index="0" name="id" type="int" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1LinkedChannel_1ac7ea820618d014feb7b210b0b4209752" kindref="member"&gt;LinkedChannel::Id&lt;/ref&gt;.
+			Setter for [method DiscordLinkedChannel.id].
 			</description>
 		</method>
 		<method name="set_name">
 			<return type="void" />
 			<param index="0" name="name" type="String" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1LinkedChannel_1a73c69f821057e52e8afa3748de5014d2" kindref="member"&gt;LinkedChannel::Name&lt;/ref&gt;.
+			Setter for [method DiscordLinkedChannel.name].
 			</description>
 		</method>
 	</methods>

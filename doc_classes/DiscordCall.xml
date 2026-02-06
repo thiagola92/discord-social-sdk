@@ -11,7 +11,7 @@
 			<return type="String" />
 			<param index="0" name="type" type="int" enum="DiscordCallError.Enum" />
 			<description>
-			Converts the &lt;ref refid="classdiscordpp_1_1Call_1a92b477828e777e1cab576821a170dff0" kindref="member"&gt;Error&lt;/ref&gt; enum to a string.
+			Converts the [DiscordCallError] enum to a string.
 			</description>
 		</method>
 		<method name="get_audio_mode">
@@ -94,8 +94,8 @@
 			<return type="Variant" />
 			<param index="0" name="user_id" type="int" />
 			<description>
-			Returns a reference to the &lt;ref refid="classdiscordpp_1_1VoiceStateHandle" kindref="compound"&gt;VoiceStateHandle&lt;/ref&gt; for the user ID of the given call participant.
-			The &lt;ref refid="classdiscordpp_1_1VoiceStateHandle" kindref="compound"&gt;VoiceStateHandle&lt;/ref&gt; allows other users to know if the target user has muted or deafened themselves.
+			Returns a reference to the [DiscordVoiceStateHandle] for the user ID of the given call participant.
+			The [DiscordVoiceStateHandle] allows other users to know if the target user has muted or deafened themselves.
 			</description>
 		</method>
 		<method name="set_audio_mode">
@@ -103,7 +103,7 @@
 			<param index="0" name="audio_mode" type="int" enum="DiscordAudioModeType.Enum" />
 			<description>
 			Sets whether to use voice auto detection or push to talk for the current user on this call.
-			If using push to talk you should call &lt;ref refid="classdiscordpp_1_1Call_1ac442b1d69b9256abbb188583c0c81c41" kindref="member"&gt;SetPTTActive()&lt;/ref&gt; whenever the user presses their confused push to talk key.
+			If using push to talk you should call [method DiscordCall.set_pttactive] whenever the user presses their confused push to talk key.
 			</description>
 		</method>
 		<method name="set_local_mute">
@@ -119,7 +119,7 @@
 			<return type="void" />
 			<param index="0" name="cb" type="Callable" />
 			<description>
-			Sets a callback function to generally be invoked whenever a field on a &lt;ref refid="classdiscordpp_1_1VoiceStateHandle" kindref="compound"&gt;VoiceStateHandle&lt;/ref&gt; object for a user would have changed.
+			Sets a callback function to generally be invoked whenever a field on a [DiscordVoiceStateHandle] object for a user would have changed.
 			For example when a user mutes themselves, all other connected clients will invoke the VoiceStateChanged callback, because the "self mute" field will be true now. The callback is generally not invoked when users join or leave channels.
 			</description>
 		</method>
@@ -197,7 +197,7 @@
 			<return type="String" />
 			<param index="0" name="type" type="int" enum="DiscordCallStatus.Enum" />
 			<description>
-			Converts the &lt;ref refid="classdiscordpp_1_1Call_1a9a8311653be2263ad61243749ff44d4e" kindref="member"&gt;Status&lt;/ref&gt; enum to a string.
+			Converts the [DiscordCallStatus] enum to a string.
 			</description>
 		</method>
 	</methods>

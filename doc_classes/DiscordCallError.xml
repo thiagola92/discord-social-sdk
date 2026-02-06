@@ -1,6 +1,6 @@
 <class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordCallError" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	Enum that represents any network errors with the &lt;ref refid="classdiscordpp_1_1Call" kindref="compound"&gt;Call&lt;/ref&gt;.
+	Enum that represents any network errors with the [DiscordCall].
 </brief_description>
 	<description>
 	</description>

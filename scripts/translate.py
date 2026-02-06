@@ -8,7 +8,7 @@
 #   godot_variant_to_discord_optional()
 #   godot_array_to_discord_vector()
 from data import TypeInfo, FunctionInfo, ParamInfo
-from name import to_godot_class_name, to_gdscript_variable_name
+from name import to_gdscript_class_name, to_gdscript_variable_name
 from template.code.discord_class_cpp.discord_to_godot.object import get_godot_object
 from template.code.discord_class_cpp.discord_to_godot.variant import get_godot_variant
 from template.code.discord_class_cpp.discord_to_godot.array import get_godot_array
@@ -136,7 +136,7 @@ def discord_type_to_godot_type(
         if info.overloading:
             return "int64_t"
 
-        return to_godot_class_name(info.name) + "::Enum"
+        return to_gdscript_class_name(info.name) + "::Enum"
 
     if is_discord_optional(info):
         return "Variant"
@@ -152,8 +152,8 @@ def discord_type_to_godot_type(
 
     if is_discord_object(info):
         if pointer:
-            return to_godot_class_name(info.name) + " *"
-        return to_godot_class_name(info.name)
+            return to_gdscript_class_name(info.name) + " *"
+        return to_gdscript_class_name(info.name)
 
     assert False, f'Fail to identify a good type for "{info.name}"'
 
@@ -254,7 +254,7 @@ def discord_variable_to_godot_variable(
         if info.fake:
             return f"int64_t {target} = {source};"
 
-        name = to_godot_class_name(info.name) + "::Enum"
+        name = to_gdscript_class_name(info.name) + "::Enum"
         return f"{name} {target} = ({name}){source};"
 
     if is_discord_optional(info):
@@ -334,7 +334,7 @@ def discord_map_to_godot_dictionary(
 def discord_object_to_godot_object(
     type_info: TypeInfo, target: str, source: str
 ) -> str:
-    godot_name = to_godot_class_name(type_info.name)
+    godot_name = to_gdscript_class_name(type_info.name)
 
     return get_godot_object(
         discord_type=type_info.name,
@@ -494,7 +494,7 @@ def godot_variant_to_discord_variable(type_info: TypeInfo, source: str, target: 
         assert False, "Not implemented (implement if needed)"
 
     if is_discord_object(type_info):
-        n = to_godot_class_name(type_info.name)
+        n = to_gdscript_class_name(type_info.name)
 
         return get_discord_optional_object(
             godot_type=n,

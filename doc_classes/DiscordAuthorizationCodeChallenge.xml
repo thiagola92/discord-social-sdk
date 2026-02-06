@@ -23,14 +23,14 @@
 			<return type="void" />
 			<param index="0" name="challenge" type="String" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1AuthorizationCodeChallenge_1a0faf6b1bd98ea1c7b34534a2a7586f88" kindref="member"&gt;AuthorizationCodeChallenge::Challenge&lt;/ref&gt;.
+			Setter for [method DiscordAuthorizationCodeChallenge.challenge].
 			</description>
 		</method>
 		<method name="set_method">
 			<return type="void" />
 			<param index="0" name="method" type="int" enum="DiscordAuthenticationCodeChallengeMethod.Enum" />
 			<description>
-			Setter for &lt;ref refid="classdiscordpp_1_1AuthorizationCodeChallenge_1a044c58aee91ba4c992418c2326837290" kindref="member"&gt;AuthorizationCodeChallenge::Method&lt;/ref&gt;.
+			Setter for [method DiscordAuthorizationCodeChallenge.method].
 			</description>
 		</method>
 	</methods>
