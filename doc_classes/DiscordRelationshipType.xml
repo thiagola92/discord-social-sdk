@@ -7,26 +7,19 @@
 	<tutorials>
 	</tutorials>
 	<constants>
-		<constant name="None" value="0" enum="Enum">
-		The user has no relationship with the other user.
+		<constant name="NONE" value="0" enum="Enum">
 		</constant>
-		<constant name="Friend" value="1" enum="Enum">
-		The user is friends with the other user.
+		<constant name="FRIEND" value="1" enum="Enum">
 		</constant>
-		<constant name="Blocked" value="2" enum="Enum">
-		The current user has blocked the target user, and so certain actions such as sending messages between these users will not work.
+		<constant name="BLOCKED" value="2" enum="Enum">
 		</constant>
-		<constant name="PendingIncoming" value="3" enum="Enum">
-		The current user has received a friend request from the target user, but it is not yet accepted.
+		<constant name="PENDING_INCOMING" value="3" enum="Enum">
 		</constant>
-		<constant name="PendingOutgoing" value="4" enum="Enum">
-		The current user has sent a friend request to the target user, but it is not yet accepted.
+		<constant name="PENDING_OUTGOING" value="4" enum="Enum">
 		</constant>
-		<constant name="Implicit" value="5" enum="Enum">
-		The Implicit type is documented for visibility, but should be unused in the SDK.
+		<constant name="IMPLICIT" value="5" enum="Enum">
 		</constant>
-		<constant name="Suggestion" value="6" enum="Enum">
-		The Suggestion type is documented for visibility, but should be unused in the SDK.
+		<constant name="SUGGESTION" value="6" enum="Enum">
 		</constant>
 		<constant name="id" value="13">
 		</constant>

@@ -1,29 +1,23 @@
 <class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordCallError" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	Enum that represents any network errors with the [DiscordCall].
+	Enum that represents any network errors with the &lt;ref refid="classdiscordpp_1_1Call" kindref="compound"&gt;Call&lt;/ref&gt;.
 </brief_description>
 	<description>
 	</description>
 	<tutorials>
 	</tutorials>
 	<constants>
-		<constant name="None" value="0" enum="Enum">
-		None.
+		<constant name="NONE" value="0" enum="Enum">
 		</constant>
-		<constant name="SignalingConnectionFailed" value="1" enum="Enum">
-		SignalingConnectionFailed.
+		<constant name="SIGNALING_CONNECTION_FAILED" value="1" enum="Enum">
 		</constant>
-		<constant name="SignalingUnexpectedClose" value="2" enum="Enum">
-		SignalingUnexpectedClose.
+		<constant name="SIGNALING_UNEXPECTED_CLOSE" value="2" enum="Enum">
 		</constant>
-		<constant name="VoiceConnectionFailed" value="3" enum="Enum">
-		VoiceConnectionFailed.
+		<constant name="VOICE_CONNECTION_FAILED" value="3" enum="Enum">
 		</constant>
-		<constant name="JoinTimeout" value="4" enum="Enum">
-		JoinTimeout.
+		<constant name="JOIN_TIMEOUT" value="4" enum="Enum">
 		</constant>
-		<constant name="Forbidden" value="5" enum="Enum">
-		Forbidden.
+		<constant name="FORBIDDEN" value="5" enum="Enum">
 		</constant>
 		<constant name="id" value="21">
 		</constant>

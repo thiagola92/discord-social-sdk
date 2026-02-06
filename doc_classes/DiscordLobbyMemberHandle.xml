@@ -1,10 +1,10 @@
 <class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordLobbyMemberHandle" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	A [DiscordLobbyMemberHandle] represents the state of a single user in a Lobby.
+	A &lt;ref refid="classdiscordpp_1_1LobbyMemberHandle" kindref="compound"&gt;LobbyMemberHandle&lt;/ref&gt; represents the state of a single user in a Lobby.
 </brief_description>
 	<description>
 	The SDK separates lobby membership into two concepts:
-- Has the user been added to the lobby by the game developer? If the [DiscordLobbyMemberHandle] exists for a user/lobby pair, then the user has been added to the lobby.
+- Has the user been added to the lobby by the game developer? If the &lt;ref refid="classdiscordpp_1_1LobbyMemberHandle" kindref="compound"&gt;LobbyMemberHandle&lt;/ref&gt; exists for a user/lobby pair, then the user has been added to the lobby.
 - Does the user have an active game session that is connected to the lobby and will receive any lobby messages? It is possible for a game developer to add a user to a lobby while they are offline. Also users may temporarily disconnect and rejoin later. So the [code]Connected[/code] boolean tells you whether the user is actively connected to the lobby.
 Handle objects in the SDK hold a reference both to the underlying data, and to the SDK instance. Changes to the underlying data will generally be available on existing handles objects without having to re-create them. If the SDK instance is destroyed, but you still have a reference to a handle object, note that it will return the default value for all method calls (ie an empty string for methods that return a string).
 </description>
@@ -40,7 +40,7 @@ Handle objects in the SDK hold a reference both to the underlying data, and to t
 		<method name="user">
 			<return type="Variant" />
 			<description>
-			The [DiscordUserHandle] of the lobby member.
+			The &lt;ref refid="classdiscordpp_1_1UserHandle" kindref="compound"&gt;UserHandle&lt;/ref&gt; of the lobby member.
 			</description>
 		</method>
 	</methods>

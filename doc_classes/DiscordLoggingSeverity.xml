@@ -7,20 +7,15 @@
 	<tutorials>
 	</tutorials>
 	<constants>
-		<constant name="Verbose" value="1" enum="Enum">
-		Verbose.
+		<constant name="VERBOSE" value="1" enum="Enum">
 		</constant>
-		<constant name="Info" value="2" enum="Enum">
-		Info.
+		<constant name="INFO" value="2" enum="Enum">
 		</constant>
-		<constant name="Warning" value="3" enum="Enum">
-		Warning.
+		<constant name="WARNING" value="3" enum="Enum">
 		</constant>
-		<constant name="Error" value="4" enum="Enum">
-		Error.
+		<constant name="ERROR" value="4" enum="Enum">
 		</constant>
-		<constant name="None" value="5" enum="Enum">
-		None.
+		<constant name="NONE" value="5" enum="Enum">
 		</constant>
 		<constant name="id" value="19">
 		</constant>

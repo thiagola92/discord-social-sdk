@@ -1,12 +1,11 @@
 # Responsible for collecting informations from XML tree.
 import re
-from re import Match
 from pathlib import Path
 from xml.etree import ElementTree
 from xml.etree.ElementTree import Element, tostring
 
 from check import check_overloading, check_callbacks, check_enums
-from name import to_gdscript_variable_name, to_snake_case
+from name import to_gdscript_variable_name, to_snake_case, to_constant_case
 from parse import Parser
 from data import (
     CallbackInfo,
@@ -102,6 +101,7 @@ def collect_enums(tree: Element) -> list[EnumInfo]:
             evi.name = collect_text(ev.find("name"))
             evi.short_desc = collect_content(ev.find("briefdescription"))
             evi.long_desc = collect_content(ev.find("detaileddescription"))
+            evi.gdscript_name = to_constant_case(evi.name)
 
             if ev.find("initializer") is not None:
                 evi.init = collect_text(ev.find("initializer")) + ","

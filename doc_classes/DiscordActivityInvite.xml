@@ -59,63 +59,63 @@
 			<return type="void" />
 			<param index="0" name="application_id" type="int" />
 			<description>
-			Setter for [TODO:].
+			Setter for &lt;ref refid="classdiscordpp_1_1ActivityInvite_1a38ff19dd954a406c8a21434a081f1c33" kindref="member"&gt;ActivityInvite::ApplicationId&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="set_channel_id">
 			<return type="void" />
 			<param index="0" name="channel_id" type="int" />
 			<description>
-			Setter for [TODO:].
+			Setter for &lt;ref refid="classdiscordpp_1_1ActivityInvite_1aa74d7a03e46c5ae5f0ee720b70836f0e" kindref="member"&gt;ActivityInvite::ChannelId&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="set_is_valid">
 			<return type="void" />
 			<param index="0" name="is_valid" type="bool" />
 			<description>
-			Setter for [TODO:].
+			Setter for &lt;ref refid="classdiscordpp_1_1ActivityInvite_1a92e24e683870b13e8f464d6b93312433" kindref="member"&gt;ActivityInvite::IsValid&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="set_message_id">
 			<return type="void" />
 			<param index="0" name="message_id" type="int" />
 			<description>
-			Setter for [TODO:].
+			Setter for &lt;ref refid="classdiscordpp_1_1ActivityInvite_1a4c1747cc8655bc583d00e8d13d4888c2" kindref="member"&gt;ActivityInvite::MessageId&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="set_parent_application_id">
 			<return type="void" />
 			<param index="0" name="parent_application_id" type="int" />
 			<description>
-			Setter for [TODO:].
+			Setter for &lt;ref refid="classdiscordpp_1_1ActivityInvite_1acffc092f6a3d069c24cd4f36bdd40318" kindref="member"&gt;ActivityInvite::ParentApplicationId&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="set_party_id">
 			<return type="void" />
 			<param index="0" name="party_id" type="String" />
 			<description>
-			Setter for [TODO:].
+			Setter for &lt;ref refid="classdiscordpp_1_1ActivityInvite_1ab4d0b0ccc568941375458518fb571176" kindref="member"&gt;ActivityInvite::PartyId&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="set_sender_id">
 			<return type="void" />
 			<param index="0" name="sender_id" type="int" />
 			<description>
-			Setter for [TODO:].
+			Setter for &lt;ref refid="classdiscordpp_1_1ActivityInvite_1a58153cc37c7bcb733a28f143dc1ed5a8" kindref="member"&gt;ActivityInvite::SenderId&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="set_session_id">
 			<return type="void" />
 			<param index="0" name="session_id" type="String" />
 			<description>
-			Setter for [TODO:].
+			Setter for &lt;ref refid="classdiscordpp_1_1ActivityInvite_1a0c947f356db2b20a68a9ad536bbd4f5c" kindref="member"&gt;ActivityInvite::SessionId&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="set_type">
 			<return type="void" />
 			<param index="0" name="type" type="int" enum="DiscordActivityActionTypes.Enum" />
 			<description>
-			Setter for [TODO:].
+			Setter for &lt;ref refid="classdiscordpp_1_1ActivityInvite_1af5ecd0fa6a4ce8435929c086894471e2" kindref="member"&gt;ActivityInvite::Type&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="type">

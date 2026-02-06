@@ -7,14 +7,11 @@
 	<tutorials>
 	</tutorials>
 	<constants>
-		<constant name="OnlinePlayingGame" value="0" enum="Enum">
-		Users who are online and currently playing the game.
+		<constant name="ONLINE_PLAYING_GAME" value="0" enum="Enum">
 		</constant>
-		<constant name="OnlineElsewhere" value="1" enum="Enum">
-		Users who are online but not playing the game.
+		<constant name="ONLINE_ELSEWHERE" value="1" enum="Enum">
 		</constant>
-		<constant name="Offline" value="2" enum="Enum">
-		Users who are offline.
+		<constant name="OFFLINE" value="2" enum="Enum">
 		</constant>
 		<constant name="id" value="20">
 		</constant>

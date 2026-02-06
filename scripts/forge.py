@@ -79,25 +79,31 @@ def forge_enum_definitions(namespace_info: NamespaceInfo) -> str:
     enums_definitions = []
 
     for e in namespace_info.enums:
+        eb = "".join([get_enum_bind(v.gdscript_name) for v in e.values])
+        v = "".join([v.gdscript_name + v.init for v in e.values])
+
         enums_definitions.append(
             get_enum_definition(
                 enum_name=e.name,
-                enums_binds="".join([get_enum_bind(v.name) for v in e.values]),
+                enums_binds=eb,
                 const_binds=get_const_bind("id"),
                 enum_id=str(e.identifier),
-                values="".join([v.name + v.init for v in e.values]),
+                values=v,
             )
         )
 
     for c in namespace_info.classes:
         for e in c.enums:
+            eb = "".join([get_enum_bind(v.gdscript_name) for v in e.values])
+            v = "".join([v.gdscript_name + v.init for v in e.values])
+
             enums_definitions.append(
                 get_enum_definition(
                     enum_name=c.name + e.name,
-                    enums_binds="".join([get_enum_bind(v.name) for v in e.values]),
+                    enums_binds=eb,
                     const_binds=get_const_bind("id"),
                     enum_id=str(e.identifier),
-                    values="".join([v.name + v.init for v in e.values]),
+                    values=v,
                 )
             )
 

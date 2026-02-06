@@ -3,13 +3,12 @@
 	Enum that represents various informational disclosures that Discord may make to users, so that the game can identity them and customize their rendering as desired.
 </brief_description>
 	<description>
-	See [DiscordMessageHandle] for more details.
+	See &lt;ref refid="classdiscordpp_1_1MessageHandle" kindref="compound"&gt;MessageHandle&lt;/ref&gt; for more details.
 </description>
 	<tutorials>
 	</tutorials>
 	<constants>
-		<constant name="MessageDataVisibleOnDiscord" value="3" enum="Enum">
-		This disclosure type happens the first time a user sends a message in game, and that message will be able to be viewed on Discord, so the user knows their content is being copied out of the game.
+		<constant name="MESSAGE_DATA_VISIBLE_ON_DISCORD" value="3" enum="Enum">
 		</constant>
 		<constant name="id" value="16">
 		</constant>

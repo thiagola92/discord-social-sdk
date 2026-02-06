@@ -7,17 +7,13 @@
 	<tutorials>
 	</tutorials>
 	<constants>
-		<constant name="Gif" value="0" enum="Enum">
-		Gif.
+		<constant name="GIF" value="0" enum="Enum">
 		</constant>
-		<constant name="Webp" value="1" enum="Enum">
-		Webp.
+		<constant name="WEBP" value="1" enum="Enum">
 		</constant>
-		<constant name="Png" value="2" enum="Enum">
-		Png.
+		<constant name="PNG" value="2" enum="Enum">
 		</constant>
-		<constant name="Jpeg" value="3" enum="Enum">
-		Jpeg.
+		<constant name="JPEG" value="3" enum="Enum">
 		</constant>
 		<constant name="id" value="26">
 		</constant>

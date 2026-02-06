@@ -7,14 +7,11 @@
 	<tutorials>
 	</tutorials>
 	<constants>
-		<constant name="Client" value="0" enum="Enum">
-		[DiscordClient].
+		<constant name="CLIENT" value="0" enum="Enum">
 		</constant>
-		<constant name="Voice" value="1" enum="Enum">
-		Voice.
+		<constant name="VOICE" value="1" enum="Enum">
 		</constant>
-		<constant name="Network" value="2" enum="Enum">
-		Network.
+		<constant name="NETWORK" value="2" enum="Enum">
 		</constant>
 		<constant name="id" value="25">
 		</constant>

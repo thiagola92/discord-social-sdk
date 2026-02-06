@@ -8,29 +8,21 @@
 	<tutorials>
 	</tutorials>
 	<constants>
-		<constant name="Online" value="0" enum="Enum">
-		The user is online and recently active.
+		<constant name="ONLINE" value="0" enum="Enum">
 		</constant>
-		<constant name="Offline" value="1" enum="Enum">
-		The user is offline and not connected to Discord.
+		<constant name="OFFLINE" value="1" enum="Enum">
 		</constant>
-		<constant name="Blocked" value="2" enum="Enum">
-		Blocked.
+		<constant name="BLOCKED" value="2" enum="Enum">
 		</constant>
-		<constant name="Idle" value="3" enum="Enum">
-		The user is online, but has not been active for a while and may be away from their computer.
+		<constant name="IDLE" value="3" enum="Enum">
 		</constant>
-		<constant name="Dnd" value="4" enum="Enum">
-		The user is online, but wishes to suppress notifications for the time being.
+		<constant name="DND" value="4" enum="Enum">
 		</constant>
-		<constant name="Invisible" value="5" enum="Enum">
-		The user is online, but wishes to appear as if they are offline to other users.
+		<constant name="INVISIBLE" value="5" enum="Enum">
 		</constant>
-		<constant name="Streaming" value="6" enum="Enum">
-		The user is online and is actively streaming content.
+		<constant name="STREAMING" value="6" enum="Enum">
 		</constant>
-		<constant name="Unknown" value="7" enum="Enum">
-		Unknown.
+		<constant name="UNKNOWN" value="7" enum="Enum">
 		</constant>
 		<constant name="id" value="15">
 		</constant>

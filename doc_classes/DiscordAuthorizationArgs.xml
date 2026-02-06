@@ -1,6 +1,6 @@
 <class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordAuthorizationArgs" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	Arguments to the [TODO:] function.
+	Arguments to the &lt;ref refid="classdiscordpp_1_1Client_1ace94a58e27545a933d79db32b387a468" kindref="member"&gt;Client::Authorize&lt;/ref&gt; function.
 </brief_description>
 	<description>
 	</description>
@@ -10,14 +10,14 @@
 		<method name="client_id">
 			<return type="int" />
 			<description>
-			Optional. The Discord application ID for your game. Defaults to the value set by [TODO:].
+			Optional. The Discord application ID for your game. Defaults to the value set by &lt;ref refid="classdiscordpp_1_1Client_1ad452335c06b28be0406dab824acccc49" kindref="member"&gt;Client::SetApplicationId&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="code_challenge">
 			<return type="Variant" />
 			<description>
-			If using the [TODO:] flow, you will need to generate a code challenge and verifier.
-			Use [TODO:] to generate these values and pass the challenge property here.
+			If using the &lt;ref refid="classdiscordpp_1_1Client_1aaee636f91fb1ea3465157c20313b702c" kindref="member"&gt;Client::GetToken&lt;/ref&gt; flow, you will need to generate a code challenge and verifier.
+			Use &lt;ref refid="classdiscordpp_1_1Client_1aba6adc1f978e7bf4c5433c560e1ad704" kindref="member"&gt;Client::CreateAuthorizationCodeVerifier&lt;/ref&gt; to generate these values and pass the challenge property here.
 			</description>
 		</method>
 		<method name="custom_scheme_param">
@@ -47,7 +47,7 @@ This is particularly useful for distinguishing between multiple games from the s
 			<return type="String" />
 			<description>
 			Scopes is a space separated string of the oauth scopes your game is requesting.
-			Most games should just pass in [TODO:] or [TODO:] which will include these scopes, respectively: [code]openid sdk.social_layer[/code] or [code]openid sdk.social_layer_presence[/code]
+			Most games should just pass in &lt;ref refid="classdiscordpp_1_1Client_1a71499da752fbdc2d4326ae0fd36c0dd1" kindref="member"&gt;Client::GetDefaultCommunicationScopes&lt;/ref&gt; or &lt;ref refid="classdiscordpp_1_1Client_1a7648bd1d2f7d9a86ebd0edb8bef12b5c" kindref="member"&gt;Client::GetDefaultPresenceScopes&lt;/ref&gt; which will include these scopes, respectively: [code]openid sdk.social_layer[/code] or [code]openid sdk.social_layer_presence[/code]
 [code]sdk.social_layer[/code] and [code]sdk.social_layer_presence[/code] automatically expand to include all the necessary scopes for the integration.
 You can pass in additional scopes if you need to, but as a general rule you should only request the scopes you actually need, and the user will need to grant access to those additional scopes as well.
 			</description>
@@ -56,49 +56,49 @@ You can pass in additional scopes if you need to, but as a general rule you shou
 			<return type="void" />
 			<param index="0" name="client_id" type="int" />
 			<description>
-			Setter for [TODO:].
+			Setter for &lt;ref refid="classdiscordpp_1_1AuthorizationArgs_1a7579dadf3052c4ea4379131ac9e2e30b" kindref="member"&gt;AuthorizationArgs::ClientId&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="set_code_challenge">
 			<return type="void" />
 			<param index="0" name="code_challenge" type="Variant" />
 			<description>
-			Setter for [TODO:].
+			Setter for &lt;ref refid="classdiscordpp_1_1AuthorizationArgs_1a59930370c7ab835cf09fb6d8f893dd96" kindref="member"&gt;AuthorizationArgs::CodeChallenge&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="set_custom_scheme_param">
 			<return type="void" />
 			<param index="0" name="custom_scheme_param" type="Variant" />
 			<description>
-			Setter for [TODO:].
+			Setter for &lt;ref refid="classdiscordpp_1_1AuthorizationArgs_1abfe84accfc44740ffb36a408ac17277f" kindref="member"&gt;AuthorizationArgs::CustomSchemeParam&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="set_integration_type">
 			<return type="void" />
 			<param index="0" name="integration_type" type="Variant" />
 			<description>
-			Setter for [TODO:].
+			Setter for &lt;ref refid="classdiscordpp_1_1AuthorizationArgs_1ac1ab5d5840789b48896d427cd78102d3" kindref="member"&gt;AuthorizationArgs::IntegrationType&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="set_nonce">
 			<return type="void" />
 			<param index="0" name="nonce" type="Variant" />
 			<description>
-			Setter for [TODO:].
+			Setter for &lt;ref refid="classdiscordpp_1_1AuthorizationArgs_1a1dff6b488e573fc4eaa63f4ddb6262aa" kindref="member"&gt;AuthorizationArgs::Nonce&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="set_scopes">
 			<return type="void" />
 			<param index="0" name="scopes" type="String" />
 			<description>
-			Setter for [TODO:].
+			Setter for &lt;ref refid="classdiscordpp_1_1AuthorizationArgs_1ae5989180022eccc3bfdf65dda4877771" kindref="member"&gt;AuthorizationArgs::Scopes&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="set_state">
 			<return type="void" />
 			<param index="0" name="state" type="Variant" />
 			<description>
-			Setter for [TODO:].
+			Setter for &lt;ref refid="classdiscordpp_1_1AuthorizationArgs_1a0c85866ae01ac14ad0f9038fc2559a05" kindref="member"&gt;AuthorizationArgs::State&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="state">

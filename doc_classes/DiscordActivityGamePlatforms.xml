@@ -7,23 +7,18 @@
 	<tutorials>
 	</tutorials>
 	<constants>
-		<constant name="Desktop" value="1" enum="Enum">
-		Desktop.
+		<constant name="DESKTOP" value="1" enum="Enum">
 		</constant>
-		<constant name="Xbox" value="2" enum="Enum">
-		Xbox.
+		<constant name="XBOX" value="2" enum="Enum">
 		</constant>
-		<constant name="Samsung" value="4" enum="Enum">
-		Samsung.
+		<constant name="SAMSUNG" value="4" enum="Enum">
 		</constant>
 		<constant name="IOS" value="8" enum="Enum">
 		IOS.
 		</constant>
-		<constant name="Android" value="16" enum="Enum">
-		Android.
+		<constant name="ANDROID" value="16" enum="Enum">
 		</constant>
-		<constant name="Embedded" value="32" enum="Enum">
-		Embedded.
+		<constant name="EMBEDDED" value="32" enum="Enum">
 		</constant>
 		<constant name="PS4" value="64" enum="Enum">
 		PS4.

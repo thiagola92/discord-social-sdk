@@ -7,37 +7,25 @@
 	<tutorials>
 	</tutorials>
 	<constants>
-		<constant name="None" value="0" enum="Enum">
-		No error, the operation was successful.
+		<constant name="NONE" value="0" enum="Enum">
 		</constant>
-		<constant name="NetworkError" value="1" enum="Enum">
-		The user is offline or there was some network issue that prevented an underlying HTTP call from succeeding.
+		<constant name="NETWORK_ERROR" value="1" enum="Enum">
 		</constant>
-		<constant name="HTTPError" value="2" enum="Enum">
-		An HTTP call was made to Discord's servers but a non success HTTP status code was returned. In some cases this may be retryable, and if so [TODO:] will be true. In most cases though the failure is due to a validation or permissions error, and the request is not retryable. [TODO:] and [TODO:] will have more information.
+		<constant name="HTTPERROR" value="2" enum="Enum">
 		</constant>
-		<constant name="ClientNotReady" value="3" enum="Enum">
-		An operation such as sending a friend request or joining a lobby was attempted but the [DiscordClient] is not yet ready. Wait for [TODO:] to change to [TODO:] before trying again.
-		Also be sure to call [TODO:] to begin the process of connecting to Discord's servers, otherwise the [DiscordClient] will never become ready.
+		<constant name="CLIENT_NOT_READY" value="3" enum="Enum">
 		</constant>
-		<constant name="Disabled" value="4" enum="Enum">
-		An operation was temporarily disabled for stability reasons.
+		<constant name="DISABLED" value="4" enum="Enum">
 		</constant>
-		<constant name="ClientDestroyed" value="5" enum="Enum">
-		The [DiscordClient] has been destroyed and so this operation cannot complete.
+		<constant name="CLIENT_DESTROYED" value="5" enum="Enum">
 		</constant>
-		<constant name="ValidationError" value="6" enum="Enum">
-		Used when an SDK method is called but the inputs don't pass local validation. For example if one attempts to accept a friend request when there is no pending friend request for that user, this &lt;ref refid="namespacediscordpp_1ae19a5aed498bc40359e4d89d14ffb446" kindref="member"&gt;ErrorType&lt;/ref&gt; would be used.
-		The specific validation error will be included in the [code]error[/code] field, and no other [DiscordClientResult] fields will be set.
+		<constant name="VALIDATION_ERROR" value="6" enum="Enum">
 		</constant>
-		<constant name="Aborted" value="7" enum="Enum">
-		The user or developer aborted an operation, such as an authorization flow.
+		<constant name="ABORTED" value="7" enum="Enum">
 		</constant>
-		<constant name="AuthorizationFailed" value="8" enum="Enum">
-		An authorization function failed, but not necessarily as the result of an HTTP call that returned an error.
+		<constant name="AUTHORIZATION_FAILED" value="8" enum="Enum">
 		</constant>
-		<constant name="RPCError" value="9" enum="Enum">
-		An RPC call was made to Discord's desktop application, but it returned a non-success result. The error and errorCode fields should both be set with more information.
+		<constant name="RPCERROR" value="9" enum="Enum">
 		</constant>
 		<constant name="id" value="5">
 		</constant>

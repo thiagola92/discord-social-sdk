@@ -7,11 +7,9 @@
 	<tutorials>
 	</tutorials>
 	<constants>
-		<constant name="User" value="0" enum="Enum">
-		User.
+		<constant name="USER" value="0" enum="Enum">
 		</constant>
-		<constant name="Bearer" value="1" enum="Enum">
-		Bearer.
+		<constant name="BEARER" value="1" enum="Enum">
 		</constant>
 		<constant name="id" value="17">
 		</constant>

@@ -16,6 +16,9 @@ class EnumValueInfo:
     short_desc: str = ""
     long_desc: str = ""
 
+    # Utility.
+    gdscript_name: str = ""
+
 
 @dataclass
 class EnumInfo:

@@ -76,7 +76,7 @@ RESERVED_NAMES = [
 
 
 def to_gdscript_variable_name(string: str) -> str:
-    """Convert string to a valid gdscript name."""
+    """Convert string to a valid gdscript variable name."""
     string = to_snake_case(string)
 
     if string in RESERVED_NAMES:
@@ -102,6 +102,27 @@ def to_snake_case(string: str) -> str:
             new_string += c.lower()
         else:
             new_string += c
+
+    return new_string
+
+
+def to_constant_case(string: str) -> str:
+    """Convert string to CONSTANT_CASE."""
+
+    new_string = ""
+    can_add_underscore = False
+
+    for c in string:
+        if c.islower():
+            new_string += c.upper()
+            can_add_underscore = True
+        elif c.isupper():
+            if can_add_underscore:
+                new_string += "_"
+                can_add_underscore = False
+            new_string += c
+        else:
+            new_string += c.upper()
 
     return new_string
 

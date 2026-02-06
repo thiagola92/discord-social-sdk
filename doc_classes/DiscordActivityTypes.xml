@@ -9,26 +9,19 @@ See [url=https://discord.com/developers/docs/rich-presence/overview]https://disc
 	<tutorials>
 	</tutorials>
 	<constants>
-		<constant name="Playing" value="0" enum="Enum">
-		Playing.
+		<constant name="PLAYING" value="0" enum="Enum">
 		</constant>
-		<constant name="Streaming" value="1" enum="Enum">
-		Streaming.
+		<constant name="STREAMING" value="1" enum="Enum">
 		</constant>
-		<constant name="Listening" value="2" enum="Enum">
-		Listening.
+		<constant name="LISTENING" value="2" enum="Enum">
 		</constant>
-		<constant name="Watching" value="3" enum="Enum">
-		Watching.
+		<constant name="WATCHING" value="3" enum="Enum">
 		</constant>
-		<constant name="CustomStatus" value="4" enum="Enum">
-		CustomStatus.
+		<constant name="CUSTOM_STATUS" value="4" enum="Enum">
 		</constant>
-		<constant name="Competing" value="5" enum="Enum">
-		Competing.
+		<constant name="COMPETING" value="5" enum="Enum">
 		</constant>
-		<constant name="HangStatus" value="6" enum="Enum">
-		HangStatus.
+		<constant name="HANG_STATUS" value="6" enum="Enum">
 		</constant>
 		<constant name="id" value="2">
 		</constant>

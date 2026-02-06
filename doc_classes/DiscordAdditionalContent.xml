@@ -17,28 +17,28 @@
 			<return type="bool" />
 			<param index="0" name="rhs" type="DiscordAdditionalContent" />
 			<description>
-			Compares each field of the [DiscordAdditionalContent] struct for equality.
+			Compares each field of the &lt;ref refid="classdiscordpp_1_1AdditionalContent" kindref="compound"&gt;AdditionalContent&lt;/ref&gt; struct for equality.
 			</description>
 		</method>
 		<method name="set_count">
 			<return type="void" />
 			<param index="0" name="count" type="int" />
 			<description>
-			Setter for [TODO:].
+			Setter for &lt;ref refid="classdiscordpp_1_1AdditionalContent_1a67f810f29c69d51eff30eb424e17428c" kindref="member"&gt;AdditionalContent::Count&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="set_title">
 			<return type="void" />
 			<param index="0" name="title" type="Variant" />
 			<description>
-			Setter for [TODO:].
+			Setter for &lt;ref refid="classdiscordpp_1_1AdditionalContent_1a5162c8a105790c4a654ace2a0fba7b6c" kindref="member"&gt;AdditionalContent::Title&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="set_type">
 			<return type="void" />
 			<param index="0" name="type" type="int" enum="DiscordAdditionalContentType.Enum" />
 			<description>
-			Setter for [TODO:].
+			Setter for &lt;ref refid="classdiscordpp_1_1AdditionalContent_1a5f71d7a58bfcf125e32cff555f6dd032" kindref="member"&gt;AdditionalContent::Type&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="title">

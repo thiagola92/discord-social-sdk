@@ -10,23 +10,17 @@
 		<constant name="OIDC" value="0" enum="Enum">
 		OIDC.
 		</constant>
-		<constant name="EpicOnlineServices" value="1" enum="Enum">
-		EpicOnlineServices.
+		<constant name="EPIC_ONLINE_SERVICES" value="1" enum="Enum">
 		</constant>
-		<constant name="Steam" value="2" enum="Enum">
-		Steam.
+		<constant name="STEAM" value="2" enum="Enum">
 		</constant>
-		<constant name="Unity" value="3" enum="Enum">
-		Unity.
+		<constant name="UNITY" value="3" enum="Enum">
 		</constant>
-		<constant name="DiscordBot" value="4" enum="Enum">
-		DiscordBot.
+		<constant name="DISCORD_BOT" value="4" enum="Enum">
 		</constant>
-		<constant name="None" value="5" enum="Enum">
-		None.
+		<constant name="NONE" value="5" enum="Enum">
 		</constant>
-		<constant name="Unknown" value="6" enum="Enum">
-		Unknown.
+		<constant name="UNKNOWN" value="6" enum="Enum">
 		</constant>
 		<constant name="id" value="14">
 		</constant>

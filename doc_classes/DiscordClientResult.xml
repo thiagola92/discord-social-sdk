@@ -4,11 +4,11 @@
 </brief_description>
 	<description>
 	Functions can fail for a few reasons including:
-- The [DiscordClient] is not yet ready and able to perform the action.
+- The &lt;ref refid="classdiscordpp_1_1Client" kindref="compound"&gt;Client&lt;/ref&gt; is not yet ready and able to perform the action.
 - The inputs passed to the function are invalid.
 - The function makes an API call to Discord's backend which returns an error.
 - The user is offline.
-The [TODO:] field is used to to distinguish between the above types of failures
+The &lt;ref refid="classdiscordpp_1_1ClientResult_1a4fb34d5bb67e2e742e1878c6d07a05ac" kindref="member"&gt;ClientResult::Type&lt;/ref&gt; field is used to to distinguish between the above types of failures
 </description>
 	<tutorials>
 	</tutorials>
@@ -51,56 +51,56 @@ This will only be set if the type of error is &lt;ref refid="namespacediscordpp_
 			<return type="void" />
 			<param index="0" name="error" type="String" />
 			<description>
-			Setter for [TODO:].
+			Setter for &lt;ref refid="classdiscordpp_1_1ClientResult_1a3175ab59cd9268a3b2c6484129c89e04" kindref="member"&gt;ClientResult::Error&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="set_error_code">
 			<return type="void" />
 			<param index="0" name="error_code" type="int" />
 			<description>
-			Setter for [TODO:].
+			Setter for &lt;ref refid="classdiscordpp_1_1ClientResult_1ab361cb3d3381401f0d73736d5f49b3f5" kindref="member"&gt;ClientResult::ErrorCode&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="set_response_body">
 			<return type="void" />
 			<param index="0" name="response_body" type="String" />
 			<description>
-			Setter for [TODO:].
+			Setter for &lt;ref refid="classdiscordpp_1_1ClientResult_1acc890e84f91a54bfa4e6257442fba9ed" kindref="member"&gt;ClientResult::ResponseBody&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="set_retry_after">
 			<return type="void" />
 			<param index="0" name="retry_after" type="float" />
 			<description>
-			Setter for [TODO:].
+			Setter for &lt;ref refid="classdiscordpp_1_1ClientResult_1ac739adca52b90d6b4cbed5753c30fd65" kindref="member"&gt;ClientResult::RetryAfter&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="set_retryable">
 			<return type="void" />
 			<param index="0" name="retryable" type="bool" />
 			<description>
-			Setter for [TODO:].
+			Setter for &lt;ref refid="classdiscordpp_1_1ClientResult_1a0d220638f4a36c0b8b731f601e0ac02d" kindref="member"&gt;ClientResult::Retryable&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="set_status">
 			<return type="void" />
 			<param index="0" name="status" type="int" enum="DiscordHttpStatusCode.Enum" />
 			<description>
-			Setter for [TODO:].
+			Setter for &lt;ref refid="classdiscordpp_1_1ClientResult_1adbd9aeece922b420d020987e8c4afbcd" kindref="member"&gt;ClientResult::Status&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="set_successful">
 			<return type="void" />
 			<param index="0" name="successful" type="bool" />
 			<description>
-			Setter for [TODO:].
+			Setter for &lt;ref refid="classdiscordpp_1_1ClientResult_1aef3b1aca3cd156daf488ca13ae87313b" kindref="member"&gt;ClientResult::Successful&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="set_type">
 			<return type="void" />
 			<param index="0" name="type" type="int" enum="DiscordErrorType.Enum" />
 			<description>
-			Setter for [TODO:].
+			Setter for &lt;ref refid="classdiscordpp_1_1ClientResult_1a4fb34d5bb67e2e742e1878c6d07a05ac" kindref="member"&gt;ClientResult::Type&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="status">
@@ -119,7 +119,7 @@ This will only be set if the type of error is &lt;ref refid="namespacediscordpp_
 		<method name="to_string_discord">
 			<return type="String" />
 			<description>
-			Returns the error message if any of the [DiscordClientResult].
+			Returns the error message if any of the &lt;ref refid="classdiscordpp_1_1ClientResult" kindref="compound"&gt;ClientResult&lt;/ref&gt;.
 			</description>
 		</method>
 		<method name="type">

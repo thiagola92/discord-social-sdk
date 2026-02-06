@@ -7,11 +7,9 @@
 	<tutorials>
 	</tutorials>
 	<constants>
-		<constant name="GuildInstall" value="0" enum="Enum">
-		GuildInstall.
+		<constant name="GUILD_INSTALL" value="0" enum="Enum">
 		</constant>
-		<constant name="UserInstall" value="1" enum="Enum">
-		UserInstall.
+		<constant name="USER_INSTALL" value="1" enum="Enum">
 		</constant>
 		<constant name="id" value="8">
 		</constant>

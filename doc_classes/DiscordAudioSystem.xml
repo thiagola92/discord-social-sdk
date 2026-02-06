@@ -7,11 +7,9 @@
 	<tutorials>
 	</tutorials>
 	<constants>
-		<constant name="Standard" value="0" enum="Enum">
-		Use the standard audio system.
+		<constant name="STANDARD" value="0" enum="Enum">
 		</constant>
-		<constant name="Game" value="1" enum="Enum">
-		Use the game audio system.
+		<constant name="GAME" value="1" enum="Enum">
 		</constant>
 		<constant name="id" value="11">
 		</constant>

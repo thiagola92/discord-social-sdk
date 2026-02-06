@@ -7,12 +7,9 @@
 	<tutorials>
 	</tutorials>
 	<constants>
-		<constant name="Private" value="0" enum="Enum">
-		The party is private (or unknown), which means that the user is in a party but it is not joinable without sending a request to join the party.
-		This is the default value. You will also receive this value when receiving other users' activities as the party privacy for other users is not exposed.
+		<constant name="PRIVATE" value="0" enum="Enum">
 		</constant>
-		<constant name="Public" value="1" enum="Enum">
-		The party is public, which means that the user is in a party which [i]could[/i] be joinable by either friends or mutual voice participants without sending a request to join the party. This depends on a user's desired Discord account privacy settings.
+		<constant name="PUBLIC" value="1" enum="Enum">
 		</constant>
 		<constant name="id" value="1">
 		</constant>

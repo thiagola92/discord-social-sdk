@@ -8,185 +8,125 @@
 	<tutorials>
 	</tutorials>
 	<constants>
-		<constant name="None" value="0" enum="Enum">
-		None.
+		<constant name="NONE" value="0" enum="Enum">
 		</constant>
-		<constant name="Continue" value="100" enum="Enum">
-		Continue.
+		<constant name="CONTINUE" value="100" enum="Enum">
 		</constant>
-		<constant name="SwitchingProtocols" value="101" enum="Enum">
-		SwitchingProtocols.
+		<constant name="SWITCHING_PROTOCOLS" value="101" enum="Enum">
 		</constant>
-		<constant name="Processing" value="102" enum="Enum">
-		Processing.
+		<constant name="PROCESSING" value="102" enum="Enum">
 		</constant>
-		<constant name="EarlyHints" value="103" enum="Enum">
-		EarlyHints.
+		<constant name="EARLY_HINTS" value="103" enum="Enum">
 		</constant>
-		<constant name="Ok" value="200" enum="Enum">
-		Ok.
+		<constant name="OK" value="200" enum="Enum">
 		</constant>
-		<constant name="Created" value="201" enum="Enum">
-		Created.
+		<constant name="CREATED" value="201" enum="Enum">
 		</constant>
-		<constant name="Accepted" value="202" enum="Enum">
-		Accepted.
+		<constant name="ACCEPTED" value="202" enum="Enum">
 		</constant>
-		<constant name="NonAuthoritativeInfo" value="203" enum="Enum">
-		NonAuthoritativeInfo.
+		<constant name="NON_AUTHORITATIVE_INFO" value="203" enum="Enum">
 		</constant>
-		<constant name="NoContent" value="204" enum="Enum">
-		NoContent.
+		<constant name="NO_CONTENT" value="204" enum="Enum">
 		</constant>
-		<constant name="ResetContent" value="205" enum="Enum">
-		ResetContent.
+		<constant name="RESET_CONTENT" value="205" enum="Enum">
 		</constant>
-		<constant name="PartialContent" value="206" enum="Enum">
-		PartialContent.
+		<constant name="PARTIAL_CONTENT" value="206" enum="Enum">
 		</constant>
-		<constant name="MultiStatus" value="207" enum="Enum">
-		MultiStatus.
+		<constant name="MULTI_STATUS" value="207" enum="Enum">
 		</constant>
-		<constant name="AlreadyReported" value="208" enum="Enum">
-		AlreadyReported.
+		<constant name="ALREADY_REPORTED" value="208" enum="Enum">
 		</constant>
-		<constant name="ImUsed" value="209" enum="Enum">
-		ImUsed.
+		<constant name="IM_USED" value="209" enum="Enum">
 		</constant>
-		<constant name="MultipleChoices" value="300" enum="Enum">
-		MultipleChoices.
+		<constant name="MULTIPLE_CHOICES" value="300" enum="Enum">
 		</constant>
-		<constant name="MovedPermanently" value="301" enum="Enum">
-		MovedPermanently.
+		<constant name="MOVED_PERMANENTLY" value="301" enum="Enum">
 		</constant>
-		<constant name="Found" value="302" enum="Enum">
-		Found.
+		<constant name="FOUND" value="302" enum="Enum">
 		</constant>
-		<constant name="SeeOther" value="303" enum="Enum">
-		SeeOther.
+		<constant name="SEE_OTHER" value="303" enum="Enum">
 		</constant>
-		<constant name="NotModified" value="304" enum="Enum">
-		NotModified.
+		<constant name="NOT_MODIFIED" value="304" enum="Enum">
 		</constant>
-		<constant name="TemporaryRedirect" value="307" enum="Enum">
-		TemporaryRedirect.
+		<constant name="TEMPORARY_REDIRECT" value="307" enum="Enum">
 		</constant>
-		<constant name="PermanentRedirect" value="308" enum="Enum">
-		PermanentRedirect.
+		<constant name="PERMANENT_REDIRECT" value="308" enum="Enum">
 		</constant>
-		<constant name="BadRequest" value="400" enum="Enum">
-		BadRequest.
+		<constant name="BAD_REQUEST" value="400" enum="Enum">
 		</constant>
-		<constant name="Unauthorized" value="401" enum="Enum">
-		Unauthorized.
+		<constant name="UNAUTHORIZED" value="401" enum="Enum">
 		</constant>
-		<constant name="PaymentRequired" value="402" enum="Enum">
-		PaymentRequired.
+		<constant name="PAYMENT_REQUIRED" value="402" enum="Enum">
 		</constant>
-		<constant name="Forbidden" value="403" enum="Enum">
-		Forbidden.
+		<constant name="FORBIDDEN" value="403" enum="Enum">
 		</constant>
-		<constant name="NotFound" value="404" enum="Enum">
-		NotFound.
+		<constant name="NOT_FOUND" value="404" enum="Enum">
 		</constant>
-		<constant name="MethodNotAllowed" value="405" enum="Enum">
-		MethodNotAllowed.
+		<constant name="METHOD_NOT_ALLOWED" value="405" enum="Enum">
 		</constant>
-		<constant name="NotAcceptable" value="406" enum="Enum">
-		NotAcceptable.
+		<constant name="NOT_ACCEPTABLE" value="406" enum="Enum">
 		</constant>
-		<constant name="ProxyAuthRequired" value="407" enum="Enum">
-		ProxyAuthRequired.
+		<constant name="PROXY_AUTH_REQUIRED" value="407" enum="Enum">
 		</constant>
-		<constant name="RequestTimeout" value="408" enum="Enum">
-		RequestTimeout.
+		<constant name="REQUEST_TIMEOUT" value="408" enum="Enum">
 		</constant>
-		<constant name="Conflict" value="409" enum="Enum">
-		Conflict.
+		<constant name="CONFLICT" value="409" enum="Enum">
 		</constant>
-		<constant name="Gone" value="410" enum="Enum">
-		Gone.
+		<constant name="GONE" value="410" enum="Enum">
 		</constant>
-		<constant name="LengthRequired" value="411" enum="Enum">
-		LengthRequired.
+		<constant name="LENGTH_REQUIRED" value="411" enum="Enum">
 		</constant>
-		<constant name="PreconditionFailed" value="412" enum="Enum">
-		PreconditionFailed.
+		<constant name="PRECONDITION_FAILED" value="412" enum="Enum">
 		</constant>
-		<constant name="PayloadTooLarge" value="413" enum="Enum">
-		PayloadTooLarge.
+		<constant name="PAYLOAD_TOO_LARGE" value="413" enum="Enum">
 		</constant>
-		<constant name="UriTooLong" value="414" enum="Enum">
-		UriTooLong.
+		<constant name="URI_TOO_LONG" value="414" enum="Enum">
 		</constant>
-		<constant name="UnsupportedMediaType" value="415" enum="Enum">
-		UnsupportedMediaType.
+		<constant name="UNSUPPORTED_MEDIA_TYPE" value="415" enum="Enum">
 		</constant>
-		<constant name="RangeNotSatisfiable" value="416" enum="Enum">
-		RangeNotSatisfiable.
+		<constant name="RANGE_NOT_SATISFIABLE" value="416" enum="Enum">
 		</constant>
-		<constant name="ExpectationFailed" value="417" enum="Enum">
-		ExpectationFailed.
+		<constant name="EXPECTATION_FAILED" value="417" enum="Enum">
 		</constant>
-		<constant name="MisdirectedRequest" value="421" enum="Enum">
-		MisdirectedRequest.
+		<constant name="MISDIRECTED_REQUEST" value="421" enum="Enum">
 		</constant>
-		<constant name="UnprocessableEntity" value="422" enum="Enum">
-		UnprocessableEntity.
+		<constant name="UNPROCESSABLE_ENTITY" value="422" enum="Enum">
 		</constant>
-		<constant name="Locked" value="423" enum="Enum">
-		Locked.
+		<constant name="LOCKED" value="423" enum="Enum">
 		</constant>
-		<constant name="FailedDependency" value="424" enum="Enum">
-		FailedDependency.
+		<constant name="FAILED_DEPENDENCY" value="424" enum="Enum">
 		</constant>
-		<constant name="TooEarly" value="425" enum="Enum">
-		TooEarly.
+		<constant name="TOO_EARLY" value="425" enum="Enum">
 		</constant>
-		<constant name="UpgradeRequired" value="426" enum="Enum">
-		UpgradeRequired.
+		<constant name="UPGRADE_REQUIRED" value="426" enum="Enum">
 		</constant>
-		<constant name="PreconditionRequired" value="428" enum="Enum">
-		PreconditionRequired.
+		<constant name="PRECONDITION_REQUIRED" value="428" enum="Enum">
 		</constant>
-		<constant name="TooManyRequests" value="429" enum="Enum">
-		TooManyRequests.
+		<constant name="TOO_MANY_REQUESTS" value="429" enum="Enum">
 		</constant>
-		<constant name="RequestHeaderFieldsTooLarge" value="431" enum="Enum">
-		RequestHeaderFieldsTooLarge.
+		<constant name="REQUEST_HEADER_FIELDS_TOO_LARGE" value="431" enum="Enum">
 		</constant>
-		<constant name="InternalServerError" value="500" enum="Enum">
-		InternalServerError.
+		<constant name="INTERNAL_SERVER_ERROR" value="500" enum="Enum">
 		</constant>
-		<constant name="NotImplemented" value="501" enum="Enum">
-		NotImplemented.
+		<constant name="NOT_IMPLEMENTED" value="501" enum="Enum">
 		</constant>
-		<constant name="BadGateway" value="502" enum="Enum">
-		BadGateway.
+		<constant name="BAD_GATEWAY" value="502" enum="Enum">
 		</constant>
-		<constant name="ServiceUnavailable" value="503" enum="Enum">
-		ServiceUnavailable.
+		<constant name="SERVICE_UNAVAILABLE" value="503" enum="Enum">
 		</constant>
-		<constant name="GatewayTimeout" value="504" enum="Enum">
-		GatewayTimeout.
+		<constant name="GATEWAY_TIMEOUT" value="504" enum="Enum">
 		</constant>
-		<constant name="HttpVersionNotSupported" value="505" enum="Enum">
-		HttpVersionNotSupported.
+		<constant name="HTTP_VERSION_NOT_SUPPORTED" value="505" enum="Enum">
 		</constant>
-		<constant name="VariantAlsoNegotiates" value="506" enum="Enum">
-		VariantAlsoNegotiates.
+		<constant name="VARIANT_ALSO_NEGOTIATES" value="506" enum="Enum">
 		</constant>
-		<constant name="InsufficientStorage" value="507" enum="Enum">
-		InsufficientStorage.
+		<constant name="INSUFFICIENT_STORAGE" value="507" enum="Enum">
 		</constant>
-		<constant name="LoopDetected" value="508" enum="Enum">
-		LoopDetected.
+		<constant name="LOOP_DETECTED" value="508" enum="Enum">
 		</constant>
-		<constant name="NotExtended" value="510" enum="Enum">
-		NotExtended.
+		<constant name="NOT_EXTENDED" value="510" enum="Enum">
 		</constant>
-		<constant name="NetworkAuthorizationRequired" value="511" enum="Enum">
-		NetworkAuthorizationRequired.
+		<constant name="NETWORK_AUTHORIZATION_REQUIRED" value="511" enum="Enum">
 		</constant>
 		<constant name="id" value="6">
 		</constant>

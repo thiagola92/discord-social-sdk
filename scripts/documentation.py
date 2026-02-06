@@ -4,7 +4,7 @@ import re
 from re import Match
 from xml.etree.ElementTree import Element
 
-from name import to_godot_class_name
+from name import to_godot_class_name, to_gdscript_variable_name, to_constant_case
 from data import FunctionInfo, ClassInfo, NamespaceInfo, EnumInfo
 
 
@@ -92,34 +92,6 @@ def to_bbcode(text: str) -> str:
     text = re.sub(r"(<computeroutput>)(<ulink .*?>)", r"\2\1", text)
     text = re.sub(r"(</ulink>)(</computeroutput>)", r"\2\1", text)
 
-    # Testing
-    def link_class(match: Match) -> str:
-        class_name, ref_type, content = match.groups()
-
-        if ref_type == "compound":
-            content = to_godot_class_name(content)
-            return f"[{content}]"
-
-        if ref_type == "member":
-            # print(match.string.strip())
-            print(match.groups())
-            return f"[TODO:]"
-
-        assert False, "New reference type"
-
-    text = re.sub(
-        r'<ref .*?refid="classdiscordpp_1_1([^_"]+).*?kindref="(.*?)".*?>(.*?)</ref>',
-        link_class,
-        text,
-    )
-
-    # Add attribute that identifies class in references.
-    # text = re.sub(
-    #     r'<(.*?)(refid="classdiscordpp_1_1)([^_"]+)(.*?)>',
-    #     r'<\1\2\3\4 classname="\3">',
-    #     text,
-    # )
-
     # Adaptation.
     text = re.sub(r"<title>(.*?)</title>", r"[u][b]\1[/b][/u]\n", text)
     text = re.sub(r"<listitem>", r"- ", text)
@@ -128,16 +100,13 @@ def to_bbcode(text: str) -> str:
     text = re.sub(r'<ulink .*url="(.*?)">(.*?)</ulink>', r"[url=\1]\2[/url]", text)
     text = re.sub(r"<computeroutput>(.*?)</computeroutput>", r"[code]\1[/code]", text)
     text = re.sub(r"<emphasis>(.*?)</emphasis>", r"[i]\1[/i]", text)
-
     text = re.sub(r"<programlisting.*?>", r"[codeblock]", text, re.DOTALL)
     text = re.sub(r"</programlisting>", r"[/codeblock]", text, re.DOTALL)
-
-    # Linking to documentation.
-    # text = re.sub(
-    #     r'<ref .*?kindref="compound".*?classname="(.*?)">.*?</ref>',
-    #     r"[Discord\1]",
-    #     text,
-    # )
+    text = re.sub(
+        r'<ref .*?refid="classdiscordpp_1_1([^_"]+).*?kindref="(.*?)".*?>(.*?)</ref>',
+        link_class,
+        text,
+    )
 
     # Too much newline.
     text = re.sub(r"\n\n\n\n", "\n", text)
@@ -145,3 +114,32 @@ def to_bbcode(text: str) -> str:
     text = re.sub(r"\n\n", "\n", text)
 
     return text.strip()
+
+
+def link_class(match: Match) -> str:
+    class_name: str = match.group(1)
+    ref_type: str = match.group(2)
+    content: str = match.group(3)
+
+    if ref_type == "compound":
+        class_name = to_godot_class_name(class_name)
+        return f"[{class_name}]"
+
+    if ref_type == "member":
+        content = content.removeprefix("discordpp::")
+        content = content.removeprefix(f"{class_name}::")
+        class_name = to_godot_class_name(class_name)
+
+        # print(match.string.strip())
+        print((class_name, content))
+
+        if "::" in content:
+            enum_name, _, enum_value = content.partition("::")
+            enum_value = to_constant_case(enum_value)
+            return f"[enum {class_name}{enum_name}.{enum_value}]"
+
+        content = content.removesuffix("()")
+        content = to_gdscript_variable_name(content)
+        return f"[method {class_name}.{content}]"
+
+    assert False, f"New reference type: {ref_type}"

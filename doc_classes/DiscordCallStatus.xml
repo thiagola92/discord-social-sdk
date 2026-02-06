@@ -1,32 +1,25 @@
 <class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordCallStatus" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	Enum that respresents the state of the [DiscordCall]'s network connection.
+	Enum that respresents the state of the &lt;ref refid="classdiscordpp_1_1Call" kindref="compound"&gt;Call&lt;/ref&gt;'s network connection.
 </brief_description>
 	<description>
 	</description>
 	<tutorials>
 	</tutorials>
 	<constants>
-		<constant name="Disconnected" value="0" enum="Enum">
-		Disconnected.
+		<constant name="DISCONNECTED" value="0" enum="Enum">
 		</constant>
-		<constant name="Joining" value="1" enum="Enum">
-		Joining.
+		<constant name="JOINING" value="1" enum="Enum">
 		</constant>
-		<constant name="Connecting" value="2" enum="Enum">
-		Connecting.
+		<constant name="CONNECTING" value="2" enum="Enum">
 		</constant>
-		<constant name="SignalingConnected" value="3" enum="Enum">
-		SignalingConnected.
+		<constant name="SIGNALING_CONNECTED" value="3" enum="Enum">
 		</constant>
-		<constant name="Connected" value="4" enum="Enum">
-		Connected.
+		<constant name="CONNECTED" value="4" enum="Enum">
 		</constant>
-		<constant name="Reconnecting" value="5" enum="Enum">
-		Reconnecting.
+		<constant name="RECONNECTING" value="5" enum="Enum">
 		</constant>
-		<constant name="Disconnecting" value="6" enum="Enum">
-		Disconnecting.
+		<constant name="DISCONNECTING" value="6" enum="Enum">
 		</constant>
 		<constant name="id" value="22">
 		</constant>

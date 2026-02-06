@@ -7,26 +7,19 @@
 	<tutorials>
 	</tutorials>
 	<constants>
-		<constant name="Other" value="0" enum="Enum">
-		Other.
+		<constant name="OTHER" value="0" enum="Enum">
 		</constant>
-		<constant name="Attachment" value="1" enum="Enum">
-		Attachment.
+		<constant name="ATTACHMENT" value="1" enum="Enum">
 		</constant>
-		<constant name="Poll" value="2" enum="Enum">
-		Poll.
+		<constant name="POLL" value="2" enum="Enum">
 		</constant>
-		<constant name="VoiceMessage" value="3" enum="Enum">
-		VoiceMessage.
+		<constant name="VOICE_MESSAGE" value="3" enum="Enum">
 		</constant>
-		<constant name="Thread" value="4" enum="Enum">
-		Thread.
+		<constant name="THREAD" value="4" enum="Enum">
 		</constant>
-		<constant name="Embed" value="5" enum="Enum">
-		Embed.
+		<constant name="EMBED" value="5" enum="Enum">
 		</constant>
-		<constant name="Sticker" value="6" enum="Enum">
-		Sticker.
+		<constant name="STICKER" value="6" enum="Enum">
 		</constant>
 		<constant name="id" value="10">
 		</constant>
