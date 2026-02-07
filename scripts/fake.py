@@ -12,7 +12,7 @@ def fake_enums_params(params: list[ParamInfo]) -> list[ParamInfo]:
         enum_to_string(EnumB x)
         enum_to_string(EnumC x)
     When transformed, it will look like:
-        enum_to_string(int x, String enum_type)
+        enum_to_string(int x, String enum_id)
 
     Fake parameter and it type are marked as fake
     so we can later decide how to represent them.
@@ -34,7 +34,7 @@ def fake_enums_params(params: list[ParamInfo]) -> list[ParamInfo]:
             fake_param.type = fake_function(p.type)
 
         fake_param.name = f"EnumType{suffix}"
-        fake_param.gdscript_name = f"enum_type{suffix}"
+        fake_param.gdscript_name = f"enum_id{suffix}"
         fake_param.callback = p.callback
         fake_param.enum = p.enum
         fake_param.fake = True
