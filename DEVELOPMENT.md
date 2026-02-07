@@ -1,67 +1,46 @@
 # Introduction
-As I already said some times... This GDExtension is just a wrapper for the [Discord Social SDK](https://discord.com/developers/docs/discord-social-sdk/overview), which means that you call the GDExtension method and it calls the SDK method.  
-
-```mermaid
-flowchart TD
-    gdscript[Discord.enum_to_string()]
-    return_void{return void?}
-    call_method1["<pre>method(args)</pre>"]
-    call_method2["<pre>auto r = method(args)</pre>"]
-    c_to_gd[c type to gdscript type]
-
-    gd_to_c-->return_void
-    return_void--"yes"-->call_method1
-    return_void--"no"-->call_method2
-    call_method2-->c_to_gd
-```
-
-How this project works? The Python code in the `scripts` directory is used to generate all the C++ code in the `src` directory. So let me be very clear...  
-
-> [!CAUTION]
-> No code should be manually added to `src` directory.  
-
-How 
-
-The C++ headers files contain the
-
-All that I want is to use the SDK from GDScript, without assuming any setup from the user, which means that I can guess all the logic behind the methods wrappers:  
-
-```mermaid
-flowchart TD
-    gd_to_c[gdscript types to c types]
-    return_void{return void?}
-    call_method1["<pre>method(args)</pre>"]
-    call_method2["<pre>auto r = method(args)</pre>"]
-    c_to_gd[c type to gdscript type]
-
-    gd_to_c-->return_void
-    return_void--"yes"-->call_method1
-    return_void--"no"-->call_method2
-    call_method2-->c_to_gd
-```
-
-Knowing this I automated generating all the GDExtension source code through Python code, which is a language that I prefer to user when I don't have to care about low level/security/speed/anything.  
-
-Now that you understand why everything is done through Python, let me explain what is done through Python:  
-- Clean headers
-- Parse headers
-- Build source code
-- Document details
+As I already said some times... This GDExtension is just a wrapper around [Discord Social SDK](https://discord.com/developers/docs/discord-social-sdk/overview), which means that you call the GDExtension method and it calls the SDK method.  
 
 ```mermaid
 flowchart LR
-    Clean --> Parse
-    Parse --> Build
-    Build --> Document
+    gdscript[GDScript]
+    gdextension[GDExtension]
+    sdk[SDK]
+
+    gdscript --"Discord.enum_to_string()"--> gdextension
+    gdextension --discordpp::EnumToString()--> sdk
+
+    gdextension --"return"--> gdscript
+    sdk --return--> gdextension
 ```
 
-**Clean**: Remove unnecessary informations from headers. We are not a C/C++ compiler, so we don't need many lines from the headers and this makes our parser job easier.  
+Basically, this GDExtension job is convert between Godot variables and C++ variables.  
 
-**Parse**: Scan headers to collect useful informations for us. This is closer to be a tokenizer + parser but built together because this is much easier than a scanning a complete programming language.  
+For example, when you pass a [`String`](https://docs.godotengine.org/en/stable/classes/class_string.html) to a GDExtension method, it will convert to a [`std::string`](https://en.cppreference.com/w/cpp/string/basic_string.html) before passing to the SDK method. And the same convertion needs to happen when returning from SDK, that's what this GDExtension do.  
 
-**Build**: Build our GDExtension source code (writing `.cpp` and `.h` files in `src/`).  
+# Project Tree
+```
+.
+├── demo/
+│   └── Godot project containing the addon, examples and tests
+├── doc_classes/
+│   └── Project classes documentation
+├── godot-cpp/
+│   └── C++ bindings for GDExtension API
+├── include/
+│   └── Discord headers
+├── lib/
+│   └── Discord libs
+├── scripts/
+│   └── Python scripts
+└── src/
+    └── GDExtension source codes and headers
+```
 
-**Document**: Update the generated XML documentation from Godot (files in `doc_classes/`) with some details to help.  
+All the important code is written in Python (inside `scripts`) and this code is responsible for generating the GDExtension code (inside `src`). So let me be very clear...  
+
+> [!CAUTION]
+> No code should be manually added to `src` directory.  
 
 ## Prerequisites
 I'm letting this so you can adapt to your operating system.  
@@ -99,25 +78,6 @@ I'm letting this so you can adapt to your operating system.
     - `sudo dnf install clang-tools-extra`
     - [VSCode](https://marketplace.visualstudio.com/items?itemName=xaver.clang-format)
 - [Discord SDK for C++](https://discord.com/developers/docs/discord-social-sdk/getting-started/using-c++#step-4-download-the-discord-sdk-for-c++)
-
-## Tree
-```
-.
-├── demo/
-│   └── Godot project containing the addon, examples and tests
-├── doc_classes/
-│   └── Project classes documentation
-├── godot-cpp/
-│   └── C++ bindings for GDExtension API
-├── include/
-│   └── Discord headers
-├── lib/
-│   └── Discord libs
-├── scripts/
-│   └── Python scripts
-└── src/
-    └── GDExtension source codes and headers
-```
 
 ## Step by step
 ```bash
