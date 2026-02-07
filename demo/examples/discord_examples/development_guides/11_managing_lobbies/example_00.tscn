@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://byjeklrugre8b"]
 
-[ext_resource type="Script" uid="uid://dute4k55el8j7" path="res://examples/discord_examples/development_guides/11_managing_lobbies/example00.gd" id="1_qiiyf"]
+[ext_resource type="Script" uid="uid://dute4k55el8j7" path="res://examples/discord_examples/development_guides/11_managing_lobbies/example_00.gd" id="1_qiiyf"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
