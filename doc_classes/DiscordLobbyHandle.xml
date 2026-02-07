@@ -42,14 +42,16 @@ Handle objects in the SDK hold a reference both to the underlying data, and to t
 			<description>
 			Returns a reference to the [DiscordCallInfoHandle] if there is an active voice call in this lobby.
 			This can allow you to display which lobby members are in voice, even if the current user has not yet joined the voice call.
-			</description>
+			Returns [DiscordCallInfoHandle] or [code]null[/code].
+</description>
 		</method>
 		<method name="get_lobby_member_handle">
 			<return type="Variant" />
 			<param index="0" name="member_id" type="int" />
 			<description>
 			Returns a reference to the [DiscordLobbyMemberHandle] for the given user ID, if they are a member of this lobby.
-			</description>
+			Returns [DiscordLobbyMemberHandle] or [code]null[/code].
+</description>
 		</method>
 		<method name="id">
 			<return type="int" />
@@ -61,7 +63,8 @@ Handle objects in the SDK hold a reference both to the underlying data, and to t
 			<return type="Variant" />
 			<description>
 			Returns information about the channel linked to this lobby, if any.
-			</description>
+			Returns [DiscordLinkedChannel] or [code]null[/code].
+</description>
 		</method>
 		<method name="lobby_member_ids">
 			<return type="int[]" />

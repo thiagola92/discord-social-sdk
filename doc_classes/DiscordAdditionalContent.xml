@@ -32,7 +32,8 @@
 			<param index="0" name="title" type="Variant" />
 			<description>
 			Setter for [method DiscordAdditionalContent.title].
-			</description>
+			Parameter [param title] can be [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="set_type">
 			<return type="void" />
@@ -45,7 +46,8 @@
 			<return type="Variant" />
 			<description>
 			When the additional content is a poll or thread, this field will contain the name of the poll or thread.
-			</description>
+			Returns [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="type">
 			<return type="int" enum="DiscordAdditionalContentType.Enum" />

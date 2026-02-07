@@ -142,27 +142,31 @@ Users can also request to join each others parties. This code snippet shows how 
 			<description>
 			The application ID of the game that the activity is associated with.
 			This field cannot be set by the SDK, and will always be the application ID of the current game or a game from the same publisher.
-			</description>
+			Returns [int] or [code]null[/code].
+</description>
 		</method>
 		<method name="assets">
 			<return type="Variant" />
 			<description>
 			Images used to customize how the [DiscordActivity] is displayed in the Discord client.
-			</description>
+			Returns [DiscordActivityAssets] or [code]null[/code].
+</description>
 		</method>
 		<method name="details">
 			<return type="Variant" />
 			<description>
 			The state [i]of the what the user is doing[/i] for this activity.
 			See the docs on the [DiscordActivity] struct for more info. If specified, must be a string between 2 and 128 characters.
-			</description>
+			Returns [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="details_url">
 			<return type="Variant" />
 			<description>
 			A URL that opens when the user clicks/taps the details text.
 			See the docs on the [DiscordActivity] struct for more info. If specified, must be a string between 2 and 256 characters.
-			</description>
+			Returns [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="equals">
 			<return type="bool" />
@@ -189,47 +193,54 @@ Users can also request to join each others parties. This code snippet shows how 
 			<description>
 			The application ID of the parent application that the activity is associated with if it exists. This is to help identify a collection of games that are from the same publisher.
 			This field cannot be set by the SDK, and will always be the application ID of the game's parent or unset if the game has no parent.
-			</description>
+			Returns [int] or [code]null[/code].
+</description>
 		</method>
 		<method name="party">
 			<return type="Variant" />
 			<description>
 			The party struct is used to indicate the size and members of the people the current user is playing with.
-			</description>
+			Returns [DiscordActivityParty] or [code]null[/code].
+</description>
 		</method>
 		<method name="secrets">
 			<return type="Variant" />
 			<description>
 			The secrets struct is used in combination with the party struct to make an [DiscordActivity] joinable.
-			</description>
+			Returns [DiscordActivitySecrets] or [code]null[/code].
+</description>
 		</method>
 		<method name="set_application_id">
 			<return type="void" />
 			<param index="0" name="application_id" type="Variant" />
 			<description>
 			Setter for [method DiscordActivity.application_id].
-			</description>
+			Parameter [param application_id] can be [int] or [code]null[/code].
+</description>
 		</method>
 		<method name="set_assets">
 			<return type="void" />
 			<param index="0" name="assets" type="Variant" />
 			<description>
 			Setter for [method DiscordActivity.assets].
-			</description>
+			Parameter [param assets] can be [DiscordActivityAssets] or [code]null[/code].
+</description>
 		</method>
 		<method name="set_details">
 			<return type="void" />
 			<param index="0" name="details" type="Variant" />
 			<description>
 			Setter for [method DiscordActivity.details].
-			</description>
+			Parameter [param details] can be [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="set_details_url">
 			<return type="void" />
 			<param index="0" name="details_url" type="Variant" />
 			<description>
 			Setter for [method DiscordActivity.details_url].
-			</description>
+			Parameter [param details_url] can be [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="set_name">
 			<return type="void" />
@@ -243,42 +254,48 @@ Users can also request to join each others parties. This code snippet shows how 
 			<param index="0" name="parent_application_id" type="Variant" />
 			<description>
 			Setter for [method DiscordActivity.parent_application_id].
-			</description>
+			Parameter [param parent_application_id] can be [int] or [code]null[/code].
+</description>
 		</method>
 		<method name="set_party">
 			<return type="void" />
 			<param index="0" name="party" type="Variant" />
 			<description>
 			Setter for [method DiscordActivity.party].
-			</description>
+			Parameter [param party] can be [DiscordActivityParty] or [code]null[/code].
+</description>
 		</method>
 		<method name="set_secrets">
 			<return type="void" />
 			<param index="0" name="secrets" type="Variant" />
 			<description>
 			Setter for [method DiscordActivity.secrets].
-			</description>
+			Parameter [param secrets] can be [DiscordActivitySecrets] or [code]null[/code].
+</description>
 		</method>
 		<method name="set_state">
 			<return type="void" />
 			<param index="0" name="state" type="Variant" />
 			<description>
 			Setter for [method DiscordActivity.state].
-			</description>
+			Parameter [param state] can be [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="set_state_url">
 			<return type="void" />
 			<param index="0" name="state_url" type="Variant" />
 			<description>
 			Setter for [method DiscordActivity.state_url].
-			</description>
+			Parameter [param state_url] can be [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="set_status_display_type">
 			<return type="void" />
 			<param index="0" name="status_display_type" type="Variant" />
 			<description>
 			Setter for [method DiscordActivity.status_display_type].
-			</description>
+			Parameter [param status_display_type] can be [DiscordStatusDisplayTypes.Enum] or [code]null[/code].
+</description>
 		</method>
 		<method name="set_supported_platforms">
 			<return type="void" />
@@ -292,7 +309,8 @@ Users can also request to join each others parties. This code snippet shows how 
 			<param index="0" name="timestamps" type="Variant" />
 			<description>
 			Setter for [method DiscordActivity.timestamps].
-			</description>
+			Parameter [param timestamps] can be [DiscordActivityTimestamps] or [code]null[/code].
+</description>
 		</method>
 		<method name="set_type">
 			<return type="void" />
@@ -306,21 +324,24 @@ Users can also request to join each others parties. This code snippet shows how 
 			<description>
 			The state [i]of the party[/i] for this activity.
 			See the docs on the [DiscordActivity] struct for more info. If specified, must be a string between 2 and 128 characters.
-			</description>
+			Returns [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="state_url">
 			<return type="Variant" />
 			<description>
 			A URL that opens when the user clicks/taps the state text.
 			See the docs on the [DiscordActivity] struct for more info. If specified, must be a string between 2 and 256 characters.
-			</description>
+			Returns [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="status_display_type">
 			<return type="Variant" />
 			<description>
 			Controls which field is used for the user's status message.
 			See the docs on the [DiscordActivity] struct for more info.
-			</description>
+			Returns [enum DiscordStatusDisplayTypes.Enum] or [code]null[/code].
+</description>
 		</method>
 		<method name="supported_platforms">
 			<return type="int" enum="DiscordActivityGamePlatforms.Enum" />
@@ -334,7 +355,8 @@ Users can also request to join each others parties. This code snippet shows how 
 			The timestamps struct can be used to render either:
 			- a "time remaining" countdown timer (by specifying the [code]end[/code] value)
 - a "time elapsed" countup timer (by specifying the [code]start[/code] value)
-			</description>
+			Returns [DiscordActivityTimestamps] or [code]null[/code].
+</description>
 		</method>
 		<method name="type">
 			<return type="int" enum="DiscordActivityTypes.Enum" />

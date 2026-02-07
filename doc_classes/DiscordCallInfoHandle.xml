@@ -24,7 +24,8 @@
 			<param index="0" name="user_id" type="int" />
 			<description>
 			Accesses the voice state for a single user so you can know if they have muted or deafened themselves.
-			</description>
+			Returns [DiscordVoiceStateHandle] or [code]null[/code].
+</description>
 		</method>
 		<method name="guild_id">
 			<return type="int" />

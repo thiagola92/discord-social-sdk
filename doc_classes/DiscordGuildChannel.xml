@@ -40,7 +40,8 @@ This may be more complexity than a game wants to take on, so instead you can onl
 			<return type="Variant" />
 			<description>
 			Information about the currently linked lobby, if any. Currently Discord enforces that a channel can only be linked to a single lobby.
-			</description>
+			Returns [DiscordLinkedLobby] or [code]null[/code].
+</description>
 		</method>
 		<method name="name">
 			<return type="String" />
@@ -52,7 +53,8 @@ This may be more complexity than a game wants to take on, so instead you can onl
 			<return type="Variant" />
 			<description>
 			The id of the parent category channel, if any.
-			</description>
+			Returns [int] or [code]null[/code].
+</description>
 		</method>
 		<method name="position">
 			<return type="int" />
@@ -86,7 +88,8 @@ This may be more complexity than a game wants to take on, so instead you can onl
 			<param index="0" name="linked_lobby" type="Variant" />
 			<description>
 			Setter for [method DiscordGuildChannel.linked_lobby].
-			</description>
+			Parameter [param linked_lobby] can be [DiscordLinkedLobby] or [code]null[/code].
+</description>
 		</method>
 		<method name="set_name">
 			<return type="void" />
@@ -100,7 +103,8 @@ This may be more complexity than a game wants to take on, so instead you can onl
 			<param index="0" name="parent_id" type="Variant" />
 			<description>
 			Setter for [method DiscordGuildChannel.parent_id].
-			</description>
+			Parameter [param parent_id] can be [int] or [code]null[/code].
+</description>
 		</method>
 		<method name="set_position">
 			<return type="void" />

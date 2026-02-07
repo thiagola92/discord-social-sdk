@@ -18,7 +18,8 @@
 			<description>
 			If using the [method DiscordClient.get_token] flow, you will need to generate a code challenge and verifier.
 			Use [method DiscordClient.create_authorization_code_verifier] to generate these values and pass the challenge property here.
-			</description>
+			Returns [DiscordAuthorizationCodeChallenge] or [code]null[/code].
+</description>
 		</method>
 		<method name="custom_scheme_param">
 			<return type="Variant" />
@@ -27,21 +28,24 @@
 			This allows games to specify a completely custom URI scheme for OAuth redirects. For example, setting this to "mygame" will result in a URI scheme like: mygame:/authorize/callback
 If not provided, defaults to the standard Discord format: discord-123456789:/authorize/callback
 This is particularly useful for distinguishing between multiple games from the same developer or for avoiding conflicts with other apps.
-			</description>
+			Returns [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="integration_type">
 			<return type="Variant" />
 			<description>
 			The type of integration the app will be installed as.
 			[url=https://discord.com/developers/docs/resources/application#installation-context]https://discord.com/developers/docs/resources/application#installation-context[/url]
-			</description>
+			Returns [enum DiscordIntegrationType.Enum] or [code]null[/code].
+</description>
 		</method>
 		<method name="nonce">
 			<return type="Variant" />
 			<description>
 			The nonce field is generally only useful for backend integrations using ID tokens.
 			For more information, see: [url=https://openid.net/specs/openid-connect-core-1_0.html#rfc.section.2~nonce:~:text=auth_time%20response%20parameter]https://openid.net/specs/openid-connect-core-1_0.html#rfc.section.2~nonce:~:text=auth_time%20response%20parameter[/url].)-,nonce,-String%20value%20used
-			</description>
+			Returns [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="scopes">
 			<return type="String" />
@@ -64,28 +68,32 @@ You can pass in additional scopes if you need to, but as a general rule you shou
 			<param index="0" name="code_challenge" type="Variant" />
 			<description>
 			Setter for [method DiscordAuthorizationArgs.code_challenge].
-			</description>
+			Parameter [param code_challenge] can be [DiscordAuthorizationCodeChallenge] or [code]null[/code].
+</description>
 		</method>
 		<method name="set_custom_scheme_param">
 			<return type="void" />
 			<param index="0" name="custom_scheme_param" type="Variant" />
 			<description>
 			Setter for [method DiscordAuthorizationArgs.custom_scheme_param].
-			</description>
+			Parameter [param custom_scheme_param] can be [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="set_integration_type">
 			<return type="void" />
 			<param index="0" name="integration_type" type="Variant" />
 			<description>
 			Setter for [method DiscordAuthorizationArgs.integration_type].
-			</description>
+			Parameter [param integration_type] can be [DiscordIntegrationType.Enum] or [code]null[/code].
+</description>
 		</method>
 		<method name="set_nonce">
 			<return type="void" />
 			<param index="0" name="nonce" type="Variant" />
 			<description>
 			Setter for [method DiscordAuthorizationArgs.nonce].
-			</description>
+			Parameter [param nonce] can be [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="set_scopes">
 			<return type="void" />
@@ -99,14 +107,16 @@ You can pass in additional scopes if you need to, but as a general rule you shou
 			<param index="0" name="state" type="Variant" />
 			<description>
 			Setter for [method DiscordAuthorizationArgs.state].
-			</description>
+			Parameter [param state] can be [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="state">
 			<return type="Variant" />
 			<description>
 			See [url=https://discord.com/developers/docs/topics/oauth2#state-and-security]https://discord.com/developers/docs/topics/oauth2#state-and-security[/url] for details on this field.
 			We recommend leaving this unset, and the SDK will automatically generate a secure random value for you.
-			</description>
+			Returns [String] or [code]null[/code].
+</description>
 		</method>
 	</methods>
 </class>

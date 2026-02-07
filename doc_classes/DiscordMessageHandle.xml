@@ -33,20 +33,23 @@ Handle objects in the SDK hold a reference both to the underlying data, and to t
 			<return type="Variant" />
 			<description>
 			If the message contains non-text content, such as images, videos, embeds, polls, etc, this method will return information about that content.
-			</description>
+			Returns [DiscordAdditionalContent] or [code]null[/code].
+</description>
 		</method>
 		<method name="application_id">
 			<return type="Variant" />
 			<description>
 			Returns the application ID associated with this message, if any. You can use this to identify if the mesage was sent from another child application in your catalog.
 			Note: Parent / child applications are in limited access and the SentFromGame field should be relied on for the common case.
-			</description>
+			Returns [int] or [code]null[/code].
+</description>
 		</method>
 		<method name="author">
 			<return type="Variant" />
 			<description>
 			Returns the [DiscordUserHandle] for the author of this message.
-			</description>
+			Returns [DiscordUserHandle] or [code]null[/code].
+</description>
 		</method>
 		<method name="author_id">
 			<return type="int" />
@@ -58,7 +61,8 @@ Handle objects in the SDK hold a reference both to the underlying data, and to t
 			<return type="Variant" />
 			<description>
 			Returns the [DiscordChannelHandle] for the channel this message was sent in.
-			</description>
+			Returns [DiscordChannelHandle] or [code]null[/code].
+</description>
 		</method>
 		<method name="channel_id">
 			<return type="int" />
@@ -77,7 +81,8 @@ Handle objects in the SDK hold a reference both to the underlying data, and to t
 			<return type="Variant" />
 			<description>
 			If this is an auto-generated message that is explaining some integration behavior to users, this method will return the type of disclosure so you can customize it.
-			</description>
+			Returns [enum DiscordDisclosureTypes.Enum] or [code]null[/code].
+</description>
 		</method>
 		<method name="edited_timestamp">
 			<return type="int" />
@@ -96,7 +101,8 @@ Handle objects in the SDK hold a reference both to the underlying data, and to t
 			<return type="Variant" />
 			<description>
 			Returns the [DiscordLobbyHandle] this message was sent in, if it was sent in a lobby.
-			</description>
+			Returns [DiscordLobbyHandle] or [code]null[/code].
+</description>
 		</method>
 		<method name="metadata">
 			<return type="Dictionary[String, String]" />
@@ -123,7 +129,8 @@ Handle objects in the SDK hold a reference both to the underlying data, and to t
 			<return type="Variant" />
 			<description>
 			Returns the [DiscordUserHandle] for the other participant in a DM, if this message was sent in a DM.
-			</description>
+			Returns [DiscordUserHandle] or [code]null[/code].
+</description>
 		</method>
 		<method name="recipient_id">
 			<return type="int" />

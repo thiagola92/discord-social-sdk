@@ -18,7 +18,8 @@
 			<return type="Variant" />
 			<description>
 			CPU affinity mask hint for certain platforms. Depending on platform support, may or may not be ignored.
-			</description>
+			Returns [int] or [code]null[/code].
+</description>
 		</method>
 		<method name="experimental_android_prevent_comms_for_bluetooth">
 			<return type="bool" />
@@ -48,7 +49,8 @@ The game audio system alters the behavior of Discord Voice on mobile platforms t
 			<param index="0" name="cpu_affinity_mask" type="Variant" />
 			<description>
 			Setter for [method DiscordClientCreateOptions.cpu_affinity_mask].
-			</description>
+			Parameter [param cpu_affinity_mask] can be [int] or [code]null[/code].
+</description>
 		</method>
 		<method name="set_experimental_android_prevent_comms_for_bluetooth">
 			<return type="void" />

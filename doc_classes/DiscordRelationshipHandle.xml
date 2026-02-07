@@ -44,7 +44,8 @@ Handle objects in the SDK hold a reference both to the underlying data, and to t
 			<return type="Variant" />
 			<description>
 			Returns a handle to the target user in this relationship, if one is available. This would be the user with the same ID as the one returned by the [method DiscordRelationshipHandle.id] method.
-			</description>
+			Returns [DiscordUserHandle] or [code]null[/code].
+</description>
 		</method>
 	</methods>
 </class>

@@ -41,7 +41,8 @@ Handle objects in the SDK hold a reference both to the underlying data, and to t
 			<return type="Variant" />
 			<description>
 			The [DiscordUserHandle] of the lobby member.
-			</description>
+			Returns [DiscordUserHandle] or [code]null[/code].
+</description>
 		</method>
 	</methods>
 </class>

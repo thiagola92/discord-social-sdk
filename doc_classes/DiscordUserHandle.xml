@@ -12,7 +12,8 @@
 			<return type="Variant" />
 			<description>
 			Returns the hash of the user's Discord profile avatar, if one is set.
-			</description>
+			Returns [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="avatar_type_to_string" qualifiers="static">
 			<return type="String" />
@@ -42,7 +43,8 @@
 			Returns the user's rich presence activity that is associated with the current game, if one is set.
 			On Discord, users can have multiple rich presence activities at once, but the SDK will only expose the activity that is associated with your game. You can use this to know about the party the user is in, if any, and what the user is doing in the game.
 For more information see the [DiscordActivity] class and check out [url=https://discord.com/developers/docs/rich-presence/overview]https://discord.com/developers/docs/rich-presence/overview[/url]
-			</description>
+			Returns [DiscordActivity] or [code]null[/code].
+</description>
 		</method>
 		<method name="global_name">
 			<return type="Variant" />
@@ -51,7 +53,8 @@ For more information see the [DiscordActivity] class and check out [url=https://
 			Discord's public API refers to this as a "global name" instead of "display name".
 Discord users can set their preferred name to almost any string.
 For more information about usernames on Discord, see: [url=https://discord.com/developers/docs/resources/user]https://discord.com/developers/docs/resources/user[/url]
-			</description>
+			Returns [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="id">
 			<return type="int" />

@@ -24,7 +24,8 @@
 			<return type="Variant" />
 			<description>
 			Returns the user's external identity provider ID if it exists.
-			</description>
+			Returns [String] or [code]null[/code].
+</description>
 		</method>
 		<method name="provider_issued_user_id">
 			<return type="String" />

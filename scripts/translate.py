@@ -526,3 +526,60 @@ def godot_dictionary_to_discord_map(
         source=source,
         statements=statements,
     )
+
+
+######################################################################
+# Translate Discord type to GDScript type (not Godot C++).
+######################################################################
+
+
+def discord_type_to_gdscript_type(info: TypeInfo | FunctionInfo) -> str:
+    if isinstance(info, FunctionInfo):
+        return "Callable"
+
+    if is_discord_function(info):
+        return "Callable"
+
+    if is_discord_void(info):
+        return "void"
+
+    if is_discord_bool(info):
+        return "bool"
+
+    if is_discord_int(info):
+        return "int"
+
+    if is_discord_float(info):
+        return "float"
+
+    if is_discord_string(info):
+        return "String"
+
+    if is_discord_char_array(info):
+        return "String"
+
+    if is_discord_enum(info):
+        if info.fake:
+            return "int"
+
+        if info.overloading:
+            return "int"
+
+        return to_gdscript_class_name(info.name) + ".Enum"
+
+    if is_discord_optional(info):
+        return "Variant"
+
+    if is_discord_vector(info):
+        t = discord_type_to_godot_type(info.templates[0], False)
+        return f"Array[{t}]"
+
+    if is_discord_map(info):
+        t = [discord_type_to_godot_type(t, False) for t in info.templates]
+        t = ",".join(t)
+        return f"Dictionary[{t}]"
+
+    if is_discord_object(info):
+        return to_gdscript_class_name(info.name)
+
+    assert False, f'Fail to identify a good type for "{info.name}"'

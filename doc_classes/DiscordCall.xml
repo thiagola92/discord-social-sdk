@@ -96,7 +96,8 @@
 			<description>
 			Returns a reference to the [DiscordVoiceStateHandle] for the user ID of the given call participant.
 			The [DiscordVoiceStateHandle] allows other users to know if the target user has muted or deafened themselves.
-			</description>
+			Returns [DiscordVoiceStateHandle] or [code]null[/code].
+</description>
 		</method>
 		<method name="set_audio_mode">
 			<return type="void" />
@@ -121,14 +122,22 @@
 			<description>
 			Sets a callback function to generally be invoked whenever a field on a [DiscordVoiceStateHandle] object for a user would have changed.
 			For example when a user mutes themselves, all other connected clients will invoke the VoiceStateChanged callback, because the "self mute" field will be true now. The callback is generally not invoked when users join or leave channels.
-			</description>
+			Parameter [param cb] signature:
+[codeblock]
+func(user_id: int)
+[/codeblock]
+</description>
 		</method>
 		<method name="set_participant_changed_callback">
 			<return type="void" />
 			<param index="0" name="cb" type="Callable" />
 			<description>
 			Sets a callback function to be invoked whenever some joins or leaves a voice call.
-			</description>
+			Parameter [param cb] signature:
+[codeblock]
+func(user_id: int, added: bool)
+[/codeblock]
+</description>
 		</method>
 		<method name="set_participant_volume">
 			<return type="void" />
@@ -174,14 +183,22 @@
 			<description>
 			Sets a callback function to be invoked whenever a user starts or stops speaking and is passed in the userId and whether they are currently speaking.
 			It can be invoked in other cases as well, such as if the priority speaker changes or if the user plays a soundboard sound.
-			</description>
+			Parameter [param cb] signature:
+[codeblock]
+func(user_id: int, is_playing_sound: bool)
+[/codeblock]
+</description>
 		</method>
 		<method name="set_status_changed_callback">
 			<return type="void" />
 			<param index="0" name="cb" type="Callable" />
 			<description>
 			Sets a callback function to be invoked when the call status changes, such as when it fully connects or starts reconnecting.
-			</description>
+			Parameter [param cb] signature:
+[codeblock]
+func(status: DiscordCallStatus.Enum, error: DiscordCallError.Enum, error_detail: int)
+[/codeblock]
+</description>
 		</method>
 		<method name="set_vadthreshold">
 			<return type="void" />
