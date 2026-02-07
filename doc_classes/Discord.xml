@@ -9,7 +9,7 @@
 		<method name="enum_to_string" qualifiers="static">
 			<return type="String" />
 			<param index="0" name="value" type="int" />
-			<param index="1" name="enum_type" type="int" />
+			<param index="1" name="enum_id" type="int" />
 			<description>
 			Converts a [DiscordActivityActionTypes] to a string.
 			Converts a [DiscordActivityPartyPrivacy] to a string.
