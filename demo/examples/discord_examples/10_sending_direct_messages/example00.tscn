@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d2y3kgi6h7aap"]
 
-[ext_resource type="Script" uid="uid://d3tg4j80d3yl7" path="res://examples/discord_examples/08_sending_direct_messages/main.gd" id="1_3calx"]
+[ext_resource type="Script" uid="uid://d3tg4j80d3yl7" path="res://examples/discord_examples/10_sending_direct_messages/example00.gd" id="1_3calx"]
 
 [node name="Main" type="Control"]
 layout_mode = 3

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://djhsplf3xpyc1"]
 
-[ext_resource type="Script" uid="uid://8fdc7u261c2s" path="res://examples/discord_examples/06_rich_presence/main.gd" id="1_2etti"]
+[ext_resource type="Script" uid="uid://8fdc7u261c2s" path="res://examples/discord_examples/08_setting_rich_presence/example00.gd" id="1_2etti"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
