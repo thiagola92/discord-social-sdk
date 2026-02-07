@@ -33,7 +33,7 @@ def fake_enums_params(params: list[ParamInfo]) -> list[ParamInfo]:
         else:
             fake_param.type = fake_function(p.type)
 
-        fake_param.name = f"EnumType{suffix}"
+        fake_param.name = f"EnumId{suffix}"
         fake_param.gdscript_name = f"enum_id{suffix}"
         fake_param.callback = p.callback
         fake_param.enum = p.enum

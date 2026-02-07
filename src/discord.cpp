@@ -11,8 +11,8 @@ void Discord::run_callbacks() {
 
 // Overload functions.
 
-String Discord::enum_to_string(int64_t value, int64_t enum_type) {
-	int64_t p1 = enum_type;
+String Discord::enum_to_string(int64_t value, int64_t enum_id) {
+	int64_t p1 = enum_id;
 
 	if (p1 == DiscordActivityActionTypes::id) {
 		discordpp::ActivityActionTypes p0 = (discordpp::ActivityActionTypes)value;
@@ -257,7 +257,7 @@ String Discord::enum_to_string(int64_t value, int64_t enum_type) {
 		return r1;
 	}
 
-	return "Not a valid enum_type";
+	return "Not a valid enum_id";
 }
 
 // Binding.
@@ -265,6 +265,6 @@ void Discord::_bind_methods() {
 	ClassDB::bind_static_method("Discord", D_METHOD("run_callbacks"),
 			&Discord::run_callbacks);
 
-	ClassDB::bind_static_method("Discord", D_METHOD("enum_to_string", "value", "enum_type"),
+	ClassDB::bind_static_method("Discord", D_METHOD("enum_to_string", "value", "enum_id"),
 			&Discord::enum_to_string);
 }
