@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://dhrl1q1r3rqu1"]
-
-[ext_resource type="Script" uid="uid://cgwvybtuumkxu" path="res://examples/discord_examples/07_creating_a_unified_friends_list/example00.gd" id="1_ujepk"]
-
-[node name="Main" type="Control" unique_id=826338241]
-layout_mode = 3
-anchors_preset = 0
-script = ExtResource("1_ujepk")
