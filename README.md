@@ -1,5 +1,3 @@
-> **Note**: I'm from Brazil and I'm looking for job, feel free to contact me 🤣
-
 # Discord Social SDK
 Wrapper around [Discord Social SDK](https://discord.com/developers/docs/discord-social-sdk/overview).  
 
@@ -9,109 +7,28 @@ Wrapper around [Discord Social SDK](https://discord.com/developers/docs/discord-
 
 </div>
 
-> [!IMPORTANT]  
-> Support for:
-> - Linux (x86_64)
-> - Windows
-> 
-> If you want to request support for other build, make an [issue](https://github.com/thiagola92/discord-social-sdk/issues).  
-> If you already knows how to make other build, feel free to make a [pull request](https://github.com/thiagola92/discord-social-sdk/pulls).  
+What is Discord Social SDK? You can read about it from Discord it self:
+- https://discord.com/developers/docs/discord-social-sdk/overview
+- https://discord.com/developers/docs/social-sdk/index.html
+- https://support-dev.discord.com/hc/en-us/articles/30127085446039-Introducing-the-Discord-Social-SDK
 
-# Usage
-Is suppose to be a close one-to-one with the C++ SDK, so looking at the C++ [*Getting Started*](https://discord.com/developers/docs/discord-social-sdk/getting-started/using-c++) is recommended to understand how the SDK works.  
+But if you want me to be brief... It's basically a way to use Discord infrastructure in your game. For example, instead of developing a text/voice chat for your game, you could just request Discord to create one for you.  
 
-Here is the final code from *Getting Started* but using this extension:  
+Just to be clear, it doesn't let you access user Discord servers and their text/voice chats, it create a completely detached text/voice chat from the servers that the user knows. I'm being very explicit here beucase many people expect Discord Social SDKs to give you access to everything that Discord Client/GUI does, which is not the case (probably for security reasons).  
 
-```gdscript
-extends Node
+# Platforms
+These are the currently supported platforms:  
+- Linux (x86_64)
+- Windows
 
+If you want to request support for other build, make an [issue](https://github.com/thiagola92/discord-social-sdk/issues).  
+If you already knows how to make other build, feel free to make a [pull request](https://github.com/thiagola92/discord-social-sdk/pulls).  
 
-# Replace with your Discord Application ID
-const APPLICATION_ID = 1349146942634065960
-
-var client := DiscordppClient.new()
-
-
-func _ready() -> void:
-    print("🚀 Initializing Discord SDK...")
-    
-    client.AddLogCallback(
-        func(message: String, severity: DiscordppLoggingSeverity.Enum):
-            print("[%s] %s" % [severity, message]),
-        DiscordppLoggingSeverity.Info
-    )
-    
-    client.SetStatusChangedCallback(
-        func(status: DiscordppClientStatus.Enum, error: DiscordppClientError.Enum, errorDetail: int):
-            print("🔄 Status changed: %s" % status)
-            
-            if status == DiscordppClientStatus.Ready:
-                print("✅ Client is ready! You can now call SDK functions.")
-                print("👥 Friends Count: %s" % client.GetRelationships().size())
-                
-                var activity := DiscordppActivity.new()
-                activity.SetType(DiscordppActivityTypes.Playing)
-                activity.SetState("In Competitive Match")
-                activity.SetDetails("Rank: Diamond II")
-                
-                client.UpdateRichPresence(activity,
-                    func(result: DiscordppClientResult):
-                        if result.Successful():
-                            print("🎮 Rich Presence updated successfully!")
-                        else:
-                            print("❌ Rich Presence update failed")
-                )
-                
-            elif error != DiscordppClientError.None:
-                print("❌ Connection Error: %s - Details: %s" % [error, errorDetail])
-    )
-    
-    var code_verifier = client.CreateAuthorizationCodeVerifier()
-    
-    var args := DiscordppAuthorizationArgs.new()
-    args.SetClientId(APPLICATION_ID)
-    args.SetScopes(DiscordppClient.GetDefaultPresenceScopes())
-    args.SetCodeChallenge(code_verifier.Challenge())
-    
-    client.Authorize(args,
-        func(result: DiscordppClientResult, code: String, redirectUri: String):
-            if not result.Successful():
-                print("❌ Authentication Error: %s" % result.Error())
-            else:
-                print("✅ Authorization successful! Getting access token...")
-                
-                client.GetToken(APPLICATION_ID, code, code_verifier.Verifier(), redirectUri,
-                    func(
-                        result: DiscordppClientResult,
-                        accessToken: String,
-                        refreshToken: String,
-                        tokenType: DiscordppAuthorizationTokenType.Enum,
-                        expiresIn: int,
-                        scopes: String
-                    ):
-                        print("🔓 Access token received! Establishing connection...")
-                        
-                        client.UpdateToken(
-                            DiscordppAuthorizationTokenType.Bearer,
-                            accessToken,
-                            func(result: DiscordppClientResult):
-                                if result.Successful():
-                                    print("🔑 Token updated, connecting to Discord...")
-                                    client.Connect()
-                        )
-                )
-    )
-
-
-func _process(_delta: float) -> void:
-    Discordpp.RunCallbacks()
-```
-
-## Installation
+# Installation
 It's available in [Godot Asset Library](
 https://godotengine.org/asset-library/asset/3988), so you can search and install through Godot.
 
-**Alternative**:  
+**Alternative (not recommended)**:  
 - Go to [releases](https://github.com/thiagola92/discord-social-sdk/releases) from Github
 - Download latest release ZIP
 - Extract `addons` directory from ZIP
@@ -119,236 +36,131 @@ https://godotengine.org/asset-library/asset/3988), so you can search and install
 - Move `addons` directory to your project directory
     - If your project already have an `addons` directory, copy `addons/discord_social_sdk` to your project `addons`
 
-## Examples
-Directory [discord-social-sdk/demo/examples](https://github.com/thiagola92/discord-social-sdk/tree/main/demo/examples) contains many examples.  
+# Usage
+This GDExtension is a wrapper around the C++ SDK, which means that each GDScript method it's just calling the C++ counterpart.  
 
-Examples in this repository will be mostly convertions from the [official C++ documentation](https://discord.com/developers/docs/discord-social-sdk/development-guides), so I do recommend you to adapt to your like. For example, we don't need to use lambda functions everywhere:  
+If you understand C++, you could easily read a C++ code and convert it to GDScript. For example, I was able to convert their conclusion code from [*Getting Started with C++*](https://discord.com/developers/docs/discord-social-sdk/getting-started/using-c++) to:  
 
 ```gdscript
+extends Control
+
+# Replace with your Discord Application ID
+var APPLICATION_ID: int = 1349146942634065960
+
+var client := DiscordClient.new()
+var args := DiscordAuthorizationArgs.new()
+var code_verifier: DiscordAuthorizationCodeVerifier = null
+
+
 func _ready() -> void:
-    # ...
-    client.Authorize(args, _on_authorization_result.bind(code_verifier))
+	print("🚀 Initializing Discord SDK...")
+	
+	client.add_log_callback(_on_log, DiscordLoggingSeverity.INFO)
+	client.set_status_changed_callback(_on_status_changed)
+	
+	code_verifier = client.create_authorization_code_verifier()
+	
+	args.set_client_id(APPLICATION_ID)
+	args.set_scopes(DiscordClient.get_default_presence_scopes())
+	args.set_code_challenge(code_verifier.challenge())
+	client.authorize(args, _on_authorized)
 
 
-func _on_authorization_result(
-    result: DiscordppClientResult,
-    code: String,
-    redirectUri: String,
-    code_verifier: DiscordppAuthorizationCodeVerifier
-):
-    if not result.Successful():
-        print("❌ Authentication Error: %s" % result.Error())
-    else:
-        print("✅ Authorization successful! Getting access token...")
-        client.GetToken(APPLICATION_ID, code, code_verifier.Verifier(), redirectUri, _on_token_result)
+func _process(_delta: float) -> void:
+	Discord.run_callbacks()
 
 
-func _on_token_result(
-    result: DiscordppClientResult,
-    accessToken: String,
-    refreshToken: String,
-    tokenType: DiscordppAuthorizationTokenType.Enum,
-    expiresIn: int,
-    scopes: String
-):
-    print("🔓 Access token received! Establishing connection...")
-    client.UpdateToken(DiscordppAuthorizationTokenType.Bearer, accessToken, _on_token_update)
+func _on_log(message: String, severity: DiscordLoggingSeverity.Enum) -> void:
+	print("[%s] %s" % [Discord.enum_to_string(severity, DiscordLoggingSeverity.id), message])
 
 
-func _on_token_update(result: DiscordppClientResult):
-    if result.Successful():
-        print("🔑 Token updated, connecting to Discord...")
-        client.Connect()
+func _on_status_changed(status: DiscordClientStatus.Enum, error: DiscordClientError.Enum, error_detail: int) -> void:
+	print("🔄 Status changed: %s" % status)
+	
+	if status == DiscordClientStatus.READY:
+		print("✅ Client is ready! You can now call SDK functions.")
+		print("👥 Friends Count: %s" % client.get_relationships().size())
+		
+		var activity := DiscordActivity.new()
+		activity.set_type(DiscordActivityTypes.PLAYING)
+		activity.set_state("In Competitive Match")
+		activity.set_details("Rank: Diamond II")
+		
+		client.update_rich_presence(activity, _on_rich_presence_updated)
+	elif error != DiscordClientError.NONE:
+		print("❌ Connection Error: %s - Details: %s" % [error, error_detail])
+
+
+func _on_rich_presence_updated(result: DiscordClientResult) -> void:
+	if result.successful():
+		print("🎮 Rich Presence updated successfully!")
+	else:
+		print("❌ Rich Presence update failed")
+
+
+func _on_authorized(result: DiscordClientResult, code: String, redirect_uri: String) -> void:
+	if not result.successful():
+		print("❌ Authentication Error: %s" % result.error())
+	else:
+		print("✅ Authorization successful! Getting access token...")
+		
+		client.get_token(APPLICATION_ID, code, code_verifier.verifier(), redirect_uri, _on_token_received)
+
+
+func _on_token_received(
+		_result: DiscordClientResult,
+		access_token: String,
+		_refresh_token: String,
+		_token_type: DiscordAuthorizationTokenType.Enum,
+		_expires_in: int,
+		_scopes: String
+) -> void:
+	print("🔓 Access token received! Establishing connection...")
+	
+	client.update_token(DiscordAuthorizationTokenType.BEARER, access_token, _on_token_updated)
+
+
+func _on_token_updated(result: DiscordClientResult) -> void:
+	if result.successful():
+		print("🔑 Token updated, connecting to Discord...")
+		
+		client.connect_discord()
 ```
 
-Instead of running `Discordpp.RunCallbacks()` every frame, you could use a timer which would reduce the frequence which your code stop to run callbacks.  
+Need more examples? Check this two directories:  
+- [Discord examples](./demo/examples/discord_examples/)
+    - This examples were made using [Discord Social SDK Development Guides](https://discord.com/developers/docs/discord-social-sdk/development-guides) as base
+- [GDExtension examples](./demo/examples/gdextension_examples/)
+    - This examples were made by me
 
-```gdscript
-var timer = Timer.new()
-timer.wait_time = 1
-timer.autostart = true
-timer.timeout.connect(func(): Discordpp.RunCallbacks())
-get_tree().root.add_child.call_deferred(timer)
-```
+# The Good, The Bad, The Ugly
 
-## Questions (create a new section The Good, The Bad, The Ugly)
+### The Good
+1. As I said before, the GDExtension is just a wrapper around C++ SDK. In other words, you can probably make all the same things that the C++ SDK can do (I hope).  
+2. I belive that they use [Doxygen](https://www.doxygen.nl/) to generate their documentation, which I'm also using in this project. So we probably have the same level of documentation (it may need a little formatting, but we have it!).  
 
-> Why some functions return [`Variant`](https://docs.godotengine.org/en/stable/classes/class_variant.html)?  
+### The Bad
+1. As counterpart of C++ [`std::optional<T>`](https://en.cppreference.com/w/cpp/utility/optional) type, I'm using [`Variant`](https://docs.godotengine.org/en/stable/classes/class_variant.html) (which can hold a `null` or an actual value).  
+    - This could change in the future if I decide to create my own class "Optional".  
+2. Some functions were renamed because their name was already being used in Godot class. I just added a `_discord` to their name.  
+    - For example, the class `DiscordClient` will have these two methods:  
+        - `connect()`: Godot method [`Object.connect()`](https://docs.godotengine.org/en/stable/classes/class_object.html#class-object-method-connect).  
+        - `connect_discord()`: Discord method [`discordpp:Client::Connect()`](https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1Client.html#a873a844c7c4c72e9e693419bb3e290aa).  
+3. There is no `uint` in GDScript. So you always receive an `int` from the GDExtension, even when the SDK returns a `uint`.  
+    - If you don't intend to change the data, everything will be fine because there is no data lost when converting between `uint` and `int`.  
+    - If you **do** intend to change the data, you should know which operations can corrupt your data.  
+    - Reference: https://github.com/godotengine/godot-proposals/issues/9740#issuecomment-2484959346  
 
-GDScript doesn't has an alternative to [`std::optional<T>`](https://en.cppreference.com/w/cpp/utility/optional), so we just return a Variant which can hold a `null` or an actual value.  
-
-Note: I wiil create a class `Optional` if Godot documentation start giving support to make something like `Optional[T]`.  
+### The Ugly
+1. Each enum has it own class.  
+    - The enum [`discordpp::HttpStatusCode`](https://discord.com/developers/docs/social-sdk/namespacediscordpp.html#a12b04d48d8ea98ec007270a10e0c88ba) will be `DiscordHttpStatusCode`.  
+    - The enum [`discordpp::Client::Status`](https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1Client.html#a6f714c5d6aebefa91c1ff8ba97bcce22) will be `DiscordClientStatus`.  
+    - This happens because the **Godot C++** doesn't let me use the same name in different enums.  
+        - Just to be clear, you can do it through GDScript but **not** through Godot C++.  
+        - Any enum created through Godot C++ will also be added as constant for the class.  
+            - Creating `Discord.HttpStatusCode.NONE` will also create `Discord.NONE`, which would cause conflict when creating `Discord.ExternalIdentityProviderType.NONE` because would attempt to create another `Discord.NONE`.  
+        - Reference: https://github.com/godotengine/godot-cpp/issues/1910  
 
 > Why exists many functions like `Discordpp.EnumToStringXXX()`?  
 
 GDScript doesn't support [function overloading](https://www.w3schools.com/cpp/cpp_function_overloading.asp), so I just made one function for each option.  
-
-> Why doesn't follow [GDScript style guide](https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_styleguide.html#doc-gdscript-styleguide)?  
-
-I made this decision to avoid solving conflict between methods names because GDScript doesn't support function overloading.  
-
-**Example**: [`discordpp:Client`](https://discord.com/developers/docs/social-sdk/classdiscordpp_1_1Client.html#a873a844c7c4c72e9e693419bb3e290aa) has `Connect()` and [`Object`](https://docs.godotengine.org/en/4.4/classes/class_object.html#class-object-method-connect) has `connect()`.  
-If I were to snake_case the `discordpp:Client` method, I would need to find another name for it.   
-
-> Why each enum has a specific class for it?  
-
-I was not able to insert multiple enums in a same class when they contained values with the same name.  
-
-> Can't I disconnect my callback?
-
-No. This is how the SDK works.
-
-**Reference**: https://github.com/godotengine/godot-cpp/issues/1910#issuecomment-3811715068  
-
-# Development
-This GDExtension is **all** built using Python and **nothing** should be add manually at `src`. If this is weird for you, listen to me...  
-
-All that I want is to use the SDK from GDScript, without assuming any setup from the user, which means that I can guess all the logic behind the methods wrappers:  
-
-```mermaid
-flowchart TD
-    gd_to_c[gdscript types to c types]
-    return_void{return void?}
-    call_method1["<pre>method(args)</pre>"]
-    call_method2["<pre>auto r = method(args)</pre>"]
-    c_to_gd[c type to gdscript type]
-
-    gd_to_c-->return_void
-    return_void--"yes"-->call_method1
-    return_void--"no"-->call_method2
-    call_method2-->c_to_gd
-```
-
-Knowing this I automated generating all the GDExtension source code through Python code, which is a language that I prefer to user when I don't have to care about low level/security/speed/anything.  
-
-Now that you understand why everything is done through Python, let me explain what is done through Python:  
-- Clean headers
-- Parse headers
-- Build source code
-- Document details
-
-```mermaid
-flowchart LR
-    Clean --> Parse
-    Parse --> Build
-    Build --> Document
-```
-
-**Clean**: Remove unnecessary informations from headers. We are not a C/C++ compiler, so we don't need many lines from the headers and this makes our parser job easier.  
-
-**Parse**: Scan headers to collect useful informations for us. This is closer to be a tokenizer + parser but built together because this is much easier than a scanning a complete programming language.  
-
-**Build**: Build our GDExtension source code (writing `.cpp` and `.h` files in `src/`).  
-
-**Document**: Update the generated XML documentation from Godot (files in `doc_classes/`) with some details to help.  
-
-## Prerequisites
-I'm letting this so you can adapt to your operating system.  
-
-### Ubuntu
-
-- [Godot](https://godotengine.org/)
-- [SCons](https://scons.org/)
-    - `sudo apt install scons`
-- [Mingw-w64](https://www.mingw-w64.org/)
-    - `sudo apt install mingw-w64`
-- [Python](https://www.python.org/) >=3.12
-    - Included by default
-- [Clang](https://clang.llvm.org/)
-    - `sudo apt install clang`
-- [Clang format](https://clang.llvm.org/docs/ClangFormat.html)
-    - `sudo apt install clang-format`
-    - [VSCode](https://marketplace.visualstudio.com/items?itemName=xaver.clang-format)
-- [Discord SDK for C++](https://discord.com/developers/docs/discord-social-sdk/getting-started/using-c++#step-4-download-the-discord-sdk-for-c++)
-
-### Fedora
-
-- [Godot](https://godotengine.org/)
-- [SCons](https://scons.org/)
-    - `sudo dnf install scons`
-- Others
-    - `sudo dnf install libstdc++-static`
-- [Mingw-w64](https://www.mingw-w64.org/)
-    - `sudo dnf install mingw64-gcc-c++`
-- [Python](https://www.python.org/) >=3.12
-    - Included by default
-- [Clang](https://clang.llvm.org/)
-    - `sudo dnf install clang`
-- [Clang format](https://clang.llvm.org/docs/ClangFormat.html)
-    - `sudo dnf install clang-tools-extra`
-    - [VSCode](https://marketplace.visualstudio.com/items?itemName=xaver.clang-format)
-- [Discord SDK for C++](https://discord.com/developers/docs/discord-social-sdk/getting-started/using-c++#step-4-download-the-discord-sdk-for-c++)
-
-## Tree
-```
-.
-├── demo/
-│   └── Godot project containing the addon, examples and tests
-├── doc_classes/
-│   └── Project classes documentation
-├── godot-cpp/
-│   └── C++ bindings for GDExtension API
-├── include/
-│   └── Discord headers
-├── lib/
-│   └── Discord libs
-├── scripts/
-│   └── Python scripts
-└── src/
-    └── GDExtension source codes and headers
-```
-
-## Step by step
-```bash
-# Clone repository, submodules and only file needed.
-git clone --recurse-submodules --filter=blob:none https://github.com/thiagola92/discord-social-sdk.git
-cd discord-social-sdk
-
-# Manually download the DiscordSocialSdk zip to the project directory.
-
-# Unzip libraries and headers to correct directories.
-unzip DiscordSocialSdk*.zip -d /tmp/
-cp -r /tmp/discord_social_sdk/lib/release/* lib/
-cp -r /tmp/discord_social_sdk/bin/release/* lib/
-cp -r /tmp/discord_social_sdk/include/* include/
-rm -rf /tmp/discord_social_sdk
-
-# Generate GDExtension API files.
-cd godot-cpp
-godot --dump-extension-api
-scons platform=linux custom_api_file=extension_api.json
-cd ..
-
-# Generate GDExtension source code.
-python3 scripts/main.py
-
-# Generate GDExtension library.
-scons platform=linux                            # Debug
-scons platform=linux target=template_release    # Release
-scons platform=windows                            # Debug
-scons platform=windows target=template_release    # Release
-
-# Open project, at least once, to be able to generate GDExtension documentation.
-godot ./demo/project.godot
-
-# Rerun to update GDExtension documentation.
-python3 scripts/main.py
-
-# Rerun to link GDExtension documentation.
-scons platform=linux                            # Debug
-scons platform=linux target=template_release    # Release
-scons platform=windows                            # Debug
-scons platform=windows target=template_release    # Release
-
-# Generate ZIP file for the Asset Library.
-zip -r discord_social_sdk.zip demo/addons/discord_social_sdk/**
-```
-
-> [!WARNING]
-> Make sure that Godot version match with `godot-cpp` repository.  
-
-# References
-- [Discord Social SDK Overview](https://discord.com/developers/docs/discord-social-sdk/overview)
-- [Discord Social SDK Rich Presence](https://discord.com/developers/docs/rich-presence/using-with-the-discord-social-sdk)
-- [Discord Social SDK Reference](https://discord.com/developers/docs/social-sdk/index.html)
-- [Doxygen](https://www.doxygen.nl/)
