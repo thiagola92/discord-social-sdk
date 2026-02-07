@@ -2,15 +2,13 @@
 from pathlib import Path
 from xml.etree import ElementTree
 
-from help import clang_format
+from cli import clang_format
 from name import to_snake_case, to_gdscript_class_name
 from collect import (
     NamespaceInfo,
     ClassInfo,
     EnumInfo,
-    ReferencesInfo,
     collect_namespace,
-    collect_references,
 )
 from documentation import document_functions, document_class, document_enum
 from template.file.register_types_h import get_register_types_h

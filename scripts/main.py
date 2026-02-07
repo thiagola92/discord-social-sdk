@@ -1,7 +1,8 @@
 from pathlib import Path
 
+from cli import clang_format, doxygen, doctool
+from help import clear_dir
 from build import Builder
-from help import clang_format, doxygen, clear_dir, doctool
 
 
 CDISCORD_PATH = "include/cdiscord.h"

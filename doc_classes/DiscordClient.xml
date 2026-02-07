@@ -308,12 +308,11 @@ When first testing the SDK, it can be a lot easier to use a public client to get
 			Asynchronously fetches the current audio output device in use by the client.
 			</description>
 		</method>
-		<method name="get_current_user">
+		<method name="get_current_user" deprecated="&lt;xreftitle&gt;Deprecated&lt;/xreftitle&gt;Please use GetCurrentUserV2 instead. This will be removed in a future version.">
 			<return type="DiscordUserHandle" />
 			<description>
 			(deprecated)
-			&lt;xrefsect id="deprecated_1_deprecated000001"&gt;&lt;xreftitle&gt;Deprecated&lt;/xreftitle&gt;&lt;xrefdescription&gt;Please use GetCurrentUserV2 instead. This will be removed in a future version. 
-&lt;/xrefdescription&gt;&lt;/xrefsect&gt;
+			
 			</description>
 		</method>
 		<method name="get_current_user_v2">
@@ -1237,13 +1236,12 @@ This must be called immediately after constructing the [DiscordClient]. If calle
 Keep in mind, if the game stops showing chat for a period of time, or the game loses focus because the user switches to a different app, it is important to call this function again so that the user's notifications get re-enabled in Discord during this time.
 			</description>
 		</method>
-		<method name="set_speaker_mode">
+		<method name="set_speaker_mode" deprecated="&lt;xreftitle&gt;Deprecated&lt;/xreftitle&gt;Calling [method DiscordClient.set_speaker_mode] is DEPRECATED.">
 			<return type="bool" />
 			<param index="0" name="speaker_mode" type="bool" />
 			<description>
 			(deprecated) On mobile devices, enable speakerphone mode.
-			&lt;xrefsect id="deprecated_1_deprecated000002"&gt;&lt;xreftitle&gt;Deprecated&lt;/xreftitle&gt;&lt;xrefdescription&gt;Calling [method DiscordClient.set_speaker_mode] is DEPRECATED. 
-&lt;/xrefdescription&gt;&lt;/xrefsect&gt;
+			
 			</description>
 		</method>
 		<method name="set_status_changed_callback">
