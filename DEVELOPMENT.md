@@ -1,6 +1,28 @@
+# Introduction
+As I already said some times... This GDExtension is just a wrapper for the [Discord Social SDK](https://discord.com/developers/docs/discord-social-sdk/overview), which means that you call the GDExtension method and it calls the SDK method.  
 
-# Development
-This GDExtension is **all** built using Python and **nothing** should be add manually at `src`. If this is weird for you, listen to me...  
+```mermaid
+flowchart TD
+    gdscript[Discord.enum_to_string()]
+    return_void{return void?}
+    call_method1["<pre>method(args)</pre>"]
+    call_method2["<pre>auto r = method(args)</pre>"]
+    c_to_gd[c type to gdscript type]
+
+    gd_to_c-->return_void
+    return_void--"yes"-->call_method1
+    return_void--"no"-->call_method2
+    call_method2-->c_to_gd
+```
+
+How this project works? The Python code in the `scripts` directory is used to generate all the C++ code in the `src` directory. So let me be very clear...  
+
+> [!CAUTION]
+> No code should be manually added to `src` directory.  
+
+How 
+
+The C++ headers files contain the
 
 All that I want is to use the SDK from GDScript, without assuming any setup from the user, which means that I can guess all the logic behind the methods wrappers:  
 
