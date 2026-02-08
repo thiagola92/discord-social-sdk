@@ -180,16 +180,16 @@ class Builder:
     def update_documentations(self) -> None:
         doctool()
 
-        # self.update_namespace_class()
+        self.update_namespace_class()
 
-        # for e in self.namespace_info.enums:
-        #     self.update_enum_class(e, "")
+        for e in self.namespace_info.enums:
+            self.update_enum_class(e, "")
 
-        # for c in self.namespace_info.classes:
-        #     self.update_object_class(c)
+        for c in self.namespace_info.classes:
+            self.update_object_class(c)
 
-        #     for e in c.enums:
-        #         self.update_enum_class(e, c.name)
+            for e in c.enums:
+                self.update_enum_class(e, c.name)
 
     def update_namespace_class(self) -> None:
         filename = to_gdscript_class_name("")

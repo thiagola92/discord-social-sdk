@@ -1,0 +1,16 @@
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordDisclosureTypes" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	Enum that represents various informational disclosures that Discord may make to users, so that the game can identity them and customize their rendering as desired.
+</brief_description>
+	<description>
+	See [DiscordMessageHandle] for more details.
+</description>
+	<tutorials>
+	</tutorials>
+	<constants>
+		<constant name="MESSAGE_DATA_VISIBLE_ON_DISCORD" value="3" enum="Enum">
+		</constant>
+		<constant name="id" value="16">
+		</constant>
+	</constants>
+</class>

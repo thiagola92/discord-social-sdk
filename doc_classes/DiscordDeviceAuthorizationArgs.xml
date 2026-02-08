@@ -1,0 +1,40 @@
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordDeviceAuthorizationArgs" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	Arguments to the [method DiscordClient.get_token_from_device] function.
+</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="client_id">
+			<return type="int" />
+			<description>
+			Optional. The Discord application ID for your game. Defaults to the value set by [method DiscordClient.set_application_id].
+			</description>
+		</method>
+		<method name="scopes">
+			<return type="String" />
+			<description>
+			Scopes is a space separated string of the oauth scopes your game is requesting.
+			Most games should just pass in [method DiscordClient.get_default_communication_scopes] or [method DiscordClient.get_default_presence_scopes] which will include these scopes, respectively: [code]openid sdk.social_layer[/code] or [code]openid sdk.social_layer_presence[/code]
+[code]sdk.social_layer[/code] and [code]sdk.social_layer_presence[/code] automatically expand to include all the necessary scopes for the integration.
+You can pass in additional scopes if you need to, but as a general rule you should only request the scopes you actually need, and the user will need to grant access to those additional scopes as well.
+			</description>
+		</method>
+		<method name="set_client_id">
+			<return type="void" />
+			<param index="0" name="client_id" type="int" />
+			<description>
+			Setter for [method DiscordDeviceAuthorizationArgs.client_id].
+			</description>
+		</method>
+		<method name="set_scopes">
+			<return type="void" />
+			<param index="0" name="scopes" type="String" />
+			<description>
+			Setter for [method DiscordDeviceAuthorizationArgs.scopes].
+			</description>
+		</method>
+	</methods>
+</class>

@@ -1,0 +1,19 @@
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordClientThread" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	Represents the type of thread to control thread priority on.
+</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<constants>
+		<constant name="CLIENT" value="0" enum="Enum">
+		</constant>
+		<constant name="VOICE" value="1" enum="Enum">
+		</constant>
+		<constant name="NETWORK" value="2" enum="Enum">
+		</constant>
+		<constant name="id" value="25">
+		</constant>
+	</constants>
+</class>

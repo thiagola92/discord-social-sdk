@@ -1,0 +1,22 @@
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordClientError" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	Represents an error state for the socket connection that the Discord SDK maintains with the Discord backend.
+</brief_description>
+	<description>
+	Generic network failures will use the ConnectionFailed and ConnectionCanceled enum values. Other errors such as if the user's auth token is invalid or out of date will be UnexpectedClose and you should look at the other [DiscordClientError] fields for the specific details.
+</description>
+	<tutorials>
+	</tutorials>
+	<constants>
+		<constant name="NONE" value="0" enum="Enum">
+		</constant>
+		<constant name="CONNECTION_FAILED" value="1" enum="Enum">
+		</constant>
+		<constant name="UNEXPECTED_CLOSE" value="2" enum="Enum">
+		</constant>
+		<constant name="CONNECTION_CANCELED" value="3" enum="Enum">
+		</constant>
+		<constant name="id" value="23">
+		</constant>
+	</constants>
+</class>

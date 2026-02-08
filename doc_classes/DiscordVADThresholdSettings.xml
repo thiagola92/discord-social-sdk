@@ -1,0 +1,37 @@
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordVADThresholdSettings" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	Settings for the void auto detection threshold for picking up activity from a user's mic.
+</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="automatic">
+			<return type="bool" />
+			<description>
+			Whether or not Discord is currently automatically setting and detecting the appropriate threshold to use.
+			</description>
+		</method>
+		<method name="set_automatic">
+			<return type="void" />
+			<param index="0" name="automatic" type="bool" />
+			<description>
+			Setter for [method DiscordVADThresholdSettings.automatic].
+			</description>
+		</method>
+		<method name="set_vad_threshold">
+			<return type="void" />
+			<param index="0" name="vad_threshold" type="float" />
+			<description>
+			Setter for [method DiscordVADThresholdSettings.vad_threshold].
+			</description>
+		</method>
+		<method name="vad_threshold">
+			<return type="float" />
+			<description>
+			The current void auto detection threshold value, has a range of -100, 0 and defaults to -60.
+			</description>
+		</method>
+	</methods>
+</class>

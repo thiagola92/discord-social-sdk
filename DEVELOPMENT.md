@@ -116,10 +116,19 @@ scons platform=linux target=template_release    # Release
 scons platform=windows                            # Debug
 scons platform=windows target=template_release    # Release
 
+# Open project, at least once, to be able to generate GDExtension documentation.
+godot ./demo/project.godot
+
 # Generate GDExtension documentations.
 python3 scripts/main.py --docs
 
-# Open project (you may need to open 2 times to work).
+# Link documentation to GDExtension library.
+scons platform=linux                            # Debug
+scons platform=linux target=template_release    # Release
+scons platform=windows                            # Debug
+scons platform=windows target=template_release    # Release
+
+# Open project (may need to open two times).
 godot ./demo/project.godot
 ```
 
