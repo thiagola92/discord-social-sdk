@@ -5,7 +5,6 @@ from xml.etree import ElementTree
 from cli import clang_format, doctool
 from name import to_snake_case, to_gdscript_class_name
 from collect import (
-    NamespaceInfo,
     ClassInfo,
     EnumInfo,
     collect_namespace,
@@ -27,6 +26,8 @@ from forge import (
     forge_functions_definitions,
     forge_overloadings_definitions,
 )
+
+DOCS_ERROR = "Make sure to execute scons & open godot project before generating documentations"
 
 
 class Builder:
@@ -195,7 +196,7 @@ class Builder:
         filename = to_gdscript_class_name("")
         filepath = self.doc_dir.joinpath(f"{filename}.xml")
 
-        assert filepath.exists(), "Make sure to execute scons before"
+        assert filepath.exists(), DOCS_ERROR
         
         tree = ElementTree.parse(filepath)
 
@@ -207,7 +208,7 @@ class Builder:
         filename = to_gdscript_class_name(class_info.name)
         filepath = self.doc_dir.joinpath(f"{filename}.xml")
 
-        assert filepath.exists(), "Make sure to execute scons before"
+        assert filepath.exists(), DOCS_ERROR
     
         tree = ElementTree.parse(filepath)
 
@@ -220,7 +221,7 @@ class Builder:
         filename = to_gdscript_class_name(class_name + enum_info.name)
         filepath = self.doc_dir.joinpath(f"{filename}.xml")
 
-        assert filepath.exists(), "Make sure to execute scons before"
+        assert filepath.exists(), DOCS_ERROR
         
         tree = ElementTree.parse(filepath)
 
