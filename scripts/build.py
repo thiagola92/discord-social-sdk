@@ -2,7 +2,7 @@
 from pathlib import Path
 from xml.etree import ElementTree
 
-from cli import clang_format
+from cli import clang_format, doctool
 from name import to_snake_case, to_gdscript_class_name
 from collect import (
     NamespaceInfo,
@@ -34,17 +34,16 @@ class Builder:
         self.src_dir = Path(src_dir)
         self.xml_dir = Path(xml_dir)
         self.doc_dir = Path(doc_dir)
-        self.namespace_info: NamespaceInfo = None
+
+        filepath = self.xml_dir.joinpath("index.xml")
+        tree = ElementTree.parse(filepath)
+        self.namespace_info = collect_namespace(tree, self.xml_dir)
 
     ######################################################################
     # Build C++ files.
     ######################################################################
 
     def build_files(self) -> None:
-        file = self.xml_dir.joinpath("index.xml")
-        tree = ElementTree.parse(file)
-        self.namespace_info = collect_namespace(tree, self.xml_dir)
-
         self.build_register_types_h()
         self.build_register_types_cpp()
         self.build_discord_enum_h()
@@ -179,20 +178,25 @@ class Builder:
     ######################################################################
 
     def update_documentations(self) -> None:
-        self.update_namespace_class()
+        doctool()
 
-        for e in self.namespace_info.enums:
-            self.update_enum_class(e, "")
+        # self.update_namespace_class()
 
-        for c in self.namespace_info.classes:
-            self.update_object_class(c)
+        # for e in self.namespace_info.enums:
+        #     self.update_enum_class(e, "")
 
-            for e in c.enums:
-                self.update_enum_class(e, c.name)
+        # for c in self.namespace_info.classes:
+        #     self.update_object_class(c)
+
+        #     for e in c.enums:
+        #         self.update_enum_class(e, c.name)
 
     def update_namespace_class(self) -> None:
         filename = to_gdscript_class_name("")
         filepath = self.doc_dir.joinpath(f"{filename}.xml")
+
+        assert filepath.exists(), "Make sure to execute scons before"
+        
         tree = ElementTree.parse(filepath)
 
         document_functions(tree, self.namespace_info)
@@ -202,6 +206,9 @@ class Builder:
     def update_object_class(self, class_info: ClassInfo) -> None:
         filename = to_gdscript_class_name(class_info.name)
         filepath = self.doc_dir.joinpath(f"{filename}.xml")
+
+        assert filepath.exists(), "Make sure to execute scons before"
+    
         tree = ElementTree.parse(filepath)
 
         document_class(tree, class_info)
@@ -212,6 +219,9 @@ class Builder:
     def update_enum_class(self, enum_info: EnumInfo, class_name: str = "") -> None:
         filename = to_gdscript_class_name(class_name + enum_info.name)
         filepath = self.doc_dir.joinpath(f"{filename}.xml")
+
+        assert filepath.exists(), "Make sure to execute scons before"
+        
         tree = ElementTree.parse(filepath)
 
         document_enum(tree, enum_info)

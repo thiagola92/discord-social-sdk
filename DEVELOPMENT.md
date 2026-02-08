@@ -42,7 +42,7 @@ All the important code is written in Python (inside `scripts`) and this code is 
 > [!CAUTION]
 > No code should be manually added to `src` directory.  
 
-## Prerequisites
+# Prerequisites
 I'm letting this so you can adapt to your operating system.  
 
 ### Ubuntu
@@ -79,7 +79,11 @@ I'm letting this so you can adapt to your operating system.
     - [VSCode](https://marketplace.visualstudio.com/items?itemName=xaver.clang-format)
 - [Discord SDK for C++](https://discord.com/developers/docs/discord-social-sdk/getting-started/using-c++#step-4-download-the-discord-sdk-for-c++)
 
-## Step by step
+# Step by step
+> [!WARNING]
+> Make sure that Godot version match with `godot-cpp` repository.  
+
+### Setup repository
 ```bash
 # Clone repository, submodules and only file needed.
 git clone --recurse-submodules --filter=blob:none https://github.com/thiagola92/discord-social-sdk.git
@@ -99,9 +103,12 @@ cd godot-cpp
 godot --dump-extension-api
 scons platform=linux custom_api_file=extension_api.json
 cd ..
+```
 
+### Repeat this steps as needed
+```bash
 # Generate GDExtension source code.
-python3 scripts/main.py
+python3 scripts/main.py --code
 
 # Generate GDExtension library.
 scons platform=linux                            # Debug
@@ -109,24 +116,20 @@ scons platform=linux target=template_release    # Release
 scons platform=windows                            # Debug
 scons platform=windows target=template_release    # Release
 
-# Open project, at least once, to be able to generate GDExtension documentation.
+# Generate GDExtension documentations.
+python3 scripts/main.py --docs
+
+# Open project (you may need to open 2 times to work).
 godot ./demo/project.godot
-
-# Rerun to update GDExtension documentation.
-python3 scripts/main.py
-
-# Rerun to link GDExtension documentation.
-scons platform=linux                            # Debug
-scons platform=linux target=template_release    # Release
-scons platform=windows                            # Debug
-scons platform=windows target=template_release    # Release
-
-# Generate ZIP file for the Asset Library.
-zip -r discord_social_sdk.zip demo/addons/discord_social_sdk/**
 ```
 
-> [!WARNING]
-> Make sure that Godot version match with `godot-cpp` repository.  
+### Publish addon
+```bash
+# Generate ZIP file for the Asset Library.
+zip -r discord_social_sdk.zip demo/addons/discord_social_sdk/**
+
+# Manually add as assets in your Github release.
+```
 
 # References
 - [Discord Social SDK Overview](https://discord.com/developers/docs/discord-social-sdk/overview)
