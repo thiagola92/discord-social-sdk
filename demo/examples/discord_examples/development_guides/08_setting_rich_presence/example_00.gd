@@ -47,7 +47,8 @@ func _on_status_changed(status: DiscordClientStatus.Enum, error: DiscordClientEr
 		# timestamps.SetEnd(int(Time.get_unix_time_from_system()) + 3600)
 		activity.set_timestamps(timestamps)
 		
-		
+		# TODO: Included the others examples from:
+		# https://discord.com/developers/docs/discord-social-sdk/development-guides/setting-rich-presence#setting-field-urls
 	elif error != DiscordClientError.NONE:
 		print("❌ Connection Error: %s - Details: %s" % [error, error_detail])
 
