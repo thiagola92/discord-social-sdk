@@ -103,10 +103,7 @@ cd godot-cpp
 godot --dump-extension-api
 scons platform=linux custom_api_file=extension_api.json
 cd ..
-```
 
-### Repeat this steps as needed
-```bash
 # Generate GDExtension source code.
 python3 scripts/main.py --code
 
@@ -129,6 +126,21 @@ scons platform=windows                            # Debug
 scons platform=windows target=template_release    # Release
 
 # Open project (may need to open two times).
+godot ./demo/project.godot
+```
+
+### Repeat during development
+```bash
+# Generate GDExtension source code and documentations.
+python3 scripts/main.py --code --docs
+
+# Generate GDExtension library.
+scons platform=linux                            # Debug
+scons platform=linux target=template_release    # Release
+scons platform=windows                            # Debug
+scons platform=windows target=template_release    # Release
+
+# Open project.
 godot ./demo/project.godot
 ```
 
