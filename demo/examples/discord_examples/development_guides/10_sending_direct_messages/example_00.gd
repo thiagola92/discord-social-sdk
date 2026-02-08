@@ -5,98 +5,73 @@ extends Control
 # This only exist so I don't accidentally git push my ID.
 var APPLICATION_ID: int = DotEnv.read_int("APPLICATION_ID")
 
-#var client := DiscordClient.new()
-#
-#
-#func _ready() -> void:
-	#var code_verifier := client.CreateAuthorizationCodeVerifier()
-	#var args = DiscordAuthorizationArgs.new()
-	#args.SetClientId(APPLICATION_ID)
-	#args.SetScopes(DiscordClient.GetDefaultPresenceScopes())
-	#args.SetCodeChallenge(code_verifier.Challenge())
-	#
-	#client.SetStatusChangedCallback(
-		#func(
-			#status: DiscordClientStatus.Enum,
-			#error: DiscordClientError.Enum,
-			#errorDetail: int
-		#):
-			#print("🔄 Status changed: %s" % DiscordClient.StatusToString(status))
-			#
-			#if status == DiscordClientStatus.Ready:
-				#print("✅ Client is ready! You can now call SDK functions.")
-				#print("👥 Friends Count: %s" % client.GetRelationships().size())
-				#
-				#send_message()
-			#elif error != DiscordClientError.None:
-				#print("❌ Connection Error: %s - Details: %s" % [
-					#DiscordClient.ErrorToString(error), errorDetail
-				#])
-	#)
-	#
-	#client.SetMessageCreatedCallback(
-		#func(messageId: int):
-			#var message = client.GetMessageHandle(messageId)
-			#
-			#if message != null:
-				#print("New message from %s: %s" % [message.AuthorId(), message.Content()])
-	#)
-	#
-	#client.Authorize(
-		#args,
-		#func(result: DiscordClientResult, code: String, redirectUri: String):
-			#if not result.Successful():
-				#print("❌ Authorization Error: %s" % result.Error())
-				#return
-			#
-			#client.GetToken(
-				#APPLICATION_ID,
-				#code,
-				#code_verifier.Verifier(),
-				#redirectUri,
-				#func(
-					#result: DiscordClientResult,
-					#accessToken: String,
-					#_refreshToken: String,
-					#_tokenType: DiscordAuthorizationTokenType.Enum,
-					#_expiresIn: int,
-					#_scopes: String
-				#):
-					#if not result.Successful():
-						#print("❌ Get Token Error: %s" % result.Error())
-						#return
-					#
-					#client.UpdateToken(
-						#DiscordAuthorizationTokenType.Bearer,
-						#accessToken,
-						#func(result: DiscordClientResult):
-							#if not result.Successful():
-								#print("❌ Update Token Error: %s" % result.Error())
-								#return
-							#
-							#client.Connect()
-					#)
-			#)
-	#)
-#
-#
-#func _process(_delta: float) -> void:
-	#Discord.RunCallbacks()
-#
-#
-#func send_message() -> void:
-	#var message := "ready to queue?"
-	#
-	## ATTENTION: Replace DotEnv.read_int("USER_ID") with the target user ID.
-	## This only exist so I don't accidentally git push my ID.
-	#var recipientId := DotEnv.read_int("USER_ID")
-	#
-	#client.SendUserMessage(
-		#recipientId,
-		#message,
-		#func(result: DiscordClientResult, _messageId: int):
-			#if result.Successful():
-				#print("✅ Message sent successfully")
-			#else:
-				#print("❌ Failed to send message: %s" % result.Error())
-	#)
+var client := DiscordClient.new()
+var args := DiscordAuthorizationArgs.new()
+var code_verifier: DiscordAuthorizationCodeVerifier = null
+
+
+func _ready() -> void:
+	code_verifier = client.create_authorization_code_verifier()
+	
+	args.set_client_id(APPLICATION_ID)
+	args.set_scopes(DiscordClient.get_default_presence_scopes())
+	args.set_code_challenge(code_verifier.challenge())
+	
+	client.add_log_callback(_on_log_message, DiscordLoggingSeverity.INFO)
+	client.set_status_changed_callback(_on_status_changed)
+	client.authorize(args, _on_authorization_result)
+
+
+func _process(_delta: float) -> void:
+	Discord.run_callbacks()
+
+
+func _on_log_message(message: String, severity: DiscordLoggingSeverity.Enum) -> void:
+	print("[%s] %s" % [Discord.enum_to_string(severity, DiscordLoggingSeverity.id), message])
+
+
+func _on_status_changed(status: DiscordClientStatus.Enum, error: DiscordClientError.Enum, error_detail: int) -> void:
+	if error != DiscordClientError.NONE:
+		print("❌ Connection Error: %s - Details: %s" % [error, error_detail])
+		return
+	
+	if status != DiscordClientStatus.READY:
+		return
+	
+	var message := "ready to queue?"
+	var recipient_id := 1234567890
+	
+	client.send_user_message(recipient_id, message, _on_message_sent)
+
+
+func _on_message_sent(result: DiscordClientResult, _message_id: int) -> void:
+	if result.successful():
+		print("✅ Message sent successfully")
+	else:
+		print("❌ Failed to send message: %s" % result.error())
+
+
+func _on_authorization_result(result: DiscordClientResult, code: String, redirect_uri: String) -> void:
+	if not result.successful():
+		print("❌ Authorization Error: %s" % result.error())
+	else:
+		print("✅ Authorization successful! Next step: exchange code for an access token")
+		
+		client.get_token(APPLICATION_ID, code, code_verifier.verifier(), redirect_uri, _on_token_received)
+
+
+func _on_token_received(
+		_result: DiscordClientResult,
+		access_token: String,
+		_refresh_token: String,
+		_token_type: DiscordAuthorizationTokenType.Enum,
+		_expires_in: int,
+		_scopes: String
+) -> void:
+	print("🔓 Access token received! Establishing connection...")
+	
+	client.update_token(DiscordAuthorizationTokenType.BEARER, access_token, _on_token_updated)
+
+
+func _on_token_updated(_result: DiscordClientResult) -> void:
+	client.connect_discord()

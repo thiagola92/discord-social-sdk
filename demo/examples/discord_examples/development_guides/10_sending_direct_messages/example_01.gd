@@ -18,7 +18,7 @@ func _ready() -> void:
 	args.set_code_challenge(code_verifier.challenge())
 	
 	client.add_log_callback(_on_log_message, DiscordLoggingSeverity.INFO)
-	client.set_status_changed_callback(_on_status_changed)
+	client.set_message_created_callback(_on_message_created)
 	client.authorize(args, _on_authorization_result)
 
 
@@ -30,22 +30,11 @@ func _on_log_message(message: String, severity: DiscordLoggingSeverity.Enum) -> 
 	print("[%s] %s" % [Discord.enum_to_string(severity, DiscordLoggingSeverity.id), message])
 
 
-func _on_status_changed(status: DiscordClientStatus.Enum, error: DiscordClientError.Enum, error_detail: int) -> void:
-	if error != DiscordClientError.NONE:
-		print("❌ Connection Error: %s - Details: %s" % [error, error_detail])
-		return
+func _on_message_created(message_id: int) -> void:
+	var message := client.get_message_handle(message_id) as DiscordMessageHandle
 	
-	if status != DiscordClientStatus.READY:
-		return
-	
-	client.create_or_join_lobby("your-unique-lobby-secret", _on_lobby_created_or_joined)
-
-
-func _on_lobby_created_or_joined(result: DiscordClientResult, lobby_id: int) -> void:
-	if result.successful():
-		print("🎮 Lobby created or joined successfully! Lobby Id: %s" % lobby_id)
-	else:
-		print("❌ Lobby creation/join failed")
+	if message:
+		print("New message from %s: %s" % [message.author_id(), message.content()])
 
 
 func _on_authorization_result(result: DiscordClientResult, code: String, redirect_uri: String) -> void:

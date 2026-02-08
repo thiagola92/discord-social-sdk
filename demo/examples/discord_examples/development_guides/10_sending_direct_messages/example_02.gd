@@ -38,14 +38,17 @@ func _on_status_changed(status: DiscordClientStatus.Enum, error: DiscordClientEr
 	if status != DiscordClientStatus.READY:
 		return
 	
-	client.create_or_join_lobby("your-unique-lobby-secret", _on_lobby_created_or_joined)
+	client.get_user_message_summaries(_on_user_message_summaries)
 
 
-func _on_lobby_created_or_joined(result: DiscordClientResult, lobby_id: int) -> void:
+func _on_user_message_summaries(result: DiscordClientResult, summaries: Array[DiscordUserMessageSummary]) -> void:
 	if result.successful():
-		print("🎮 Lobby created or joined successfully! Lobby Id: %s" % lobby_id)
+		print("📋 Retrieved %s conversations" % summaries.size())
+		
+		for summary in summaries:
+			print("User ID: %s, Last Message ID: %s" % [summary.user_id(), summary.last_message_id()])
 	else:
-		print("❌ Lobby creation/join failed")
+		print("❌ Failed to retrieve conversation summaries")
 
 
 func _on_authorization_result(result: DiscordClientResult, code: String, redirect_uri: String) -> void:

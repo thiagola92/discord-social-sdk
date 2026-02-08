@@ -36,7 +36,7 @@ func display_friends_list() -> void:
 	for relationship in client.get_relationships():
 		var user = relationship.user() as DiscordUserHandle
 		
-		if user == null:
+		if user:
 			continue
 		
 		var string: String = ""

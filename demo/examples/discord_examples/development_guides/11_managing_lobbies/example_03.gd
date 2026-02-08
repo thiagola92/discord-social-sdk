@@ -19,6 +19,7 @@ func _ready() -> void:
 	
 	client.add_log_callback(_on_log_message, DiscordLoggingSeverity.INFO)
 	client.set_status_changed_callback(_on_status_changed)
+	client.set_message_created_callback(_on_message_created)
 	client.authorize(args, _on_authorization_result)
 
 
@@ -44,8 +45,22 @@ func _on_status_changed(status: DiscordClientStatus.Enum, error: DiscordClientEr
 func _on_lobby_created_or_joined(result: DiscordClientResult, lobby_id: int) -> void:
 	if result.successful():
 		print("🎮 Lobby created or joined successfully! Lobby Id: %s" % lobby_id)
+		
+		client.send_lobby_message(lobby_id, "Hello", _on_lobby_message_sent)
 	else:
 		print("❌ Lobby creation/join failed")
+
+
+func _on_lobby_message_sent(result: DiscordClientResult, _message_id: int) -> void:
+	if result.successful():
+		print("📨 Message sent successfully!")
+	else:
+		print("❌ Message sending failed")
+
+
+func _on_message_created(message_id: int) -> void:
+	var message := client.get_message_handle(message_id) as DiscordMessageHandle
+	print("📨 New message received: %s" % message.content())
 
 
 func _on_authorization_result(result: DiscordClientResult, code: String, redirect_uri: String) -> void:

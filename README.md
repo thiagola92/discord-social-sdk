@@ -14,8 +14,6 @@ What is Discord Social SDK? You can read about it from Discord it self:
 
 But if you want me to be brief... It's basically a way to use Discord infrastructure in your game. For example, instead of developing a text/voice chat for your game, you could just request Discord to create one for you.  
 
-Just to be clear, it doesn't let you access user's Discord servers and their text/voice chats, it create a completely detached text/voice chat from the servers that the user knows. I'm being very explicit here beucase many people expect Discord Social SDK to give you access to everything that Discord Client/GUI does, which is not the case (probably for security reasons).  
-
 What can you do with this SDK:  
 - Send/Accept friend request.  
 - Block/Unblock users.  
@@ -26,8 +24,7 @@ What can you do with this SDK:
 - Create lobbies.  
     - Use lobby text chat.  
     - Use lobby voice chat.  
-- ...  
-    - To be honest, I don't know all functionalities.  
+- I'm gonna be honest, don't know all functionalities...  
 
 # Platforms
 These are the currently supported platforms:  

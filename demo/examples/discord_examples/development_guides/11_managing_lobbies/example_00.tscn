@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dute4k55el8j7" path="res://examples/discord_examples/development_guides/11_managing_lobbies/example_00.gd" id="1_qiiyf"]
 
-[node name="Main" type="Control"]
+[node name="Main" type="Control" unique_id=999056710]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

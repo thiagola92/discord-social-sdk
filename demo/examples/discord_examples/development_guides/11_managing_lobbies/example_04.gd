@@ -19,6 +19,7 @@ func _ready() -> void:
 	
 	client.add_log_callback(_on_log_message, DiscordLoggingSeverity.INFO)
 	client.set_status_changed_callback(_on_status_changed)
+	client.set_message_created_callback(_on_message_created)
 	client.authorize(args, _on_authorization_result)
 
 
@@ -44,8 +45,22 @@ func _on_status_changed(status: DiscordClientStatus.Enum, error: DiscordClientEr
 func _on_lobby_created_or_joined(result: DiscordClientResult, lobby_id: int) -> void:
 	if result.successful():
 		print("🎮 Lobby created or joined successfully! Lobby Id: %s" % lobby_id)
+		
+		var message_limit = 50
+		
+		client.get_lobby_messages_with_limit(lobby_id, message_limit, _on_lobby_messages_with_limit)
 	else:
 		print("❌ Lobby creation/join failed")
+
+
+func _on_lobby_messages_with_limit(result: DiscordClientResult, messages: Array[DiscordMessageHandle]) -> void:
+	if result.successful():
+		print("? Retrieved %s messages from lobby chat history!" % messages.size())
+		
+		for message in messages:
+			print("Message: %s" % message.content())
+	else:
+		print("? Failed to retrieve lobby chat history")
 
 
 func _on_authorization_result(result: DiscordClientResult, code: String, redirect_uri: String) -> void:

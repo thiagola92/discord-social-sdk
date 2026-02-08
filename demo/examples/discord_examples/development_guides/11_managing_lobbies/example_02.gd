@@ -44,8 +44,17 @@ func _on_status_changed(status: DiscordClientStatus.Enum, error: DiscordClientEr
 func _on_lobby_created_or_joined(result: DiscordClientResult, lobby_id: int) -> void:
 	if result.successful():
 		print("🎮 Lobby created or joined successfully! Lobby Id: %s" % lobby_id)
+		
+		client.send_lobby_message(lobby_id, "Hello", _on_lobby_message_sent)
 	else:
 		print("❌ Lobby creation/join failed")
+
+
+func _on_lobby_message_sent(result: DiscordClientResult, _message_id: int) -> void:
+	if result.successful():
+		print("📨 Message sent successfully!")
+	else:
+		print("❌ Message sending failed")
 
 
 func _on_authorization_result(result: DiscordClientResult, code: String, redirect_uri: String) -> void:
