@@ -5,29 +5,29 @@ extends Control
 # This only exist so I don't accidentally use my ID.
 var APPLICATION_ID: int = DotEnv.read_int("APPLICATION_ID")
 
-#var client := DiscordClient.new()
-#
-#
-#func _ready() -> void:
-	#var code_verifier := client.CreateAuthorizationCodeVerifier()
-	#var args = DiscordAuthorizationArgs.new()
-	#args.SetClientId(APPLICATION_ID)
-	#args.SetScopes(DiscordClient.GetDefaultPresenceScopes())
-	#args.SetCodeChallenge(code_verifier.Challenge())
-	#
-	#client.AddLogCallback(
-		#func(message: String, severity: DiscordLoggingSeverity.Enum):
-			#print("[%s] %s" % [Discord.EnumToStringLoggingSeverity(severity), message]),
-		#DiscordLoggingSeverity.Info
-	#)
-	#
-	## Just to trigger the log.
-	#client.Authorize(
-		#args,
-		#func(_result: DiscordClientResult, _code: String, _redirectUri: String):
-			#pass
-	#)
-#
-#
-#func _process(_delta: float) -> void:
-	#Discord.RunCallbacks()
+var client := DiscordClient.new()
+var args := DiscordAuthorizationArgs.new()
+var code_verifier: DiscordAuthorizationCodeVerifier = null
+
+
+func _ready() -> void:
+	code_verifier = client.create_authorization_code_verifier()
+	
+	args.set_client_id(APPLICATION_ID)
+	args.set_scopes(DiscordClient.get_default_presence_scopes())
+	args.set_code_challenge(code_verifier.challenge())
+	
+	client.add_log_callback(_on_log_message, DiscordLoggingSeverity.INFO)
+	client.authorize(args, _on_authorization_result)
+
+
+func _process(_delta: float) -> void:
+	Discord.run_callbacks()
+
+
+func _on_log_message(message: String, severity: DiscordLoggingSeverity.Enum) -> void:
+	print("[%s] %s" % [Discord.enum_to_string(severity, DiscordLoggingSeverity.id), message])
+
+
+func _on_authorization_result(_result: DiscordClientResult, _code: String, _redirect_uri: String) -> void:
+	pass

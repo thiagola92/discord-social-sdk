@@ -12,7 +12,7 @@ var code_verifier: DiscordAuthorizationCodeVerifier = null
 func _ready() -> void:
 	print("🚀 Initializing Discord SDK...")
 	
-	client.add_log_callback(_on_log, DiscordLoggingSeverity.INFO)
+	client.add_log_callback(_on_log_message, DiscordLoggingSeverity.INFO)
 	client.set_status_changed_callback(_on_status_changed)
 	
 	code_verifier = client.create_authorization_code_verifier()
@@ -20,14 +20,14 @@ func _ready() -> void:
 	args.set_client_id(APPLICATION_ID)
 	args.set_scopes(DiscordClient.get_default_presence_scopes())
 	args.set_code_challenge(code_verifier.challenge())
-	client.authorize(args, _on_authorized)
+	client.authorize(args, _on_authorization_result)
 
 
 func _process(_delta: float) -> void:
 	Discord.run_callbacks()
 
 
-func _on_log(message: String, severity: DiscordLoggingSeverity.Enum) -> void:
+func _on_log_message(message: String, severity: DiscordLoggingSeverity.Enum) -> void:
 	print("[%s] %s" % [Discord.enum_to_string(severity, DiscordLoggingSeverity.id), message])
 
 
@@ -55,7 +55,7 @@ func _on_rich_presence_updated(result: DiscordClientResult) -> void:
 		print("❌ Rich Presence update failed")
 
 
-func _on_authorized(result: DiscordClientResult, code: String, redirect_uri: String) -> void:
+func _on_authorization_result(result: DiscordClientResult, code: String, redirect_uri: String) -> void:
 	if not result.successful():
 		print("❌ Authentication Error: %s" % result.error())
 	else:

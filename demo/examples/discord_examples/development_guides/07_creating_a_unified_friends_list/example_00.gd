@@ -17,12 +17,17 @@ func _ready() -> void:
 	args.set_scopes(DiscordClient.get_default_presence_scopes())
 	args.set_code_challenge(code_verifier.challenge())
 	
+	client.add_log_callback(_on_log_message, DiscordLoggingSeverity.INFO)
 	client.set_relationship_groups_updated_callback(_on_relationship_groups_updated)
-	client.authorize(args, _on_authorized)
+	client.authorize(args, _on_authorization_result)
 
 
 func _process(_delta: float) -> void:
 	Discord.run_callbacks()
+
+
+func _on_log_message(message: String, severity: DiscordLoggingSeverity.Enum) -> void:
+	print("[%s] %s" % [Discord.enum_to_string(severity, DiscordLoggingSeverity.id), message])
 
 
 func display_unified_friends_list() -> void:
@@ -81,7 +86,7 @@ func _on_relationship_groups_updated(user_id: int) -> void:
 	display_unified_friends_list()
 
 
-func _on_authorized(result: DiscordClientResult, code: String, redirect_uri: String) -> void:
+func _on_authorization_result(result: DiscordClientResult, code: String, redirect_uri: String) -> void:
 	if not result.successful():
 		print("❌ Authorization Error: %s" % result.error())
 		return
@@ -110,3 +115,4 @@ func _on_token_updated(result: DiscordClientResult) -> void:
 		return
 	
 	client.connect_discord()
+	display_unified_friends_list()

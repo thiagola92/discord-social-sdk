@@ -75,7 +75,7 @@ var code_verifier: DiscordAuthorizationCodeVerifier = null
 func _ready() -> void:
 	print("🚀 Initializing Discord SDK...")
 	
-	client.add_log_callback(_on_log, DiscordLoggingSeverity.INFO)
+	client.add_log_callback(_on_log_message, DiscordLoggingSeverity.INFO)
 	client.set_status_changed_callback(_on_status_changed)
 	
 	code_verifier = client.create_authorization_code_verifier()
@@ -90,7 +90,7 @@ func _process(_delta: float) -> void:
 	Discord.run_callbacks()
 
 
-func _on_log(message: String, severity: DiscordLoggingSeverity.Enum) -> void:
+func _on_log_message(message: String, severity: DiscordLoggingSeverity.Enum) -> void:
 	print("[%s] %s" % [Discord.enum_to_string(severity, DiscordLoggingSeverity.id), message])
 
 
@@ -149,9 +149,22 @@ func _on_token_updated(result: DiscordClientResult) -> void:
 
 Need more examples? Check this two directories:  
 - [Discord examples](./demo/examples/discord_examples/)
-    - This examples were made using [Discord Social SDK Development Guides](https://discord.com/developers/docs/discord-social-sdk/development-guides) as base
+    - This examples were made using [Discord Social SDK Documentation](https://discord.com/developers/docs/discord-social-sdk/overview) as base
 - [GDExtension examples](./demo/examples/gdextension_examples/)
     - This examples were made by me
+
+# Security
+At first you may think that your Application ID is public information... But it's not!  
+
+Reading [Discord Developer Terms of Service section 2.d](https://support-dev.discord.com/hc/en-us/articles/8562894815383-Discord-Developer-Terms-of-Service), you will find:  
+
+> You will use any developer credentials (such as your **Application ID**, passwords, keys, tokens, and client secrets) we assign to you solely with your Application and the applicable APIs (and will not permit or enable any other Application to use them) and will **treat them as Discord confidential information**...  
+
+This security is needed because Application ID is all that somebody needs to interact with the Discord Social SDK. In other words, knowing your Application ID is everything that a person needs to impersonate your application.  
+
+That's why Discord Social SDK should only be used on games that already have servers (unless someone prove me wrong).  
+
+If your game runs everything locally, that means that you need to put your Application ID in the binary and this means that someone can reverse engineer to get it (even if you [compile with PCK encryption key](https://docs.godotengine.org/en/4.4/contributing/development/compiling/compiling_with_script_encryption_key.html)).  
 
 # The Good, The Bad, The Ugly
 

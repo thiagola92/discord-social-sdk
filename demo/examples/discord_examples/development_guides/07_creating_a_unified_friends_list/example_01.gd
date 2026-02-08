@@ -17,12 +17,17 @@ func _ready() -> void:
 	args.set_scopes(DiscordClient.get_default_presence_scopes())
 	args.set_code_challenge(code_verifier.challenge())
 	
+	client.add_log_callback(_on_log_message, DiscordLoggingSeverity.INFO)
 	client.set_status_changed_callback(_on_status_changed)
-	client.authorize(args, _on_authorized)
+	client.authorize(args, _on_authorization_result)
 
 
 func _process(_delta: float) -> void:
 	Discord.run_callbacks()
+
+
+func _on_log_message(message: String, severity: DiscordLoggingSeverity.Enum) -> void:
+	print("[%s] %s" % [Discord.enum_to_string(severity, DiscordLoggingSeverity.id), message])
 
 
 func display_friends_list() -> void:
@@ -36,13 +41,13 @@ func display_friends_list() -> void:
 		
 		var string: String = ""
 		
-		string += " DiscordName: %s" % user.display_name()
-		string += " DiscordId: %s" % user.id()
-		string += " IsProvisional: %s" % user.is_provisional()
-		string += " DiscordRelationshipType: %s" % Discord.enum_to_string(relationship.discord_relationship_type(), DiscordRelationshipType.id)
-		string += " GameRelationshipType: %s" % Discord.enum_to_string(relationship.game_relationship_type(),  DiscordRelationshipType.id)
-		string += " IsOnlineAnywhere: %s" % (user.status() != DiscordStatusType.OFFLINE)
-		string += " IsOnlineInGame: %s" % (user.game_activity() != null)
+		string += " DiscordName: %s\n" % user.display_name()
+		string += " DiscordId: %s\n" % user.id()
+		string += " IsProvisional: %s\n" % user.is_provisional()
+		string += " DiscordRelationshipType: %s\n" % Discord.enum_to_string(relationship.discord_relationship_type(), DiscordRelationshipType.id)
+		string += " GameRelationshipType: %s\n" % Discord.enum_to_string(relationship.game_relationship_type(),  DiscordRelationshipType.id)
+		string += " IsOnlineAnywhere: %s\n" % (user.status() != DiscordStatusType.OFFLINE)
+		string += " IsOnlineInGame: %s\n" % (user.game_activity() != null)
 		
 		relationships.push_back(string)
 	
@@ -70,7 +75,7 @@ func _on_status_changed(
 		])
 
 
-func _on_authorized(result: DiscordClientResult, code: String, redirect_uri: String) -> void:
+func _on_authorization_result(result: DiscordClientResult, code: String, redirect_uri: String) -> void:
 	if not result.successful():
 		print("❌ Authorization Error: %s" % result.error())
 		return
@@ -99,3 +104,4 @@ func _on_token_updated(result: DiscordClientResult) -> void:
 		return
 	
 	client.connect_discord()
+	display_friends_list()
