@@ -18,6 +18,10 @@ func _ready() -> void:
 	args.set_scopes(DiscordClient.get_default_presence_scopes())
 	args.set_code_challenge(code_verifier.challenge())
 	
+	if not client.register_launch_command(APPLICATION_ID, "~/.local/bin/godot"):
+		print("Failed to register your command")
+		return
+	
 	client.add_log_callback(_on_log_message, DiscordLoggingSeverity.INFO)
 	client.set_status_changed_callback(_on_status_changed)
 	client.authorize(args, _on_authorization_result)
@@ -59,6 +63,20 @@ func _on_status_changed(status: DiscordClientStatus.Enum, error: DiscordClientEr
 	activity.set_supported_platforms(DiscordActivityGamePlatforms.DESKTOP)
 	
 	client.update_rich_presence(activity, _on_rich_presence_updated)
+	
+	# ATTENTION: Replace DotEnv.read_int("TARGET_ID") with your target ID.
+	# This only exist so I don't accidentally git push my ID.
+	var target_user_id := DotEnv.read_int("TARGET_ID")
+	var invite_message := "Join my game!"
+	
+	client.send_activity_invite(target_user_id, invite_message, _on_activity_invite_sent)
+
+
+func _on_activity_invite_sent(result: DiscordClientResult) -> void:
+	if result.successful():
+		print("Activity Invite sent to user")
+	else:
+		print("Failed - check if Rich Presence has party, secret, and platforms set")
 
 
 func _on_rich_presence_updated(result: DiscordClientResult) -> void:

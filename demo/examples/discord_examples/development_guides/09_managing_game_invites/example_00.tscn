@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://uclveiqrqljq" path="res://examples/discord_examples/development_guides/09_managing_game_invites/example_00.gd" id="1_tc00s"]
 
-[node name="Main" type="Control"]
+[node name="Main" type="Control" unique_id=257943772]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

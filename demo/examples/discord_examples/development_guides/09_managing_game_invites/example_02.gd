@@ -19,7 +19,8 @@ func _ready() -> void:
 	args.set_code_challenge(code_verifier.challenge())
 	
 	client.add_log_callback(_on_log_message, DiscordLoggingSeverity.INFO)
-	client.set_status_changed_callback(_on_status_changed)
+	client.set_activity_invite_created_callback(_on_activity_invite_created)
+	client.set_activity_join_callback(_on_activity_joined)
 	client.authorize(args, _on_authorization_result)
 
 
@@ -31,41 +32,26 @@ func _on_log_message(message: String, severity: DiscordLoggingSeverity.Enum) -> 
 	print("[%s] %s" % [Discord.enum_to_string(severity, DiscordLoggingSeverity.id), message])
 
 
-func _on_status_changed(status: DiscordClientStatus.Enum, error: DiscordClientError.Enum, error_detail: int) -> void:
-	if error != DiscordClientError.NONE:
-		print("❌ Connection Error: %s - Details: %s" % [error, error_detail])
-		return
+func _on_activity_invite_created(invite: DiscordActivityInvite) -> void:
+	print("Activity Invite received from user: %s" % invite.sender_id())
 	
-	if status != DiscordClientStatus.READY:
-		return
-		
-	var activity := DiscordActivity.new()
+	var message := client.get_message_handle(invite.message_id()) as DiscordMessageHandle
 	
-	activity.set_type(DiscordActivityTypes.PLAYING)
-	activity.set_state("In Competitive Match")
-	activity.set_details("Valhalla")
+	if message:
+		print("Invite Message: %s" % message.content())
 	
-	var party := DiscordActivityParty.new()
-	
-	party.set_id("party1234")
-	party.set_current_size(1)
-	party.set_max_size(5)
-	activity.set_party(party)
-	
-	var secrets := DiscordActivitySecrets.new();
-	
-	secrets.set_join("joinsecret1234")
-	activity.set_secrets(secrets)
-	activity.set_supported_platforms(DiscordActivityGamePlatforms.DESKTOP)
-	
-	client.update_rich_presence(activity, _on_rich_presence_updated)
+	client.accept_activity_invite(invite, _on_invite_accepted)
 
 
-func _on_rich_presence_updated(result: DiscordClientResult) -> void:
+func _on_invite_accepted(result: DiscordClientResult, _join_secret: String) -> void:
 	if result.successful():
-		print("✅ Rich presence updated!")
+		print("Activity Invite accepted successfully!")
 	else:
-		print("❌ Rich Presence update failed")
+		print("❌ Activity Invite accept failed")
+
+
+func _on_activity_joined(_join_secret: String) -> void:
+	print('User manually clicked "join" in an Activity')
 
 
 func _on_authorization_result(result: DiscordClientResult, code: String, redirect_uri: String) -> void:

@@ -2,7 +2,7 @@ extends Control
 
 
 # ATTENTION: Replace DotEnv.read_int("APPLICATION_ID") with your application ID.
-# This only exist so I don't accidentally use my ID.
+# This only exist so I don't accidentally git push my ID.
 var APPLICATION_ID: int = DotEnv.read_int("APPLICATION_ID")
 
 
@@ -32,25 +32,29 @@ func _on_log_message(message: String, severity: DiscordLoggingSeverity.Enum) -> 
 
 
 func _on_status_changed(status: DiscordClientStatus.Enum, error: DiscordClientError.Enum, error_detail: int) -> void:
-	if status == DiscordClientStatus.READY:
-		var activity := DiscordActivity.new()
-		
-		activity.set_type(DiscordActivityTypes.PLAYING)
-		activity.set_details("Battle Creek")
-		activity.set_state("In Competitive Match")
-		
-		client.update_rich_presence(activity, _on_rich_presence_updated)
-
-		var timestamps := DiscordActivityTimestamps.new()
-		
-		timestamps.set_start(int(Time.get_unix_time_from_system()))
-		# timestamps.SetEnd(int(Time.get_unix_time_from_system()) + 3600)
-		activity.set_timestamps(timestamps)
-		
-		# TODO: Included the others examples from:
-		# https://discord.com/developers/docs/discord-social-sdk/development-guides/setting-rich-presence#setting-field-urls
-	elif error != DiscordClientError.NONE:
+	if error != DiscordClientError.NONE:
 		print("❌ Connection Error: %s - Details: %s" % [error, error_detail])
+		return
+	
+	if status != DiscordClientStatus.READY:
+		return
+	
+	var activity := DiscordActivity.new()
+	
+	activity.set_type(DiscordActivityTypes.PLAYING)
+	activity.set_details("Battle Creek")
+	activity.set_state("In Competitive Match")
+	
+	client.update_rich_presence(activity, _on_rich_presence_updated)
+
+	var timestamps := DiscordActivityTimestamps.new()
+	
+	timestamps.set_start(int(Time.get_unix_time_from_system()))
+	# timestamps.SetEnd(int(Time.get_unix_time_from_system()) + 3600)
+	activity.set_timestamps(timestamps)
+	
+	# TODO: Included the others examples from:
+	# https://discord.com/developers/docs/discord-social-sdk/development-guides/setting-rich-presence#setting-field-urls
 
 
 func _on_rich_presence_updated(result: DiscordClientResult) -> void:

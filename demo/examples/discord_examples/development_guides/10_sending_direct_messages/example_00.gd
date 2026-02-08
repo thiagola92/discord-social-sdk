@@ -2,7 +2,7 @@ extends Control
 
 
 # ATTENTION: Replace DotEnv.read_int("APPLICATION_ID") with your application ID.
-# This only exist so I don't accidentally use my ID.
+# This only exist so I don't accidentally git push my ID.
 var APPLICATION_ID: int = DotEnv.read_int("APPLICATION_ID")
 
 #var client := DiscordClient.new()
@@ -88,7 +88,7 @@ var APPLICATION_ID: int = DotEnv.read_int("APPLICATION_ID")
 	#var message := "ready to queue?"
 	#
 	## ATTENTION: Replace DotEnv.read_int("USER_ID") with the target user ID.
-	## This only exist so I don't accidentally use my ID.
+	## This only exist so I don't accidentally git push my ID.
 	#var recipientId := DotEnv.read_int("USER_ID")
 	#
 	#client.SendUserMessage(
