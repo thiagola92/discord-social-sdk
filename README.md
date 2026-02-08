@@ -24,7 +24,7 @@ What can you do with this SDK:
 - Create lobbies.  
     - Use lobby text chat.  
     - Use lobby voice chat.  
-- I'm gonna be honest, don't know all functionalities...  
+- I don't know all functionalities...  
 
 # Platforms
 These are the currently supported platforms:  
