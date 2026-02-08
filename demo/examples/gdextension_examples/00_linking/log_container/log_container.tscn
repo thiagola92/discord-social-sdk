@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dru5ec3idvp6j"]
+
+[ext_resource type="Script" uid="uid://y4v1odjaeg7e" path="res://examples/gdextension_examples/00_linking/log_container/log_container.gd" id="1_fb0s8"]
+
+[node name="LogContainer" type="FoldableContainer" unique_id=558899810]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 31.0
+grow_horizontal = 2
+size_flags_vertical = 10
+folded = true
+title = "Log"
+script = ExtResource("1_fb0s8")
+
+[node name="Logs" type="TextEdit" parent="." unique_id=1148301885]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2

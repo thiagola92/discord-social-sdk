@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://dga2bo68ra1x1"]
+
+[ext_resource type="Script" uid="uid://cup27de0xw47i" path="res://examples/gdextension_examples/00_linking/connect_container/connect_container.gd" id="1_xrlpo"]
+
+[node name="ConnectContainer" type="HBoxContainer" unique_id=2145470178]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 31.0
+grow_horizontal = 2
+script = ExtResource("1_xrlpo")
+
+[node name="ApplicationID" type="LineEdit" parent="." unique_id=1596681857]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+placeholder_text = "Application ID"
+secret = true
+
+[node name="Connect" type="Button" parent="." unique_id=1520079525]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Connect"
+
+[node name="Warning" type="Label" parent="." unique_id=1525582148]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Scope" type="OptionButton" parent="." unique_id=1271282509]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+selected = 0
+item_count = 2
+popup/item_0/text = "Presence scopes"
+popup/item_0/id = 0
+popup/item_1/text = "Communication scopes"
+popup/item_1/id = 1

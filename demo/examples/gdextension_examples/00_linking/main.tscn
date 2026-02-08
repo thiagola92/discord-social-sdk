@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://b7sq514a2u7x7"]
+
+[ext_resource type="Script" uid="uid://tjk6bjx44q52" path="res://examples/gdextension_examples/00_linking/main.gd" id="1_daa77"]
+[ext_resource type="PackedScene" uid="uid://dga2bo68ra1x1" path="res://examples/gdextension_examples/00_linking/connect_container/connect_container.tscn" id="1_etc1t"]
+[ext_resource type="PackedScene" uid="uid://dru5ec3idvp6j" path="res://examples/gdextension_examples/00_linking/log_container/log_container.tscn" id="1_rxpg5"]
+
+[node name="Main" type="VBoxContainer" unique_id=2022362400]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_daa77")
+
+[node name="ConnectContainer" parent="." unique_id=2145470178 instance=ExtResource("1_etc1t")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="LogContainer" parent="." unique_id=558899810 instance=ExtResource("1_rxpg5")]
+unique_name_in_owner = true
+layout_mode = 2
