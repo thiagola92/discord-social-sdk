@@ -1,18 +1,30 @@
-def get_enum_definition(enum_name: str, binds: str, values: str) -> str:
+def get_enum_definition(
+    enum_name: str,
+    enums_binds: str,
+    const_binds: str,
+    enum_id: str,
+    values: str,
+) -> str:
     return f"""
-class Discordpp{enum_name} : public RefCounted {{
-	GDCLASS(Discordpp{enum_name}, RefCounted)
+class Discord{enum_name} : public RefCounted {{
+	GDCLASS(Discord{enum_name}, RefCounted)
 
 private:
-	Discordpp{enum_name}(){{}};
-	~Discordpp{enum_name}(){{}};
+	Discord{enum_name}(){{}};
+	~Discord{enum_name}(){{}};
 
 protected:
 	static void _bind_methods() {{
-		{binds}
+		// Enums binds.
+		{enums_binds}
+        
+        // Constant binds.
+        {const_binds}
 	}}
 
 public:
+	static const int64_t id = {enum_id};
+
 	enum Enum {{
 		{values}
 	}};

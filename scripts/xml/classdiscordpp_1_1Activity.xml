@@ -1,0 +1,871 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="classdiscordpp_1_1Activity" kind="class" language="C++" prot="public">
+    <compoundname>discordpp::Activity</compoundname>
+    <includes local="no">discordpp.h</includes>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classdiscordpp_1_1Activity_1a0c6f9ebae07c4fae9042c99d1dca5c69" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="classdiscordpp_1_1Activity" kindref="compound">Activity</ref></type>
+        <definition>const Activity discordpp::Activity::nullobj</definition>
+        <argsstring></argsstring>
+        <name>nullobj</name>
+        <qualifiedname>discordpp::Activity::nullobj</qualifiedname>
+        <briefdescription>
+<para>Uninitialized instance of <ref refid="classdiscordpp_1_1Activity" kindref="compound">Activity</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1306" column="23" bodyfile="include/discordpp.h" bodystart="1306" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classdiscordpp_1_1Activity_1ae793d9adbe16fef402b859ba02bee682" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::Activity::Activity</definition>
+        <argsstring>(Activity &amp;&amp;other) noexcept</argsstring>
+        <name>Activity</name>
+        <qualifiedname>discordpp::Activity::Activity</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1Activity" kindref="compound">Activity</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move constructor for <ref refid="classdiscordpp_1_1Activity" kindref="compound">Activity</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1302" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Activity_1a35cec32f9bf9a2625a6f6b175403d3cd" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1Activity" kindref="compound">Activity</ref> &amp;</type>
+        <definition>Activity &amp; discordpp::Activity::operator=</definition>
+        <argsstring>(Activity &amp;&amp;other) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::Activity::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1Activity" kindref="compound">Activity</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move assignment operator for <ref refid="classdiscordpp_1_1Activity" kindref="compound">Activity</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1304" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Activity_1a646a72b3db59369215eaa65f14ac90ce" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::Activity::operator bool</definition>
+        <argsstring>() const</argsstring>
+        <name>operator bool</name>
+        <qualifiedname>discordpp::Activity::operator bool</qualifiedname>
+        <briefdescription>
+<para>Returns true if the instance contains a valid object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1308" column="1" bodyfile="include/discordpp.h" bodystart="1308" bodyend="1308"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Activity_1a712a392cf07962ce2ea2521c90e759fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::Activity::Activity</definition>
+        <argsstring>(const Activity &amp;arg0)</argsstring>
+        <name>Activity</name>
+        <qualifiedname>discordpp::Activity::Activity</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1Activity" kindref="compound">Activity</ref> &amp;</type>
+          <declname>arg0</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor for <ref refid="classdiscordpp_1_1Activity" kindref="compound">Activity</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1311" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Activity_1a9ffd66dc9dcc40c6873802a9cc8a8926" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1Activity" kindref="compound">Activity</ref> &amp;</type>
+        <definition>Activity &amp; discordpp::Activity::operator=</definition>
+        <argsstring>(const Activity &amp;arg0)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::Activity::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1Activity" kindref="compound">Activity</ref> &amp;</type>
+          <declname>arg0</declname>
+        </param>
+        <briefdescription>
+<para>Copy assignment operator for <ref refid="classdiscordpp_1_1Activity" kindref="compound">Activity</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1313" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Activity_1ab87f0347d870044bb26d8f7e50cb4c1d" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::Activity::Activity</definition>
+        <argsstring>()</argsstring>
+        <name>Activity</name>
+        <qualifiedname>discordpp::Activity::Activity</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1315" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Activity_1aab07650fcff18565eb78a1e2df46627e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::Activity::AddButton</definition>
+        <argsstring>(discordpp::ActivityButton button)</argsstring>
+        <name>AddButton</name>
+        <qualifiedname>discordpp::Activity::AddButton</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1ActivityButton" kindref="compound">discordpp::ActivityButton</ref></type>
+          <declname>button</declname>
+        </param>
+        <briefdescription>
+<para>Adds a custom button to the rich presence. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1322" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Activity_1a46127e59d0e582c49310d60758fed691" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool discordpp::Activity::Equals</definition>
+        <argsstring>(discordpp::Activity other) const</argsstring>
+        <name>Equals</name>
+        <qualifiedname>discordpp::Activity::Equals</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1Activity" kindref="compound">discordpp::Activity</ref></type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Compares each field of the <ref refid="classdiscordpp_1_1Activity" kindref="compound">Activity</ref> struct for equality. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1325" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Activity_1a03ae78c821e134a53b4526018657c530" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="classdiscordpp_1_1ActivityButton" kindref="compound">discordpp::ActivityButton</ref> &gt;</type>
+        <definition>std::vector&lt; discordpp::ActivityButton &gt; discordpp::Activity::GetButtons</definition>
+        <argsstring>() const</argsstring>
+        <name>GetButtons</name>
+        <qualifiedname>discordpp::Activity::GetButtons</qualifiedname>
+        <briefdescription>
+<para>Returns the custom buttons for the rich presence. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1328" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Activity_1a13d323c3454fe32f5d33c94fac5bc11c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string discordpp::Activity::Name</definition>
+        <argsstring>() const</argsstring>
+        <name>Name</name>
+        <qualifiedname>discordpp::Activity::Name</qualifiedname>
+        <briefdescription>
+<para>The name of the game or application that the activity is associated with. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This field defaults to the name of the current game. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1333" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Activity_1a59f9a63a8b105946d0c9838f3e643ae2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::Activity::SetName</definition>
+        <argsstring>(std::string Name)</argsstring>
+        <name>SetName</name>
+        <qualifiedname>discordpp::Activity::SetName</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>Name</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1Activity_1a13d323c3454fe32f5d33c94fac5bc11c" kindref="member">Activity::Name</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1335" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Activity_1afbab0968c2cbef94691b3996fe3d6ea4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacediscordpp_1a6c76a8cbbc9270f025fd6854d5558660" kindref="member">discordpp::ActivityTypes</ref></type>
+        <definition>discordpp::ActivityTypes discordpp::Activity::Type</definition>
+        <argsstring>() const</argsstring>
+        <name>Type</name>
+        <qualifiedname>discordpp::Activity::Type</qualifiedname>
+        <briefdescription>
+<para>The type of activity this is. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This should almost always be set to <computeroutput>Playing</computeroutput> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1340" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Activity_1a3c686b85c6567f5b88d9d9a2aa3934ab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::Activity::SetType</definition>
+        <argsstring>(discordpp::ActivityTypes Type)</argsstring>
+        <name>SetType</name>
+        <qualifiedname>discordpp::Activity::SetType</qualifiedname>
+        <param>
+          <type><ref refid="namespacediscordpp_1a6c76a8cbbc9270f025fd6854d5558660" kindref="member">discordpp::ActivityTypes</ref></type>
+          <declname>Type</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1Activity_1afbab0968c2cbef94691b3996fe3d6ea4" kindref="member">Activity::Type</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1342" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Activity_1a837741f6a574a23536b208c8f44630c7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; <ref refid="namespacediscordpp_1a9a99c608f6825577fbcd89ded0378e25" kindref="member">discordpp::StatusDisplayTypes</ref> &gt;</type>
+        <definition>std::optional&lt; discordpp::StatusDisplayTypes &gt; discordpp::Activity::StatusDisplayType</definition>
+        <argsstring>() const</argsstring>
+        <name>StatusDisplayType</name>
+        <qualifiedname>discordpp::Activity::StatusDisplayType</qualifiedname>
+        <briefdescription>
+<para>Controls which field is used for the user&apos;s status message. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>See the docs on the <ref refid="classdiscordpp_1_1Activity" kindref="compound">Activity</ref> struct for more info. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1347" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Activity_1a9e8051f8dec35e2af025e5ed3a4dc6bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::Activity::SetStatusDisplayType</definition>
+        <argsstring>(std::optional&lt; discordpp::StatusDisplayTypes &gt; StatusDisplayType)</argsstring>
+        <name>SetStatusDisplayType</name>
+        <qualifiedname>discordpp::Activity::SetStatusDisplayType</qualifiedname>
+        <param>
+          <type>std::optional&lt; <ref refid="namespacediscordpp_1a9a99c608f6825577fbcd89ded0378e25" kindref="member">discordpp::StatusDisplayTypes</ref> &gt;</type>
+          <declname>StatusDisplayType</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1Activity_1a837741f6a574a23536b208c8f44630c7" kindref="member">Activity::StatusDisplayType</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1349" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Activity_1af7c8802a7df283dbe5ba06ba1c00ca5a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt; std::string &gt; discordpp::Activity::State</definition>
+        <argsstring>() const</argsstring>
+        <name>State</name>
+        <qualifiedname>discordpp::Activity::State</qualifiedname>
+        <briefdescription>
+<para>The state <emphasis>of the party</emphasis> for this activity. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>See the docs on the <ref refid="classdiscordpp_1_1Activity" kindref="compound">Activity</ref> struct for more info. If specified, must be a string between 2 and 128 characters. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1355" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Activity_1abfd658c93df153a53acd1ad0270c1e02" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::Activity::SetState</definition>
+        <argsstring>(std::optional&lt; std::string &gt; State)</argsstring>
+        <name>SetState</name>
+        <qualifiedname>discordpp::Activity::SetState</qualifiedname>
+        <param>
+          <type>std::optional&lt; std::string &gt;</type>
+          <declname>State</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1Activity_1af7c8802a7df283dbe5ba06ba1c00ca5a" kindref="member">Activity::State</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1357" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Activity_1af3a6411c8ec4ee24845c6114b21aab3d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt; std::string &gt; discordpp::Activity::StateUrl</definition>
+        <argsstring>() const</argsstring>
+        <name>StateUrl</name>
+        <qualifiedname>discordpp::Activity::StateUrl</qualifiedname>
+        <briefdescription>
+<para>A URL that opens when the user clicks/taps the state text. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>See the docs on the <ref refid="classdiscordpp_1_1Activity" kindref="compound">Activity</ref> struct for more info. If specified, must be a string between 2 and 256 characters. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1363" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Activity_1a1cadcb36d533ad0e73dc0b03beed66e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::Activity::SetStateUrl</definition>
+        <argsstring>(std::optional&lt; std::string &gt; StateUrl)</argsstring>
+        <name>SetStateUrl</name>
+        <qualifiedname>discordpp::Activity::SetStateUrl</qualifiedname>
+        <param>
+          <type>std::optional&lt; std::string &gt;</type>
+          <declname>StateUrl</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1Activity_1af3a6411c8ec4ee24845c6114b21aab3d" kindref="member">Activity::StateUrl</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1365" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Activity_1abe3446f06b53f4358e0efdc2878fa3d0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt; std::string &gt; discordpp::Activity::Details</definition>
+        <argsstring>() const</argsstring>
+        <name>Details</name>
+        <qualifiedname>discordpp::Activity::Details</qualifiedname>
+        <briefdescription>
+<para>The state <emphasis>of the what the user is doing</emphasis> for this activity. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>See the docs on the <ref refid="classdiscordpp_1_1Activity" kindref="compound">Activity</ref> struct for more info. If specified, must be a string between 2 and 128 characters. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1371" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Activity_1a28d98bbf86841526a0b2c033f3a70b28" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::Activity::SetDetails</definition>
+        <argsstring>(std::optional&lt; std::string &gt; Details)</argsstring>
+        <name>SetDetails</name>
+        <qualifiedname>discordpp::Activity::SetDetails</qualifiedname>
+        <param>
+          <type>std::optional&lt; std::string &gt;</type>
+          <declname>Details</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1Activity_1abe3446f06b53f4358e0efdc2878fa3d0" kindref="member">Activity::Details</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1373" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Activity_1ab5cc7690e9fd84b56443ec3c6e358af0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt; std::string &gt; discordpp::Activity::DetailsUrl</definition>
+        <argsstring>() const</argsstring>
+        <name>DetailsUrl</name>
+        <qualifiedname>discordpp::Activity::DetailsUrl</qualifiedname>
+        <briefdescription>
+<para>A URL that opens when the user clicks/taps the details text. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>See the docs on the <ref refid="classdiscordpp_1_1Activity" kindref="compound">Activity</ref> struct for more info. If specified, must be a string between 2 and 256 characters. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1379" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Activity_1a08dec0a9b7bffcff09be2bc2a92d7666" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::Activity::SetDetailsUrl</definition>
+        <argsstring>(std::optional&lt; std::string &gt; DetailsUrl)</argsstring>
+        <name>SetDetailsUrl</name>
+        <qualifiedname>discordpp::Activity::SetDetailsUrl</qualifiedname>
+        <param>
+          <type>std::optional&lt; std::string &gt;</type>
+          <declname>DetailsUrl</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1Activity_1ab5cc7690e9fd84b56443ec3c6e358af0" kindref="member">Activity::DetailsUrl</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1381" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Activity_1a1203f29b82e9716cdce9151c7ea3b2db" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; uint64_t &gt;</type>
+        <definition>std::optional&lt; uint64_t &gt; discordpp::Activity::ApplicationId</definition>
+        <argsstring>() const</argsstring>
+        <name>ApplicationId</name>
+        <qualifiedname>discordpp::Activity::ApplicationId</qualifiedname>
+        <briefdescription>
+<para>The application ID of the game that the activity is associated with. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This field cannot be set by the SDK, and will always be the application ID of the current game or a game from the same publisher. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1387" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Activity_1a48b156412b91a9a09c268bf2c3f7f9ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::Activity::SetApplicationId</definition>
+        <argsstring>(std::optional&lt; uint64_t &gt; ApplicationId)</argsstring>
+        <name>SetApplicationId</name>
+        <qualifiedname>discordpp::Activity::SetApplicationId</qualifiedname>
+        <param>
+          <type>std::optional&lt; uint64_t &gt;</type>
+          <declname>ApplicationId</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1Activity_1a1203f29b82e9716cdce9151c7ea3b2db" kindref="member">Activity::ApplicationId</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1389" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Activity_1a091058291278bf1ff0250b28bf311786" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; uint64_t &gt;</type>
+        <definition>std::optional&lt; uint64_t &gt; discordpp::Activity::ParentApplicationId</definition>
+        <argsstring>() const</argsstring>
+        <name>ParentApplicationId</name>
+        <qualifiedname>discordpp::Activity::ParentApplicationId</qualifiedname>
+        <briefdescription>
+<para>The application ID of the parent application that the activity is associated with if it exists. This is to help identify a collection of games that are from the same publisher. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This field cannot be set by the SDK, and will always be the application ID of the game&apos;s parent or unset if the game has no parent. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1396" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Activity_1a37969990d16e5f58e6180ff49038311c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::Activity::SetParentApplicationId</definition>
+        <argsstring>(std::optional&lt; uint64_t &gt; ParentApplicationId)</argsstring>
+        <name>SetParentApplicationId</name>
+        <qualifiedname>discordpp::Activity::SetParentApplicationId</qualifiedname>
+        <param>
+          <type>std::optional&lt; uint64_t &gt;</type>
+          <declname>ParentApplicationId</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1Activity_1a091058291278bf1ff0250b28bf311786" kindref="member">Activity::ParentApplicationId</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1398" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Activity_1a3fb85cc97867d2bf01e7e1a9a6414d95" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; <ref refid="classdiscordpp_1_1ActivityAssets" kindref="compound">discordpp::ActivityAssets</ref> &gt;</type>
+        <definition>std::optional&lt; discordpp::ActivityAssets &gt; discordpp::Activity::Assets</definition>
+        <argsstring>() const</argsstring>
+        <name>Assets</name>
+        <qualifiedname>discordpp::Activity::Assets</qualifiedname>
+        <briefdescription>
+<para>Images used to customize how the <ref refid="classdiscordpp_1_1Activity" kindref="compound">Activity</ref> is displayed in the Discord client. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1401" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Activity_1a7f0b6d7a92925a005444cb3f4055e2c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::Activity::SetAssets</definition>
+        <argsstring>(std::optional&lt; discordpp::ActivityAssets &gt; Assets)</argsstring>
+        <name>SetAssets</name>
+        <qualifiedname>discordpp::Activity::SetAssets</qualifiedname>
+        <param>
+          <type>std::optional&lt; <ref refid="classdiscordpp_1_1ActivityAssets" kindref="compound">discordpp::ActivityAssets</ref> &gt;</type>
+          <declname>Assets</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1Activity_1a3fb85cc97867d2bf01e7e1a9a6414d95" kindref="member">Activity::Assets</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1403" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Activity_1a912e6e9f685f9e7003731222016ed1a2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; <ref refid="classdiscordpp_1_1ActivityTimestamps" kindref="compound">discordpp::ActivityTimestamps</ref> &gt;</type>
+        <definition>std::optional&lt; discordpp::ActivityTimestamps &gt; discordpp::Activity::Timestamps</definition>
+        <argsstring>() const</argsstring>
+        <name>Timestamps</name>
+        <qualifiedname>discordpp::Activity::Timestamps</qualifiedname>
+        <briefdescription>
+<para>The timestamps struct can be used to render either: </para>
+        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para>a &quot;time remaining&quot; countdown timer (by specifying the <computeroutput>end</computeroutput> value)</para>
+</listitem><listitem><para>a &quot;time elapsed&quot; countup timer (by specifying the <computeroutput>start</computeroutput> value) </para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1408" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Activity_1a437bd31e05be54bbb2f259ef8b9c68ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::Activity::SetTimestamps</definition>
+        <argsstring>(std::optional&lt; discordpp::ActivityTimestamps &gt; Timestamps)</argsstring>
+        <name>SetTimestamps</name>
+        <qualifiedname>discordpp::Activity::SetTimestamps</qualifiedname>
+        <param>
+          <type>std::optional&lt; <ref refid="classdiscordpp_1_1ActivityTimestamps" kindref="compound">discordpp::ActivityTimestamps</ref> &gt;</type>
+          <declname>Timestamps</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1Activity_1a912e6e9f685f9e7003731222016ed1a2" kindref="member">Activity::Timestamps</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1410" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Activity_1aa1a0a3f5d20579c2dbc2502065c8a09f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; <ref refid="classdiscordpp_1_1ActivityParty" kindref="compound">discordpp::ActivityParty</ref> &gt;</type>
+        <definition>std::optional&lt; discordpp::ActivityParty &gt; discordpp::Activity::Party</definition>
+        <argsstring>() const</argsstring>
+        <name>Party</name>
+        <qualifiedname>discordpp::Activity::Party</qualifiedname>
+        <briefdescription>
+<para>The party struct is used to indicate the size and members of the people the current user is playing with. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1414" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Activity_1a93c9c542eeeed49c4f7ee5bc0a12da90" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::Activity::SetParty</definition>
+        <argsstring>(std::optional&lt; discordpp::ActivityParty &gt; Party)</argsstring>
+        <name>SetParty</name>
+        <qualifiedname>discordpp::Activity::SetParty</qualifiedname>
+        <param>
+          <type>std::optional&lt; <ref refid="classdiscordpp_1_1ActivityParty" kindref="compound">discordpp::ActivityParty</ref> &gt;</type>
+          <declname>Party</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1Activity_1aa1a0a3f5d20579c2dbc2502065c8a09f" kindref="member">Activity::Party</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1416" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Activity_1af4ec01eeb75f394f0019ae839145a0a2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; <ref refid="classdiscordpp_1_1ActivitySecrets" kindref="compound">discordpp::ActivitySecrets</ref> &gt;</type>
+        <definition>std::optional&lt; discordpp::ActivitySecrets &gt; discordpp::Activity::Secrets</definition>
+        <argsstring>() const</argsstring>
+        <name>Secrets</name>
+        <qualifiedname>discordpp::Activity::Secrets</qualifiedname>
+        <briefdescription>
+<para>The secrets struct is used in combination with the party struct to make an <ref refid="classdiscordpp_1_1Activity" kindref="compound">Activity</ref> joinable. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1420" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Activity_1a6c61c1231b00562606bbb7d18fb697b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::Activity::SetSecrets</definition>
+        <argsstring>(std::optional&lt; discordpp::ActivitySecrets &gt; Secrets)</argsstring>
+        <name>SetSecrets</name>
+        <qualifiedname>discordpp::Activity::SetSecrets</qualifiedname>
+        <param>
+          <type>std::optional&lt; <ref refid="classdiscordpp_1_1ActivitySecrets" kindref="compound">discordpp::ActivitySecrets</ref> &gt;</type>
+          <declname>Secrets</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1Activity_1af4ec01eeb75f394f0019ae839145a0a2" kindref="member">Activity::Secrets</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1422" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Activity_1af19a7afb979550d9323be2146bd372e0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacediscordpp_1a591ad54a3029d15c9c58d6064770fe87" kindref="member">discordpp::ActivityGamePlatforms</ref></type>
+        <definition>discordpp::ActivityGamePlatforms discordpp::Activity::SupportedPlatforms</definition>
+        <argsstring>() const</argsstring>
+        <name>SupportedPlatforms</name>
+        <qualifiedname>discordpp::Activity::SupportedPlatforms</qualifiedname>
+        <briefdescription>
+<para>If an activity is joinable, but only on certain platforms, this field can be used to indicate which platforms the activity is joinable on. For example if a game is available on both PC and Mobile, but PC users cannot join Mobile users and vice versa, this field can be used so that an activity only shows as joinable on Discord if the user is on the appropriate platform. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1429" column="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1Activity_1abe00e28f4705ec904b635655c336a487" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::Activity::SetSupportedPlatforms</definition>
+        <argsstring>(discordpp::ActivityGamePlatforms SupportedPlatforms)</argsstring>
+        <name>SetSupportedPlatforms</name>
+        <qualifiedname>discordpp::Activity::SetSupportedPlatforms</qualifiedname>
+        <param>
+          <type><ref refid="namespacediscordpp_1a591ad54a3029d15c9c58d6064770fe87" kindref="member">discordpp::ActivityGamePlatforms</ref></type>
+          <declname>SupportedPlatforms</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1Activity_1af19a7afb979550d9323be2146bd372e0" kindref="member">Activity::SupportedPlatforms</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1431" column="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>An <ref refid="classdiscordpp_1_1Activity" kindref="compound">Activity</ref> represents one &quot;thing&quot; a user is doing on Discord and is part of their rich presence. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Additional information is located on the Discord Developer Portal:<itemizedlist>
+<listitem><para><ulink url="https://discord.com/developers/docs/rich-presence/overview">https://discord.com/developers/docs/rich-presence/overview</ulink></para>
+</listitem><listitem><para><ulink url="https://discord.com/developers/docs/developer-tools/game-sdk#activities">https://discord.com/developers/docs/developer-tools/game-sdk#activities</ulink></para>
+</listitem><listitem><para><ulink url="https://discord.com/developers/docs/rich-presence/best-practices">https://discord.com/developers/docs/rich-presence/best-practices</ulink></para>
+</listitem></itemizedlist>
+</para>
+<para>While RichPresence supports multiple types of activities, the only activity type that is really relevant for the SDK is <ref refid="namespacediscordpp_1a6c76a8cbbc9270f025fd6854d5558660ac9dbb2b7c84159b632d71e512eba8428" kindref="member">ActivityTypes::Playing</ref>. Additionally, the SDK will only expose Activities that are associated with the current game (or application). So for example, a field like <computeroutput>name</computeroutput> below, will always be set to the current game&apos;s name from the view of the SDK.</para>
+<sect1 id="classdiscordpp_1_1Activity_1autotoc_md0_1s1"><sect2 id="classdiscordpp_1_1Activity_1autotoc_md0">
+<title>Customization</title><para>When an activity shows up on Discord, it will look something like this:<orderedlist>
+<listitem><para>Playing &quot;game name&quot;</para>
+</listitem><listitem><para>Capture the flag | 2 - 1</para>
+</listitem><listitem><para>In a group (2 of 3)</para>
+</listitem></orderedlist>
+</para>
+<para>You can control how lines 2 and 3 are rendered in Discord, here&apos;s the breakdown:<itemizedlist>
+<listitem><para>Line 1, <computeroutput>Playing &quot;game name&quot;</computeroutput> is powered by the name of your game (or application) on Discord.</para>
+</listitem><listitem><para>Line 2, <computeroutput>Capture the flag | 2 - 1</computeroutput> is powered by the <computeroutput>details</computeroutput> field in the activity, and this should generally try to describe what the <emphasis>player</emphasis> is currently doing. You can even include dynamic data such as a match score here.</para>
+</listitem><listitem><para>Line 3, <computeroutput>In a group (2 of 3)</computeroutput> describes the <emphasis>party</emphasis> the player is in. &quot;Party&quot; is used to refer to a group of players in a shared context, such as a lobby, server, team, etc. The first half, <computeroutput>In a group</computeroutput> is powered by the <computeroutput>state</computeroutput> field in the activity, and the second half, <computeroutput>(2 of 3)</computeroutput> is powered by the <computeroutput>party</computeroutput> field in the activity and describes how many people are in the current party and how big the party can get.</para>
+</listitem></itemizedlist>
+</para>
+<para>This diagram visually shows the field mapping:</para>
+<para><image type="html" name="rich_presence.png" width="1070px">Rich presence field diagram</image>
+</para>
+<para>You can also specify up to two custom buttons to display on the rich presence. These buttons will open the URL in the user&apos;s default browser.</para>
+<para><programlisting><codeline><highlight class="normal">discordpp::ActivityButton<sp/>button;</highlight></codeline>
+<codeline><highlight class="normal">button.<ref refid="classdiscordpp_1_1ActivityButton_1a9b8d70b0f65fe094b571ef221b11e259" kindref="member">SetLabel</ref>(</highlight><highlight class="stringliteral">&quot;Button<sp/>1&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal">button.<ref refid="classdiscordpp_1_1ActivityButton_1abbeb2fc8eefae9e956d91fb42b9d48a4" kindref="member">SetUrl</ref>(</highlight><highlight class="stringliteral">&quot;https://example.com&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal">activity.AddButton(button);</highlight></codeline>
+</programlisting></para>
+</sect2></sect1>
+<sect1 id="classdiscordpp_1_1Activity_1autotoc_md1_1s1"><sect2 id="classdiscordpp_1_1Activity_1autotoc_md1">
+<title>Invites / Joinable Activities</title><para>Other users can be invited to join the current player&apos;s activity (or request to join it too), but that does require certain fields to be set:<orderedlist>
+<listitem><para><ref refid="classdiscordpp_1_1ActivityParty" kindref="compound">ActivityParty</ref> must be set and have a non-empty <ref refid="classdiscordpp_1_1ActivityParty_1ad5b269834e93f9d2b794a48cc7fb95f3" kindref="member">ActivityParty::Id</ref> field. All users in the party should set the same id field too!</para>
+</listitem><listitem><para><ref refid="classdiscordpp_1_1ActivityParty" kindref="compound">ActivityParty</ref> must specify the size of the group, and there must be room in the group for another person to join.</para>
+</listitem><listitem><para><ref refid="classdiscordpp_1_1ActivitySecrets_1a46e512adb1fa1238280b6d009d7767df" kindref="member">ActivitySecrets::Join</ref> must be set to a non-empty string. The join secret is only shared with users who are accepted into the party by an existing member, so it is truly a secret. You can use this so that when the user is accepted your game knows how to join them to the party. For example it could be an internal game ID, or a Discord lobby ID/secret that the client could join.</para>
+</listitem></orderedlist>
+</para>
+<para>There is additional information about game invites here: <ulink url="https://support.discord.com/hc/en-us/articles/115001557452-Game-Invites">https://support.discord.com/hc/en-us/articles/115001557452-Game-Invites</ulink></para>
+<sect3 id="classdiscordpp_1_1Activity_1autotoc_md2">
+<title>Mobile Invites</title><para><ref refid="classdiscordpp_1_1Activity" kindref="compound">Activity</ref> invites are handled via a deep link. To enable users to join your game via an invite in the Discord client, you must do two things:<orderedlist>
+<listitem><para>Set your deep link URL in the Discord developer portal. This will be available on the General tab of your application once Social Layer integration is enabled for your app.</para>
+</listitem><listitem><para>Set the desired supported platforms when reporting the activity info in your rich presence, e.g.:</para>
+</listitem></orderedlist>
+</para>
+<para><programlisting><codeline><highlight class="normal">activity.SetSupportedPlatforms(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacediscordpp_1a591ad54a3029d15c9c58d6064770fe87" kindref="member">ActivityGamePlatforms</ref>.Desktop<sp/>|</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacediscordpp_1a591ad54a3029d15c9c58d6064770fe87" kindref="member">ActivityGamePlatforms</ref>.IOS<sp/>|</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacediscordpp_1a591ad54a3029d15c9c58d6064770fe87" kindref="member">ActivityGamePlatforms</ref>.Android);</highlight></codeline>
+</programlisting></para>
+<para>When the user accepts the invite, the Discord client will open: <computeroutput>[your url]/_discord/join?secret=[the join secret you set]</computeroutput></para>
+</sect3>
+<sect3 id="classdiscordpp_1_1Activity_1autotoc_md3">
+<title>Example Invites Flow</title><para>If you are using Discord lobbies for your game, a neat flow would look like this:<itemizedlist>
+<listitem><para>When a user starts playing the game, they create a lobby with a random secret string, using <ref refid="classdiscordpp_1_1Client_1a8b4e195555ecaa89ccdfc0acd28d3512" kindref="member">Client::CreateOrJoinLobby</ref></para>
+</listitem><listitem><para>That user publishes their RichPresence with the join secret set to the lobby secret, along with party size information</para>
+</listitem><listitem><para>Another use can then see that RichPresence on Discord and join off of it</para>
+</listitem><listitem><para>Once accepted the new user receives the join secret and their client can call CreateOrJoinLobby(joinSecret) to join the lobby</para>
+</listitem><listitem><para>Finally the original user can notice that the lobby membership has changed and so they publish a new RichPresence update containing the updating party size information.</para>
+</listitem></itemizedlist>
+</para>
+</sect3>
+<sect3 id="classdiscordpp_1_1Activity_1autotoc_md4">
+<title>Invites Code Example</title><para><programlisting><codeline><highlight class="comment">//<sp/>User<sp/>A</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>1.<sp/>Create<sp/>a<sp/>lobby<sp/>with<sp/>secret</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">std::string<sp/>lobbySecret<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;foo&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal">client-&gt;CreateOrJoinLobby(lobbySecret,<sp/>[=](discordpp::ClientResult<sp/>result,<sp/>uint64_t<sp/>lobbyId)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>2.<sp/>Update<sp/>rich<sp/>presence<sp/>with<sp/>join<sp/>secret</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>discordpp::Activity<sp/>activity{};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>set<sp/>name,<sp/>state,<sp/>party<sp/>size<sp/>...</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>discordpp::ActivitySecrets<sp/>secrets{};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>secrets.<ref refid="classdiscordpp_1_1ActivitySecrets_1aaa0c717654d3b11c15b186b245b899e7" kindref="member">SetJoin</ref>(lobbySecret);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>activity.<ref refid="classdiscordpp_1_1Activity_1a6c61c1231b00562606bbb7d18fb697b7" kindref="member">SetSecrets</ref>(secrets);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>client-&gt;UpdateRichPresence(std::move(activity),<sp/>[](discordpp::ClientResult<sp/>result)<sp/>{});</highlight></codeline>
+<codeline><highlight class="normal">});</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>3.<sp/>Some<sp/>time<sp/>later,<sp/>send<sp/>an<sp/>invite</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">client-&gt;SendActivityInvite(USER_B_ID,<sp/></highlight><highlight class="stringliteral">&quot;come<sp/>play<sp/>with<sp/>me&quot;</highlight><highlight class="normal">,<sp/>[](</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>result)<sp/>{});</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>User<sp/>B</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>4.<sp/>Monitor<sp/>for<sp/>new<sp/>invites.<sp/>Alternatively,<sp/>you<sp/>can<sp/>use</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>Client::SetActivityInviteUpdatedCallback<sp/>to<sp/>get<sp/>updates<sp/>on<sp/>existing<sp/>invites.</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">client-&gt;SetActivityInviteCreatedCallback([client](</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>invite)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>5.<sp/>When<sp/>an<sp/>invite<sp/>is<sp/>received,<sp/>ask<sp/>the<sp/>user<sp/>if<sp/>they<sp/>want<sp/>to<sp/>accept<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>If<sp/>they<sp/>choose<sp/>to<sp/>do<sp/>so<sp/>then<sp/>go<sp/>ahead<sp/>and<sp/>invoke<sp/>AcceptActivityInvite</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>client-&gt;AcceptActivityInvite(invite,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[client](discordpp::ClientResult<sp/>result,<sp/>std::string<sp/>secret)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(result.<ref refid="classdiscordpp_1_1ClientResult_1aef3b1aca3cd156daf488ca13ae87313b" kindref="member">Successful</ref>())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>5.<sp/>Join<sp/>the<sp/>lobby<sp/>using<sp/>the<sp/>joinSecret</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>client-&gt;CreateOrJoinLobby(secret,<sp/>[](discordpp::ClientResult<sp/>result,<sp/>uint64_t</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lobbyId)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Successfully<sp/>joined<sp/>lobby!</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>});</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>});</highlight></codeline>
+<codeline><highlight class="normal">});</highlight></codeline>
+</programlisting></para>
+</sect3>
+<sect3 id="classdiscordpp_1_1Activity_1autotoc_md5">
+<title>Join Requests Code Example</title><para>Users can also request to join each others parties. This code snippet shows how that flow might look:</para>
+<para><programlisting><codeline><highlight class="comment">//<sp/>User<sp/>A</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>1.<sp/>Create<sp/>a<sp/>lobby<sp/>with<sp/>secret</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">std::string<sp/>lobbySecret<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;foo&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal">client-&gt;CreateOrJoinLobby(lobbySecret,<sp/>[=](discordpp::ClientResult<sp/>result,<sp/>uint64_t<sp/>lobbyId)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>2.<sp/>Update<sp/>rich<sp/>presence<sp/>with<sp/>join<sp/>secret</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>discordpp::Activity<sp/>activity{};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>set<sp/>name,<sp/>state,<sp/>party<sp/>size<sp/>...</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>discordpp::ActivitySecrets<sp/>secrets{};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>secrets.<ref refid="classdiscordpp_1_1ActivitySecrets_1aaa0c717654d3b11c15b186b245b899e7" kindref="member">SetJoin</ref>(lobbySecret);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>activity.<ref refid="classdiscordpp_1_1Activity_1a6c61c1231b00562606bbb7d18fb697b7" kindref="member">SetSecrets</ref>(secrets);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>client-&gt;UpdateRichPresence(std::move(activity),<sp/>[](discordpp::ClientResult<sp/>result)<sp/>{});</highlight></codeline>
+<codeline><highlight class="normal">});</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>User<sp/>B</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>3.<sp/>Request<sp/>to<sp/>join<sp/>User<sp/>A&apos;s<sp/>party</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">client-&gt;SendActivityJoinRequest(USER_A_ID,<sp/>[](</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>result)<sp/>{});</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>User<sp/>A</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>Monitor<sp/>for<sp/>new<sp/>invites:</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">client-&gt;SetActivityInviteCreatedCallback([client](</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>invite)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>5.<sp/>The<sp/>game<sp/>can<sp/>now<sp/>show<sp/>that<sp/>User<sp/>A<sp/>has<sp/>received<sp/>a<sp/>request<sp/>to<sp/>join<sp/>their<sp/>party</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>If<sp/>User<sp/>A<sp/>is<sp/>ok<sp/>with<sp/>that,<sp/>they<sp/>can<sp/>reply<sp/>back:</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Note:<sp/>invite.type<sp/>will<sp/>be<sp/>ActivityActionTypes::JoinRequest<sp/>in<sp/>this<sp/>example</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>client-&gt;SendActivityJoinRequestReply(invite,<sp/>[](</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>result)<sp/>{});</highlight></codeline>
+<codeline><highlight class="normal">});</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>User<sp/>B</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>6.<sp/>Same<sp/>as<sp/>before,<sp/>user<sp/>B<sp/>can<sp/>monitor<sp/>for<sp/>invites</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">client-&gt;SetActivityInviteCreatedCallback([client](</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>invite)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>7.<sp/>When<sp/>an<sp/>invite<sp/>is<sp/>received,<sp/>ask<sp/>the<sp/>user<sp/>if<sp/>they<sp/>want<sp/>to<sp/>accept<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>If<sp/>they<sp/>choose<sp/>to<sp/>do<sp/>so<sp/>then<sp/>go<sp/>ahead<sp/>and<sp/>invoke<sp/>AcceptActivityInvite</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>client-&gt;AcceptActivityInvite(invite,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[client](discordpp::ClientResult<sp/>result,<sp/>std::string<sp/>secret)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(result.<ref refid="classdiscordpp_1_1ClientResult_1aef3b1aca3cd156daf488ca13ae87313b" kindref="member">Successful</ref>())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>5.<sp/>Join<sp/>the<sp/>lobby<sp/>using<sp/>the<sp/>joinSecret</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>client-&gt;CreateOrJoinLobby(secret,<sp/>[](</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>result,<sp/>uint64_t<sp/>lobbyId)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Successfully<sp/>joined<sp/>lobby!</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>});</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>});</highlight></codeline>
+<codeline><highlight class="normal">});</highlight></codeline>
+</programlisting> </para>
+</sect3>
+</sect2></sect1>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>discordpp::Activity</label>
+        <link refid="classdiscordpp_1_1Activity"/>
+        <childnode refid="1" relation="usage">
+          <edgelabel>nullobj</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/discordpp.h" line="1287" column="1" bodyfile="include/discordpp.h" bodystart="1287" bodyend="1432"/>
+    <listofallmembers>
+      <member refid="classdiscordpp_1_1Activity_1ae793d9adbe16fef402b859ba02bee682" prot="public" virt="non-virtual"><scope>discordpp::Activity</scope><name>Activity</name></member>
+      <member refid="classdiscordpp_1_1Activity_1a712a392cf07962ce2ea2521c90e759fa" prot="public" virt="non-virtual"><scope>discordpp::Activity</scope><name>Activity</name></member>
+      <member refid="classdiscordpp_1_1Activity_1ab87f0347d870044bb26d8f7e50cb4c1d" prot="public" virt="non-virtual"><scope>discordpp::Activity</scope><name>Activity</name></member>
+      <member refid="classdiscordpp_1_1Activity_1aab07650fcff18565eb78a1e2df46627e" prot="public" virt="non-virtual"><scope>discordpp::Activity</scope><name>AddButton</name></member>
+      <member refid="classdiscordpp_1_1Activity_1a1203f29b82e9716cdce9151c7ea3b2db" prot="public" virt="non-virtual"><scope>discordpp::Activity</scope><name>ApplicationId</name></member>
+      <member refid="classdiscordpp_1_1Activity_1a3fb85cc97867d2bf01e7e1a9a6414d95" prot="public" virt="non-virtual"><scope>discordpp::Activity</scope><name>Assets</name></member>
+      <member refid="classdiscordpp_1_1Activity_1abe3446f06b53f4358e0efdc2878fa3d0" prot="public" virt="non-virtual"><scope>discordpp::Activity</scope><name>Details</name></member>
+      <member refid="classdiscordpp_1_1Activity_1ab5cc7690e9fd84b56443ec3c6e358af0" prot="public" virt="non-virtual"><scope>discordpp::Activity</scope><name>DetailsUrl</name></member>
+      <member refid="classdiscordpp_1_1Activity_1a46127e59d0e582c49310d60758fed691" prot="public" virt="non-virtual"><scope>discordpp::Activity</scope><name>Equals</name></member>
+      <member refid="classdiscordpp_1_1Activity_1a03ae78c821e134a53b4526018657c530" prot="public" virt="non-virtual"><scope>discordpp::Activity</scope><name>GetButtons</name></member>
+      <member refid="classdiscordpp_1_1Activity_1a13d323c3454fe32f5d33c94fac5bc11c" prot="public" virt="non-virtual"><scope>discordpp::Activity</scope><name>Name</name></member>
+      <member refid="classdiscordpp_1_1Activity_1a0c6f9ebae07c4fae9042c99d1dca5c69" prot="public" virt="non-virtual"><scope>discordpp::Activity</scope><name>nullobj</name></member>
+      <member refid="classdiscordpp_1_1Activity_1a646a72b3db59369215eaa65f14ac90ce" prot="public" virt="non-virtual"><scope>discordpp::Activity</scope><name>operator bool</name></member>
+      <member refid="classdiscordpp_1_1Activity_1a35cec32f9bf9a2625a6f6b175403d3cd" prot="public" virt="non-virtual"><scope>discordpp::Activity</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1Activity_1a9ffd66dc9dcc40c6873802a9cc8a8926" prot="public" virt="non-virtual"><scope>discordpp::Activity</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1Activity_1a091058291278bf1ff0250b28bf311786" prot="public" virt="non-virtual"><scope>discordpp::Activity</scope><name>ParentApplicationId</name></member>
+      <member refid="classdiscordpp_1_1Activity_1aa1a0a3f5d20579c2dbc2502065c8a09f" prot="public" virt="non-virtual"><scope>discordpp::Activity</scope><name>Party</name></member>
+      <member refid="classdiscordpp_1_1Activity_1af4ec01eeb75f394f0019ae839145a0a2" prot="public" virt="non-virtual"><scope>discordpp::Activity</scope><name>Secrets</name></member>
+      <member refid="classdiscordpp_1_1Activity_1a48b156412b91a9a09c268bf2c3f7f9ec" prot="public" virt="non-virtual"><scope>discordpp::Activity</scope><name>SetApplicationId</name></member>
+      <member refid="classdiscordpp_1_1Activity_1a7f0b6d7a92925a005444cb3f4055e2c3" prot="public" virt="non-virtual"><scope>discordpp::Activity</scope><name>SetAssets</name></member>
+      <member refid="classdiscordpp_1_1Activity_1a28d98bbf86841526a0b2c033f3a70b28" prot="public" virt="non-virtual"><scope>discordpp::Activity</scope><name>SetDetails</name></member>
+      <member refid="classdiscordpp_1_1Activity_1a08dec0a9b7bffcff09be2bc2a92d7666" prot="public" virt="non-virtual"><scope>discordpp::Activity</scope><name>SetDetailsUrl</name></member>
+      <member refid="classdiscordpp_1_1Activity_1a59f9a63a8b105946d0c9838f3e643ae2" prot="public" virt="non-virtual"><scope>discordpp::Activity</scope><name>SetName</name></member>
+      <member refid="classdiscordpp_1_1Activity_1a37969990d16e5f58e6180ff49038311c" prot="public" virt="non-virtual"><scope>discordpp::Activity</scope><name>SetParentApplicationId</name></member>
+      <member refid="classdiscordpp_1_1Activity_1a93c9c542eeeed49c4f7ee5bc0a12da90" prot="public" virt="non-virtual"><scope>discordpp::Activity</scope><name>SetParty</name></member>
+      <member refid="classdiscordpp_1_1Activity_1a6c61c1231b00562606bbb7d18fb697b7" prot="public" virt="non-virtual"><scope>discordpp::Activity</scope><name>SetSecrets</name></member>
+      <member refid="classdiscordpp_1_1Activity_1abfd658c93df153a53acd1ad0270c1e02" prot="public" virt="non-virtual"><scope>discordpp::Activity</scope><name>SetState</name></member>
+      <member refid="classdiscordpp_1_1Activity_1a1cadcb36d533ad0e73dc0b03beed66e5" prot="public" virt="non-virtual"><scope>discordpp::Activity</scope><name>SetStateUrl</name></member>
+      <member refid="classdiscordpp_1_1Activity_1a9e8051f8dec35e2af025e5ed3a4dc6bf" prot="public" virt="non-virtual"><scope>discordpp::Activity</scope><name>SetStatusDisplayType</name></member>
+      <member refid="classdiscordpp_1_1Activity_1abe00e28f4705ec904b635655c336a487" prot="public" virt="non-virtual"><scope>discordpp::Activity</scope><name>SetSupportedPlatforms</name></member>
+      <member refid="classdiscordpp_1_1Activity_1a437bd31e05be54bbb2f259ef8b9c68ad" prot="public" virt="non-virtual"><scope>discordpp::Activity</scope><name>SetTimestamps</name></member>
+      <member refid="classdiscordpp_1_1Activity_1a3c686b85c6567f5b88d9d9a2aa3934ab" prot="public" virt="non-virtual"><scope>discordpp::Activity</scope><name>SetType</name></member>
+      <member refid="classdiscordpp_1_1Activity_1af7c8802a7df283dbe5ba06ba1c00ca5a" prot="public" virt="non-virtual"><scope>discordpp::Activity</scope><name>State</name></member>
+      <member refid="classdiscordpp_1_1Activity_1af3a6411c8ec4ee24845c6114b21aab3d" prot="public" virt="non-virtual"><scope>discordpp::Activity</scope><name>StateUrl</name></member>
+      <member refid="classdiscordpp_1_1Activity_1a837741f6a574a23536b208c8f44630c7" prot="public" virt="non-virtual"><scope>discordpp::Activity</scope><name>StatusDisplayType</name></member>
+      <member refid="classdiscordpp_1_1Activity_1af19a7afb979550d9323be2146bd372e0" prot="public" virt="non-virtual"><scope>discordpp::Activity</scope><name>SupportedPlatforms</name></member>
+      <member refid="classdiscordpp_1_1Activity_1a912e6e9f685f9e7003731222016ed1a2" prot="public" virt="non-virtual"><scope>discordpp::Activity</scope><name>Timestamps</name></member>
+      <member refid="classdiscordpp_1_1Activity_1afbab0968c2cbef94691b3996fe3d6ea4" prot="public" virt="non-virtual"><scope>discordpp::Activity</scope><name>Type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

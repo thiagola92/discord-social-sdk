@@ -1,0 +1,237 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="classdiscordpp_1_1UserApplicationProfileHandle" kind="class" language="C++" prot="public">
+    <compoundname>discordpp::UserApplicationProfileHandle</compoundname>
+    <includes local="no">discordpp.h</includes>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classdiscordpp_1_1UserApplicationProfileHandle_1a066a44f0103f0f7c38195057d4040b8c" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="classdiscordpp_1_1UserApplicationProfileHandle" kindref="compound">UserApplicationProfileHandle</ref></type>
+        <definition>const UserApplicationProfileHandle discordpp::UserApplicationProfileHandle::nullobj</definition>
+        <argsstring></argsstring>
+        <name>nullobj</name>
+        <qualifiedname>discordpp::UserApplicationProfileHandle::nullobj</qualifiedname>
+        <briefdescription>
+<para>Uninitialized instance of <ref refid="classdiscordpp_1_1UserApplicationProfileHandle" kindref="compound">UserApplicationProfileHandle</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2512" column="43" bodyfile="include/discordpp.h" bodystart="2512" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classdiscordpp_1_1UserApplicationProfileHandle_1a479b07c5bae65ca04771ca0f05c6ebdd" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::UserApplicationProfileHandle::UserApplicationProfileHandle</definition>
+        <argsstring>(UserApplicationProfileHandle &amp;&amp;other) noexcept</argsstring>
+        <name>UserApplicationProfileHandle</name>
+        <qualifiedname>discordpp::UserApplicationProfileHandle::UserApplicationProfileHandle</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1UserApplicationProfileHandle" kindref="compound">UserApplicationProfileHandle</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move constructor for <ref refid="classdiscordpp_1_1UserApplicationProfileHandle" kindref="compound">UserApplicationProfileHandle</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2508" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1UserApplicationProfileHandle_1a93ab72bd482c41ae7c931776da25dfa7" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1UserApplicationProfileHandle" kindref="compound">UserApplicationProfileHandle</ref> &amp;</type>
+        <definition>UserApplicationProfileHandle &amp; discordpp::UserApplicationProfileHandle::operator=</definition>
+        <argsstring>(UserApplicationProfileHandle &amp;&amp;other) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::UserApplicationProfileHandle::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1UserApplicationProfileHandle" kindref="compound">UserApplicationProfileHandle</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move assignment operator for <ref refid="classdiscordpp_1_1UserApplicationProfileHandle" kindref="compound">UserApplicationProfileHandle</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2510" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1UserApplicationProfileHandle_1a3557027837de41303aa5a43dff06e84d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::UserApplicationProfileHandle::operator bool</definition>
+        <argsstring>() const</argsstring>
+        <name>operator bool</name>
+        <qualifiedname>discordpp::UserApplicationProfileHandle::operator bool</qualifiedname>
+        <briefdescription>
+<para>Returns true if the instance contains a valid object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2514" column="1" bodyfile="include/discordpp.h" bodystart="2514" bodyend="2514"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1UserApplicationProfileHandle_1aa09ea9782dc9b666caacbfbb90c7ea31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::UserApplicationProfileHandle::UserApplicationProfileHandle</definition>
+        <argsstring>(const UserApplicationProfileHandle &amp;other)</argsstring>
+        <name>UserApplicationProfileHandle</name>
+        <qualifiedname>discordpp::UserApplicationProfileHandle::UserApplicationProfileHandle</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1UserApplicationProfileHandle" kindref="compound">UserApplicationProfileHandle</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor for <ref refid="classdiscordpp_1_1UserApplicationProfileHandle" kindref="compound">UserApplicationProfileHandle</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2517" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1UserApplicationProfileHandle_1a532dc7bbbc8755b015e065ead41e3d62" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1UserApplicationProfileHandle" kindref="compound">UserApplicationProfileHandle</ref> &amp;</type>
+        <definition>UserApplicationProfileHandle &amp; discordpp::UserApplicationProfileHandle::operator=</definition>
+        <argsstring>(const UserApplicationProfileHandle &amp;other)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::UserApplicationProfileHandle::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1UserApplicationProfileHandle" kindref="compound">UserApplicationProfileHandle</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Copy assignment operator for <ref refid="classdiscordpp_1_1UserApplicationProfileHandle" kindref="compound">UserApplicationProfileHandle</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2519" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1UserApplicationProfileHandle_1aa71e13c943d4b296aa22891a88a87a82" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string discordpp::UserApplicationProfileHandle::AvatarHash</definition>
+        <argsstring>() const</argsstring>
+        <name>AvatarHash</name>
+        <qualifiedname>discordpp::UserApplicationProfileHandle::AvatarHash</qualifiedname>
+        <briefdescription>
+<para>Returns the user&apos;s in-game avatar hash. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2526" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1UserApplicationProfileHandle_1a3a2482dcae30353630ceab2e2508673e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string discordpp::UserApplicationProfileHandle::Metadata</definition>
+        <argsstring>() const</argsstring>
+        <name>Metadata</name>
+        <qualifiedname>discordpp::UserApplicationProfileHandle::Metadata</qualifiedname>
+        <briefdescription>
+<para>Returns any metadata set by the developer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2529" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1UserApplicationProfileHandle_1acc5774b55ad2a83a7cd985bdc4a0cd07" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt; std::string &gt; discordpp::UserApplicationProfileHandle::ProviderId</definition>
+        <argsstring>() const</argsstring>
+        <name>ProviderId</name>
+        <qualifiedname>discordpp::UserApplicationProfileHandle::ProviderId</qualifiedname>
+        <briefdescription>
+<para>Returns the user&apos;s external identity provider ID if it exists. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2532" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1UserApplicationProfileHandle_1a90a1a48c9f290f9d89c7da626623dcbb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string discordpp::UserApplicationProfileHandle::ProviderIssuedUserId</definition>
+        <argsstring>() const</argsstring>
+        <name>ProviderIssuedUserId</name>
+        <qualifiedname>discordpp::UserApplicationProfileHandle::ProviderIssuedUserId</qualifiedname>
+        <briefdescription>
+<para>Returns the user&apos;s external identity provider issued user ID. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2535" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1UserApplicationProfileHandle_1af42fdb09666b62865c9ff2ed58df78be" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacediscordpp_1aa206a1e72b76e940f53bb3ff0dbca6ca" kindref="member">discordpp::ExternalIdentityProviderType</ref></type>
+        <definition>discordpp::ExternalIdentityProviderType discordpp::UserApplicationProfileHandle::ProviderType</definition>
+        <argsstring>() const</argsstring>
+        <name>ProviderType</name>
+        <qualifiedname>discordpp::UserApplicationProfileHandle::ProviderType</qualifiedname>
+        <briefdescription>
+<para>Returns the type of the external identity provider. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2538" column="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1UserApplicationProfileHandle_1a2d7c710f95968dc9c5391bb2207bed3b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string discordpp::UserApplicationProfileHandle::Username</definition>
+        <argsstring>() const</argsstring>
+        <name>Username</name>
+        <qualifiedname>discordpp::UserApplicationProfileHandle::Username</qualifiedname>
+        <briefdescription>
+<para>Returns the user&apos;s in-game username. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2541" column="13"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>A <ref refid="classdiscordpp_1_1UserApplicationProfileHandle" kindref="compound">UserApplicationProfileHandle</ref> represents a profile from an external identity provider, such as Steam or Epic Online Services. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Handle objects in the SDK hold a reference both to the underlying data, and to the SDK instance. Changes to the underlying data will generally be available on existing handles objects without having to re-create them. If the SDK instance is destroyed, but you still have a reference to a handle object, note that it will return the default value for all method calls (ie an empty string for methods that return a string). </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>discordpp::UserApplicationProfileHandle</label>
+        <link refid="classdiscordpp_1_1UserApplicationProfileHandle"/>
+        <childnode refid="1" relation="usage">
+          <edgelabel>nullobj</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/discordpp.h" line="2492" column="1" bodyfile="include/discordpp.h" bodystart="2492" bodyend="2542"/>
+    <listofallmembers>
+      <member refid="classdiscordpp_1_1UserApplicationProfileHandle_1aa71e13c943d4b296aa22891a88a87a82" prot="public" virt="non-virtual"><scope>discordpp::UserApplicationProfileHandle</scope><name>AvatarHash</name></member>
+      <member refid="classdiscordpp_1_1UserApplicationProfileHandle_1a3a2482dcae30353630ceab2e2508673e" prot="public" virt="non-virtual"><scope>discordpp::UserApplicationProfileHandle</scope><name>Metadata</name></member>
+      <member refid="classdiscordpp_1_1UserApplicationProfileHandle_1a066a44f0103f0f7c38195057d4040b8c" prot="public" virt="non-virtual"><scope>discordpp::UserApplicationProfileHandle</scope><name>nullobj</name></member>
+      <member refid="classdiscordpp_1_1UserApplicationProfileHandle_1a3557027837de41303aa5a43dff06e84d" prot="public" virt="non-virtual"><scope>discordpp::UserApplicationProfileHandle</scope><name>operator bool</name></member>
+      <member refid="classdiscordpp_1_1UserApplicationProfileHandle_1a93ab72bd482c41ae7c931776da25dfa7" prot="public" virt="non-virtual"><scope>discordpp::UserApplicationProfileHandle</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1UserApplicationProfileHandle_1a532dc7bbbc8755b015e065ead41e3d62" prot="public" virt="non-virtual"><scope>discordpp::UserApplicationProfileHandle</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1UserApplicationProfileHandle_1acc5774b55ad2a83a7cd985bdc4a0cd07" prot="public" virt="non-virtual"><scope>discordpp::UserApplicationProfileHandle</scope><name>ProviderId</name></member>
+      <member refid="classdiscordpp_1_1UserApplicationProfileHandle_1a90a1a48c9f290f9d89c7da626623dcbb" prot="public" virt="non-virtual"><scope>discordpp::UserApplicationProfileHandle</scope><name>ProviderIssuedUserId</name></member>
+      <member refid="classdiscordpp_1_1UserApplicationProfileHandle_1af42fdb09666b62865c9ff2ed58df78be" prot="public" virt="non-virtual"><scope>discordpp::UserApplicationProfileHandle</scope><name>ProviderType</name></member>
+      <member refid="classdiscordpp_1_1UserApplicationProfileHandle_1a479b07c5bae65ca04771ca0f05c6ebdd" prot="public" virt="non-virtual"><scope>discordpp::UserApplicationProfileHandle</scope><name>UserApplicationProfileHandle</name></member>
+      <member refid="classdiscordpp_1_1UserApplicationProfileHandle_1aa09ea9782dc9b666caacbfbb90c7ea31" prot="public" virt="non-virtual"><scope>discordpp::UserApplicationProfileHandle</scope><name>UserApplicationProfileHandle</name></member>
+      <member refid="classdiscordpp_1_1UserApplicationProfileHandle_1a2d7c710f95968dc9c5391bb2207bed3b" prot="public" virt="non-virtual"><scope>discordpp::UserApplicationProfileHandle</scope><name>Username</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

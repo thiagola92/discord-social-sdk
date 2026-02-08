@@ -1,0 +1,212 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="classdiscordpp_1_1AuthorizationCodeVerifier" kind="class" language="C++" prot="public">
+    <compoundname>discordpp::AuthorizationCodeVerifier</compoundname>
+    <includes local="no">discordpp.h</includes>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classdiscordpp_1_1AuthorizationCodeVerifier_1a749a98e2fe09501a82a63b23ac3d7573" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="classdiscordpp_1_1AuthorizationCodeVerifier" kindref="compound">AuthorizationCodeVerifier</ref></type>
+        <definition>const AuthorizationCodeVerifier discordpp::AuthorizationCodeVerifier::nullobj</definition>
+        <argsstring></argsstring>
+        <name>nullobj</name>
+        <qualifiedname>discordpp::AuthorizationCodeVerifier::nullobj</qualifiedname>
+        <briefdescription>
+<para>Uninitialized instance of <ref refid="classdiscordpp_1_1AuthorizationCodeVerifier" kindref="compound">AuthorizationCodeVerifier</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1603" column="40" bodyfile="include/discordpp.h" bodystart="1603" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classdiscordpp_1_1AuthorizationCodeVerifier_1a336c5f858c6ff157029753542e72be66" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::AuthorizationCodeVerifier::AuthorizationCodeVerifier</definition>
+        <argsstring>(AuthorizationCodeVerifier &amp;&amp;other) noexcept</argsstring>
+        <name>AuthorizationCodeVerifier</name>
+        <qualifiedname>discordpp::AuthorizationCodeVerifier::AuthorizationCodeVerifier</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1AuthorizationCodeVerifier" kindref="compound">AuthorizationCodeVerifier</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move constructor for <ref refid="classdiscordpp_1_1AuthorizationCodeVerifier" kindref="compound">AuthorizationCodeVerifier</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1599" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AuthorizationCodeVerifier_1af50583032cf69f14d75fa9e41118cd8a" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1AuthorizationCodeVerifier" kindref="compound">AuthorizationCodeVerifier</ref> &amp;</type>
+        <definition>AuthorizationCodeVerifier &amp; discordpp::AuthorizationCodeVerifier::operator=</definition>
+        <argsstring>(AuthorizationCodeVerifier &amp;&amp;other) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::AuthorizationCodeVerifier::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1AuthorizationCodeVerifier" kindref="compound">AuthorizationCodeVerifier</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move assignment operator for <ref refid="classdiscordpp_1_1AuthorizationCodeVerifier" kindref="compound">AuthorizationCodeVerifier</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1601" column="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AuthorizationCodeVerifier_1a085b01ce52ead116182f5bcf3a245d3d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::AuthorizationCodeVerifier::operator bool</definition>
+        <argsstring>() const</argsstring>
+        <name>operator bool</name>
+        <qualifiedname>discordpp::AuthorizationCodeVerifier::operator bool</qualifiedname>
+        <briefdescription>
+<para>Returns true if the instance contains a valid object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1605" column="1" bodyfile="include/discordpp.h" bodystart="1605" bodyend="1605"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AuthorizationCodeVerifier_1a0599d5359f9745ac8ea3ca20e548d665" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::AuthorizationCodeVerifier::AuthorizationCodeVerifier</definition>
+        <argsstring>(const AuthorizationCodeVerifier &amp;arg0)</argsstring>
+        <name>AuthorizationCodeVerifier</name>
+        <qualifiedname>discordpp::AuthorizationCodeVerifier::AuthorizationCodeVerifier</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1AuthorizationCodeVerifier" kindref="compound">AuthorizationCodeVerifier</ref> &amp;</type>
+          <declname>arg0</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor for <ref refid="classdiscordpp_1_1AuthorizationCodeVerifier" kindref="compound">AuthorizationCodeVerifier</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1608" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AuthorizationCodeVerifier_1a10046490411bf3467623b7a512f28eda" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1AuthorizationCodeVerifier" kindref="compound">AuthorizationCodeVerifier</ref> &amp;</type>
+        <definition>AuthorizationCodeVerifier &amp; discordpp::AuthorizationCodeVerifier::operator=</definition>
+        <argsstring>(const AuthorizationCodeVerifier &amp;arg0)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::AuthorizationCodeVerifier::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1AuthorizationCodeVerifier" kindref="compound">AuthorizationCodeVerifier</ref> &amp;</type>
+          <declname>arg0</declname>
+        </param>
+        <briefdescription>
+<para>Copy assignment operator for <ref refid="classdiscordpp_1_1AuthorizationCodeVerifier" kindref="compound">AuthorizationCodeVerifier</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1610" column="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AuthorizationCodeVerifier_1ae439edf58719b8da93054e39014d106a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1AuthorizationCodeChallenge" kindref="compound">discordpp::AuthorizationCodeChallenge</ref></type>
+        <definition>discordpp::AuthorizationCodeChallenge discordpp::AuthorizationCodeVerifier::Challenge</definition>
+        <argsstring>() const</argsstring>
+        <name>Challenge</name>
+        <qualifiedname>discordpp::AuthorizationCodeVerifier::Challenge</qualifiedname>
+        <briefdescription>
+<para>The challenge part of the code verification flow. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1617" column="39"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AuthorizationCodeVerifier_1a53ee1f66e655d18ad8311eec6d97f5d2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::AuthorizationCodeVerifier::SetChallenge</definition>
+        <argsstring>(discordpp::AuthorizationCodeChallenge Challenge)</argsstring>
+        <name>SetChallenge</name>
+        <qualifiedname>discordpp::AuthorizationCodeVerifier::SetChallenge</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1AuthorizationCodeChallenge" kindref="compound">discordpp::AuthorizationCodeChallenge</ref></type>
+          <declname>Challenge</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1AuthorizationCodeVerifier_1ae439edf58719b8da93054e39014d106a" kindref="member">AuthorizationCodeVerifier::Challenge</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1619" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AuthorizationCodeVerifier_1a4b43a10fb1297c3400f67198d00c73d1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string discordpp::AuthorizationCodeVerifier::Verifier</definition>
+        <argsstring>() const</argsstring>
+        <name>Verifier</name>
+        <qualifiedname>discordpp::AuthorizationCodeVerifier::Verifier</qualifiedname>
+        <briefdescription>
+<para>The verifier part of the code verification flow. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1622" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AuthorizationCodeVerifier_1a22f59e504520a15a115417309788dccf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::AuthorizationCodeVerifier::SetVerifier</definition>
+        <argsstring>(std::string Verifier)</argsstring>
+        <name>SetVerifier</name>
+        <qualifiedname>discordpp::AuthorizationCodeVerifier::SetVerifier</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>Verifier</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1AuthorizationCodeVerifier_1a4b43a10fb1297c3400f67198d00c73d1" kindref="member">AuthorizationCodeVerifier::Verifier</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1624" column="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Struct that encapsulates both parts of the code verification flow. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>discordpp::AuthorizationCodeVerifier</label>
+        <link refid="classdiscordpp_1_1AuthorizationCodeVerifier"/>
+        <childnode refid="1" relation="usage">
+          <edgelabel>nullobj</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/discordpp.h" line="1583" column="1" bodyfile="include/discordpp.h" bodystart="1583" bodyend="1625"/>
+    <listofallmembers>
+      <member refid="classdiscordpp_1_1AuthorizationCodeVerifier_1a336c5f858c6ff157029753542e72be66" prot="public" virt="non-virtual"><scope>discordpp::AuthorizationCodeVerifier</scope><name>AuthorizationCodeVerifier</name></member>
+      <member refid="classdiscordpp_1_1AuthorizationCodeVerifier_1a0599d5359f9745ac8ea3ca20e548d665" prot="public" virt="non-virtual"><scope>discordpp::AuthorizationCodeVerifier</scope><name>AuthorizationCodeVerifier</name></member>
+      <member refid="classdiscordpp_1_1AuthorizationCodeVerifier_1ae439edf58719b8da93054e39014d106a" prot="public" virt="non-virtual"><scope>discordpp::AuthorizationCodeVerifier</scope><name>Challenge</name></member>
+      <member refid="classdiscordpp_1_1AuthorizationCodeVerifier_1a749a98e2fe09501a82a63b23ac3d7573" prot="public" virt="non-virtual"><scope>discordpp::AuthorizationCodeVerifier</scope><name>nullobj</name></member>
+      <member refid="classdiscordpp_1_1AuthorizationCodeVerifier_1a085b01ce52ead116182f5bcf3a245d3d" prot="public" virt="non-virtual"><scope>discordpp::AuthorizationCodeVerifier</scope><name>operator bool</name></member>
+      <member refid="classdiscordpp_1_1AuthorizationCodeVerifier_1af50583032cf69f14d75fa9e41118cd8a" prot="public" virt="non-virtual"><scope>discordpp::AuthorizationCodeVerifier</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1AuthorizationCodeVerifier_1a10046490411bf3467623b7a512f28eda" prot="public" virt="non-virtual"><scope>discordpp::AuthorizationCodeVerifier</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1AuthorizationCodeVerifier_1a53ee1f66e655d18ad8311eec6d97f5d2" prot="public" virt="non-virtual"><scope>discordpp::AuthorizationCodeVerifier</scope><name>SetChallenge</name></member>
+      <member refid="classdiscordpp_1_1AuthorizationCodeVerifier_1a22f59e504520a15a115417309788dccf" prot="public" virt="non-virtual"><scope>discordpp::AuthorizationCodeVerifier</scope><name>SetVerifier</name></member>
+      <member refid="classdiscordpp_1_1AuthorizationCodeVerifier_1a4b43a10fb1297c3400f67198d00c73d1" prot="public" virt="non-virtual"><scope>discordpp::AuthorizationCodeVerifier</scope><name>Verifier</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

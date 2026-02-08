@@ -1,0 +1,302 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="classdiscordpp_1_1ActivityParty" kind="class" language="C++" prot="public">
+    <compoundname>discordpp::ActivityParty</compoundname>
+    <includes local="no">discordpp.h</includes>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classdiscordpp_1_1ActivityParty_1ae70802e54c6a2c0fc07abc87d76a830d" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="classdiscordpp_1_1ActivityParty" kindref="compound">ActivityParty</ref></type>
+        <definition>const ActivityParty discordpp::ActivityParty::nullobj</definition>
+        <argsstring></argsstring>
+        <name>nullobj</name>
+        <qualifiedname>discordpp::ActivityParty::nullobj</qualifiedname>
+        <briefdescription>
+<para>Uninitialized instance of <ref refid="classdiscordpp_1_1ActivityParty" kindref="compound">ActivityParty</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="975" column="28" bodyfile="include/discordpp.h" bodystart="975" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityParty_1a09930740b177c52b2c5f38d3990818e4" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::ActivityParty::ActivityParty</definition>
+        <argsstring>(ActivityParty &amp;&amp;other) noexcept</argsstring>
+        <name>ActivityParty</name>
+        <qualifiedname>discordpp::ActivityParty::ActivityParty</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1ActivityParty" kindref="compound">ActivityParty</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move constructor for <ref refid="classdiscordpp_1_1ActivityParty" kindref="compound">ActivityParty</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="971" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityParty_1a940f3fedb51eac80cc81de2ac0aa1172" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1ActivityParty" kindref="compound">ActivityParty</ref> &amp;</type>
+        <definition>ActivityParty &amp; discordpp::ActivityParty::operator=</definition>
+        <argsstring>(ActivityParty &amp;&amp;other) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::ActivityParty::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1ActivityParty" kindref="compound">ActivityParty</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move assignment operator for <ref refid="classdiscordpp_1_1ActivityParty" kindref="compound">ActivityParty</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="973" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityParty_1a582ffecf157afbb93025dba71ebbd822" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::ActivityParty::operator bool</definition>
+        <argsstring>() const</argsstring>
+        <name>operator bool</name>
+        <qualifiedname>discordpp::ActivityParty::operator bool</qualifiedname>
+        <briefdescription>
+<para>Returns true if the instance contains a valid object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="977" column="1" bodyfile="include/discordpp.h" bodystart="977" bodyend="977"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityParty_1a6ec7a449a6f7ffdbb8f6cb052c75ebf9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::ActivityParty::ActivityParty</definition>
+        <argsstring>(const ActivityParty &amp;arg0)</argsstring>
+        <name>ActivityParty</name>
+        <qualifiedname>discordpp::ActivityParty::ActivityParty</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1ActivityParty" kindref="compound">ActivityParty</ref> &amp;</type>
+          <declname>arg0</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor for <ref refid="classdiscordpp_1_1ActivityParty" kindref="compound">ActivityParty</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="980" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityParty_1af6a999a1b009889afac0381002f47582" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1ActivityParty" kindref="compound">ActivityParty</ref> &amp;</type>
+        <definition>ActivityParty &amp; discordpp::ActivityParty::operator=</definition>
+        <argsstring>(const ActivityParty &amp;arg0)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::ActivityParty::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1ActivityParty" kindref="compound">ActivityParty</ref> &amp;</type>
+          <declname>arg0</declname>
+        </param>
+        <briefdescription>
+<para>Copy assignment operator for <ref refid="classdiscordpp_1_1ActivityParty" kindref="compound">ActivityParty</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="982" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityParty_1a791f8f4407e9c1d91dc99c71cb135457" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::ActivityParty::ActivityParty</definition>
+        <argsstring>()</argsstring>
+        <name>ActivityParty</name>
+        <qualifiedname>discordpp::ActivityParty::ActivityParty</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="984" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityParty_1ad5b269834e93f9d2b794a48cc7fb95f3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string discordpp::ActivityParty::Id</definition>
+        <argsstring>() const</argsstring>
+        <name>Id</name>
+        <qualifiedname>discordpp::ActivityParty::Id</qualifiedname>
+        <briefdescription>
+<para>Specifies the id of the party. &quot;Party&quot; is used colloquially to refer to a group of players in a shared context. This could be a lobby id, server id, team id, etc. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>All party members should specify a RichPresence update using the same party id so that the Discord client knows how to group them together. If specified, must be a string between 2 and 128 characters. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="996" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityParty_1a2c7f7600a26d1715171f3f3d5d3bd146" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::ActivityParty::SetId</definition>
+        <argsstring>(std::string Id)</argsstring>
+        <name>SetId</name>
+        <qualifiedname>discordpp::ActivityParty::SetId</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>Id</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1ActivityParty_1ad5b269834e93f9d2b794a48cc7fb95f3" kindref="member">ActivityParty::Id</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="998" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityParty_1a532fdee79a3adcc8f9a01fd2cf957595" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t discordpp::ActivityParty::CurrentSize</definition>
+        <argsstring>() const</argsstring>
+        <name>CurrentSize</name>
+        <qualifiedname>discordpp::ActivityParty::CurrentSize</qualifiedname>
+        <briefdescription>
+<para>The number of people currently in the party, must be at least 1. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1001" column="9"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityParty_1a2a3c1f8dee45eecc5b7879c3bfc34e38" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::ActivityParty::SetCurrentSize</definition>
+        <argsstring>(int32_t CurrentSize)</argsstring>
+        <name>SetCurrentSize</name>
+        <qualifiedname>discordpp::ActivityParty::SetCurrentSize</qualifiedname>
+        <param>
+          <type>int32_t</type>
+          <declname>CurrentSize</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1ActivityParty_1a532fdee79a3adcc8f9a01fd2cf957595" kindref="member">ActivityParty::CurrentSize</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1003" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityParty_1a60d20e2272f1d66156c191152f7e4ced" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t discordpp::ActivityParty::MaxSize</definition>
+        <argsstring>() const</argsstring>
+        <name>MaxSize</name>
+        <qualifiedname>discordpp::ActivityParty::MaxSize</qualifiedname>
+        <briefdescription>
+<para>The maximum number of people that can be in the party, must be at least 0. When 0, the UI will not display a maximum. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1007" column="9"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityParty_1a08e938b892bae2e928d723db5e8505c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::ActivityParty::SetMaxSize</definition>
+        <argsstring>(int32_t MaxSize)</argsstring>
+        <name>SetMaxSize</name>
+        <qualifiedname>discordpp::ActivityParty::SetMaxSize</qualifiedname>
+        <param>
+          <type>int32_t</type>
+          <declname>MaxSize</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1ActivityParty_1a60d20e2272f1d66156c191152f7e4ced" kindref="member">ActivityParty::MaxSize</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1009" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityParty_1ac57169df0239478d2e79c7d5cee5df34" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacediscordpp_1a05688bf2282548dba7cca3fd26f8dbd4" kindref="member">discordpp::ActivityPartyPrivacy</ref></type>
+        <definition>discordpp::ActivityPartyPrivacy discordpp::ActivityParty::Privacy</definition>
+        <argsstring>() const</argsstring>
+        <name>Privacy</name>
+        <qualifiedname>discordpp::ActivityParty::Privacy</qualifiedname>
+        <briefdescription>
+<para>The privacy of the party. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1012" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityParty_1abe7d225e6bada72fe471969979ce647b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::ActivityParty::SetPrivacy</definition>
+        <argsstring>(discordpp::ActivityPartyPrivacy Privacy)</argsstring>
+        <name>SetPrivacy</name>
+        <qualifiedname>discordpp::ActivityParty::SetPrivacy</qualifiedname>
+        <param>
+          <type><ref refid="namespacediscordpp_1a05688bf2282548dba7cca3fd26f8dbd4" kindref="member">discordpp::ActivityPartyPrivacy</ref></type>
+          <declname>Privacy</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1ActivityParty_1ac57169df0239478d2e79c7d5cee5df34" kindref="member">ActivityParty::Privacy</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1014" column="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classdiscordpp_1_1Activity" kindref="compound">Activity</ref> </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>discordpp::ActivityParty</label>
+        <link refid="classdiscordpp_1_1ActivityParty"/>
+        <childnode refid="1" relation="usage">
+          <edgelabel>nullobj</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/discordpp.h" line="956" column="1" bodyfile="include/discordpp.h" bodystart="956" bodyend="1015"/>
+    <listofallmembers>
+      <member refid="classdiscordpp_1_1ActivityParty_1a09930740b177c52b2c5f38d3990818e4" prot="public" virt="non-virtual"><scope>discordpp::ActivityParty</scope><name>ActivityParty</name></member>
+      <member refid="classdiscordpp_1_1ActivityParty_1a6ec7a449a6f7ffdbb8f6cb052c75ebf9" prot="public" virt="non-virtual"><scope>discordpp::ActivityParty</scope><name>ActivityParty</name></member>
+      <member refid="classdiscordpp_1_1ActivityParty_1a791f8f4407e9c1d91dc99c71cb135457" prot="public" virt="non-virtual"><scope>discordpp::ActivityParty</scope><name>ActivityParty</name></member>
+      <member refid="classdiscordpp_1_1ActivityParty_1a532fdee79a3adcc8f9a01fd2cf957595" prot="public" virt="non-virtual"><scope>discordpp::ActivityParty</scope><name>CurrentSize</name></member>
+      <member refid="classdiscordpp_1_1ActivityParty_1ad5b269834e93f9d2b794a48cc7fb95f3" prot="public" virt="non-virtual"><scope>discordpp::ActivityParty</scope><name>Id</name></member>
+      <member refid="classdiscordpp_1_1ActivityParty_1a60d20e2272f1d66156c191152f7e4ced" prot="public" virt="non-virtual"><scope>discordpp::ActivityParty</scope><name>MaxSize</name></member>
+      <member refid="classdiscordpp_1_1ActivityParty_1ae70802e54c6a2c0fc07abc87d76a830d" prot="public" virt="non-virtual"><scope>discordpp::ActivityParty</scope><name>nullobj</name></member>
+      <member refid="classdiscordpp_1_1ActivityParty_1a582ffecf157afbb93025dba71ebbd822" prot="public" virt="non-virtual"><scope>discordpp::ActivityParty</scope><name>operator bool</name></member>
+      <member refid="classdiscordpp_1_1ActivityParty_1a940f3fedb51eac80cc81de2ac0aa1172" prot="public" virt="non-virtual"><scope>discordpp::ActivityParty</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1ActivityParty_1af6a999a1b009889afac0381002f47582" prot="public" virt="non-virtual"><scope>discordpp::ActivityParty</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1ActivityParty_1ac57169df0239478d2e79c7d5cee5df34" prot="public" virt="non-virtual"><scope>discordpp::ActivityParty</scope><name>Privacy</name></member>
+      <member refid="classdiscordpp_1_1ActivityParty_1a2a3c1f8dee45eecc5b7879c3bfc34e38" prot="public" virt="non-virtual"><scope>discordpp::ActivityParty</scope><name>SetCurrentSize</name></member>
+      <member refid="classdiscordpp_1_1ActivityParty_1a2c7f7600a26d1715171f3f3d5d3bd146" prot="public" virt="non-virtual"><scope>discordpp::ActivityParty</scope><name>SetId</name></member>
+      <member refid="classdiscordpp_1_1ActivityParty_1a08e938b892bae2e928d723db5e8505c6" prot="public" virt="non-virtual"><scope>discordpp::ActivityParty</scope><name>SetMaxSize</name></member>
+      <member refid="classdiscordpp_1_1ActivityParty_1abe7d225e6bada72fe471969979ce647b" prot="public" virt="non-virtual"><scope>discordpp::ActivityParty</scope><name>SetPrivacy</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

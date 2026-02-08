@@ -1,0 +1,231 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="classdiscordpp_1_1RelationshipHandle" kind="class" language="C++" prot="public">
+    <compoundname>discordpp::RelationshipHandle</compoundname>
+    <includes local="no">discordpp.h</includes>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classdiscordpp_1_1RelationshipHandle_1ac17223e7aa6e01803e634cc42b31861b" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="classdiscordpp_1_1RelationshipHandle" kindref="compound">RelationshipHandle</ref></type>
+        <definition>const RelationshipHandle discordpp::RelationshipHandle::nullobj</definition>
+        <argsstring></argsstring>
+        <name>nullobj</name>
+        <qualifiedname>discordpp::RelationshipHandle::nullobj</qualifiedname>
+        <briefdescription>
+<para>Uninitialized instance of <ref refid="classdiscordpp_1_1RelationshipHandle" kindref="compound">RelationshipHandle</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2454" column="33" bodyfile="include/discordpp.h" bodystart="2454" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classdiscordpp_1_1RelationshipHandle_1a7da36b15ad0b7d38ba658a622e9ded77" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::RelationshipHandle::RelationshipHandle</definition>
+        <argsstring>(RelationshipHandle &amp;&amp;other) noexcept</argsstring>
+        <name>RelationshipHandle</name>
+        <qualifiedname>discordpp::RelationshipHandle::RelationshipHandle</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1RelationshipHandle" kindref="compound">RelationshipHandle</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move constructor for <ref refid="classdiscordpp_1_1RelationshipHandle" kindref="compound">RelationshipHandle</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2450" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1RelationshipHandle_1af1079f5dcd7cc03bd51b01ab1a4e7ea8" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1RelationshipHandle" kindref="compound">RelationshipHandle</ref> &amp;</type>
+        <definition>RelationshipHandle &amp; discordpp::RelationshipHandle::operator=</definition>
+        <argsstring>(RelationshipHandle &amp;&amp;other) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::RelationshipHandle::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1RelationshipHandle" kindref="compound">RelationshipHandle</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move assignment operator for <ref refid="classdiscordpp_1_1RelationshipHandle" kindref="compound">RelationshipHandle</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2452" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1RelationshipHandle_1aa7781c9bd3e7a06a9437ddde999ecc65" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::RelationshipHandle::operator bool</definition>
+        <argsstring>() const</argsstring>
+        <name>operator bool</name>
+        <qualifiedname>discordpp::RelationshipHandle::operator bool</qualifiedname>
+        <briefdescription>
+<para>Returns true if the instance contains a valid object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2456" column="1" bodyfile="include/discordpp.h" bodystart="2456" bodyend="2456"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1RelationshipHandle_1a218a10c537a3a7bafecd4ef80050f98a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::RelationshipHandle::RelationshipHandle</definition>
+        <argsstring>(const RelationshipHandle &amp;other)</argsstring>
+        <name>RelationshipHandle</name>
+        <qualifiedname>discordpp::RelationshipHandle::RelationshipHandle</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1RelationshipHandle" kindref="compound">RelationshipHandle</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor for <ref refid="classdiscordpp_1_1RelationshipHandle" kindref="compound">RelationshipHandle</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2459" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1RelationshipHandle_1a0cb318a4aab41fcf3f5c8d8708075d85" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1RelationshipHandle" kindref="compound">RelationshipHandle</ref> &amp;</type>
+        <definition>RelationshipHandle &amp; discordpp::RelationshipHandle::operator=</definition>
+        <argsstring>(const RelationshipHandle &amp;other)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::RelationshipHandle::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1RelationshipHandle" kindref="compound">RelationshipHandle</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Copy assignment operator for <ref refid="classdiscordpp_1_1RelationshipHandle" kindref="compound">RelationshipHandle</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2461" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1RelationshipHandle_1a5fecfb79a4a2b6f3dc5f73b09d0c3881" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacediscordpp_1a28fc5199b9211c24124c06f30c1d0cbb" kindref="member">discordpp::RelationshipType</ref></type>
+        <definition>discordpp::RelationshipType discordpp::RelationshipHandle::DiscordRelationshipType</definition>
+        <argsstring>() const</argsstring>
+        <name>DiscordRelationshipType</name>
+        <qualifiedname>discordpp::RelationshipHandle::DiscordRelationshipType</qualifiedname>
+        <briefdescription>
+<para>Returns the type of the Discord relationship. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2468" column="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1RelationshipHandle_1aa60146eb72ede07e3e615565f61f97eb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacediscordpp_1a28fc5199b9211c24124c06f30c1d0cbb" kindref="member">discordpp::RelationshipType</ref></type>
+        <definition>discordpp::RelationshipType discordpp::RelationshipHandle::GameRelationshipType</definition>
+        <argsstring>() const</argsstring>
+        <name>GameRelationshipType</name>
+        <qualifiedname>discordpp::RelationshipHandle::GameRelationshipType</qualifiedname>
+        <briefdescription>
+<para>Returns the type of the Game relationship. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2471" column="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1RelationshipHandle_1a3a14b6cfa9a9fffc61e500d8329be587" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t discordpp::RelationshipHandle::Id</definition>
+        <argsstring>() const</argsstring>
+        <name>Id</name>
+        <qualifiedname>discordpp::RelationshipHandle::Id</qualifiedname>
+        <briefdescription>
+<para>Returns the ID of the target user in this relationship. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2474" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1RelationshipHandle_1acf4d21fb62cf80ac10afa9d10308777a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool discordpp::RelationshipHandle::IsSpamRequest</definition>
+        <argsstring>() const</argsstring>
+        <name>IsSpamRequest</name>
+        <qualifiedname>discordpp::RelationshipHandle::IsSpamRequest</qualifiedname>
+        <briefdescription>
+<para>Returns whether this relationship is a spam request. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2477" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1RelationshipHandle_1ad87172b7df999ab56991c1be598e995e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; <ref refid="classdiscordpp_1_1UserHandle" kindref="compound">discordpp::UserHandle</ref> &gt;</type>
+        <definition>std::optional&lt; discordpp::UserHandle &gt; discordpp::RelationshipHandle::User</definition>
+        <argsstring>() const</argsstring>
+        <name>User</name>
+        <qualifiedname>discordpp::RelationshipHandle::User</qualifiedname>
+        <briefdescription>
+<para>Returns a handle to the target user in this relationship, if one is available. This would be the user with the same ID as the one returned by the <ref refid="classdiscordpp_1_1RelationshipHandle_1a3a14b6cfa9a9fffc61e500d8329be587" kindref="member">Id()</ref> method. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2481" column="15"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>A <ref refid="classdiscordpp_1_1RelationshipHandle" kindref="compound">RelationshipHandle</ref> represents the relationship between the current user and a target user on Discord. Relationships include friends, blocked users, and friend invites. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The SDK supports two types of relationships:<itemizedlist>
+<listitem><para>Discord: These are relationships that persist across games and on the Discord client. Both users will be able to see whether each other is online regardless of whether they are in the same game or not.</para>
+</listitem><listitem><para>Game: These are per-game relationships and do not carry over to other games. The two users will only be able to see if the other is online if they are playing a game in which they are friends.</para>
+</listitem></itemizedlist>
+</para>
+<para>If someone is a game friend they can later choose to &quot;upgrade&quot; to a full Discord friend. In this case, the user has two relationships at the same time, which is why there are two different type fields on <ref refid="classdiscordpp_1_1RelationshipHandle" kindref="compound">RelationshipHandle</ref>. In this example, their <ref refid="classdiscordpp_1_1RelationshipHandle_1a5fecfb79a4a2b6f3dc5f73b09d0c3881" kindref="member">RelationshipHandle::DiscordRelationshipType</ref> would be set to <ref refid="namespacediscordpp_1a28fc5199b9211c24124c06f30c1d0cbba07817206b999d94b5f4b49187fd7b8d9" kindref="member">RelationshipType::PendingIncoming</ref> or <ref refid="namespacediscordpp_1a28fc5199b9211c24124c06f30c1d0cbba4832d123938e53f19fa19ace533333ec" kindref="member">RelationshipType::PendingOutgoing</ref> (based on whether they are receiving or sending the invite respectively), and their <ref refid="classdiscordpp_1_1RelationshipHandle_1aa60146eb72ede07e3e615565f61f97eb" kindref="member">RelationshipHandle::GameRelationshipType</ref> would remain as <ref refid="namespacediscordpp_1a28fc5199b9211c24124c06f30c1d0cbba930a91848917f92cf7e2f8d744fa4177" kindref="member">RelationshipType::Friend</ref>.</para>
+<para>When a user blocks another user, it is always stored on the <ref refid="classdiscordpp_1_1RelationshipHandle_1a5fecfb79a4a2b6f3dc5f73b09d0c3881" kindref="member">RelationshipHandle::DiscordRelationshipType</ref> field, and will persist across games. It is not possible to block a user in only one game.</para>
+<para>See the friends documentation for more information.</para>
+<para>Note: While the SDK allows you to manage a user&apos;s relationships, you should never take an action without their explicit consent. You should not automatically send or accept friend requests. Only invoke APIs to manage relationships in response to a user action such as clicking a &quot;Send
+Friend Request&quot; button.</para>
+<para>Handle objects in the SDK hold a reference both to the underlying data, and to the SDK instance. Changes to the underlying data will generally be available on existing handles objects without having to re-create them. If the SDK instance is destroyed, but you still have a reference to a handle object, note that it will return the default value for all method calls (ie an empty string for methods that return a string). </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>discordpp::RelationshipHandle</label>
+        <link refid="classdiscordpp_1_1RelationshipHandle"/>
+        <childnode refid="1" relation="usage">
+          <edgelabel>nullobj</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/discordpp.h" line="2435" column="1" bodyfile="include/discordpp.h" bodystart="2435" bodyend="2482"/>
+    <listofallmembers>
+      <member refid="classdiscordpp_1_1RelationshipHandle_1a5fecfb79a4a2b6f3dc5f73b09d0c3881" prot="public" virt="non-virtual"><scope>discordpp::RelationshipHandle</scope><name>DiscordRelationshipType</name></member>
+      <member refid="classdiscordpp_1_1RelationshipHandle_1aa60146eb72ede07e3e615565f61f97eb" prot="public" virt="non-virtual"><scope>discordpp::RelationshipHandle</scope><name>GameRelationshipType</name></member>
+      <member refid="classdiscordpp_1_1RelationshipHandle_1a3a14b6cfa9a9fffc61e500d8329be587" prot="public" virt="non-virtual"><scope>discordpp::RelationshipHandle</scope><name>Id</name></member>
+      <member refid="classdiscordpp_1_1RelationshipHandle_1acf4d21fb62cf80ac10afa9d10308777a" prot="public" virt="non-virtual"><scope>discordpp::RelationshipHandle</scope><name>IsSpamRequest</name></member>
+      <member refid="classdiscordpp_1_1RelationshipHandle_1ac17223e7aa6e01803e634cc42b31861b" prot="public" virt="non-virtual"><scope>discordpp::RelationshipHandle</scope><name>nullobj</name></member>
+      <member refid="classdiscordpp_1_1RelationshipHandle_1aa7781c9bd3e7a06a9437ddde999ecc65" prot="public" virt="non-virtual"><scope>discordpp::RelationshipHandle</scope><name>operator bool</name></member>
+      <member refid="classdiscordpp_1_1RelationshipHandle_1af1079f5dcd7cc03bd51b01ab1a4e7ea8" prot="public" virt="non-virtual"><scope>discordpp::RelationshipHandle</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1RelationshipHandle_1a0cb318a4aab41fcf3f5c8d8708075d85" prot="public" virt="non-virtual"><scope>discordpp::RelationshipHandle</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1RelationshipHandle_1a7da36b15ad0b7d38ba658a622e9ded77" prot="public" virt="non-virtual"><scope>discordpp::RelationshipHandle</scope><name>RelationshipHandle</name></member>
+      <member refid="classdiscordpp_1_1RelationshipHandle_1a218a10c537a3a7bafecd4ef80050f98a" prot="public" virt="non-virtual"><scope>discordpp::RelationshipHandle</scope><name>RelationshipHandle</name></member>
+      <member refid="classdiscordpp_1_1RelationshipHandle_1ad87172b7df999ab56991c1be598e995e" prot="public" virt="non-virtual"><scope>discordpp::RelationshipHandle</scope><name>User</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bdfmwmlxvwesn"]
+
+[ext_resource type="Script" uid="uid://uclveiqrqljq" path="res://examples/discord_examples/development_guides/09_managing_game_invites/example_00.gd" id="1_tc00s"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tc00s")

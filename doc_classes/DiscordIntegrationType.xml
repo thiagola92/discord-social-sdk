@@ -1,0 +1,17 @@
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordIntegrationType" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	Represents the type of integration the app will be installed as.
+</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<constants>
+		<constant name="GUILD_INSTALL" value="0" enum="Enum">
+		</constant>
+		<constant name="USER_INSTALL" value="1" enum="Enum">
+		</constant>
+		<constant name="id" value="8">
+		</constant>
+	</constants>
+</class>

@@ -1,0 +1,443 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="classdiscordpp_1_1GuildChannel" kind="class" language="C++" prot="public">
+    <compoundname>discordpp::GuildChannel</compoundname>
+    <includes local="no">discordpp.h</includes>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classdiscordpp_1_1GuildChannel_1af421a59d8ac73bebb2749cb23c2a0a8d" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="classdiscordpp_1_1GuildChannel" kindref="compound">GuildChannel</ref></type>
+        <definition>const GuildChannel discordpp::GuildChannel::nullobj</definition>
+        <argsstring></argsstring>
+        <name>nullobj</name>
+        <qualifiedname>discordpp::GuildChannel::nullobj</qualifiedname>
+        <briefdescription>
+<para>Uninitialized instance of <ref refid="classdiscordpp_1_1GuildChannel" kindref="compound">GuildChannel</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2230" column="27" bodyfile="include/discordpp.h" bodystart="2230" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classdiscordpp_1_1GuildChannel_1ac83eedfa1d9434dfa245ae39bb3a0915" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::GuildChannel::GuildChannel</definition>
+        <argsstring>(GuildChannel &amp;&amp;other) noexcept</argsstring>
+        <name>GuildChannel</name>
+        <qualifiedname>discordpp::GuildChannel::GuildChannel</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1GuildChannel" kindref="compound">GuildChannel</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move constructor for <ref refid="classdiscordpp_1_1GuildChannel" kindref="compound">GuildChannel</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2226" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1GuildChannel_1ab829759413e87e41dcbaa948984a2700" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1GuildChannel" kindref="compound">GuildChannel</ref> &amp;</type>
+        <definition>GuildChannel &amp; discordpp::GuildChannel::operator=</definition>
+        <argsstring>(GuildChannel &amp;&amp;other) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::GuildChannel::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1GuildChannel" kindref="compound">GuildChannel</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move assignment operator for <ref refid="classdiscordpp_1_1GuildChannel" kindref="compound">GuildChannel</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2228" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1GuildChannel_1a600757164689b2da65291a9973ea14be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::GuildChannel::operator bool</definition>
+        <argsstring>() const</argsstring>
+        <name>operator bool</name>
+        <qualifiedname>discordpp::GuildChannel::operator bool</qualifiedname>
+        <briefdescription>
+<para>Returns true if the instance contains a valid object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2232" column="1" bodyfile="include/discordpp.h" bodystart="2232" bodyend="2232"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1GuildChannel_1a45a981991bb0d5ede922212a14ac1365" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::GuildChannel::GuildChannel</definition>
+        <argsstring>(const GuildChannel &amp;arg0)</argsstring>
+        <name>GuildChannel</name>
+        <qualifiedname>discordpp::GuildChannel::GuildChannel</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1GuildChannel" kindref="compound">GuildChannel</ref> &amp;</type>
+          <declname>arg0</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor for <ref refid="classdiscordpp_1_1GuildChannel" kindref="compound">GuildChannel</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2235" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1GuildChannel_1aa1078c06e02e8a3a8db61831d582ca7b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1GuildChannel" kindref="compound">GuildChannel</ref> &amp;</type>
+        <definition>GuildChannel &amp; discordpp::GuildChannel::operator=</definition>
+        <argsstring>(const GuildChannel &amp;arg0)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::GuildChannel::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1GuildChannel" kindref="compound">GuildChannel</ref> &amp;</type>
+          <declname>arg0</declname>
+        </param>
+        <briefdescription>
+<para>Copy assignment operator for <ref refid="classdiscordpp_1_1GuildChannel" kindref="compound">GuildChannel</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2237" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1GuildChannel_1a2fe6d0dbf525d4ff07ee5b3b11919c9b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t discordpp::GuildChannel::Id</definition>
+        <argsstring>() const</argsstring>
+        <name>Id</name>
+        <qualifiedname>discordpp::GuildChannel::Id</qualifiedname>
+        <briefdescription>
+<para>The id of the channel. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2244" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1GuildChannel_1a54d49b0f134e4b88bf30f2ad4bc5af53" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::GuildChannel::SetId</definition>
+        <argsstring>(uint64_t Id)</argsstring>
+        <name>SetId</name>
+        <qualifiedname>discordpp::GuildChannel::SetId</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>Id</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1GuildChannel_1a2fe6d0dbf525d4ff07ee5b3b11919c9b" kindref="member">GuildChannel::Id</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2246" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1GuildChannel_1a60ea639d62e0a24b2a59ff7afce35a97" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string discordpp::GuildChannel::Name</definition>
+        <argsstring>() const</argsstring>
+        <name>Name</name>
+        <qualifiedname>discordpp::GuildChannel::Name</qualifiedname>
+        <briefdescription>
+<para>The name of the channel. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2249" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1GuildChannel_1a32e619dcb109fe8af27de24c0196a0f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::GuildChannel::SetName</definition>
+        <argsstring>(std::string Name)</argsstring>
+        <name>SetName</name>
+        <qualifiedname>discordpp::GuildChannel::SetName</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>Name</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1GuildChannel_1a60ea639d62e0a24b2a59ff7afce35a97" kindref="member">GuildChannel::Name</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2251" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1GuildChannel_1a9cf329c0ae46c5509666543839cbfa33" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacediscordpp_1a1b68b260e8659da9a7792b2b2046fe58" kindref="member">discordpp::ChannelType</ref></type>
+        <definition>discordpp::ChannelType discordpp::GuildChannel::Type</definition>
+        <argsstring>() const</argsstring>
+        <name>Type</name>
+        <qualifiedname>discordpp::GuildChannel::Type</qualifiedname>
+        <briefdescription>
+<para>The type of the channel. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2254" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1GuildChannel_1a6fbbd299823f1e1342f424daf0d27c1b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::GuildChannel::SetType</definition>
+        <argsstring>(discordpp::ChannelType Type)</argsstring>
+        <name>SetType</name>
+        <qualifiedname>discordpp::GuildChannel::SetType</qualifiedname>
+        <param>
+          <type><ref refid="namespacediscordpp_1a1b68b260e8659da9a7792b2b2046fe58" kindref="member">discordpp::ChannelType</ref></type>
+          <declname>Type</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1GuildChannel_1a9cf329c0ae46c5509666543839cbfa33" kindref="member">GuildChannel::Type</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2256" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1GuildChannel_1ae0749779d6a9b708af2bfa1c06bc40ba" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t discordpp::GuildChannel::Position</definition>
+        <argsstring>() const</argsstring>
+        <name>Position</name>
+        <qualifiedname>discordpp::GuildChannel::Position</qualifiedname>
+        <briefdescription>
+<para>The position of the channel in the guild&apos;s channel list. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2259" column="9"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1GuildChannel_1a81853ebe5e40edb347ce10e289f8e781" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::GuildChannel::SetPosition</definition>
+        <argsstring>(int32_t Position)</argsstring>
+        <name>SetPosition</name>
+        <qualifiedname>discordpp::GuildChannel::SetPosition</qualifiedname>
+        <param>
+          <type>int32_t</type>
+          <declname>Position</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1GuildChannel_1ae0749779d6a9b708af2bfa1c06bc40ba" kindref="member">GuildChannel::Position</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2261" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1GuildChannel_1a56a251fe1df193a95de654df96e0b8bf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; uint64_t &gt;</type>
+        <definition>std::optional&lt; uint64_t &gt; discordpp::GuildChannel::ParentId</definition>
+        <argsstring>() const</argsstring>
+        <name>ParentId</name>
+        <qualifiedname>discordpp::GuildChannel::ParentId</qualifiedname>
+        <briefdescription>
+<para>The id of the parent category channel, if any. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2264" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1GuildChannel_1af789881615443c828d3c4b73ee34ba48" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::GuildChannel::SetParentId</definition>
+        <argsstring>(std::optional&lt; uint64_t &gt; ParentId)</argsstring>
+        <name>SetParentId</name>
+        <qualifiedname>discordpp::GuildChannel::SetParentId</qualifiedname>
+        <param>
+          <type>std::optional&lt; uint64_t &gt;</type>
+          <declname>ParentId</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1GuildChannel_1a56a251fe1df193a95de654df96e0b8bf" kindref="member">GuildChannel::ParentId</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2266" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1GuildChannel_1ad69573b499384939e41cc45e6cbc151c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool discordpp::GuildChannel::IsLinkable</definition>
+        <argsstring>() const</argsstring>
+        <name>IsLinkable</name>
+        <qualifiedname>discordpp::GuildChannel::IsLinkable</qualifiedname>
+        <briefdescription>
+<para>Whether the current user is able to link this channel to a lobby. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>For this to be true:<itemizedlist>
+<listitem><para>The channel must be a guild text channel</para>
+</listitem><listitem><para>The channel may not be marked as NSFW</para>
+</listitem><listitem><para>The channel must not be currently linked to a different lobby</para>
+</listitem><listitem><para>The user must have the following permissions in the channel in order to link it:<itemizedlist>
+<listitem><para>Manage Channels</para>
+</listitem><listitem><para>View Channel</para>
+</listitem><listitem><para>Send Messages </para>
+</listitem></itemizedlist>
+</para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2278" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1GuildChannel_1a07c70db9e7d0093cc2e68aa8c9cf2d4f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::GuildChannel::SetIsLinkable</definition>
+        <argsstring>(bool IsLinkable)</argsstring>
+        <name>SetIsLinkable</name>
+        <qualifiedname>discordpp::GuildChannel::SetIsLinkable</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>IsLinkable</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1GuildChannel_1ad69573b499384939e41cc45e6cbc151c" kindref="member">GuildChannel::IsLinkable</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2280" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1GuildChannel_1a0a5655eda07dea3fc4b8643334fdee28" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool discordpp::GuildChannel::IsViewableAndWriteableByAllMembers</definition>
+        <argsstring>() const</argsstring>
+        <name>IsViewableAndWriteableByAllMembers</name>
+        <qualifiedname>discordpp::GuildChannel::IsViewableAndWriteableByAllMembers</qualifiedname>
+        <briefdescription>
+<para>Whether the channel is &quot;fully public&quot; which means every member of the guild is able to view and send messages in that channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Discord allows lobbies to be linked to private channels in a server, which enables things like a private admin chat.</para>
+<para>However there is no permission synchronization between the game and Discord, so it is the responsibility of the game to restrict access to the lobby. Every member of the lobby will be able to view and send messages in the lobby/channel, regardless of whether that user would have permission to do so in Discord.</para>
+<para>This may be more complexity than a game wants to take on, so instead you can only allow linking of channels that are fully public in the server so there is no confusion. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2295" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1GuildChannel_1af341737fe3de7b6eb4be6798c032007d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::GuildChannel::SetIsViewableAndWriteableByAllMembers</definition>
+        <argsstring>(bool IsViewableAndWriteableByAllMembers)</argsstring>
+        <name>SetIsViewableAndWriteableByAllMembers</name>
+        <qualifiedname>discordpp::GuildChannel::SetIsViewableAndWriteableByAllMembers</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>IsViewableAndWriteableByAllMembers</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1GuildChannel_1a0a5655eda07dea3fc4b8643334fdee28" kindref="member">GuildChannel::IsViewableAndWriteableByAllMembers</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2297" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1GuildChannel_1a24a02a757b1c34f057776f2e633ab624" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; <ref refid="classdiscordpp_1_1LinkedLobby" kindref="compound">discordpp::LinkedLobby</ref> &gt;</type>
+        <definition>std::optional&lt; discordpp::LinkedLobby &gt; discordpp::GuildChannel::LinkedLobby</definition>
+        <argsstring>() const</argsstring>
+        <name>LinkedLobby</name>
+        <qualifiedname>discordpp::GuildChannel::LinkedLobby</qualifiedname>
+        <briefdescription>
+<para>Information about the currently linked lobby, if any. Currently Discord enforces that a channel can only be linked to a single lobby. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2301" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1GuildChannel_1ae7c87ec3ca9f274249b19ad19c7c1282" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::GuildChannel::SetLinkedLobby</definition>
+        <argsstring>(std::optional&lt; discordpp::LinkedLobby &gt; LinkedLobby)</argsstring>
+        <name>SetLinkedLobby</name>
+        <qualifiedname>discordpp::GuildChannel::SetLinkedLobby</qualifiedname>
+        <param>
+          <type>std::optional&lt; <ref refid="classdiscordpp_1_1LinkedLobby" kindref="compound">discordpp::LinkedLobby</ref> &gt;</type>
+          <declname>LinkedLobby</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1GuildChannel_1a24a02a757b1c34f057776f2e633ab624" kindref="member">GuildChannel::LinkedLobby</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2303" column="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents a channel in a guild that the current user is a member of and may be able to be linked to a lobby. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>discordpp::GuildChannel</label>
+        <link refid="classdiscordpp_1_1GuildChannel"/>
+        <childnode refid="1" relation="usage">
+          <edgelabel>nullobj</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/discordpp.h" line="2211" column="1" bodyfile="include/discordpp.h" bodystart="2211" bodyend="2304"/>
+    <listofallmembers>
+      <member refid="classdiscordpp_1_1GuildChannel_1ac83eedfa1d9434dfa245ae39bb3a0915" prot="public" virt="non-virtual"><scope>discordpp::GuildChannel</scope><name>GuildChannel</name></member>
+      <member refid="classdiscordpp_1_1GuildChannel_1a45a981991bb0d5ede922212a14ac1365" prot="public" virt="non-virtual"><scope>discordpp::GuildChannel</scope><name>GuildChannel</name></member>
+      <member refid="classdiscordpp_1_1GuildChannel_1a2fe6d0dbf525d4ff07ee5b3b11919c9b" prot="public" virt="non-virtual"><scope>discordpp::GuildChannel</scope><name>Id</name></member>
+      <member refid="classdiscordpp_1_1GuildChannel_1ad69573b499384939e41cc45e6cbc151c" prot="public" virt="non-virtual"><scope>discordpp::GuildChannel</scope><name>IsLinkable</name></member>
+      <member refid="classdiscordpp_1_1GuildChannel_1a0a5655eda07dea3fc4b8643334fdee28" prot="public" virt="non-virtual"><scope>discordpp::GuildChannel</scope><name>IsViewableAndWriteableByAllMembers</name></member>
+      <member refid="classdiscordpp_1_1GuildChannel_1a24a02a757b1c34f057776f2e633ab624" prot="public" virt="non-virtual"><scope>discordpp::GuildChannel</scope><name>LinkedLobby</name></member>
+      <member refid="classdiscordpp_1_1GuildChannel_1a60ea639d62e0a24b2a59ff7afce35a97" prot="public" virt="non-virtual"><scope>discordpp::GuildChannel</scope><name>Name</name></member>
+      <member refid="classdiscordpp_1_1GuildChannel_1af421a59d8ac73bebb2749cb23c2a0a8d" prot="public" virt="non-virtual"><scope>discordpp::GuildChannel</scope><name>nullobj</name></member>
+      <member refid="classdiscordpp_1_1GuildChannel_1a600757164689b2da65291a9973ea14be" prot="public" virt="non-virtual"><scope>discordpp::GuildChannel</scope><name>operator bool</name></member>
+      <member refid="classdiscordpp_1_1GuildChannel_1ab829759413e87e41dcbaa948984a2700" prot="public" virt="non-virtual"><scope>discordpp::GuildChannel</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1GuildChannel_1aa1078c06e02e8a3a8db61831d582ca7b" prot="public" virt="non-virtual"><scope>discordpp::GuildChannel</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1GuildChannel_1a56a251fe1df193a95de654df96e0b8bf" prot="public" virt="non-virtual"><scope>discordpp::GuildChannel</scope><name>ParentId</name></member>
+      <member refid="classdiscordpp_1_1GuildChannel_1ae0749779d6a9b708af2bfa1c06bc40ba" prot="public" virt="non-virtual"><scope>discordpp::GuildChannel</scope><name>Position</name></member>
+      <member refid="classdiscordpp_1_1GuildChannel_1a54d49b0f134e4b88bf30f2ad4bc5af53" prot="public" virt="non-virtual"><scope>discordpp::GuildChannel</scope><name>SetId</name></member>
+      <member refid="classdiscordpp_1_1GuildChannel_1a07c70db9e7d0093cc2e68aa8c9cf2d4f" prot="public" virt="non-virtual"><scope>discordpp::GuildChannel</scope><name>SetIsLinkable</name></member>
+      <member refid="classdiscordpp_1_1GuildChannel_1af341737fe3de7b6eb4be6798c032007d" prot="public" virt="non-virtual"><scope>discordpp::GuildChannel</scope><name>SetIsViewableAndWriteableByAllMembers</name></member>
+      <member refid="classdiscordpp_1_1GuildChannel_1ae7c87ec3ca9f274249b19ad19c7c1282" prot="public" virt="non-virtual"><scope>discordpp::GuildChannel</scope><name>SetLinkedLobby</name></member>
+      <member refid="classdiscordpp_1_1GuildChannel_1a32e619dcb109fe8af27de24c0196a0f5" prot="public" virt="non-virtual"><scope>discordpp::GuildChannel</scope><name>SetName</name></member>
+      <member refid="classdiscordpp_1_1GuildChannel_1af789881615443c828d3c4b73ee34ba48" prot="public" virt="non-virtual"><scope>discordpp::GuildChannel</scope><name>SetParentId</name></member>
+      <member refid="classdiscordpp_1_1GuildChannel_1a81853ebe5e40edb347ce10e289f8e781" prot="public" virt="non-virtual"><scope>discordpp::GuildChannel</scope><name>SetPosition</name></member>
+      <member refid="classdiscordpp_1_1GuildChannel_1a6fbbd299823f1e1342f424daf0d27c1b" prot="public" virt="non-virtual"><scope>discordpp::GuildChannel</scope><name>SetType</name></member>
+      <member refid="classdiscordpp_1_1GuildChannel_1a9cf329c0ae46c5509666543839cbfa33" prot="public" virt="non-virtual"><scope>discordpp::GuildChannel</scope><name>Type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

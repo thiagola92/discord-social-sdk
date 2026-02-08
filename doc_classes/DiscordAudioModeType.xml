@@ -1,0 +1,22 @@
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordAudioModeType" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	Represents whether a voice call is using push to talk or auto voice detection.
+</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<constants>
+		<constant name="MODE_UNINIT" value="0" enum="Enum">
+		MODE_UNINIT.
+		</constant>
+		<constant name="MODE_VAD" value="1" enum="Enum">
+		MODE_VAD.
+		</constant>
+		<constant name="MODE_PTT" value="2" enum="Enum">
+		MODE_PTT.
+		</constant>
+		<constant name="id" value="12">
+		</constant>
+	</constants>
+</class>

@@ -1,0 +1,221 @@
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordCall" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	Class that manages an active voice session in a Lobby.
+</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="error_to_string" qualifiers="static">
+			<return type="String" />
+			<param index="0" name="type" type="int" enum="DiscordCallError.Enum" />
+			<description>
+			Converts the [DiscordCallError] enum to a string.
+			</description>
+		</method>
+		<method name="get_audio_mode">
+			<return type="int" enum="DiscordAudioModeType.Enum" />
+			<description>
+			Returns whether the call is configured to use voice auto detection or push to talk for the current user.
+			</description>
+		</method>
+		<method name="get_channel_id">
+			<return type="int" />
+			<description>
+			Returns the ID of the lobby with which this call is associated.
+			</description>
+		</method>
+		<method name="get_guild_id">
+			<return type="int" />
+			<description>
+			Returns the ID of the lobby with which this call is associated.
+			</description>
+		</method>
+		<method name="get_local_mute">
+			<return type="bool" />
+			<param index="0" name="user_id" type="int" />
+			<description>
+			Returns whether the current user has locally muted the given userId for themselves.
+			</description>
+		</method>
+		<method name="get_participant_volume">
+			<return type="float" />
+			<param index="0" name="user_id" type="int" />
+			<description>
+			Returns the locally set playout volume of the given userId.
+			Does not affect the volume of this user for any other connected clients. The range of volume is [0, 200], where 100 indicate default audio volume of the playback device.
+			</description>
+		</method>
+		<method name="get_participants">
+			<return type="int[]" />
+			<description>
+			Returns a list of all of the user IDs of the participants in the call.
+			</description>
+		</method>
+		<method name="get_pttactive">
+			<return type="bool" />
+			<description>
+			Returns whether push to talk is currently active, meaning the user is currently pressing their configured push to talk key.
+			</description>
+		</method>
+		<method name="get_pttrelease_delay">
+			<return type="int" />
+			<description>
+			Returns the time that PTT is active after the user releases the PTT key and SetPTTActive(false) is called.
+			</description>
+		</method>
+		<method name="get_self_deaf">
+			<return type="bool" />
+			<description>
+			Returns whether the current user is deafened.
+			</description>
+		</method>
+		<method name="get_self_mute">
+			<return type="bool" />
+			<description>
+			Returns whether the current user's microphone is muted.
+			</description>
+		</method>
+		<method name="get_status">
+			<return type="int" enum="DiscordCallStatus.Enum" />
+			<description>
+			Returns the current call status.
+			A call is not ready to be used until the status changes to "Connected".
+			</description>
+		</method>
+		<method name="get_vadthreshold">
+			<return type="DiscordVADThresholdSettings" />
+			<description>
+			Returns the current configuration for void auto detection thresholds. See the description of the VADThreshold struct for specifics.
+			</description>
+		</method>
+		<method name="get_voice_state_handle">
+			<return type="Variant" />
+			<param index="0" name="user_id" type="int" />
+			<description>
+			Returns a reference to the [DiscordVoiceStateHandle] for the user ID of the given call participant.
+			The [DiscordVoiceStateHandle] allows other users to know if the target user has muted or deafened themselves.
+			Returns [DiscordVoiceStateHandle] or [code]null[/code].
+</description>
+		</method>
+		<method name="set_audio_mode">
+			<return type="void" />
+			<param index="0" name="audio_mode" type="int" enum="DiscordAudioModeType.Enum" />
+			<description>
+			Sets whether to use voice auto detection or push to talk for the current user on this call.
+			If using push to talk you should call [method DiscordCall.set_pttactive] whenever the user presses their confused push to talk key.
+			</description>
+		</method>
+		<method name="set_local_mute">
+			<return type="void" />
+			<param index="0" name="user_id" type="int" />
+			<param index="1" name="mute" type="bool" />
+			<description>
+			Locally mutes the given userId, so that the current user cannot hear them anymore.
+			Does not affect whether the given user is muted for any other connected clients.
+			</description>
+		</method>
+		<method name="set_on_voice_state_changed_callback">
+			<return type="void" />
+			<param index="0" name="cb" type="Callable" />
+			<description>
+			Sets a callback function to generally be invoked whenever a field on a [DiscordVoiceStateHandle] object for a user would have changed.
+			For example when a user mutes themselves, all other connected clients will invoke the VoiceStateChanged callback, because the "self mute" field will be true now. The callback is generally not invoked when users join or leave channels.
+			Parameter [param cb] signature:
+[codeblock]
+func(user_id: int)
+[/codeblock]
+</description>
+		</method>
+		<method name="set_participant_changed_callback">
+			<return type="void" />
+			<param index="0" name="cb" type="Callable" />
+			<description>
+			Sets a callback function to be invoked whenever some joins or leaves a voice call.
+			Parameter [param cb] signature:
+[codeblock]
+func(user_id: int, added: bool)
+[/codeblock]
+</description>
+		</method>
+		<method name="set_participant_volume">
+			<return type="void" />
+			<param index="0" name="user_id" type="int" />
+			<param index="1" name="volume" type="float" />
+			<description>
+			Locally changes the playout volume of the given userId.
+			Does not affect the volume of this user for any other connected clients. The range of volume is [0, 200], where 100 indicate default audio volume of the playback device.
+			</description>
+		</method>
+		<method name="set_pttactive">
+			<return type="void" />
+			<param index="0" name="active" type="bool" />
+			<description>
+			When push to talk is enabled, this should be called whenever the user pushes or releases their configured push to talk key. This key must be configured in the game, the SDK does not handle keybinds itself.
+			</description>
+		</method>
+		<method name="set_pttrelease_delay">
+			<return type="void" />
+			<param index="0" name="release_delay_ms" type="int" />
+			<description>
+			If set, extends the time that PTT is active after the user releases the PTT key and SetPTTActive(false) is called.
+			Defaults to no release delay, but we recommend setting to 20ms, which is what Discord uses.
+			</description>
+		</method>
+		<method name="set_self_deaf">
+			<return type="void" />
+			<param index="0" name="deaf" type="bool" />
+			<description>
+			Mutes all audio from the currently active call for the current user. They will not be able to hear any other participants, and no other participants will be able to hear the current user either.
+			</description>
+		</method>
+		<method name="set_self_mute">
+			<return type="void" />
+			<param index="0" name="mute" type="bool" />
+			<description>
+			Mutes the current user's microphone so that no other participant in their active calls can hear them.
+			</description>
+		</method>
+		<method name="set_speaking_status_changed_callback">
+			<return type="void" />
+			<param index="0" name="cb" type="Callable" />
+			<description>
+			Sets a callback function to be invoked whenever a user starts or stops speaking and is passed in the userId and whether they are currently speaking.
+			It can be invoked in other cases as well, such as if the priority speaker changes or if the user plays a soundboard sound.
+			Parameter [param cb] signature:
+[codeblock]
+func(user_id: int, is_playing_sound: bool)
+[/codeblock]
+</description>
+		</method>
+		<method name="set_status_changed_callback">
+			<return type="void" />
+			<param index="0" name="cb" type="Callable" />
+			<description>
+			Sets a callback function to be invoked when the call status changes, such as when it fully connects or starts reconnecting.
+			Parameter [param cb] signature:
+[codeblock]
+func(status: DiscordCallStatus.Enum, error: DiscordCallError.Enum, error_detail: int)
+[/codeblock]
+</description>
+		</method>
+		<method name="set_vadthreshold">
+			<return type="void" />
+			<param index="0" name="automatic" type="bool" />
+			<param index="1" name="threshold" type="float" />
+			<description>
+			Customizes the void auto detection thresholds for picking up activity from a user's mic.
+			- When automatic is set to True, Discord will automatically detect the appropriate threshold to use.
+- When automatic is set to False, the given threshold value will be used. Threshold has a range of -100, 0, and defaults to -60.
+			</description>
+		</method>
+		<method name="status_to_string" qualifiers="static">
+			<return type="String" />
+			<param index="0" name="type" type="int" enum="DiscordCallStatus.Enum" />
+			<description>
+			Converts the [DiscordCallStatus] enum to a string.
+			</description>
+		</method>
+	</methods>
+</class>

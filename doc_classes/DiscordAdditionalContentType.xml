@@ -1,0 +1,27 @@
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordAdditionalContentType" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	Represents the type of additional content contained in a message.
+</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<constants>
+		<constant name="OTHER" value="0" enum="Enum">
+		</constant>
+		<constant name="ATTACHMENT" value="1" enum="Enum">
+		</constant>
+		<constant name="POLL" value="2" enum="Enum">
+		</constant>
+		<constant name="VOICE_MESSAGE" value="3" enum="Enum">
+		</constant>
+		<constant name="THREAD" value="4" enum="Enum">
+		</constant>
+		<constant name="EMBED" value="5" enum="Enum">
+		</constant>
+		<constant name="STICKER" value="6" enum="Enum">
+		</constant>
+		<constant name="id" value="10">
+		</constant>
+	</constants>
+</class>

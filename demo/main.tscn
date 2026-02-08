@@ -1,23 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bjtdfl2as8etc"]
+[gd_scene format=3 uid="uid://bjtdfl2as8etc"]
 
 [ext_resource type="Script" uid="uid://cwelmyh2c1glv" path="res://main.gd" id="1_ig7tw"]
 
-[node name="Main" type="Control"]
+[node name="Main" type="Control" unique_id=1911142325]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_ig7tw")
-
-[node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-text = "click me"
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 76.0
-offset_top = 67.0
-offset_right = 116.0
-offset_bottom = 90.0
-
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

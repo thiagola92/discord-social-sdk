@@ -1,2 +1,2 @@
-def get_abstract_macro(enum_name: str) -> str:
-    return f"GDREGISTER_ABSTRACT_CLASS(Discordpp{enum_name});"
+def get_register_abstract(class_name: str) -> str:
+    return f"GDREGISTER_ABSTRACT_CLASS(Discord{class_name});"

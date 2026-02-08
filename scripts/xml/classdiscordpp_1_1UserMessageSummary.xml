@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="classdiscordpp_1_1UserMessageSummary" kind="class" language="C++" prot="public">
+    <compoundname>discordpp::UserMessageSummary</compoundname>
+    <includes local="no">discordpp.h</includes>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classdiscordpp_1_1UserMessageSummary_1a526ce46f3cbf0ca8a4f8a502665a7d4c" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="classdiscordpp_1_1UserMessageSummary" kindref="compound">UserMessageSummary</ref></type>
+        <definition>const UserMessageSummary discordpp::UserMessageSummary::nullobj</definition>
+        <argsstring></argsstring>
+        <name>nullobj</name>
+        <qualifiedname>discordpp::UserMessageSummary::nullobj</qualifiedname>
+        <briefdescription>
+<para>Uninitialized instance of <ref refid="classdiscordpp_1_1UserMessageSummary" kindref="compound">UserMessageSummary</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3195" column="33" bodyfile="include/discordpp.h" bodystart="3195" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classdiscordpp_1_1UserMessageSummary_1a7284a4debea92bfffc4db7781874449a" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::UserMessageSummary::UserMessageSummary</definition>
+        <argsstring>(UserMessageSummary &amp;&amp;other) noexcept</argsstring>
+        <name>UserMessageSummary</name>
+        <qualifiedname>discordpp::UserMessageSummary::UserMessageSummary</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1UserMessageSummary" kindref="compound">UserMessageSummary</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move constructor for <ref refid="classdiscordpp_1_1UserMessageSummary" kindref="compound">UserMessageSummary</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3191" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1UserMessageSummary_1af40e3a499b10d7a7844d743fc22f41a6" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1UserMessageSummary" kindref="compound">UserMessageSummary</ref> &amp;</type>
+        <definition>UserMessageSummary &amp; discordpp::UserMessageSummary::operator=</definition>
+        <argsstring>(UserMessageSummary &amp;&amp;other) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::UserMessageSummary::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1UserMessageSummary" kindref="compound">UserMessageSummary</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move assignment operator for <ref refid="classdiscordpp_1_1UserMessageSummary" kindref="compound">UserMessageSummary</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3193" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1UserMessageSummary_1a0853d32ccc92a97be7221492e4ffe93f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::UserMessageSummary::operator bool</definition>
+        <argsstring>() const</argsstring>
+        <name>operator bool</name>
+        <qualifiedname>discordpp::UserMessageSummary::operator bool</qualifiedname>
+        <briefdescription>
+<para>Returns true if the instance contains a valid object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3197" column="1" bodyfile="include/discordpp.h" bodystart="3197" bodyend="3197"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1UserMessageSummary_1af2ed8d48bc99839d0aeb798ccac6b95c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::UserMessageSummary::UserMessageSummary</definition>
+        <argsstring>(const UserMessageSummary &amp;arg0)</argsstring>
+        <name>UserMessageSummary</name>
+        <qualifiedname>discordpp::UserMessageSummary::UserMessageSummary</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1UserMessageSummary" kindref="compound">UserMessageSummary</ref> &amp;</type>
+          <declname>arg0</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor for <ref refid="classdiscordpp_1_1UserMessageSummary" kindref="compound">UserMessageSummary</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3200" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1UserMessageSummary_1a047aedeca38d30e9d646539cb3d5fc2e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1UserMessageSummary" kindref="compound">UserMessageSummary</ref> &amp;</type>
+        <definition>UserMessageSummary &amp; discordpp::UserMessageSummary::operator=</definition>
+        <argsstring>(const UserMessageSummary &amp;arg0)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::UserMessageSummary::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1UserMessageSummary" kindref="compound">UserMessageSummary</ref> &amp;</type>
+          <declname>arg0</declname>
+        </param>
+        <briefdescription>
+<para>Copy assignment operator for <ref refid="classdiscordpp_1_1UserMessageSummary" kindref="compound">UserMessageSummary</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3202" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1UserMessageSummary_1a99e5028531ba53003eac068947b116c7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t discordpp::UserMessageSummary::LastMessageId</definition>
+        <argsstring>() const</argsstring>
+        <name>LastMessageId</name>
+        <qualifiedname>discordpp::UserMessageSummary::LastMessageId</qualifiedname>
+        <briefdescription>
+<para>Returns the ID of the last message sent in the DM conversation. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3209" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1UserMessageSummary_1ad271915d85bac0e6227018aacd7bacca" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t discordpp::UserMessageSummary::UserId</definition>
+        <argsstring>() const</argsstring>
+        <name>UserId</name>
+        <qualifiedname>discordpp::UserMessageSummary::UserId</qualifiedname>
+        <briefdescription>
+<para>Returns the ID of the other user in the DM conversation. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="3212" column="10"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents a summary of a DM conversation with a user. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>discordpp::UserMessageSummary</label>
+        <link refid="classdiscordpp_1_1UserMessageSummary"/>
+        <childnode refid="1" relation="usage">
+          <edgelabel>nullobj</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/discordpp.h" line="3176" column="1" bodyfile="include/discordpp.h" bodystart="3176" bodyend="3213"/>
+    <listofallmembers>
+      <member refid="classdiscordpp_1_1UserMessageSummary_1a99e5028531ba53003eac068947b116c7" prot="public" virt="non-virtual"><scope>discordpp::UserMessageSummary</scope><name>LastMessageId</name></member>
+      <member refid="classdiscordpp_1_1UserMessageSummary_1a526ce46f3cbf0ca8a4f8a502665a7d4c" prot="public" virt="non-virtual"><scope>discordpp::UserMessageSummary</scope><name>nullobj</name></member>
+      <member refid="classdiscordpp_1_1UserMessageSummary_1a0853d32ccc92a97be7221492e4ffe93f" prot="public" virt="non-virtual"><scope>discordpp::UserMessageSummary</scope><name>operator bool</name></member>
+      <member refid="classdiscordpp_1_1UserMessageSummary_1af40e3a499b10d7a7844d743fc22f41a6" prot="public" virt="non-virtual"><scope>discordpp::UserMessageSummary</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1UserMessageSummary_1a047aedeca38d30e9d646539cb3d5fc2e" prot="public" virt="non-virtual"><scope>discordpp::UserMessageSummary</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1UserMessageSummary_1ad271915d85bac0e6227018aacd7bacca" prot="public" virt="non-virtual"><scope>discordpp::UserMessageSummary</scope><name>UserId</name></member>
+      <member refid="classdiscordpp_1_1UserMessageSummary_1a7284a4debea92bfffc4db7781874449a" prot="public" virt="non-virtual"><scope>discordpp::UserMessageSummary</scope><name>UserMessageSummary</name></member>
+      <member refid="classdiscordpp_1_1UserMessageSummary_1af2ed8d48bc99839d0aeb798ccac6b95c" prot="public" virt="non-virtual"><scope>discordpp::UserMessageSummary</scope><name>UserMessageSummary</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

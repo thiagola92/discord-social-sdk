@@ -1,0 +1,457 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="classdiscordpp_1_1ClientResult" kind="class" language="C++" prot="public">
+    <compoundname>discordpp::ClientResult</compoundname>
+    <includes local="no">discordpp.h</includes>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classdiscordpp_1_1ClientResult_1aa76cb8a2f4f71eec7e04587278f4138a" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="classdiscordpp_1_1ClientResult" kindref="compound">ClientResult</ref></type>
+        <definition>const ClientResult discordpp::ClientResult::nullobj</definition>
+        <argsstring></argsstring>
+        <name>nullobj</name>
+        <qualifiedname>discordpp::ClientResult::nullobj</qualifiedname>
+        <briefdescription>
+<para>Uninitialized instance of <ref refid="classdiscordpp_1_1ClientResult" kindref="compound">ClientResult</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1462" column="27" bodyfile="include/discordpp.h" bodystart="1462" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classdiscordpp_1_1ClientResult_1a685015ca8d29a50d47fd1ed5d469ac2e" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::ClientResult::ClientResult</definition>
+        <argsstring>(ClientResult &amp;&amp;other) noexcept</argsstring>
+        <name>ClientResult</name>
+        <qualifiedname>discordpp::ClientResult::ClientResult</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1ClientResult" kindref="compound">ClientResult</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move constructor for <ref refid="classdiscordpp_1_1ClientResult" kindref="compound">ClientResult</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1458" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ClientResult_1ab04a08a811079846f4c963d733e806de" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1ClientResult" kindref="compound">ClientResult</ref> &amp;</type>
+        <definition>ClientResult &amp; discordpp::ClientResult::operator=</definition>
+        <argsstring>(ClientResult &amp;&amp;other) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::ClientResult::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1ClientResult" kindref="compound">ClientResult</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move assignment operator for <ref refid="classdiscordpp_1_1ClientResult" kindref="compound">ClientResult</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1460" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ClientResult_1ad719dc037d1c61b9b33499f85af9e884" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::ClientResult::operator bool</definition>
+        <argsstring>() const</argsstring>
+        <name>operator bool</name>
+        <qualifiedname>discordpp::ClientResult::operator bool</qualifiedname>
+        <briefdescription>
+<para>Returns true if the instance contains a valid object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1464" column="1" bodyfile="include/discordpp.h" bodystart="1464" bodyend="1464"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ClientResult_1ae0bc3bab21380ceda18c459521324ed3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::ClientResult::ClientResult</definition>
+        <argsstring>(const ClientResult &amp;arg0)</argsstring>
+        <name>ClientResult</name>
+        <qualifiedname>discordpp::ClientResult::ClientResult</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1ClientResult" kindref="compound">ClientResult</ref> &amp;</type>
+          <declname>arg0</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor for <ref refid="classdiscordpp_1_1ClientResult" kindref="compound">ClientResult</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1467" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ClientResult_1a2502d220ea920a976d808abfb91b2eef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1ClientResult" kindref="compound">ClientResult</ref> &amp;</type>
+        <definition>ClientResult &amp; discordpp::ClientResult::operator=</definition>
+        <argsstring>(const ClientResult &amp;arg0)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::ClientResult::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1ClientResult" kindref="compound">ClientResult</ref> &amp;</type>
+          <declname>arg0</declname>
+        </param>
+        <briefdescription>
+<para>Copy assignment operator for <ref refid="classdiscordpp_1_1ClientResult" kindref="compound">ClientResult</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1469" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ClientResult_1a7a5491b45a35dfdbd4228e1cb557a879" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string discordpp::ClientResult::ToString</definition>
+        <argsstring>() const</argsstring>
+        <name>ToString</name>
+        <qualifiedname>discordpp::ClientResult::ToString</qualifiedname>
+        <briefdescription>
+<para>Returns the error message if any of the <ref refid="classdiscordpp_1_1ClientResult" kindref="compound">ClientResult</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1476" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ClientResult_1a4fb34d5bb67e2e742e1878c6d07a05ac" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacediscordpp_1ae19a5aed498bc40359e4d89d14ffb446" kindref="member">discordpp::ErrorType</ref></type>
+        <definition>discordpp::ErrorType discordpp::ClientResult::Type</definition>
+        <argsstring>() const</argsstring>
+        <name>Type</name>
+        <qualifiedname>discordpp::ClientResult::Type</qualifiedname>
+        <briefdescription>
+<para>The type of error that occurred. See <ref refid="namespacediscordpp_1ae19a5aed498bc40359e4d89d14ffb446" kindref="member">ErrorType</ref> for more information. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1479" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ClientResult_1af1e9e03e1aaaababc5d1ef2967506c3b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::ClientResult::SetType</definition>
+        <argsstring>(discordpp::ErrorType Type)</argsstring>
+        <name>SetType</name>
+        <qualifiedname>discordpp::ClientResult::SetType</qualifiedname>
+        <param>
+          <type><ref refid="namespacediscordpp_1ae19a5aed498bc40359e4d89d14ffb446" kindref="member">discordpp::ErrorType</ref></type>
+          <declname>Type</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1ClientResult_1a4fb34d5bb67e2e742e1878c6d07a05ac" kindref="member">ClientResult::Type</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1481" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ClientResult_1a3175ab59cd9268a3b2c6484129c89e04" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string discordpp::ClientResult::Error</definition>
+        <argsstring>() const</argsstring>
+        <name>Error</name>
+        <qualifiedname>discordpp::ClientResult::Error</qualifiedname>
+        <briefdescription>
+<para>A description of the error that occurred. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1484" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ClientResult_1ae093e56f212aaaf6a8cb84fe6b9d68ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::ClientResult::SetError</definition>
+        <argsstring>(std::string Error)</argsstring>
+        <name>SetError</name>
+        <qualifiedname>discordpp::ClientResult::SetError</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>Error</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1ClientResult_1a3175ab59cd9268a3b2c6484129c89e04" kindref="member">ClientResult::Error</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1486" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ClientResult_1ab361cb3d3381401f0d73736d5f49b3f5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t discordpp::ClientResult::ErrorCode</definition>
+        <argsstring>() const</argsstring>
+        <name>ErrorCode</name>
+        <qualifiedname>discordpp::ClientResult::ErrorCode</qualifiedname>
+        <briefdescription>
+<para>A more detailed error code for this failure. Currently the only use of this is when an API request is made to Discord&apos;s backend and that fails with a specific error, that error will be included in this field. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Many of these error codes are documented at: <ulink url="https://discord.com/developers/docs/topics/opcodes-and-status-codes#json">https://discord.com/developers/docs/topics/opcodes-and-status-codes#json</ulink></para>
+<para>This will only be set if the type of error is <ref refid="namespacediscordpp_1ae19a5aed498bc40359e4d89d14ffb446a28e2aeb21c361fc1c2d3d5a7c964812f" kindref="member">ErrorType::HTTPError</ref> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1496" column="9"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ClientResult_1a20891b4a11298b10ac5abe6d915daeed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::ClientResult::SetErrorCode</definition>
+        <argsstring>(int32_t ErrorCode)</argsstring>
+        <name>SetErrorCode</name>
+        <qualifiedname>discordpp::ClientResult::SetErrorCode</qualifiedname>
+        <param>
+          <type>int32_t</type>
+          <declname>ErrorCode</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1ClientResult_1ab361cb3d3381401f0d73736d5f49b3f5" kindref="member">ClientResult::ErrorCode</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1498" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ClientResult_1adbd9aeece922b420d020987e8c4afbcd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacediscordpp_1a12b04d48d8ea98ec007270a10e0c88ba" kindref="member">discordpp::HttpStatusCode</ref></type>
+        <definition>discordpp::HttpStatusCode discordpp::ClientResult::Status</definition>
+        <argsstring>() const</argsstring>
+        <name>Status</name>
+        <qualifiedname>discordpp::ClientResult::Status</qualifiedname>
+        <briefdescription>
+<para>The HTTP status code of the API call. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This will only be set if the type of error is <ref refid="namespacediscordpp_1ae19a5aed498bc40359e4d89d14ffb446a28e2aeb21c361fc1c2d3d5a7c964812f" kindref="member">ErrorType::HTTPError</ref> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1503" column="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ClientResult_1a2b1a904eb2796a8b3ddc4dde9c3f440f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::ClientResult::SetStatus</definition>
+        <argsstring>(discordpp::HttpStatusCode Status)</argsstring>
+        <name>SetStatus</name>
+        <qualifiedname>discordpp::ClientResult::SetStatus</qualifiedname>
+        <param>
+          <type><ref refid="namespacediscordpp_1a12b04d48d8ea98ec007270a10e0c88ba" kindref="member">discordpp::HttpStatusCode</ref></type>
+          <declname>Status</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1ClientResult_1adbd9aeece922b420d020987e8c4afbcd" kindref="member">ClientResult::Status</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1505" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ClientResult_1acc890e84f91a54bfa4e6257442fba9ed" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string discordpp::ClientResult::ResponseBody</definition>
+        <argsstring>() const</argsstring>
+        <name>ResponseBody</name>
+        <qualifiedname>discordpp::ClientResult::ResponseBody</qualifiedname>
+        <briefdescription>
+<para>The full HTTP response body, which will usually be a JSON string. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The error format here is a bit more complicated because Discord&apos;s API tries to make it clear which field from the request is causing the error. Documentation on the format of these errors is here: <ulink url="https://discord.com/developers/docs/reference#error-messages">https://discord.com/developers/docs/reference#error-messages</ulink></para>
+<para>This will only be set if the type of error is <ref refid="namespacediscordpp_1ae19a5aed498bc40359e4d89d14ffb446a28e2aeb21c361fc1c2d3d5a7c964812f" kindref="member">ErrorType::HTTPError</ref> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1514" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ClientResult_1a5bafd06d48db6b17aaebda160e1e83da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::ClientResult::SetResponseBody</definition>
+        <argsstring>(std::string ResponseBody)</argsstring>
+        <name>SetResponseBody</name>
+        <qualifiedname>discordpp::ClientResult::SetResponseBody</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>ResponseBody</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1ClientResult_1acc890e84f91a54bfa4e6257442fba9ed" kindref="member">ClientResult::ResponseBody</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1516" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ClientResult_1aef3b1aca3cd156daf488ca13ae87313b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool discordpp::ClientResult::Successful</definition>
+        <argsstring>() const</argsstring>
+        <name>Successful</name>
+        <qualifiedname>discordpp::ClientResult::Successful</qualifiedname>
+        <briefdescription>
+<para>Equivalent to type == <ref refid="namespacediscordpp_1ae19a5aed498bc40359e4d89d14ffb446a6adf97f83acf6453d4a6a4b1070f3754" kindref="member">ErrorType::None</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1519" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ClientResult_1a7842714bc39a9145b9a38d5d480f4165" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::ClientResult::SetSuccessful</definition>
+        <argsstring>(bool Successful)</argsstring>
+        <name>SetSuccessful</name>
+        <qualifiedname>discordpp::ClientResult::SetSuccessful</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>Successful</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1ClientResult_1aef3b1aca3cd156daf488ca13ae87313b" kindref="member">ClientResult::Successful</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1521" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ClientResult_1a0d220638f4a36c0b8b731f601e0ac02d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool discordpp::ClientResult::Retryable</definition>
+        <argsstring>() const</argsstring>
+        <name>Retryable</name>
+        <qualifiedname>discordpp::ClientResult::Retryable</qualifiedname>
+        <briefdescription>
+<para>Indicates if, although an API request failed, it is safe and recommended to retry it. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1524" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ClientResult_1a066337d0ef9aa69ae813b07c7139182f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::ClientResult::SetRetryable</definition>
+        <argsstring>(bool Retryable)</argsstring>
+        <name>SetRetryable</name>
+        <qualifiedname>discordpp::ClientResult::SetRetryable</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>Retryable</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1ClientResult_1a0d220638f4a36c0b8b731f601e0ac02d" kindref="member">ClientResult::Retryable</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1526" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ClientResult_1ac739adca52b90d6b4cbed5753c30fd65" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float discordpp::ClientResult::RetryAfter</definition>
+        <argsstring>() const</argsstring>
+        <name>RetryAfter</name>
+        <qualifiedname>discordpp::ClientResult::RetryAfter</qualifiedname>
+        <briefdescription>
+<para>When a user is being rate limited by Discord (and so status == 429), this field should be set and is the number of seconds to wait before trying again. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1530" column="7"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ClientResult_1abb747da57e424ff9c084d48711aa476b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::ClientResult::SetRetryAfter</definition>
+        <argsstring>(float RetryAfter)</argsstring>
+        <name>SetRetryAfter</name>
+        <qualifiedname>discordpp::ClientResult::SetRetryAfter</qualifiedname>
+        <param>
+          <type>float</type>
+          <declname>RetryAfter</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1ClientResult_1ac739adca52b90d6b4cbed5753c30fd65" kindref="member">ClientResult::RetryAfter</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1532" column="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Struct that stores information about the result of an SDK function call. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Functions can fail for a few reasons including:<itemizedlist>
+<listitem><para>The <ref refid="classdiscordpp_1_1Client" kindref="compound">Client</ref> is not yet ready and able to perform the action.</para>
+</listitem><listitem><para>The inputs passed to the function are invalid.</para>
+</listitem><listitem><para>The function makes an API call to Discord&apos;s backend which returns an error.</para>
+</listitem><listitem><para>The user is offline.</para>
+</listitem></itemizedlist>
+</para>
+<para>The <ref refid="classdiscordpp_1_1ClientResult_1a4fb34d5bb67e2e742e1878c6d07a05ac" kindref="member">ClientResult::Type</ref> field is used to to distinguish between the above types of failures </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>discordpp::ClientResult</label>
+        <link refid="classdiscordpp_1_1ClientResult"/>
+        <childnode refid="1" relation="usage">
+          <edgelabel>nullobj</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/discordpp.h" line="1443" column="1" bodyfile="include/discordpp.h" bodystart="1443" bodyend="1533"/>
+    <listofallmembers>
+      <member refid="classdiscordpp_1_1ClientResult_1a685015ca8d29a50d47fd1ed5d469ac2e" prot="public" virt="non-virtual"><scope>discordpp::ClientResult</scope><name>ClientResult</name></member>
+      <member refid="classdiscordpp_1_1ClientResult_1ae0bc3bab21380ceda18c459521324ed3" prot="public" virt="non-virtual"><scope>discordpp::ClientResult</scope><name>ClientResult</name></member>
+      <member refid="classdiscordpp_1_1ClientResult_1a3175ab59cd9268a3b2c6484129c89e04" prot="public" virt="non-virtual"><scope>discordpp::ClientResult</scope><name>Error</name></member>
+      <member refid="classdiscordpp_1_1ClientResult_1ab361cb3d3381401f0d73736d5f49b3f5" prot="public" virt="non-virtual"><scope>discordpp::ClientResult</scope><name>ErrorCode</name></member>
+      <member refid="classdiscordpp_1_1ClientResult_1aa76cb8a2f4f71eec7e04587278f4138a" prot="public" virt="non-virtual"><scope>discordpp::ClientResult</scope><name>nullobj</name></member>
+      <member refid="classdiscordpp_1_1ClientResult_1ad719dc037d1c61b9b33499f85af9e884" prot="public" virt="non-virtual"><scope>discordpp::ClientResult</scope><name>operator bool</name></member>
+      <member refid="classdiscordpp_1_1ClientResult_1ab04a08a811079846f4c963d733e806de" prot="public" virt="non-virtual"><scope>discordpp::ClientResult</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1ClientResult_1a2502d220ea920a976d808abfb91b2eef" prot="public" virt="non-virtual"><scope>discordpp::ClientResult</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1ClientResult_1acc890e84f91a54bfa4e6257442fba9ed" prot="public" virt="non-virtual"><scope>discordpp::ClientResult</scope><name>ResponseBody</name></member>
+      <member refid="classdiscordpp_1_1ClientResult_1a0d220638f4a36c0b8b731f601e0ac02d" prot="public" virt="non-virtual"><scope>discordpp::ClientResult</scope><name>Retryable</name></member>
+      <member refid="classdiscordpp_1_1ClientResult_1ac739adca52b90d6b4cbed5753c30fd65" prot="public" virt="non-virtual"><scope>discordpp::ClientResult</scope><name>RetryAfter</name></member>
+      <member refid="classdiscordpp_1_1ClientResult_1ae093e56f212aaaf6a8cb84fe6b9d68ee" prot="public" virt="non-virtual"><scope>discordpp::ClientResult</scope><name>SetError</name></member>
+      <member refid="classdiscordpp_1_1ClientResult_1a20891b4a11298b10ac5abe6d915daeed" prot="public" virt="non-virtual"><scope>discordpp::ClientResult</scope><name>SetErrorCode</name></member>
+      <member refid="classdiscordpp_1_1ClientResult_1a5bafd06d48db6b17aaebda160e1e83da" prot="public" virt="non-virtual"><scope>discordpp::ClientResult</scope><name>SetResponseBody</name></member>
+      <member refid="classdiscordpp_1_1ClientResult_1a066337d0ef9aa69ae813b07c7139182f" prot="public" virt="non-virtual"><scope>discordpp::ClientResult</scope><name>SetRetryable</name></member>
+      <member refid="classdiscordpp_1_1ClientResult_1abb747da57e424ff9c084d48711aa476b" prot="public" virt="non-virtual"><scope>discordpp::ClientResult</scope><name>SetRetryAfter</name></member>
+      <member refid="classdiscordpp_1_1ClientResult_1a2b1a904eb2796a8b3ddc4dde9c3f440f" prot="public" virt="non-virtual"><scope>discordpp::ClientResult</scope><name>SetStatus</name></member>
+      <member refid="classdiscordpp_1_1ClientResult_1a7842714bc39a9145b9a38d5d480f4165" prot="public" virt="non-virtual"><scope>discordpp::ClientResult</scope><name>SetSuccessful</name></member>
+      <member refid="classdiscordpp_1_1ClientResult_1af1e9e03e1aaaababc5d1ef2967506c3b" prot="public" virt="non-virtual"><scope>discordpp::ClientResult</scope><name>SetType</name></member>
+      <member refid="classdiscordpp_1_1ClientResult_1adbd9aeece922b420d020987e8c4afbcd" prot="public" virt="non-virtual"><scope>discordpp::ClientResult</scope><name>Status</name></member>
+      <member refid="classdiscordpp_1_1ClientResult_1aef3b1aca3cd156daf488ca13ae87313b" prot="public" virt="non-virtual"><scope>discordpp::ClientResult</scope><name>Successful</name></member>
+      <member refid="classdiscordpp_1_1ClientResult_1a7a5491b45a35dfdbd4228e1cb557a879" prot="public" virt="non-virtual"><scope>discordpp::ClientResult</scope><name>ToString</name></member>
+      <member refid="classdiscordpp_1_1ClientResult_1a4fb34d5bb67e2e742e1878c6d07a05ac" prot="public" virt="non-virtual"><scope>discordpp::ClientResult</scope><name>Type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

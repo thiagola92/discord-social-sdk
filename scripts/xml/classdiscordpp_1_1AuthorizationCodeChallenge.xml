@@ -1,0 +1,227 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="classdiscordpp_1_1AuthorizationCodeChallenge" kind="class" language="C++" prot="public">
+    <compoundname>discordpp::AuthorizationCodeChallenge</compoundname>
+    <includes local="no">discordpp.h</includes>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classdiscordpp_1_1AuthorizationCodeChallenge_1a833af393bad1c19c8927c73ab8c09fb1" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="classdiscordpp_1_1AuthorizationCodeChallenge" kindref="compound">AuthorizationCodeChallenge</ref></type>
+        <definition>const AuthorizationCodeChallenge discordpp::AuthorizationCodeChallenge::nullobj</definition>
+        <argsstring></argsstring>
+        <name>nullobj</name>
+        <qualifiedname>discordpp::AuthorizationCodeChallenge::nullobj</qualifiedname>
+        <briefdescription>
+<para>Uninitialized instance of <ref refid="classdiscordpp_1_1AuthorizationCodeChallenge" kindref="compound">AuthorizationCodeChallenge</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1556" column="41" bodyfile="include/discordpp.h" bodystart="1556" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classdiscordpp_1_1AuthorizationCodeChallenge_1a8b5d198d3508b0129b58f5175e49bc0a" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::AuthorizationCodeChallenge::AuthorizationCodeChallenge</definition>
+        <argsstring>(AuthorizationCodeChallenge &amp;&amp;other) noexcept</argsstring>
+        <name>AuthorizationCodeChallenge</name>
+        <qualifiedname>discordpp::AuthorizationCodeChallenge::AuthorizationCodeChallenge</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1AuthorizationCodeChallenge" kindref="compound">AuthorizationCodeChallenge</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move constructor for <ref refid="classdiscordpp_1_1AuthorizationCodeChallenge" kindref="compound">AuthorizationCodeChallenge</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1552" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AuthorizationCodeChallenge_1a36cc806bc61f2d9eb21a355ea0c91b9e" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1AuthorizationCodeChallenge" kindref="compound">AuthorizationCodeChallenge</ref> &amp;</type>
+        <definition>AuthorizationCodeChallenge &amp; discordpp::AuthorizationCodeChallenge::operator=</definition>
+        <argsstring>(AuthorizationCodeChallenge &amp;&amp;other) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::AuthorizationCodeChallenge::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1AuthorizationCodeChallenge" kindref="compound">AuthorizationCodeChallenge</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move assignment operator for <ref refid="classdiscordpp_1_1AuthorizationCodeChallenge" kindref="compound">AuthorizationCodeChallenge</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1554" column="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AuthorizationCodeChallenge_1a5a9c68e52c8f21d57d93240bc332cdc4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::AuthorizationCodeChallenge::operator bool</definition>
+        <argsstring>() const</argsstring>
+        <name>operator bool</name>
+        <qualifiedname>discordpp::AuthorizationCodeChallenge::operator bool</qualifiedname>
+        <briefdescription>
+<para>Returns true if the instance contains a valid object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1558" column="1" bodyfile="include/discordpp.h" bodystart="1558" bodyend="1558"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AuthorizationCodeChallenge_1a0f50bbaa069be0fb5e00f6529b47650a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::AuthorizationCodeChallenge::AuthorizationCodeChallenge</definition>
+        <argsstring>(const AuthorizationCodeChallenge &amp;arg0)</argsstring>
+        <name>AuthorizationCodeChallenge</name>
+        <qualifiedname>discordpp::AuthorizationCodeChallenge::AuthorizationCodeChallenge</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1AuthorizationCodeChallenge" kindref="compound">AuthorizationCodeChallenge</ref> &amp;</type>
+          <declname>arg0</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor for <ref refid="classdiscordpp_1_1AuthorizationCodeChallenge" kindref="compound">AuthorizationCodeChallenge</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1561" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AuthorizationCodeChallenge_1a8ae0f5dd10c5ae9f9545b28e206a08d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1AuthorizationCodeChallenge" kindref="compound">AuthorizationCodeChallenge</ref> &amp;</type>
+        <definition>AuthorizationCodeChallenge &amp; discordpp::AuthorizationCodeChallenge::operator=</definition>
+        <argsstring>(const AuthorizationCodeChallenge &amp;arg0)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::AuthorizationCodeChallenge::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1AuthorizationCodeChallenge" kindref="compound">AuthorizationCodeChallenge</ref> &amp;</type>
+          <declname>arg0</declname>
+        </param>
+        <briefdescription>
+<para>Copy assignment operator for <ref refid="classdiscordpp_1_1AuthorizationCodeChallenge" kindref="compound">AuthorizationCodeChallenge</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1563" column="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AuthorizationCodeChallenge_1aa84866d278286fbc545beafb98b48ed8" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::AuthorizationCodeChallenge::AuthorizationCodeChallenge</definition>
+        <argsstring>()</argsstring>
+        <name>AuthorizationCodeChallenge</name>
+        <qualifiedname>discordpp::AuthorizationCodeChallenge::AuthorizationCodeChallenge</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1565" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AuthorizationCodeChallenge_1a044c58aee91ba4c992418c2326837290" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacediscordpp_1a1c123930bb42c6f9f77f18b5593ad876" kindref="member">discordpp::AuthenticationCodeChallengeMethod</ref></type>
+        <definition>discordpp::AuthenticationCodeChallengeMethod discordpp::AuthorizationCodeChallenge::Method</definition>
+        <argsstring>() const</argsstring>
+        <name>Method</name>
+        <qualifiedname>discordpp::AuthorizationCodeChallenge::Method</qualifiedname>
+        <briefdescription>
+<para>The method used to generate the challenge. The only method used by the SDK is sha256. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1572" column="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AuthorizationCodeChallenge_1a68ab9d9bfbc374913ad5a657dcb8788a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::AuthorizationCodeChallenge::SetMethod</definition>
+        <argsstring>(discordpp::AuthenticationCodeChallengeMethod Method)</argsstring>
+        <name>SetMethod</name>
+        <qualifiedname>discordpp::AuthorizationCodeChallenge::SetMethod</qualifiedname>
+        <param>
+          <type><ref refid="namespacediscordpp_1a1c123930bb42c6f9f77f18b5593ad876" kindref="member">discordpp::AuthenticationCodeChallengeMethod</ref></type>
+          <declname>Method</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1AuthorizationCodeChallenge_1a044c58aee91ba4c992418c2326837290" kindref="member">AuthorizationCodeChallenge::Method</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1574" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AuthorizationCodeChallenge_1a0faf6b1bd98ea1c7b34534a2a7586f88" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string discordpp::AuthorizationCodeChallenge::Challenge</definition>
+        <argsstring>() const</argsstring>
+        <name>Challenge</name>
+        <qualifiedname>discordpp::AuthorizationCodeChallenge::Challenge</qualifiedname>
+        <briefdescription>
+<para>The challenge value. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1577" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AuthorizationCodeChallenge_1aa4d6f75f5858ca5d5e0f9613ea03eb4a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::AuthorizationCodeChallenge::SetChallenge</definition>
+        <argsstring>(std::string Challenge)</argsstring>
+        <name>SetChallenge</name>
+        <qualifiedname>discordpp::AuthorizationCodeChallenge::SetChallenge</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>Challenge</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1AuthorizationCodeChallenge_1a0faf6b1bd98ea1c7b34534a2a7586f88" kindref="member">AuthorizationCodeChallenge::Challenge</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1579" column="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Struct that encapsulates the challenge part of the code verification flow. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>discordpp::AuthorizationCodeChallenge</label>
+        <link refid="classdiscordpp_1_1AuthorizationCodeChallenge"/>
+        <childnode refid="1" relation="usage">
+          <edgelabel>nullobj</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/discordpp.h" line="1536" column="1" bodyfile="include/discordpp.h" bodystart="1536" bodyend="1580"/>
+    <listofallmembers>
+      <member refid="classdiscordpp_1_1AuthorizationCodeChallenge_1a8b5d198d3508b0129b58f5175e49bc0a" prot="public" virt="non-virtual"><scope>discordpp::AuthorizationCodeChallenge</scope><name>AuthorizationCodeChallenge</name></member>
+      <member refid="classdiscordpp_1_1AuthorizationCodeChallenge_1a0f50bbaa069be0fb5e00f6529b47650a" prot="public" virt="non-virtual"><scope>discordpp::AuthorizationCodeChallenge</scope><name>AuthorizationCodeChallenge</name></member>
+      <member refid="classdiscordpp_1_1AuthorizationCodeChallenge_1aa84866d278286fbc545beafb98b48ed8" prot="public" virt="non-virtual"><scope>discordpp::AuthorizationCodeChallenge</scope><name>AuthorizationCodeChallenge</name></member>
+      <member refid="classdiscordpp_1_1AuthorizationCodeChallenge_1a0faf6b1bd98ea1c7b34534a2a7586f88" prot="public" virt="non-virtual"><scope>discordpp::AuthorizationCodeChallenge</scope><name>Challenge</name></member>
+      <member refid="classdiscordpp_1_1AuthorizationCodeChallenge_1a044c58aee91ba4c992418c2326837290" prot="public" virt="non-virtual"><scope>discordpp::AuthorizationCodeChallenge</scope><name>Method</name></member>
+      <member refid="classdiscordpp_1_1AuthorizationCodeChallenge_1a833af393bad1c19c8927c73ab8c09fb1" prot="public" virt="non-virtual"><scope>discordpp::AuthorizationCodeChallenge</scope><name>nullobj</name></member>
+      <member refid="classdiscordpp_1_1AuthorizationCodeChallenge_1a5a9c68e52c8f21d57d93240bc332cdc4" prot="public" virt="non-virtual"><scope>discordpp::AuthorizationCodeChallenge</scope><name>operator bool</name></member>
+      <member refid="classdiscordpp_1_1AuthorizationCodeChallenge_1a36cc806bc61f2d9eb21a355ea0c91b9e" prot="public" virt="non-virtual"><scope>discordpp::AuthorizationCodeChallenge</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1AuthorizationCodeChallenge_1a8ae0f5dd10c5ae9f9545b28e206a08d9" prot="public" virt="non-virtual"><scope>discordpp::AuthorizationCodeChallenge</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1AuthorizationCodeChallenge_1aa4d6f75f5858ca5d5e0f9613ea03eb4a" prot="public" virt="non-virtual"><scope>discordpp::AuthorizationCodeChallenge</scope><name>SetChallenge</name></member>
+      <member refid="classdiscordpp_1_1AuthorizationCodeChallenge_1a68ab9d9bfbc374913ad5a657dcb8788a" prot="public" virt="non-virtual"><scope>discordpp::AuthorizationCodeChallenge</scope><name>SetMethod</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,58 @@
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordAudioDevice" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	Represents a single input or output audio device available to the user.
+</brief_description>
+	<description>
+	Discord will initialize the audio engine with the system default input and output devices. You can change the device through the [DiscordClient] by passing the id of the desired audio device.
+</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="equals">
+			<return type="bool" />
+			<param index="0" name="rhs" type="DiscordAudioDevice" />
+			<description>
+			Compares the ID of two [DiscordAudioDevice] objects for equality.
+			</description>
+		</method>
+		<method name="id">
+			<return type="String" />
+			<description>
+			The ID of the audio device.
+			</description>
+		</method>
+		<method name="is_default">
+			<return type="bool" />
+			<description>
+			Whether the audio device is the system default device.
+			</description>
+		</method>
+		<method name="name">
+			<return type="String" />
+			<description>
+			The display name of the audio device.
+			</description>
+		</method>
+		<method name="set_id">
+			<return type="void" />
+			<param index="0" name="id" type="String" />
+			<description>
+			Setter for [method DiscordAudioDevice.id].
+			</description>
+		</method>
+		<method name="set_is_default">
+			<return type="void" />
+			<param index="0" name="is_default" type="bool" />
+			<description>
+			Setter for [method DiscordAudioDevice.is_default].
+			</description>
+		</method>
+		<method name="set_name">
+			<return type="void" />
+			<param index="0" name="name" type="String" />
+			<description>
+			Setter for [method DiscordAudioDevice.name].
+			</description>
+		</method>
+	</methods>
+</class>

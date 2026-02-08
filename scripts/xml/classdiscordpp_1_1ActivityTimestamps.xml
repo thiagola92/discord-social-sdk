@@ -1,0 +1,231 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="classdiscordpp_1_1ActivityTimestamps" kind="class" language="C++" prot="public">
+    <compoundname>discordpp::ActivityTimestamps</compoundname>
+    <includes local="no">discordpp.h</includes>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classdiscordpp_1_1ActivityTimestamps_1a6d3dbb4acf90d8a96a7618d1c637e337" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="classdiscordpp_1_1ActivityTimestamps" kindref="compound">ActivityTimestamps</ref></type>
+        <definition>const ActivityTimestamps discordpp::ActivityTimestamps::nullobj</definition>
+        <argsstring></argsstring>
+        <name>nullobj</name>
+        <qualifiedname>discordpp::ActivityTimestamps::nullobj</qualifiedname>
+        <briefdescription>
+<para>Uninitialized instance of <ref refid="classdiscordpp_1_1ActivityTimestamps" kindref="compound">ActivityTimestamps</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="921" column="33" bodyfile="include/discordpp.h" bodystart="921" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityTimestamps_1a0ff108aac69639c18f1669994e459ee2" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::ActivityTimestamps::ActivityTimestamps</definition>
+        <argsstring>(ActivityTimestamps &amp;&amp;other) noexcept</argsstring>
+        <name>ActivityTimestamps</name>
+        <qualifiedname>discordpp::ActivityTimestamps::ActivityTimestamps</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1ActivityTimestamps" kindref="compound">ActivityTimestamps</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move constructor for <ref refid="classdiscordpp_1_1ActivityTimestamps" kindref="compound">ActivityTimestamps</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="917" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityTimestamps_1a76fcfff02d0607cbff0eb9b93e51e1a4" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1ActivityTimestamps" kindref="compound">ActivityTimestamps</ref> &amp;</type>
+        <definition>ActivityTimestamps &amp; discordpp::ActivityTimestamps::operator=</definition>
+        <argsstring>(ActivityTimestamps &amp;&amp;other) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::ActivityTimestamps::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1ActivityTimestamps" kindref="compound">ActivityTimestamps</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move assignment operator for <ref refid="classdiscordpp_1_1ActivityTimestamps" kindref="compound">ActivityTimestamps</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="919" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityTimestamps_1abec39a6229e67f3ab89a620af271d546" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::ActivityTimestamps::operator bool</definition>
+        <argsstring>() const</argsstring>
+        <name>operator bool</name>
+        <qualifiedname>discordpp::ActivityTimestamps::operator bool</qualifiedname>
+        <briefdescription>
+<para>Returns true if the instance contains a valid object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="923" column="1" bodyfile="include/discordpp.h" bodystart="923" bodyend="923"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityTimestamps_1a1c58e520b3cb3fff56ed391abe8e20fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::ActivityTimestamps::ActivityTimestamps</definition>
+        <argsstring>(const ActivityTimestamps &amp;arg0)</argsstring>
+        <name>ActivityTimestamps</name>
+        <qualifiedname>discordpp::ActivityTimestamps::ActivityTimestamps</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1ActivityTimestamps" kindref="compound">ActivityTimestamps</ref> &amp;</type>
+          <declname>arg0</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor for <ref refid="classdiscordpp_1_1ActivityTimestamps" kindref="compound">ActivityTimestamps</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="926" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityTimestamps_1afe3b78cc1af869dcd43773729c2bfab3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1ActivityTimestamps" kindref="compound">ActivityTimestamps</ref> &amp;</type>
+        <definition>ActivityTimestamps &amp; discordpp::ActivityTimestamps::operator=</definition>
+        <argsstring>(const ActivityTimestamps &amp;arg0)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::ActivityTimestamps::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1ActivityTimestamps" kindref="compound">ActivityTimestamps</ref> &amp;</type>
+          <declname>arg0</declname>
+        </param>
+        <briefdescription>
+<para>Copy assignment operator for <ref refid="classdiscordpp_1_1ActivityTimestamps" kindref="compound">ActivityTimestamps</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="928" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityTimestamps_1aea715117f204f52fd022f66e34759198" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::ActivityTimestamps::ActivityTimestamps</definition>
+        <argsstring>()</argsstring>
+        <name>ActivityTimestamps</name>
+        <qualifiedname>discordpp::ActivityTimestamps::ActivityTimestamps</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="930" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityTimestamps_1a4806e31609893206e81c1963857ef829" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t discordpp::ActivityTimestamps::Start</definition>
+        <argsstring>() const</argsstring>
+        <name>Start</name>
+        <qualifiedname>discordpp::ActivityTimestamps::Start</qualifiedname>
+        <briefdescription>
+<para>The time the activity started, in milliseconds since Unix epoch. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The SDK will try to convert seconds to milliseconds if a small-ish value is passed in. If specified, the Discord client will render a count up timer showing how long the user has been playing this activity. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="941" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityTimestamps_1a5bb6a6bc243fedb954ae82d6c4ef3542" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::ActivityTimestamps::SetStart</definition>
+        <argsstring>(uint64_t Start)</argsstring>
+        <name>SetStart</name>
+        <qualifiedname>discordpp::ActivityTimestamps::SetStart</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>Start</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1ActivityTimestamps_1a4806e31609893206e81c1963857ef829" kindref="member">ActivityTimestamps::Start</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="943" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityTimestamps_1aba1847d3e0223ff1bb7695ab58c5d097" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t discordpp::ActivityTimestamps::End</definition>
+        <argsstring>() const</argsstring>
+        <name>End</name>
+        <qualifiedname>discordpp::ActivityTimestamps::End</qualifiedname>
+        <briefdescription>
+<para>The time the activity will end at, in milliseconds since Unix epoch. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The SDK will try to convert seconds to milliseconds if a small-ish value is passed in. If specified, the Discord client will render a countdown timer showing how long until the activity ends. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="950" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityTimestamps_1ab6478ec46860feb64174da3eb1063aaa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::ActivityTimestamps::SetEnd</definition>
+        <argsstring>(uint64_t End)</argsstring>
+        <name>SetEnd</name>
+        <qualifiedname>discordpp::ActivityTimestamps::SetEnd</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>End</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1ActivityTimestamps_1aba1847d3e0223ff1bb7695ab58c5d097" kindref="member">ActivityTimestamps::End</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="952" column="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classdiscordpp_1_1Activity" kindref="compound">Activity</ref> </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>discordpp::ActivityTimestamps</label>
+        <link refid="classdiscordpp_1_1ActivityTimestamps"/>
+        <childnode refid="1" relation="usage">
+          <edgelabel>nullobj</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/discordpp.h" line="902" column="1" bodyfile="include/discordpp.h" bodystart="902" bodyend="953"/>
+    <listofallmembers>
+      <member refid="classdiscordpp_1_1ActivityTimestamps_1a0ff108aac69639c18f1669994e459ee2" prot="public" virt="non-virtual"><scope>discordpp::ActivityTimestamps</scope><name>ActivityTimestamps</name></member>
+      <member refid="classdiscordpp_1_1ActivityTimestamps_1a1c58e520b3cb3fff56ed391abe8e20fa" prot="public" virt="non-virtual"><scope>discordpp::ActivityTimestamps</scope><name>ActivityTimestamps</name></member>
+      <member refid="classdiscordpp_1_1ActivityTimestamps_1aea715117f204f52fd022f66e34759198" prot="public" virt="non-virtual"><scope>discordpp::ActivityTimestamps</scope><name>ActivityTimestamps</name></member>
+      <member refid="classdiscordpp_1_1ActivityTimestamps_1aba1847d3e0223ff1bb7695ab58c5d097" prot="public" virt="non-virtual"><scope>discordpp::ActivityTimestamps</scope><name>End</name></member>
+      <member refid="classdiscordpp_1_1ActivityTimestamps_1a6d3dbb4acf90d8a96a7618d1c637e337" prot="public" virt="non-virtual"><scope>discordpp::ActivityTimestamps</scope><name>nullobj</name></member>
+      <member refid="classdiscordpp_1_1ActivityTimestamps_1abec39a6229e67f3ab89a620af271d546" prot="public" virt="non-virtual"><scope>discordpp::ActivityTimestamps</scope><name>operator bool</name></member>
+      <member refid="classdiscordpp_1_1ActivityTimestamps_1a76fcfff02d0607cbff0eb9b93e51e1a4" prot="public" virt="non-virtual"><scope>discordpp::ActivityTimestamps</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1ActivityTimestamps_1afe3b78cc1af869dcd43773729c2bfab3" prot="public" virt="non-virtual"><scope>discordpp::ActivityTimestamps</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1ActivityTimestamps_1ab6478ec46860feb64174da3eb1063aaa" prot="public" virt="non-virtual"><scope>discordpp::ActivityTimestamps</scope><name>SetEnd</name></member>
+      <member refid="classdiscordpp_1_1ActivityTimestamps_1a5bb6a6bc243fedb954ae82d6c4ef3542" prot="public" virt="non-virtual"><scope>discordpp::ActivityTimestamps</scope><name>SetStart</name></member>
+      <member refid="classdiscordpp_1_1ActivityTimestamps_1a4806e31609893206e81c1963857ef829" prot="public" virt="non-virtual"><scope>discordpp::ActivityTimestamps</scope><name>Start</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

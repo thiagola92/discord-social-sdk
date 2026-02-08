@@ -1,0 +1,417 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="classdiscordpp_1_1AuthorizationArgs" kind="class" language="C++" prot="public">
+    <compoundname>discordpp::AuthorizationArgs</compoundname>
+    <includes local="no">discordpp.h</includes>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classdiscordpp_1_1AuthorizationArgs_1aa5d52327f9b9bb954a0d402b4bbf454c" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="classdiscordpp_1_1AuthorizationArgs" kindref="compound">AuthorizationArgs</ref></type>
+        <definition>const AuthorizationArgs discordpp::AuthorizationArgs::nullobj</definition>
+        <argsstring></argsstring>
+        <name>nullobj</name>
+        <qualifiedname>discordpp::AuthorizationArgs::nullobj</qualifiedname>
+        <briefdescription>
+<para>Uninitialized instance of <ref refid="classdiscordpp_1_1AuthorizationArgs" kindref="compound">AuthorizationArgs</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1647" column="32" bodyfile="include/discordpp.h" bodystart="1647" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classdiscordpp_1_1AuthorizationArgs_1adb47ac55258db29d4cb8a2c506093eed" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::AuthorizationArgs::AuthorizationArgs</definition>
+        <argsstring>(AuthorizationArgs &amp;&amp;other) noexcept</argsstring>
+        <name>AuthorizationArgs</name>
+        <qualifiedname>discordpp::AuthorizationArgs::AuthorizationArgs</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1AuthorizationArgs" kindref="compound">AuthorizationArgs</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move constructor for <ref refid="classdiscordpp_1_1AuthorizationArgs" kindref="compound">AuthorizationArgs</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1643" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AuthorizationArgs_1a101a83b677b5bf631f51896f38257a8d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1AuthorizationArgs" kindref="compound">AuthorizationArgs</ref> &amp;</type>
+        <definition>AuthorizationArgs &amp; discordpp::AuthorizationArgs::operator=</definition>
+        <argsstring>(AuthorizationArgs &amp;&amp;other) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::AuthorizationArgs::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1AuthorizationArgs" kindref="compound">AuthorizationArgs</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move assignment operator for <ref refid="classdiscordpp_1_1AuthorizationArgs" kindref="compound">AuthorizationArgs</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1645" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AuthorizationArgs_1a657c054debaaa75469b021aacc683190" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::AuthorizationArgs::operator bool</definition>
+        <argsstring>() const</argsstring>
+        <name>operator bool</name>
+        <qualifiedname>discordpp::AuthorizationArgs::operator bool</qualifiedname>
+        <briefdescription>
+<para>Returns true if the instance contains a valid object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1649" column="1" bodyfile="include/discordpp.h" bodystart="1649" bodyend="1649"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AuthorizationArgs_1a8f30c7af132a4559cd4f30ab75ade971" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::AuthorizationArgs::AuthorizationArgs</definition>
+        <argsstring>(const AuthorizationArgs &amp;arg0)</argsstring>
+        <name>AuthorizationArgs</name>
+        <qualifiedname>discordpp::AuthorizationArgs::AuthorizationArgs</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1AuthorizationArgs" kindref="compound">AuthorizationArgs</ref> &amp;</type>
+          <declname>arg0</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor for <ref refid="classdiscordpp_1_1AuthorizationArgs" kindref="compound">AuthorizationArgs</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1652" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AuthorizationArgs_1adfcf01d3a2a475c0d1bc97f4c0d7b0dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1AuthorizationArgs" kindref="compound">AuthorizationArgs</ref> &amp;</type>
+        <definition>AuthorizationArgs &amp; discordpp::AuthorizationArgs::operator=</definition>
+        <argsstring>(const AuthorizationArgs &amp;arg0)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::AuthorizationArgs::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1AuthorizationArgs" kindref="compound">AuthorizationArgs</ref> &amp;</type>
+          <declname>arg0</declname>
+        </param>
+        <briefdescription>
+<para>Copy assignment operator for <ref refid="classdiscordpp_1_1AuthorizationArgs" kindref="compound">AuthorizationArgs</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1654" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AuthorizationArgs_1a7dbe722154d14485ec2c9143a55d6843" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::AuthorizationArgs::AuthorizationArgs</definition>
+        <argsstring>()</argsstring>
+        <name>AuthorizationArgs</name>
+        <qualifiedname>discordpp::AuthorizationArgs::AuthorizationArgs</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1656" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AuthorizationArgs_1a7579dadf3052c4ea4379131ac9e2e30b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t discordpp::AuthorizationArgs::ClientId</definition>
+        <argsstring>() const</argsstring>
+        <name>ClientId</name>
+        <qualifiedname>discordpp::AuthorizationArgs::ClientId</qualifiedname>
+        <briefdescription>
+<para>Optional. The Discord application ID for your game. Defaults to the value set by <ref refid="classdiscordpp_1_1Client_1ad452335c06b28be0406dab824acccc49" kindref="member">Client::SetApplicationId</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1664" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AuthorizationArgs_1aade2fe309692a82176ef9f196d7f563e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::AuthorizationArgs::SetClientId</definition>
+        <argsstring>(uint64_t ClientId)</argsstring>
+        <name>SetClientId</name>
+        <qualifiedname>discordpp::AuthorizationArgs::SetClientId</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>ClientId</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1AuthorizationArgs_1a7579dadf3052c4ea4379131ac9e2e30b" kindref="member">AuthorizationArgs::ClientId</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1666" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AuthorizationArgs_1ae5989180022eccc3bfdf65dda4877771" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string discordpp::AuthorizationArgs::Scopes</definition>
+        <argsstring>() const</argsstring>
+        <name>Scopes</name>
+        <qualifiedname>discordpp::AuthorizationArgs::Scopes</qualifiedname>
+        <briefdescription>
+<para>Scopes is a space separated string of the oauth scopes your game is requesting. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Most games should just pass in <ref refid="classdiscordpp_1_1Client_1a71499da752fbdc2d4326ae0fd36c0dd1" kindref="member">Client::GetDefaultCommunicationScopes</ref> or <ref refid="classdiscordpp_1_1Client_1a7648bd1d2f7d9a86ebd0edb8bef12b5c" kindref="member">Client::GetDefaultPresenceScopes</ref> which will include these scopes, respectively: <computeroutput>openid sdk.social_layer</computeroutput> or <computeroutput>openid sdk.social_layer_presence</computeroutput></para>
+<para><computeroutput>sdk.social_layer</computeroutput> and <computeroutput>sdk.social_layer_presence</computeroutput> automatically expand to include all the necessary scopes for the integration.</para>
+<para>You can pass in additional scopes if you need to, but as a general rule you should only request the scopes you actually need, and the user will need to grant access to those additional scopes as well. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1680" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AuthorizationArgs_1aa3714d11a196e0d71c8c1cf38c506d92" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::AuthorizationArgs::SetScopes</definition>
+        <argsstring>(std::string Scopes)</argsstring>
+        <name>SetScopes</name>
+        <qualifiedname>discordpp::AuthorizationArgs::SetScopes</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>Scopes</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1AuthorizationArgs_1ae5989180022eccc3bfdf65dda4877771" kindref="member">AuthorizationArgs::Scopes</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1682" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AuthorizationArgs_1a0c85866ae01ac14ad0f9038fc2559a05" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt; std::string &gt; discordpp::AuthorizationArgs::State</definition>
+        <argsstring>() const</argsstring>
+        <name>State</name>
+        <qualifiedname>discordpp::AuthorizationArgs::State</qualifiedname>
+        <briefdescription>
+<para>See <ulink url="https://discord.com/developers/docs/topics/oauth2#state-and-security">https://discord.com/developers/docs/topics/oauth2#state-and-security</ulink> for details on this field. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>We recommend leaving this unset, and the SDK will automatically generate a secure random value for you. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1689" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AuthorizationArgs_1aff148d94b797a4cba89cf119b8b212e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::AuthorizationArgs::SetState</definition>
+        <argsstring>(std::optional&lt; std::string &gt; State)</argsstring>
+        <name>SetState</name>
+        <qualifiedname>discordpp::AuthorizationArgs::SetState</qualifiedname>
+        <param>
+          <type>std::optional&lt; std::string &gt;</type>
+          <declname>State</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1AuthorizationArgs_1a0c85866ae01ac14ad0f9038fc2559a05" kindref="member">AuthorizationArgs::State</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1691" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AuthorizationArgs_1a1dff6b488e573fc4eaa63f4ddb6262aa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt; std::string &gt; discordpp::AuthorizationArgs::Nonce</definition>
+        <argsstring>() const</argsstring>
+        <name>Nonce</name>
+        <qualifiedname>discordpp::AuthorizationArgs::Nonce</qualifiedname>
+        <briefdescription>
+<para>The nonce field is generally only useful for backend integrations using ID tokens. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>For more information, see: <ulink url="https://openid.net/specs/openid-connect-core-1_0.html#rfc.section.2~nonce:~:text=auth_time%20response%20parameter">https://openid.net/specs/openid-connect-core-1_0.html#rfc.section.2~nonce:~:text=auth_time%20response%20parameter</ulink>.)-,nonce,-String%20value%20used </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1697" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AuthorizationArgs_1aeaf87c0b26a074ed7b23f2bd4647b6a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::AuthorizationArgs::SetNonce</definition>
+        <argsstring>(std::optional&lt; std::string &gt; Nonce)</argsstring>
+        <name>SetNonce</name>
+        <qualifiedname>discordpp::AuthorizationArgs::SetNonce</qualifiedname>
+        <param>
+          <type>std::optional&lt; std::string &gt;</type>
+          <declname>Nonce</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1AuthorizationArgs_1a1dff6b488e573fc4eaa63f4ddb6262aa" kindref="member">AuthorizationArgs::Nonce</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1699" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AuthorizationArgs_1a59930370c7ab835cf09fb6d8f893dd96" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; <ref refid="classdiscordpp_1_1AuthorizationCodeChallenge" kindref="compound">discordpp::AuthorizationCodeChallenge</ref> &gt;</type>
+        <definition>std::optional&lt; discordpp::AuthorizationCodeChallenge &gt; discordpp::AuthorizationArgs::CodeChallenge</definition>
+        <argsstring>() const</argsstring>
+        <name>CodeChallenge</name>
+        <qualifiedname>discordpp::AuthorizationArgs::CodeChallenge</qualifiedname>
+        <briefdescription>
+<para>If using the <ref refid="classdiscordpp_1_1Client_1aaee636f91fb1ea3465157c20313b702c" kindref="member">Client::GetToken</ref> flow, you will need to generate a code challenge and verifier. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Use <ref refid="classdiscordpp_1_1Client_1aba6adc1f978e7bf4c5433c560e1ad704" kindref="member">Client::CreateAuthorizationCodeVerifier</ref> to generate these values and pass the challenge property here. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1706" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AuthorizationArgs_1ad9c0f8479812266dbe3eb0eae6e7ea36" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::AuthorizationArgs::SetCodeChallenge</definition>
+        <argsstring>(std::optional&lt; discordpp::AuthorizationCodeChallenge &gt; CodeChallenge)</argsstring>
+        <name>SetCodeChallenge</name>
+        <qualifiedname>discordpp::AuthorizationArgs::SetCodeChallenge</qualifiedname>
+        <param>
+          <type>std::optional&lt; <ref refid="classdiscordpp_1_1AuthorizationCodeChallenge" kindref="compound">discordpp::AuthorizationCodeChallenge</ref> &gt;</type>
+          <declname>CodeChallenge</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1AuthorizationArgs_1a59930370c7ab835cf09fb6d8f893dd96" kindref="member">AuthorizationArgs::CodeChallenge</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1708" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AuthorizationArgs_1ac1ab5d5840789b48896d427cd78102d3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; <ref refid="namespacediscordpp_1a5307c5c42ea96ec19f79e679a47c84be" kindref="member">discordpp::IntegrationType</ref> &gt;</type>
+        <definition>std::optional&lt; discordpp::IntegrationType &gt; discordpp::AuthorizationArgs::IntegrationType</definition>
+        <argsstring>() const</argsstring>
+        <name>IntegrationType</name>
+        <qualifiedname>discordpp::AuthorizationArgs::IntegrationType</qualifiedname>
+        <briefdescription>
+<para>The type of integration the app will be installed as. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><ulink url="https://discord.com/developers/docs/resources/application#installation-context">https://discord.com/developers/docs/resources/application#installation-context</ulink> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1713" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AuthorizationArgs_1a01eedddbf32654ba7b17a0f14a9431ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::AuthorizationArgs::SetIntegrationType</definition>
+        <argsstring>(std::optional&lt; discordpp::IntegrationType &gt; IntegrationType)</argsstring>
+        <name>SetIntegrationType</name>
+        <qualifiedname>discordpp::AuthorizationArgs::SetIntegrationType</qualifiedname>
+        <param>
+          <type>std::optional&lt; <ref refid="namespacediscordpp_1a5307c5c42ea96ec19f79e679a47c84be" kindref="member">discordpp::IntegrationType</ref> &gt;</type>
+          <declname>IntegrationType</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1AuthorizationArgs_1ac1ab5d5840789b48896d427cd78102d3" kindref="member">AuthorizationArgs::IntegrationType</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1715" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AuthorizationArgs_1abfe84accfc44740ffb36a408ac17277f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt; std::string &gt; discordpp::AuthorizationArgs::CustomSchemeParam</definition>
+        <argsstring>() const</argsstring>
+        <name>CustomSchemeParam</name>
+        <qualifiedname>discordpp::AuthorizationArgs::CustomSchemeParam</qualifiedname>
+        <briefdescription>
+<para>Custom URI scheme for mobile redirects. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This allows games to specify a completely custom URI scheme for OAuth redirects. For example, setting this to &quot;mygame&quot; will result in a URI scheme like: mygame:/authorize/callback</para>
+<para>If not provided, defaults to the standard Discord format: discord-123456789:/authorize/callback</para>
+<para>This is particularly useful for distinguishing between multiple games from the same developer or for avoiding conflicts with other apps. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1728" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1AuthorizationArgs_1a12c13c64dfc180657971c438ada66560" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::AuthorizationArgs::SetCustomSchemeParam</definition>
+        <argsstring>(std::optional&lt; std::string &gt; CustomSchemeParam)</argsstring>
+        <name>SetCustomSchemeParam</name>
+        <qualifiedname>discordpp::AuthorizationArgs::SetCustomSchemeParam</qualifiedname>
+        <param>
+          <type>std::optional&lt; std::string &gt;</type>
+          <declname>CustomSchemeParam</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1AuthorizationArgs_1abfe84accfc44740ffb36a408ac17277f" kindref="member">AuthorizationArgs::CustomSchemeParam</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1730" column="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Arguments to the <ref refid="classdiscordpp_1_1Client_1ace94a58e27545a933d79db32b387a468" kindref="member">Client::Authorize</ref> function. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>discordpp::AuthorizationArgs</label>
+        <link refid="classdiscordpp_1_1AuthorizationArgs"/>
+        <childnode refid="1" relation="usage">
+          <edgelabel>nullobj</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/discordpp.h" line="1628" column="1" bodyfile="include/discordpp.h" bodystart="1628" bodyend="1731"/>
+    <listofallmembers>
+      <member refid="classdiscordpp_1_1AuthorizationArgs_1adb47ac55258db29d4cb8a2c506093eed" prot="public" virt="non-virtual"><scope>discordpp::AuthorizationArgs</scope><name>AuthorizationArgs</name></member>
+      <member refid="classdiscordpp_1_1AuthorizationArgs_1a8f30c7af132a4559cd4f30ab75ade971" prot="public" virt="non-virtual"><scope>discordpp::AuthorizationArgs</scope><name>AuthorizationArgs</name></member>
+      <member refid="classdiscordpp_1_1AuthorizationArgs_1a7dbe722154d14485ec2c9143a55d6843" prot="public" virt="non-virtual"><scope>discordpp::AuthorizationArgs</scope><name>AuthorizationArgs</name></member>
+      <member refid="classdiscordpp_1_1AuthorizationArgs_1a7579dadf3052c4ea4379131ac9e2e30b" prot="public" virt="non-virtual"><scope>discordpp::AuthorizationArgs</scope><name>ClientId</name></member>
+      <member refid="classdiscordpp_1_1AuthorizationArgs_1a59930370c7ab835cf09fb6d8f893dd96" prot="public" virt="non-virtual"><scope>discordpp::AuthorizationArgs</scope><name>CodeChallenge</name></member>
+      <member refid="classdiscordpp_1_1AuthorizationArgs_1abfe84accfc44740ffb36a408ac17277f" prot="public" virt="non-virtual"><scope>discordpp::AuthorizationArgs</scope><name>CustomSchemeParam</name></member>
+      <member refid="classdiscordpp_1_1AuthorizationArgs_1ac1ab5d5840789b48896d427cd78102d3" prot="public" virt="non-virtual"><scope>discordpp::AuthorizationArgs</scope><name>IntegrationType</name></member>
+      <member refid="classdiscordpp_1_1AuthorizationArgs_1a1dff6b488e573fc4eaa63f4ddb6262aa" prot="public" virt="non-virtual"><scope>discordpp::AuthorizationArgs</scope><name>Nonce</name></member>
+      <member refid="classdiscordpp_1_1AuthorizationArgs_1aa5d52327f9b9bb954a0d402b4bbf454c" prot="public" virt="non-virtual"><scope>discordpp::AuthorizationArgs</scope><name>nullobj</name></member>
+      <member refid="classdiscordpp_1_1AuthorizationArgs_1a657c054debaaa75469b021aacc683190" prot="public" virt="non-virtual"><scope>discordpp::AuthorizationArgs</scope><name>operator bool</name></member>
+      <member refid="classdiscordpp_1_1AuthorizationArgs_1a101a83b677b5bf631f51896f38257a8d" prot="public" virt="non-virtual"><scope>discordpp::AuthorizationArgs</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1AuthorizationArgs_1adfcf01d3a2a475c0d1bc97f4c0d7b0dc" prot="public" virt="non-virtual"><scope>discordpp::AuthorizationArgs</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1AuthorizationArgs_1ae5989180022eccc3bfdf65dda4877771" prot="public" virt="non-virtual"><scope>discordpp::AuthorizationArgs</scope><name>Scopes</name></member>
+      <member refid="classdiscordpp_1_1AuthorizationArgs_1aade2fe309692a82176ef9f196d7f563e" prot="public" virt="non-virtual"><scope>discordpp::AuthorizationArgs</scope><name>SetClientId</name></member>
+      <member refid="classdiscordpp_1_1AuthorizationArgs_1ad9c0f8479812266dbe3eb0eae6e7ea36" prot="public" virt="non-virtual"><scope>discordpp::AuthorizationArgs</scope><name>SetCodeChallenge</name></member>
+      <member refid="classdiscordpp_1_1AuthorizationArgs_1a12c13c64dfc180657971c438ada66560" prot="public" virt="non-virtual"><scope>discordpp::AuthorizationArgs</scope><name>SetCustomSchemeParam</name></member>
+      <member refid="classdiscordpp_1_1AuthorizationArgs_1a01eedddbf32654ba7b17a0f14a9431ca" prot="public" virt="non-virtual"><scope>discordpp::AuthorizationArgs</scope><name>SetIntegrationType</name></member>
+      <member refid="classdiscordpp_1_1AuthorizationArgs_1aeaf87c0b26a074ed7b23f2bd4647b6a6" prot="public" virt="non-virtual"><scope>discordpp::AuthorizationArgs</scope><name>SetNonce</name></member>
+      <member refid="classdiscordpp_1_1AuthorizationArgs_1aa3714d11a196e0d71c8c1cf38c506d92" prot="public" virt="non-virtual"><scope>discordpp::AuthorizationArgs</scope><name>SetScopes</name></member>
+      <member refid="classdiscordpp_1_1AuthorizationArgs_1aff148d94b797a4cba89cf119b8b212e9" prot="public" virt="non-virtual"><scope>discordpp::AuthorizationArgs</scope><name>SetState</name></member>
+      <member refid="classdiscordpp_1_1AuthorizationArgs_1a0c85866ae01ac14ad0f9038fc2559a05" prot="public" virt="non-virtual"><scope>discordpp::AuthorizationArgs</scope><name>State</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

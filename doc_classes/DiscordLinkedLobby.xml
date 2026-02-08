@@ -1,0 +1,37 @@
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordLinkedLobby" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	Struct that stores information about the lobby linked to a channel.
+</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="application_id">
+			<return type="int" />
+			<description>
+			The ID of the application that owns the lobby.
+			</description>
+		</method>
+		<method name="lobby_id">
+			<return type="int" />
+			<description>
+			The ID of the lobby.
+			</description>
+		</method>
+		<method name="set_application_id">
+			<return type="void" />
+			<param index="0" name="application_id" type="int" />
+			<description>
+			Setter for [method DiscordLinkedLobby.application_id].
+			</description>
+		</method>
+		<method name="set_lobby_id">
+			<return type="void" />
+			<param index="0" name="lobby_id" type="int" />
+			<description>
+			Setter for [method DiscordLinkedLobby.lobby_id].
+			</description>
+		</method>
+	</methods>
+</class>

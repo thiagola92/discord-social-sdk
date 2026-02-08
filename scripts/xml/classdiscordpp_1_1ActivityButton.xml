@@ -1,0 +1,229 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="classdiscordpp_1_1ActivityButton" kind="class" language="C++" prot="public">
+    <compoundname>discordpp::ActivityButton</compoundname>
+    <includes local="no">discordpp.h</includes>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classdiscordpp_1_1ActivityButton_1a2561b552ef33f9d500d54ba0ffb215be" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="classdiscordpp_1_1ActivityButton" kindref="compound">ActivityButton</ref></type>
+        <definition>const ActivityButton discordpp::ActivityButton::nullobj</definition>
+        <argsstring></argsstring>
+        <name>nullobj</name>
+        <qualifiedname>discordpp::ActivityButton::nullobj</qualifiedname>
+        <briefdescription>
+<para>Uninitialized instance of <ref refid="classdiscordpp_1_1ActivityButton" kindref="compound">ActivityButton</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1081" column="29" bodyfile="include/discordpp.h" bodystart="1081" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityButton_1a04bc93c6984c61a23dbbcf27ad4819d4" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::ActivityButton::ActivityButton</definition>
+        <argsstring>(ActivityButton &amp;&amp;other) noexcept</argsstring>
+        <name>ActivityButton</name>
+        <qualifiedname>discordpp::ActivityButton::ActivityButton</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1ActivityButton" kindref="compound">ActivityButton</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move constructor for <ref refid="classdiscordpp_1_1ActivityButton" kindref="compound">ActivityButton</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1077" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityButton_1a523e2457c808c8f5b2e89d5b8efaed50" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1ActivityButton" kindref="compound">ActivityButton</ref> &amp;</type>
+        <definition>ActivityButton &amp; discordpp::ActivityButton::operator=</definition>
+        <argsstring>(ActivityButton &amp;&amp;other) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::ActivityButton::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1ActivityButton" kindref="compound">ActivityButton</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move assignment operator for <ref refid="classdiscordpp_1_1ActivityButton" kindref="compound">ActivityButton</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1079" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityButton_1aae08573498def90bc33dca67fda690bb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::ActivityButton::operator bool</definition>
+        <argsstring>() const</argsstring>
+        <name>operator bool</name>
+        <qualifiedname>discordpp::ActivityButton::operator bool</qualifiedname>
+        <briefdescription>
+<para>Returns true if the instance contains a valid object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1083" column="1" bodyfile="include/discordpp.h" bodystart="1083" bodyend="1083"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityButton_1af91e85d17ad3f978d5956e0bd5e7571a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::ActivityButton::ActivityButton</definition>
+        <argsstring>(const ActivityButton &amp;arg0)</argsstring>
+        <name>ActivityButton</name>
+        <qualifiedname>discordpp::ActivityButton::ActivityButton</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1ActivityButton" kindref="compound">ActivityButton</ref> &amp;</type>
+          <declname>arg0</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor for <ref refid="classdiscordpp_1_1ActivityButton" kindref="compound">ActivityButton</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1086" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityButton_1ad7893db2a6a27e4328977e2bdb2a68d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1ActivityButton" kindref="compound">ActivityButton</ref> &amp;</type>
+        <definition>ActivityButton &amp; discordpp::ActivityButton::operator=</definition>
+        <argsstring>(const ActivityButton &amp;arg0)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::ActivityButton::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1ActivityButton" kindref="compound">ActivityButton</ref> &amp;</type>
+          <declname>arg0</declname>
+        </param>
+        <briefdescription>
+<para>Copy assignment operator for <ref refid="classdiscordpp_1_1ActivityButton" kindref="compound">ActivityButton</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1088" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityButton_1a21ed35c26bed03f496214c83b143c56f" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::ActivityButton::ActivityButton</definition>
+        <argsstring>()</argsstring>
+        <name>ActivityButton</name>
+        <qualifiedname>discordpp::ActivityButton::ActivityButton</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1090" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityButton_1afb79ff9903a3aa609548f90e942e166e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string discordpp::ActivityButton::Label</definition>
+        <argsstring>() const</argsstring>
+        <name>Label</name>
+        <qualifiedname>discordpp::ActivityButton::Label</qualifiedname>
+        <briefdescription>
+<para>The label of the button. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1097" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityButton_1a9b8d70b0f65fe094b571ef221b11e259" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::ActivityButton::SetLabel</definition>
+        <argsstring>(std::string Label)</argsstring>
+        <name>SetLabel</name>
+        <qualifiedname>discordpp::ActivityButton::SetLabel</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>Label</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1ActivityButton_1afb79ff9903a3aa609548f90e942e166e" kindref="member">ActivityButton::Label</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1099" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityButton_1a3e4af76071bff97a4954b57fec59a628" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string discordpp::ActivityButton::Url</definition>
+        <argsstring>() const</argsstring>
+        <name>Url</name>
+        <qualifiedname>discordpp::ActivityButton::Url</qualifiedname>
+        <briefdescription>
+<para>The url of the button. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1102" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityButton_1abbeb2fc8eefae9e956d91fb42b9d48a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::ActivityButton::SetUrl</definition>
+        <argsstring>(std::string Url)</argsstring>
+        <name>SetUrl</name>
+        <qualifiedname>discordpp::ActivityButton::SetUrl</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>Url</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1ActivityButton_1a3e4af76071bff97a4954b57fec59a628" kindref="member">ActivityButton::Url</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="1104" column="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classdiscordpp_1_1Activity" kindref="compound">Activity</ref> </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>discordpp::ActivityButton</label>
+        <link refid="classdiscordpp_1_1ActivityButton"/>
+        <childnode refid="1" relation="usage">
+          <edgelabel>nullobj</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/discordpp.h" line="1062" column="1" bodyfile="include/discordpp.h" bodystart="1062" bodyend="1105"/>
+    <listofallmembers>
+      <member refid="classdiscordpp_1_1ActivityButton_1a04bc93c6984c61a23dbbcf27ad4819d4" prot="public" virt="non-virtual"><scope>discordpp::ActivityButton</scope><name>ActivityButton</name></member>
+      <member refid="classdiscordpp_1_1ActivityButton_1af91e85d17ad3f978d5956e0bd5e7571a" prot="public" virt="non-virtual"><scope>discordpp::ActivityButton</scope><name>ActivityButton</name></member>
+      <member refid="classdiscordpp_1_1ActivityButton_1a21ed35c26bed03f496214c83b143c56f" prot="public" virt="non-virtual"><scope>discordpp::ActivityButton</scope><name>ActivityButton</name></member>
+      <member refid="classdiscordpp_1_1ActivityButton_1afb79ff9903a3aa609548f90e942e166e" prot="public" virt="non-virtual"><scope>discordpp::ActivityButton</scope><name>Label</name></member>
+      <member refid="classdiscordpp_1_1ActivityButton_1a2561b552ef33f9d500d54ba0ffb215be" prot="public" virt="non-virtual"><scope>discordpp::ActivityButton</scope><name>nullobj</name></member>
+      <member refid="classdiscordpp_1_1ActivityButton_1aae08573498def90bc33dca67fda690bb" prot="public" virt="non-virtual"><scope>discordpp::ActivityButton</scope><name>operator bool</name></member>
+      <member refid="classdiscordpp_1_1ActivityButton_1a523e2457c808c8f5b2e89d5b8efaed50" prot="public" virt="non-virtual"><scope>discordpp::ActivityButton</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1ActivityButton_1ad7893db2a6a27e4328977e2bdb2a68d6" prot="public" virt="non-virtual"><scope>discordpp::ActivityButton</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1ActivityButton_1a9b8d70b0f65fe094b571ef221b11e259" prot="public" virt="non-virtual"><scope>discordpp::ActivityButton</scope><name>SetLabel</name></member>
+      <member refid="classdiscordpp_1_1ActivityButton_1abbeb2fc8eefae9e956d91fb42b9d48a4" prot="public" virt="non-virtual"><scope>discordpp::ActivityButton</scope><name>SetUrl</name></member>
+      <member refid="classdiscordpp_1_1ActivityButton_1a3e4af76071bff97a4954b57fec59a628" prot="public" virt="non-virtual"><scope>discordpp::ActivityButton</scope><name>Url</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

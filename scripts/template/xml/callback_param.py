@@ -1,6 +1,5 @@
 def get_callback_param(param_name: str, params: str) -> str:
-    return f"""
-Where [param {param_name}] signature is:
+    return f"""Parameter [param {param_name}] signature:
 [codeblock]
 func({params})
 [/codeblock]

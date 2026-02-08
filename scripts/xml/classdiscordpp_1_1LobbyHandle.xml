@@ -1,0 +1,299 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="classdiscordpp_1_1LobbyHandle" kind="class" language="C++" prot="public">
+    <compoundname>discordpp::LobbyHandle</compoundname>
+    <includes local="no">discordpp.h</includes>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classdiscordpp_1_1LobbyHandle_1a2ea6508db16283582b36de4cc73bc0b5" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="classdiscordpp_1_1LobbyHandle" kindref="compound">LobbyHandle</ref></type>
+        <definition>const LobbyHandle discordpp::LobbyHandle::nullobj</definition>
+        <argsstring></argsstring>
+        <name>nullobj</name>
+        <qualifiedname>discordpp::LobbyHandle::nullobj</qualifiedname>
+        <briefdescription>
+<para>Uninitialized instance of <ref refid="classdiscordpp_1_1LobbyHandle" kindref="compound">LobbyHandle</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2846" column="26" bodyfile="include/discordpp.h" bodystart="2846" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classdiscordpp_1_1LobbyHandle_1a04cebab69ab0e7fb930346a14a87e843" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::LobbyHandle::LobbyHandle</definition>
+        <argsstring>(LobbyHandle &amp;&amp;other) noexcept</argsstring>
+        <name>LobbyHandle</name>
+        <qualifiedname>discordpp::LobbyHandle::LobbyHandle</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1LobbyHandle" kindref="compound">LobbyHandle</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move constructor for <ref refid="classdiscordpp_1_1LobbyHandle" kindref="compound">LobbyHandle</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2842" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1LobbyHandle_1aeb2f52f8bacd7f1ea702e12cb3223cde" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1LobbyHandle" kindref="compound">LobbyHandle</ref> &amp;</type>
+        <definition>LobbyHandle &amp; discordpp::LobbyHandle::operator=</definition>
+        <argsstring>(LobbyHandle &amp;&amp;other) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::LobbyHandle::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1LobbyHandle" kindref="compound">LobbyHandle</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move assignment operator for <ref refid="classdiscordpp_1_1LobbyHandle" kindref="compound">LobbyHandle</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2844" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1LobbyHandle_1ada444725f51458471d8cecaba40571b1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::LobbyHandle::operator bool</definition>
+        <argsstring>() const</argsstring>
+        <name>operator bool</name>
+        <qualifiedname>discordpp::LobbyHandle::operator bool</qualifiedname>
+        <briefdescription>
+<para>Returns true if the instance contains a valid object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2848" column="1" bodyfile="include/discordpp.h" bodystart="2848" bodyend="2848"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1LobbyHandle_1aa3510c347c4c4758bdf9f19caf2a95f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::LobbyHandle::LobbyHandle</definition>
+        <argsstring>(const LobbyHandle &amp;other)</argsstring>
+        <name>LobbyHandle</name>
+        <qualifiedname>discordpp::LobbyHandle::LobbyHandle</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1LobbyHandle" kindref="compound">LobbyHandle</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor for <ref refid="classdiscordpp_1_1LobbyHandle" kindref="compound">LobbyHandle</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2851" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1LobbyHandle_1a4d2b684eb6fb888d814ec22e3c99a2d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1LobbyHandle" kindref="compound">LobbyHandle</ref> &amp;</type>
+        <definition>LobbyHandle &amp; discordpp::LobbyHandle::operator=</definition>
+        <argsstring>(const LobbyHandle &amp;other)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::LobbyHandle::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1LobbyHandle" kindref="compound">LobbyHandle</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Copy assignment operator for <ref refid="classdiscordpp_1_1LobbyHandle" kindref="compound">LobbyHandle</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2853" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1LobbyHandle_1a5a5838f7382f5564024a28d3bc6aeb7a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; <ref refid="classdiscordpp_1_1CallInfoHandle" kindref="compound">discordpp::CallInfoHandle</ref> &gt;</type>
+        <definition>std::optional&lt; discordpp::CallInfoHandle &gt; discordpp::LobbyHandle::GetCallInfoHandle</definition>
+        <argsstring>() const</argsstring>
+        <name>GetCallInfoHandle</name>
+        <qualifiedname>discordpp::LobbyHandle::GetCallInfoHandle</qualifiedname>
+        <briefdescription>
+<para>Returns a reference to the <ref refid="classdiscordpp_1_1CallInfoHandle" kindref="compound">CallInfoHandle</ref> if there is an active voice call in this lobby. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This can allow you to display which lobby members are in voice, even if the current user has not yet joined the voice call. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2864" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1LobbyHandle_1a9e64cab5c6cfbf7477c6d868a3b47c0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; <ref refid="classdiscordpp_1_1LobbyMemberHandle" kindref="compound">discordpp::LobbyMemberHandle</ref> &gt;</type>
+        <definition>std::optional&lt; discordpp::LobbyMemberHandle &gt; discordpp::LobbyHandle::GetLobbyMemberHandle</definition>
+        <argsstring>(uint64_t memberId) const</argsstring>
+        <name>GetLobbyMemberHandle</name>
+        <qualifiedname>discordpp::LobbyHandle::GetLobbyMemberHandle</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>memberId</declname>
+        </param>
+        <briefdescription>
+<para>Returns a reference to the <ref refid="classdiscordpp_1_1LobbyMemberHandle" kindref="compound">LobbyMemberHandle</ref> for the given user ID, if they are a member of this lobby. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2868" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1LobbyHandle_1acb6ea038ce7341422ae9217b30b5560a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t discordpp::LobbyHandle::Id</definition>
+        <argsstring>() const</argsstring>
+        <name>Id</name>
+        <qualifiedname>discordpp::LobbyHandle::Id</qualifiedname>
+        <briefdescription>
+<para>Returns the id of the lobby. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2871" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1LobbyHandle_1a0b6d46073d591c62697b39df215bf297" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; <ref refid="classdiscordpp_1_1LinkedChannel" kindref="compound">discordpp::LinkedChannel</ref> &gt;</type>
+        <definition>std::optional&lt; discordpp::LinkedChannel &gt; discordpp::LobbyHandle::LinkedChannel</definition>
+        <argsstring>() const</argsstring>
+        <name>LinkedChannel</name>
+        <qualifiedname>discordpp::LobbyHandle::LinkedChannel</qualifiedname>
+        <briefdescription>
+<para>Returns information about the channel linked to this lobby, if any. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2874" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1LobbyHandle_1acf329ee87e0f2f9f14b61adbd931b9c7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; uint64_t &gt;</type>
+        <definition>std::vector&lt; uint64_t &gt; discordpp::LobbyHandle::LobbyMemberIds</definition>
+        <argsstring>() const</argsstring>
+        <name>LobbyMemberIds</name>
+        <qualifiedname>discordpp::LobbyHandle::LobbyMemberIds</qualifiedname>
+        <briefdescription>
+<para>Returns a list of the user IDs that are members of this lobby. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2877" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1LobbyHandle_1aae5593b064ff4a67157f462ce306342f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="classdiscordpp_1_1LobbyMemberHandle" kindref="compound">discordpp::LobbyMemberHandle</ref> &gt;</type>
+        <definition>std::vector&lt; discordpp::LobbyMemberHandle &gt; discordpp::LobbyHandle::LobbyMembers</definition>
+        <argsstring>() const</argsstring>
+        <name>LobbyMembers</name>
+        <qualifiedname>discordpp::LobbyHandle::LobbyMembers</qualifiedname>
+        <briefdescription>
+<para>Returns a list of the <ref refid="classdiscordpp_1_1LobbyMemberHandle" kindref="compound">LobbyMemberHandle</ref> objects for each member of this lobby. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2880" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1LobbyHandle_1a5e512d30cbea86ccd41fe9e6ca8b485d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::unordered_map&lt; std::string, std::string &gt;</type>
+        <definition>std::unordered_map&lt; std::string, std::string &gt; discordpp::LobbyHandle::Metadata</definition>
+        <argsstring>() const</argsstring>
+        <name>Metadata</name>
+        <qualifiedname>discordpp::LobbyHandle::Metadata</qualifiedname>
+        <briefdescription>
+<para>Returns any developer supplied metadata for this lobby. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Metadata is simple string key/value pairs and is a way to associate internal game information with the lobby so each lobby member can have easy access to. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2886" column="20"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>A <ref refid="classdiscordpp_1_1LobbyHandle" kindref="compound">LobbyHandle</ref> represents a single lobby in the SDK. A lobby can be thought of as just an arbitrary, developer-controlled group of users that can communicate with each other. </para>
+    </briefdescription>
+    <detaileddescription>
+<sect1 id="classdiscordpp_1_1LobbyHandle_1autotoc_md6_1s1"><sect2 id="classdiscordpp_1_1LobbyHandle_1autotoc_md6">
+<title>Managing Lobbies</title><para>Lobbies can be managed through a set of server_apis that are documented elsewhere, which allow you to create lobbies, add and remove users from lobbies, and delete them.</para>
+<para>There is also an API to create lobbies without any server side component using the <ref refid="classdiscordpp_1_1Client_1a8b4e195555ecaa89ccdfc0acd28d3512" kindref="member">Client::CreateOrJoinLobby</ref> function, which accepts a game-generated secret and will join the user to the lobby associated with that secret, creating it if necessary.</para>
+<para>NOTE: When using this API the secret will auto-expire in 30 days, at which point the existing lobby can no longer be joined, but will still exist. We recommend using this for short term lobbies and not permanent lobbies. Use the Server API for more permanent lobbies.</para>
+<para>Members of a lobby are not automatically removed when they close the game or temporarily disconnect. When the SDK connects, it will attempt to re-connect to any lobbies it is currently a member of.</para>
+</sect2></sect1>
+<sect1 id="classdiscordpp_1_1LobbyHandle_1autotoc_md7">
+<title>Lobby Auto-Deletion</title><para>Lobbies are generally ephemeral and will be auto-deleted if they have been idle (meaning no users are actively connected to them) for some amount of time. The default is to auto delete after 5 minutes, but this can be customized when creating the lobby. As long as one user is connected to the lobby though it will not be auto-deleted (meaning they have the SDK running and status is set to Ready). Additionally, lobbies that are linked to a channel on Discord will not be auto deleted.</para>
+<para>You can also use the server_apis to customize this timeout, it can be raised to as high as 7 days, meaning the lobby only gets deleted if no one connects to it for an entire week. This should give a good amount of permanence to lobbies when needed, but there may be rare cases where a lobby does need to be &quot;rebuilt&quot; if everyone is offline for an extended period.</para>
+</sect1>
+<sect1 id="classdiscordpp_1_1LobbyHandle_1autotoc_md8">
+<title>Membership Limits</title><para>Lobbies may have a maximum of 1,000 members, and each user may be in a maximum of 200 lobbies per game.</para>
+<sect2 id="classdiscordpp_1_1LobbyHandle_1autotoc_md9">
+<title>Audio</title><para>Lobbies support voice calls. Although a lobby is allowed to have 1,000 members, you should not try to start voice calls in lobbies that large. We strongly recommend sticking to around 25 members or fewer for voice calls.</para>
+<para>See <ref refid="classdiscordpp_1_1Client_1aef4f25d761fe198fbe9bc721fc24d83f" kindref="member">Client::StartCall</ref> for more information on how to start a voice call in a lobby.</para>
+</sect2>
+<sect2 id="classdiscordpp_1_1LobbyHandle_1autotoc_md10">
+<title>Channel Linking</title><para>Lobbies can be linked to a channel on Discord, which allows messages sent in one place to show up in the other. Any lobby can be linked to a channel, but only lobby members with the LobbyMemberFlags::CanLinkLobby flag are allowed to a link a lobby. This flag must be set using the server APIs, which allows you to ensure that only clan/guild/group leaders can link lobbies to Discord channels.</para>
+<para>To setup a link you&apos;ll need to use methods in the <ref refid="classdiscordpp_1_1Client" kindref="compound">Client</ref> class to fetch the servers (aka guilds) and channels a user is a member of and setup the link. The <ref refid="classdiscordpp_1_1Client_1aac1ec02df6074ed9213ce230e6a42fe1" kindref="member">Client::GetUserGuilds</ref> and <ref refid="classdiscordpp_1_1Client_1adba1e5a83c219a9c4f6dab1657778017" kindref="member">Client::GetGuildChannels</ref> methods are used to fetch the servers and channels respectively. You can use these to show a UI for the user to pick which server and channel they want to link to.</para>
+<para>Not all channels are linkable. To be linked:<itemizedlist>
+<listitem><para>The channel must be a guild text channel</para>
+</listitem><listitem><para>The channel may not be marked as NSFW</para>
+</listitem><listitem><para>The channel must not be currently linked to a different lobby</para>
+</listitem><listitem><para>The user must have the following permissions in the channel in order to link it:<itemizedlist>
+<listitem><para>Manage Channels</para>
+</listitem><listitem><para>View Channel</para>
+</listitem><listitem><para>Send Messages</para>
+</listitem></itemizedlist>
+</para>
+</listitem></itemizedlist>
+</para>
+<sect3 id="classdiscordpp_1_1LobbyHandle_1autotoc_md11">
+<title>Linking Private Channels</title><para>Discord is allowing all channels the user has access to in a server to be linked in game, even if that channel is private to other members of the server. This means that a user could choose to link a private &quot;admins chat&quot; channel (assuming they are an admin) in game if they wanted.</para>
+<para>It&apos;s not really possible for the game to know which users should have access to that channel or not though. So in this implementation, every member of a lobby will be able to view all messages sent in the linked channel and reply to them. If you are going to allow private channels to be linked in game, you must make sure that users are aware that their private channel will be viewable by everyone in the lobby!</para>
+<para>To help you identify which channels are public or private, we have added a isViewableAndWriteableByAllMembers boolean which is described more in <ref refid="classdiscordpp_1_1GuildChannel" kindref="compound">GuildChannel</ref>. You can use that to just not allow private channels to be linked, or to know when to show a clear warning, it&apos;s up to you!</para>
+</sect3>
+</sect2>
+<sect2 id="classdiscordpp_1_1LobbyHandle_1autotoc_md12">
+<title>Misc</title><para>Handle objects in the SDK hold a reference both to the underlying data, and to the SDK instance. Changes to the underlying data will generally be available on existing handles objects without having to re-create them. If the SDK instance is destroyed, but you still have a reference to a handle object, note that it will return the default value for all method calls (ie an empty string for methods that return a string). </para>
+</sect2>
+</sect1>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>discordpp::LobbyHandle</label>
+        <link refid="classdiscordpp_1_1LobbyHandle"/>
+        <childnode refid="1" relation="usage">
+          <edgelabel>nullobj</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/discordpp.h" line="2827" column="1" bodyfile="include/discordpp.h" bodystart="2827" bodyend="2887"/>
+    <listofallmembers>
+      <member refid="classdiscordpp_1_1LobbyHandle_1a5a5838f7382f5564024a28d3bc6aeb7a" prot="public" virt="non-virtual"><scope>discordpp::LobbyHandle</scope><name>GetCallInfoHandle</name></member>
+      <member refid="classdiscordpp_1_1LobbyHandle_1a9e64cab5c6cfbf7477c6d868a3b47c0d" prot="public" virt="non-virtual"><scope>discordpp::LobbyHandle</scope><name>GetLobbyMemberHandle</name></member>
+      <member refid="classdiscordpp_1_1LobbyHandle_1acb6ea038ce7341422ae9217b30b5560a" prot="public" virt="non-virtual"><scope>discordpp::LobbyHandle</scope><name>Id</name></member>
+      <member refid="classdiscordpp_1_1LobbyHandle_1a0b6d46073d591c62697b39df215bf297" prot="public" virt="non-virtual"><scope>discordpp::LobbyHandle</scope><name>LinkedChannel</name></member>
+      <member refid="classdiscordpp_1_1LobbyHandle_1a04cebab69ab0e7fb930346a14a87e843" prot="public" virt="non-virtual"><scope>discordpp::LobbyHandle</scope><name>LobbyHandle</name></member>
+      <member refid="classdiscordpp_1_1LobbyHandle_1aa3510c347c4c4758bdf9f19caf2a95f3" prot="public" virt="non-virtual"><scope>discordpp::LobbyHandle</scope><name>LobbyHandle</name></member>
+      <member refid="classdiscordpp_1_1LobbyHandle_1acf329ee87e0f2f9f14b61adbd931b9c7" prot="public" virt="non-virtual"><scope>discordpp::LobbyHandle</scope><name>LobbyMemberIds</name></member>
+      <member refid="classdiscordpp_1_1LobbyHandle_1aae5593b064ff4a67157f462ce306342f" prot="public" virt="non-virtual"><scope>discordpp::LobbyHandle</scope><name>LobbyMembers</name></member>
+      <member refid="classdiscordpp_1_1LobbyHandle_1a5e512d30cbea86ccd41fe9e6ca8b485d" prot="public" virt="non-virtual"><scope>discordpp::LobbyHandle</scope><name>Metadata</name></member>
+      <member refid="classdiscordpp_1_1LobbyHandle_1a2ea6508db16283582b36de4cc73bc0b5" prot="public" virt="non-virtual"><scope>discordpp::LobbyHandle</scope><name>nullobj</name></member>
+      <member refid="classdiscordpp_1_1LobbyHandle_1ada444725f51458471d8cecaba40571b1" prot="public" virt="non-virtual"><scope>discordpp::LobbyHandle</scope><name>operator bool</name></member>
+      <member refid="classdiscordpp_1_1LobbyHandle_1aeb2f52f8bacd7f1ea702e12cb3223cde" prot="public" virt="non-virtual"><scope>discordpp::LobbyHandle</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1LobbyHandle_1a4d2b684eb6fb888d814ec22e3c99a2d6" prot="public" virt="non-virtual"><scope>discordpp::LobbyHandle</scope><name>operator=</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

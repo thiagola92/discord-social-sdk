@@ -1,6 +1,4 @@
-## Stupid .env reader.
-##
-## Internal tool for tests and examples, to avoid accidentally using personal APPLICATION_ID.
+## Simple .env reader to using during examples to avoid accidentally using personal APPLICATION_ID.
 class_name DotEnv
 extends RefCounted
 

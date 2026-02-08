@@ -1,9 +1,9 @@
-def get_discord_classes_h(declarations: str, definitions: str) -> str:
+def get_discord_classes_h(classes_declarations: str, classes_definitions: str) -> str:
     return f"""
 #ifndef DISCORD_CLASSES_H
 #define DISCORD_CLASSES_H
 
-#include "discordpp_enum.h"
+#include "discord_enum.h"
 #include "discordpp.h"
 #include "godot_cpp/classes/node.hpp"
 #include "godot_cpp/classes/ref_counted.hpp"
@@ -12,9 +12,11 @@ def get_discord_classes_h(declarations: str, definitions: str) -> str:
 
 namespace godot {{
 
-{declarations}
+// Declarations.
+{classes_declarations}
 
-{definitions}
+// Definitions.
+{classes_definitions}
 
 }} //namespace godot
 

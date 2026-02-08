@@ -1,16 +1,18 @@
 def get_class_definition(
     class_name: str,
-    private_constructors: str,
-    methods: str,
-    public_constructors: str,
+    constructor_private: str = "",
+    constructor_public: str = "",
+    functions: str = "",
+    overloadings: str = "",
 ) -> str:
     return f"""
-class Discordpp{class_name} : public RefCounted {{
-	GDCLASS(Discordpp{class_name}, RefCounted)
+class Discord{class_name} : public RefCounted {{
+	GDCLASS(Discord{class_name}, RefCounted)
 
 private:
 	discordpp::{class_name} *obj;
-	{private_constructors}
+
+	{constructor_private}
 protected:
 	static void _bind_methods();
 public:
@@ -19,39 +21,22 @@ public:
         return obj;
     }}
 
-	{methods}
+    // Constructors.
+	{constructor_public}
 
-	{public_constructors}
+    // Functions.
+	{functions}
 
-	Discordpp{class_name}(discordpp::{class_name} *obj) {{
+    // Overloading functions.
+    {overloadings}
+
+    // Internal usage.
+	Discord{class_name}(discordpp::{class_name} *obj) {{
         this->obj = obj;
     }}
 
-	//Discordpp{class_name}(discordpp::{class_name} &&obj) : obj(std::move(obj)) {{
-        
-    //}}
-
-	~Discordpp{class_name}() {{
+	~Discord{class_name}() {{
 		memdelete(this->obj);
     }}
-}};
-"""
-
-
-def get_class_definition_global(
-    methods: str,
-) -> str:
-    return f"""
-class Discordpp : public RefCounted {{
-	GDCLASS(Discordpp, RefCounted)
-
-private:
-	Discordpp() {{}}
-protected:
-	static void _bind_methods();
-public:
-	{methods}
-
-	~Discordpp() {{}}
 }};
 """

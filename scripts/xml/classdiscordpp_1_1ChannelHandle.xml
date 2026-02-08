@@ -1,0 +1,206 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="classdiscordpp_1_1ChannelHandle" kind="class" language="C++" prot="public">
+    <compoundname>discordpp::ChannelHandle</compoundname>
+    <includes local="no">discordpp.h</includes>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classdiscordpp_1_1ChannelHandle_1a7daaf2768a5072c2a60f9a58d709ffea" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="classdiscordpp_1_1ChannelHandle" kindref="compound">ChannelHandle</ref></type>
+        <definition>const ChannelHandle discordpp::ChannelHandle::nullobj</definition>
+        <argsstring></argsstring>
+        <name>nullobj</name>
+        <qualifiedname>discordpp::ChannelHandle::nullobj</qualifiedname>
+        <briefdescription>
+<para>Uninitialized instance of <ref refid="classdiscordpp_1_1ChannelHandle" kindref="compound">ChannelHandle</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2134" column="28" bodyfile="include/discordpp.h" bodystart="2134" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classdiscordpp_1_1ChannelHandle_1ac32096b2ef15c5c220e9b7b92253cc46" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::ChannelHandle::ChannelHandle</definition>
+        <argsstring>(ChannelHandle &amp;&amp;other) noexcept</argsstring>
+        <name>ChannelHandle</name>
+        <qualifiedname>discordpp::ChannelHandle::ChannelHandle</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1ChannelHandle" kindref="compound">ChannelHandle</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move constructor for <ref refid="classdiscordpp_1_1ChannelHandle" kindref="compound">ChannelHandle</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2130" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ChannelHandle_1aa5a430dd368cb56e41fa194db97a38e9" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1ChannelHandle" kindref="compound">ChannelHandle</ref> &amp;</type>
+        <definition>ChannelHandle &amp; discordpp::ChannelHandle::operator=</definition>
+        <argsstring>(ChannelHandle &amp;&amp;other) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::ChannelHandle::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1ChannelHandle" kindref="compound">ChannelHandle</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move assignment operator for <ref refid="classdiscordpp_1_1ChannelHandle" kindref="compound">ChannelHandle</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2132" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ChannelHandle_1ab8e1d63035236dee17493032078749b6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::ChannelHandle::operator bool</definition>
+        <argsstring>() const</argsstring>
+        <name>operator bool</name>
+        <qualifiedname>discordpp::ChannelHandle::operator bool</qualifiedname>
+        <briefdescription>
+<para>Returns true if the instance contains a valid object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2136" column="1" bodyfile="include/discordpp.h" bodystart="2136" bodyend="2136"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ChannelHandle_1a251a2799d80ce466b4e7c0c7a05801fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::ChannelHandle::ChannelHandle</definition>
+        <argsstring>(const ChannelHandle &amp;other)</argsstring>
+        <name>ChannelHandle</name>
+        <qualifiedname>discordpp::ChannelHandle::ChannelHandle</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1ChannelHandle" kindref="compound">ChannelHandle</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor for <ref refid="classdiscordpp_1_1ChannelHandle" kindref="compound">ChannelHandle</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2139" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ChannelHandle_1a3915b4c9540c66c9cf0e7fee137a0aa9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1ChannelHandle" kindref="compound">ChannelHandle</ref> &amp;</type>
+        <definition>ChannelHandle &amp; discordpp::ChannelHandle::operator=</definition>
+        <argsstring>(const ChannelHandle &amp;other)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::ChannelHandle::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1ChannelHandle" kindref="compound">ChannelHandle</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Copy assignment operator for <ref refid="classdiscordpp_1_1ChannelHandle" kindref="compound">ChannelHandle</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2141" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ChannelHandle_1a8f72c0a96fe980c79749ef7e51f0026b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t discordpp::ChannelHandle::Id</definition>
+        <argsstring>() const</argsstring>
+        <name>Id</name>
+        <qualifiedname>discordpp::ChannelHandle::Id</qualifiedname>
+        <briefdescription>
+<para>Returns the ID of the channel. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2148" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ChannelHandle_1afde4eb29870827f488c99fd1b547e464" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string discordpp::ChannelHandle::Name</definition>
+        <argsstring>() const</argsstring>
+        <name>Name</name>
+        <qualifiedname>discordpp::ChannelHandle::Name</qualifiedname>
+        <briefdescription>
+<para>Returns the name of the channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Generally only channels in servers have names, although Discord may generate a display name for some channels as well. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2154" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ChannelHandle_1af97e15368d188837ff02958397822bd0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; uint64_t &gt;</type>
+        <definition>std::vector&lt; uint64_t &gt; discordpp::ChannelHandle::Recipients</definition>
+        <argsstring>() const</argsstring>
+        <name>Recipients</name>
+        <qualifiedname>discordpp::ChannelHandle::Recipients</qualifiedname>
+        <briefdescription>
+<para>For DMs and GroupDMs, returns the user IDs of the members of the channel. For all other channels returns an empty list. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2158" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ChannelHandle_1aff3b40ab2690c966532fc4d8709a9e85" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacediscordpp_1a1b68b260e8659da9a7792b2b2046fe58" kindref="member">discordpp::ChannelType</ref></type>
+        <definition>discordpp::ChannelType discordpp::ChannelHandle::Type</definition>
+        <argsstring>() const</argsstring>
+        <name>Type</name>
+        <qualifiedname>discordpp::ChannelHandle::Type</qualifiedname>
+        <briefdescription>
+<para>Returns the type of the channel. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2161" column="24"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>All messages sent on Discord are done so in a Channel. <ref refid="classdiscordpp_1_1MessageHandle_1ad8b8ccfab8c8e06dc9fc3201284db1ce" kindref="member">MessageHandle::ChannelId</ref> will contain the ID of the channel a message was sent in, and <ref refid="classdiscordpp_1_1Client_1a6ab6f4217d04d84935d012af88ce5752" kindref="member">Client::GetChannelHandle</ref> will return an instance of this class. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Handle objects in the SDK hold a reference both to the underlying data, and to the SDK instance. Changes to the underlying data will generally be available on existing handles objects without having to re-create them. If the SDK instance is destroyed, but you still have a reference to a handle object, note that it will return the default value for all method calls (ie an empty string for methods that return a string). </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>discordpp::ChannelHandle</label>
+        <link refid="classdiscordpp_1_1ChannelHandle"/>
+        <childnode refid="1" relation="usage">
+          <edgelabel>nullobj</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/discordpp.h" line="2115" column="1" bodyfile="include/discordpp.h" bodystart="2115" bodyend="2162"/>
+    <listofallmembers>
+      <member refid="classdiscordpp_1_1ChannelHandle_1ac32096b2ef15c5c220e9b7b92253cc46" prot="public" virt="non-virtual"><scope>discordpp::ChannelHandle</scope><name>ChannelHandle</name></member>
+      <member refid="classdiscordpp_1_1ChannelHandle_1a251a2799d80ce466b4e7c0c7a05801fb" prot="public" virt="non-virtual"><scope>discordpp::ChannelHandle</scope><name>ChannelHandle</name></member>
+      <member refid="classdiscordpp_1_1ChannelHandle_1a8f72c0a96fe980c79749ef7e51f0026b" prot="public" virt="non-virtual"><scope>discordpp::ChannelHandle</scope><name>Id</name></member>
+      <member refid="classdiscordpp_1_1ChannelHandle_1afde4eb29870827f488c99fd1b547e464" prot="public" virt="non-virtual"><scope>discordpp::ChannelHandle</scope><name>Name</name></member>
+      <member refid="classdiscordpp_1_1ChannelHandle_1a7daaf2768a5072c2a60f9a58d709ffea" prot="public" virt="non-virtual"><scope>discordpp::ChannelHandle</scope><name>nullobj</name></member>
+      <member refid="classdiscordpp_1_1ChannelHandle_1ab8e1d63035236dee17493032078749b6" prot="public" virt="non-virtual"><scope>discordpp::ChannelHandle</scope><name>operator bool</name></member>
+      <member refid="classdiscordpp_1_1ChannelHandle_1aa5a430dd368cb56e41fa194db97a38e9" prot="public" virt="non-virtual"><scope>discordpp::ChannelHandle</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1ChannelHandle_1a3915b4c9540c66c9cf0e7fee137a0aa9" prot="public" virt="non-virtual"><scope>discordpp::ChannelHandle</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1ChannelHandle_1af97e15368d188837ff02958397822bd0" prot="public" virt="non-virtual"><scope>discordpp::ChannelHandle</scope><name>Recipients</name></member>
+      <member refid="classdiscordpp_1_1ChannelHandle_1aff3b40ab2690c966532fc4d8709a9e85" prot="public" virt="non-virtual"><scope>discordpp::ChannelHandle</scope><name>Type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

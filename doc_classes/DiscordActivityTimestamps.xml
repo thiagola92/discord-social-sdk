@@ -1,0 +1,40 @@
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordActivityTimestamps" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	&lt;simplesect kind="see"&gt;[DiscordActivity] 
+&lt;/simplesect&gt;
+</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="end">
+			<return type="int" />
+			<description>
+			The time the activity will end at, in milliseconds since Unix epoch.
+			The SDK will try to convert seconds to milliseconds if a small-ish value is passed in. If specified, the Discord client will render a countdown timer showing how long until the activity ends.
+			</description>
+		</method>
+		<method name="set_end">
+			<return type="void" />
+			<param index="0" name="end" type="int" />
+			<description>
+			Setter for [method DiscordActivityTimestamps.end].
+			</description>
+		</method>
+		<method name="set_start">
+			<return type="void" />
+			<param index="0" name="start" type="int" />
+			<description>
+			Setter for [method DiscordActivityTimestamps.start].
+			</description>
+		</method>
+		<method name="start">
+			<return type="int" />
+			<description>
+			The time the activity started, in milliseconds since Unix epoch.
+			The SDK will try to convert seconds to milliseconds if a small-ish value is passed in. If specified, the Discord client will render a count up timer showing how long the user has been playing this activity.
+			</description>
+		</method>
+	</methods>
+</class>

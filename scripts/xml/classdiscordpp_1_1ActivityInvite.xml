@@ -1,0 +1,479 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="classdiscordpp_1_1ActivityInvite" kind="class" language="C++" prot="public">
+    <compoundname>discordpp::ActivityInvite</compoundname>
+    <includes local="no">discordpp.h</includes>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classdiscordpp_1_1ActivityInvite_1a07c000365831e897f4da49ef22a4cefd" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="classdiscordpp_1_1ActivityInvite" kindref="compound">ActivityInvite</ref></type>
+        <definition>const ActivityInvite discordpp::ActivityInvite::nullobj</definition>
+        <argsstring></argsstring>
+        <name>nullobj</name>
+        <qualifiedname>discordpp::ActivityInvite::nullobj</qualifiedname>
+        <briefdescription>
+<para>Uninitialized instance of <ref refid="classdiscordpp_1_1ActivityInvite" kindref="compound">ActivityInvite</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="736" column="29" bodyfile="include/discordpp.h" bodystart="736" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityInvite_1af980f140c1459e1cd8f6ef3f3c07547c" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::ActivityInvite::ActivityInvite</definition>
+        <argsstring>(ActivityInvite &amp;&amp;other) noexcept</argsstring>
+        <name>ActivityInvite</name>
+        <qualifiedname>discordpp::ActivityInvite::ActivityInvite</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1ActivityInvite" kindref="compound">ActivityInvite</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move constructor for <ref refid="classdiscordpp_1_1ActivityInvite" kindref="compound">ActivityInvite</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="732" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityInvite_1ac0df3818ad0ce1f94168ffeea6fcee22" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1ActivityInvite" kindref="compound">ActivityInvite</ref> &amp;</type>
+        <definition>ActivityInvite &amp; discordpp::ActivityInvite::operator=</definition>
+        <argsstring>(ActivityInvite &amp;&amp;other) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::ActivityInvite::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1ActivityInvite" kindref="compound">ActivityInvite</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move assignment operator for <ref refid="classdiscordpp_1_1ActivityInvite" kindref="compound">ActivityInvite</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="734" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityInvite_1a330011886f9fc05e31ff8d637efdff64" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::ActivityInvite::operator bool</definition>
+        <argsstring>() const</argsstring>
+        <name>operator bool</name>
+        <qualifiedname>discordpp::ActivityInvite::operator bool</qualifiedname>
+        <briefdescription>
+<para>Returns true if the instance contains a valid object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="738" column="1" bodyfile="include/discordpp.h" bodystart="738" bodyend="738"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityInvite_1ac1a3a2a2bde75ae6d9033bbacfde76ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::ActivityInvite::ActivityInvite</definition>
+        <argsstring>(const ActivityInvite &amp;rhs)</argsstring>
+        <name>ActivityInvite</name>
+        <qualifiedname>discordpp::ActivityInvite::ActivityInvite</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1ActivityInvite" kindref="compound">ActivityInvite</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor for <ref refid="classdiscordpp_1_1ActivityInvite" kindref="compound">ActivityInvite</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="741" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityInvite_1ad687f60430963a14ca8b8861f2894c6e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1ActivityInvite" kindref="compound">ActivityInvite</ref> &amp;</type>
+        <definition>ActivityInvite &amp; discordpp::ActivityInvite::operator=</definition>
+        <argsstring>(const ActivityInvite &amp;rhs)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::ActivityInvite::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1ActivityInvite" kindref="compound">ActivityInvite</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+<para>Copy assignment operator for <ref refid="classdiscordpp_1_1ActivityInvite" kindref="compound">ActivityInvite</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="743" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityInvite_1aba6eb1d62b023511705e4110be215106" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::ActivityInvite::ActivityInvite</definition>
+        <argsstring>()</argsstring>
+        <name>ActivityInvite</name>
+        <qualifiedname>discordpp::ActivityInvite::ActivityInvite</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="745" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityInvite_1a58153cc37c7bcb733a28f143dc1ed5a8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t discordpp::ActivityInvite::SenderId</definition>
+        <argsstring>() const</argsstring>
+        <name>SenderId</name>
+        <qualifiedname>discordpp::ActivityInvite::SenderId</qualifiedname>
+        <briefdescription>
+<para>The user id of the user who sent the invite. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="752" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityInvite_1a813f12036f91d4ca27db4cdafe597132" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::ActivityInvite::SetSenderId</definition>
+        <argsstring>(uint64_t SenderId)</argsstring>
+        <name>SetSenderId</name>
+        <qualifiedname>discordpp::ActivityInvite::SetSenderId</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>SenderId</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1ActivityInvite_1a58153cc37c7bcb733a28f143dc1ed5a8" kindref="member">ActivityInvite::SenderId</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="754" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityInvite_1aa74d7a03e46c5ae5f0ee720b70836f0e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t discordpp::ActivityInvite::ChannelId</definition>
+        <argsstring>() const</argsstring>
+        <name>ChannelId</name>
+        <qualifiedname>discordpp::ActivityInvite::ChannelId</qualifiedname>
+        <briefdescription>
+<para>The id of the Discord channel in which the invite was sent. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="757" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityInvite_1a954e3292e3a03392297c214b1d1c11bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::ActivityInvite::SetChannelId</definition>
+        <argsstring>(uint64_t ChannelId)</argsstring>
+        <name>SetChannelId</name>
+        <qualifiedname>discordpp::ActivityInvite::SetChannelId</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>ChannelId</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1ActivityInvite_1aa74d7a03e46c5ae5f0ee720b70836f0e" kindref="member">ActivityInvite::ChannelId</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="759" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityInvite_1a4c1747cc8655bc583d00e8d13d4888c2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t discordpp::ActivityInvite::MessageId</definition>
+        <argsstring>() const</argsstring>
+        <name>MessageId</name>
+        <qualifiedname>discordpp::ActivityInvite::MessageId</qualifiedname>
+        <briefdescription>
+<para>The id of the Discord message that contains the invite. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="762" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityInvite_1ab4114f4cd277683d22e65581d7472cd3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::ActivityInvite::SetMessageId</definition>
+        <argsstring>(uint64_t MessageId)</argsstring>
+        <name>SetMessageId</name>
+        <qualifiedname>discordpp::ActivityInvite::SetMessageId</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>MessageId</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1ActivityInvite_1a4c1747cc8655bc583d00e8d13d4888c2" kindref="member">ActivityInvite::MessageId</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="764" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityInvite_1af5ecd0fa6a4ce8435929c086894471e2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacediscordpp_1afff4c537aa07d869a4576c87a28f36b8" kindref="member">discordpp::ActivityActionTypes</ref></type>
+        <definition>discordpp::ActivityActionTypes discordpp::ActivityInvite::Type</definition>
+        <argsstring>() const</argsstring>
+        <name>Type</name>
+        <qualifiedname>discordpp::ActivityInvite::Type</qualifiedname>
+        <briefdescription>
+<para>The type of invite that was sent. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="767" column="32"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityInvite_1acc8d2278bbd08a5c26b8cd6e4fa62e9a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::ActivityInvite::SetType</definition>
+        <argsstring>(discordpp::ActivityActionTypes Type)</argsstring>
+        <name>SetType</name>
+        <qualifiedname>discordpp::ActivityInvite::SetType</qualifiedname>
+        <param>
+          <type><ref refid="namespacediscordpp_1afff4c537aa07d869a4576c87a28f36b8" kindref="member">discordpp::ActivityActionTypes</ref></type>
+          <declname>Type</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1ActivityInvite_1af5ecd0fa6a4ce8435929c086894471e2" kindref="member">ActivityInvite::Type</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="769" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityInvite_1a38ff19dd954a406c8a21434a081f1c33" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t discordpp::ActivityInvite::ApplicationId</definition>
+        <argsstring>() const</argsstring>
+        <name>ApplicationId</name>
+        <qualifiedname>discordpp::ActivityInvite::ApplicationId</qualifiedname>
+        <briefdescription>
+<para>The target application of the invite. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="772" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityInvite_1a660bc6a697802fae9a3bdc3f11c8ed6b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::ActivityInvite::SetApplicationId</definition>
+        <argsstring>(uint64_t ApplicationId)</argsstring>
+        <name>SetApplicationId</name>
+        <qualifiedname>discordpp::ActivityInvite::SetApplicationId</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>ApplicationId</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1ActivityInvite_1a38ff19dd954a406c8a21434a081f1c33" kindref="member">ActivityInvite::ApplicationId</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="774" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityInvite_1acffc092f6a3d069c24cd4f36bdd40318" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t discordpp::ActivityInvite::ParentApplicationId</definition>
+        <argsstring>() const</argsstring>
+        <name>ParentApplicationId</name>
+        <qualifiedname>discordpp::ActivityInvite::ParentApplicationId</qualifiedname>
+        <briefdescription>
+<para>The application id of the parent - this is only applicable if there is a parent for a publisher&apos;s suite of applications. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="778" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityInvite_1a91cbd5bad30b80b608f2c88f047860f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::ActivityInvite::SetParentApplicationId</definition>
+        <argsstring>(uint64_t ParentApplicationId)</argsstring>
+        <name>SetParentApplicationId</name>
+        <qualifiedname>discordpp::ActivityInvite::SetParentApplicationId</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>ParentApplicationId</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1ActivityInvite_1acffc092f6a3d069c24cd4f36bdd40318" kindref="member">ActivityInvite::ParentApplicationId</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="780" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityInvite_1ab4d0b0ccc568941375458518fb571176" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string discordpp::ActivityInvite::PartyId</definition>
+        <argsstring>() const</argsstring>
+        <name>PartyId</name>
+        <qualifiedname>discordpp::ActivityInvite::PartyId</qualifiedname>
+        <briefdescription>
+<para>The id of the party the invite was sent for. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="783" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityInvite_1ad538b78267ff9114f43244e3eb28f92e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::ActivityInvite::SetPartyId</definition>
+        <argsstring>(std::string PartyId)</argsstring>
+        <name>SetPartyId</name>
+        <qualifiedname>discordpp::ActivityInvite::SetPartyId</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>PartyId</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1ActivityInvite_1ab4d0b0ccc568941375458518fb571176" kindref="member">ActivityInvite::PartyId</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="785" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityInvite_1a0c947f356db2b20a68a9ad536bbd4f5c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string discordpp::ActivityInvite::SessionId</definition>
+        <argsstring>() const</argsstring>
+        <name>SessionId</name>
+        <qualifiedname>discordpp::ActivityInvite::SessionId</qualifiedname>
+        <briefdescription>
+<para>The session id of the user who sent the invite. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="788" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityInvite_1a2a5326a8dbca7f97509dc7c1fc21a25a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::ActivityInvite::SetSessionId</definition>
+        <argsstring>(std::string SessionId)</argsstring>
+        <name>SetSessionId</name>
+        <qualifiedname>discordpp::ActivityInvite::SetSessionId</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>SessionId</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1ActivityInvite_1a0c947f356db2b20a68a9ad536bbd4f5c" kindref="member">ActivityInvite::SessionId</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="790" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityInvite_1a92e24e683870b13e8f464d6b93312433" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool discordpp::ActivityInvite::IsValid</definition>
+        <argsstring>() const</argsstring>
+        <name>IsValid</name>
+        <qualifiedname>discordpp::ActivityInvite::IsValid</qualifiedname>
+        <briefdescription>
+<para>Whether or not this invite is currently joinable. An invite becomes invalid if it was sent more than 6 hours ago or if the sender is no longer playing the game the invite is for. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="794" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1ActivityInvite_1a204f3077312a695ec2fea5f3f1430c2d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void discordpp::ActivityInvite::SetIsValid</definition>
+        <argsstring>(bool IsValid)</argsstring>
+        <name>SetIsValid</name>
+        <qualifiedname>discordpp::ActivityInvite::SetIsValid</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>IsValid</declname>
+        </param>
+        <briefdescription>
+<para>Setter for <ref refid="classdiscordpp_1_1ActivityInvite_1a92e24e683870b13e8f464d6b93312433" kindref="member">ActivityInvite::IsValid</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="796" column="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>When one user invites another to join their game on Discord, it will send a message to that user. The SDK will parse those messages for you automatically, and this struct contains all of the relevant invite information which is needed to later accept that invite. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>discordpp::ActivityInvite</label>
+        <link refid="classdiscordpp_1_1ActivityInvite"/>
+        <childnode refid="1" relation="usage">
+          <edgelabel>nullobj</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/discordpp.h" line="717" column="1" bodyfile="include/discordpp.h" bodystart="717" bodyend="797"/>
+    <listofallmembers>
+      <member refid="classdiscordpp_1_1ActivityInvite_1af980f140c1459e1cd8f6ef3f3c07547c" prot="public" virt="non-virtual"><scope>discordpp::ActivityInvite</scope><name>ActivityInvite</name></member>
+      <member refid="classdiscordpp_1_1ActivityInvite_1ac1a3a2a2bde75ae6d9033bbacfde76ee" prot="public" virt="non-virtual"><scope>discordpp::ActivityInvite</scope><name>ActivityInvite</name></member>
+      <member refid="classdiscordpp_1_1ActivityInvite_1aba6eb1d62b023511705e4110be215106" prot="public" virt="non-virtual"><scope>discordpp::ActivityInvite</scope><name>ActivityInvite</name></member>
+      <member refid="classdiscordpp_1_1ActivityInvite_1a38ff19dd954a406c8a21434a081f1c33" prot="public" virt="non-virtual"><scope>discordpp::ActivityInvite</scope><name>ApplicationId</name></member>
+      <member refid="classdiscordpp_1_1ActivityInvite_1aa74d7a03e46c5ae5f0ee720b70836f0e" prot="public" virt="non-virtual"><scope>discordpp::ActivityInvite</scope><name>ChannelId</name></member>
+      <member refid="classdiscordpp_1_1ActivityInvite_1a92e24e683870b13e8f464d6b93312433" prot="public" virt="non-virtual"><scope>discordpp::ActivityInvite</scope><name>IsValid</name></member>
+      <member refid="classdiscordpp_1_1ActivityInvite_1a4c1747cc8655bc583d00e8d13d4888c2" prot="public" virt="non-virtual"><scope>discordpp::ActivityInvite</scope><name>MessageId</name></member>
+      <member refid="classdiscordpp_1_1ActivityInvite_1a07c000365831e897f4da49ef22a4cefd" prot="public" virt="non-virtual"><scope>discordpp::ActivityInvite</scope><name>nullobj</name></member>
+      <member refid="classdiscordpp_1_1ActivityInvite_1a330011886f9fc05e31ff8d637efdff64" prot="public" virt="non-virtual"><scope>discordpp::ActivityInvite</scope><name>operator bool</name></member>
+      <member refid="classdiscordpp_1_1ActivityInvite_1ac0df3818ad0ce1f94168ffeea6fcee22" prot="public" virt="non-virtual"><scope>discordpp::ActivityInvite</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1ActivityInvite_1ad687f60430963a14ca8b8861f2894c6e" prot="public" virt="non-virtual"><scope>discordpp::ActivityInvite</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1ActivityInvite_1acffc092f6a3d069c24cd4f36bdd40318" prot="public" virt="non-virtual"><scope>discordpp::ActivityInvite</scope><name>ParentApplicationId</name></member>
+      <member refid="classdiscordpp_1_1ActivityInvite_1ab4d0b0ccc568941375458518fb571176" prot="public" virt="non-virtual"><scope>discordpp::ActivityInvite</scope><name>PartyId</name></member>
+      <member refid="classdiscordpp_1_1ActivityInvite_1a58153cc37c7bcb733a28f143dc1ed5a8" prot="public" virt="non-virtual"><scope>discordpp::ActivityInvite</scope><name>SenderId</name></member>
+      <member refid="classdiscordpp_1_1ActivityInvite_1a0c947f356db2b20a68a9ad536bbd4f5c" prot="public" virt="non-virtual"><scope>discordpp::ActivityInvite</scope><name>SessionId</name></member>
+      <member refid="classdiscordpp_1_1ActivityInvite_1a660bc6a697802fae9a3bdc3f11c8ed6b" prot="public" virt="non-virtual"><scope>discordpp::ActivityInvite</scope><name>SetApplicationId</name></member>
+      <member refid="classdiscordpp_1_1ActivityInvite_1a954e3292e3a03392297c214b1d1c11bb" prot="public" virt="non-virtual"><scope>discordpp::ActivityInvite</scope><name>SetChannelId</name></member>
+      <member refid="classdiscordpp_1_1ActivityInvite_1a204f3077312a695ec2fea5f3f1430c2d" prot="public" virt="non-virtual"><scope>discordpp::ActivityInvite</scope><name>SetIsValid</name></member>
+      <member refid="classdiscordpp_1_1ActivityInvite_1ab4114f4cd277683d22e65581d7472cd3" prot="public" virt="non-virtual"><scope>discordpp::ActivityInvite</scope><name>SetMessageId</name></member>
+      <member refid="classdiscordpp_1_1ActivityInvite_1a91cbd5bad30b80b608f2c88f047860f9" prot="public" virt="non-virtual"><scope>discordpp::ActivityInvite</scope><name>SetParentApplicationId</name></member>
+      <member refid="classdiscordpp_1_1ActivityInvite_1ad538b78267ff9114f43244e3eb28f92e" prot="public" virt="non-virtual"><scope>discordpp::ActivityInvite</scope><name>SetPartyId</name></member>
+      <member refid="classdiscordpp_1_1ActivityInvite_1a813f12036f91d4ca27db4cdafe597132" prot="public" virt="non-virtual"><scope>discordpp::ActivityInvite</scope><name>SetSenderId</name></member>
+      <member refid="classdiscordpp_1_1ActivityInvite_1a2a5326a8dbca7f97509dc7c1fc21a25a" prot="public" virt="non-virtual"><scope>discordpp::ActivityInvite</scope><name>SetSessionId</name></member>
+      <member refid="classdiscordpp_1_1ActivityInvite_1acc8d2278bbd08a5c26b8cd6e4fa62e9a" prot="public" virt="non-virtual"><scope>discordpp::ActivityInvite</scope><name>SetType</name></member>
+      <member refid="classdiscordpp_1_1ActivityInvite_1af5ecd0fa6a4ce8435929c086894471e2" prot="public" virt="non-virtual"><scope>discordpp::ActivityInvite</scope><name>Type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,408 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="classdiscordpp_1_1UserHandle" kind="class" language="C++" prot="public">
+    <compoundname>discordpp::UserHandle</compoundname>
+    <includes local="no">discordpp.h</includes>
+    <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classdiscordpp_1_1UserHandle_1a9cbf5933bc6181eb1900574f6eda9b18" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>AvatarType</name>
+        <qualifiedname>discordpp::UserHandle::AvatarType</qualifiedname>
+        <enumvalue id="classdiscordpp_1_1UserHandle_1a9cbf5933bc6181eb1900574f6eda9b18ab28f315fa877ea6a840b6a4ea5401256" prot="public">
+          <name>Gif</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Gif. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classdiscordpp_1_1UserHandle_1a9cbf5933bc6181eb1900574f6eda9b18ac9f9677540149cc6f102c5327e9a7633" prot="public">
+          <name>Webp</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>Webp. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classdiscordpp_1_1UserHandle_1a9cbf5933bc6181eb1900574f6eda9b18af8fd4f1b5b05c6b1cc6a661141fd4f54" prot="public">
+          <name>Png</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+<para>Png. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classdiscordpp_1_1UserHandle_1a9cbf5933bc6181eb1900574f6eda9b18a5023eac1d7fffa77b37c0e6797c97773" prot="public">
+          <name>Jpeg</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+<para>Jpeg. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>The desired type of avatar url to generate for a User. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2562" column="1" bodyfile="include/discordpp.h" bodystart="2562" bodyend="2575"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classdiscordpp_1_1UserHandle_1a2ef2345144ce1e6589c1828e187c908b" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="classdiscordpp_1_1UserHandle" kindref="compound">UserHandle</ref></type>
+        <definition>const UserHandle discordpp::UserHandle::nullobj</definition>
+        <argsstring></argsstring>
+        <name>nullobj</name>
+        <qualifiedname>discordpp::UserHandle::nullobj</qualifiedname>
+        <briefdescription>
+<para>Uninitialized instance of <ref refid="classdiscordpp_1_1UserHandle" kindref="compound">UserHandle</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2588" column="25" bodyfile="include/discordpp.h" bodystart="2588" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classdiscordpp_1_1UserHandle_1a587bcc838e42dc5c56f840a350070707" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::UserHandle::UserHandle</definition>
+        <argsstring>(UserHandle &amp;&amp;other) noexcept</argsstring>
+        <name>UserHandle</name>
+        <qualifiedname>discordpp::UserHandle::UserHandle</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1UserHandle" kindref="compound">UserHandle</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move constructor for <ref refid="classdiscordpp_1_1UserHandle" kindref="compound">UserHandle</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2584" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1UserHandle_1a08cacd9bb2ced65159c10e144e115e07" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1UserHandle" kindref="compound">UserHandle</ref> &amp;</type>
+        <definition>UserHandle &amp; discordpp::UserHandle::operator=</definition>
+        <argsstring>(UserHandle &amp;&amp;other) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::UserHandle::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1UserHandle" kindref="compound">UserHandle</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move assignment operator for <ref refid="classdiscordpp_1_1UserHandle" kindref="compound">UserHandle</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2586" column="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1UserHandle_1ada58eea04b10ebdacd50bbf4dfdf55c6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::UserHandle::operator bool</definition>
+        <argsstring>() const</argsstring>
+        <name>operator bool</name>
+        <qualifiedname>discordpp::UserHandle::operator bool</qualifiedname>
+        <briefdescription>
+<para>Returns true if the instance contains a valid object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2590" column="1" bodyfile="include/discordpp.h" bodystart="2590" bodyend="2590"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1UserHandle_1a3c4e8166cb923dbb7b778ef87b73fd34" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::UserHandle::UserHandle</definition>
+        <argsstring>(const UserHandle &amp;arg0)</argsstring>
+        <name>UserHandle</name>
+        <qualifiedname>discordpp::UserHandle::UserHandle</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1UserHandle" kindref="compound">UserHandle</ref> &amp;</type>
+          <declname>arg0</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor for <ref refid="classdiscordpp_1_1UserHandle" kindref="compound">UserHandle</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2593" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1UserHandle_1ae5c7d50a6f87fd41850286e5d954459a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1UserHandle" kindref="compound">UserHandle</ref> &amp;</type>
+        <definition>UserHandle &amp; discordpp::UserHandle::operator=</definition>
+        <argsstring>(const UserHandle &amp;arg0)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::UserHandle::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1UserHandle" kindref="compound">UserHandle</ref> &amp;</type>
+          <declname>arg0</declname>
+        </param>
+        <briefdescription>
+<para>Copy assignment operator for <ref refid="classdiscordpp_1_1UserHandle" kindref="compound">UserHandle</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2595" column="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1UserHandle_1a3b331158dc7086b62f4352ae80f2a2eb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt; std::string &gt; discordpp::UserHandle::Avatar</definition>
+        <argsstring>() const</argsstring>
+        <name>Avatar</name>
+        <qualifiedname>discordpp::UserHandle::Avatar</qualifiedname>
+        <briefdescription>
+<para>Returns the hash of the user&apos;s Discord profile avatar, if one is set. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2602" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1UserHandle_1a9cb876d37f8975521e0a7b3bca96aaa0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string discordpp::UserHandle::AvatarUrl</definition>
+        <argsstring>(discordpp::UserHandle::AvatarType animatedType, discordpp::UserHandle::AvatarType staticType) const</argsstring>
+        <name>AvatarUrl</name>
+        <qualifiedname>discordpp::UserHandle::AvatarUrl</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1UserHandle_1a9cbf5933bc6181eb1900574f6eda9b18" kindref="member">discordpp::UserHandle::AvatarType</ref></type>
+          <declname>animatedType</declname>
+        </param>
+        <param>
+          <type><ref refid="classdiscordpp_1_1UserHandle_1a9cbf5933bc6181eb1900574f6eda9b18" kindref="member">discordpp::UserHandle::AvatarType</ref></type>
+          <declname>staticType</declname>
+        </param>
+        <briefdescription>
+<para>Returns a CDN url to the user&apos;s Discord profile avatar. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If the user does not have an avatar set, a url to one of Discord&apos;s default avatars is returned instead. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2611" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1UserHandle_1af6447fa2011bfa4fcd7e55bc56847f5c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string discordpp::UserHandle::DisplayName</definition>
+        <argsstring>() const</argsstring>
+        <name>DisplayName</name>
+        <qualifiedname>discordpp::UserHandle::DisplayName</qualifiedname>
+        <briefdescription>
+<para>Returns the user&apos;s preferred name, if one is set, otherwise returns their unique username. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2616" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1UserHandle_1ae263140d5170206864aa443a3c47935c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; <ref refid="classdiscordpp_1_1Activity" kindref="compound">discordpp::Activity</ref> &gt;</type>
+        <definition>std::optional&lt; discordpp::Activity &gt; discordpp::UserHandle::GameActivity</definition>
+        <argsstring>() const</argsstring>
+        <name>GameActivity</name>
+        <qualifiedname>discordpp::UserHandle::GameActivity</qualifiedname>
+        <briefdescription>
+<para>Returns the user&apos;s rich presence activity that is associated with the current game, if one is set. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>On Discord, users can have multiple rich presence activities at once, but the SDK will only expose the activity that is associated with your game. You can use this to know about the party the user is in, if any, and what the user is doing in the game.</para>
+<para>For more information see the <ref refid="classdiscordpp_1_1Activity" kindref="compound">Activity</ref> class and check out <ulink url="https://discord.com/developers/docs/rich-presence/overview">https://discord.com/developers/docs/rich-presence/overview</ulink> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2627" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1UserHandle_1aaf8a9f1f396d0a9a83ce0856d92a5a68" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt; std::string &gt; discordpp::UserHandle::GlobalName</definition>
+        <argsstring>() const</argsstring>
+        <name>GlobalName</name>
+        <qualifiedname>discordpp::UserHandle::GlobalName</qualifiedname>
+        <briefdescription>
+<para>Returns the preferred display name of this user, if one is set. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Discord&apos;s public API refers to this as a &quot;global name&quot; instead of &quot;display name&quot;.</para>
+<para>Discord users can set their preferred name to almost any string.</para>
+<para>For more information about usernames on Discord, see: <ulink url="https://discord.com/developers/docs/resources/user">https://discord.com/developers/docs/resources/user</ulink> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2637" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1UserHandle_1a038747eb762742288fcc1bde2cf5a76d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t discordpp::UserHandle::Id</definition>
+        <argsstring>() const</argsstring>
+        <name>Id</name>
+        <qualifiedname>discordpp::UserHandle::Id</qualifiedname>
+        <briefdescription>
+<para>Returns the ID of this user. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If this returns 0 then the <ref refid="classdiscordpp_1_1UserHandle" kindref="compound">UserHandle</ref> is no longer valid. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2642" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1UserHandle_1aa2999e91f84540d9bd957d9d0d294c95" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool discordpp::UserHandle::IsProvisional</definition>
+        <argsstring>() const</argsstring>
+        <name>IsProvisional</name>
+        <qualifiedname>discordpp::UserHandle::IsProvisional</qualifiedname>
+        <briefdescription>
+<para>Returns true if this user is a provisional account. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2645" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1UserHandle_1affa211bcf6a19a17f188f142168c2288" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1RelationshipHandle" kindref="compound">discordpp::RelationshipHandle</ref></type>
+        <definition>discordpp::RelationshipHandle discordpp::UserHandle::Relationship</definition>
+        <argsstring>() const</argsstring>
+        <name>Relationship</name>
+        <qualifiedname>discordpp::UserHandle::Relationship</qualifiedname>
+        <briefdescription>
+<para>Returns a reference to the <ref refid="classdiscordpp_1_1RelationshipHandle" kindref="compound">RelationshipHandle</ref> between the currently authenticated user and this user, if any. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2649" column="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1UserHandle_1a3ec233e43f67892c3ff22eb4199e6590" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacediscordpp_1a7e874dde2b41420ed5d26d4bc3ea5b43" kindref="member">discordpp::StatusType</ref></type>
+        <definition>discordpp::StatusType discordpp::UserHandle::Status</definition>
+        <argsstring>() const</argsstring>
+        <name>Status</name>
+        <qualifiedname>discordpp::UserHandle::Status</qualifiedname>
+        <briefdescription>
+<para>Returns the user&apos;s online/offline/idle status. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2652" column="23"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1UserHandle_1a64b7fee0afff58b87b63ac385ef13866" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="classdiscordpp_1_1UserApplicationProfileHandle" kindref="compound">discordpp::UserApplicationProfileHandle</ref> &gt;</type>
+        <definition>std::vector&lt; discordpp::UserApplicationProfileHandle &gt; discordpp::UserHandle::UserApplicationProfiles</definition>
+        <argsstring>() const</argsstring>
+        <name>UserApplicationProfiles</name>
+        <qualifiedname>discordpp::UserHandle::UserApplicationProfiles</qualifiedname>
+        <briefdescription>
+<para>Returns a list of UserApplicationProfileHandles for this user. Currently, a user can only have a single profile per application, so this list will always contain at most one <ref refid="classdiscordpp_1_1UserApplicationProfileHandle" kindref="compound">UserApplicationProfileHandle</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2657" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1UserHandle_1a0eda41fe18b50bce373fb5a1b88cb411" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string discordpp::UserHandle::Username</definition>
+        <argsstring>() const</argsstring>
+        <name>Username</name>
+        <qualifiedname>discordpp::UserHandle::Username</qualifiedname>
+        <briefdescription>
+<para>Returns the globally unique username of this user. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>For provisional accounts this is an auto-generated string.</para>
+<para>For more information about usernames on Discord, see: <ulink url="https://discord.com/developers/docs/resources/user">https://discord.com/developers/docs/resources/user</ulink> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2665" column="13"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classdiscordpp_1_1UserHandle_1ae8c9b5d2edc5fc9a53baf74060ba7185" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>static std::string discordpp::UserHandle::AvatarTypeToString</definition>
+        <argsstring>(discordpp::UserHandle::AvatarType type)</argsstring>
+        <name>AvatarTypeToString</name>
+        <qualifiedname>discordpp::UserHandle::AvatarTypeToString</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1UserHandle_1a9cbf5933bc6181eb1900574f6eda9b18" kindref="member">discordpp::UserHandle::AvatarType</ref></type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+<para>Converts the <ref refid="classdiscordpp_1_1UserHandle_1a9cbf5933bc6181eb1900574f6eda9b18" kindref="member">AvatarType</ref> enum to a string. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="2605" column="20"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>A <ref refid="classdiscordpp_1_1UserHandle" kindref="compound">UserHandle</ref> represents a single user on Discord that the SDK knows about and contains basic account information for them such as id, name, and avatar, as well as their &quot;status&quot; information which includes both whether they are online/offline/etc as well as whether they are playing this game. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Handle objects in the SDK hold a reference both to the underlying data, and to the SDK instance. Changes to the underlying data will generally be available on existing handles objects without having to re-create them. If the SDK instance is destroyed, but you still have a reference to a handle object, note that it will return the default value for all method calls (ie an empty string for methods that return a string). </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>discordpp::UserHandle</label>
+        <link refid="classdiscordpp_1_1UserHandle"/>
+        <childnode refid="1" relation="usage">
+          <edgelabel>nullobj</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/discordpp.h" line="2554" column="1" bodyfile="include/discordpp.h" bodystart="2554" bodyend="2666"/>
+    <listofallmembers>
+      <member refid="classdiscordpp_1_1UserHandle_1a3b331158dc7086b62f4352ae80f2a2eb" prot="public" virt="non-virtual"><scope>discordpp::UserHandle</scope><name>Avatar</name></member>
+      <member refid="classdiscordpp_1_1UserHandle_1a9cbf5933bc6181eb1900574f6eda9b18" prot="public" virt="non-virtual"><scope>discordpp::UserHandle</scope><name>AvatarType</name></member>
+      <member refid="classdiscordpp_1_1UserHandle_1ae8c9b5d2edc5fc9a53baf74060ba7185" prot="public" virt="non-virtual"><scope>discordpp::UserHandle</scope><name>AvatarTypeToString</name></member>
+      <member refid="classdiscordpp_1_1UserHandle_1a9cb876d37f8975521e0a7b3bca96aaa0" prot="public" virt="non-virtual"><scope>discordpp::UserHandle</scope><name>AvatarUrl</name></member>
+      <member refid="classdiscordpp_1_1UserHandle_1af6447fa2011bfa4fcd7e55bc56847f5c" prot="public" virt="non-virtual"><scope>discordpp::UserHandle</scope><name>DisplayName</name></member>
+      <member refid="classdiscordpp_1_1UserHandle_1ae263140d5170206864aa443a3c47935c" prot="public" virt="non-virtual"><scope>discordpp::UserHandle</scope><name>GameActivity</name></member>
+      <member refid="classdiscordpp_1_1UserHandle_1aaf8a9f1f396d0a9a83ce0856d92a5a68" prot="public" virt="non-virtual"><scope>discordpp::UserHandle</scope><name>GlobalName</name></member>
+      <member refid="classdiscordpp_1_1UserHandle_1a038747eb762742288fcc1bde2cf5a76d" prot="public" virt="non-virtual"><scope>discordpp::UserHandle</scope><name>Id</name></member>
+      <member refid="classdiscordpp_1_1UserHandle_1aa2999e91f84540d9bd957d9d0d294c95" prot="public" virt="non-virtual"><scope>discordpp::UserHandle</scope><name>IsProvisional</name></member>
+      <member refid="classdiscordpp_1_1UserHandle_1a2ef2345144ce1e6589c1828e187c908b" prot="public" virt="non-virtual"><scope>discordpp::UserHandle</scope><name>nullobj</name></member>
+      <member refid="classdiscordpp_1_1UserHandle_1ada58eea04b10ebdacd50bbf4dfdf55c6" prot="public" virt="non-virtual"><scope>discordpp::UserHandle</scope><name>operator bool</name></member>
+      <member refid="classdiscordpp_1_1UserHandle_1a08cacd9bb2ced65159c10e144e115e07" prot="public" virt="non-virtual"><scope>discordpp::UserHandle</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1UserHandle_1ae5c7d50a6f87fd41850286e5d954459a" prot="public" virt="non-virtual"><scope>discordpp::UserHandle</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1UserHandle_1affa211bcf6a19a17f188f142168c2288" prot="public" virt="non-virtual"><scope>discordpp::UserHandle</scope><name>Relationship</name></member>
+      <member refid="classdiscordpp_1_1UserHandle_1a3ec233e43f67892c3ff22eb4199e6590" prot="public" virt="non-virtual"><scope>discordpp::UserHandle</scope><name>Status</name></member>
+      <member refid="classdiscordpp_1_1UserHandle_1a64b7fee0afff58b87b63ac385ef13866" prot="public" virt="non-virtual"><scope>discordpp::UserHandle</scope><name>UserApplicationProfiles</name></member>
+      <member refid="classdiscordpp_1_1UserHandle_1a587bcc838e42dc5c56f840a350070707" prot="public" virt="non-virtual"><scope>discordpp::UserHandle</scope><name>UserHandle</name></member>
+      <member refid="classdiscordpp_1_1UserHandle_1a3c4e8166cb923dbb7b778ef87b73fd34" prot="public" virt="non-virtual"><scope>discordpp::UserHandle</scope><name>UserHandle</name></member>
+      <member refid="classdiscordpp_1_1UserHandle_1a0eda41fe18b50bce373fb5a1b88cb411" prot="public" virt="non-virtual"><scope>discordpp::UserHandle</scope><name>Username</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

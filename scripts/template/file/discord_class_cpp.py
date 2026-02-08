@@ -1,16 +1,22 @@
 def get_discord_class_cpp(
     class_name: str,
-    methods: str,
+    functions: str,
+    overloadings: str,
     binds: str,
 ) -> str:
     return f"""
-#include "discordpp_classes.h"
+#include "discord_classes.h"
 
 using namespace godot;
 
-{methods}
+// Functions.
+{functions}
 
-void Discordpp{class_name}::_bind_methods() {{
+// Overload functions.
+{overloadings}
+
+// Binding.
+void Discord{class_name}::_bind_methods() {{
     {binds}
 }}
 """

@@ -1,0 +1,208 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="classdiscordpp_1_1CallInfoHandle" kind="class" language="C++" prot="public">
+    <compoundname>discordpp::CallInfoHandle</compoundname>
+    <includes local="no">discordpp.h</includes>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classdiscordpp_1_1CallInfoHandle_1ad8a95ec59b971eb646769ba7f1b91650" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="classdiscordpp_1_1CallInfoHandle" kindref="compound">CallInfoHandle</ref></type>
+        <definition>const CallInfoHandle discordpp::CallInfoHandle::nullobj</definition>
+        <argsstring></argsstring>
+        <name>nullobj</name>
+        <qualifiedname>discordpp::CallInfoHandle::nullobj</qualifiedname>
+        <briefdescription>
+<para>Uninitialized instance of <ref refid="classdiscordpp_1_1CallInfoHandle" kindref="compound">CallInfoHandle</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="5229" column="29" bodyfile="include/discordpp.h" bodystart="5229" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classdiscordpp_1_1CallInfoHandle_1ade345c06ac2938c443f2a6884bf9f0df" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::CallInfoHandle::CallInfoHandle</definition>
+        <argsstring>(CallInfoHandle &amp;&amp;other) noexcept</argsstring>
+        <name>CallInfoHandle</name>
+        <qualifiedname>discordpp::CallInfoHandle::CallInfoHandle</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1CallInfoHandle" kindref="compound">CallInfoHandle</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move constructor for <ref refid="classdiscordpp_1_1CallInfoHandle" kindref="compound">CallInfoHandle</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="5225" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1CallInfoHandle_1a646eb5db3aa75bbe432e9301441316d6" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1CallInfoHandle" kindref="compound">CallInfoHandle</ref> &amp;</type>
+        <definition>CallInfoHandle &amp; discordpp::CallInfoHandle::operator=</definition>
+        <argsstring>(CallInfoHandle &amp;&amp;other) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::CallInfoHandle::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classdiscordpp_1_1CallInfoHandle" kindref="compound">CallInfoHandle</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move assignment operator for <ref refid="classdiscordpp_1_1CallInfoHandle" kindref="compound">CallInfoHandle</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="5227" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1CallInfoHandle_1ab51398814fb1574a60a7e20958fb0491" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::CallInfoHandle::operator bool</definition>
+        <argsstring>() const</argsstring>
+        <name>operator bool</name>
+        <qualifiedname>discordpp::CallInfoHandle::operator bool</qualifiedname>
+        <briefdescription>
+<para>Returns true if the instance contains a valid object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="5231" column="1" bodyfile="include/discordpp.h" bodystart="5231" bodyend="5231"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1CallInfoHandle_1a4560a5999ff0218d5d13c79307ff5b95" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>discordpp::CallInfoHandle::CallInfoHandle</definition>
+        <argsstring>(const CallInfoHandle &amp;other)</argsstring>
+        <name>CallInfoHandle</name>
+        <qualifiedname>discordpp::CallInfoHandle::CallInfoHandle</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1CallInfoHandle" kindref="compound">CallInfoHandle</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor for <ref refid="classdiscordpp_1_1CallInfoHandle" kindref="compound">CallInfoHandle</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="5234" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1CallInfoHandle_1a21b6da168a98a4987329118045fd0bc6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classdiscordpp_1_1CallInfoHandle" kindref="compound">CallInfoHandle</ref> &amp;</type>
+        <definition>CallInfoHandle &amp; discordpp::CallInfoHandle::operator=</definition>
+        <argsstring>(const CallInfoHandle &amp;other)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>discordpp::CallInfoHandle::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classdiscordpp_1_1CallInfoHandle" kindref="compound">CallInfoHandle</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Copy assignment operator for <ref refid="classdiscordpp_1_1CallInfoHandle" kindref="compound">CallInfoHandle</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="5236" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1CallInfoHandle_1ae4a234adc67578891c21c4dac03ee391" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t discordpp::CallInfoHandle::ChannelId</definition>
+        <argsstring>() const</argsstring>
+        <name>ChannelId</name>
+        <qualifiedname>discordpp::CallInfoHandle::ChannelId</qualifiedname>
+        <briefdescription>
+<para>Returns the lobby ID of the call. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="5243" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1CallInfoHandle_1a1fc60183a120701835e7609cc017ec59" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; uint64_t &gt;</type>
+        <definition>std::vector&lt; uint64_t &gt; discordpp::CallInfoHandle::GetParticipants</definition>
+        <argsstring>() const</argsstring>
+        <name>GetParticipants</name>
+        <qualifiedname>discordpp::CallInfoHandle::GetParticipants</qualifiedname>
+        <briefdescription>
+<para>Returns a list of the user IDs of the participants in the call. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="5246" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1CallInfoHandle_1a06d06b854f2095f74865b5d5c20b3031" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; <ref refid="classdiscordpp_1_1VoiceStateHandle" kindref="compound">discordpp::VoiceStateHandle</ref> &gt;</type>
+        <definition>std::optional&lt; discordpp::VoiceStateHandle &gt; discordpp::CallInfoHandle::GetVoiceStateHandle</definition>
+        <argsstring>(uint64_t userId) const</argsstring>
+        <name>GetVoiceStateHandle</name>
+        <qualifiedname>discordpp::CallInfoHandle::GetVoiceStateHandle</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>userId</declname>
+        </param>
+        <briefdescription>
+<para>Accesses the voice state for a single user so you can know if they have muted or deafened themselves. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="5250" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classdiscordpp_1_1CallInfoHandle_1ad5511f5400b464fd05fcf6df69f82e33" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t discordpp::CallInfoHandle::GuildId</definition>
+        <argsstring>() const</argsstring>
+        <name>GuildId</name>
+        <qualifiedname>discordpp::CallInfoHandle::GuildId</qualifiedname>
+        <briefdescription>
+<para>Returns the lobby ID of the call. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/discordpp.h" line="5253" column="10"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Convenience class that represents the state of a single Discord call in a lobby. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>discordpp::CallInfoHandle</label>
+        <link refid="classdiscordpp_1_1CallInfoHandle"/>
+        <childnode refid="1" relation="usage">
+          <edgelabel>nullobj</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/discordpp.h" line="5210" column="1" bodyfile="include/discordpp.h" bodystart="5210" bodyend="5254"/>
+    <listofallmembers>
+      <member refid="classdiscordpp_1_1CallInfoHandle_1ade345c06ac2938c443f2a6884bf9f0df" prot="public" virt="non-virtual"><scope>discordpp::CallInfoHandle</scope><name>CallInfoHandle</name></member>
+      <member refid="classdiscordpp_1_1CallInfoHandle_1a4560a5999ff0218d5d13c79307ff5b95" prot="public" virt="non-virtual"><scope>discordpp::CallInfoHandle</scope><name>CallInfoHandle</name></member>
+      <member refid="classdiscordpp_1_1CallInfoHandle_1ae4a234adc67578891c21c4dac03ee391" prot="public" virt="non-virtual"><scope>discordpp::CallInfoHandle</scope><name>ChannelId</name></member>
+      <member refid="classdiscordpp_1_1CallInfoHandle_1a1fc60183a120701835e7609cc017ec59" prot="public" virt="non-virtual"><scope>discordpp::CallInfoHandle</scope><name>GetParticipants</name></member>
+      <member refid="classdiscordpp_1_1CallInfoHandle_1a06d06b854f2095f74865b5d5c20b3031" prot="public" virt="non-virtual"><scope>discordpp::CallInfoHandle</scope><name>GetVoiceStateHandle</name></member>
+      <member refid="classdiscordpp_1_1CallInfoHandle_1ad5511f5400b464fd05fcf6df69f82e33" prot="public" virt="non-virtual"><scope>discordpp::CallInfoHandle</scope><name>GuildId</name></member>
+      <member refid="classdiscordpp_1_1CallInfoHandle_1ad8a95ec59b971eb646769ba7f1b91650" prot="public" virt="non-virtual"><scope>discordpp::CallInfoHandle</scope><name>nullobj</name></member>
+      <member refid="classdiscordpp_1_1CallInfoHandle_1ab51398814fb1574a60a7e20958fb0491" prot="public" virt="non-virtual"><scope>discordpp::CallInfoHandle</scope><name>operator bool</name></member>
+      <member refid="classdiscordpp_1_1CallInfoHandle_1a646eb5db3aa75bbe432e9301441316d6" prot="public" virt="non-virtual"><scope>discordpp::CallInfoHandle</scope><name>operator=</name></member>
+      <member refid="classdiscordpp_1_1CallInfoHandle_1a21b6da168a98a4987329118045fd0bc6" prot="public" virt="non-virtual"><scope>discordpp::CallInfoHandle</scope><name>operator=</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
