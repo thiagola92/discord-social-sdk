@@ -12,3 +12,7 @@ func _on_log_received(message: String, severity: DiscordLoggingSeverity.Enum) ->
 		Discord.enum_to_string(severity, DiscordLoggingSeverity.id),
 		message
 	]
+
+
+func _on_logs_text_set() -> void:
+	%Logs.scroll_vertical = 99999999999

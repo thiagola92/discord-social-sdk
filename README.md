@@ -144,11 +144,12 @@ func _on_token_updated(result: DiscordClientResult) -> void:
 		client.connect_discord()
 ```
 
-Need more examples? Check this two directories:  
-- [Discord examples](./demo/examples/discord_examples/)
-    - This examples were made using [Discord Social SDK Documentation](https://discord.com/developers/docs/discord-social-sdk/overview) as base
-- [GDExtension examples](./demo/examples/gdextension_examples/)
-    - This examples were made by me
+Need more examples? Check these two directories:  
+- [Discord examples](./demo/examples/discord_examples/).  
+    - Examples made using [Discord Social SDK Documentation](https://discord.com/developers/docs/discord-social-sdk/overview) as base.  
+	- In my opnion, you should read the official documentation to understand how the SDK works and only look at these examples when curious about the GDScript version.  
+- [GDExtension examples](./demo/examples/gdextension_examples/).  
+    - Examples made by me (for fun).  
 
 # Security
 At first you may think that your Application ID is public information... But it's not!  

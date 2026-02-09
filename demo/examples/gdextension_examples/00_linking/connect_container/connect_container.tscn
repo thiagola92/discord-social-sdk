@@ -21,6 +21,12 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Connect"
 
+[node name="Refresh" type="Button" parent="." unique_id=1939069773]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+text = "Refresh"
+
 [node name="Warning" type="Label" parent="." unique_id=1525582148]
 unique_name_in_owner = true
 layout_mode = 2

@@ -17,3 +17,7 @@ unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
+wrap_mode = 1
+scroll_smooth = true
+
+[connection signal="text_set" from="Logs" to="." method="_on_logs_text_set"]

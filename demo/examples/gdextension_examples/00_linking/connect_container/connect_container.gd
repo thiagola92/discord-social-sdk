@@ -1,7 +1,12 @@
 extends HBoxContainer
 
+signal authorized
+
 var args := DiscordAuthorizationArgs.new()
 var code_verifier: DiscordAuthorizationCodeVerifier = null
+
+var _access_token: String
+var _refresh_token: String
 
 
 func setup(client: DiscordClient) -> void:
@@ -58,15 +63,24 @@ func _on_authorization_result(
 func _on_token_result(
 	result: DiscordClientResult,
 	access_token: String,
-	_refresh_token: String,
+	refresh_token: String,
 	_token_type: DiscordAuthorizationTokenType.Enum,
-	_expires_in: int,
+	expires_in: int,
 	_scopes: String,
 	client: DiscordClient
 ) -> void:
 	if not result.successful():
 		%Warning.text = "Failed to get token: %s" % result.error()
 		return
+	
+	_access_token = access_token
+	_refresh_token = refresh_token
+	
+	get_tree().create_timer(expires_in).timeout.connect((
+		func(acces_token: String):
+			if _access_token == acces_token:
+				%Warning.text = "Token expired"
+	).bind(access_token))
 	
 	client.update_token(
 		DiscordAuthorizationTokenType.BEARER,
@@ -83,6 +97,16 @@ func _on_token_updated(result: DiscordClientResult, client: DiscordClient) -> vo
 		return
 	
 	client.connect_discord()
-	hide()
+	authorized.emit()
 	
+	%ApplicationID.editable = false
+	%Connect.disabled = true
+	%Refresh.disabled = false
 	%Warning.text = ""
+	
+	if (%Refresh as Button).pressed.get_connections().size() == 0:
+		(%Refresh as Button).pressed.connect(_on_refresh_pressed.bind(client))
+
+
+func _on_refresh_pressed(client: DiscordClient) -> void:
+	client.refresh_token(client.get_application_id(), _refresh_token, _on_token_updated)
