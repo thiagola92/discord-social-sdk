@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://b2ys7ik0k4ssb"]
+
+[ext_resource type="Script" uid="uid://uqo2mqtuij0d" path="res://examples/gdextension_examples/01_friends_list/friends_container/friend_container/friend_container.gd" id="1_tiey5"]
+
+[node name="FriendContainer" type="HBoxContainer" unique_id=1170518651]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+script = ExtResource("1_tiey5")
+
+[node name="DisplayName" type="Label" parent="." unique_id=1340597536]
+unique_name_in_owner = true
+layout_mode = 2

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://ctyvlfbh2qfxf"]
+
+[ext_resource type="Script" uid="uid://bq0ckwavblh4q" path="res://examples/gdextension_examples/01_friends_list/friends_container/friends_container.gd" id="1_wu0de"]
+
+[node name="FriendsContainer" type="FoldableContainer" unique_id=805712414]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+folded = true
+title = "Friends"
+script = ExtResource("1_wu0de")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1174995942]
+visible = false
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[node name="FriendsList" type="VBoxContainer" parent="ScrollContainer" unique_id=1244571231]
+unique_name_in_owner = true
+layout_mode = 2

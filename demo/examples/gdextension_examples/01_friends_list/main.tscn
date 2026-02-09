@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://w7ibxuhjm723"]
+
+[ext_resource type="Script" uid="uid://boq2mdxgibt1i" path="res://examples/gdextension_examples/01_friends_list/main.gd" id="1_3mky1"]
+[ext_resource type="PackedScene" uid="uid://dga2bo68ra1x1" path="res://examples/gdextension_examples/00_linking/connect_container/connect_container.tscn" id="2_6a03g"]
+[ext_resource type="PackedScene" uid="uid://c0clq8heiqn1c" path="res://examples/gdextension_examples/01_friends_list/status_container/status_container.tscn" id="3_64ai2"]
+[ext_resource type="PackedScene" uid="uid://dru5ec3idvp6j" path="res://examples/gdextension_examples/00_linking/log_container/log_container.tscn" id="3_yt8iw"]
+[ext_resource type="PackedScene" uid="uid://ctyvlfbh2qfxf" path="res://examples/gdextension_examples/01_friends_list/friends_container/friends_container.tscn" id="4_64ai2"]
+
+[node name="Main" type="VBoxContainer" unique_id=536810644]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3mky1")
+
+[node name="ConnectContainer" parent="." unique_id=2145470178 instance=ExtResource("2_6a03g")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="FriendsContainer" parent="." unique_id=805712414 instance=ExtResource("4_64ai2")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="StatusContainer" parent="." unique_id=1401782538 instance=ExtResource("3_64ai2")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="LogContainer" parent="." unique_id=558899810 instance=ExtResource("3_yt8iw")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+
+[connection signal="status_ready" from="StatusContainer" to="." method="_on_status_container_status_ready"]

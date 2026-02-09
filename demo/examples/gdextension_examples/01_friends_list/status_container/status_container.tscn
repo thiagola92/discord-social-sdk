@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://c0clq8heiqn1c"]
+
+[ext_resource type="Script" uid="uid://ca8jprgouwy7o" path="res://examples/gdextension_examples/01_friends_list/status_container/status_container.gd" id="1_hnboo"]
+
+[node name="StatusContainer" type="HBoxContainer" unique_id=1401782538]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+script = ExtResource("1_hnboo")
+
+[node name="Status" type="Label" parent="." unique_id=780059215]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Error" type="Label" parent="." unique_id=1523273955]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_colors/font_color = Color(0.89, 0, 0.014833107, 1)
