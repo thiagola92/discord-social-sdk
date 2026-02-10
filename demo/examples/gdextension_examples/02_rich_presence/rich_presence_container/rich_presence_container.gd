@@ -50,4 +50,27 @@ func _on_update_pressed() -> void:
 		timestamps.set_end(%Counter.value)
 	activity.set_timestamps(timestamps)
 	
+	if not %GameInvite.button_pressed:
+		update_pressed.emit(activity)
+		return
+	
+	var platforms := 0
+	
+	platforms |= 1 if %PlatformDesktop.button_pressed else 0
+	platforms |= 2 if %PlatformXbox.button_pressed else 0
+	platforms |= 4 if %PlatformSamsung.button_pressed else 0
+	platforms |= 8 if %PlatformIOS.button_pressed else 0
+	platforms |= 16 if %PlatformAndroid.button_pressed else 0
+	platforms |= 32 if %PlatformEmbedded.button_pressed else 0
+	platforms |= 64 if %PlatformPS4.button_pressed else 0
+	platforms |= 128 if %PlatformPS5.button_pressed else 0
+	
+	if platforms:
+		activity.set_supported_platforms(platforms)
+	
+	var secrets := DiscordActivitySecrets.new()
+	
+	secrets.set_join(%Secrets.text)
+	activity.set_secrets(secrets)
+	
 	update_pressed.emit(activity)
