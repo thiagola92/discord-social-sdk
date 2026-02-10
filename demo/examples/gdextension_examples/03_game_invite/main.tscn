@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://df2x6xmg55las"]
+
+[ext_resource type="Script" uid="uid://bnta3klaxqkeh" path="res://examples/gdextension_examples/03_game_invite/main.gd" id="1_3b31a"]
+[ext_resource type="PackedScene" uid="uid://dga2bo68ra1x1" path="res://examples/gdextension_examples/00_linking/connect_container/connect_container.tscn" id="2_ivulj"]
+[ext_resource type="PackedScene" uid="uid://ctyvlfbh2qfxf" path="res://examples/gdextension_examples/01_friends_list/friends_container/friends_container.tscn" id="3_sm4mi"]
+[ext_resource type="PackedScene" uid="uid://c57vxtlq8ty7u" path="res://examples/gdextension_examples/02_rich_presence/rich_presence_container/rich_presence_container.tscn" id="4_s7xam"]
+[ext_resource type="PackedScene" uid="uid://c0clq8heiqn1c" path="res://examples/gdextension_examples/01_friends_list/status_container/status_container.tscn" id="5_2uwx7"]
+[ext_resource type="PackedScene" uid="uid://dyep0j5pdci1q" path="res://examples/gdextension_examples/03_game_invite/invite_container/invite_container.tscn" id="5_ivulj"]
+[ext_resource type="PackedScene" uid="uid://dru5ec3idvp6j" path="res://examples/gdextension_examples/00_linking/log_container/log_container.tscn" id="6_0qidy"]
+
+[node name="Main" type="VBoxContainer" unique_id=978889954]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3b31a")
+
+[node name="ConnectContainer" parent="." unique_id=2145470178 instance=ExtResource("2_ivulj")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="FriendsContainer" parent="." unique_id=805712414 instance=ExtResource("3_sm4mi")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="RichPresenceContainer" parent="." unique_id=1042740398 instance=ExtResource("4_s7xam")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="InviteContainer" parent="." unique_id=1178696050 instance=ExtResource("5_ivulj")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="StatusContainer" parent="." unique_id=1401782538 instance=ExtResource("5_2uwx7")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="LogContainer" parent="." unique_id=558899810 instance=ExtResource("6_0qidy")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[connection signal="update_pressed" from="RichPresenceContainer" to="." method="_on_rich_presence_container_update_pressed"]
+[connection signal="invite_requested" from="InviteContainer" to="." method="_on_invite_container_invite_requested"]

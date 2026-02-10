@@ -74,3 +74,7 @@ func _on_update_pressed() -> void:
 	activity.set_secrets(secrets)
 	
 	update_pressed.emit(activity)
+
+
+func _on_game_invite_toggled(toggled_on: bool) -> void:
+	%Secrets.editable = toggled_on

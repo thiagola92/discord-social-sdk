@@ -15,7 +15,7 @@ script = ExtResource("1_doyac")
 visible = false
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
-scroll_vertical = 278
+scroll_vertical = 100
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=1881143229]
 layout_mode = 2
@@ -200,6 +200,7 @@ text = "Secret"
 [node name="Secrets" type="LineEdit" parent="ScrollContainer/VBoxContainer/GridContainer" unique_id=1176943627]
 unique_name_in_owner = true
 layout_mode = 2
+editable = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=141625519]
 layout_mode = 2
@@ -215,4 +216,5 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Update"
 
+[connection signal="toggled" from="ScrollContainer/VBoxContainer/GridContainer/GameInvite" to="." method="_on_game_invite_toggled"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/HBoxContainer/Update" to="." method="_on_update_pressed"]
