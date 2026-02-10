@@ -1,0 +1,144 @@
+[gd_scene format=3 uid="uid://c57vxtlq8ty7u"]
+
+[ext_resource type="Script" uid="uid://dfthqt3tbathe" path="res://examples/gdextension_examples/02_rich_presence/rich_presence_container/rich_presence_container.gd" id="1_doyac"]
+
+[node name="RichPresenceContainer" type="FoldableContainer" unique_id=1042740398]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 32.0
+grow_horizontal = 2
+title = "Rich Presence (Activity)"
+script = ExtResource("1_doyac")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1522872159]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+scroll_vertical = 87
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=1881143229]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer/VBoxContainer" unique_id=970801970]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/GridContainer" unique_id=1966366265]
+layout_mode = 2
+text = "Game/App name"
+
+[node name="Name" type="LineEdit" parent="ScrollContainer/VBoxContainer/GridContainer" unique_id=825639864]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/GridContainer" unique_id=345669322]
+layout_mode = 2
+text = "Type"
+
+[node name="TypeOption" type="OptionButton" parent="ScrollContainer/VBoxContainer/GridContainer" unique_id=1247588493]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="ScrollContainer/VBoxContainer/GridContainer" unique_id=268126308]
+layout_mode = 2
+text = "Details"
+
+[node name="Details" type="LineEdit" parent="ScrollContainer/VBoxContainer/GridContainer" unique_id=61421803]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="ScrollContainer/VBoxContainer/GridContainer" unique_id=454317583]
+layout_mode = 2
+text = "State"
+
+[node name="State" type="LineEdit" parent="ScrollContainer/VBoxContainer/GridContainer" unique_id=537925525]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Party" type="Label" parent="ScrollContainer/VBoxContainer/GridContainer" unique_id=864880677]
+layout_mode = 2
+text = "Party"
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer/VBoxContainer/GridContainer" unique_id=2097684938]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/GridContainer/GridContainer" unique_id=199465320]
+layout_mode = 2
+text = "Current size"
+
+[node name="CurrentSize" type="SpinBox" parent="ScrollContainer/VBoxContainer/GridContainer/GridContainer" unique_id=1211240045]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+value = 1.0
+
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/GridContainer/GridContainer" unique_id=103793646]
+layout_mode = 2
+text = "Max size"
+
+[node name="MaxSize" type="SpinBox" parent="ScrollContainer/VBoxContainer/GridContainer/GridContainer" unique_id=649911200]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+value = 1.0
+
+[node name="Label3" type="Label" parent="ScrollContainer/VBoxContainer/GridContainer/GridContainer" unique_id=1027111612]
+layout_mode = 2
+text = "Privacy"
+
+[node name="PrivacyOption" type="OptionButton" parent="ScrollContainer/VBoxContainer/GridContainer/GridContainer" unique_id=485753026]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label5" type="Label" parent="ScrollContainer/VBoxContainer/GridContainer" unique_id=408125482]
+layout_mode = 2
+text = "Timestamps"
+
+[node name="GridContainer2" type="GridContainer" parent="ScrollContainer/VBoxContainer/GridContainer" unique_id=410218435]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/GridContainer/GridContainer2" unique_id=1973564603]
+layout_mode = 2
+text = "Type"
+
+[node name="TimestampsType" type="OptionButton" parent="ScrollContainer/VBoxContainer/GridContainer/GridContainer2" unique_id=209566871]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 0
+item_count = 2
+popup/item_0/text = "How long since start"
+popup/item_0/id = 0
+popup/item_1/text = "How long until end"
+popup/item_1/id = 1
+
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/GridContainer/GridContainer2" unique_id=1325698041]
+layout_mode = 2
+text = "Count"
+
+[node name="Counter" type="SpinBox" parent="ScrollContainer/VBoxContainer/GridContainer/GridContainer2" unique_id=869140668]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+value = 1.0
+allow_greater = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=141625519]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Warning" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1344946272]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="Update" type="Button" parent="ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1094454264]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Update"
+
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/HBoxContainer/Update" to="." method="_on_update_pressed"]

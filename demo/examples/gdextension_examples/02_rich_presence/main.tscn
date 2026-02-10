@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://byuj25rrh6axe"]
+
+[ext_resource type="Script" uid="uid://2268sbsnx5rx" path="res://examples/gdextension_examples/02_rich_presence/main.gd" id="1_8t2c3"]
+[ext_resource type="PackedScene" uid="uid://dga2bo68ra1x1" path="res://examples/gdextension_examples/00_linking/connect_container/connect_container.tscn" id="1_jpqbh"]
+[ext_resource type="PackedScene" uid="uid://ctyvlfbh2qfxf" path="res://examples/gdextension_examples/01_friends_list/friends_container/friends_container.tscn" id="2_8t2c3"]
+[ext_resource type="PackedScene" uid="uid://c0clq8heiqn1c" path="res://examples/gdextension_examples/01_friends_list/status_container/status_container.tscn" id="3_m4wtv"]
+[ext_resource type="PackedScene" uid="uid://dru5ec3idvp6j" path="res://examples/gdextension_examples/00_linking/log_container/log_container.tscn" id="4_uubpe"]
+[ext_resource type="PackedScene" uid="uid://c57vxtlq8ty7u" path="res://examples/gdextension_examples/02_rich_presence/rich_presence_container/rich_presence_container.tscn" id="6_m4wtv"]
+
+[node name="Main" type="VBoxContainer" unique_id=978889954]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8t2c3")
+
+[node name="ConnectContainer" parent="." unique_id=2145470178 instance=ExtResource("1_jpqbh")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="FriendsContainer" parent="." unique_id=805712414 instance=ExtResource("2_8t2c3")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="RichPresenceContainer" parent="." unique_id=1042740398 instance=ExtResource("6_m4wtv")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="StatusContainer" parent="." unique_id=1401782538 instance=ExtResource("3_m4wtv")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="LogContainer" parent="." unique_id=558899810 instance=ExtResource("4_uubpe")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[connection signal="update_pressed" from="RichPresenceContainer" to="." method="_on_rich_presence_container_update_pressed"]

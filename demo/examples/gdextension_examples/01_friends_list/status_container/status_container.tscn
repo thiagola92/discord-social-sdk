@@ -7,6 +7,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 23.0
 grow_horizontal = 2
+size_flags_vertical = 10
 script = ExtResource("1_hnboo")
 
 [node name="Status" type="Label" parent="." unique_id=780059215]
