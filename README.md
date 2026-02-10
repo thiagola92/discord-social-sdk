@@ -3,7 +3,7 @@ Wrapper around [Discord Social SDK](https://discord.com/developers/docs/discord-
 
 <div align="center">
 
-![Logo](demo/assets/discord_social_sdk.svg)  
+![Logo](demo/assets/thumbnail.png)  
 
 </div>
 
@@ -14,17 +14,19 @@ What is Discord Social SDK? You can read about it from Discord it self:
 
 But if you want me to be brief... It's basically a way to use Discord infrastructure in your game. For example, instead of developing a text/voice chat for your game, you could just request Discord to create one for you.  
 
-What can you do with this SDK:  
+What is this GDExtension? It's a wrapper around the SDK, so you can interact with the SDK through GDScript (instead of C++).  
+
+What can you do with the SDK?  
 - Send/Accept friend request.  
 - Block/Unblock users.  
 - Send/Read direct messages.  
-- Interact with [rich Presence](https://discord.com/developers/docs/rich-presence/overview).  
-    - Setup your activity.  
+- Interact with [Rich Presence](https://discord.com/developers/docs/rich-presence/overview).  
+    - Setup your Activity.  
     - Invite to game.  
 - Create lobbies.  
     - Use lobby text chat.  
     - Use lobby voice chat.  
-- I don't know all functionalities...  
+- I don't know all functionalities but is suppose to do everything that the SDK can do...  
 
 # Platforms
 These are the currently supported platforms:  
