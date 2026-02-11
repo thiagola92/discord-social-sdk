@@ -213,6 +213,7 @@ If your game runs everything locally, that means that you need to put your Appli
                     - `DiscordActivityTypes.id`
 
 # Donation
+![](https://raw.githubusercontent.com/thiagola92/thiagola92/refs/heads/main/profile-donation/donation.png)  
 
 # Development
 For development details go to [DEVELOPMENT.md](./DEVELOPMENT.md).  
