@@ -153,6 +153,8 @@ Need more examples? Check these two directories:
 - [GDExtension examples](./demo/examples/gdextension_examples/).  
     - Examples made by me (for fun).  
 
+You probably already noticed, but their SDK makes **heavy** use of callbacks and we just replicate their behaviour in this GDExtension.  
+
 # Security
 At first you may think that your Application ID is public information... But it's not!  
 
@@ -173,7 +175,7 @@ If your game runs everything locally, that means that you need to put your Appli
 2. I belive that they use [Doxygen](https://www.doxygen.nl/) to generate their documentation, which I'm also using in this project. So we probably have the same level of documentation (it may need a little formatting, but we have it!).  
 
 ### The Bad
-1. As counterpart of C++ [`std::optional<T>`](https://en.cppreference.com/w/cpp/utility/optional) type, I'm using [`Variant`](https://docs.godotengine.org/en/stable/classes/class_variant.html) (which can hold a `null` or an actual value).  
+1. As counterpart of C++ [`std::optional<T>`](https://en.cppreference.com/w/cpp/utility/optional) type, I'm using [`Variant`](https://docs.godotengine.org/en/stable/classes/class_variant.html) (which will hold `null` or an actual value).  
     - This could change in the future if I decide to create my own class "Optional".  
 2. Some functions were renamed because their name was already being used in Godot class. I just added a `_discord` to their name.  
     - For example, the class `DiscordClient` will have these two methods:  
@@ -182,7 +184,7 @@ If your game runs everything locally, that means that you need to put your Appli
 3. There is no `uint` in GDScript, so you always receive an `int` from the GDExtension.  
     - If you don't intend to change the data, everything will be fine because there is no data lost when converting between `uint` and `int`.  
     - If you **do** intend to change the data, you should know which operations can corrupt your data.  
-    - Reference: https://github.com/godotengine/godot-proposals/issues/9740#issuecomment-2484959346  
+    - Reference: https://github.com/godotengine/godot-proposals/issues/9740#issuecomment-2484959346
 
 ### The Ugly
 1. Each enum has it own class.  
