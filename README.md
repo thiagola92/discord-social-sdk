@@ -146,7 +146,8 @@ func _on_token_updated(result: DiscordClientResult) -> void:
 		client.connect_discord()
 ```
 
-Need more examples? Check these two directories:  
+### Examples
+Check these two directories:  
 - [Discord examples](./demo/examples/discord_examples/).  
     - Examples made using [Discord Social SDK Documentation](https://discord.com/developers/docs/discord-social-sdk/overview) as base.  
 	- In my opnion, you should read the official documentation to understand how the SDK works and only look at these examples when curious about the GDScript version.  
@@ -185,6 +186,12 @@ If your game runs everything locally, that means that you need to put your Appli
     - If you don't intend to change the data, everything will be fine because there is no data lost when converting between `uint` and `int`.  
     - If you **do** intend to change the data, you should know which operations can corrupt your data.  
     - Reference: https://github.com/godotengine/godot-proposals/issues/9740#issuecomment-2484959346
+4. No signals usage.  
+	- I would love to transform some of these callbacks into signals (♥️), but is not possible to identify when can it be done just by looking at functions signature. For example: `void xxxxx(Callback cb);`  
+		- If the function name is `set_xxx_callback`: You know that will call you function when "xxx" happens.  
+		- If the function name is `do_xxx`: You know that will do "xxx" and call you function when it's done.  
+		- The first case can be transformed to signal, while the second can't... Analysing the function name and deciding what to do is a bit too much for me.  
+
 
 ### The Ugly
 1. Each enum has it own class.  
