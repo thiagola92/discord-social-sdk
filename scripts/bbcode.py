@@ -27,6 +27,18 @@ def to_bbcode(text: str) -> str:
     text = re.sub(r"<xrefdescription>", "", text)
     text = re.sub(r"</xrefdescription>", "", text)
     text = re.sub(r"<xreftitle>.*?</xreftitle>", r"", text)
+    text = re.sub(r"<codeline>", "", text)
+    text = re.sub(r"</codeline>", "", text)
+    text = re.sub(r"<highlight .*?>", "", text)
+    text = re.sub(r"</highlight>", "", text)
+
+    # Testing
+    text = re.sub(
+        r"(<programlisting.*?>)(.*?)(</programlisting>)",
+        clear_codeblock,
+        text,
+        flags=re.DOTALL,
+    )
 
     # Fix weird situations.
     text = re.sub(r"&amp;", "&", text)
@@ -38,12 +50,21 @@ def to_bbcode(text: str) -> str:
     # Adaptation.
     text = re.sub(r"<title>(.*?)</title>", r"[u][b]\1[/b][/u]\n", text)
     text = re.sub(r"<listitem>", r"- ", text)
+    text = re.sub(
+        r'<simplesect kind="see">(.*?)</simplesect>',
+        r"[b]See also[/b]\n\1",
+        text,
+        flags=re.DOTALL,
+    )
+    text = re.sub(r"<sp />", " ", text)
 
     # To BBCode.
     text = re.sub(r'<ulink .*url="(.*?)">(.*?)</ulink>', r"[url=\1]\2[/url]", text)
     text = re.sub(r"<computeroutput>(.*?)</computeroutput>", r"[code]\1[/code]", text)
     text = re.sub(r"<emphasis>(.*?)</emphasis>", r"[i]\1[/i]", text)
-    text = re.sub(r"<programlisting.*?>", r"[codeblock]", text, flags=re.DOTALL)
+    text = re.sub(
+        r"<programlisting.*?>", r"[codeblock lang=text]", text, flags=re.DOTALL
+    )
     text = re.sub(r"</programlisting>", r"[/codeblock]", text, flags=re.DOTALL)
     text = re.sub(
         r'<ref .*?refid="(.*?)".*?kindref="(.*?)".*?>(.*?)</ref>',
@@ -57,6 +78,16 @@ def to_bbcode(text: str) -> str:
     text = re.sub(r"\n\n", "\n", text)
 
     return text.strip()
+
+
+def clear_codeblock(match: Match) -> str:
+    open_tag = match.group(1)
+    content = match.group(2)
+    close_tag = match.group(3)
+
+    content = re.sub(r"<ref .*?>(.*?)</ref>", r"\1", content)
+
+    return open_tag + content + close_tag
 
 
 def link_class(match: Match) -> str:
