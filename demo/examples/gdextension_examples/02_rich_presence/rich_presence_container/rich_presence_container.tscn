@@ -15,7 +15,6 @@ script = ExtResource("1_doyac")
 visible = false
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
-scroll_vertical = 100
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=1881143229]
 layout_mode = 2

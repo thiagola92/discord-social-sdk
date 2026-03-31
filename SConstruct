@@ -3,6 +3,7 @@ import shutil
 from pathlib import Path
 
 env = SConscript("godot-cpp/SConstruct")
+sources = Glob("src/*.cpp")
 
 # For reference:
 # - CCFLAGS are compilation flags shared between C and C++
@@ -19,13 +20,25 @@ env.Append(
     LIBS=["discord_partner_sdk"],
 )
 
+# Testing
+if env["platform"] == "linux" and env["arch"] == "arm64":
+    env.Replace(
+        AR="aarch64-linux-gnu-ar",
+        AS="aarch64-linux-gnu-as",
+        CC="aarch64-linux-gnu-gcc",
+        CXX="aarch64-linux-gnu-g++",
+        LD="aarch64-linux-gnu-ld",
+        LINK="aarch64-linux-gnu-gcc",
+        OBJCOPY="aarch64-linux-gnu-objcopy",
+        STRIP="aarch64-linux-gnu-strip",
+        RANLIB="aarch64-linux-gnu-ranlib",
+    )
+
 # Dynamic linking libs.
 if env["platform"] == "macos":
     env.Append(LINKFLAGS=["-Wl,-rpath,@loader_path"])
 elif env["platform"] == "linux":
     env.Append(RPATH=["."])
-
-sources = Glob("src/*.cpp")
 
 # Include classes XML documentation.
 if env["target"] in ["editor", "template_debug"]:
@@ -64,7 +77,7 @@ if env["platform"] == "macos":
         source=sources,
     )
 elif env["platform"] == "ios":
-    copy_lib("demo/addons/discord_social_sdk/bin/linux/", "*.xcframework")
+    copy_lib("demo/addons/discord_social_sdk/bin/ios/", "*.xcframework")
 
     if env["ios_simulator"]:
         library = env.StaticLibrary(
@@ -90,7 +103,7 @@ elif env["platform"] == "linux":
         source=sources,
     )
 elif env["platform"] == "android":
-    copy_lib("demo/addons/discord_social_sdk/bin/linux/", "*.aar")
+    copy_lib("demo/addons/discord_social_sdk/bin/android/", "*.aar")
 
     library = env.SharedLibrary(
         "demo/addons/discord_social_sdk/bin/android/libdiscord_social_sdk{}{}".format(

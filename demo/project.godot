@@ -18,10 +18,6 @@ config/name="Demo"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="uid://bxoo7lohutig5"
 
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/discord_social_sdk/plugin.cfg")
-
 [gdunit4]
 
 settings/common/update_notification_enabled=false
