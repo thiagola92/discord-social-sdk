@@ -10,7 +10,6 @@ func setup(client: DiscordClient) -> void:
 
 
 func update_friends_list(client: DiscordClient) -> void:
-	print("Here")
 	for children in %FriendsList.get_children():
 		children.queue_free()
 	
