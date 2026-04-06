@@ -43,41 +43,78 @@ All the important code is written in Python (inside `scripts`) and this code is 
 > No code should be manually added to `src` directory.  
 
 # Prerequisites
-I'm letting this so you can adapt to your operating system.  
-
-### Ubuntu
-
+The following tools were used in the project:
 - [Godot](https://godotengine.org/)
 - [SCons](https://scons.org/)
-    - `sudo apt install scons`
-- [Mingw-w64](https://www.mingw-w64.org/)
-    - `sudo apt install mingw-w64`
 - [Python](https://www.python.org/) >=3.12
-    - Included by default
 - [Clang](https://clang.llvm.org/)
-    - `sudo apt install clang`
 - [Clang format](https://clang.llvm.org/docs/ClangFormat.html)
-    - `sudo apt install clang-format`
     - [VSCode](https://marketplace.visualstudio.com/items?itemName=xaver.clang-format)
+- [Mingw64](https://www.mingw-w64.org/)
+- [Android SDK](https://developer.android.com/tools/sdkmanager)
+    - [Godot instructions](https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html#download-the-android-sdk)
 - [Discord SDK for C++](https://discord.com/developers/docs/discord-social-sdk/getting-started/using-c++#step-4-download-the-discord-sdk-for-c++)
 
-### Fedora
+### Fedora Script
+```bash
+# Scons.
+sudo dnf install python3-scons;
 
-- [Godot](https://godotengine.org/)
-- [SCons](https://scons.org/)
-    - `sudo dnf install scons`
-- Others
-    - `sudo dnf install libstdc++-static`
-- [Mingw-w64](https://www.mingw-w64.org/)
-    - `sudo dnf install mingw64-gcc-c++`
-- [Python](https://www.python.org/) >=3.12
-    - Included by default
-- [Clang](https://clang.llvm.org/)
-    - `sudo dnf install clang`
-- [Clang format](https://clang.llvm.org/docs/ClangFormat.html)
-    - `sudo dnf install clang-tools-extra`
-    - [VSCode](https://marketplace.visualstudio.com/items?itemName=xaver.clang-format)
-- [Discord SDK for C++](https://discord.com/developers/docs/discord-social-sdk/getting-started/using-c++#step-4-download-the-discord-sdk-for-c++)
+# Provide GNU static libraries (Fedora doesn't come with it).
+sudo dnf install libstdc++-static;
+
+# Clang.
+sudo dnf install clang;
+
+# Clang-format.
+sudo dnf install clang-tools-extra;
+
+# Cross compile for Windows.
+sudo dnf install mingw64-gcc-c++;
+
+# Android SDK.
+mkdir -p $HOME/Android/Sdk;
+curl -fl https://dl.google.com/android/repository/commandlinetools-linux-14742923_latest.zip -o commandlinetools.zip;
+unzip commandlinetools.zip;
+mv cmdline-tools $HOME/Android/Sdk;
+mkdir $HOME/Android/Sdk/comdline-tools/latest
+mv $HOME/Android/Sdk/comdline-tools/bin $HOME/Android/Sdk/comdline-tools/latest;
+mv $HOME/Android/Sdk/comdline-tools/lib $HOME/Android/Sdk/comdline-tools/latest;
+mv $HOME/Android/Sdk/comdline-tools/NOTICE.txt $HOME/Android/Sdk/comdline-tools/latest;
+mv $HOME/Android/Sdk/comdline-tools/source.properties $HOME/Android/Sdk/comdline-tools/latest;
+echo "PATH=\"\$HOME/Android/SDK/cmdline-tools/latest/bin:\$PATH\"" >> $HOME/.bashrc;
+sdkmanager --sdk_root=$HOME/Android/Sdk "platform-tools" "build-tools;35.0.1" "platforms;android-35" "cmdline-tools;latest" "cmake;3.10.2.4988404" "ndk;28.1.13356709"
+rm commandlinetools.zip;
+```
+
+### Ubuntu script
+```bash
+# Scons.
+sudo apt install scons;
+
+# Clang.
+sudo apt install clang;
+
+# Clang-format.
+sudo apt install clang-format;
+
+# Cross compile for Windows.
+sudo apt install mingw-w64;
+
+# Android SDK.
+mkdir -p $HOME/Android/Sdk;
+curl -fl https://dl.google.com/android/repository/commandlinetools-linux-14742923_latest.zip -o commandlinetools.zip;
+unzip commandlinetools.zip;
+mv cmdline-tools $HOME/Android/Sdk;
+mkdir $HOME/Android/Sdk/comdline-tools/latest
+mv $HOME/Android/Sdk/comdline-tools/bin $HOME/Android/Sdk/comdline-tools/latest;
+mv $HOME/Android/Sdk/comdline-tools/lib $HOME/Android/Sdk/comdline-tools/latest;
+mv $HOME/Android/Sdk/comdline-tools/NOTICE.txt $HOME/Android/Sdk/comdline-tools/latest;
+mv $HOME/Android/Sdk/comdline-tools/source.properties $HOME/Android/Sdk/comdline-tools/latest;
+echo "PATH=\"\$HOME/Android/SDK/cmdline-tools/latest/bin:\$PATH\"" >> $HOME/.bashrc;
+sdkmanager --sdk_root=$HOME/Android/Sdk "platform-tools" "build-tools;35.0.1" "platforms;android-35" "cmdline-tools;latest" "cmake;3.10.2.4988404" "ndk;28.1.13356709"
+rm commandlinetools.zip;
+```
 
 # Step by step
 > [!WARNING]
@@ -85,6 +122,9 @@ I'm letting this so you can adapt to your operating system.
 
 ### Setup repository
 ```bash
+# Environment variables.
+export ANDROID_HOME=$HOME/Android/Sdk # Where Android SDK is installed.
+
 # Clone repository, submodules and only file needed.
 git clone --recurse-submodules --filter=blob:none https://github.com/thiagola92/discord-social-sdk.git
 cd discord-social-sdk
