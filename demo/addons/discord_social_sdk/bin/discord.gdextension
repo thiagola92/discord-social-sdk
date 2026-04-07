@@ -27,16 +27,16 @@ windows.release.x86_64 = "./windows/libdiscord_social_sdk.windows.template_relea
 
 [dependencies]
 android.debug.arm64 = {
-    "./android/discord_partner_sdk.aar": "",
+    "./android/discord_partner_sdk.so": "",
 }
 android.debug.x86_64 = {
-    "./android/discord_partner_sdk.aar": "",
+    "./android/discord_partner_sdk.so": "",
 }
 android.release.arm64 = {
-    "./android/discord_partner_sdk.aar": "",
+    "./android/discord_partner_sdk.so": "",
 }
 android.release.x86_64 = {
-    "./android/discord_partner_sdk.aar": "",
+    "./android/discord_partner_sdk.so": "",
 }
 linux.debug.arm64 = {
     "./linux/libdiscord_partner_sdk.so": "",

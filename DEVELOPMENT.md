@@ -51,6 +51,7 @@ The following tools were used in the project:
 - [Clang format](https://clang.llvm.org/docs/ClangFormat.html)
     - [VSCode](https://marketplace.visualstudio.com/items?itemName=xaver.clang-format)
 - [Mingw64](https://www.mingw-w64.org/)
+- [OpenJDK](https://openjdk.org/)
 - [Android SDK](https://developer.android.com/tools/sdkmanager)
     - [Godot instructions](https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html#download-the-android-sdk)
 - [Discord SDK for C++](https://discord.com/developers/docs/discord-social-sdk/getting-started/using-c++#step-4-download-the-discord-sdk-for-c++)
@@ -71,6 +72,9 @@ sudo dnf install clang-tools-extra;
 
 # Cross compile for Windows.
 sudo dnf install mingw64-gcc-c++;
+
+# OpenJDK.
+sudo dnf install java-latest-openjdk-devel
 
 # Android SDK.
 mkdir -p $HOME/Android/Sdk;
@@ -131,11 +135,23 @@ cd discord-social-sdk
 
 # Manually download the DiscordSocialSdk zip to the project directory.
 
+# Create libraries directory.
+mkdir -p lib/android
+mkdir -p lib/ios
+mkdir -p lib/linux
+mkdir -p lib/macos
+mkdir -p lib/windows
+
 # Unzip libraries and headers to correct directories.
 unzip DiscordSocialSdk*.zip -d /tmp/
-cp -r /tmp/discord_social_sdk/lib/release/* lib/
-cp -r /tmp/discord_social_sdk/bin/release/* lib/
+cp -r /tmp/discord_social_sdk/lib/release/*.aar lib/android/
+cp -r /tmp/discord_social_sdk/lib/release/*.xcframework lib/ios/
+cp -r /tmp/discord_social_sdk/lib/release/*.so lib/linux/
+cp -r /tmp/discord_social_sdk/lib/release/*.dylib lib/macos/
+cp -r /tmp/discord_social_sdk/bin/release/*.dll lib/windows/
+cp -r /tmp/discord_social_sdk/lib/release/*.lib lib/windows/
 cp -r /tmp/discord_social_sdk/include/* include/
+unzip lib/android/discord_partner_sdk.aar -d lib/android/aar
 rm -rf /tmp/discord_social_sdk
 
 # Generate GDExtension API files.

@@ -13,19 +13,6 @@ sources = Glob("src/*.cpp")
 # - CPPDEFINES are for pre-processor defines
 # - LINKFLAGS are for linking flags
 
-# Tweak this if you want to use different folders, or more folders, to store your source code in.
-env.Append(
-    CPPPATH=["src/", "include/"],
-    LIBPATH=["lib/"],
-    LIBS=["discord_partner_sdk"],
-)
-
-# Dynamic linking libs.
-if env["platform"] == "macos":
-    env.Append(LINKFLAGS=["-Wl,-rpath,@loader_path"])
-elif env["platform"] == "linux":
-    env.Append(RPATH=["."])
-
 # Include classes XML documentation.
 if env["target"] in ["editor", "template_debug"]:
     try:
@@ -42,7 +29,7 @@ def copy_lib(dest_dir: str, pattern: str):
     Path(dest_dir).mkdir(exist_ok=True)
 
     dest = Path(dest_dir).absolute()
-    src = list(Path("lib/").glob(pattern))
+    src = list(Path(".").glob(pattern))
 
     for f in src:
         if f.is_file():
@@ -53,17 +40,37 @@ def copy_lib(dest_dir: str, pattern: str):
 
 
 # Generate library.
-if env["platform"] == "macos":
-    copy_lib("demo/addons/discord_social_sdk/bin/macos/", "*.dylib")
+if env["platform"] == "android":
+    env.Append(
+        CPPPATH=["src/", "include/"],
+        LIBPATH=["lib/android/aar/jni/arm64-v8a"],
+        LIBS=["discord_partner_sdk"],
+        RPATH=["."],
+    )
+
+    copy_lib(
+        "demo/addons/discord_social_sdk/bin/android/",
+        "lib/android/aar/jni/arm64-v8a/*.so",
+    )
 
     library = env.SharedLibrary(
-        "demo/addons/discord_social_sdk/bin/macos/libdiscord_social_sdk.{}.{}.framework/libdiscord_social_sdk.{}.{}".format(
-            env["platform"], env["target"], env["platform"], env["target"]
+        "demo/addons/discord_social_sdk/bin/android/libdiscord_social_sdk{}{}".format(
+            env["suffix"], env["SHLIBSUFFIX"]
         ),
         source=sources,
     )
 elif env["platform"] == "ios":
-    copy_lib("demo/addons/discord_social_sdk/bin/ios/", "*.xcframework")
+    env.Append(
+        CPPPATH=["src/", "include/"],
+        LIBPATH=["lib/ios"],
+        LIBS=["discord_partner_sdk"],
+        RPATH=["."],
+    )
+
+    copy_lib(
+        "demo/addons/discord_social_sdk/bin/ios/",
+        "lib/ios/*",
+    )
 
     if env["ios_simulator"]:
         library = env.StaticLibrary(
@@ -80,7 +87,17 @@ elif env["platform"] == "ios":
             source=sources,
         )
 elif env["platform"] == "linux":
-    copy_lib("demo/addons/discord_social_sdk/bin/linux/", "*.so")
+    env.Append(
+        CPPPATH=["src/", "include/"],
+        LIBPATH=["lib/linux"],
+        LIBS=["discord_partner_sdk"],
+        RPATH=["."],
+    )
+
+    copy_lib(
+        "demo/addons/discord_social_sdk/bin/linux/",
+        "lib/linux/*",
+    )
 
     library = env.SharedLibrary(
         "demo/addons/discord_social_sdk/bin/linux/libdiscord_social_sdk{}{}".format(
@@ -88,18 +105,37 @@ elif env["platform"] == "linux":
         ),
         source=sources,
     )
-elif env["platform"] == "android":
-    copy_lib("demo/addons/discord_social_sdk/bin/android/", "*.aar")
+elif env["platform"] == "macos":
+    env.Append(
+        CPPPATH=["src/", "include/"],
+        LIBPATH=["lib/macos"],
+        LIBS=["discord_partner_sdk"],
+        LINKFLAGS=["-Wl,-rpath,@loader_path"],
+    )
+
+    copy_lib(
+        "demo/addons/discord_social_sdk/bin/macos/",
+        "lib/macos/*",
+    )
 
     library = env.SharedLibrary(
-        "demo/addons/discord_social_sdk/bin/android/libdiscord_social_sdk{}{}".format(
-            env["suffix"], env["SHLIBSUFFIX"]
+        "demo/addons/discord_social_sdk/bin/macos/libdiscord_social_sdk.{}.{}.framework/libdiscord_social_sdk.{}.{}".format(
+            env["platform"], env["target"], env["platform"], env["target"]
         ),
         source=sources,
     )
 elif env["platform"] == "windows":
-    copy_lib("demo/addons/discord_social_sdk/bin/windows/", "*.dll")
-    copy_lib("demo/addons/discord_social_sdk/bin/windows/", "*.lib")
+    env.Append(
+        CPPPATH=["src/", "include/"],
+        LIBPATH=["lib/windows"],
+        LIBS=["discord_partner_sdk"],
+        RPATH=["."],
+    )
+
+    copy_lib(
+        "demo/addons/discord_social_sdk/bin/windows/",
+        "lib/windows/*",
+    )
 
     library = env.SharedLibrary(
         "demo/addons/discord_social_sdk/bin/windows/libdiscord_social_sdk{}{}".format(
