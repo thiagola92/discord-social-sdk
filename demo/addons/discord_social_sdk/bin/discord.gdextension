@@ -7,44 +7,66 @@ reloadable = true
 [libraries]
 
 android.debug.arm64 = "./android/libdiscord_social_sdk.android.template_debug.arm64.so"
-android.debug.x86_64 = "./android/libdiscord_social_sdk.android.template_debug.x86_64.so"
 android.release.arm64 = "./android/libdiscord_social_sdk.android.template_release.arm64.so"
-android.release.x86_64 = "./android/libdiscord_social_sdk.android.template_release.x86_64.so"
-ios.debug = "./ios/libdiscord_social_sdk.ios.template_debug.xcframework"
-ios.release = "./ios/libdiscord_social_sdk.ios.template_release.xcframework"
-linux.debug.arm64 = "./linux/libdiscord_social_sdk.linux.template_debug.arm64.so"
-linux.debug.rv64 = "./linux/libdiscord_social_sdk.linux.template_debug.rv64.so"
 linux.debug.x86_64 = "./linux/libdiscord_social_sdk.linux.template_debug.x86_64.so"
-linux.release.arm64 = "./linux/libdiscord_social_sdk.linux.template_release.arm64.so"
-linux.release.rv64 = "./linux/libdiscord_social_sdk.linux.template_release.rv64.so"
 linux.release.x86_64 = "./linux/libdiscord_social_sdk.linux.template_release.x86_64.so"
-macos.debug = "./macos/libdiscord_social_sdk.macos.template_debug.framework"
-macos.release = "./macos/libdiscord_social_sdk.macos.template_release.framework"
-windows.debug.x86_32 = "./windows/libdiscord_social_sdk.windows.template_debug.x86_32.dll"
 windows.debug.x86_64 = "./windows/libdiscord_social_sdk.windows.template_debug.x86_64.dll"
-windows.release.x86_32 = "./windows/libdiscord_social_sdk.windows.template_release.x86_32.dll"
 windows.release.x86_64 = "./windows/libdiscord_social_sdk.windows.template_release.x86_64.dll"
 
+; ⚠️ Not implemented
+;android.debug.x86_64 = "./android/libdiscord_social_sdk.android.template_debug.x86_64.so"
+;android.release.x86_64 = "./android/libdiscord_social_sdk.android.template_release.x86_64.so"
+;ios.debug = "./ios/libdiscord_social_sdk.ios.template_debug.xcframework"
+;ios.release = "./ios/libdiscord_social_sdk.ios.template_release.xcframework"
+;linux.debug.arm64 = "./linux/libdiscord_social_sdk.linux.template_debug.arm64.so"
+;linux.debug.rv64 = "./linux/libdiscord_social_sdk.linux.template_debug.rv64.so"
+;linux.release.arm64 = "./linux/libdiscord_social_sdk.linux.template_release.arm64.so"
+;linux.release.rv64 = "./linux/libdiscord_social_sdk.linux.template_release.rv64.so"
+;macos.debug = "./macos/libdiscord_social_sdk.macos.template_debug.framework"
+;macos.release = "./macos/libdiscord_social_sdk.macos.template_release.framework"
+;windows.debug.x86_32 = "./windows/libdiscord_social_sdk.windows.template_debug.x86_32.dll"
+;windows.release.x86_32 = "./windows/libdiscord_social_sdk.windows.template_release.x86_32.dll"
+
 [dependencies]
+
 android.debug.arm64 = {
-    "./android/discord_partner_sdk.so": "",
-}
-android.debug.x86_64 = {
     "./android/discord_partner_sdk.so": "",
 }
 android.release.arm64 = {
     "./android/discord_partner_sdk.so": "",
 }
+linux.debug.x86_64 = {
+    "./linux/libdiscord_partner_sdk.so": "",
+}
+linux.release.x86_64 = {
+    "./linux/libdiscord_partner_sdk.so": "",
+}
+windows.debug.x86_64 = {
+    "./windows/discord_partner_sdk.dll": "",
+    "./windows/discord_partner_sdk.lib": "",
+}
+windows.release.x86_64 = {
+    "./windows/discord_partner_sdk.dll": "",
+    "./windows/discord_partner_sdk.lib": "",
+}
+
+; ⚠️ Not implemented
+android.debug.x86_64 = {
+    "./android/discord_partner_sdk.so": "",
+}
 android.release.x86_64 = {
     "./android/discord_partner_sdk.so": "",
+}
+ios.debug = {
+    "./ios/libgodot-cpp.ios.template_debug.xcframework": "",
+}
+ios.release = {
+    "./ios/libgodot-cpp.ios.template_release.xcframework": "",
 }
 linux.debug.arm64 = {
     "./linux/libdiscord_partner_sdk.so": "",
 }
 linux.debug.rv64 = {
-    "./linux/libdiscord_partner_sdk.so": "",
-}
-linux.debug.x86_64 = {
     "./linux/libdiscord_partner_sdk.so": "",
 }
 linux.release.arm64 = {
@@ -53,28 +75,11 @@ linux.release.arm64 = {
 linux.release.rv64 = {
     "./linux/libdiscord_partner_sdk.so": "",
 }
-linux.release.x86_64 = {
-    "./linux/libdiscord_partner_sdk.so": "",
-}
-ios.debug = {
-    "./ios/libgodot-cpp.ios.template_debug.xcframework": "",
-}
-ios.release = {
-    "./ios/libgodot-cpp.ios.template_release.xcframework": "",
-}
 windows.debug.x86_32 = {
     "./windows/discord_partner_sdk.dll": "",
     "./windows/discord_partner_sdk.lib": "",
 }
 windows.release.x86_32 = {
-    "./windows/discord_partner_sdk.dll": "",
-    "./windows/discord_partner_sdk.lib": "",
-}
-windows.debug.x86_64 = {
-    "./windows/discord_partner_sdk.dll": "",
-    "./windows/discord_partner_sdk.lib": "",
-}
-windows.release.x86_64 = {
     "./windows/discord_partner_sdk.dll": "",
     "./windows/discord_partner_sdk.lib": "",
 }
