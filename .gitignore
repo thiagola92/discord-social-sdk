@@ -302,7 +302,9 @@ cython_debug/
 *.xcframework
 
 # Maintain lib directory.
-!lib/.gitkeep
+!lib/
+lib/*/*
+!lib/**/.gitkeep
 
 # ZIP from Discord.
 DiscordSocialSdk-*

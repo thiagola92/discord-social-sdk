@@ -43,16 +43,16 @@ All the important code is written in Python (inside `scripts`) and this code is 
 > No code should be manually added to `src` directory.  
 
 # Prerequisites
-The following tools were used in the project:
+The following tools were used in the project, this doesn't mean that you need every single one:
 - [Godot](https://godotengine.org/)
 - [SCons](https://scons.org/)
-- [Python](https://www.python.org/) >=3.12
+- [Python](https://www.python.org/) *(>= 3.12)*
 - [Clang](https://clang.llvm.org/)
 - [Clang format](https://clang.llvm.org/docs/ClangFormat.html)
-    - [VSCode](https://marketplace.visualstudio.com/items?itemName=xaver.clang-format)
-- [Mingw64](https://www.mingw-w64.org/)
-- [OpenJDK](https://openjdk.org/)
-- [Android SDK](https://developer.android.com/tools/sdkmanager)
+    - [VSCode extension](https://marketplace.visualstudio.com/items?itemName=xaver.clang-format)
+- [Mingw64](https://www.mingw-w64.org/) *(cross compile for windows)*
+- [OpenJDK](https://openjdk.org/) *(export for android)*
+- [Android SDK](https://developer.android.com/tools/sdkmanager) *(cross compile for android)*
     - [Godot instructions](https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html#download-the-android-sdk)
 - [Discord SDK for C++](https://discord.com/developers/docs/discord-social-sdk/getting-started/using-c++#step-4-download-the-discord-sdk-for-c++)
 
@@ -70,11 +70,11 @@ sudo dnf install clang;
 # Clang-format.
 sudo dnf install clang-tools-extra;
 
-# Cross compile for Windows.
+# Mingw64.
 sudo dnf install mingw64-gcc-c++;
 
 # OpenJDK.
-sudo dnf install java-latest-openjdk-devel
+sudo dnf install java-latest-openjdk-devel;
 
 # Android SDK.
 mkdir -p $HOME/Android/Sdk;
@@ -102,7 +102,7 @@ sudo apt install clang;
 # Clang-format.
 sudo apt install clang-format;
 
-# Cross compile for Windows.
+# Mingw64.
 sudo apt install mingw-w64;
 
 # Android SDK.
@@ -134,13 +134,6 @@ git clone --recurse-submodules --filter=blob:none https://github.com/thiagola92/
 cd discord-social-sdk
 
 # Manually download the DiscordSocialSdk zip to the project directory.
-
-# Create libraries directory.
-mkdir -p lib/android
-mkdir -p lib/ios
-mkdir -p lib/linux
-mkdir -p lib/macos
-mkdir -p lib/windows
 
 # Unzip libraries and headers to correct directories.
 unzip DiscordSocialSdk*.zip -d /tmp/
