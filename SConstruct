@@ -22,6 +22,7 @@ env = SConscript("godot-cpp/SConstruct")
 platform = env["platform"]
 target = env["target"]
 suffix = env["suffix"]
+lib_prefix = env["SHLIBPREFIX"]
 lib_suffix = env["SHLIBSUFFIX"]
 sources = Glob("src/*.cpp")
 
@@ -66,7 +67,7 @@ if platform == "android":
     )
 
     library = env.SharedLibrary(
-        f"{BIN_DIR}{platform}/lib{GDEXTENSION_NAME}{suffix}{lib_suffix}",
+        f"{BIN_DIR}{platform}/{lib_prefix}{GDEXTENSION_NAME}{suffix}{lib_suffix}",
         source=sources,
     )
 elif platform == "ios":
@@ -84,12 +85,12 @@ elif platform == "ios":
 
     if env["ios_simulator"]:
         library = env.StaticLibrary(
-            f"{BIN_DIR}{platform}/lib{GDEXTENSION_NAME}.{platform}.{target}.simulator.a",
+            f"{BIN_DIR}{platform}/{lib_prefix}{GDEXTENSION_NAME}.{platform}.{target}.simulator.a",
             source=sources,
         )
     else:
         library = env.StaticLibrary(
-            f"{BIN_DIR}{platform}/lib{GDEXTENSION_NAME}.{platform}.{target}.a",
+            f"{BIN_DIR}{platform}/{lib_prefix}{GDEXTENSION_NAME}.{platform}.{target}.a",
             source=sources,
         )
 elif platform == "linux":
@@ -106,7 +107,7 @@ elif platform == "linux":
     )
 
     library = env.SharedLibrary(
-        f"{BIN_DIR}{platform}/lib{GDEXTENSION_NAME}{suffix}{lib_suffix}",
+        f"{BIN_DIR}{platform}/{lib_prefix}{GDEXTENSION_NAME}{suffix}{lib_suffix}",
         source=sources,
     )
 elif platform == "macos":
@@ -123,7 +124,7 @@ elif platform == "macos":
     )
 
     library = env.SharedLibrary(
-        f"{BIN_DIR}{platform}/lib{GDEXTENSION_NAME}.{platform}.{target}.framework/lib{GDEXTENSION_NAME}.{platform}.{target}",
+        f"{BIN_DIR}{platform}/{lib_prefix}{GDEXTENSION_NAME}.{platform}.{target}.framework/{lib_prefix}{GDEXTENSION_NAME}.{platform}.{target}",
         source=sources,
     )
 elif platform == "windows":
@@ -140,7 +141,7 @@ elif platform == "windows":
     )
 
     library = env.SharedLibrary(
-        f"{BIN_DIR}{platform}/lib{GDEXTENSION_NAME}{suffix}{lib_suffix}",
+        f"{BIN_DIR}{platform}/{lib_prefix}{GDEXTENSION_NAME}{suffix}{lib_suffix}",
         source=sources,
     )
 else:
