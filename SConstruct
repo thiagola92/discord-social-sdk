@@ -1,10 +1,5 @@
 #!/usr/bin/env python
-import shutil
-from pathlib import Path
-
-env = SConscript("godot-cpp/SConstruct")
-sources = Glob("src/*.cpp")
-
+#
 # For reference:
 # - CCFLAGS are compilation flags shared between C and C++
 # - CFLAGS are for C-specific compilation flags
@@ -13,8 +8,25 @@ sources = Glob("src/*.cpp")
 # - CPPDEFINES are for pre-processor defines
 # - LINKFLAGS are for linking flags
 
+import shutil
+from pathlib import Path
+
+GDEXTENSION_NAME = "discord_social_sdk"
+DISCORD_LIB_NAME = "discord_partner_sdk"
+INCLUDE_DIR = "include/"
+BIN_DIR = "demo/addons/discord_social_sdk/bin/"
+LIB_DIR = "lib/"
+SRC_DIR = "src/"
+
+env = SConscript("godot-cpp/SConstruct")
+platform = env["platform"]
+target = env["target"]
+suffix = env["suffix"]
+lib_suffix = env["SHLIBSUFFIX"]
+sources = Glob("src/*.cpp")
+
 # Include classes XML documentation.
-if env["target"] in ["editor", "template_debug"]:
+if target in ["editor", "template_debug"]:
     try:
         doc_data = env.GodotCPPDocData(
             "src/gen/doc_data.gen.cpp", source=Glob("doc_classes/*.xml")
@@ -40,107 +52,95 @@ def copy_lib(dest_dir: str, pattern: str):
 
 
 # Generate library.
-if env["platform"] == "android":
+if platform == "android":
     env.Append(
-        CPPPATH=["src/", "include/"],
-        LIBPATH=["lib/android/aar/jni/arm64-v8a"],
-        LIBS=["discord_partner_sdk"],
+        CPPPATH=[SRC_DIR, INCLUDE_DIR],
+        LIBPATH=[f"{LIB_DIR}{platform}/aar/jni/arm64-v8a"],
+        LIBS=[DISCORD_LIB_NAME],
         RPATH=["."],
     )
 
     copy_lib(
-        "demo/addons/discord_social_sdk/bin/android/",
-        "lib/android/aar/jni/arm64-v8a/*.so",
+        f"{BIN_DIR}{platform}/",
+        f"{LIB_DIR}{platform}/aar/jni/arm64-v8a/*.so",
     )
 
     library = env.SharedLibrary(
-        "demo/addons/discord_social_sdk/bin/android/libdiscord_social_sdk{}{}".format(
-            env["suffix"], env["SHLIBSUFFIX"]
-        ),
+        f"{BIN_DIR}{platform}/lib{GDEXTENSION_NAME}{suffix}{lib_suffix}",
         source=sources,
     )
-elif env["platform"] == "ios":
+elif platform == "ios":
     env.Append(
-        CPPPATH=["src/", "include/"],
-        LIBPATH=["lib/ios"],
-        LIBS=["discord_partner_sdk"],
+        CPPPATH=[SRC_DIR, INCLUDE_DIR],
+        LIBPATH=[f"{LIB_DIR}{platform}"],
+        LIBS=[DISCORD_LIB_NAME],
         RPATH=["."],
     )
 
     copy_lib(
-        "demo/addons/discord_social_sdk/bin/ios/",
-        "lib/ios/*",
+        f"{BIN_DIR}{platform}/",
+        f"{LIB_DIR}{platform}/*",
     )
 
     if env["ios_simulator"]:
         library = env.StaticLibrary(
-            "demo/addons/discord_social_sdk/bin/ios/libdiscord_social_sdk.{}.{}.simulator.a".format(
-                env["platform"], env["target"]
-            ),
+            f"{BIN_DIR}{platform}/lib{GDEXTENSION_NAME}.{platform}.{target}.simulator.a",
             source=sources,
         )
     else:
         library = env.StaticLibrary(
-            "demo/addons/discord_social_sdk/bin/ios/libdiscord_social_sdk.{}.{}.a".format(
-                env["platform"], env["target"]
-            ),
+            f"{BIN_DIR}{platform}/lib{GDEXTENSION_NAME}.{platform}.{target}.a",
             source=sources,
         )
-elif env["platform"] == "linux":
+elif platform == "linux":
     env.Append(
-        CPPPATH=["src/", "include/"],
-        LIBPATH=["lib/linux"],
-        LIBS=["discord_partner_sdk"],
+        CPPPATH=[SRC_DIR, INCLUDE_DIR],
+        LIBPATH=[f"{LIB_DIR}{platform}"],
+        LIBS=[DISCORD_LIB_NAME],
         RPATH=["."],
     )
 
     copy_lib(
-        "demo/addons/discord_social_sdk/bin/linux/",
-        "lib/linux/*",
+        f"{BIN_DIR}{platform}/",
+        f"{LIB_DIR}{platform}/*",
     )
 
     library = env.SharedLibrary(
-        "demo/addons/discord_social_sdk/bin/linux/libdiscord_social_sdk{}{}".format(
-            env["suffix"], env["SHLIBSUFFIX"]
-        ),
+        f"{BIN_DIR}{platform}/lib{GDEXTENSION_NAME}{suffix}{lib_suffix}",
         source=sources,
     )
-elif env["platform"] == "macos":
+elif platform == "macos":
     env.Append(
-        CPPPATH=["src/", "include/"],
-        LIBPATH=["lib/macos"],
-        LIBS=["discord_partner_sdk"],
+        CPPPATH=[SRC_DIR, INCLUDE_DIR],
+        LIBPATH=[f"{LIB_DIR}{platform}"],
+        LIBS=[DISCORD_LIB_NAME],
         LINKFLAGS=["-Wl,-rpath,@loader_path"],
     )
 
     copy_lib(
-        "demo/addons/discord_social_sdk/bin/macos/",
-        "lib/macos/*",
+        f"{BIN_DIR}{platform}/",
+        f"{LIB_DIR}{platform}/*",
     )
 
     library = env.SharedLibrary(
-        "demo/addons/discord_social_sdk/bin/macos/libdiscord_social_sdk.{}.{}.framework/libdiscord_social_sdk.{}.{}".format(
-            env["platform"], env["target"], env["platform"], env["target"]
-        ),
+        f"{BIN_DIR}{platform}/lib{GDEXTENSION_NAME}.{platform}.{target}.framework/lib{GDEXTENSION_NAME}.{platform}.{target}",
         source=sources,
     )
-elif env["platform"] == "windows":
+elif platform == "windows":
     env.Append(
-        CPPPATH=["src/", "include/"],
-        LIBPATH=["lib/windows"],
-        LIBS=["discord_partner_sdk"],
+        CPPPATH=[SRC_DIR, INCLUDE_DIR],
+        LIBPATH=[f"{LIB_DIR}{platform}"],
+        LIBS=[DISCORD_LIB_NAME],
         RPATH=["."],
     )
 
     copy_lib(
-        "demo/addons/discord_social_sdk/bin/windows/",
-        "lib/windows/*",
+        f"{BIN_DIR}{platform}/",
+        f"{LIB_DIR}{platform}/*",
     )
 
     library = env.SharedLibrary(
-        "demo/addons/discord_social_sdk/bin/windows/libdiscord_social_sdk{}{}".format(
-            env["suffix"], env["SHLIBSUFFIX"]
-        ),
+        f"{BIN_DIR}{platform}/lib{GDEXTENSION_NAME}{suffix}{lib_suffix}",
         source=sources,
     )
 else:
