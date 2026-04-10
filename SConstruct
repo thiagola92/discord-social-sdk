@@ -22,8 +22,8 @@ env = SConscript("godot-cpp/SConstruct")
 platform = env["platform"]
 target = env["target"]
 suffix = env["suffix"]
-lib_prefix = env["SHLIBPREFIX"]
-lib_suffix = env["SHLIBSUFFIX"]
+lib_prefix = env.subst("$SHLIBPREFIX")
+lib_suffix = env.subst("$SHLIBSUFFIX")
 sources = Glob("src/*.cpp")
 
 # Include classes XML documentation.
