@@ -2,6 +2,10 @@ extends HBoxContainer
 
 signal authorized
 
+# ATTENTION: Replace DotEnv.read_int("APPLICATION_ID") with your application ID.
+# This only exist so I don't accidentally git push my ID.
+var APPLICATION_ID: int = DotEnv.read_int("APPLICATION_ID")
+
 var args := DiscordAuthorizationArgs.new()
 var code_verifier: DiscordAuthorizationCodeVerifier = null
 
@@ -31,6 +35,9 @@ func _on_connect_pressed(client: DiscordClient) -> void:
 		args.set_scopes(DiscordClient.get_default_presence_scopes())
 	else:
 		args.set_scopes(DiscordClient.get_default_communication_scopes())
+	
+	if OS.get_name() == "Android":
+		args.set_custom_scheme_param("discord-%s:/authorize/callback" % application_id)
 	
 	args.set_code_challenge(code_verifier.challenge())
 	client.authorize(args, _on_authorization_result.bind(client, application_id))
@@ -110,3 +117,7 @@ func _on_token_updated(result: DiscordClientResult, client: DiscordClient) -> vo
 
 func _on_refresh_pressed(client: DiscordClient) -> void:
 	client.refresh_token(client.get_application_id(), _refresh_token, _on_token_updated)
+
+
+func _on_import_pressed() -> void:
+	%ApplicationID.text = str(APPLICATION_ID)
