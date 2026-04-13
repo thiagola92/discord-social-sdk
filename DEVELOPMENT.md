@@ -157,12 +157,18 @@ cd ..
 python3 scripts/main.py --code
 
 # Generate GDExtension library.
-scons platform=android                              # Debug
-scons platform=android target=template_release      # Release
-scons platform=linux                                # Debug
-scons platform=linux target=template_release        # Release
-scons platform=windows                              # Debug
-scons platform=windows target=template_release      # Release
+scons platform=android target=template_debug   arch=arm32
+scons platform=android target=template_debug   arch=arm64
+scons platform=android target=template_debug   arch=x86_32
+scons platform=android target=template_debug   arch=x86_64
+scons platform=linux   target=template_debug
+scons platform=windows target=template_debug
+scons platform=android target=template_release arch=arm32
+scons platform=android target=template_release arch=arm64
+scons platform=android target=template_release arch=x86_32
+scons platform=android target=template_release arch=x86_64
+scons platform=linux   target=template_release
+scons platform=windows target=template_release
 
 # Open project, at least once, to be able to generate GDExtension documentation.
 godot ./demo/project.godot
@@ -171,12 +177,18 @@ godot ./demo/project.godot
 python3 scripts/main.py --docs
 
 # Link documentation to GDExtension library.
-scons platform=android                              # Debug
-scons platform=android target=template_release      # Release
-scons platform=linux                                # Debug
-scons platform=linux target=template_release        # Release
-scons platform=windows                              # Debug
-scons platform=windows target=template_release      # Release
+scons platform=android target=template_debug   arch=arm32
+scons platform=android target=template_debug   arch=arm64
+scons platform=android target=template_debug   arch=x86_32
+scons platform=android target=template_debug   arch=x86_64
+scons platform=linux   target=template_debug
+scons platform=windows target=template_debug
+scons platform=android target=template_release arch=arm32
+scons platform=android target=template_release arch=arm64
+scons platform=android target=template_release arch=x86_32
+scons platform=android target=template_release arch=x86_64
+scons platform=linux   target=template_release
+scons platform=windows target=template_release
 
 # Open project (may need to open two times).
 godot ./demo/project.godot
@@ -188,12 +200,18 @@ godot ./demo/project.godot
 python3 scripts/main.py --code --docs
 
 # Generate GDExtension library.
-scons platform=android                              # Debug
-scons platform=android target=template_release      # Release
-scons platform=linux                                # Debug
-scons platform=linux target=template_release        # Release
-scons platform=windows                              # Debug
-scons platform=windows target=template_release      # Release
+scons platform=android target=template_debug   arch=arm32
+scons platform=android target=template_debug   arch=arm64
+scons platform=android target=template_debug   arch=x86_32
+scons platform=android target=template_debug   arch=x86_64
+scons platform=linux   target=template_debug
+scons platform=windows target=template_debug
+scons platform=android target=template_release arch=arm32
+scons platform=android target=template_release arch=arm64
+scons platform=android target=template_release arch=x86_32
+scons platform=android target=template_release arch=x86_64
+scons platform=linux   target=template_release
+scons platform=windows target=template_release
 
 # Open project.
 godot ./demo/project.godot

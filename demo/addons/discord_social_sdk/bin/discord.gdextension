@@ -6,16 +6,20 @@ reloadable = true
 
 [libraries]
 
-android.debug.arm64 = "./android/libdiscord_social_sdk.android.template_debug.arm64.so"
-android.release.arm64 = "./android/libdiscord_social_sdk.android.template_release.arm64.so"
+android.debug.arm32 = "./android/arm32/libdiscord_social_sdk.android.template_debug.arm32.so"
+android.debug.arm64 = "./android/arm64/libdiscord_social_sdk.android.template_debug.arm64.so"
+android.debug.x86_32 = "./android/x86_32/libdiscord_social_sdk.android.template_debug.x86_32.so"
+android.debug.x86_64 = "./android/x86_64/libdiscord_social_sdk.android.template_debug.x86_64.so"
+android.release.arm32 = "./android/arm32/libdiscord_social_sdk.android.template_release.arm32.so"
+android.release.arm64 = "./android/arm64/libdiscord_social_sdk.android.template_release.arm64.so"
+android.release.x86_32 = "./android/x86_32/libdiscord_social_sdk.android.template_release.x86_32.so"
+android.release.x86_64 = "./android/x86_64/libdiscord_social_sdk.android.template_release.x86_64.so"
 linux.debug.x86_64 = "./linux/libdiscord_social_sdk.linux.template_debug.x86_64.so"
 linux.release.x86_64 = "./linux/libdiscord_social_sdk.linux.template_release.x86_64.so"
 windows.debug.x86_64 = "./windows/discord_social_sdk.windows.template_debug.x86_64.dll"
 windows.release.x86_64 = "./windows/discord_social_sdk.windows.template_release.x86_64.dll"
 
 ; ⚠️ Not implemented
-;android.debug.x86_64 = "./android/libdiscord_social_sdk.android.template_debug.x86_64.so"
-;android.release.x86_64 = "./android/libdiscord_social_sdk.android.template_release.x86_64.so"
 ;ios.debug = "./ios/libdiscord_social_sdk.ios.template_debug.xcframework"
 ;ios.release = "./ios/libdiscord_social_sdk.ios.template_release.xcframework"
 ;linux.debug.arm64 = "./linux/libdiscord_social_sdk.linux.template_debug.arm64.so"
@@ -29,11 +33,29 @@ windows.release.x86_64 = "./windows/discord_social_sdk.windows.template_release.
 
 [dependencies]
 
+android.debug.arm32 = {
+    "./android/arm32/libdiscord_partner_sdk.so": "",
+}
 android.debug.arm64 = {
-    "./android/libdiscord_partner_sdk.so": "",
+    "./android/arm64/libdiscord_partner_sdk.so": "",
+}
+android.debug.x86_32 = {
+    "./android/x86_32/libdiscord_partner_sdk.so": "",
+}
+android.debug.x86_64 = {
+    "./android/x86_64/libdiscord_partner_sdk.so": "",
+}
+android.release.arm32 = {
+    "./android/arm32/libdiscord_partner_sdk.so": "",
 }
 android.release.arm64 = {
-    "./android/libdiscord_partner_sdk.so": "",
+    "./android/arm64/libdiscord_partner_sdk.so": "",
+}
+android.release.x86_32 = {
+    "./android/x86_32/libdiscord_partner_sdk.so": "",
+}
+android.release.x86_64 = {
+    "./android/x86_64/libdiscord_partner_sdk.so": "",
 }
 linux.debug.x86_64 = {
     "./linux/libdiscord_partner_sdk.so": "",

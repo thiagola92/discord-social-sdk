@@ -19,6 +19,10 @@ run/main_scene="uid://df2x6xmg55las"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="uid://bxoo7lohutig5"
 
+[display]
+
+window/handheld/orientation=1
+
 [gdunit4]
 
 settings/common/update_notification_enabled=false

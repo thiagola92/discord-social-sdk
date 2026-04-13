@@ -22,6 +22,7 @@ env = SConscript("godot-cpp/SConstruct")
 platform = env["platform"]
 target = env["target"]
 suffix = env["suffix"]
+arch = env["arch"]
 lib_prefix = env.subst("$SHLIBPREFIX")
 lib_suffix = env.subst("$SHLIBSUFFIX")
 sources = Glob("src/*.cpp")
@@ -54,20 +55,27 @@ def copy_lib(dest_dir: str, pattern: str):
 
 # Generate library.
 if platform == "android":
+    arch_dir = {
+        "arm64": "aar/jni/arm64-v8a/",
+        "arm32": "aar/jni/armeabi-v7a/",
+        "x86_64": "aar/jni/x86_64/",
+        "x86_32": "aar/jni/x86/",
+    }[arch]
+
     env.Append(
         CPPPATH=[SRC_DIR, INCLUDE_DIR],
-        LIBPATH=[f"{LIB_DIR}{platform}/aar/jni/arm64-v8a"],
+        LIBPATH=[f"{LIB_DIR}{platform}/{arch_dir}"],
         LIBS=[DISCORD_LIB_NAME],
         RPATH=["."],
     )
 
     copy_lib(
-        f"{BIN_DIR}{platform}/",
-        f"{LIB_DIR}{platform}/aar/jni/arm64-v8a/*.so",
+        f"{BIN_DIR}{platform}/{arch}/",
+        f"{LIB_DIR}{platform}/{arch_dir}*.so",
     )
 
     library = env.SharedLibrary(
-        f"{BIN_DIR}{platform}/{lib_prefix}{GDEXTENSION_NAME}{suffix}{lib_suffix}",
+        f"{BIN_DIR}{platform}/{arch}/{lib_prefix}{GDEXTENSION_NAME}{suffix}{lib_suffix}",
         source=sources,
     )
 elif platform == "ios":
