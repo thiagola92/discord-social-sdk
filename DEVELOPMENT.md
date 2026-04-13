@@ -161,14 +161,14 @@ scons platform=android target=template_debug   arch=arm32
 scons platform=android target=template_debug   arch=arm64
 scons platform=android target=template_debug   arch=x86_32
 scons platform=android target=template_debug   arch=x86_64
-scons platform=linux   target=template_debug
-scons platform=windows target=template_debug
+scons platform=linux   target=template_debug   arch=x86_64
+scons platform=windows target=template_debug   arch=x86_64
 scons platform=android target=template_release arch=arm32
 scons platform=android target=template_release arch=arm64
 scons platform=android target=template_release arch=x86_32
 scons platform=android target=template_release arch=x86_64
-scons platform=linux   target=template_release
-scons platform=windows target=template_release
+scons platform=linux   target=template_release arch=x86_64
+scons platform=windows target=template_release arch=x86_64
 
 # Open project, at least once, to be able to generate GDExtension documentation.
 godot ./demo/project.godot
@@ -181,14 +181,14 @@ scons platform=android target=template_debug   arch=arm32
 scons platform=android target=template_debug   arch=arm64
 scons platform=android target=template_debug   arch=x86_32
 scons platform=android target=template_debug   arch=x86_64
-scons platform=linux   target=template_debug
-scons platform=windows target=template_debug
+scons platform=linux   target=template_debug   arch=x86_64
+scons platform=windows target=template_debug   arch=x86_64
 scons platform=android target=template_release arch=arm32
 scons platform=android target=template_release arch=arm64
 scons platform=android target=template_release arch=x86_32
 scons platform=android target=template_release arch=x86_64
-scons platform=linux   target=template_release
-scons platform=windows target=template_release
+scons platform=linux   target=template_release arch=x86_64
+scons platform=windows target=template_release arch=x86_64
 
 # Open project (may need to open two times).
 godot ./demo/project.godot
@@ -204,14 +204,14 @@ scons platform=android target=template_debug   arch=arm32
 scons platform=android target=template_debug   arch=arm64
 scons platform=android target=template_debug   arch=x86_32
 scons platform=android target=template_debug   arch=x86_64
-scons platform=linux   target=template_debug
-scons platform=windows target=template_debug
+scons platform=linux   target=template_debug   arch=x86_64
+scons platform=windows target=template_debug   arch=x86_64
 scons platform=android target=template_release arch=arm32
 scons platform=android target=template_release arch=arm64
 scons platform=android target=template_release arch=x86_32
 scons platform=android target=template_release arch=x86_64
-scons platform=linux   target=template_release
-scons platform=windows target=template_release
+scons platform=linux   target=template_release arch=x86_64
+scons platform=windows target=template_release arch=x86_64
 
 # Open project.
 godot ./demo/project.godot
