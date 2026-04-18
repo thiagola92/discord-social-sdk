@@ -3,6 +3,7 @@
 entry_symbol = "initialize_extension"
 compatibility_minimum = "4.4"
 reloadable = true
+android_aar_plugin = true
 
 [libraries]
 
