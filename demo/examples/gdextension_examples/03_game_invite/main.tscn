@@ -16,6 +16,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3b31a")
 
+[node name="Control" type="Control" parent="." unique_id=1209314322]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
 [node name="ConnectContainer" parent="." unique_id=2145470178 instance=ExtResource("2_ivulj")]
 unique_name_in_owner = true
 layout_mode = 2
@@ -39,6 +43,7 @@ layout_mode = 2
 [node name="LogContainer" parent="." unique_id=558899810 instance=ExtResource("6_0qidy")]
 unique_name_in_owner = true
 layout_mode = 2
+log_severity = null
 
 [connection signal="update_pressed" from="RichPresenceContainer" to="." method="_on_rich_presence_container_update_pressed"]
 [connection signal="invite_requested" from="InviteContainer" to="." method="_on_invite_container_invite_requested"]

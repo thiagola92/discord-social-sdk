@@ -43,15 +43,16 @@ All the important code is written in Python (inside `scripts`) and this code is 
 > No code should be manually added to `src` directory.  
 
 # Prerequisites
-The following tools were used in the project:
+The following tools were used in the project, this doesn't mean that you need every single one:
 - [Godot](https://godotengine.org/)
 - [SCons](https://scons.org/)
-- [Python](https://www.python.org/) >=3.12
+- [Python](https://www.python.org/) *(>= 3.12)*
 - [Clang](https://clang.llvm.org/)
 - [Clang format](https://clang.llvm.org/docs/ClangFormat.html)
-    - [VSCode](https://marketplace.visualstudio.com/items?itemName=xaver.clang-format)
-- [Mingw64](https://www.mingw-w64.org/)
-- [Android SDK](https://developer.android.com/tools/sdkmanager)
+    - [VSCode extension](https://marketplace.visualstudio.com/items?itemName=xaver.clang-format)
+- [Mingw64](https://www.mingw-w64.org/) *(cross compile for windows)*
+- [OpenJDK](https://openjdk.org/) *(export for android)*
+- [Android SDK](https://developer.android.com/tools/sdkmanager) *(cross compile for android)*
     - [Godot instructions](https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html#download-the-android-sdk)
 - [Discord SDK for C++](https://discord.com/developers/docs/discord-social-sdk/getting-started/using-c++#step-4-download-the-discord-sdk-for-c++)
 
@@ -69,8 +70,11 @@ sudo dnf install clang;
 # Clang-format.
 sudo dnf install clang-tools-extra;
 
-# Cross compile for Windows.
+# Mingw64.
 sudo dnf install mingw64-gcc-c++;
+
+# OpenJDK.
+sudo dnf install java-latest-openjdk-devel;
 
 # Android SDK.
 mkdir -p $HOME/Android/Sdk;
@@ -98,7 +102,7 @@ sudo apt install clang;
 # Clang-format.
 sudo apt install clang-format;
 
-# Cross compile for Windows.
+# Mingw64.
 sudo apt install mingw-w64;
 
 # Android SDK.
@@ -133,9 +137,14 @@ cd discord-social-sdk
 
 # Unzip libraries and headers to correct directories.
 unzip DiscordSocialSdk*.zip -d /tmp/
-cp -r /tmp/discord_social_sdk/lib/release/* lib/
-cp -r /tmp/discord_social_sdk/bin/release/* lib/
+cp -r /tmp/discord_social_sdk/lib/release/*.aar lib/android/
+cp -r /tmp/discord_social_sdk/lib/release/*.xcframework lib/ios/
+cp -r /tmp/discord_social_sdk/lib/release/*.so lib/linux/
+cp -r /tmp/discord_social_sdk/lib/release/*.dylib lib/macos/
+cp -r /tmp/discord_social_sdk/bin/release/*.dll lib/windows/
+cp -r /tmp/discord_social_sdk/lib/release/*.lib lib/windows/
 cp -r /tmp/discord_social_sdk/include/* include/
+unzip lib/android/discord_partner_sdk.aar -d lib/android/aar
 rm -rf /tmp/discord_social_sdk
 
 # Generate GDExtension API files.
@@ -148,10 +157,18 @@ cd ..
 python3 scripts/main.py --code
 
 # Generate GDExtension library.
-scons platform=linux                            # Debug
-scons platform=linux target=template_release    # Release
-scons platform=windows                            # Debug
-scons platform=windows target=template_release    # Release
+scons platform=android target=template_debug   arch=arm32
+scons platform=android target=template_debug   arch=arm64
+scons platform=android target=template_debug   arch=x86_32
+scons platform=android target=template_debug   arch=x86_64
+scons platform=linux   target=template_debug   arch=x86_64
+scons platform=windows target=template_debug   arch=x86_64
+scons platform=android target=template_release arch=arm32
+scons platform=android target=template_release arch=arm64
+scons platform=android target=template_release arch=x86_32
+scons platform=android target=template_release arch=x86_64
+scons platform=linux   target=template_release arch=x86_64
+scons platform=windows target=template_release arch=x86_64
 
 # Open project, at least once, to be able to generate GDExtension documentation.
 godot ./demo/project.godot
@@ -160,10 +177,18 @@ godot ./demo/project.godot
 python3 scripts/main.py --docs
 
 # Link documentation to GDExtension library.
-scons platform=linux                            # Debug
-scons platform=linux target=template_release    # Release
-scons platform=windows                            # Debug
-scons platform=windows target=template_release    # Release
+scons platform=android target=template_debug   arch=arm32
+scons platform=android target=template_debug   arch=arm64
+scons platform=android target=template_debug   arch=x86_32
+scons platform=android target=template_debug   arch=x86_64
+scons platform=linux   target=template_debug   arch=x86_64
+scons platform=windows target=template_debug   arch=x86_64
+scons platform=android target=template_release arch=arm32
+scons platform=android target=template_release arch=arm64
+scons platform=android target=template_release arch=x86_32
+scons platform=android target=template_release arch=x86_64
+scons platform=linux   target=template_release arch=x86_64
+scons platform=windows target=template_release arch=x86_64
 
 # Open project (may need to open two times).
 godot ./demo/project.godot
@@ -175,10 +200,18 @@ godot ./demo/project.godot
 python3 scripts/main.py --code --docs
 
 # Generate GDExtension library.
-scons platform=linux                            # Debug
-scons platform=linux target=template_release    # Release
-scons platform=windows                            # Debug
-scons platform=windows target=template_release    # Release
+scons platform=android target=template_debug   arch=arm32
+scons platform=android target=template_debug   arch=arm64
+scons platform=android target=template_debug   arch=x86_32
+scons platform=android target=template_debug   arch=x86_64
+scons platform=linux   target=template_debug   arch=x86_64
+scons platform=windows target=template_debug   arch=x86_64
+scons platform=android target=template_release arch=arm32
+scons platform=android target=template_release arch=arm64
+scons platform=android target=template_release arch=x86_32
+scons platform=android target=template_release arch=x86_64
+scons platform=linux   target=template_release arch=x86_64
+scons platform=windows target=template_release arch=x86_64
 
 # Open project.
 godot ./demo/project.godot
