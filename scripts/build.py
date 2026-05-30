@@ -27,7 +27,9 @@ from forge import (
     forge_overloadings_definitions,
 )
 
-DOCS_ERROR = "Make sure to execute scons & open godot project before generating documentations"
+DOCS_ERROR = (
+    "Make sure to execute scons & open godot project before generating documentations"
+)
 
 
 class Builder:
@@ -197,7 +199,7 @@ class Builder:
         filepath = self.doc_dir.joinpath(f"{filename}.xml")
 
         assert filepath.exists(), DOCS_ERROR
-        
+
         tree = ElementTree.parse(filepath)
 
         document_functions(tree, self.namespace_info)
@@ -209,7 +211,7 @@ class Builder:
         filepath = self.doc_dir.joinpath(f"{filename}.xml")
 
         assert filepath.exists(), DOCS_ERROR
-    
+
         tree = ElementTree.parse(filepath)
 
         document_class(tree, class_info)
@@ -222,7 +224,7 @@ class Builder:
         filepath = self.doc_dir.joinpath(f"{filename}.xml")
 
         assert filepath.exists(), DOCS_ERROR
-        
+
         tree = ElementTree.parse(filepath)
 
         document_enum(tree, enum_info)

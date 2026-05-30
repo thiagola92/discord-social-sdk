@@ -73,6 +73,9 @@ sudo dnf install clang-tools-extra;
 # Mingw64.
 sudo dnf install mingw64-gcc-c++;
 
+# Doxygen.
+sudo dnf install doxygen;
+
 # OpenJDK.
 sudo dnf install java-latest-openjdk-devel;
 
@@ -104,6 +107,9 @@ sudo apt install clang-format;
 
 # Mingw64.
 sudo apt install mingw-w64;
+
+# Doxygen.
+sudo apt install doxygen;
 
 # Android SDK.
 mkdir -p $HOME/Android/Sdk;
