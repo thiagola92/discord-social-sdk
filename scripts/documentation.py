@@ -113,7 +113,7 @@ def document_variant_params(tree: Element, function_info: FunctionInfo) -> None:
         if is_discord_optional(p.type):
             type_name = discord_type_to_gdscript_type(p.type.templates[0])
 
-            if p.enum:
+            if p.type.templates[0].enum:
                 type_name = f"[enum {type_name}]"
             else:
                 type_name = f"[{type_name}]"
