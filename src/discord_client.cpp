@@ -1573,6 +1573,11 @@ void DiscordClient::set_no_audio_input_threshold(float d_bfsthreshold) {
 	obj->SetNoAudioInputThreshold(p0);
 }
 
+void DiscordClient::set_noise_cancellation(bool on) {
+	bool p0 = on;
+	obj->SetNoiseCancellation(p0);
+}
+
 void DiscordClient::set_noise_suppression(bool on) {
 	bool p0 = on;
 	obj->SetNoiseSuppression(p0);
@@ -2134,6 +2139,9 @@ void DiscordClient::_bind_methods() {
 
 	ClassDB::bind_method(D_METHOD("set_no_audio_input_threshold", "d_bfsthreshold"),
 			&DiscordClient::set_no_audio_input_threshold);
+
+	ClassDB::bind_method(D_METHOD("set_noise_cancellation", "on"),
+			&DiscordClient::set_noise_cancellation);
 
 	ClassDB::bind_method(D_METHOD("set_noise_suppression", "on"),
 			&DiscordClient::set_noise_suppression);

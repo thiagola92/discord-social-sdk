@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="5229" column="29" bodyfile="include/discordpp.h" bodystart="5229" bodyend="-1"/>
+        <location file="include/discordpp.h" line="5234" column="29" bodyfile="include/discordpp.h" bodystart="5234" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -38,7 +38,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="5225" column="1"/>
+        <location file="include/discordpp.h" line="5230" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classdiscordpp_1_1CallInfoHandle_1a646eb5db3aa75bbe432e9301441316d6" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classdiscordpp_1_1CallInfoHandle" kindref="compound">CallInfoHandle</ref> &amp;</type>
@@ -57,7 +57,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="5227" column="16"/>
+        <location file="include/discordpp.h" line="5232" column="16"/>
       </memberdef>
       <memberdef kind="function" id="classdiscordpp_1_1CallInfoHandle_1ab51398814fb1574a60a7e20958fb0491" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -72,7 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="5231" column="1" bodyfile="include/discordpp.h" bodystart="5231" bodyend="5231"/>
+        <location file="include/discordpp.h" line="5236" column="1" bodyfile="include/discordpp.h" bodystart="5236" bodyend="5236"/>
       </memberdef>
       <memberdef kind="function" id="classdiscordpp_1_1CallInfoHandle_1a4560a5999ff0218d5d13c79307ff5b95" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -91,7 +91,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="5234" column="1"/>
+        <location file="include/discordpp.h" line="5239" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classdiscordpp_1_1CallInfoHandle_1a21b6da168a98a4987329118045fd0bc6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classdiscordpp_1_1CallInfoHandle" kindref="compound">CallInfoHandle</ref> &amp;</type>
@@ -110,7 +110,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="5236" column="16"/>
+        <location file="include/discordpp.h" line="5241" column="16"/>
       </memberdef>
       <memberdef kind="function" id="classdiscordpp_1_1CallInfoHandle_1ae4a234adc67578891c21c4dac03ee391" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>uint64_t</type>
@@ -125,7 +125,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="5243" column="10"/>
+        <location file="include/discordpp.h" line="5248" column="10"/>
       </memberdef>
       <memberdef kind="function" id="classdiscordpp_1_1CallInfoHandle_1a1fc60183a120701835e7609cc017ec59" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; uint64_t &gt;</type>
@@ -140,7 +140,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="5246" column="13"/>
+        <location file="include/discordpp.h" line="5251" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classdiscordpp_1_1CallInfoHandle_1a06d06b854f2095f74865b5d5c20b3031" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::optional&lt; <ref refid="classdiscordpp_1_1VoiceStateHandle" kindref="compound">discordpp::VoiceStateHandle</ref> &gt;</type>
@@ -159,7 +159,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="5250" column="15"/>
+        <location file="include/discordpp.h" line="5255" column="15"/>
       </memberdef>
       <memberdef kind="function" id="classdiscordpp_1_1CallInfoHandle_1ad5511f5400b464fd05fcf6df69f82e33" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>uint64_t</type>
@@ -174,7 +174,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="5253" column="10"/>
+        <location file="include/discordpp.h" line="5258" column="10"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -191,7 +191,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/discordpp.h" line="5210" column="1" bodyfile="include/discordpp.h" bodystart="5210" bodyend="5254"/>
+    <location file="include/discordpp.h" line="5215" column="1" bodyfile="include/discordpp.h" bodystart="5215" bodyend="5259"/>
     <listofallmembers>
       <member refid="classdiscordpp_1_1CallInfoHandle_1ade345c06ac2938c443f2a6884bf9f0df" prot="public" virt="non-virtual"><scope>discordpp::CallInfoHandle</scope><name>CallInfoHandle</name></member>
       <member refid="classdiscordpp_1_1CallInfoHandle_1a4560a5999ff0218d5d13c79307ff5b95" prot="public" virt="non-virtual"><scope>discordpp::CallInfoHandle</scope><name>CallInfoHandle</name></member>

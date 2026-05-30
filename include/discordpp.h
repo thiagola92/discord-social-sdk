@@ -3855,6 +3855,11 @@ public:
 	/// [-100.0, 100.0] It defaults to -100.0, so is disabled.
 	void SetNoAudioInputThreshold(float dBFSThreshold);
 
+	/// \brief Enables or disables Krisp noise cancellation.
+	///
+	/// Defaults to off. When enabled, noise suppression is automatically disabled.
+	void SetNoiseCancellation(bool on);
+
 	/// \brief Enables basic background noise suppression.
 	///
 	/// Defaults to on.
@@ -4019,7 +4024,7 @@ public:
 	/// for you when performing the authorization. You can override state if you want for your own
 	/// flow, but please be mindful to keep it a secure, random value.
 	/// - If you are using the Client::GetToken function you will need to provide a "code challenge"
-	/// or "code verifier". We'll spare you the boring details of how that works (woo… crypto), as
+	/// or "code verifier". We'll spare you the boring details of how that works (woo... crypto), as
 	/// we've made a simple function to create these for you,
 	/// Client::CreateAuthorizationCodeVerifier. That returns a struct with two items, a `challenge`
 	/// value to pass into this function and a `verifier` value to pass into Client::GetToken.
@@ -9896,6 +9901,10 @@ void Client::SetNoAudioInputCallback(discordpp::Client::NoAudioInputCallback cal
 void Client::SetNoAudioInputThreshold(float dBFSThreshold) {
 	assert(state_ == DiscordObjectState::Owned);
 	Discord_Client_SetNoAudioInputThreshold(&instance_, dBFSThreshold);
+}
+void Client::SetNoiseCancellation(bool on) {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_Client_SetNoiseCancellation(&instance_, on);
 }
 void Client::SetNoiseSuppression(bool on) {
 	assert(state_ == DiscordObjectState::Owned);

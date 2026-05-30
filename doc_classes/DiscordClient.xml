@@ -114,7 +114,7 @@ The SDK will then spin up a local webserver to handle the OAuth2 redirects for y
 [u][b]Security[/b][/u]
 This function accepts an args object, and two of those values are important for security:
 - To prevent CSRF attacks during auth, the SDK automatically attaches a state and checks it for you when performing the authorization. You can override state if you want for your own flow, but please be mindful to keep it a secure, random value.
-- If you are using the [method DiscordClient.get_token] function you will need to provide a "code challenge" or "code verifier". We'll spare you the boring details of how that works (woo&#8230; crypto), as we've made a simple function to create these for you, [method DiscordClient.create_authorization_code_verifier]. That returns a struct with two items, a [code]challenge[/code] value to pass into this function and a [code]verifier[/code] value to pass into [method DiscordClient.get_token].
+- If you are using the [method DiscordClient.get_token] function you will need to provide a "code challenge" or "code verifier". We'll spare you the boring details of how that works (woo... crypto), as we've made a simple function to create these for you, [method DiscordClient.create_authorization_code_verifier]. That returns a struct with two items, a [code]challenge[/code] value to pass into this function and a [code]verifier[/code] value to pass into [method DiscordClient.get_token].
 [u][b]Callbacks &amp; Code Exchange[/b][/u]
 When this flow completes, the given callback function will be invoked with a "code". That code must be exchanged for an actual authorization token before it can be used. To start, you can use the [method DiscordClient.get_token] function to perform this exchange. Longer term private apps will want to move to the server side API for this, since that enables provisional accounts to "upgrade" to full Discord accounts.
 [u][b]Android[/b][/u]
@@ -1450,6 +1450,14 @@ func(input_detected: bool)
 			<description>
 			Threshold that can be set to indicate when no audio is being received by the user's mic.
 			An example of when this may be useful: When push to talk is being used and the user pushes their talk key, but something is configured wrong and no audio is being received, this threshold and callback can be used to detect that situation and notify the user. The threshold is specified in DBFS, or decibels relative to full scale, and the range is [-100.0, 100.0] It defaults to -100.0, so is disabled.
+			</description>
+		</method>
+		<method name="set_noise_cancellation">
+			<return type="void" />
+			<param index="0" name="on" type="bool" />
+			<description>
+			Enables or disables Krisp noise cancellation.
+			Defaults to off. When enabled, noise suppression is automatically disabled.
 			</description>
 		</method>
 		<method name="set_noise_suppression">

@@ -1346,6 +1346,7 @@ Discord_Client_SetNoAudioInputCallback(Discord_Client *self,
 		Discord_FreeFn callback__userDataFree,
 		void *callback__userData);
 void DISCORD_API Discord_Client_SetNoAudioInputThreshold(Discord_Client *self, float dBFSThreshold);
+void DISCORD_API Discord_Client_SetNoiseCancellation(Discord_Client *self, bool on);
 void DISCORD_API Discord_Client_SetNoiseSuppression(Discord_Client *self, bool on);
 void DISCORD_API Discord_Client_SetOpusHardwareCoding(Discord_Client *self,
 		bool encode,

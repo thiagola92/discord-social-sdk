@@ -324,6 +324,7 @@
     <member refid="classdiscordpp_1_1Client_1ad4358f5baffd9a5f2a6fa74d62459313" kind="function"><name>SetInputVolume</name></member>
     <member refid="classdiscordpp_1_1Client_1a479e60724bf6b0b39b555c1ff8489b9e" kind="function"><name>SetNoAudioInputCallback</name></member>
     <member refid="classdiscordpp_1_1Client_1ab33f5d70461ee7590b6f3cfccaeb6df4" kind="function"><name>SetNoAudioInputThreshold</name></member>
+    <member refid="classdiscordpp_1_1Client_1a54aad09e8e06dc327695209b733d3f4c" kind="function"><name>SetNoiseCancellation</name></member>
     <member refid="classdiscordpp_1_1Client_1ae3f6e33b956964525adfa4536bd1fe73" kind="function"><name>SetNoiseSuppression</name></member>
     <member refid="classdiscordpp_1_1Client_1a50f3315b3c13ad6e543b60981976fe33" kind="function"><name>SetOpusHardwareCoding</name></member>
     <member refid="classdiscordpp_1_1Client_1aa06fdf131c2105cd06fb79592624678e" kind="function"><name>SetOutputDevice</name></member>

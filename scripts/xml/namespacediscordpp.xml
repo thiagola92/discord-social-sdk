@@ -1870,7 +1870,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="5256" column="19" bodyfile="include/discordpp.h" bodystart="5256" bodyend="5267"/>
+        <location file="include/discordpp.h" line="5261" column="19" bodyfile="include/discordpp.h" bodystart="5261" bodyend="5272"/>
       </memberdef>
       <memberdef kind="function" id="namespacediscordpp_1a71a3d10fbf84c7776d6f3412b8c0fea5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const char *</type>
@@ -1889,7 +1889,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="5269" column="19" bodyfile="include/discordpp.h" bodystart="5269" bodyend="5278"/>
+        <location file="include/discordpp.h" line="5274" column="19" bodyfile="include/discordpp.h" bodystart="5274" bodyend="5283"/>
       </memberdef>
       <memberdef kind="function" id="namespacediscordpp_1a47bb28f927213bc1554a880c638abc26" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const char *</type>
@@ -1908,7 +1908,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="5280" column="19" bodyfile="include/discordpp.h" bodystart="5280" bodyend="5299"/>
+        <location file="include/discordpp.h" line="5285" column="19" bodyfile="include/discordpp.h" bodystart="5285" bodyend="5304"/>
       </memberdef>
       <memberdef kind="function" id="namespacediscordpp_1a2b92b882ce9ca38895f3a528676d1e77" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const char *</type>
@@ -1927,7 +1927,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="5301" column="19" bodyfile="include/discordpp.h" bodystart="5301" bodyend="5312"/>
+        <location file="include/discordpp.h" line="5306" column="19" bodyfile="include/discordpp.h" bodystart="5306" bodyend="5317"/>
       </memberdef>
       <memberdef kind="function" id="namespacediscordpp_1a3b11a6b6d85e8d43b19cd7ac4fc71ee4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const char *</type>
@@ -1946,7 +1946,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="5314" column="19" bodyfile="include/discordpp.h" bodystart="5314" bodyend="5335"/>
+        <location file="include/discordpp.h" line="5319" column="19" bodyfile="include/discordpp.h" bodystart="5319" bodyend="5340"/>
       </memberdef>
       <memberdef kind="function" id="namespacediscordpp_1a28495bd2daf58e0f38aa12664ec6a0e4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const char *</type>
@@ -1965,7 +1965,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="5337" column="19" bodyfile="include/discordpp.h" bodystart="5337" bodyend="5362"/>
+        <location file="include/discordpp.h" line="5342" column="19" bodyfile="include/discordpp.h" bodystart="5342" bodyend="5367"/>
       </memberdef>
       <memberdef kind="function" id="namespacediscordpp_1aa8fda25a6a73d20cecbd922f5e0611f1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const char *</type>
@@ -1984,7 +1984,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="5364" column="19" bodyfile="include/discordpp.h" bodystart="5364" bodyend="5489"/>
+        <location file="include/discordpp.h" line="5369" column="19" bodyfile="include/discordpp.h" bodystart="5369" bodyend="5494"/>
       </memberdef>
       <memberdef kind="function" id="namespacediscordpp_1a5517faebee568e48d68cea5668cec3bb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const char *</type>
@@ -2003,7 +2003,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="5491" column="19" bodyfile="include/discordpp.h" bodystart="5491" bodyend="5498"/>
+        <location file="include/discordpp.h" line="5496" column="19" bodyfile="include/discordpp.h" bodystart="5496" bodyend="5503"/>
       </memberdef>
       <memberdef kind="function" id="namespacediscordpp_1ab75d0672f748eada1c77a981bd078208" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const char *</type>
@@ -2022,7 +2022,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="5500" column="19" bodyfile="include/discordpp.h" bodystart="5500" bodyend="5509"/>
+        <location file="include/discordpp.h" line="5505" column="19" bodyfile="include/discordpp.h" bodystart="5505" bodyend="5514"/>
       </memberdef>
       <memberdef kind="function" id="namespacediscordpp_1a5350a061ae6b5c02187d32baab13657c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const char *</type>
@@ -2041,7 +2041,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="5511" column="19" bodyfile="include/discordpp.h" bodystart="5511" bodyend="5548"/>
+        <location file="include/discordpp.h" line="5516" column="19" bodyfile="include/discordpp.h" bodystart="5516" bodyend="5553"/>
       </memberdef>
       <memberdef kind="function" id="namespacediscordpp_1a3c31fdb29b130fa0697161d493f03793" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const char *</type>
@@ -2060,7 +2060,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="5550" column="19" bodyfile="include/discordpp.h" bodystart="5550" bodyend="5569"/>
+        <location file="include/discordpp.h" line="5555" column="19" bodyfile="include/discordpp.h" bodystart="5555" bodyend="5574"/>
       </memberdef>
       <memberdef kind="function" id="namespacediscordpp_1a205feed9b64966adfa2e7f1e2ffcc158" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const char *</type>
@@ -2079,7 +2079,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="5571" column="19" bodyfile="include/discordpp.h" bodystart="5571" bodyend="5580"/>
+        <location file="include/discordpp.h" line="5576" column="19" bodyfile="include/discordpp.h" bodystart="5576" bodyend="5585"/>
       </memberdef>
       <memberdef kind="function" id="namespacediscordpp_1aa6f6f7890ceb350a90d80e25f3d83584" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const char *</type>
@@ -2098,7 +2098,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="5582" column="19" bodyfile="include/discordpp.h" bodystart="5582" bodyend="5599"/>
+        <location file="include/discordpp.h" line="5587" column="19" bodyfile="include/discordpp.h" bodystart="5587" bodyend="5604"/>
       </memberdef>
       <memberdef kind="function" id="namespacediscordpp_1af289449fda8d93be5097279c62591419" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const char *</type>
@@ -2117,7 +2117,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="5601" column="19" bodyfile="include/discordpp.h" bodystart="5601" bodyend="5612"/>
+        <location file="include/discordpp.h" line="5606" column="19" bodyfile="include/discordpp.h" bodystart="5606" bodyend="5617"/>
       </memberdef>
       <memberdef kind="function" id="namespacediscordpp_1ab63bdf427131051af4790bab974f2225" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const char *</type>
@@ -2136,7 +2136,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="5614" column="19" bodyfile="include/discordpp.h" bodystart="5614" bodyend="5633"/>
+        <location file="include/discordpp.h" line="5619" column="19" bodyfile="include/discordpp.h" bodystart="5619" bodyend="5638"/>
       </memberdef>
       <memberdef kind="function" id="namespacediscordpp_1ae601abd5490699d493318e861e010de7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const char *</type>
@@ -2155,7 +2155,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="5635" column="19" bodyfile="include/discordpp.h" bodystart="5635" bodyend="5654"/>
+        <location file="include/discordpp.h" line="5640" column="19" bodyfile="include/discordpp.h" bodystart="5640" bodyend="5659"/>
       </memberdef>
       <memberdef kind="function" id="namespacediscordpp_1a9a48b025aaafc8e6dc08c92b8b5aea5e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const char *</type>
@@ -2174,7 +2174,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="5656" column="19" bodyfile="include/discordpp.h" bodystart="5656" bodyend="5675"/>
+        <location file="include/discordpp.h" line="5661" column="19" bodyfile="include/discordpp.h" bodystart="5661" bodyend="5680"/>
       </memberdef>
       <memberdef kind="function" id="namespacediscordpp_1af9579e95aa9b37d0a4f8cfe248f7c755" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const char *</type>
@@ -2193,7 +2193,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="5677" column="19" bodyfile="include/discordpp.h" bodystart="5677" bodyend="5690"/>
+        <location file="include/discordpp.h" line="5682" column="19" bodyfile="include/discordpp.h" bodystart="5682" bodyend="5695"/>
       </memberdef>
       <memberdef kind="function" id="namespacediscordpp_1a35783dc3ca494d621df0ced4c0a50b6e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const char *</type>
@@ -2212,7 +2212,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="5692" column="19" bodyfile="include/discordpp.h" bodystart="5692" bodyend="5713"/>
+        <location file="include/discordpp.h" line="5697" column="19" bodyfile="include/discordpp.h" bodystart="5697" bodyend="5718"/>
       </memberdef>
       <memberdef kind="function" id="namespacediscordpp_1aff1912bbeb6f2fab42582f9301b2ed34" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const char *</type>
@@ -2231,7 +2231,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="5715" column="19" bodyfile="include/discordpp.h" bodystart="5715" bodyend="5722"/>
+        <location file="include/discordpp.h" line="5720" column="19" bodyfile="include/discordpp.h" bodystart="5720" bodyend="5727"/>
       </memberdef>
       <memberdef kind="function" id="namespacediscordpp_1ada3c8ec6460cef13bc2041e161191852" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const char *</type>
@@ -2250,7 +2250,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="5724" column="19" bodyfile="include/discordpp.h" bodystart="5724" bodyend="5737"/>
+        <location file="include/discordpp.h" line="5729" column="19" bodyfile="include/discordpp.h" bodystart="5729" bodyend="5742"/>
       </memberdef>
       <memberdef kind="function" id="namespacediscordpp_1abe549f153327eda21c15091afb2a46d6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const char *</type>
@@ -2269,7 +2269,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="5739" column="19" bodyfile="include/discordpp.h" bodystart="5739" bodyend="5758"/>
+        <location file="include/discordpp.h" line="5744" column="19" bodyfile="include/discordpp.h" bodystart="5744" bodyend="5763"/>
       </memberdef>
       <memberdef kind="function" id="namespacediscordpp_1a772a23e42b20e187e47225083c0b8c79" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const char *</type>
@@ -2288,7 +2288,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="5760" column="19" bodyfile="include/discordpp.h" bodystart="5760" bodyend="5771"/>
+        <location file="include/discordpp.h" line="5765" column="19" bodyfile="include/discordpp.h" bodystart="5765" bodyend="5776"/>
       </memberdef>
       <memberdef kind="function" id="namespacediscordpp_1ab346e27da5e451cd609e8de8e1406039" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const char *</type>
@@ -2307,7 +2307,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="5773" column="19" bodyfile="include/discordpp.h" bodystart="5773" bodyend="5782"/>
+        <location file="include/discordpp.h" line="5778" column="19" bodyfile="include/discordpp.h" bodystart="5778" bodyend="5787"/>
       </memberdef>
       <memberdef kind="function" id="namespacediscordpp_1a7e99e889aa41e518adea0f66bb01b0e8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const char *</type>
@@ -2326,7 +2326,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="5784" column="19" bodyfile="include/discordpp.h" bodystart="5784" bodyend="5805"/>
+        <location file="include/discordpp.h" line="5789" column="19" bodyfile="include/discordpp.h" bodystart="5789" bodyend="5810"/>
       </memberdef>
       <memberdef kind="function" id="namespacediscordpp_1a68017791fc14593ab4f87d4d8401f6dd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const char *</type>
@@ -2345,7 +2345,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="5807" column="19" bodyfile="include/discordpp.h" bodystart="5807" bodyend="5822"/>
+        <location file="include/discordpp.h" line="5812" column="19" bodyfile="include/discordpp.h" bodystart="5812" bodyend="5827"/>
       </memberdef>
       <memberdef kind="function" id="namespacediscordpp_1a0c0fb7ef478730ff84271e5de69cf488" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const char *</type>
@@ -2364,7 +2364,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="5824" column="19" bodyfile="include/discordpp.h" bodystart="5824" bodyend="5835"/>
+        <location file="include/discordpp.h" line="5829" column="19" bodyfile="include/discordpp.h" bodystart="5829" bodyend="5840"/>
       </memberdef>
     </sectiondef>
     <briefdescription>

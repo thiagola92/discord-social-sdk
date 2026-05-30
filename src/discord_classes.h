@@ -876,6 +876,7 @@ public:
 	void set_message_updated_callback(Callable cb);
 	void set_no_audio_input_callback(Callable callback);
 	void set_no_audio_input_threshold(float d_bfsthreshold);
+	void set_noise_cancellation(bool on);
 	void set_noise_suppression(bool on);
 	void set_online_status(DiscordStatusType::Enum status, Callable callback);
 	void set_opus_hardware_coding(bool encode, bool decode);

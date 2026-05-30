@@ -50,6 +50,7 @@ The following tools were used in the project, this doesn't mean that you need ev
 - [Clang](https://clang.llvm.org/)
 - [Clang format](https://clang.llvm.org/docs/ClangFormat.html)
     - [VSCode extension](https://marketplace.visualstudio.com/items?itemName=xaver.clang-format)
+- [Doxygen](https://www.doxygen.nl/)
 - [Mingw64](https://www.mingw-w64.org/) *(cross compile for windows)*
 - [OpenJDK](https://openjdk.org/) *(export for android)*
 - [Android SDK](https://developer.android.com/tools/sdkmanager) *(cross compile for android)*
@@ -57,6 +58,8 @@ The following tools were used in the project, this doesn't mean that you need ev
 - [Discord SDK for C++](https://discord.com/developers/docs/discord-social-sdk/getting-started/using-c++#step-4-download-the-discord-sdk-for-c++)
 
 ### Fedora Script
+Adapt it to your operating system.  
+
 ```bash
 # Scons.
 sudo dnf install python3-scons;
@@ -70,46 +73,14 @@ sudo dnf install clang;
 # Clang-format.
 sudo dnf install clang-tools-extra;
 
-# Mingw64.
-sudo dnf install mingw64-gcc-c++;
-
 # Doxygen.
 sudo dnf install doxygen;
 
+# Mingw64.
+sudo dnf install mingw64-gcc-c++;
+
 # OpenJDK.
 sudo dnf install java-latest-openjdk-devel;
-
-# Android SDK.
-mkdir -p $HOME/Android/Sdk;
-curl -fl https://dl.google.com/android/repository/commandlinetools-linux-14742923_latest.zip -o commandlinetools.zip;
-unzip commandlinetools.zip;
-mv cmdline-tools $HOME/Android/Sdk;
-mkdir $HOME/Android/Sdk/comdline-tools/latest
-mv $HOME/Android/Sdk/comdline-tools/bin $HOME/Android/Sdk/comdline-tools/latest;
-mv $HOME/Android/Sdk/comdline-tools/lib $HOME/Android/Sdk/comdline-tools/latest;
-mv $HOME/Android/Sdk/comdline-tools/NOTICE.txt $HOME/Android/Sdk/comdline-tools/latest;
-mv $HOME/Android/Sdk/comdline-tools/source.properties $HOME/Android/Sdk/comdline-tools/latest;
-echo "PATH=\"\$HOME/Android/SDK/cmdline-tools/latest/bin:\$PATH\"" >> $HOME/.bashrc;
-sdkmanager --sdk_root=$HOME/Android/Sdk "platform-tools" "build-tools;35.0.1" "platforms;android-35" "cmdline-tools;latest" "cmake;3.10.2.4988404" "ndk;28.1.13356709"
-rm commandlinetools.zip;
-```
-
-### Ubuntu script
-```bash
-# Scons.
-sudo apt install scons;
-
-# Clang.
-sudo apt install clang;
-
-# Clang-format.
-sudo apt install clang-format;
-
-# Mingw64.
-sudo apt install mingw-w64;
-
-# Doxygen.
-sudo apt install doxygen;
 
 # Android SDK.
 mkdir -p $HOME/Android/Sdk;
@@ -235,4 +206,3 @@ zip -r discord_social_sdk.zip demo/addons/discord_social_sdk/**
 - [Discord Social SDK Overview](https://discord.com/developers/docs/discord-social-sdk/overview)
 - [Discord Social SDK Rich Presence](https://discord.com/developers/docs/rich-presence/using-with-the-discord-social-sdk)
 - [Discord Social SDK Reference](https://discord.com/developers/docs/social-sdk/index.html)
-- [Doxygen](https://www.doxygen.nl/)
