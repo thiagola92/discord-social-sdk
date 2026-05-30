@@ -1,4 +1,4 @@
-<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordLobbyHandle" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordLobbyHandle" inherits="RefCounted" api_type="extension" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
 	A [DiscordLobbyHandle] represents a single lobby in the SDK. A lobby can be thought of as just an arbitrary, developer-controlled group of users that can communicate with each other.
 </brief_description>

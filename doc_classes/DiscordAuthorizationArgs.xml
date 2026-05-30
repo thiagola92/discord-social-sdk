@@ -1,4 +1,4 @@
-<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordAuthorizationArgs" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordAuthorizationArgs" inherits="RefCounted" api_type="extension" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
 	Arguments to the [method DiscordClient.authorize] function.
 </brief_description>
@@ -84,7 +84,7 @@ You can pass in additional scopes if you need to, but as a general rule you shou
 			<param index="0" name="integration_type" type="Variant" />
 			<description>
 			Setter for [method DiscordAuthorizationArgs.integration_type].
-			Parameter [param integration_type] can be [DiscordIntegrationType.Enum] or [code]null[/code].
+			Parameter [param integration_type] can be [enum DiscordIntegrationType.Enum] or [code]null[/code].
 </description>
 		</method>
 		<method name="set_nonce">

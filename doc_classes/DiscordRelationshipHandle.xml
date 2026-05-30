@@ -1,4 +1,4 @@
-<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordRelationshipHandle" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordRelationshipHandle" inherits="RefCounted" api_type="extension" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
 	A [DiscordRelationshipHandle] represents the relationship between the current user and a target user on Discord. Relationships include friends, blocked users, and friend invites.
 </brief_description>

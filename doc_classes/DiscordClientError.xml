@@ -1,4 +1,4 @@
-<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordClientError" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordClientError" inherits="RefCounted" api_type="extension" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
 	Represents an error state for the socket connection that the Discord SDK maintains with the Discord backend.
 </brief_description>

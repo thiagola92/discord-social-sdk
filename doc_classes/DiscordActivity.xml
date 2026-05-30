@@ -1,4 +1,4 @@
-<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordActivity" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordActivity" inherits="RefCounted" api_type="extension" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
 	An [DiscordActivity] represents one "thing" a user is doing on Discord and is part of their rich presence.
 </brief_description>
@@ -290,7 +290,7 @@ client-&gt;SetActivityInviteCreatedCallback([client](auto invite) {
 			<param index="0" name="status_display_type" type="Variant" />
 			<description>
 			Setter for [method DiscordActivity.status_display_type].
-			Parameter [param status_display_type] can be [DiscordStatusDisplayTypes.Enum] or [code]null[/code].
+			Parameter [param status_display_type] can be [enum DiscordStatusDisplayTypes.Enum] or [code]null[/code].
 </description>
 		</method>
 		<method name="set_supported_platforms">
