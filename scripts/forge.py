@@ -1,4 +1,6 @@
 # Responsible for forging parts of the code.
+#
+# type: ignore
 from name import to_gdscript_class_name
 from fake import fake_enums_params
 from collect import NamespaceInfo, FunctionInfo, ClassInfo, ParamInfo

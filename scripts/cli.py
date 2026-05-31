@@ -1,4 +1,6 @@
 # Utility functions to execute some CLI tool.
+#
+# type: ignore
 import subprocess
 from pathlib import Path
 

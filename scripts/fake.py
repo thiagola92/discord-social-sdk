@@ -1,4 +1,6 @@
 # Responsible for creating fake data.
+#
+# type: ignore
 from data import ParamInfo, TypeInfo, FunctionInfo
 
 

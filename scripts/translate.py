@@ -7,6 +7,8 @@
 #   godot_type_to_discord_type()
 #   godot_variant_to_discord_optional()
 #   godot_array_to_discord_vector()
+#
+# type: ignore
 from data import TypeInfo, FunctionInfo, ParamInfo
 from name import to_gdscript_class_name, to_gdscript_variable_name
 from template.code.discord_class_cpp.discord_to_godot.object import get_godot_object

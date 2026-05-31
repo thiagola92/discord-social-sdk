@@ -1,4 +1,6 @@
 # Utility functions that doesn't fit into other categories.
+#
+# type: ignore
 from pathlib import Path
 
 

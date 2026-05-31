@@ -1,4 +1,6 @@
 # Responsible for checking conditions.
+#
+# type: ignore
 from name import to_gdscript_class_name
 from data import (
     FunctionInfo,

@@ -1,4 +1,6 @@
 # Responsible for solving naming problems.
+#
+# type: ignore
 
 RESERVED_NAMES = [
     # Used by GDScript Object methods.

@@ -1,4 +1,6 @@
 # Responsible for discovering information about the data collected.
+#
+# type: ignore
 from enum import Enum
 
 from data import FunctionInfo, TypeInfo, NamespaceInfo, ClassInfo

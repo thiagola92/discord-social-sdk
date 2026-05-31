@@ -1,4 +1,6 @@
 # Responsible for collecting informations from XML tree.
+#
+# type: ignore
 import re
 from pathlib import Path
 from xml.etree import ElementTree

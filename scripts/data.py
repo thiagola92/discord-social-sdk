@@ -1,4 +1,6 @@
 # Responsible for holding the structures to be used.
+#
+# type: ignore
 from dataclasses import dataclass, field
 
 # Allow recursion.

@@ -1,4 +1,6 @@
 # Responsible for building the C++ files.
+#
+# type: ignore
 from pathlib import Path
 from xml.etree import ElementTree
 

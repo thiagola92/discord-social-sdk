@@ -1,4 +1,6 @@
 # Utility functions to convert to BBCode.
+#
+# type: ignore
 import re
 from re import Match
 

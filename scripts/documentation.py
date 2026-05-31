@@ -1,5 +1,7 @@
 # Responsible for updating XML documentation
 # Reference: https://docs.godotengine.org/en/latest/engine_details/class_reference/index.html#doc-class-reference-primer
+#
+# type: ignore
 from xml.etree.ElementTree import Element
 
 from data import FunctionInfo, ClassInfo, NamespaceInfo, EnumInfo, TypeInfo
