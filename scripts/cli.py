@@ -3,7 +3,7 @@ import subprocess
 from pathlib import Path
 
 
-def clang_format(filepath: str) -> None:
+def clang_format(filepath: Path) -> None:
     """
     Format C++ files.
 
