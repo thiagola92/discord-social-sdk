@@ -39,9 +39,12 @@ If you already knows how to make other build, feel free to make a [pull request]
 # Installation
 > [!IMPORTANT]  
 > Before starting, you need to follow 3 steps from [*Getting Started with C++*](https://discord.com/developers/docs/discord-social-sdk/getting-started/using-c++):  
+>
 > - Step 1: Create a Discord Developer Team.  
 > - Step 2: Create a Discord Application.  
 > - Step 3: Enable Discord Social SDK for Your App.  
+>
+> That's it, you don't need any other step to start using this GDExtension in GDScript.  
 
 ### Recommended
 It's available in [Godot Asset Library](

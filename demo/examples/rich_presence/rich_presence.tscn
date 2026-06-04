@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dnh25lx5b52qx"]
+
+[ext_resource type="Script" uid="uid://2eujwu3ylb4y" path="res://examples/rich_presence/rich_presence.gd" id="1_57kah"]
+
+[node name="RichPresence" type="Node" unique_id=1392156892]
+script = ExtResource("1_57kah")
