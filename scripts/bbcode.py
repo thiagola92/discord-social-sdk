@@ -52,6 +52,7 @@ def to_bbcode(text: str) -> str:
     # Adaptation.
     text = re.sub(r"<title>(.*?)</title>", r"[u][b]\1[/b][/u]\n", text)
     text = re.sub(r"<listitem>", r"- ", text)
+    text = re.sub(r"<ndash />", r"--", text)
     text = re.sub(
         r'<simplesect kind="see">(.*?)</simplesect>',
         r"[b]See also[/b]\n\1",
