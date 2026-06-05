@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://fob6fxkjqfkh"]
-
-[ext_resource type="Script" uid="uid://mp76tjbbyaw" path="res://examples/friends_relationship/friends_relationship.gd" id="1_dcwyf"]
-
-[node name="FriendsRelationship" type="Node" unique_id=1695848561]
-script = ExtResource("1_dcwyf")

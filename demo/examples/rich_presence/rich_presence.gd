@@ -50,13 +50,7 @@ func _ready() -> void:
 	#secrets.set_join("your-join-secret")
 	#activity.set_secrets(secrets)
 	
-	client.update_rich_presence(
-		activity,
-		func(result: DiscordClientResult):
-			if result.successful():
-				print("✅ Rich presence updated!")
-	)
-	
+	client.update_rich_presence(activity, _on_rich_presence_updated)
 
 
 func _process(_delta: float) -> void:
@@ -67,3 +61,8 @@ func _on_log(message: String, severity: DiscordLoggingSeverity.Enum) -> void:
 	var enum_str: String = Discord.enum_to_string(severity, DiscordLoggingSeverity.id)
 	
 	print("[%s] %s" % [enum_str, message])
+
+
+func _on_rich_presence_updated(result: DiscordClientResult) -> void:
+	if result.successful():
+		print("✅ Rich presence updated!")
