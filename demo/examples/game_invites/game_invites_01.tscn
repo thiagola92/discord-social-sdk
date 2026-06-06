@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://7n5ddxtm3gyw"]
+
+[ext_resource type="Script" uid="uid://bqep5tscvo1yt" path="res://examples/game_invites/game_invites_01.gd" id="1_f5wpt"]
+
+[node name="GameInvites01" type="Node" unique_id=2034363826]
+script = ExtResource("1_f5wpt")
