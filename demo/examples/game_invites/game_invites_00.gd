@@ -11,24 +11,22 @@ var target_id: int = DotEnv.read_int("TARGET_ID")
 
 var client := DiscordClient.new()
 
-var code_verifier: DiscordAuthorizationCodeVerifier # TEST
+var code_verifier: DiscordAuthorizationCodeVerifier
 
 
 func _ready() -> void:
-	#### TEST
 	var args := DiscordAuthorizationArgs.new()
 	code_verifier = client.create_authorization_code_verifier()
 	
 	args.set_scopes(DiscordClient.get_default_presence_scopes())
 	args.set_code_challenge(code_verifier.challenge())
-	####
 	
 	client.set_application_id(application_id)
 	client.add_log_callback(_on_log, DiscordLoggingSeverity.INFO)
+	client.register_launch_command(application_id, "yourgame://")
 	client.set_activity_join_callback(_on_joined_activity)
-	
-	client.set_status_changed_callback(_on_status_changed) # TEST
-	client.authorize(args, _on_authorization_response) # TEST
+	client.set_status_changed_callback(_on_status_changed)
+	client.authorize(args, _on_authorization_response)
 
 
 func _process(_delta: float) -> void:
@@ -41,16 +39,16 @@ func _on_log(message: String, severity: DiscordLoggingSeverity.Enum) -> void:
 	print("[%s] %s" % [enum_str, message])
 
 
+func _on_joined_activity(join_secret: String) -> void:
+	print("User joined with secret: %s" % join_secret)
+
+
 func _on_status_changed(status: DiscordClientStatus.Enum, _error: DiscordClientError.Enum, _error_detail: int) -> void:
 	var enum_str: String = Discord.enum_to_string(status, DiscordClientStatus.id)
 	
 	print("Status changed to %s" % enum_str)
 	
 	if status == DiscordClientStatus.READY:
-		_on_status_ready()
-
-
-func _on_status_ready() -> void:
 		var activity := DiscordActivity.new()
 		activity.set_type(DiscordActivityTypes.PLAYING)
 		activity.set_details("Learning to Use")
@@ -73,7 +71,6 @@ func _on_status_ready() -> void:
 		activity.set_supported_platforms(DiscordActivityGamePlatforms.DESKTOP)
 		
 		client.update_rich_presence(activity, _on_rich_presence_updated)
-		client.register_launch_command(application_id, "yourgame://")
 		
 		var invite_message = "Join my game!"
 		
@@ -90,10 +87,6 @@ func _on_activity_invite_sent(result: DiscordClientResult) -> void:
 		print("✉️ Invite sent!")
 
 
-func _on_joined_activity(join_secret: String) -> void:
-	pass
-
-#### TEST
 func _on_authorization_response(result: DiscordClientResult, code: String, redirect_uri: String) -> void:
 	if not result.successful():
 		print("❌ Authorization Error: %s" % result.error())

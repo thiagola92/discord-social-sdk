@@ -14,11 +14,13 @@ func _ready() -> void:
 	
 	var activity := DiscordActivity.new()
 	activity.set_type(DiscordActivityTypes.PLAYING)
-	activity.set_details("Learning to Use")
-	activity.set_state("In Godot")
+	
+	activity.set_details("Tutorial")
+	activity.set_state("In Group")
 	
 	var timestamps := DiscordActivityTimestamps.new()
-	timestamps.set_start(0)
+	var ten_minutes_ago: int = int(Time.get_unix_time_from_system() - 600)
+	timestamps.set_start(ten_minutes_ago * 1000)
 	activity.set_timestamps(timestamps)
 	
 	var assets := DiscordActivityAssets.new()
@@ -32,10 +34,10 @@ func _ready() -> void:
 	activity.set_details_url("https://github.com/thiagola92/discord-social-sdk/tree/main")
 	activity.set_state_url("https://store.godotengine.org/asset/thiagola92/discord-social-sdk/")
 	
-	var issue_button := DiscordActivityButton.new()
-	issue_button.set_label("Report bugs")
-	issue_button.set_url("https://github.com/thiagola92/discord-social-sdk/issues")
-	activity.add_button(issue_button)
+	#var issue_button := DiscordActivityButton.new()
+	#issue_button.set_label("Report bugs")
+	#issue_button.set_url("https://github.com/thiagola92/discord-social-sdk/issues")
+	#activity.add_button(issue_button)
 	
 	activity.set_status_display_type(DiscordStatusDisplayTypes.STATE)
 	
@@ -46,9 +48,9 @@ func _ready() -> void:
 	activity.set_party(party)
 	
 	# Cannot be used with buttons at the moment.
-	#var secrets := DiscordActivitySecrets.new()
-	#secrets.set_join("your-join-secret")
-	#activity.set_secrets(secrets)
+	var secrets := DiscordActivitySecrets.new()
+	secrets.set_join("your-join-secret")
+	activity.set_secrets(secrets)
 	
 	client.update_rich_presence(activity, _on_rich_presence_updated)
 
