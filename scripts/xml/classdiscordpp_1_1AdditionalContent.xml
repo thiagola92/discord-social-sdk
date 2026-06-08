@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="2910" column="32" bodyfile="include/discordpp.h" bodystart="2910" bodyend="-1"/>
+        <location file="include/discordpp.h" line="2912" column="32" bodyfile="include/discordpp.h" bodystart="2912" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -38,7 +38,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="2906" column="1"/>
+        <location file="include/discordpp.h" line="2908" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classdiscordpp_1_1AdditionalContent_1a21ccadad0bf9ff22a7812764e42fc4c3" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classdiscordpp_1_1AdditionalContent" kindref="compound">AdditionalContent</ref> &amp;</type>
@@ -57,7 +57,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="2908" column="19"/>
+        <location file="include/discordpp.h" line="2910" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classdiscordpp_1_1AdditionalContent_1a32740cbe47696a36eba98ade81f8d214" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -72,7 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="2912" column="1" bodyfile="include/discordpp.h" bodystart="2912" bodyend="2912"/>
+        <location file="include/discordpp.h" line="2914" column="1" bodyfile="include/discordpp.h" bodystart="2914" bodyend="2914"/>
       </memberdef>
       <memberdef kind="function" id="classdiscordpp_1_1AdditionalContent_1ab162a7c319bceaab6133c4f89409290a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -91,7 +91,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="2915" column="1"/>
+        <location file="include/discordpp.h" line="2917" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classdiscordpp_1_1AdditionalContent_1aaf3f1800da1798ac95010d7e40e6bb1d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classdiscordpp_1_1AdditionalContent" kindref="compound">AdditionalContent</ref> &amp;</type>
@@ -110,7 +110,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="2917" column="19"/>
+        <location file="include/discordpp.h" line="2919" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classdiscordpp_1_1AdditionalContent_1a230e54db36abe57d0f9b4bababe5334d" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
@@ -124,7 +124,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="2919" column="10"/>
+        <location file="include/discordpp.h" line="2921" column="10"/>
       </memberdef>
       <memberdef kind="function" id="classdiscordpp_1_1AdditionalContent_1a74b36937fd27724ab5454709cf4545bb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -143,7 +143,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="2926" column="6"/>
+        <location file="include/discordpp.h" line="2928" column="6"/>
       </memberdef>
       <memberdef kind="function" id="classdiscordpp_1_1AdditionalContent_1a5f71d7a58bfcf125e32cff555f6dd032" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespacediscordpp_1aee4b786af6ac9cd4ade73eb2f873177b" kindref="member">discordpp::AdditionalContentType</ref></type>
@@ -158,7 +158,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="2932" column="34"/>
+        <location file="include/discordpp.h" line="2934" column="34"/>
       </memberdef>
       <memberdef kind="function" id="classdiscordpp_1_1AdditionalContent_1a4c18621756a4d587660d8a849a5bc8b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -177,7 +177,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="2934" column="6"/>
+        <location file="include/discordpp.h" line="2936" column="6"/>
       </memberdef>
       <memberdef kind="function" id="classdiscordpp_1_1AdditionalContent_1a5162c8a105790c4a654ace2a0fba7b6c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::optional&lt; std::string &gt;</type>
@@ -192,7 +192,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="2938" column="15"/>
+        <location file="include/discordpp.h" line="2940" column="15"/>
       </memberdef>
       <memberdef kind="function" id="classdiscordpp_1_1AdditionalContent_1acb289b99006d9ffcb829eeb006f7ebdd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -211,7 +211,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="2940" column="6"/>
+        <location file="include/discordpp.h" line="2942" column="6"/>
       </memberdef>
       <memberdef kind="function" id="classdiscordpp_1_1AdditionalContent_1a67f810f29c69d51eff30eb424e17428c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>uint8_t</type>
@@ -226,7 +226,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="2944" column="9"/>
+        <location file="include/discordpp.h" line="2946" column="9"/>
       </memberdef>
       <memberdef kind="function" id="classdiscordpp_1_1AdditionalContent_1a335b1c5766a6f0461c657e22ea2737d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -245,7 +245,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="2946" column="6"/>
+        <location file="include/discordpp.h" line="2948" column="6"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-static-func">
@@ -266,7 +266,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="2929" column="20"/>
+        <location file="include/discordpp.h" line="2931" column="20"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -283,7 +283,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/discordpp.h" line="2891" column="1" bodyfile="include/discordpp.h" bodystart="2891" bodyend="2947"/>
+    <location file="include/discordpp.h" line="2893" column="1" bodyfile="include/discordpp.h" bodystart="2893" bodyend="2949"/>
     <listofallmembers>
       <member refid="classdiscordpp_1_1AdditionalContent_1aaae725626946a5bda7448c160c3bfc8c" prot="public" virt="non-virtual"><scope>discordpp::AdditionalContent</scope><name>AdditionalContent</name></member>
       <member refid="classdiscordpp_1_1AdditionalContent_1ab162a7c319bceaab6133c4f89409290a" prot="public" virt="non-virtual"><scope>discordpp::AdditionalContent</scope><name>AdditionalContent</name></member>

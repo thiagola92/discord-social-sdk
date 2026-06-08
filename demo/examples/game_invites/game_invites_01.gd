@@ -14,9 +14,10 @@ func _ready() -> void:
 	var args := DiscordAuthorizationArgs.new()
 	code_verifier = client.create_authorization_code_verifier()
 	
-	args.set_scopes(DiscordClient.get_default_presence_scopes())
+	args.set_scopes(DiscordClient.get_default_communication_scopes())
 	args.set_code_challenge(code_verifier.challenge())
 	
+	client.register_launch_command(application_id, "/usr/bin/gnome-text-editor")
 	client.set_application_id(application_id)
 	client.add_log_callback(_on_log, DiscordLoggingSeverity.INFO)
 	client.set_activity_invite_created_callback(_on_activity_invite_created)

@@ -2742,8 +2742,9 @@ public:
 /// just an arbitrary, developer-controlled group of users that can communicate with each other.
 ///
 /// ## Managing Lobbies
-/// Lobbies can be managed through a set of @ref server_apis that are documented elsewhere, which
-/// allow you to create lobbies, add and remove users from lobbies, and delete them.
+/// Lobbies can be managed through a set of [Server
+/// APIs](https://docs.discord.com/developers/resources/lobby), which allow you to create lobbies,
+/// add and remove users from lobbies, and delete them.
 ///
 /// There is also an API to create lobbies without any server side component using the
 /// Client::CreateOrJoinLobby function, which accepts a game-generated secret and will join the user
@@ -2765,10 +2766,11 @@ public:
 /// status is set to Ready). Additionally, lobbies that are linked to a channel on Discord will not
 /// be auto deleted.
 ///
-/// You can also use the @ref server_apis to customize this timeout, it can be raised to as high as
-/// 7 days, meaning the lobby only gets deleted if no one connects to it for an entire week. This
-/// should give a good amount of permanence to lobbies when needed, but there may be rare cases
-/// where a lobby does need to be "rebuilt" if everyone is offline for an extended period.
+/// You can also use the [Server APIs](https://docs.discord.com/developers/resources/lobby) to
+/// customize this timeout, it can be raised to as high as 7 days, meaning the lobby only gets
+/// deleted if no one connects to it for an entire week. This should give a good amount of
+/// permanence to lobbies when needed, but there may be rare cases where a lobby does need to be
+/// "rebuilt" if everyone is offline for an extended period.
 ///
 /// # Membership Limits
 /// Lobbies may have a maximum of 1,000 members, and each user may be in a maximum of 200 lobbies

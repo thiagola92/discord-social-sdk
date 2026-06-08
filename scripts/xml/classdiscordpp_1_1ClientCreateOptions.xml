@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="3237" column="34" bodyfile="include/discordpp.h" bodystart="3237" bodyend="-1"/>
+        <location file="include/discordpp.h" line="3239" column="34" bodyfile="include/discordpp.h" bodystart="3239" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -38,7 +38,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="3233" column="1"/>
+        <location file="include/discordpp.h" line="3235" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classdiscordpp_1_1ClientCreateOptions_1afde9899a61abe4c173bdf7beb2a6e18d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classdiscordpp_1_1ClientCreateOptions" kindref="compound">ClientCreateOptions</ref> &amp;</type>
@@ -57,7 +57,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="3235" column="21"/>
+        <location file="include/discordpp.h" line="3237" column="21"/>
       </memberdef>
       <memberdef kind="function" id="classdiscordpp_1_1ClientCreateOptions_1aa73bfe976c33cb916002445ae5507961" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -72,7 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="3239" column="1" bodyfile="include/discordpp.h" bodystart="3239" bodyend="3239"/>
+        <location file="include/discordpp.h" line="3241" column="1" bodyfile="include/discordpp.h" bodystart="3241" bodyend="3241"/>
       </memberdef>
       <memberdef kind="function" id="classdiscordpp_1_1ClientCreateOptions_1abd84b4e6210fb946c3d9bdd987d167ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -91,7 +91,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="3242" column="1"/>
+        <location file="include/discordpp.h" line="3244" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classdiscordpp_1_1ClientCreateOptions_1a86e3d0a59473bfcdc1827879ca77262d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classdiscordpp_1_1ClientCreateOptions" kindref="compound">ClientCreateOptions</ref> &amp;</type>
@@ -110,7 +110,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="3244" column="21"/>
+        <location file="include/discordpp.h" line="3246" column="21"/>
       </memberdef>
       <memberdef kind="function" id="classdiscordpp_1_1ClientCreateOptions_1a18b843a20bb7ee4a6c6e3e257690a4cb" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
@@ -124,7 +124,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="3246" column="10"/>
+        <location file="include/discordpp.h" line="3248" column="10"/>
       </memberdef>
       <memberdef kind="function" id="classdiscordpp_1_1ClientCreateOptions_1aae3dfb794e5cb64a5b7c4185fc21be4a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -139,7 +139,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="3253" column="13"/>
+        <location file="include/discordpp.h" line="3255" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classdiscordpp_1_1ClientCreateOptions_1aef30d2e0aaae55cf363ce22606b6b857" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -158,7 +158,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="3255" column="6"/>
+        <location file="include/discordpp.h" line="3257" column="6"/>
       </memberdef>
       <memberdef kind="function" id="classdiscordpp_1_1ClientCreateOptions_1ab75bc5cb2fba2679be638eaa77d33b53" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -173,7 +173,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="3258" column="13"/>
+        <location file="include/discordpp.h" line="3260" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classdiscordpp_1_1ClientCreateOptions_1ab8ea2ea26aafb92ebd54b443ae839595" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -192,7 +192,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="3260" column="6"/>
+        <location file="include/discordpp.h" line="3262" column="6"/>
       </memberdef>
       <memberdef kind="function" id="classdiscordpp_1_1ClientCreateOptions_1a4a5859333e09347aef91f9bbda4ca08b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespacediscordpp_1a566c99cfc3b8ee94ca322d35bc008633" kindref="member">discordpp::AudioSystem</ref></type>
@@ -209,7 +209,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="3270" column="24"/>
+        <location file="include/discordpp.h" line="3272" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classdiscordpp_1_1ClientCreateOptions_1adfd12e55eff0ae99f54b336f8d256770" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -228,7 +228,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="3272" column="6"/>
+        <location file="include/discordpp.h" line="3274" column="6"/>
       </memberdef>
       <memberdef kind="function" id="classdiscordpp_1_1ClientCreateOptions_1aa9a720bd4f7f3ff12d0c1a3054d00a85" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -245,7 +245,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="3282" column="6"/>
+        <location file="include/discordpp.h" line="3284" column="6"/>
       </memberdef>
       <memberdef kind="function" id="classdiscordpp_1_1ClientCreateOptions_1af979cbdbf18096496189143d34101d7c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -264,7 +264,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="3284" column="6"/>
+        <location file="include/discordpp.h" line="3286" column="6"/>
       </memberdef>
       <memberdef kind="function" id="classdiscordpp_1_1ClientCreateOptions_1ae803723e9c57a0714a813b54dcf6540c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::optional&lt; uint64_t &gt;</type>
@@ -279,7 +279,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="3289" column="15"/>
+        <location file="include/discordpp.h" line="3291" column="15"/>
       </memberdef>
       <memberdef kind="function" id="classdiscordpp_1_1ClientCreateOptions_1a45dc95e694b271d7f1cd38ec991937ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -298,7 +298,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="3291" column="6"/>
+        <location file="include/discordpp.h" line="3293" column="6"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -316,7 +316,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/discordpp.h" line="3218" column="1" bodyfile="include/discordpp.h" bodystart="3218" bodyend="3292"/>
+    <location file="include/discordpp.h" line="3220" column="1" bodyfile="include/discordpp.h" bodystart="3220" bodyend="3294"/>
     <listofallmembers>
       <member refid="classdiscordpp_1_1ClientCreateOptions_1ab75bc5cb2fba2679be638eaa77d33b53" prot="public" virt="non-virtual"><scope>discordpp::ClientCreateOptions</scope><name>ApiBase</name></member>
       <member refid="classdiscordpp_1_1ClientCreateOptions_1ae655ad66ba64f443496c158307cc77b4" prot="public" virt="non-virtual"><scope>discordpp::ClientCreateOptions</scope><name>ClientCreateOptions</name></member>

@@ -17,8 +17,8 @@ android.release.x86_32 = "./android/x86_32/libdiscord_social_sdk.android.templat
 android.release.x86_64 = "./android/x86_64/libdiscord_social_sdk.android.template_release.x86_64.so"
 linux.debug.x86_64 = "./linux/libdiscord_social_sdk.linux.template_debug.x86_64.so"
 linux.release.x86_64 = "./linux/libdiscord_social_sdk.linux.template_release.x86_64.so"
-windows.debug.x86_64 = "./windows/discord_social_sdk.windows.template_debug.x86_64.dll"
-windows.release.x86_64 = "./windows/discord_social_sdk.windows.template_release.x86_64.dll"
+windows.debug.x86_64 = "./windows/libdiscord_social_sdk.windows.template_debug.x86_64.dll"
+windows.release.x86_64 = "./windows/libdiscord_social_sdk.windows.template_release.x86_64.dll"
 
 ; ⚠️ Not implemented
 ;ios.debug = "./ios/libdiscord_social_sdk.ios.template_debug.xcframework"
@@ -65,12 +65,12 @@ linux.release.x86_64 = {
     "./linux/libdiscord_partner_sdk.so": "",
 }
 windows.debug.x86_64 = {
-    "./windows/discord_partner_sdk.dll": "",
-    "./windows/discord_partner_sdk.lib": "",
+    "./windows/libdiscord_partner_sdk.dll": "",
+    "./windows/libdiscord_partner_sdk.lib": "",
 }
 windows.release.x86_64 = {
-    "./windows/discord_partner_sdk.dll": "",
-    "./windows/discord_partner_sdk.lib": "",
+    "./windows/libdiscord_partner_sdk.dll": "",
+    "./windows/libdiscord_partner_sdk.lib": "",
 }
 
 ; ⚠️ Not implemented
@@ -99,10 +99,10 @@ linux.release.rv64 = {
     "./linux/libdiscord_partner_sdk.so": "",
 }
 windows.debug.x86_32 = {
-    "./windows/discord_partner_sdk.dll": "",
-    "./windows/discord_partner_sdk.lib": "",
+    "./windows/libdiscord_partner_sdk.dll": "",
+    "./windows/libdiscord_partner_sdk.lib": "",
 }
 windows.release.x86_32 = {
-    "./windows/discord_partner_sdk.dll": "",
-    "./windows/discord_partner_sdk.lib": "",
+    "./windows/libdiscord_partner_sdk.dll": "",
+    "./windows/libdiscord_partner_sdk.lib": "",
 }

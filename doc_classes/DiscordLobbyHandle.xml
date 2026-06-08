@@ -4,13 +4,13 @@
 </brief_description>
 	<description>
 	[u][b]Managing Lobbies[/b][/u]
-Lobbies can be managed through a set of server_apis that are documented elsewhere, which allow you to create lobbies, add and remove users from lobbies, and delete them.
+Lobbies can be managed through a set of [url=https://docs.discord.com/developers/resources/lobby]Server APIs[/url], which allow you to create lobbies, add and remove users from lobbies, and delete them.
 There is also an API to create lobbies without any server side component using the [method DiscordClient.create_or_join_lobby] function, which accepts a game-generated secret and will join the user to the lobby associated with that secret, creating it if necessary.
 NOTE: When using this API the secret will auto-expire in 30 days, at which point the existing lobby can no longer be joined, but will still exist. We recommend using this for short term lobbies and not permanent lobbies. Use the Server API for more permanent lobbies.
 Members of a lobby are not automatically removed when they close the game or temporarily disconnect. When the SDK connects, it will attempt to re-connect to any lobbies it is currently a member of.
 [u][b]Lobby Auto-Deletion[/b][/u]
 Lobbies are generally ephemeral and will be auto-deleted if they have been idle (meaning no users are actively connected to them) for some amount of time. The default is to auto delete after 5 minutes, but this can be customized when creating the lobby. As long as one user is connected to the lobby though it will not be auto-deleted (meaning they have the SDK running and status is set to Ready). Additionally, lobbies that are linked to a channel on Discord will not be auto deleted.
-You can also use the server_apis to customize this timeout, it can be raised to as high as 7 days, meaning the lobby only gets deleted if no one connects to it for an entire week. This should give a good amount of permanence to lobbies when needed, but there may be rare cases where a lobby does need to be "rebuilt" if everyone is offline for an extended period.
+You can also use the [url=https://docs.discord.com/developers/resources/lobby]Server APIs[/url] to customize this timeout, it can be raised to as high as 7 days, meaning the lobby only gets deleted if no one connects to it for an entire week. This should give a good amount of permanence to lobbies when needed, but there may be rare cases where a lobby does need to be "rebuilt" if everyone is offline for an extended period.
 [u][b]Membership Limits[/b][/u]
 Lobbies may have a maximum of 1,000 members, and each user may be in a maximum of 200 lobbies per game.
 [u][b]Audio[/b][/u]

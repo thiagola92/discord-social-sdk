@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="3195" column="33" bodyfile="include/discordpp.h" bodystart="3195" bodyend="-1"/>
+        <location file="include/discordpp.h" line="3197" column="33" bodyfile="include/discordpp.h" bodystart="3197" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -38,7 +38,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="3191" column="1"/>
+        <location file="include/discordpp.h" line="3193" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classdiscordpp_1_1UserMessageSummary_1af40e3a499b10d7a7844d743fc22f41a6" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classdiscordpp_1_1UserMessageSummary" kindref="compound">UserMessageSummary</ref> &amp;</type>
@@ -57,7 +57,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="3193" column="20"/>
+        <location file="include/discordpp.h" line="3195" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classdiscordpp_1_1UserMessageSummary_1a0853d32ccc92a97be7221492e4ffe93f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -72,7 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="3197" column="1" bodyfile="include/discordpp.h" bodystart="3197" bodyend="3197"/>
+        <location file="include/discordpp.h" line="3199" column="1" bodyfile="include/discordpp.h" bodystart="3199" bodyend="3199"/>
       </memberdef>
       <memberdef kind="function" id="classdiscordpp_1_1UserMessageSummary_1af2ed8d48bc99839d0aeb798ccac6b95c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -91,7 +91,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="3200" column="1"/>
+        <location file="include/discordpp.h" line="3202" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classdiscordpp_1_1UserMessageSummary_1a047aedeca38d30e9d646539cb3d5fc2e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classdiscordpp_1_1UserMessageSummary" kindref="compound">UserMessageSummary</ref> &amp;</type>
@@ -110,7 +110,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="3202" column="20"/>
+        <location file="include/discordpp.h" line="3204" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classdiscordpp_1_1UserMessageSummary_1a99e5028531ba53003eac068947b116c7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>uint64_t</type>
@@ -125,7 +125,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="3209" column="10"/>
+        <location file="include/discordpp.h" line="3211" column="10"/>
       </memberdef>
       <memberdef kind="function" id="classdiscordpp_1_1UserMessageSummary_1ad271915d85bac0e6227018aacd7bacca" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>uint64_t</type>
@@ -140,7 +140,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/discordpp.h" line="3212" column="10"/>
+        <location file="include/discordpp.h" line="3214" column="10"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -157,7 +157,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/discordpp.h" line="3176" column="1" bodyfile="include/discordpp.h" bodystart="3176" bodyend="3213"/>
+    <location file="include/discordpp.h" line="3178" column="1" bodyfile="include/discordpp.h" bodystart="3178" bodyend="3215"/>
     <listofallmembers>
       <member refid="classdiscordpp_1_1UserMessageSummary_1a99e5028531ba53003eac068947b116c7" prot="public" virt="non-virtual"><scope>discordpp::UserMessageSummary</scope><name>LastMessageId</name></member>
       <member refid="classdiscordpp_1_1UserMessageSummary_1a526ce46f3cbf0ca8a4f8a502665a7d4c" prot="public" virt="non-virtual"><scope>discordpp::UserMessageSummary</scope><name>nullobj</name></member>
