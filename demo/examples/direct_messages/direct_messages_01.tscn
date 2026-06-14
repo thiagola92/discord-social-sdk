@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bc4cs7ewdekjo"]
+
+[ext_resource type="Script" uid="uid://c2cq4c5714nl5" path="res://examples/direct_messages/direct_messages_01.gd" id="1_n5jft"]
+
+[node name="DirectMessages01" type="Node" unique_id=1824475627]
+script = ExtResource("1_n5jft")

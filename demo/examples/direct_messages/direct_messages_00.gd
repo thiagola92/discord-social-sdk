@@ -23,7 +23,6 @@ func _ready() -> void:
 	
 	client.set_application_id(application_id)
 	client.add_log_callback(_on_log, DiscordLoggingSeverity.INFO)
-	client.register_launch_command(application_id, OS.get_executable_path())
 	client.set_status_changed_callback(_on_status_changed)
 	client.authorize(args, _on_authorization_response)
 
@@ -44,38 +43,16 @@ func _on_status_changed(status: DiscordClientStatus.Enum, _error: DiscordClientE
 	print("Status changed to %s" % enum_str)
 	
 	if status == DiscordClientStatus.READY:
-		var activity := DiscordActivity.new()
-		activity.set_type(DiscordActivityTypes.PLAYING)
-		activity.set_details("Learning to Use")
-		activity.set_state("In Godot")
+		var message := "ready to queue?"
 		
-		var party := DiscordActivityParty.new()
-		party.set_id("party1234")
-		party.set_current_size(1)
-		party.set_max_size(5)
-		activity.set_party(party)
-		
-		var secrets := DiscordActivitySecrets.new()
-		secrets.set_join("your-join-secret")
-		activity.set_secrets(secrets)
-		
-		activity.set_supported_platforms(DiscordActivityGamePlatforms.DESKTOP)
-		
-		client.update_rich_presence(activity, _on_rich_presence_updated)
-		
-		var invite_message = "Join my game!"
-		
-		client.send_activity_invite(target_id, invite_message, _on_activity_invite_sent)
+		client.send_user_message(target_id, message, _on_message_sent)
 
 
-func _on_rich_presence_updated(result: DiscordClientResult) -> void:
+func _on_message_sent(result: DiscordClientResult, message_id: int) -> void:
 	if result.successful():
-		print("✅ Rich presence updated!")
-
-
-func _on_activity_invite_sent(result: DiscordClientResult) -> void:
-	if result.successful():
-		print("✉️ Invite sent!")
+		print("✅ Message sent successfully (message id: %s)" % message_id)
+	else:
+		print("❌ Failed to send message: %s" % result.error())
 
 
 func _on_authorization_response(result: DiscordClientResult, code: String, redirect_uri: String) -> void:

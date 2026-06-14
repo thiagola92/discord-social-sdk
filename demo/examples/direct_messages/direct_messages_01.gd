@@ -5,10 +5,6 @@ extends Node
 # This only exist so I don't accidentally git push my ID.
 var application_id: int = DotEnv.read_int("APPLICATION_ID")
 
-# ATTENTION: Replace DotEnv.read_int("TARGET_ID") with the target ID.
-# This only exist so I don't accidentally git push the target ID.
-var target_id: int = DotEnv.read_int("TARGET_ID")
-
 var client := DiscordClient.new()
 
 var code_verifier: DiscordAuthorizationCodeVerifier
@@ -23,8 +19,9 @@ func _ready() -> void:
 	
 	client.set_application_id(application_id)
 	client.add_log_callback(_on_log, DiscordLoggingSeverity.INFO)
-	client.register_launch_command(application_id, OS.get_executable_path())
-	client.set_status_changed_callback(_on_status_changed)
+	client.set_message_created_callback(_on_message_created)
+	client.set_message_updated_callback(_on_message_updated)
+	client.set_message_deleted_callback(_on_message_deleted)
 	client.authorize(args, _on_authorization_response)
 
 
@@ -38,44 +35,25 @@ func _on_log(message: String, severity: DiscordLoggingSeverity.Enum) -> void:
 	print("[%s] %s" % [enum_str, message])
 
 
-func _on_status_changed(status: DiscordClientStatus.Enum, _error: DiscordClientError.Enum, _error_detail: int) -> void:
-	var enum_str: String = Discord.enum_to_string(status, DiscordClientStatus.id)
+func _on_message_created(message_id: int) -> void:
+	var message = client.get_message_handle(message_id)
 	
-	print("Status changed to %s" % enum_str)
+	if message is DiscordMessageHandle:
+		print("New message from %s: %s" % [message.author_id(), message.content()])
+
+
+func _on_message_updated(message_id: int) -> void:
+	var message = client.get_message_handle(message_id)
 	
-	if status == DiscordClientStatus.READY:
-		var activity := DiscordActivity.new()
-		activity.set_type(DiscordActivityTypes.PLAYING)
-		activity.set_details("Learning to Use")
-		activity.set_state("In Godot")
-		
-		var party := DiscordActivityParty.new()
-		party.set_id("party1234")
-		party.set_current_size(1)
-		party.set_max_size(5)
-		activity.set_party(party)
-		
-		var secrets := DiscordActivitySecrets.new()
-		secrets.set_join("your-join-secret")
-		activity.set_secrets(secrets)
-		
-		activity.set_supported_platforms(DiscordActivityGamePlatforms.DESKTOP)
-		
-		client.update_rich_presence(activity, _on_rich_presence_updated)
-		
-		var invite_message = "Join my game!"
-		
-		client.send_activity_invite(target_id, invite_message, _on_activity_invite_sent)
+	if message is DiscordMessageHandle:
+		print("Message from %s updated: %s" % [message.author_id(), message.content()])
 
 
-func _on_rich_presence_updated(result: DiscordClientResult) -> void:
-	if result.successful():
-		print("✅ Rich presence updated!")
-
-
-func _on_activity_invite_sent(result: DiscordClientResult) -> void:
-	if result.successful():
-		print("✉️ Invite sent!")
+func _on_message_deleted(message_id: int, channel_id: int) -> void:
+	var message = client.get_message_handle(message_id)
+	
+	if message is DiscordMessageHandle:
+		print("Message from %s in %s deleted" % [message.author_id(), channel_id])
 
 
 func _on_authorization_response(result: DiscordClientResult, code: String, redirect_uri: String) -> void:
