@@ -103,10 +103,12 @@ def document_callback_params(tree: Element, function_info: FunctionInfo) -> None
             params.append(f"{pp.gdscript_name}: {type_name}")
 
         params = ", ".join(params)
+        return_type = discord_type_to_gdscript_type(function_info.type)
 
         tree.text += get_callback_param(
             param_name=p.gdscript_name,
             params=params,
+            return_type=return_type,
         )
 
 

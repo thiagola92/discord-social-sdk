@@ -122,9 +122,9 @@
 			<description>
 			Sets a callback function to generally be invoked whenever a field on a [DiscordVoiceStateHandle] object for a user would have changed.
 			For example when a user mutes themselves, all other connected clients will invoke the VoiceStateChanged callback, because the "self mute" field will be true now. The callback is generally not invoked when users join or leave channels.
-			Parameter [param cb] signature:
+			Parameter [param cb] example:
 [codeblock]
-func(user_id: int)
+func(user_id: int) -&gt; void: pass
 [/codeblock]
 </description>
 		</method>
@@ -133,9 +133,9 @@ func(user_id: int)
 			<param index="0" name="cb" type="Callable" />
 			<description>
 			Sets a callback function to be invoked whenever some joins or leaves a voice call.
-			Parameter [param cb] signature:
+			Parameter [param cb] example:
 [codeblock]
-func(user_id: int, added: bool)
+func(user_id: int, added: bool) -&gt; void: pass
 [/codeblock]
 </description>
 		</method>
@@ -183,9 +183,9 @@ func(user_id: int, added: bool)
 			<description>
 			Sets a callback function to be invoked whenever a user starts or stops speaking and is passed in the userId and whether they are currently speaking.
 			It can be invoked in other cases as well, such as if the priority speaker changes or if the user plays a soundboard sound.
-			Parameter [param cb] signature:
+			Parameter [param cb] example:
 [codeblock]
-func(user_id: int, is_playing_sound: bool)
+func(user_id: int, is_playing_sound: bool) -&gt; void: pass
 [/codeblock]
 </description>
 		</method>
@@ -194,9 +194,9 @@ func(user_id: int, is_playing_sound: bool)
 			<param index="0" name="cb" type="Callable" />
 			<description>
 			Sets a callback function to be invoked when the call status changes, such as when it fully connects or starts reconnecting.
-			Parameter [param cb] signature:
+			Parameter [param cb] example:
 [codeblock]
-func(status: DiscordCallStatus.Enum, error: DiscordCallError.Enum, error_detail: int)
+func(status: DiscordCallStatus.Enum, error: DiscordCallError.Enum, error_detail: int) -&gt; void: pass
 [/codeblock]
 </description>
 		</method>
