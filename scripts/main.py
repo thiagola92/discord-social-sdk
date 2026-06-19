@@ -2,7 +2,7 @@ import sys
 from pathlib import Path
 
 from cli import clang_format, doxygen
-from help import clear_dir
+from utility import clean_dir
 from build import Builder
 
 
@@ -18,8 +18,8 @@ ARG_DOCS = "--docs"
 
 
 def generate_code() -> None:
-    clear_dir(XML_DIR)
-    clear_dir(SRC_DIR)
+    clean_dir(XML_DIR)
+    clean_dir(SRC_DIR)
 
     clang_format(CDISCORD_PATH)
     clang_format(DISCORDPP_PATH)
@@ -31,8 +31,8 @@ def generate_code() -> None:
 
 
 def generate_docs() -> None:
-    clear_dir(XML_DIR)
-    clear_dir(DOC_DIR)
+    clean_dir(XML_DIR)
+    clean_dir(DOC_DIR)
 
     clang_format(CDISCORD_PATH)
     clang_format(DISCORDPP_PATH)
