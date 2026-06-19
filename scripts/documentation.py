@@ -1,4 +1,4 @@
-# Responsible for updating XML documentation
+# Responsible for updating XML elements.
 # Reference: https://docs.godotengine.org/en/latest/engine_details/class_reference/index.html#doc-class-reference-primer
 #
 # type: ignore

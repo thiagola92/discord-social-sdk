@@ -1,10 +1,10 @@
-# Responsible for building the C++ files.
+# Responsible for building the C++ files and updating XML files.
 #
 # type: ignore
 from pathlib import Path
 from xml.etree import ElementTree
 
-from cli import clang_format, doctool
+from cli import clang_format
 from name import to_snake_case, to_gdscript_class_name
 from collect import (
     ClassInfo,
@@ -183,8 +183,6 @@ class Builder:
     ######################################################################
 
     def update_documentations(self) -> None:
-        doctool()
-
         self.update_namespace_class()
 
         for e in self.namespace_info.enums:

@@ -1,7 +1,7 @@
 import sys
 from pathlib import Path
 
-from cli import clang_format, doxygen
+from cli import clang_format, doxygen, doctool
 from utility import clean_dir
 from build import Builder
 
@@ -38,6 +38,7 @@ def generate_docs() -> None:
     clang_format(DISCORDPP_PATH)
 
     doxygen()
+    doctool()
 
     builder = Builder(XML_DIR, SRC_DIR, DOC_DIR)
     builder.update_documentations()
