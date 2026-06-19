@@ -35,10 +35,10 @@ DOCS_ERROR = (
 
 
 class Builder:
-    def __init__(self, xml_dir: str, src_dir: str, doc_dir: str) -> None:
-        self.src_dir = Path(src_dir)
-        self.xml_dir = Path(xml_dir)
-        self.doc_dir = Path(doc_dir)
+    def __init__(self, xml_dir: Path, src_dir: Path, doc_dir: Path) -> None:
+        self.src_dir = src_dir
+        self.xml_dir = xml_dir
+        self.doc_dir = doc_dir
 
         filepath = self.xml_dir.joinpath("index.xml")
         tree = ElementTree.parse(filepath)

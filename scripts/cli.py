@@ -1,11 +1,9 @@
 # Utility functions to execute some CLI tool.
-#
-# type: ignore
 import subprocess
 from pathlib import Path
 
 
-def clang_format(filepath: str | Path) -> None:
+def clang_format(filepath: Path) -> None:
     """
     Format C++ files.
 

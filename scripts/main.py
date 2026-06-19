@@ -6,21 +6,18 @@ from help import clear_dir
 from build import Builder
 
 
-CDISCORD_PATH = "include/cdiscord.h"
-DISCORDPP_PATH = "include/discordpp.h"
+CDISCORD_PATH = Path("include/cdiscord.h")
+DISCORDPP_PATH = Path("include/discordpp.h")
 
-SRC_DIR = "src/"
-DOC_DIR = "doc_classes/"
-XML_DIR = "scripts/xml"
+SRC_DIR = Path("src/")
+DOC_DIR = Path("doc_classes/")
+XML_DIR = Path("scripts/xml")
 
 ARG_CODE = "--code"
 ARG_DOCS = "--docs"
 
 
 def generate_code() -> None:
-    Path(XML_DIR).mkdir(exist_ok=True)
-    Path(SRC_DIR).mkdir(exist_ok=True)
-
     clear_dir(XML_DIR)
     clear_dir(SRC_DIR)
 
@@ -34,9 +31,6 @@ def generate_code() -> None:
 
 
 def generate_docs() -> None:
-    Path(XML_DIR).mkdir(exist_ok=True)
-    Path(DOC_DIR).mkdir(exist_ok=True)
-
     clear_dir(XML_DIR)
     clear_dir(DOC_DIR)
 
