@@ -332,6 +332,9 @@ google-services.json
 # Scons
 *.os
 
+# Doxygen
+scripts/xml/
+
 # Android
 *.aar
 *.idsig
