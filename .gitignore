@@ -333,7 +333,7 @@ google-services.json
 *.os
 
 # Doxygen
-scripts/xml/
+scripts/__xml__/
 
 # Android
 *.aar

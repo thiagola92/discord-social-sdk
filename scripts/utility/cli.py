@@ -1,4 +1,4 @@
-# Utility functions to execute some CLI tool.
+# Functions to execute CLI tools.
 import subprocess
 from pathlib import Path
 

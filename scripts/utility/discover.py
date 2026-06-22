@@ -1,9 +1,9 @@
-# Responsible for discovering information about the data collected.
+# Functions to discover information about the data collected.
 #
 # type: ignore
 from enum import Enum
 
-from data import FunctionInfo, TypeInfo, NamespaceInfo, ClassInfo
+from utility.data import FunctionInfo, TypeInfo, NamespaceInfo, ClassInfo
 
 
 class OverloadingPattern(Enum):

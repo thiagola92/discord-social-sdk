@@ -1,4 +1,4 @@
-# Utility functions that doesn't fit into other categories.
+# Functions to clean files/directories.
 from pathlib import Path
 
 

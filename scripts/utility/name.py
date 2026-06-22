@@ -1,4 +1,4 @@
-# Responsible for solving naming problems.
+# Functions to solve naming problems.
 #
 # type: ignore
 

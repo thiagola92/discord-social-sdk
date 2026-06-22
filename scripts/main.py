@@ -1,9 +1,10 @@
 import sys
 from pathlib import Path
 
-from cli import clang_format, doxygen, doctool
-from utility import clean_dir
-from build import Builder
+from utility.cli import clang_format, doxygen, doctool
+from code_gen.builder import Builder
+from docs_gen.refiner import Refiner
+from utility.clean import clean_dir
 
 
 CDISCORD_PATH = Path("include/cdiscord.h")
@@ -11,7 +12,7 @@ DISCORDPP_PATH = Path("include/discordpp.h")
 
 SRC_DIR = Path("src/")
 DOC_DIR = Path("doc_classes/")
-XML_DIR = Path("scripts/xml")
+XML_DIR = Path("scripts/__xml__")
 
 ARG_CODE = "--code"
 ARG_DOCS = "--docs"
@@ -26,7 +27,7 @@ def generate_code() -> None:
 
     doxygen()
 
-    builder = Builder(XML_DIR, SRC_DIR, DOC_DIR)
+    builder = Builder(XML_DIR, SRC_DIR)
     builder.build_files()
 
 
@@ -40,8 +41,8 @@ def generate_docs() -> None:
     doxygen()
     doctool()
 
-    builder = Builder(XML_DIR, SRC_DIR, DOC_DIR)
-    builder.update_documentations()
+    refiner = Refiner(XML_DIR, DOC_DIR)
+    refiner.refine_documentations()
 
 
 if __name__ == "__main__":

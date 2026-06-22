@@ -1,15 +1,15 @@
-# Responsible for forging parts of the code.
+# Functions to forge parts of the C++ code.
 #
 # type: ignore
-from name import to_gdscript_class_name
-from fake import fake_enums_params
-from collect import NamespaceInfo, FunctionInfo, ClassInfo, ParamInfo
-from discover import (
+from utility.fake import fake_enums_params
+from utility.name import to_gdscript_class_name
+from utility.collect import NamespaceInfo, FunctionInfo, ClassInfo, ParamInfo
+from utility.discover import (
     OverloadingPattern,
     discover_overloading_pattern,
     discover_overloading_groups,
 )
-from translate import (
+from utility.translate import (
     discord_type_to_godot_type,
     discord_params_to_godot_params,
     discord_variable_to_godot_variable,
@@ -17,27 +17,27 @@ from translate import (
     is_discord_void,
     discord_variables_to_godot_variables,
 )
-from template.code.register_types_cpp.register_abstract import get_register_abstract
-from template.code.register_types_cpp.register_runtime import get_register_runtime
-from template.code.discord_enum_h.enum_definition import get_enum_definition
-from template.code.discord_enum_h.enum_bind import get_enum_bind
-from template.code.discord_enum_h.enum_cast import get_enum_cast
-from template.code.discord_enum_h.const_bind import get_const_bind
-from template.code.discord_classes_h.class_declaration import get_class_declaration
-from template.code.discord_classes_h.class_definition import get_class_definition
-from template.code.discord_classes_h.class_definition_g import get_class_definition_g
-from template.code.discord_classes_h.constructor_private import get_constructor_private
-from template.code.discord_classes_h.constructor_public import get_constructor_public
-from template.code.discord_classes_h.function_declaration import (
+from templates.code.register_types_cpp.register_abstract import get_register_abstract
+from templates.code.register_types_cpp.register_runtime import get_register_runtime
+from templates.code.discord_enum_h.enum_definition import get_enum_definition
+from templates.code.discord_enum_h.enum_bind import get_enum_bind
+from templates.code.discord_enum_h.enum_cast import get_enum_cast
+from templates.code.discord_enum_h.const_bind import get_const_bind
+from templates.code.discord_classes_h.class_declaration import get_class_declaration
+from templates.code.discord_classes_h.class_definition import get_class_definition
+from templates.code.discord_classes_h.class_definition_g import get_class_definition_g
+from templates.code.discord_classes_h.constructor_private import get_constructor_private
+from templates.code.discord_classes_h.constructor_public import get_constructor_public
+from templates.code.discord_classes_h.function_declaration import (
     get_function_declaration,
 )
-from template.code.discord_class_cpp.bind_method import get_bind_method
-from template.code.discord_class_cpp.return_statements import get_return_statements
-from template.code.discord_class_cpp.bind_static_method import get_bind_static_method
-from template.code.discord_class_cpp.function_definition import get_function_definition
-from template.code.discord_class_cpp.function_statements import get_function_statements
-from template.code.discord_class_cpp.overloading.if_statement import get_if_statement
-from template.code.discord_class_cpp.overloading.condition import get_condition
+from templates.code.discord_class_cpp.bind_method import get_bind_method
+from templates.code.discord_class_cpp.return_statements import get_return_statements
+from templates.code.discord_class_cpp.bind_static_method import get_bind_static_method
+from templates.code.discord_class_cpp.function_definition import get_function_definition
+from templates.code.discord_class_cpp.function_statements import get_function_statements
+from templates.code.discord_class_cpp.overloading.if_statement import get_if_statement
+from templates.code.discord_class_cpp.overloading.condition import get_condition
 
 ######################################################################
 # register_types.cpp

@@ -1,4 +1,4 @@
-# Responsible for holding the structures to be used.
+# Structures to hold data extracted from Doxygen XML.
 #
 # type: ignore
 from dataclasses import dataclass, field

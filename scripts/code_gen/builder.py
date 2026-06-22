@@ -1,23 +1,18 @@
-# Responsible for building the C++ files and updating XML files.
+# Responsible for building the C++ files.
 #
 # type: ignore
 from pathlib import Path
 from xml.etree import ElementTree
 
-from cli import clang_format
-from name import to_snake_case, to_gdscript_class_name
-from collect import (
-    ClassInfo,
-    EnumInfo,
-    collect_namespace,
-)
-from documentation import document_functions, document_class, document_enum
-from template.file.register_types_h import get_register_types_h
-from template.file.register_types_cpp import get_register_types_cpp
-from template.file.discord_enum_h import get_discord_enum_h
-from template.file.discord_classes_h import get_discord_classes_h
-from template.file.discord_class_cpp import get_discord_class_cpp
-from forge import (
+from utility.cli import clang_format
+from utility.name import to_snake_case
+from utility.collect import ClassInfo, collect_namespace
+from templates.file.register_types_h import get_register_types_h
+from templates.file.register_types_cpp import get_register_types_cpp
+from templates.file.discord_enum_h import get_discord_enum_h
+from templates.file.discord_classes_h import get_discord_classes_h
+from templates.file.discord_class_cpp import get_discord_class_cpp
+from code_gen.forge import (
     forge_register_abstracts,
     forge_register_runtimes,
     forge_enum_casts,
@@ -29,24 +24,15 @@ from forge import (
     forge_overloadings_definitions,
 )
 
-DOCS_ERROR = (
-    "Make sure to execute scons & open godot project before generating documentations"
-)
-
 
 class Builder:
-    def __init__(self, xml_dir: Path, src_dir: Path, doc_dir: Path) -> None:
+    def __init__(self, xml_dir: Path, src_dir: Path) -> None:
         self.src_dir = src_dir
         self.xml_dir = xml_dir
-        self.doc_dir = doc_dir
 
         filepath = self.xml_dir.joinpath("index.xml")
         tree = ElementTree.parse(filepath)
         self.namespace_info = collect_namespace(tree, self.xml_dir)
-
-    ######################################################################
-    # Build C++ files.
-    ######################################################################
 
     def build_files(self) -> None:
         self.build_register_types_h()
@@ -177,56 +163,3 @@ class Builder:
         filepath.write_text(content)
 
         clang_format(filepath)
-
-    ######################################################################
-    # Update XML documentation.
-    ######################################################################
-
-    def update_documentations(self) -> None:
-        self.update_namespace_class()
-
-        for e in self.namespace_info.enums:
-            self.update_enum_class(e, "")
-
-        for c in self.namespace_info.classes:
-            self.update_object_class(c)
-
-            for e in c.enums:
-                self.update_enum_class(e, c.name)
-
-    def update_namespace_class(self) -> None:
-        filename = to_gdscript_class_name("")
-        filepath = self.doc_dir.joinpath(f"{filename}.xml")
-
-        assert filepath.exists(), DOCS_ERROR
-
-        tree = ElementTree.parse(filepath)
-
-        document_functions(tree, self.namespace_info)
-
-        tree.write(filepath)
-
-    def update_object_class(self, class_info: ClassInfo) -> None:
-        filename = to_gdscript_class_name(class_info.name)
-        filepath = self.doc_dir.joinpath(f"{filename}.xml")
-
-        assert filepath.exists(), DOCS_ERROR
-
-        tree = ElementTree.parse(filepath)
-
-        document_class(tree, class_info)
-        document_functions(tree, class_info)
-
-        tree.write(filepath)
-
-    def update_enum_class(self, enum_info: EnumInfo, class_name: str = "") -> None:
-        filename = to_gdscript_class_name(class_name + enum_info.name)
-        filepath = self.doc_dir.joinpath(f"{filename}.xml")
-
-        assert filepath.exists(), DOCS_ERROR
-
-        tree = ElementTree.parse(filepath)
-
-        document_enum(tree, enum_info)
-
-        tree.write(filepath)

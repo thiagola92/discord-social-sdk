@@ -1,4 +1,4 @@
-# Responsible for collecting informations from XML tree.
+# Functions to collect informations from XML tree.
 #
 # type: ignore
 import re
@@ -6,10 +6,10 @@ from pathlib import Path
 from xml.etree import ElementTree
 from xml.etree.ElementTree import Element, tostring
 
-from check import check_overloading, check_callbacks, check_enums
-from name import to_gdscript_variable_name, to_snake_case, to_constant_case
-from parse import Parser
-from data import (
+from utility.check import check_overloading, check_callbacks, check_enums
+from utility.name import to_gdscript_variable_name, to_snake_case, to_constant_case
+from utility.parser import Parser
+from utility.data import (
     CallbackInfo,
     ClassInfo,
     EnumInfo,

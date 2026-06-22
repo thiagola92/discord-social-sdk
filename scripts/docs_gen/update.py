@@ -1,18 +1,18 @@
-# Responsible for updating XML elements.
+# Functions to update parts of the XML docs.
 # Reference: https://docs.godotengine.org/en/latest/engine_details/class_reference/index.html#doc-class-reference-primer
 #
 # type: ignore
 from xml.etree.ElementTree import Element
 
-from data import FunctionInfo, ClassInfo, NamespaceInfo, EnumInfo, TypeInfo
-from bbcode import to_bbcode, get_deprecated_text
-from translate import is_discord_optional, discord_type_to_gdscript_type
-from template.xml.variant_param import get_variant_param
-from template.xml.callback_param import get_callback_param
-from template.xml.variant_return import get_variant_return
+from docs_gen.bbcode import to_bbcode, get_deprecated_text
+from utility.data import FunctionInfo, ClassInfo, NamespaceInfo, EnumInfo, TypeInfo
+from utility.translate import is_discord_optional, discord_type_to_gdscript_type
+from templates.docs.variant_param import get_variant_param
+from templates.docs.callback_param import get_callback_param
+from templates.docs.variant_return import get_variant_return
 
 
-def document_class(tree: Element, class_info: ClassInfo) -> None:
+def update_class(tree: Element, class_info: ClassInfo) -> None:
     brief_description = tree.find("brief_description")
 
     if class_info.short_desc and brief_description is not None:
@@ -26,12 +26,12 @@ def document_class(tree: Element, class_info: ClassInfo) -> None:
         description.text += f"{d}\n"
 
 
-def document_functions(tree: Element, info: NamespaceInfo | ClassInfo) -> None:
+def update_functions(tree: Element, info: NamespaceInfo | ClassInfo) -> None:
     for f in info.functions:
-        document_function(tree, f)
+        update_function(tree, f)
 
 
-def document_function(tree: Element, function_info: FunctionInfo) -> None:
+def update_function(tree: Element, function_info: FunctionInfo) -> None:
     method = tree.find(f"methods/method[@name='{function_info.gdscript_name}']")
 
     if method is None:
@@ -60,12 +60,12 @@ def document_function(tree: Element, function_info: FunctionInfo) -> None:
         d = to_bbcode(function_info.long_desc)
         description.text += f"{d}\n\t\t\t"
 
-    document_callback_params(description, function_info)
-    document_variant_params(description, function_info)
-    document_variant_return(description, function_info)
+    update_callback_params(description, function_info)
+    update_variant_params(description, function_info)
+    update_variant_return(description, function_info)
 
 
-def document_enum(tree: Element, enum_info: EnumInfo) -> None:
+def update_enum(tree: Element, enum_info: EnumInfo) -> None:
     brief_description = tree.find("brief_description")
 
     if enum_info.short_desc and brief_description is not None:
@@ -91,7 +91,7 @@ def document_enum(tree: Element, enum_info: EnumInfo) -> None:
                 c.text += f"{d}\n\t\t"
 
 
-def document_callback_params(tree: Element, function_info: FunctionInfo) -> None:
+def update_callback_params(tree: Element, function_info: FunctionInfo) -> None:
     for p in function_info.params:
         if not p.callback:
             continue
@@ -112,7 +112,7 @@ def document_callback_params(tree: Element, function_info: FunctionInfo) -> None
         )
 
 
-def document_variant_params(tree: Element, function_info: FunctionInfo) -> None:
+def update_variant_params(tree: Element, function_info: FunctionInfo) -> None:
     for p in function_info.params:
         if is_discord_optional(p.type):
             type_name = discord_type_to_gdscript_type(p.type.templates[0])
@@ -128,7 +128,7 @@ def document_variant_params(tree: Element, function_info: FunctionInfo) -> None:
             )
 
 
-def document_variant_return(tree: Element, function_info: FunctionInfo) -> None:
+def update_variant_return(tree: Element, function_info: FunctionInfo) -> None:
     if not is_discord_optional(function_info.type):
         return
 

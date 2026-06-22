@@ -1,33 +1,30 @@
-# Responsible for translating between Discord C++ and Godot C++.
+# Functions to translate between Discord C++, Godot C++ and GDScript.
 #
 # Most translation functions will follow the pattern:
 #   discord_type_to_godot_type()
-#   discord_optional_to_godot_variant()
-#   discord_vector_to_godot_array()
 #   godot_type_to_discord_type()
-#   godot_variant_to_discord_optional()
-#   godot_array_to_discord_vector()
+#   discord_type_to_gdscript_type()
 #
 # type: ignore
-from data import TypeInfo, FunctionInfo, ParamInfo
-from name import to_gdscript_class_name, to_gdscript_variable_name
-from template.code.discord_class_cpp.discord_to_godot.object import get_godot_object
-from template.code.discord_class_cpp.discord_to_godot.variant import get_godot_variant
-from template.code.discord_class_cpp.discord_to_godot.array import get_godot_array
-from template.code.discord_class_cpp.discord_to_godot.dictionary import (
+from utility.data import TypeInfo, FunctionInfo, ParamInfo
+from utility.name import to_gdscript_class_name, to_gdscript_variable_name
+from templates.code.discord_class_cpp.discord_to_godot.object import get_godot_object
+from templates.code.discord_class_cpp.discord_to_godot.variant import get_godot_variant
+from templates.code.discord_class_cpp.discord_to_godot.array import get_godot_array
+from templates.code.discord_class_cpp.discord_to_godot.dictionary import (
     get_godot_dictionary,
 )
-from template.code.discord_class_cpp.godot_to_discord.map import get_discord_map
-from template.code.discord_class_cpp.godot_to_discord.optional import (
+from templates.code.discord_class_cpp.godot_to_discord.map import get_discord_map
+from templates.code.discord_class_cpp.godot_to_discord.optional import (
     get_discord_optional,
 )
-from template.code.discord_class_cpp.godot_to_discord.optional_enum import (
+from templates.code.discord_class_cpp.godot_to_discord.optional_enum import (
     get_discord_optional_enum,
 )
-from template.code.discord_class_cpp.godot_to_discord.optional_object import (
+from templates.code.discord_class_cpp.godot_to_discord.optional_object import (
     get_discord_optional_object,
 )
-from template.code.discord_class_cpp.godot_to_discord.callback import (
+from templates.code.discord_class_cpp.godot_to_discord.callback import (
     get_discord_callback,
 )
 

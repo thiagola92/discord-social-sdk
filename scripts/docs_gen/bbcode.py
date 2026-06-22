@@ -1,11 +1,15 @@
-# Utility functions to convert to BBCode.
+# Functions to convert documentation to BBCode.
 #
 # type: ignore
 import re
 from re import Match
 
-from name import to_gdscript_class_name, to_gdscript_variable_name, to_constant_case
-from collect import REFERENCES
+from utility.name import (
+    to_gdscript_class_name,
+    to_gdscript_variable_name,
+    to_constant_case,
+)
+from utility.collect import REFERENCES
 
 
 def to_bbcode(text: str) -> str:

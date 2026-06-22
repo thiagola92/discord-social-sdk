@@ -1,8 +1,8 @@
-# Responsible for checking conditions.
+# Functions to check conditions.
 #
 # type: ignore
-from name import to_gdscript_class_name
-from data import (
+from utility.name import to_gdscript_class_name
+from utility.data import (
     FunctionInfo,
     ClassInfo,
     NamespaceInfo,
