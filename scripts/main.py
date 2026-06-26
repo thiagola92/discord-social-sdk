@@ -38,8 +38,8 @@ def generate_docs() -> None:
     clang_format(CDISCORD_PATH)
     clang_format(DISCORDPP_PATH)
 
-    doxygen()
     doctool()
+    doxygen()
 
     refiner = Refiner(XML_DIR, DOC_DIR)
     refiner.refine_documentations()
