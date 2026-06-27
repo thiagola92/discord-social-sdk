@@ -3,7 +3,7 @@ from pathlib import Path
 
 from utility.cli import clang_format, doxygen, doctool
 from code_gen.builder import Builder
-from docs_gen.refiner import Refiner
+from docs_gen.improver import Improver
 from utility.clean import clean_dir
 
 
@@ -41,8 +41,8 @@ def generate_docs() -> None:
     doctool()
     doxygen()
 
-    refiner = Refiner(XML_DIR, DOC_DIR)
-    refiner.refine_documentations()
+    improver = Improver(XML_DIR, DOC_DIR)
+    improver.refine_documentations()
 
 
 if __name__ == "__main__":

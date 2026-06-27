@@ -1,4 +1,4 @@
-# Responsible for refining the XML docs.
+# Responsible for improving the XML docs.
 #
 # type: ignore
 from pathlib import Path
@@ -13,7 +13,7 @@ DOCS_ERROR = (
 )
 
 
-class Refiner:
+class Improver:
     def __init__(self, xml_dir: Path, doc_dir: Path) -> None:
         self.xml_dir = xml_dir
         self.doc_dir = doc_dir
@@ -22,19 +22,19 @@ class Refiner:
         tree = ElementTree.parse(filepath)
         self.namespace_info = collect_namespace(tree, self.xml_dir)
 
-    def refine_documentations(self) -> None:
-        self.refine_namespace_class()
+    def improve_documentations(self) -> None:
+        self.improve_namespace_class()
 
         for e in self.namespace_info.enums:
-            self.refine_enum_class(e, "")
+            self.improve_enum_class(e, "")
 
         for c in self.namespace_info.classes:
-            self.refine_object_class(c)
+            self.improve_object_class(c)
 
             for e in c.enums:
-                self.refine_enum_class(e, c.name)
+                self.improve_enum_class(e, c.name)
 
-    def refine_namespace_class(self) -> None:
+    def improve_namespace_class(self) -> None:
         filename = to_gdscript_class_name("")
         filepath = self.doc_dir.joinpath(f"{filename}.xml")
 
@@ -46,7 +46,7 @@ class Refiner:
 
         tree.write(filepath)
 
-    def refine_object_class(self, class_info: ClassInfo) -> None:
+    def improve_object_class(self, class_info: ClassInfo) -> None:
         filename = to_gdscript_class_name(class_info.name)
         filepath = self.doc_dir.joinpath(f"{filename}.xml")
 
@@ -59,7 +59,7 @@ class Refiner:
 
         tree.write(filepath)
 
-    def refine_enum_class(self, enum_info: EnumInfo, class_name: str = "") -> None:
+    def improve_enum_class(self, enum_info: EnumInfo, class_name: str = "") -> None:
         filename = to_gdscript_class_name(class_name + enum_info.name)
         filepath = self.doc_dir.joinpath(f"{filename}.xml")
 
