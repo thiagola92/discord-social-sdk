@@ -1,28 +1,13 @@
 # Functions to forge parts of the C++ code.
 #
 # type: ignore
-from utility.fake import fake_enums_params
-from utility.name import to_gdscript_class_name
-from utility.collect import NamespaceInfo, FunctionInfo, ClassInfo, ParamInfo
-from utility.discover import (
-    OverloadingPattern,
-    discover_overloading_pattern,
-    discover_overloading_groups,
-)
-from utility.translate import (
-    discord_type_to_godot_type,
-    discord_params_to_godot_params,
-    discord_variable_to_godot_variable,
-    godot_variables_to_discord_variables,
-    is_discord_void,
-    discord_variables_to_godot_variables,
-)
-from templates.code.register_types_cpp.register_abstract import get_register_abstract
-from templates.code.register_types_cpp.register_runtime import get_register_runtime
-from templates.code.discord_enum_h.enum_definition import get_enum_definition
-from templates.code.discord_enum_h.enum_bind import get_enum_bind
-from templates.code.discord_enum_h.enum_cast import get_enum_cast
-from templates.code.discord_enum_h.const_bind import get_const_bind
+from templates.code.discord_class_cpp.bind_method import get_bind_method
+from templates.code.discord_class_cpp.bind_static_method import get_bind_static_method
+from templates.code.discord_class_cpp.function_definition import get_function_definition
+from templates.code.discord_class_cpp.function_statements import get_function_statements
+from templates.code.discord_class_cpp.overloading.condition import get_condition
+from templates.code.discord_class_cpp.overloading.if_statement import get_if_statement
+from templates.code.discord_class_cpp.return_statements import get_return_statements
 from templates.code.discord_classes_h.class_declaration import get_class_declaration
 from templates.code.discord_classes_h.class_definition import get_class_definition
 from templates.code.discord_classes_h.class_definition_g import get_class_definition_g
@@ -31,13 +16,28 @@ from templates.code.discord_classes_h.constructor_public import get_constructor_
 from templates.code.discord_classes_h.function_declaration import (
     get_function_declaration,
 )
-from templates.code.discord_class_cpp.bind_method import get_bind_method
-from templates.code.discord_class_cpp.return_statements import get_return_statements
-from templates.code.discord_class_cpp.bind_static_method import get_bind_static_method
-from templates.code.discord_class_cpp.function_definition import get_function_definition
-from templates.code.discord_class_cpp.function_statements import get_function_statements
-from templates.code.discord_class_cpp.overloading.if_statement import get_if_statement
-from templates.code.discord_class_cpp.overloading.condition import get_condition
+from templates.code.discord_enum_h.const_bind import get_const_bind
+from templates.code.discord_enum_h.enum_bind import get_enum_bind
+from templates.code.discord_enum_h.enum_cast import get_enum_cast
+from templates.code.discord_enum_h.enum_definition import get_enum_definition
+from templates.code.register_types_cpp.register_abstract import get_register_abstract
+from templates.code.register_types_cpp.register_runtime import get_register_runtime
+from utility.collect import ClassInfo, FunctionInfo, NamespaceInfo, ParamInfo
+from utility.discover import (
+    OverloadingPattern,
+    discover_overloading_groups,
+    discover_overloading_pattern,
+)
+from utility.fake import fake_enums_params
+from utility.name import to_gdscript_class_name
+from utility.translate import (
+    discord_params_to_godot_params,
+    discord_type_to_godot_type,
+    discord_variable_to_godot_variable,
+    discord_variables_to_godot_variables,
+    godot_variables_to_discord_variables,
+    is_discord_void,
+)
 
 ######################################################################
 # register_types.cpp

@@ -6,13 +6,14 @@
 #   discord_type_to_gdscript_type()
 #
 # type: ignore
-from utility.data import TypeInfo, FunctionInfo, ParamInfo
-from utility.name import to_gdscript_class_name, to_gdscript_variable_name
-from templates.code.discord_class_cpp.discord_to_godot.object import get_godot_object
-from templates.code.discord_class_cpp.discord_to_godot.variant import get_godot_variant
 from templates.code.discord_class_cpp.discord_to_godot.array import get_godot_array
 from templates.code.discord_class_cpp.discord_to_godot.dictionary import (
     get_godot_dictionary,
+)
+from templates.code.discord_class_cpp.discord_to_godot.object import get_godot_object
+from templates.code.discord_class_cpp.discord_to_godot.variant import get_godot_variant
+from templates.code.discord_class_cpp.godot_to_discord.callback import (
+    get_discord_callback,
 )
 from templates.code.discord_class_cpp.godot_to_discord.map import get_discord_map
 from templates.code.discord_class_cpp.godot_to_discord.optional import (
@@ -24,9 +25,8 @@ from templates.code.discord_class_cpp.godot_to_discord.optional_enum import (
 from templates.code.discord_class_cpp.godot_to_discord.optional_object import (
     get_discord_optional_object,
 )
-from templates.code.discord_class_cpp.godot_to_discord.callback import (
-    get_discord_callback,
-)
+from utility.data import FunctionInfo, ParamInfo, TypeInfo
+from utility.name import to_gdscript_class_name, to_gdscript_variable_name
 
 
 def is_discord_void(type_info: TypeInfo) -> bool:

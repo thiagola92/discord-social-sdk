@@ -4,12 +4,12 @@
 # type: ignore
 from xml.etree.ElementTree import Element
 
-from docs_gen.bbcode import to_bbcode, get_deprecated_text
-from utility.data import FunctionInfo, ClassInfo, NamespaceInfo, EnumInfo, TypeInfo
-from utility.translate import is_discord_optional, discord_type_to_gdscript_type
-from templates.docs.variant_param import get_variant_param
+from docs_gen.bbcode import get_deprecated_text, to_bbcode
 from templates.docs.callback_param import get_callback_param
+from templates.docs.variant_param import get_variant_param
 from templates.docs.variant_return import get_variant_return
+from utility.data import ClassInfo, EnumInfo, FunctionInfo, NamespaceInfo, TypeInfo
+from utility.translate import discord_type_to_gdscript_type, is_discord_optional
 
 
 def update_class(tree: Element, class_info: ClassInfo) -> None:

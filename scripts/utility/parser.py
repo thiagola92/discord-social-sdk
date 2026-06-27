@@ -1,8 +1,8 @@
 # Responsible for parsing strings that doxygen didn't parsed.
 #
 # type: ignore
+from utility.data import FunctionInfo, ParamInfo, TypeInfo
 from utility.name import to_gdscript_variable_name
-from utility.data import ParamInfo, TypeInfo, FunctionInfo
 
 
 class Parser:

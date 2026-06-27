@@ -1,16 +1,16 @@
 # Functions to check conditions.
 #
 # type: ignore
-from utility.name import to_gdscript_class_name
 from utility.data import (
-    FunctionInfo,
-    ClassInfo,
-    NamespaceInfo,
-    TypeInfo,
     CallbackInfo,
-    ParamInfo,
+    ClassInfo,
     EnumInfo,
+    FunctionInfo,
+    NamespaceInfo,
+    ParamInfo,
+    TypeInfo,
 )
+from utility.name import to_gdscript_class_name
 
 
 def check_callbacks(class_info: ClassInfo) -> None:

@@ -4,9 +4,9 @@
 from pathlib import Path
 from xml.etree import ElementTree
 
-from utility.name import to_gdscript_class_name
-from docs_gen.update import update_functions, update_class, update_enum
+from docs_gen.update import update_class, update_enum, update_functions
 from utility.collect import ClassInfo, EnumInfo, collect_namespace
+from utility.name import to_gdscript_class_name
 
 DOCS_ERROR = (
     "Make sure to execute scons & open godot project before generating documentations"

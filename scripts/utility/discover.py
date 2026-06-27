@@ -3,7 +3,7 @@
 # type: ignore
 from enum import Enum
 
-from utility.data import FunctionInfo, TypeInfo, NamespaceInfo, ClassInfo
+from utility.data import ClassInfo, FunctionInfo, NamespaceInfo, TypeInfo
 
 
 class OverloadingPattern(Enum):

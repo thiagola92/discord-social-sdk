@@ -1,7 +1,7 @@
 # Functions to create fake data.
 #
 # type: ignore
-from utility.data import ParamInfo, TypeInfo, FunctionInfo
+from utility.data import FunctionInfo, ParamInfo, TypeInfo
 
 
 def fake_enums_params(params: list[ParamInfo]) -> list[ParamInfo]:

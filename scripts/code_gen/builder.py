@@ -4,25 +4,25 @@
 from pathlib import Path
 from xml.etree import ElementTree
 
-from utility.cli import clang_format
-from utility.name import to_snake_case
-from utility.collect import ClassInfo, collect_namespace
-from templates.file.register_types_h import get_register_types_h
-from templates.file.register_types_cpp import get_register_types_cpp
-from templates.file.discord_enum_h import get_discord_enum_h
-from templates.file.discord_classes_h import get_discord_classes_h
-from templates.file.discord_class_cpp import get_discord_class_cpp
 from code_gen.forge import (
-    forge_register_abstracts,
-    forge_register_runtimes,
-    forge_enum_casts,
-    forge_enum_definitions,
+    forge_binds,
     forge_classes_declarations,
     forge_classes_definitions,
-    forge_binds,
+    forge_enum_casts,
+    forge_enum_definitions,
     forge_functions_definitions,
     forge_overloadings_definitions,
+    forge_register_abstracts,
+    forge_register_runtimes,
 )
+from templates.file.discord_class_cpp import get_discord_class_cpp
+from templates.file.discord_classes_h import get_discord_classes_h
+from templates.file.discord_enum_h import get_discord_enum_h
+from templates.file.register_types_cpp import get_register_types_cpp
+from templates.file.register_types_h import get_register_types_h
+from utility.cli import clang_format
+from utility.collect import ClassInfo, collect_namespace
+from utility.name import to_snake_case
 
 
 class Builder:

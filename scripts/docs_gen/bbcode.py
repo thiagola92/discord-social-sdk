@@ -4,12 +4,12 @@
 import re
 from re import Match
 
+from utility.collect import REFERENCES
 from utility.name import (
+    to_constant_case,
     to_gdscript_class_name,
     to_gdscript_variable_name,
-    to_constant_case,
 )
-from utility.collect import REFERENCES
 
 
 def to_bbcode(text: str) -> str:

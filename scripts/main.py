@@ -1,11 +1,10 @@
 import sys
 from pathlib import Path
 
-from utility.cli import clang_format, doxygen, doctool
 from code_gen.builder import Builder
 from docs_gen.improver import Improver
 from utility.clean import clean_dir
-
+from utility.cli import clang_format, doctool, doxygen
 
 CDISCORD_PATH = Path("include/cdiscord.h")
 DISCORDPP_PATH = Path("include/discordpp.h")
@@ -42,7 +41,7 @@ def generate_docs() -> None:
     doxygen()
 
     improver = Improver(XML_DIR, DOC_DIR)
-    improver.refine_documentations()
+    improver.improve_documentations()
 
 
 if __name__ == "__main__":

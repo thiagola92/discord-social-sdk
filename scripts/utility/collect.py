@@ -6,9 +6,7 @@ from pathlib import Path
 from xml.etree import ElementTree
 from xml.etree.ElementTree import Element, tostring
 
-from utility.check import check_overloading, check_callbacks, check_enums
-from utility.name import to_gdscript_variable_name, to_snake_case, to_constant_case
-from utility.parser import Parser
+from utility.check import check_callbacks, check_enums, check_overloading
 from utility.data import (
     CallbackInfo,
     ClassInfo,
@@ -17,10 +15,11 @@ from utility.data import (
     FunctionInfo,
     NamespaceInfo,
     ParamInfo,
-    TypeInfo,
     ReferencesInfo,
+    TypeInfo,
 )
-
+from utility.name import to_constant_case, to_gdscript_variable_name, to_snake_case
+from utility.parser import Parser
 
 # Give enums an id so we later identify them during overloadings.
 ENUM_ID = 0
