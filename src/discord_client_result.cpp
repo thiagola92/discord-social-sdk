@@ -61,18 +61,18 @@ bool DiscordClientResult::successful() {
 	return r1;
 }
 
-float DiscordClientResult::retry_after() {
-	auto r0 = obj->RetryAfter();
-
-	float r1 = (float)r0;
-
-	return r1;
-}
-
 int64_t DiscordClientResult::error_code() {
 	auto r0 = obj->ErrorCode();
 
 	int64_t r1 = (int64_t)r0;
+
+	return r1;
+}
+
+real_t DiscordClientResult::retry_after() {
+	auto r0 = obj->RetryAfter();
+
+	real_t r1 = (real_t)r0;
 
 	return r1;
 }
@@ -92,8 +92,8 @@ void DiscordClientResult::set_response_body(String response_body) {
 	obj->SetResponseBody(p0);
 }
 
-void DiscordClientResult::set_retry_after(float retry_after) {
-	float p0 = retry_after;
+void DiscordClientResult::set_retry_after(real_t retry_after) {
+	float p0 = (float)retry_after;
 	obj->SetRetryAfter(p0);
 }
 

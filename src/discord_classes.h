@@ -620,24 +620,24 @@ public:
 	bool get_pttactive();
 	bool get_self_deaf();
 	bool get_self_mute();
-	float get_participant_volume(int64_t user_id);
 	int64_t get_channel_id();
 	int64_t get_guild_id();
 	int64_t get_pttrelease_delay();
+	real_t get_participant_volume(int64_t user_id);
 	static String error_to_string(DiscordCallError::Enum type);
 	static String status_to_string(DiscordCallStatus::Enum type);
 	void set_audio_mode(DiscordAudioModeType::Enum audio_mode);
 	void set_local_mute(int64_t user_id, bool mute);
 	void set_on_voice_state_changed_callback(Callable cb);
 	void set_participant_changed_callback(Callable cb);
-	void set_participant_volume(int64_t user_id, float volume);
+	void set_participant_volume(int64_t user_id, real_t volume);
 	void set_pttactive(bool active);
 	void set_pttrelease_delay(int64_t release_delay_ms);
 	void set_self_deaf(bool deaf);
 	void set_self_mute(bool mute);
 	void set_speaking_status_changed_callback(Callable cb);
 	void set_status_changed_callback(Callable cb);
-	void set_vadthreshold(bool automatic, float threshold);
+	void set_vadthreshold(bool automatic, real_t threshold);
 
 	// Overloading functions.
 
@@ -772,9 +772,9 @@ public:
 	bool set_log_dir(String path, DiscordLoggingSeverity::Enum min_severity);
 	bool set_speaker_mode(bool speaker_mode);
 	bool show_audio_route_picker();
-	float get_input_volume();
-	float get_output_volume();
 	int64_t get_application_id();
+	real_t get_input_volume();
+	real_t get_output_volume();
 	static String error_to_string(DiscordClientError::Enum type);
 	static String get_default_audio_device_id();
 	static String get_default_communication_scopes();
@@ -864,7 +864,7 @@ public:
 	void set_game_window_pid(int64_t pid);
 	void set_http_request_timeout(int64_t http_timeout_in_milliseconds);
 	void set_input_device(String device_id, Callable cb);
-	void set_input_volume(float input_volume);
+	void set_input_volume(real_t input_volume);
 	void set_lobby_created_callback(Callable cb);
 	void set_lobby_deleted_callback(Callable cb);
 	void set_lobby_member_added_callback(Callable cb);
@@ -875,13 +875,13 @@ public:
 	void set_message_deleted_callback(Callable cb);
 	void set_message_updated_callback(Callable cb);
 	void set_no_audio_input_callback(Callable callback);
-	void set_no_audio_input_threshold(float d_bfsthreshold);
+	void set_no_audio_input_threshold(real_t d_bfsthreshold);
 	void set_noise_cancellation(bool on);
 	void set_noise_suppression(bool on);
 	void set_online_status(DiscordStatusType::Enum status, Callable callback);
 	void set_opus_hardware_coding(bool encode, bool decode);
 	void set_output_device(String device_id, Callable cb);
-	void set_output_volume(float output_volume);
+	void set_output_volume(real_t output_volume);
 	void set_relationship_created_callback(Callable cb);
 	void set_relationship_deleted_callback(Callable cb);
 	void set_relationship_groups_updated_callback(Callable cb);
@@ -984,12 +984,12 @@ public:
 	String to_string_discord();
 	bool retryable();
 	bool successful();
-	float retry_after();
 	int64_t error_code();
+	real_t retry_after();
 	void set_error(String error);
 	void set_error_code(int64_t error_code);
 	void set_response_body(String response_body);
-	void set_retry_after(float retry_after);
+	void set_retry_after(real_t retry_after);
 	void set_retryable(bool retryable);
 	void set_status(DiscordHttpStatusCode::Enum status);
 	void set_successful(bool successful);
@@ -1515,9 +1515,9 @@ public:
 
 	// Functions.
 	bool automatic();
-	float vad_threshold();
+	real_t vad_threshold();
 	void set_automatic(bool automatic);
-	void set_vad_threshold(float vad_threshold);
+	void set_vad_threshold(real_t vad_threshold);
 
 	// Overloading functions.
 

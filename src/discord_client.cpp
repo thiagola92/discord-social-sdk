@@ -402,22 +402,6 @@ bool DiscordClient::show_audio_route_picker() {
 	return r1;
 }
 
-float DiscordClient::get_input_volume() {
-	auto r0 = obj->GetInputVolume();
-
-	float r1 = (float)r0;
-
-	return r1;
-}
-
-float DiscordClient::get_output_volume() {
-	auto r0 = obj->GetOutputVolume();
-
-	float r1 = (float)r0;
-
-	return r1;
-}
-
 int64_t DiscordClient::get_application_id() {
 	auto r0 = obj->GetApplicationId();
 
@@ -446,6 +430,22 @@ int64_t DiscordClient::get_version_patch() {
 	auto r0 = discordpp::Client::GetVersionPatch();
 
 	int64_t r1 = (int64_t)r0;
+
+	return r1;
+}
+
+real_t DiscordClient::get_input_volume() {
+	auto r0 = obj->GetInputVolume();
+
+	real_t r1 = (real_t)r0;
+
+	return r1;
+}
+
+real_t DiscordClient::get_output_volume() {
+	auto r0 = obj->GetOutputVolume();
+
+	real_t r1 = (real_t)r0;
 
 	return r1;
 }
@@ -1469,8 +1469,8 @@ void DiscordClient::set_input_device(String device_id, Callable cb) {
 	obj->SetInputDevice(p0, p1);
 }
 
-void DiscordClient::set_input_volume(float input_volume) {
-	float p0 = input_volume;
+void DiscordClient::set_input_volume(real_t input_volume) {
+	float p0 = (float)input_volume;
 	obj->SetInputVolume(p0);
 }
 
@@ -1568,8 +1568,8 @@ void DiscordClient::set_no_audio_input_callback(Callable callback) {
 	obj->SetNoAudioInputCallback(p0);
 }
 
-void DiscordClient::set_no_audio_input_threshold(float d_bfsthreshold) {
-	float p0 = d_bfsthreshold;
+void DiscordClient::set_no_audio_input_threshold(real_t d_bfsthreshold) {
+	float p0 = (float)d_bfsthreshold;
 	obj->SetNoAudioInputThreshold(p0);
 }
 
@@ -1613,8 +1613,8 @@ void DiscordClient::set_output_device(String device_id, Callable cb) {
 	obj->SetOutputDevice(p0, p1);
 }
 
-void DiscordClient::set_output_volume(float output_volume) {
-	float p0 = output_volume;
+void DiscordClient::set_output_volume(real_t output_volume) {
+	float p0 = (float)output_volume;
 	obj->SetOutputVolume(p0);
 }
 

@@ -114,15 +114,6 @@ bool DiscordCall::get_self_mute() {
 	return r1;
 }
 
-float DiscordCall::get_participant_volume(int64_t user_id) {
-	int64_t p0 = user_id;
-	auto r0 = obj->GetParticipantVolume(p0);
-
-	float r1 = (float)r0;
-
-	return r1;
-}
-
 int64_t DiscordCall::get_channel_id() {
 	auto r0 = obj->GetChannelId();
 
@@ -143,6 +134,15 @@ int64_t DiscordCall::get_pttrelease_delay() {
 	auto r0 = obj->GetPTTReleaseDelay();
 
 	int64_t r1 = (int64_t)r0;
+
+	return r1;
+}
+
+real_t DiscordCall::get_participant_volume(int64_t user_id) {
+	int64_t p0 = user_id;
+	auto r0 = obj->GetParticipantVolume(p0);
+
+	real_t r1 = (real_t)r0;
 
 	return r1;
 }
@@ -177,9 +177,9 @@ void DiscordCall::set_participant_changed_callback(Callable cb) {
 	obj->SetParticipantChangedCallback(p0);
 }
 
-void DiscordCall::set_participant_volume(int64_t user_id, float volume) {
+void DiscordCall::set_participant_volume(int64_t user_id, real_t volume) {
 	int64_t p0 = user_id;
-	float p1 = volume;
+	float p1 = (float)volume;
 	obj->SetParticipantVolume(p0, p1);
 }
 
@@ -224,9 +224,9 @@ void DiscordCall::set_status_changed_callback(Callable cb) {
 	obj->SetStatusChangedCallback(p0);
 }
 
-void DiscordCall::set_vadthreshold(bool automatic, float threshold) {
+void DiscordCall::set_vadthreshold(bool automatic, real_t threshold) {
 	bool p0 = automatic;
-	float p1 = threshold;
+	float p1 = (float)threshold;
 	obj->SetVADThreshold(p0, p1);
 }
 

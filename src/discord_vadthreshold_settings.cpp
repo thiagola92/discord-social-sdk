@@ -13,10 +13,10 @@ bool DiscordVADThresholdSettings::automatic() {
 	return r1;
 }
 
-float DiscordVADThresholdSettings::vad_threshold() {
+real_t DiscordVADThresholdSettings::vad_threshold() {
 	auto r0 = obj->VadThreshold();
 
-	float r1 = (float)r0;
+	real_t r1 = (real_t)r0;
 
 	return r1;
 }
@@ -26,8 +26,8 @@ void DiscordVADThresholdSettings::set_automatic(bool automatic) {
 	obj->SetAutomatic(p0);
 }
 
-void DiscordVADThresholdSettings::set_vad_threshold(float vad_threshold) {
-	float p0 = vad_threshold;
+void DiscordVADThresholdSettings::set_vad_threshold(real_t vad_threshold) {
+	float p0 = (float)vad_threshold;
 	obj->SetVadThreshold(p0);
 }
 

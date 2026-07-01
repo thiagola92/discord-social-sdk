@@ -118,7 +118,7 @@ def discord_type_to_godot_type(
         return "int64_t"
 
     if is_discord_float(info):
-        return "float"
+        return "real_t"
 
     if is_discord_string(info):
         return "String"
@@ -239,7 +239,7 @@ def discord_variable_to_godot_variable(
         return f"int64_t {target} = (int64_t){source};"
 
     if is_discord_float(info):
-        return f"float {target} = (float){source};"
+        return f"real_t {target} = (real_t){source};"
 
     if is_discord_string(info):
         return f"String {target} = String({source}.c_str());"
@@ -374,7 +374,7 @@ def godot_variable_to_discord_variable(
         return f"int64_t {target} = {source};"
 
     if is_discord_float(info):
-        return f"float {target} = {source};"
+        return f"float {target} = (float){source};"
 
     if is_discord_string(info):
         return f"std::string {target} = std::string({source}.utf8().get_data());"
@@ -466,7 +466,7 @@ def godot_variant_to_discord_variable(type_info: TypeInfo, source: str, target: 
         return f"{target} = {source};"
 
     if is_discord_float(type_info):
-        return f"{target} = {source};"
+        return f"{target} = (real_t){source};"
 
     if is_discord_string(type_info):
         return f"{target} = {source}.stringify().utf8().get_data();"
