@@ -60,7 +60,7 @@ Variant DiscordMessageHandle::additional_content() {
 		auto r0_v = r0.value();
 
 		discordpp::AdditionalContent *r1_v_t = memnew(discordpp::AdditionalContent(std::move(r0_v)));
-		DiscordAdditionalContent *r1_v = memnew(DiscordAdditionalContent{ r1_v_t });
+		Ref<DiscordAdditionalContent> r1_v = memnew(DiscordAdditionalContent{ r1_v_t });
 
 		r1 = Variant(r1_v);
 	}
@@ -95,7 +95,7 @@ Variant DiscordMessageHandle::author() {
 		auto r0_v = r0.value();
 
 		discordpp::UserHandle *r1_v_t = memnew(discordpp::UserHandle(std::move(r0_v)));
-		DiscordUserHandle *r1_v = memnew(DiscordUserHandle{ r1_v_t });
+		Ref<DiscordUserHandle> r1_v = memnew(DiscordUserHandle{ r1_v_t });
 
 		r1 = Variant(r1_v);
 	}
@@ -114,7 +114,7 @@ Variant DiscordMessageHandle::channel() {
 		auto r0_v = r0.value();
 
 		discordpp::ChannelHandle *r1_v_t = memnew(discordpp::ChannelHandle(std::move(r0_v)));
-		DiscordChannelHandle *r1_v = memnew(DiscordChannelHandle{ r1_v_t });
+		Ref<DiscordChannelHandle> r1_v = memnew(DiscordChannelHandle{ r1_v_t });
 
 		r1 = Variant(r1_v);
 	}
@@ -149,7 +149,7 @@ Variant DiscordMessageHandle::lobby() {
 		auto r0_v = r0.value();
 
 		discordpp::LobbyHandle *r1_v_t = memnew(discordpp::LobbyHandle(std::move(r0_v)));
-		DiscordLobbyHandle *r1_v = memnew(DiscordLobbyHandle{ r1_v_t });
+		Ref<DiscordLobbyHandle> r1_v = memnew(DiscordLobbyHandle{ r1_v_t });
 
 		r1 = Variant(r1_v);
 	}
@@ -168,7 +168,7 @@ Variant DiscordMessageHandle::recipient() {
 		auto r0_v = r0.value();
 
 		discordpp::UserHandle *r1_v_t = memnew(discordpp::UserHandle(std::move(r0_v)));
-		DiscordUserHandle *r1_v = memnew(DiscordUserHandle{ r1_v_t });
+		Ref<DiscordUserHandle> r1_v = memnew(DiscordUserHandle{ r1_v_t });
 
 		r1 = Variant(r1_v);
 	}

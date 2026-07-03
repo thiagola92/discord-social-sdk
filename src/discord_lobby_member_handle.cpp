@@ -30,7 +30,7 @@ Variant DiscordLobbyMemberHandle::user() {
 		auto r0_v = r0.value();
 
 		discordpp::UserHandle *r1_v_t = memnew(discordpp::UserHandle(std::move(r0_v)));
-		DiscordUserHandle *r1_v = memnew(DiscordUserHandle{ r1_v_t });
+		Ref<DiscordUserHandle> r1_v = memnew(DiscordUserHandle{ r1_v_t });
 
 		r1 = Variant(r1_v);
 	}

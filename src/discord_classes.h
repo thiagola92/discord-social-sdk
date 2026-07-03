@@ -103,8 +103,8 @@ public:
 	Variant state_url();
 	Variant status_display_type();
 	Variant timestamps();
-	bool equals(DiscordActivity *other);
-	void add_button(DiscordActivityButton *button);
+	bool equals(Ref<DiscordActivity> other);
+	void add_button(Ref<DiscordActivityButton> button);
 	void set_application_id(Variant application_id);
 	void set_assets(Variant assets);
 	void set_details(Variant details);
@@ -409,7 +409,7 @@ public:
 	// Functions.
 	DiscordAdditionalContentType::Enum type();
 	Variant title();
-	bool equals(DiscordAdditionalContent *rhs);
+	bool equals(Ref<DiscordAdditionalContent> rhs);
 	int64_t count();
 	static String type_to_string(DiscordAdditionalContentType::Enum type);
 	void set_count(int64_t count);
@@ -450,7 +450,7 @@ public:
 	// Functions.
 	String id();
 	String name();
-	bool equals(DiscordAudioDevice *rhs);
+	bool equals(Ref<DiscordAudioDevice> rhs);
 	bool is_default();
 	void set_id(String id);
 	void set_is_default(bool is_default);
@@ -574,9 +574,9 @@ public:
 	// Constructors.
 
 	// Functions.
-	DiscordAuthorizationCodeChallenge *challenge();
+	Ref<DiscordAuthorizationCodeChallenge> challenge();
 	String verifier();
-	void set_challenge(DiscordAuthorizationCodeChallenge *challenge);
+	void set_challenge(Ref<DiscordAuthorizationCodeChallenge> challenge);
 	void set_verifier(String verifier);
 
 	// Overloading functions.
@@ -613,31 +613,31 @@ public:
 	// Functions.
 	DiscordAudioModeType::Enum get_audio_mode();
 	DiscordCallStatus::Enum get_status();
-	DiscordVADThresholdSettings *get_vadthreshold();
+	Ref<DiscordVADThresholdSettings> get_vadthreshold();
 	TypedArray<int64_t> get_participants();
 	Variant get_voice_state_handle(int64_t user_id);
 	bool get_local_mute(int64_t user_id);
 	bool get_pttactive();
 	bool get_self_deaf();
 	bool get_self_mute();
-	float get_participant_volume(int64_t user_id);
 	int64_t get_channel_id();
 	int64_t get_guild_id();
 	int64_t get_pttrelease_delay();
+	real_t get_participant_volume(int64_t user_id);
 	static String error_to_string(DiscordCallError::Enum type);
 	static String status_to_string(DiscordCallStatus::Enum type);
 	void set_audio_mode(DiscordAudioModeType::Enum audio_mode);
 	void set_local_mute(int64_t user_id, bool mute);
 	void set_on_voice_state_changed_callback(Callable cb);
 	void set_participant_changed_callback(Callable cb);
-	void set_participant_volume(int64_t user_id, float volume);
+	void set_participant_volume(int64_t user_id, real_t volume);
 	void set_pttactive(bool active);
 	void set_pttrelease_delay(int64_t release_delay_ms);
 	void set_self_deaf(bool deaf);
 	void set_self_mute(bool mute);
 	void set_speaking_status_changed_callback(Callable cb);
 	void set_status_changed_callback(Callable cb);
-	void set_vadthreshold(bool automatic, float threshold);
+	void set_vadthreshold(bool automatic, real_t threshold);
 
 	// Overloading functions.
 
@@ -746,13 +746,13 @@ public:
 	}
 
 	// Functions.
-	DiscordAuthorizationCodeVerifier *create_authorization_code_verifier();
-	DiscordCall *get_call(int64_t channel_id);
-	DiscordCall *start_call(int64_t channel_id);
-	DiscordCall *start_call_with_audio_callbacks(int64_t lobby_id, Callable received_cb, Callable captured_cb);
 	DiscordClientStatus::Enum get_status();
-	DiscordRelationshipHandle *get_relationship_handle(int64_t user_id);
-	DiscordUserHandle *get_current_user();
+	Ref<DiscordAuthorizationCodeVerifier> create_authorization_code_verifier();
+	Ref<DiscordCall> get_call(int64_t channel_id);
+	Ref<DiscordCall> start_call(int64_t channel_id);
+	Ref<DiscordCall> start_call_with_audio_callbacks(int64_t lobby_id, Callable received_cb, Callable captured_cb);
+	Ref<DiscordRelationshipHandle> get_relationship_handle(int64_t user_id);
+	Ref<DiscordUserHandle> get_current_user();
 	TypedArray<DiscordCall> get_calls();
 	TypedArray<DiscordRelationshipHandle> get_relationships();
 	TypedArray<DiscordRelationshipHandle> get_relationships_by_group(DiscordRelationshipGroupType::Enum group_type);
@@ -772,9 +772,9 @@ public:
 	bool set_log_dir(String path, DiscordLoggingSeverity::Enum min_severity);
 	bool set_speaker_mode(bool speaker_mode);
 	bool show_audio_route_picker();
-	float get_input_volume();
-	float get_output_volume();
 	int64_t get_application_id();
+	real_t get_input_volume();
+	real_t get_output_volume();
 	static String error_to_string(DiscordClientError::Enum type);
 	static String get_default_audio_device_id();
 	static String get_default_communication_scopes();
@@ -787,12 +787,12 @@ public:
 	static int64_t get_version_patch();
 	void abort_authorize();
 	void abort_get_token_from_device();
-	void accept_activity_invite(DiscordActivityInvite *invite, Callable cb);
+	void accept_activity_invite(Ref<DiscordActivityInvite> invite, Callable cb);
 	void accept_discord_friend_request(int64_t user_id, Callable cb);
 	void accept_game_friend_request(int64_t user_id, Callable cb);
 	void add_log_callback(Callable callback, DiscordLoggingSeverity::Enum min_severity);
 	void add_voice_log_callback(Callable callback, DiscordLoggingSeverity::Enum min_severity);
-	void authorize(DiscordAuthorizationArgs *args, Callable callback);
+	void authorize(Ref<DiscordAuthorizationArgs> args, Callable callback);
 	void block_user(int64_t user_id, Callable cb);
 	void cancel_discord_friend_request(int64_t user_id, Callable cb);
 	void cancel_game_friend_request(int64_t user_id, Callable cb);
@@ -817,8 +817,8 @@ public:
 	void get_output_devices(Callable cb);
 	void get_provisional_token(int64_t application_id, DiscordAuthenticationExternalAuthType::Enum external_auth_type, String external_auth_token, Callable callback);
 	void get_token(int64_t application_id, String code, String code_verifier, String redirect_uri, Callable callback);
-	void get_token_from_device(DiscordDeviceAuthorizationArgs *args, Callable callback);
-	void get_token_from_device_provisional_merge(DiscordDeviceAuthorizationArgs *args, DiscordAuthenticationExternalAuthType::Enum external_auth_type, String external_auth_token, Callable callback);
+	void get_token_from_device(Ref<DiscordDeviceAuthorizationArgs> args, Callable callback);
+	void get_token_from_device_provisional_merge(Ref<DiscordDeviceAuthorizationArgs> args, DiscordAuthenticationExternalAuthType::Enum external_auth_type, String external_auth_token, Callable callback);
 	void get_token_from_provisional_merge(int64_t application_id, String code, String code_verifier, String redirect_uri, DiscordAuthenticationExternalAuthType::Enum external_auth_type, String external_auth_token, Callable callback);
 	void get_user_guilds(Callable cb);
 	void get_user_message_summaries(Callable cb);
@@ -841,7 +841,7 @@ public:
 	void revoke_token(int64_t application_id, String token, Callable callback);
 	void send_activity_invite(int64_t user_id, String content, Callable cb);
 	void send_activity_join_request(int64_t user_id, Callable cb);
-	void send_activity_join_request_reply(DiscordActivityInvite *invite, Callable cb);
+	void send_activity_join_request_reply(Ref<DiscordActivityInvite> invite, Callable cb);
 	void send_discord_friend_request(String username, Callable cb);
 	void send_discord_friend_request_by_id(int64_t user_id, Callable cb);
 	void send_game_friend_request(String username, Callable cb);
@@ -864,7 +864,7 @@ public:
 	void set_game_window_pid(int64_t pid);
 	void set_http_request_timeout(int64_t http_timeout_in_milliseconds);
 	void set_input_device(String device_id, Callable cb);
-	void set_input_volume(float input_volume);
+	void set_input_volume(real_t input_volume);
 	void set_lobby_created_callback(Callable cb);
 	void set_lobby_deleted_callback(Callable cb);
 	void set_lobby_member_added_callback(Callable cb);
@@ -875,13 +875,13 @@ public:
 	void set_message_deleted_callback(Callable cb);
 	void set_message_updated_callback(Callable cb);
 	void set_no_audio_input_callback(Callable callback);
-	void set_no_audio_input_threshold(float d_bfsthreshold);
+	void set_no_audio_input_threshold(real_t d_bfsthreshold);
 	void set_noise_cancellation(bool on);
 	void set_noise_suppression(bool on);
 	void set_online_status(DiscordStatusType::Enum status, Callable callback);
 	void set_opus_hardware_coding(bool encode, bool decode);
 	void set_output_device(String device_id, Callable cb);
-	void set_output_volume(float output_volume);
+	void set_output_volume(real_t output_volume);
 	void set_relationship_created_callback(Callable cb);
 	void set_relationship_deleted_callback(Callable cb);
 	void set_relationship_groups_updated_callback(Callable cb);
@@ -898,7 +898,7 @@ public:
 	void unlink_channel_from_lobby(int64_t lobby_id, Callable callback);
 	void unmerge_into_provisional_account(int64_t application_id, DiscordAuthenticationExternalAuthType::Enum external_auth_type, String external_auth_token, Callable callback);
 	void update_provisional_account_display_name(String name, Callable callback);
-	void update_rich_presence(DiscordActivity *activity, Callable cb);
+	void update_rich_presence(Ref<DiscordActivity> activity, Callable cb);
 	void update_token(DiscordAuthorizationTokenType::Enum token_type, String token, Callable callback);
 
 	// Overloading functions.
@@ -984,12 +984,12 @@ public:
 	String to_string_discord();
 	bool retryable();
 	bool successful();
-	float retry_after();
 	int64_t error_code();
+	real_t retry_after();
 	void set_error(String error);
 	void set_error_code(int64_t error_code);
 	void set_response_body(String response_body);
-	void set_retry_after(float retry_after);
+	void set_retry_after(real_t retry_after);
 	void set_retryable(bool retryable);
 	void set_status(DiscordHttpStatusCode::Enum status);
 	void set_successful(bool successful);
@@ -1434,8 +1434,8 @@ public:
 	// Constructors.
 
 	// Functions.
-	DiscordRelationshipHandle *relationship();
 	DiscordStatusType::Enum status();
+	Ref<DiscordRelationshipHandle> relationship();
 	String avatar_url(DiscordUserHandleAvatarType::Enum animated_type, DiscordUserHandleAvatarType::Enum static_type);
 	String display_name();
 	String username();
@@ -1515,9 +1515,9 @@ public:
 
 	// Functions.
 	bool automatic();
-	float vad_threshold();
+	real_t vad_threshold();
 	void set_automatic(bool automatic);
-	void set_vad_threshold(float vad_threshold);
+	void set_vad_threshold(real_t vad_threshold);
 
 	// Overloading functions.
 
