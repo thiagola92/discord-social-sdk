@@ -1,6 +1,11 @@
 # Functions to execute CLI tools.
+import os
 import subprocess
 from pathlib import Path
+
+CLANG_FORMAT = os.environ.get("CLANG", "clang-format")
+DOXYGEN = os.environ.get("DOXYGEN", "doxygen")
+GODOT = os.environ.get("GODOT", "godot")
 
 
 def clang_format(filepath: Path) -> None:
@@ -13,7 +18,7 @@ def clang_format(filepath: Path) -> None:
     """
 
     process = subprocess.run(
-        ["clang-format", "--style=file:.clang-format", filepath],
+        [CLANG_FORMAT, "--style=file:.clang-format", filepath],
         capture_output=True,
     )
 
@@ -31,7 +36,7 @@ def doxygen() -> None:
     """
 
     process = subprocess.run(
-        ["doxygen", "Doxyfile"],
+        [DOXYGEN, "Doxyfile"],
         capture_output=True,
     )
 
@@ -47,7 +52,7 @@ def doctool() -> None:
     """
 
     process = subprocess.run(
-        ["godot", "./demo/project.godot", "--doctool", "../", "--gdextension-docs"],
+        [GODOT, "./demo/project.godot", "--doctool", "../", "--gdextension-docs"],
         capture_output=True,
     )
 
