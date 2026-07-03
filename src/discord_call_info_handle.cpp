@@ -30,7 +30,7 @@ Variant DiscordCallInfoHandle::get_voice_state_handle(int64_t user_id) {
 		auto r0_v = r0.value();
 
 		discordpp::VoiceStateHandle *r1_v_t = memnew(discordpp::VoiceStateHandle(std::move(r0_v)));
-		DiscordVoiceStateHandle *r1_v = memnew(DiscordVoiceStateHandle{ r1_v_t });
+		Ref<DiscordVoiceStateHandle> r1_v = memnew(DiscordVoiceStateHandle{ r1_v_t });
 
 		r1 = Variant(r1_v);
 	}

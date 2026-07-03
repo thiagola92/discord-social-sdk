@@ -24,7 +24,7 @@ Variant DiscordAuthorizationArgs::code_challenge() {
 		auto r0_v = r0.value();
 
 		discordpp::AuthorizationCodeChallenge *r1_v_t = memnew(discordpp::AuthorizationCodeChallenge(std::move(r0_v)));
-		DiscordAuthorizationCodeChallenge *r1_v = memnew(DiscordAuthorizationCodeChallenge{ r1_v_t });
+		Ref<DiscordAuthorizationCodeChallenge> r1_v = memnew(DiscordAuthorizationCodeChallenge{ r1_v_t });
 
 		r1 = Variant(r1_v);
 	}

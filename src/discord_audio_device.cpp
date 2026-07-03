@@ -21,7 +21,7 @@ String DiscordAudioDevice::name() {
 	return r1;
 }
 
-bool DiscordAudioDevice::equals(DiscordAudioDevice *rhs) {
+bool DiscordAudioDevice::equals(Ref<DiscordAudioDevice> rhs) {
 	discordpp::AudioDevice p0 = *rhs->unwrap();
 	auto r0 = obj->Equals(p0);
 

@@ -32,7 +32,7 @@ Variant DiscordGuildChannel::linked_lobby() {
 		auto r0_v = r0.value();
 
 		discordpp::LinkedLobby *r1_v_t = memnew(discordpp::LinkedLobby(std::move(r0_v)));
-		DiscordLinkedLobby *r1_v = memnew(DiscordLinkedLobby{ r1_v_t });
+		Ref<DiscordLinkedLobby> r1_v = memnew(DiscordLinkedLobby{ r1_v_t });
 
 		r1 = Variant(r1_v);
 	}
