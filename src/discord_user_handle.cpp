@@ -5,19 +5,19 @@ using namespace godot;
 
 // Functions.
 
-DiscordStatusType::Enum DiscordUserHandle::status() {
-	auto r0 = obj->Status();
+DiscordRelationshipHandle *DiscordUserHandle::relationship() {
+	auto r0 = obj->Relationship();
 
-	DiscordStatusType::Enum r1 = (DiscordStatusType::Enum)r0;
+	discordpp::RelationshipHandle *r1_t = memnew(discordpp::RelationshipHandle(std::move(r0)));
+	DiscordRelationshipHandle *r1 = memnew(DiscordRelationshipHandle{ r1_t });
 
 	return r1;
 }
 
-Ref<DiscordRelationshipHandle> DiscordUserHandle::relationship() {
-	auto r0 = obj->Relationship();
+DiscordStatusType::Enum DiscordUserHandle::status() {
+	auto r0 = obj->Status();
 
-	discordpp::RelationshipHandle *r1_t = memnew(discordpp::RelationshipHandle(std::move(r0)));
-	Ref<DiscordRelationshipHandle> r1 = memnew(DiscordRelationshipHandle{ r1_t });
+	DiscordStatusType::Enum r1 = (DiscordStatusType::Enum)r0;
 
 	return r1;
 }
@@ -64,7 +64,7 @@ TypedArray<DiscordUserApplicationProfileHandle> DiscordUserHandle::user_applicat
 
 	for (auto i : r0) {
 		discordpp::UserApplicationProfileHandle *r1_t_t = memnew(discordpp::UserApplicationProfileHandle(std::move(i)));
-		Ref<DiscordUserApplicationProfileHandle> r1_t = memnew(DiscordUserApplicationProfileHandle{ r1_t_t });
+		DiscordUserApplicationProfileHandle *r1_t = memnew(DiscordUserApplicationProfileHandle{ r1_t_t });
 
 		r1.push_back(r1_t);
 	}
@@ -99,7 +99,7 @@ Variant DiscordUserHandle::game_activity() {
 		auto r0_v = r0.value();
 
 		discordpp::Activity *r1_v_t = memnew(discordpp::Activity(std::move(r0_v)));
-		Ref<DiscordActivity> r1_v = memnew(DiscordActivity{ r1_v_t });
+		DiscordActivity *r1_v = memnew(DiscordActivity{ r1_v_t });
 
 		r1 = Variant(r1_v);
 	}

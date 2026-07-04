@@ -21,11 +21,11 @@ DiscordCallStatus::Enum DiscordCall::get_status() {
 	return r1;
 }
 
-Ref<DiscordVADThresholdSettings> DiscordCall::get_vadthreshold() {
+DiscordVADThresholdSettings *DiscordCall::get_vadthreshold() {
 	auto r0 = obj->GetVADThreshold();
 
 	discordpp::VADThresholdSettings *r1_t = memnew(discordpp::VADThresholdSettings(std::move(r0)));
-	Ref<DiscordVADThresholdSettings> r1 = memnew(DiscordVADThresholdSettings{ r1_t });
+	DiscordVADThresholdSettings *r1 = memnew(DiscordVADThresholdSettings{ r1_t });
 
 	return r1;
 }
@@ -73,7 +73,7 @@ Variant DiscordCall::get_voice_state_handle(int64_t user_id) {
 		auto r0_v = r0.value();
 
 		discordpp::VoiceStateHandle *r1_v_t = memnew(discordpp::VoiceStateHandle(std::move(r0_v)));
-		Ref<DiscordVoiceStateHandle> r1_v = memnew(DiscordVoiceStateHandle{ r1_v_t });
+		DiscordVoiceStateHandle *r1_v = memnew(DiscordVoiceStateHandle{ r1_v_t });
 
 		r1 = Variant(r1_v);
 	}

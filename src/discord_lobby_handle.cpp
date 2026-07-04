@@ -12,7 +12,7 @@ TypedArray<DiscordLobbyMemberHandle> DiscordLobbyHandle::lobby_members() {
 
 	for (auto i : r0) {
 		discordpp::LobbyMemberHandle *r1_t_t = memnew(discordpp::LobbyMemberHandle(std::move(i)));
-		Ref<DiscordLobbyMemberHandle> r1_t = memnew(DiscordLobbyMemberHandle{ r1_t_t });
+		DiscordLobbyMemberHandle *r1_t = memnew(DiscordLobbyMemberHandle{ r1_t_t });
 
 		r1.push_back(r1_t);
 	}
@@ -58,7 +58,7 @@ Variant DiscordLobbyHandle::get_call_info_handle() {
 		auto r0_v = r0.value();
 
 		discordpp::CallInfoHandle *r1_v_t = memnew(discordpp::CallInfoHandle(std::move(r0_v)));
-		Ref<DiscordCallInfoHandle> r1_v = memnew(DiscordCallInfoHandle{ r1_v_t });
+		DiscordCallInfoHandle *r1_v = memnew(DiscordCallInfoHandle{ r1_v_t });
 
 		r1 = Variant(r1_v);
 	}
@@ -78,7 +78,7 @@ Variant DiscordLobbyHandle::get_lobby_member_handle(int64_t member_id) {
 		auto r0_v = r0.value();
 
 		discordpp::LobbyMemberHandle *r1_v_t = memnew(discordpp::LobbyMemberHandle(std::move(r0_v)));
-		Ref<DiscordLobbyMemberHandle> r1_v = memnew(DiscordLobbyMemberHandle{ r1_v_t });
+		DiscordLobbyMemberHandle *r1_v = memnew(DiscordLobbyMemberHandle{ r1_v_t });
 
 		r1 = Variant(r1_v);
 	}
@@ -97,7 +97,7 @@ Variant DiscordLobbyHandle::linked_channel() {
 		auto r0_v = r0.value();
 
 		discordpp::LinkedChannel *r1_v_t = memnew(discordpp::LinkedChannel(std::move(r0_v)));
-		Ref<DiscordLinkedChannel> r1_v = memnew(DiscordLinkedChannel{ r1_v_t });
+		DiscordLinkedChannel *r1_v = memnew(DiscordLinkedChannel{ r1_v_t });
 
 		r1 = Variant(r1_v);
 	}

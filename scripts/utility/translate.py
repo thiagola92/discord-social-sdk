@@ -148,10 +148,9 @@ def discord_type_to_godot_type(
         return f"TypedDictionary<{t}>"
 
     if is_discord_object(info):
-        t = to_gdscript_class_name(info.name)
         if pointer:
-            return f"Ref<{t}>"
-        return t
+            return to_gdscript_class_name(info.name) + " *"
+        return to_gdscript_class_name(info.name)
 
     assert False, f'Fail to identify a good type for "{info.name}"'
 

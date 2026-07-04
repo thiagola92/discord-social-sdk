@@ -36,7 +36,7 @@ TypedArray<DiscordActivityButton> DiscordActivity::get_buttons() {
 
 	for (auto i : r0) {
 		discordpp::ActivityButton *r1_t_t = memnew(discordpp::ActivityButton(std::move(i)));
-		Ref<DiscordActivityButton> r1_t = memnew(DiscordActivityButton{ r1_t_t });
+		DiscordActivityButton *r1_t = memnew(DiscordActivityButton{ r1_t_t });
 
 		r1.push_back(r1_t);
 	}
@@ -71,7 +71,7 @@ Variant DiscordActivity::assets() {
 		auto r0_v = r0.value();
 
 		discordpp::ActivityAssets *r1_v_t = memnew(discordpp::ActivityAssets(std::move(r0_v)));
-		Ref<DiscordActivityAssets> r1_v = memnew(DiscordActivityAssets{ r1_v_t });
+		DiscordActivityAssets *r1_v = memnew(DiscordActivityAssets{ r1_v_t });
 
 		r1 = Variant(r1_v);
 	}
@@ -138,7 +138,7 @@ Variant DiscordActivity::party() {
 		auto r0_v = r0.value();
 
 		discordpp::ActivityParty *r1_v_t = memnew(discordpp::ActivityParty(std::move(r0_v)));
-		Ref<DiscordActivityParty> r1_v = memnew(DiscordActivityParty{ r1_v_t });
+		DiscordActivityParty *r1_v = memnew(DiscordActivityParty{ r1_v_t });
 
 		r1 = Variant(r1_v);
 	}
@@ -157,7 +157,7 @@ Variant DiscordActivity::secrets() {
 		auto r0_v = r0.value();
 
 		discordpp::ActivitySecrets *r1_v_t = memnew(discordpp::ActivitySecrets(std::move(r0_v)));
-		Ref<DiscordActivitySecrets> r1_v = memnew(DiscordActivitySecrets{ r1_v_t });
+		DiscordActivitySecrets *r1_v = memnew(DiscordActivitySecrets{ r1_v_t });
 
 		r1 = Variant(r1_v);
 	}
@@ -224,7 +224,7 @@ Variant DiscordActivity::timestamps() {
 		auto r0_v = r0.value();
 
 		discordpp::ActivityTimestamps *r1_v_t = memnew(discordpp::ActivityTimestamps(std::move(r0_v)));
-		Ref<DiscordActivityTimestamps> r1_v = memnew(DiscordActivityTimestamps{ r1_v_t });
+		DiscordActivityTimestamps *r1_v = memnew(DiscordActivityTimestamps{ r1_v_t });
 
 		r1 = Variant(r1_v);
 	}
@@ -232,7 +232,7 @@ Variant DiscordActivity::timestamps() {
 	return r1;
 }
 
-bool DiscordActivity::equals(Ref<DiscordActivity> other) {
+bool DiscordActivity::equals(DiscordActivity *other) {
 	discordpp::Activity p0 = *other->unwrap();
 	auto r0 = obj->Equals(p0);
 
@@ -241,7 +241,7 @@ bool DiscordActivity::equals(Ref<DiscordActivity> other) {
 	return r1;
 }
 
-void DiscordActivity::add_button(Ref<DiscordActivityButton> button) {
+void DiscordActivity::add_button(DiscordActivityButton *button) {
 	discordpp::ActivityButton p0 = *button->unwrap();
 	obj->AddButton(p0);
 }

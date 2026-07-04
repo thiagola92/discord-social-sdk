@@ -38,7 +38,7 @@ Variant DiscordAdditionalContent::title() {
 	return r1;
 }
 
-bool DiscordAdditionalContent::equals(Ref<DiscordAdditionalContent> rhs) {
+bool DiscordAdditionalContent::equals(DiscordAdditionalContent *rhs) {
 	discordpp::AdditionalContent p0 = *rhs->unwrap();
 	auto r0 = obj->Equals(p0);
 
