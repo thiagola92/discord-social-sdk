@@ -36,5 +36,5 @@ android.release.x86_32 = { "android/x86_32/libdiscord_partner_sdk.so": ""}
 android.release.x86_64 = { "android/x86_64/libdiscord_partner_sdk.so": ""}
 linux.debug.x86_64 = { "linux/libdiscord_partner_sdk.so": ""}
 linux.release.x86_64 = { "linux/libdiscord_partner_sdk.so": ""}
-windows.debug.x86_64 = { "windows/libdiscord_partner_sdk.dll": "", "windows/libdiscord_partner_sdk.lib": ""}
-windows.release.x86_64 = { "windows/libdiscord_partner_sdk.dll": "", "windows/libdiscord_partner_sdk.lib": ""}
+windows.debug.x86_64 = { "windows/discord_partner_sdk.dll": "", "windows/discord_partner_sdk.lib": ""}
+windows.release.x86_64 = { "windows/discord_partner_sdk.dll": "", "windows/discord_partner_sdk.lib": ""}
