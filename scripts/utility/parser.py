@@ -278,7 +278,10 @@ class Parser:
         return params_found
 
 
+# from pprint import pprint
+
 # pprint(Parser("int").parse_type())
+# pprint(Parser("int *").parse_type())
 # pprint(Parser("Vector<int>").parse_type())
 # pprint(Parser("Dictionary<int, float>").parse_type())
 # pprint(Parser("void(int a)").parse_type())
