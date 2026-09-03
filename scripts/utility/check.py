@@ -11,13 +11,14 @@ from utility.data import (
     TypeInfo,
 )
 from utility.name import to_gdscript_class_name
+from utility.discover import discover_ptr_size
 
 
 def check_callbacks(class_info: ClassInfo) -> None:
     """
     Check every parameter that is a callback.
 
-    This contains only the logic for discovery,
+    This contains only the logic for discoverying,
     not for solving any complications from enums.
     """
     for f in class_info.functions:
@@ -34,127 +35,11 @@ def check_callbacks(class_info: ClassInfo) -> None:
                     p.type.callback_ref = c
 
 
-def check_enums(namespace_info: NamespaceInfo) -> None:
-    """
-    Check every type that is an enum.
-
-    This contains only the logic for discovery,
-    not for solving any complications from enums.
-    """
-
-    # Create dictionary with searched enums.
-    enums: dict[str, EnumInfo] = {}
-
-    for e in namespace_info.enums:
-        enums[to_gdscript_class_name(e.name)] = e
-
-    for c in namespace_info.classes:
-        for e in c.enums:
-            enums[to_gdscript_class_name(c.name + e.name)] = e
-
-    # Start checking enum everywhere.
-    for f in namespace_info.functions:
-        check_type_enums(f, enums)
-
-    for c in namespace_info.classes:
-        for f in c.functions:
-            check_type_enums(f, enums)
-
-    for c in namespace_info.callbacks:
-        check_type_enums(c, enums)
-
-    for c in namespace_info.classes:
-        for cc in c.callbacks:
-            check_type_enums(cc, enums)
-
-
-def check_function_enums(
-    function_info: FunctionInfo,
-    enums: dict[str, EnumInfo],
-) -> None:
-    """
-    Check function return type and parameters that are enums.
-
-    This contains only the logic for discovery,
-    not for solving any complications from enums.
-    """
-
-    name = to_gdscript_class_name(function_info.type.name)
-
-    if name in enums.keys():
-        function_info.type.enum = True
-        function_info.type.enum_ref = enums[name]
-
-    for p in function_info.params:
-        if not isinstance(p.type, TypeInfo):
-            continue
-
-        n = to_gdscript_class_name(p.type.name)
-
-        if n in enums.keys():
-            p.enum = True
-            p.type.enum = True
-            p.type.enum_ref = enums[n]
-
-
-def check_callback_enums(
-    callback_info: CallbackInfo,
-    enums: dict[str, EnumInfo],
-) -> None:
-    """
-    Check callback types that are enums.
-
-    This contains only the logic for discovery,
-    not for solving any complications from enums.
-    """
-
-    name = to_gdscript_class_name(callback_info.type.name)
-
-    if name in enums.keys():
-        callback_info.type.enum = True
-        callback_info.type.enum_ref = enums[name]
-
-    for t in callback_info.type.templates:
-        if isinstance(t, FunctionInfo):
-            check_function_enums(t, enums)
-
-
-def check_type_enums(
-    info: TypeInfo | FunctionInfo | CallbackInfo | ParamInfo,
-    enums: dict[str, EnumInfo],
-) -> None:
-    """
-    Check types that are enums.
-
-    This contains only the logic for discovery,
-    not for solving any complications from enums.
-    """
-    if isinstance(info, FunctionInfo):
-        for p in info.params:
-            check_type_enums(p, enums)
-
-        check_type_enums(info.type, enums)
-    elif isinstance(info, CallbackInfo):
-        check_type_enums(info.type, enums)
-    elif isinstance(info, ParamInfo):
-        check_type_enums(info.type, enums)
-        info.enum = info.type.enum
-    elif isinstance(info, TypeInfo):
-        for t in info.templates:
-            check_type_enums(t, enums)
-
-        n = to_gdscript_class_name(info.name)
-
-        if n in enums.keys():
-            info.enum = True
-            info.enum_ref = enums[n]
-
-
 def check_overloading(functions_info: list[FunctionInfo]) -> None:
     """
     Check every function that is overloading.
 
-    This contains only the logic for discovery,
+    This contains only the logic for discoverying,
     not for solving any complications from overloading.
 
     ### Context
@@ -196,3 +81,114 @@ def check_overloading(functions_info: list[FunctionInfo]) -> None:
     for f in functions_info:
         if counter[f.gdscript_name] > 0:
             f.overloading = True
+
+
+def check_enums(namespace_info: NamespaceInfo) -> None:
+    """
+    Check every type that is an enum.
+
+    This contains only the logic for discoverying,
+    not for solving any complications from enums.
+    """
+
+    # Create dictionary with searched enums.
+    enums: dict[str, EnumInfo] = {}
+
+    for e in namespace_info.enums:
+        enums[to_gdscript_class_name(e.name)] = e
+
+    for c in namespace_info.classes:
+        for e in c.enums:
+            enums[to_gdscript_class_name(c.name + e.name)] = e
+
+    # Start checking enum everywhere.
+    for f in namespace_info.functions:
+        check_type_enums(f, enums)
+
+    for c in namespace_info.classes:
+        for f in c.functions:
+            check_type_enums(f, enums)
+
+    for c in namespace_info.callbacks:
+        check_type_enums(c, enums)
+
+    for c in namespace_info.classes:
+        for cc in c.callbacks:
+            check_type_enums(cc, enums)
+
+
+def check_type_enums(
+    info: TypeInfo | FunctionInfo | CallbackInfo | ParamInfo,
+    enums: dict[str, EnumInfo],
+) -> None:
+    """Check if is an enum."""
+
+    if isinstance(info, FunctionInfo):
+        for p in info.params:
+            check_type_enums(p, enums)
+
+        check_type_enums(info.type, enums)
+    elif isinstance(info, CallbackInfo):
+        check_type_enums(info.type, enums)
+    elif isinstance(info, ParamInfo):
+        check_type_enums(info.type, enums)
+        info.enum = info.type.enum
+    elif isinstance(info, TypeInfo):
+        for t in info.templates:
+            check_type_enums(t, enums)
+
+        n = to_gdscript_class_name(info.name)
+
+        if n in enums.keys():
+            info.enum = True
+            info.enum_ref = enums[n]
+
+
+def check_pointers(namespace_info: NamespaceInfo) -> None:
+    """
+    Check every type that is a pointer.
+
+    This contains only the logic for discoverying,
+    not for solving any complications from pointers.
+    """
+
+    for f in namespace_info.functions:
+        check_type_pointers(f, [])
+
+    for c in namespace_info.classes:
+        for f in c.functions:
+            check_type_pointers(f, [c.name])
+
+    for c in namespace_info.callbacks:
+        check_type_pointers(c, [])
+
+    for c in namespace_info.classes:
+        for cc in c.callbacks:
+            check_type_pointers(cc, [c.name])
+
+
+def check_type_pointers(
+    info: TypeInfo | FunctionInfo | CallbackInfo | ParamInfo,
+    path: list[str],
+) -> None:
+    """Check if is a pointer."""
+
+    path = path + [info.name]
+
+    if isinstance(info, FunctionInfo):
+        for p in info.params:
+            check_type_pointers(p, path)
+
+        check_type_pointers(info.type, path)
+    elif isinstance(info, CallbackInfo):
+        check_type_pointers(info.type, path)
+    elif isinstance(info, ParamInfo):
+        check_type_pointers(info.type, path)
+        info.ptr = info.type.ptr
+    elif isinstance(info, TypeInfo):
+        for t in info.templates:
+            check_type_pointers(t, path)
+
+        if info.name.endswith("*"):
+            info.ptr = True
+            info.ptr_size = discover_ptr_size(path)

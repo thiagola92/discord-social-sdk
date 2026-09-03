@@ -69,3 +69,7 @@ def discover_overloading_groups(
                 overloading_groups[f.gdscript_name] = [f]
 
     return overloading_groups
+
+
+def discover_ptr_size(path: list[str]) -> str:
+    return ""

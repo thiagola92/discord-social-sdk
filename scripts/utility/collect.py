@@ -6,7 +6,12 @@ from pathlib import Path
 from xml.etree import ElementTree
 from xml.etree.ElementTree import Element, tostring
 
-from utility.check import check_callbacks, check_enums, check_overloading
+from utility.check import (
+    check_callbacks,
+    check_overloading,
+    check_enums,
+    check_pointers,
+)
 from utility.data import (
     CallbackInfo,
     ClassInfo,
@@ -64,6 +69,7 @@ def collect_namespace(tree: Element, xml_dir: Path) -> NamespaceInfo:
         namespace_info.classes.append(collect_class(cf))
 
     check_enums(namespace_info)
+    check_pointers(namespace_info)
     collect_references(tree)
 
     return namespace_info

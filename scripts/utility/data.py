@@ -47,6 +47,8 @@ class TypeInfo:
     enum_ref: EnumInfo | None = None
     fake: bool = False
     overloading: bool = False
+    ptr: bool = False
+    ptr_size: str = ""
 
 
 @dataclass
@@ -60,6 +62,7 @@ class ParamInfo:
     enum: bool = False
     fake: bool = False
     overloading: bool = False
+    ptr: bool = False
 
 
 @dataclass

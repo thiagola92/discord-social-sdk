@@ -1,7 +1,7 @@
-<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordUserHandleAvatarType" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="DiscordUserHandleAvatarType" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	The desired type of avatar url to generate for a User.
-</brief_description>
+	</brief_description>
 	<description>
 	</description>
 	<tutorials>

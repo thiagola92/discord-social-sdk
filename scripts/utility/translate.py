@@ -6,7 +6,10 @@
 #   discord_type_to_gdscript_type()
 #
 # type: ignore
-from templates.code.discord_class_cpp.discord_to_godot.array import get_godot_array
+from templates.code.discord_class_cpp.discord_to_godot.array import (
+    get_godot_array,
+    get_godot_array_sized,
+)
 from templates.code.discord_class_cpp.discord_to_godot.dictionary import (
     get_godot_dictionary,
 )
@@ -41,7 +44,6 @@ def is_discord_int(type_info: TypeInfo) -> bool:
     return type_info.name in [
         "uint8_t",
         "int16_t",
-        "int16_t *",
         "int32_t",
         "static int32_t",
         "uint32_t",
@@ -63,8 +65,12 @@ def is_discord_string(type_info: TypeInfo) -> bool:
     ]
 
 
-def is_discord_char_array(type_info: TypeInfo) -> bool:
+def is_discord_char_ptr(type_info: TypeInfo) -> bool:
     return type_info.name in ["const char *"]
+
+
+def is_discord_ptr(type_info: TypeInfo) -> bool:
+    return type_info.ptr
 
 
 def is_discord_enum(type_info: TypeInfo) -> bool:
@@ -123,8 +129,14 @@ def discord_type_to_godot_type(
     if is_discord_string(info):
         return "String"
 
-    if is_discord_char_array(info):
+    if is_discord_char_ptr(info):
         return "String"
+
+    if is_discord_ptr(info):
+        n = info.name.removesuffix(" *")
+        # t = discord_type_to_godot_type(n, False)
+        t = "int16_t"  # placeholder
+        return f"TypedArray<{t}>"
 
     if is_discord_enum(info):
         if info.fake:
@@ -191,8 +203,11 @@ def discord_type_to_variant_type(info: TypeInfo | FunctionInfo) -> str:
     if is_discord_string(info):
         return "Variant::STRING"
 
-    if is_discord_char_array(info):
+    if is_discord_char_ptr(info):
         return "Variant::STRING"
+
+    if is_discord_ptr(info):
+        assert False
 
     if is_discord_vector(info):
         return "Variant::ARRAY"
@@ -244,8 +259,11 @@ def discord_variable_to_godot_variable(
     if is_discord_string(info):
         return f"String {target} = String({source}.c_str());"
 
-    if is_discord_char_array(info):
+    if is_discord_char_ptr(info):
         return f"String {target} = String({source});"
+
+    if is_discord_ptr(info):
+        return discord_ptr_to_godot_array(info, target, source, 1)
 
     if is_discord_enum(info):
         if info.fake:
@@ -267,6 +285,33 @@ def discord_variable_to_godot_variable(
         return discord_object_to_godot_object(info, target, source)
 
     assert False, f"Not implemented for {info.name} (implement if needed)"
+
+
+def discord_ptr_to_godot_array(
+    type_info: TypeInfo, target: str, source: str, size: str
+) -> str:
+    typed_array = discord_type_to_godot_type(type_info)
+    # conversion = discord_variable_to_godot_variable(
+    #     type_info.templates[0],
+    #     f"{target}_t",
+    #     "i",
+    # )
+
+    return get_godot_array_sized(
+        typed_array=typed_array,
+        target=f"{target}",
+        source=source,
+        conversion=f"uint64_t {target}_t =(uint64_t){source}[i];",
+        size=size,
+    )
+
+    # return get_godot_array_sized(
+    #     typed_array=typed_array,
+    #     target=target,
+    #     source=source,
+    #     conversion=conversion,
+    #     size=size,
+    # )
 
 
 def discord_optional_to_godot_variant(
@@ -379,8 +424,11 @@ def godot_variable_to_discord_variable(
     if is_discord_string(info):
         return f"std::string {target} = std::string({source}.utf8().get_data());"
 
-    if is_discord_char_array(info):
+    if is_discord_char_ptr(info):
         return f"std::string {target} = std::string({source}.utf8().get_data());"
+
+    if is_discord_ptr(info):
+        assert False
 
     if is_discord_enum(info):
         return f"{info.name} {target} = ({info.name}){source};"
@@ -471,8 +519,11 @@ def godot_variant_to_discord_variable(type_info: TypeInfo, source: str, target: 
     if is_discord_string(type_info):
         return f"{target} = {source}.stringify().utf8().get_data();"
 
-    if is_discord_char_array(type_info):
+    if is_discord_char_ptr(type_info):
         return f"{target} = {source}.stringify().utf8().get_data();"
+
+    if is_discord_ptr(type_info):
+        assert False
 
     if is_discord_enum(type_info):
         return get_discord_optional_enum(
@@ -552,8 +603,11 @@ def discord_type_to_gdscript_type(info: TypeInfo | FunctionInfo) -> str:
     if is_discord_string(info):
         return "String"
 
-    if is_discord_char_array(info):
+    if is_discord_char_ptr(info):
         return "String"
+
+    if is_discord_ptr(info):
+        assert False
 
     if is_discord_enum(info):
         if info.fake:
