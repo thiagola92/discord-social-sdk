@@ -39,10 +39,10 @@ DiscordCall *DiscordClient::start_call_with_audio_callbacks(int64_t lobby_id, Ca
 	auto p1 = [received_cb](auto user_id, auto data, auto samples_per_channel, auto sample_rate, auto channels, auto out_should_mute) {
 		int64_t p0 = (int64_t)user_id;
 
-		TypedArray<int16_t> p1 = TypedArray<int16_t>();
+		TypedArray<int64_t> p1 = TypedArray<int64_t>();
 
-		for (int i = 0; i < 1; i++) {
-			uint64_t p1_t = (uint64_t)data[i];
+		for (int i = 0; i < samples_per_channel * channels; i++) {
+			int64_t p1_t = (int64_t)data[i];
 			p1.push_back(p1_t);
 		}
 
@@ -54,10 +54,10 @@ DiscordCall *DiscordClient::start_call_with_audio_callbacks(int64_t lobby_id, Ca
 	};
 
 	auto p2 = [captured_cb](auto data, auto samples_per_channel, auto sample_rate, auto channels) {
-		TypedArray<int16_t> p0 = TypedArray<int16_t>();
+		TypedArray<int64_t> p0 = TypedArray<int64_t>();
 
-		for (int i = 0; i < 1; i++) {
-			uint64_t p0_t = (uint64_t)data[i];
+		for (int i = 0; i < samples_per_channel * channels; i++) {
+			int64_t p0_t = (int64_t)data[i];
 			p0.push_back(p0_t);
 		}
 

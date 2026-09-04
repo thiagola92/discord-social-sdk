@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<class name="DiscordUserMessageSummary" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordUserMessageSummary" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
 	<brief_description>
-	</brief_description>
+	Represents a summary of a DM conversation with a user.
+</brief_description>
 	<description>
 	</description>
 	<tutorials>
@@ -10,11 +10,13 @@
 		<method name="last_message_id">
 			<return type="int" />
 			<description>
+			Returns the ID of the last message sent in the DM conversation.
 			</description>
 		</method>
 		<method name="user_id">
 			<return type="int" />
 			<description>
+			Returns the ID of the other user in the DM conversation.
 			</description>
 		</method>
 	</methods>

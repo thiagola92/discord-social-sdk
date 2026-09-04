@@ -4,6 +4,39 @@
 from enum import Enum
 
 from utility.data import ClassInfo, FunctionInfo, NamespaceInfo, TypeInfo
+from utility.name import to_gdscript_variable_name
+
+
+# It's not possible to know the pointer size by reading the signature of the function:
+#       void example(int64_t* a, int64_t b, int64_t c);
+#           - It could be a pointer for one value
+#           - It could be that b is the size
+#           - It could be some math like b * c is the size
+# The fact is, only reading the documentation we can know. So the best solution is to "map" them.
+POINTER_SIZE_MAP: list[dict] = [
+    {
+        "path": [
+            "Client",
+            "UserAudioReceivedCallback",
+            "std::function",
+            "",
+            "data",
+            "int16_t *",
+        ],
+        "size": to_gdscript_variable_name("samplesPerChannel * channels"),
+    },
+    {
+        "path": [
+            "Client",
+            "UserAudioCapturedCallback",
+            "std::function",
+            "",
+            "data",
+            "int16_t *",
+        ],
+        "size": to_gdscript_variable_name("samplesPerChannel * channels"),
+    },
+]
 
 
 class OverloadingPattern(Enum):
@@ -71,5 +104,14 @@ def discover_overloading_groups(
     return overloading_groups
 
 
-def discover_ptr_size(path: list[str]) -> str:
-    return ""
+def discover_pointer_size(type_info: TypeInfo) -> str:
+    """
+    Discover the string that will give the pointer size,
+    otherwise assume that is a pointer for only one value.
+    """
+
+    for option in POINTER_SIZE_MAP:
+        if option["path"] == type_info.pointer_path:
+            return option["size"]
+
+    return "1"

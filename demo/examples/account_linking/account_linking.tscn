@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://daqtbqosedvna"]
+[gd_scene load_steps=2 format=3 uid="uid://daqtbqosedvna"]
 
 [ext_resource type="Script" uid="uid://6rpsdtdhiqln" path="res://examples/account_linking/account_linking.gd" id="1_2i7gc"]
 
-[node name="AccountLinking" type="Node" unique_id=1726671438]
+[node name="AccountLinking" type="Node"]
 script = ExtResource("1_2i7gc")

@@ -11,7 +11,6 @@ from utility.data import (
     TypeInfo,
 )
 from utility.name import to_gdscript_class_name
-from utility.discover import discover_ptr_size
 
 
 def check_callbacks(class_info: ClassInfo) -> None:
@@ -139,7 +138,7 @@ def check_type_enums(
 
         n = to_gdscript_class_name(info.name)
 
-        if n in enums.keys():
+        if n in enums:
             info.enum = True
             info.enum_ref = enums[n]
 
@@ -184,11 +183,11 @@ def check_type_pointers(
         check_type_pointers(info.type, path)
     elif isinstance(info, ParamInfo):
         check_type_pointers(info.type, path)
-        info.ptr = info.type.ptr
+        info.pointer = info.type.pointer
     elif isinstance(info, TypeInfo):
         for t in info.templates:
             check_type_pointers(t, path)
 
         if info.name.endswith("*"):
-            info.ptr = True
-            info.ptr_size = discover_ptr_size(path)
+            info.pointer = True
+            info.pointer_path = path
