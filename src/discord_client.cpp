@@ -1581,8 +1581,8 @@ void DiscordClient::set_no_audio_input_callback(Callable callback) {
 	obj->SetNoAudioInputCallback(p0);
 }
 
-void DiscordClient::set_no_audio_input_threshold(real_t d_bfsthreshold) {
-	float p0 = (float)d_bfsthreshold;
+void DiscordClient::set_no_audio_input_threshold(real_t d_bfs_threshold) {
+	float p0 = (float)d_bfs_threshold;
 	obj->SetNoAudioInputThreshold(p0);
 }
 
@@ -2150,7 +2150,7 @@ void DiscordClient::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("set_no_audio_input_callback", "callback"),
 			&DiscordClient::set_no_audio_input_callback);
 
-	ClassDB::bind_method(D_METHOD("set_no_audio_input_threshold", "d_bfsthreshold"),
+	ClassDB::bind_method(D_METHOD("set_no_audio_input_threshold", "d_bfs_threshold"),
 			&DiscordClient::set_no_audio_input_threshold);
 
 	ClassDB::bind_method(D_METHOD("set_noise_cancellation", "on"),

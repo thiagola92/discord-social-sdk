@@ -5,6 +5,10 @@ extends Node
 # This only exist so I don't accidentally git push my ID.
 var application_id: int = DotEnv.read_int("APPLICATION_ID")
 
+# ATTENTION: Replace DotEnv.read_int("TARGET_ID") with the target ID.
+# This only exist so I don't accidentally git push the target ID.
+var target_id: int = DotEnv.read_int("TARGET_ID")
+
 var client := DiscordClient.new()
 
 var code_verifier: DiscordAuthorizationCodeVerifier
@@ -44,41 +48,28 @@ func _on_status_changed(status: DiscordClientStatus.Enum, _error: DiscordClientE
 
 func _on_joined_lobby(result: DiscordClientResult, lobby_id: int) -> void:
 	if result.successful():
-		print("🎮 Lobby created or joined successfully! Lobby Id: %s" % lobby_id)
+		print("🎮 Successfully joined lobby!")
 		
-		client.get_lobby_messages_with_limit(lobby_id, 50, _on_lobby_history)
+		var call: DiscordCall = client.start_call(lobby_id)
 		
-		client.send_lobby_message(lobby_id, "Hello", _on_lobby_message)
+		if call:
+			print("🎤 Voice call operation initiated...")
+		else:
+			print("ℹ️ Already in this voice channel")
 		
-		await get_tree().create_timer(60).timeout
-		
-		client.leave_lobby(lobby_id, _on_left_lobby)
+		get_tree().create_timer(5).timeout.connect(_on_call_started.bind(lobby_id))
 	else:
-		print("❌ Lobby creation/join failed")
+		print("❌ Failed to join lobby: %s" % result.error())
 
 
-func _on_lobby_history(result: DiscordClientResult, messages: Array[DiscordMessageHandle]) -> void:
-	if result.successful():
-		print("🕰 Retrieved %s messages from lobby chat history!" % messages.size())
-		
-		for message in messages:
-			print("Message: %s" % message.content())
-	else:
-		print("❌ Failed to retrieve lobby chat history")
-
-
-func _on_lobby_message(result: DiscordClientResult, message_id: int) -> void:
-	if result.successful():
-		print("📨 Message sent successfully! Message Id: %s" % message_id)
-	else:
-		print("❌ Message sending failed")
-
-
-func _on_left_lobby(result: DiscordClientResult) -> void:
-	if result.successful():
-		print("🎮 Left lobby successfully!")
-	else:
-		print("❌ Leaving lobby failed")
+func _on_call_started(lobby_id: int) -> void:
+	var call: DiscordCall = client.get_call(lobby_id)
+	
+	if call:
+		call.set_self_mute(true)
+		call.set_self_deaf(false)
+		call.set_participant_volume(target_id, 150.0)
+		call.set_vadthreshold(false, -30.0)
 
 
 func _on_authorization_response(result: DiscordClientResult, code: String, redirect_uri: String) -> void:

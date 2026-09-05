@@ -713,7 +713,7 @@ func(result: DiscordClientResult, summaries: Array[DiscordUserMessageSummary]) -
 			Retrieves messages from the DM conversation with the specified user.
 			Returns a list of [DiscordMessageHandle] representing the recent messages in the conversation with the recipient, with a with a maximum of 200 messages and up to 72 hours. The messages are returned in reverse chronological order (newest first). This function checks the local cache first and only makes an HTTP request to Discord's API if there are not enough cached messages available.
 If limit is greater than 0, restricts the number of messages returned. If limit is 0 or negative, the limit parameter is 200 messages and 72 hours. This is intended for games to load message history when users open a DM conversation.
-If either user hasn't played the game, there will be no channel between them and this function will return a 404 [code][enum Discorddiscordpp.ERROR_TYPE::_HTTPERROR][/code] error.
+If either user hasn't played the game, there will be no channel between them and this function will return a 404 [code][enum Discorddiscordpp.ERROR_TYPE::_HTTP_ERROR][/code] error.
 			Parameter [param cb] example:
 [codeblock]
 func(result: DiscordClientResult, messages: Array[DiscordMessageHandle]) -&gt; void: pass

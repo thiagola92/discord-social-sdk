@@ -21,7 +21,7 @@ DiscordCallStatus::Enum DiscordCall::get_status() {
 	return r1;
 }
 
-DiscordVADThresholdSettings *DiscordCall::get_vadthreshold() {
+DiscordVADThresholdSettings *DiscordCall::get_vad_threshold() {
 	auto r0 = obj->GetVADThreshold();
 
 	discordpp::VADThresholdSettings *r1_t = memnew(discordpp::VADThresholdSettings(std::move(r0)));
@@ -90,7 +90,7 @@ bool DiscordCall::get_local_mute(int64_t user_id) {
 	return r1;
 }
 
-bool DiscordCall::get_pttactive() {
+bool DiscordCall::get_ptt_active() {
 	auto r0 = obj->GetPTTActive();
 
 	bool r1 = r0;
@@ -130,7 +130,7 @@ int64_t DiscordCall::get_guild_id() {
 	return r1;
 }
 
-int64_t DiscordCall::get_pttrelease_delay() {
+int64_t DiscordCall::get_ptt_release_delay() {
 	auto r0 = obj->GetPTTReleaseDelay();
 
 	int64_t r1 = (int64_t)r0;
@@ -183,12 +183,12 @@ void DiscordCall::set_participant_volume(int64_t user_id, real_t volume) {
 	obj->SetParticipantVolume(p0, p1);
 }
 
-void DiscordCall::set_pttactive(bool active) {
+void DiscordCall::set_ptt_active(bool active) {
 	bool p0 = active;
 	obj->SetPTTActive(p0);
 }
 
-void DiscordCall::set_pttrelease_delay(int64_t release_delay_ms) {
+void DiscordCall::set_ptt_release_delay(int64_t release_delay_ms) {
 	int64_t p0 = release_delay_ms;
 	obj->SetPTTReleaseDelay(p0);
 }
@@ -224,7 +224,7 @@ void DiscordCall::set_status_changed_callback(Callable cb) {
 	obj->SetStatusChangedCallback(p0);
 }
 
-void DiscordCall::set_vadthreshold(bool automatic, real_t threshold) {
+void DiscordCall::set_vad_threshold(bool automatic, real_t threshold) {
 	bool p0 = automatic;
 	float p1 = (float)threshold;
 	obj->SetVADThreshold(p0, p1);
@@ -252,11 +252,11 @@ void DiscordCall::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("get_participants"),
 			&DiscordCall::get_participants);
 
-	ClassDB::bind_method(D_METHOD("get_pttactive"),
-			&DiscordCall::get_pttactive);
+	ClassDB::bind_method(D_METHOD("get_ptt_active"),
+			&DiscordCall::get_ptt_active);
 
-	ClassDB::bind_method(D_METHOD("get_pttrelease_delay"),
-			&DiscordCall::get_pttrelease_delay);
+	ClassDB::bind_method(D_METHOD("get_ptt_release_delay"),
+			&DiscordCall::get_ptt_release_delay);
 
 	ClassDB::bind_method(D_METHOD("get_self_deaf"),
 			&DiscordCall::get_self_deaf);
@@ -267,8 +267,8 @@ void DiscordCall::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("get_status"),
 			&DiscordCall::get_status);
 
-	ClassDB::bind_method(D_METHOD("get_vadthreshold"),
-			&DiscordCall::get_vadthreshold);
+	ClassDB::bind_method(D_METHOD("get_vad_threshold"),
+			&DiscordCall::get_vad_threshold);
 
 	ClassDB::bind_method(D_METHOD("get_voice_state_handle", "user_id"),
 			&DiscordCall::get_voice_state_handle);
@@ -288,11 +288,11 @@ void DiscordCall::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("set_participant_volume", "user_id", "volume"),
 			&DiscordCall::set_participant_volume);
 
-	ClassDB::bind_method(D_METHOD("set_pttactive", "active"),
-			&DiscordCall::set_pttactive);
+	ClassDB::bind_method(D_METHOD("set_ptt_active", "active"),
+			&DiscordCall::set_ptt_active);
 
-	ClassDB::bind_method(D_METHOD("set_pttrelease_delay", "release_delay_ms"),
-			&DiscordCall::set_pttrelease_delay);
+	ClassDB::bind_method(D_METHOD("set_ptt_release_delay", "release_delay_ms"),
+			&DiscordCall::set_ptt_release_delay);
 
 	ClassDB::bind_method(D_METHOD("set_self_deaf", "deaf"),
 			&DiscordCall::set_self_deaf);
@@ -306,8 +306,8 @@ void DiscordCall::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("set_status_changed_callback", "cb"),
 			&DiscordCall::set_status_changed_callback);
 
-	ClassDB::bind_method(D_METHOD("set_vadthreshold", "automatic", "threshold"),
-			&DiscordCall::set_vadthreshold);
+	ClassDB::bind_method(D_METHOD("set_vad_threshold", "automatic", "threshold"),
+			&DiscordCall::set_vad_threshold);
 
 	ClassDB::bind_static_method("DiscordCall", D_METHOD("error_to_string", "type"),
 			&DiscordCall::error_to_string);

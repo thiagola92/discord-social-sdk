@@ -613,16 +613,16 @@ public:
 	// Functions.
 	DiscordAudioModeType::Enum get_audio_mode();
 	DiscordCallStatus::Enum get_status();
-	DiscordVADThresholdSettings *get_vadthreshold();
+	DiscordVADThresholdSettings *get_vad_threshold();
 	TypedArray<int64_t> get_participants();
 	Variant get_voice_state_handle(int64_t user_id);
 	bool get_local_mute(int64_t user_id);
-	bool get_pttactive();
+	bool get_ptt_active();
 	bool get_self_deaf();
 	bool get_self_mute();
 	int64_t get_channel_id();
 	int64_t get_guild_id();
-	int64_t get_pttrelease_delay();
+	int64_t get_ptt_release_delay();
 	real_t get_participant_volume(int64_t user_id);
 	static String error_to_string(DiscordCallError::Enum type);
 	static String status_to_string(DiscordCallStatus::Enum type);
@@ -631,13 +631,13 @@ public:
 	void set_on_voice_state_changed_callback(Callable cb);
 	void set_participant_changed_callback(Callable cb);
 	void set_participant_volume(int64_t user_id, real_t volume);
-	void set_pttactive(bool active);
-	void set_pttrelease_delay(int64_t release_delay_ms);
+	void set_ptt_active(bool active);
+	void set_ptt_release_delay(int64_t release_delay_ms);
 	void set_self_deaf(bool deaf);
 	void set_self_mute(bool mute);
 	void set_speaking_status_changed_callback(Callable cb);
 	void set_status_changed_callback(Callable cb);
-	void set_vadthreshold(bool automatic, real_t threshold);
+	void set_vad_threshold(bool automatic, real_t threshold);
 
 	// Overloading functions.
 
@@ -875,7 +875,7 @@ public:
 	void set_message_deleted_callback(Callable cb);
 	void set_message_updated_callback(Callable cb);
 	void set_no_audio_input_callback(Callable callback);
-	void set_no_audio_input_threshold(real_t d_bfsthreshold);
+	void set_no_audio_input_threshold(real_t d_bfs_threshold);
 	void set_noise_cancellation(bool on);
 	void set_noise_suppression(bool on);
 	void set_online_status(DiscordStatusType::Enum status, Callable callback);

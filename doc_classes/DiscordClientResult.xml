@@ -24,7 +24,7 @@ The [method DiscordClientResult.type] field is used to to distinguish between th
 			<description>
 			A more detailed error code for this failure. Currently the only use of this is when an API request is made to Discord's backend and that fails with a specific error, that error will be included in this field.
 			Many of these error codes are documented at: [url=https://discord.com/developers/docs/topics/opcodes-and-status-codes#json]https://discord.com/developers/docs/topics/opcodes-and-status-codes#json[/url]
-This will only be set if the type of error is [enum DiscordErrorType.HTTPERROR]
+This will only be set if the type of error is [enum DiscordErrorType.HTTP_ERROR]
 			</description>
 		</method>
 		<method name="response_body">
@@ -32,7 +32,7 @@ This will only be set if the type of error is [enum DiscordErrorType.HTTPERROR]
 			<description>
 			The full HTTP response body, which will usually be a JSON string.
 			The error format here is a bit more complicated because Discord's API tries to make it clear which field from the request is causing the error. Documentation on the format of these errors is here: [url=https://discord.com/developers/docs/reference#error-messages]https://discord.com/developers/docs/reference#error-messages[/url]
-This will only be set if the type of error is [enum DiscordErrorType.HTTPERROR]
+This will only be set if the type of error is [enum DiscordErrorType.HTTP_ERROR]
 			</description>
 		</method>
 		<method name="retry_after">
@@ -107,7 +107,7 @@ This will only be set if the type of error is [enum DiscordErrorType.HTTPERROR]
 			<return type="int" enum="DiscordHttpStatusCode.Enum" />
 			<description>
 			The HTTP status code of the API call.
-			This will only be set if the type of error is [enum DiscordErrorType.HTTPERROR]
+			This will only be set if the type of error is [enum DiscordErrorType.HTTP_ERROR]
 			</description>
 		</method>
 		<method name="successful">

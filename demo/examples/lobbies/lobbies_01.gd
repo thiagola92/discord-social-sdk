@@ -47,11 +47,23 @@ func _on_joined_lobby(result: DiscordClientResult, lobby_id: int) -> void:
 	if result.successful():
 		print("🎮 Lobby created or joined successfully! Lobby Id: %s" % lobby_id)
 		
+		client.get_lobby_messages_with_limit(lobby_id, 50, _on_lobby_history)
+		
 		await get_tree().create_timer(60).timeout
 		
 		client.leave_lobby(lobby_id, _on_left_lobby)
 	else:
 		print("❌ Lobby creation/join failed")
+
+
+func _on_lobby_history(result: DiscordClientResult, messages: Array[DiscordMessageHandle]) -> void:
+	if result.successful():
+		print("🕰 Retrieved %s messages from lobby chat history!" % messages.size())
+		
+		for message in messages:
+			print("Message: %s" % message.content())
+	else:
+		print("❌ Failed to retrieve lobby chat history")
 
 
 func _on_left_lobby(result: DiscordClientResult) -> void:
@@ -65,7 +77,7 @@ func _on_message_created(message_id: int) -> void:
 	var message = client.get_message_handle(message_id)
 	
 	if message is DiscordMessageHandle:
-		print("📨 New message received: " % message.content())
+		print("📨 New message received: %s" % message.content())
 
 
 func _on_authorization_response(result: DiscordClientResult, code: String, redirect_uri: String) -> void:

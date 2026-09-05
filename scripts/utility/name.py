@@ -92,15 +92,21 @@ def to_snake_case(string: str) -> str:
 
     new_string = ""
     can_add_underscore = False
+    is_abbreviation = False
 
     for c in string:
         if c.islower():
+            if is_abbreviation:
+                new_string = new_string[:-1] + "_" + new_string[-1]
             new_string += c
             can_add_underscore = True
+            is_abbreviation = False
         elif c.isupper():
             if can_add_underscore:
                 new_string += "_"
                 can_add_underscore = False
+            elif len(new_string) > 0:
+                is_abbreviation = True
             new_string += c.lower()
         else:
             new_string += c
@@ -113,18 +119,24 @@ def to_constant_case(string: str) -> str:
 
     new_string = ""
     can_add_underscore = False
+    is_abbreviation = False
 
     for c in string:
         if c.islower():
+            if is_abbreviation:
+                new_string = new_string[:-1] + "_" + new_string[-1]
             new_string += c.upper()
             can_add_underscore = True
+            is_abbreviation = False
         elif c.isupper():
             if can_add_underscore:
                 new_string += "_"
                 can_add_underscore = False
+            elif len(new_string) > 0:
+                is_abbreviation = True
             new_string += c
         else:
-            new_string += c.upper()
+            new_string += c
 
     return new_string
 
