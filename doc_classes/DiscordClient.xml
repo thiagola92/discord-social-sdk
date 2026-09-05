@@ -1446,7 +1446,7 @@ func(input_detected: bool) -&gt; void: pass
 		</method>
 		<method name="set_no_audio_input_threshold">
 			<return type="void" />
-			<param index="0" name="d_bfsthreshold" type="float" />
+			<param index="0" name="dbfs_threshold" type="float" />
 			<description>
 			Threshold that can be set to indicate when no audio is being received by the user's mic.
 			An example of when this may be useful: When push to talk is being used and the user pushes their talk key, but something is configured wrong and no audio is being received, this threshold and callback can be used to detect that situation and notify the user. The threshold is specified in DBFS, or decibels relative to full scale, and the range is [-100.0, 100.0] It defaults to -100.0, so is disabled.

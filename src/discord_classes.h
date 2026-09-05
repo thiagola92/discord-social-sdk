@@ -875,7 +875,7 @@ public:
 	void set_message_deleted_callback(Callable cb);
 	void set_message_updated_callback(Callable cb);
 	void set_no_audio_input_callback(Callable callback);
-	void set_no_audio_input_threshold(real_t d_bfs_threshold);
+	void set_no_audio_input_threshold(real_t dbfs_threshold);
 	void set_noise_cancellation(bool on);
 	void set_noise_suppression(bool on);
 	void set_online_status(DiscordStatusType::Enum status, Callable callback);

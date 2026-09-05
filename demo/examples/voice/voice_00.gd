@@ -69,7 +69,11 @@ func _on_call_started(lobby_id: int) -> void:
 		call.set_self_mute(true)
 		call.set_self_deaf(false)
 		call.set_participant_volume(target_id, 150.0)
-		call.set_vadthreshold(false, -30.0)
+		call.set_vad_threshold(false, -30.0)
+	
+	client.set_self_mute_all(true)
+	client.set_input_volume(75.0)
+	client.set_output_volume(120.0)
 
 
 func _on_authorization_response(result: DiscordClientResult, code: String, redirect_uri: String) -> void:

@@ -90,6 +90,10 @@ def to_gdscript_variable_name(string: str) -> str:
 def to_snake_case(string: str) -> str:
     """Convert string to snake_case."""
 
+    # Exceptions: dBFS
+    if string == "dBFSThreshold":
+        return "dbfs_threshold"
+
     new_string = ""
     can_add_underscore = False
     is_abbreviation = False

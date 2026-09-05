@@ -53,14 +53,16 @@
 			Returns a list of all of the user IDs of the participants in the call.
 			</description>
 		</method>
-		<method name="get_pttactive">
+		<method name="get_ptt_active">
 			<return type="bool" />
 			<description>
+			Returns whether push to talk is currently active, meaning the user is currently pressing their configured push to talk key.
 			</description>
 		</method>
-		<method name="get_pttrelease_delay">
+		<method name="get_ptt_release_delay">
 			<return type="int" />
 			<description>
+			Returns the time that PTT is active after the user releases the PTT key and SetPTTActive(false) is called.
 			</description>
 		</method>
 		<method name="get_self_deaf">
@@ -82,9 +84,10 @@
 			A call is not ready to be used until the status changes to "Connected".
 			</description>
 		</method>
-		<method name="get_vadthreshold">
+		<method name="get_vad_threshold">
 			<return type="DiscordVADThresholdSettings" />
 			<description>
+			Returns the current configuration for void auto detection thresholds. See the description of the VADThreshold struct for specifics.
 			</description>
 		</method>
 		<method name="get_voice_state_handle">
@@ -145,16 +148,19 @@ func(user_id: int, added: bool) -&gt; void: pass
 			Does not affect the volume of this user for any other connected clients. The range of volume is [0, 200], where 100 indicate default audio volume of the playback device.
 			</description>
 		</method>
-		<method name="set_pttactive">
+		<method name="set_ptt_active">
 			<return type="void" />
 			<param index="0" name="active" type="bool" />
 			<description>
+			When push to talk is enabled, this should be called whenever the user pushes or releases their configured push to talk key. This key must be configured in the game, the SDK does not handle keybinds itself.
 			</description>
 		</method>
-		<method name="set_pttrelease_delay">
+		<method name="set_ptt_release_delay">
 			<return type="void" />
 			<param index="0" name="release_delay_ms" type="int" />
 			<description>
+			If set, extends the time that PTT is active after the user releases the PTT key and SetPTTActive(false) is called.
+			Defaults to no release delay, but we recommend setting to 20ms, which is what Discord uses.
 			</description>
 		</method>
 		<method name="set_self_deaf">
@@ -194,11 +200,14 @@ func(status: DiscordCallStatus.Enum, error: DiscordCallError.Enum, error_detail:
 [/codeblock]
 </description>
 		</method>
-		<method name="set_vadthreshold">
+		<method name="set_vad_threshold">
 			<return type="void" />
 			<param index="0" name="automatic" type="bool" />
 			<param index="1" name="threshold" type="float" />
 			<description>
+			Customizes the void auto detection thresholds for picking up activity from a user's mic.
+			- When automatic is set to True, Discord will automatically detect the appropriate threshold to use.
+- When automatic is set to False, the given threshold value will be used. Threshold has a range of -100, 0, and defaults to -60.
 			</description>
 		</method>
 		<method name="status_to_string" qualifiers="static">
