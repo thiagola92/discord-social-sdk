@@ -1678,11 +1678,11 @@ On macOS, you should set the NSMicrophoneUsageDescription key in your Info.plist
 Returns null if the user is already in the given voice channel.
 			Parameter [param received_cb] example:
 [codeblock]
-func(user_id: int, data: Array[int], samples_per_channel: int, sample_rate: int, channels: int, out_should_mute: bool) -&gt; DiscordCall: pass
+func(user_id: int, data: Array[int], samples_per_channel: int, sample_rate: int, channels: int, out_should_mute: bool) -&gt; void: pass
 [/codeblock]
 Parameter [param captured_cb] example:
 [codeblock]
-func(data: Array[int], samples_per_channel: int, sample_rate: int, channels: int) -&gt; DiscordCall: pass
+func(data: Array[int], samples_per_channel: int, sample_rate: int, channels: int) -&gt; void: pass
 [/codeblock]
 </description>
 		</method>
