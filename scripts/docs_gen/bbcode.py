@@ -37,11 +37,9 @@ def to_bbcode(text: str) -> str:
     text = re.sub(r"</codeline>", "", text)
     text = re.sub(r"<highlight .*?>", "", text)
     text = re.sub(r"</highlight>", "", text)
-
-    # Testing
     text = re.sub(
         r"(<programlisting.*?>)(.*?)(</programlisting>)",
-        clear_codeblock,
+        clean_codeblock,
         text,
         flags=re.DOTALL,
     )
@@ -75,7 +73,7 @@ def to_bbcode(text: str) -> str:
     text = re.sub(r"</programlisting>", r"[/codeblock]", text, flags=re.DOTALL)
     text = re.sub(
         r'<ref .*?refid="(.*?)".*?kindref="(.*?)".*?>(.*?)</ref>',
-        link_class,
+        transform_to_obj_link,
         text,
     )
 
@@ -87,7 +85,9 @@ def to_bbcode(text: str) -> str:
     return text.strip()
 
 
-def clear_codeblock(match: Match) -> str:
+def clean_codeblock(match: Match) -> str:
+    """Remove content that could cause codeblock to change."""
+
     open_tag = match.group(1)
     content = match.group(2)
     close_tag = match.group(3)
@@ -97,7 +97,9 @@ def clear_codeblock(match: Match) -> str:
     return open_tag + content + close_tag
 
 
-def link_class(match: Match) -> str:
+def transform_to_obj_link(match: Match) -> str:
+    """Turn into a link for a class/enum/property/method/..."""
+
     global REFERENCES
 
     refid: str = match.group(1)
