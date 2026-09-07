@@ -2,6 +2,7 @@
 * text=auto eol=lf
 
 # Only include the demo/addons/discord_social_sdk folder when downloading from the Asset Library.
+# Godot by default ignore the root directory, so it will ignore the "demo" directory.
 /**        			export-ignore
 demo/addons/discord_social_sdk	!export-ignore
 demo/addons/discord_social_sdk/**	!export-ignore
