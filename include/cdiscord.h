@@ -207,6 +207,12 @@ typedef enum Discord_AdditionalContentType {
 	Discord_AdditionalContentType_forceint = 0x7FFFFFFF
 } Discord_AdditionalContentType;
 
+typedef enum Discord_VoiceInputModeType {
+	Discord_VoiceInputModeType_VoiceActivity = 0,
+	Discord_VoiceInputModeType_PushToTalk = 1,
+	Discord_VoiceInputModeType_forceint = 0x7FFFFFFF
+} Discord_VoiceInputModeType;
+
 typedef enum Discord_AudioSystem {
 	Discord_AudioSystem_Standard = 0,
 	Discord_AudioSystem_Game = 1,
@@ -376,6 +382,7 @@ typedef struct Discord_LobbyHandle Discord_LobbyHandle;
 typedef struct Discord_AdditionalContent Discord_AdditionalContent;
 typedef struct Discord_MessageHandle Discord_MessageHandle;
 typedef struct Discord_AudioDevice Discord_AudioDevice;
+typedef struct Discord_VoiceSettings Discord_VoiceSettings;
 typedef struct Discord_UserMessageSummary Discord_UserMessageSummary;
 typedef struct Discord_ClientCreateOptions Discord_ClientCreateOptions;
 typedef struct Discord_Client Discord_Client;
@@ -451,6 +458,9 @@ typedef void (*Discord_Client_GetInputDevicesCallback)(Discord_AudioDeviceSpan d
 		void *userData);
 typedef void (*Discord_Client_GetOutputDevicesCallback)(Discord_AudioDeviceSpan devices,
 		void *userData);
+typedef void (*Discord_Client_GetVoiceSettingsCallback)(Discord_ClientResult *result,
+		Discord_VoiceSettings *settings,
+		void *userData);
 typedef void (*Discord_Client_DeviceChangeCallback)(Discord_AudioDeviceSpan inputDevices,
 		Discord_AudioDeviceSpan outputDevices,
 		void *userData);
@@ -461,6 +471,8 @@ typedef void (*Discord_Client_SetOutputDeviceCallback)(Discord_ClientResult *res
 typedef void (*Discord_Client_VoiceParticipantChangedCallback)(uint64_t lobbyId,
 		uint64_t memberId,
 		bool added,
+		void *userData);
+typedef void (*Discord_Client_VoiceSettingsUpdatedCallback)(Discord_VoiceSettings *settings,
 		void *userData);
 typedef void (*Discord_Client_UserAudioReceivedCallback)(uint64_t userId,
 		int16_t *data,
@@ -1179,6 +1191,8 @@ void DISCORD_API Discord_MessageHandle_Clone(Discord_MessageHandle *self,
 		Discord_MessageHandle const *other);
 bool DISCORD_API Discord_MessageHandle_AdditionalContent(Discord_MessageHandle *self,
 		Discord_AdditionalContent *returnValue);
+bool DISCORD_API Discord_MessageHandle_AdditionalName(Discord_MessageHandle *self,
+		Discord_String *returnValue);
 bool DISCORD_API Discord_MessageHandle_ApplicationId(Discord_MessageHandle *self,
 		uint64_t *returnValue);
 bool DISCORD_API Discord_MessageHandle_Author(Discord_MessageHandle *self,
@@ -1221,6 +1235,37 @@ void DISCORD_API Discord_AudioDevice_SetName(Discord_AudioDevice *self, Discord_
 void DISCORD_API Discord_AudioDevice_Name(Discord_AudioDevice *self, Discord_String *returnValue);
 void DISCORD_API Discord_AudioDevice_SetIsDefault(Discord_AudioDevice *self, bool value);
 bool DISCORD_API Discord_AudioDevice_IsDefault(Discord_AudioDevice *self);
+struct Discord_VoiceSettings {
+	void *opaque;
+};
+
+void DISCORD_API Discord_VoiceSettings_Drop(Discord_VoiceSettings *self);
+void DISCORD_API Discord_VoiceSettings_Clone(Discord_VoiceSettings *self,
+		Discord_VoiceSettings const *arg0);
+void DISCORD_API Discord_VoiceSettings_SetSelfMute(Discord_VoiceSettings *self, bool value);
+bool DISCORD_API Discord_VoiceSettings_SelfMute(Discord_VoiceSettings *self);
+void DISCORD_API Discord_VoiceSettings_SetSelfDeaf(Discord_VoiceSettings *self, bool value);
+bool DISCORD_API Discord_VoiceSettings_SelfDeaf(Discord_VoiceSettings *self);
+void DISCORD_API Discord_VoiceSettings_SetInputMode(Discord_VoiceSettings *self,
+		Discord_VoiceInputModeType value);
+Discord_VoiceInputModeType DISCORD_API Discord_VoiceSettings_InputMode(Discord_VoiceSettings *self);
+void DISCORD_API Discord_VoiceSettings_SetPttKey(Discord_VoiceSettings *self, Discord_String value);
+void DISCORD_API Discord_VoiceSettings_PttKey(Discord_VoiceSettings *self,
+		Discord_String *returnValue);
+void DISCORD_API Discord_VoiceSettings_SetInputVolume(Discord_VoiceSettings *self, float value);
+float DISCORD_API Discord_VoiceSettings_InputVolume(Discord_VoiceSettings *self);
+void DISCORD_API Discord_VoiceSettings_SetOutputVolume(Discord_VoiceSettings *self, float value);
+float DISCORD_API Discord_VoiceSettings_OutputVolume(Discord_VoiceSettings *self);
+void DISCORD_API Discord_VoiceSettings_SetAutomaticGainControl(Discord_VoiceSettings *self,
+		bool value);
+bool DISCORD_API Discord_VoiceSettings_AutomaticGainControl(Discord_VoiceSettings *self);
+void DISCORD_API Discord_VoiceSettings_SetEchoCancellation(Discord_VoiceSettings *self, bool value);
+bool DISCORD_API Discord_VoiceSettings_EchoCancellation(Discord_VoiceSettings *self);
+void DISCORD_API Discord_VoiceSettings_SetNoiseSuppression(Discord_VoiceSettings *self, bool value);
+bool DISCORD_API Discord_VoiceSettings_NoiseSuppression(Discord_VoiceSettings *self);
+void DISCORD_API Discord_VoiceSettings_SetNoiseCancellation(Discord_VoiceSettings *self,
+		bool value);
+bool DISCORD_API Discord_VoiceSettings_NoiseCancellation(Discord_VoiceSettings *self);
 struct Discord_UserMessageSummary {
 	void *opaque;
 };
@@ -1324,6 +1369,10 @@ void DISCORD_API Discord_Client_GetOutputDevices(Discord_Client *self,
 float DISCORD_API Discord_Client_GetOutputVolume(Discord_Client *self);
 bool DISCORD_API Discord_Client_GetSelfDeafAll(Discord_Client *self);
 bool DISCORD_API Discord_Client_GetSelfMuteAll(Discord_Client *self);
+void DISCORD_API Discord_Client_GetVoiceSettings(Discord_Client *self,
+		Discord_Client_GetVoiceSettingsCallback cb,
+		Discord_FreeFn cb__userDataFree,
+		void *cb__userData);
 void DISCORD_API Discord_Client_SetAecDump(Discord_Client *self, bool on);
 void DISCORD_API Discord_Client_SetAutomaticGainControl(Discord_Client *self, bool on);
 void DISCORD_API
@@ -1368,6 +1417,11 @@ Discord_Client_SetVoiceParticipantChangedCallback(Discord_Client *self,
 		Discord_Client_VoiceParticipantChangedCallback cb,
 		Discord_FreeFn cb__userDataFree,
 		void *cb__userData);
+void DISCORD_API
+Discord_Client_SetVoiceSettingsUpdatedCallback(Discord_Client *self,
+		Discord_Client_VoiceSettingsUpdatedCallback callback,
+		Discord_FreeFn callback__userDataFree,
+		void *callback__userData);
 bool DISCORD_API Discord_Client_ShowAudioRoutePicker(Discord_Client *self);
 bool DISCORD_API Discord_Client_StartCall(Discord_Client *self,
 		uint64_t channelId,

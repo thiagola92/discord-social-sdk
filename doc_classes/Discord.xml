@@ -22,6 +22,7 @@
 			Converts a [DiscordIntegrationType] to a string.
 			Converts a [DiscordChannelType] to a string.
 			Converts a [DiscordAdditionalContentType] to a string.
+			Converts a [DiscordVoiceInputModeType] to a string.
 			Converts a [DiscordAudioSystem] to a string.
 			Converts a [DiscordCallError] to a string.
 			Converts a [DiscordAudioModeType] to a string.

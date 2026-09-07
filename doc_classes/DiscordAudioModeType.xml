@@ -16,7 +16,7 @@
 		<constant name="MODE_PTT" value="2" enum="Enum">
 		MODE_PTT.
 		</constant>
-		<constant name="id" value="12">
+		<constant name="id" value="13">
 		</constant>
 	</constants>
 </class>

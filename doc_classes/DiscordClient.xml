@@ -744,6 +744,18 @@ func(result: DiscordClientResult, messages: Array[DiscordMessageHandle]) -&gt; v
 			Returns the patch version of the Discord Social SDK.
 			</description>
 		</method>
+		<method name="get_voice_settings">
+			<return type="void" />
+			<param index="0" name="cb" type="Callable" />
+			<description>
+			Asynchronously fetches the user's current voice settings from the connected Discord client.
+			Requires a running Discord desktop client and an approved Social SDK integration.
+			Parameter [param cb] example:
+[codeblock]
+func(result: DiscordClientResult, settings: DiscordVoiceSettings) -&gt; void: pass
+[/codeblock]
+</description>
+		</method>
 		<method name="is_authenticated">
 			<return type="bool" />
 			<description>
@@ -1645,6 +1657,18 @@ WARNING: This function MUST be invoked immediately after constructing the [Disco
 			Parameter [param cb] example:
 [codeblock]
 func(lobby_id: int, member_id: int, added: bool) -&gt; void: pass
+[/codeblock]
+</description>
+		</method>
+		<method name="set_voice_settings_updated_callback">
+			<return type="void" />
+			<param index="0" name="callback" type="Callable" />
+			<description>
+			Sets a callback to be invoked whenever the user's voice settings change in the connected Discord client. Pass an empty std::function to stop receiving updates.
+			Requires the same access as [method DiscordClient.get_voice_settings]. The callback never fires if the client refuses the subscription.
+			Parameter [param callback] example:
+[codeblock]
+func(settings: DiscordVoiceSettings) -&gt; void: pass
 [/codeblock]
 </description>
 		</method>

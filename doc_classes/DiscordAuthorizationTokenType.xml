@@ -11,7 +11,7 @@
 		</constant>
 		<constant name="BEARER" value="1" enum="Enum">
 		</constant>
-		<constant name="id" value="17">
+		<constant name="id" value="18">
 		</constant>
 	</constants>
 </class>

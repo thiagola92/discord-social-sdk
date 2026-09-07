@@ -194,7 +194,7 @@ protected:
 	}
 
 public:
-	static const int64_t id = 12;
+	static const int64_t id = 13;
 
 	enum Enum {
 		MODE_UNINIT = 0,
@@ -221,7 +221,7 @@ protected:
 	}
 
 public:
-	static const int64_t id = 11;
+	static const int64_t id = 12;
 
 	enum Enum {
 		STANDARD = 0,
@@ -277,7 +277,7 @@ protected:
 	}
 
 public:
-	static const int64_t id = 18;
+	static const int64_t id = 19;
 
 	enum Enum {
 		OIDC = 0,
@@ -309,7 +309,7 @@ protected:
 	}
 
 public:
-	static const int64_t id = 17;
+	static const int64_t id = 18;
 
 	enum Enum {
 		USER = 0,
@@ -339,7 +339,7 @@ protected:
 	}
 
 public:
-	static const int64_t id = 21;
+	static const int64_t id = 22;
 
 	enum Enum {
 		NONE = 0,
@@ -374,7 +374,7 @@ protected:
 	}
 
 public:
-	static const int64_t id = 22;
+	static const int64_t id = 23;
 
 	enum Enum {
 		DISCONNECTED = 0,
@@ -461,7 +461,7 @@ protected:
 	}
 
 public:
-	static const int64_t id = 23;
+	static const int64_t id = 24;
 
 	enum Enum {
 		NONE = 0,
@@ -494,7 +494,7 @@ protected:
 	}
 
 public:
-	static const int64_t id = 24;
+	static const int64_t id = 25;
 
 	enum Enum {
 		DISCONNECTED = 0,
@@ -526,7 +526,7 @@ protected:
 	}
 
 public:
-	static const int64_t id = 25;
+	static const int64_t id = 26;
 
 	enum Enum {
 		CLIENT = 0,
@@ -552,7 +552,7 @@ protected:
 	}
 
 public:
-	static const int64_t id = 16;
+	static const int64_t id = 17;
 
 	enum Enum {
 		MESSAGE_DATA_VISIBLE_ON_DISCORD = 3,
@@ -624,7 +624,7 @@ protected:
 	}
 
 public:
-	static const int64_t id = 14;
+	static const int64_t id = 15;
 
 	enum Enum {
 		OIDC = 0,
@@ -826,7 +826,7 @@ protected:
 	}
 
 public:
-	static const int64_t id = 19;
+	static const int64_t id = 20;
 
 	enum Enum {
 		VERBOSE = 1,
@@ -856,7 +856,7 @@ protected:
 	}
 
 public:
-	static const int64_t id = 20;
+	static const int64_t id = 21;
 
 	enum Enum {
 		ONLINE_PLAYING_GAME = 0,
@@ -888,7 +888,7 @@ protected:
 	}
 
 public:
-	static const int64_t id = 13;
+	static const int64_t id = 14;
 
 	enum Enum {
 		NONE = 0,
@@ -953,7 +953,7 @@ protected:
 	}
 
 public:
-	static const int64_t id = 15;
+	static const int64_t id = 16;
 
 	enum Enum {
 		ONLINE = 0,
@@ -987,13 +987,39 @@ protected:
 	}
 
 public:
-	static const int64_t id = 26;
+	static const int64_t id = 27;
 
 	enum Enum {
 		GIF = 0,
 		WEBP = 1,
 		PNG = 2,
 		JPEG = 3,
+	};
+};
+
+class DiscordVoiceInputModeType : public RefCounted {
+	GDCLASS(DiscordVoiceInputModeType, RefCounted)
+
+private:
+	DiscordVoiceInputModeType() {}
+	~DiscordVoiceInputModeType() {}
+
+protected:
+	static void _bind_methods() {
+		// Enums binds.
+		BIND_ENUM_CONSTANT(VOICE_ACTIVITY);
+		BIND_ENUM_CONSTANT(PUSH_TO_TALK);
+
+		// Constant binds.
+		BIND_CONSTANT(id);
+	}
+
+public:
+	static const int64_t id = 11;
+
+	enum Enum {
+		VOICE_ACTIVITY = 0,
+		PUSH_TO_TALK = 1,
 	};
 };
 
@@ -1027,5 +1053,6 @@ VARIANT_ENUM_CAST(DiscordRelationshipType::Enum);
 VARIANT_ENUM_CAST(DiscordStatusDisplayTypes::Enum);
 VARIANT_ENUM_CAST(DiscordStatusType::Enum);
 VARIANT_ENUM_CAST(DiscordUserHandleAvatarType::Enum);
+VARIANT_ENUM_CAST(DiscordVoiceInputModeType::Enum);
 
 #endif

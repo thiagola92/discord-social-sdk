@@ -13,7 +13,7 @@
 		</constant>
 		<constant name="NETWORK" value="2" enum="Enum">
 		</constant>
-		<constant name="id" value="25">
+		<constant name="id" value="26">
 		</constant>
 	</constants>
 </class>

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cw5hijputaaft"]
+
+[ext_resource type="Script" uid="uid://cw4nidoovroa4" path="res://examples/voice/voice_01.gd" id="1_qvc56"]
+
+[node name="Voice01" type="Node"]
+script = ExtResource("1_qvc56")

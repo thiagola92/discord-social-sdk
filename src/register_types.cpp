@@ -43,6 +43,7 @@ void initialize_module(ModuleInitializationLevel p_level) {
 	GDREGISTER_ABSTRACT_CLASS(DiscordStatusDisplayTypes);
 	GDREGISTER_ABSTRACT_CLASS(DiscordStatusType);
 	GDREGISTER_ABSTRACT_CLASS(DiscordUserHandleAvatarType);
+	GDREGISTER_ABSTRACT_CLASS(DiscordVoiceInputModeType);
 
 	// Runtimes.
 	GDREGISTER_CLASS(DiscordActivity);
@@ -76,6 +77,7 @@ void initialize_module(ModuleInitializationLevel p_level) {
 	GDREGISTER_CLASS(DiscordUserHandle);
 	GDREGISTER_CLASS(DiscordUserMessageSummary);
 	GDREGISTER_CLASS(DiscordVADThresholdSettings);
+	GDREGISTER_CLASS(DiscordVoiceSettings);
 	GDREGISTER_CLASS(DiscordVoiceStateHandle);
 }
 

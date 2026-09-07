@@ -50,55 +50,29 @@ func _on_joined_lobby(result: DiscordClientResult, lobby_id: int) -> void:
 	if result.successful():
 		print("🎮 Successfully joined lobby!")
 		
-		var call: DiscordCall = client.start_call(lobby_id)
+		var call: DiscordCall = client.start_call_with_audio_callbacks(lobby_id, _on_audio_received, _on_audio_captured)
 		
 		if call:
 			print("🎤 Voice call operation initiated...")
 		else:
 			print("ℹ️ Already in this voice channel")
-		
-		# Let's give a second to simulate interacting from anywhere in your code.
-		get_tree().create_timer(1).timeout.connect(_on_call_started.bind(lobby_id))
 	else:
 		print("❌ Failed to join lobby: %s" % result.error())
 
 
-func _on_call_started(lobby_id: int) -> void:
-	var call: DiscordCall = client.get_call(lobby_id)
+func _on_audio_received(user_id: int, data: Array[int], samples_per_channel: int, sample_rate: int, channels: int, out_should_mute: bool) -> void:
+	# Changing "data" doesn't reflect into SDK.
+	for i in data.size():
+		data[i] *= 0.5
 	
-	if call:
-		call.set_self_mute(true)
-		call.set_self_deaf(false)
-		call.set_participant_volume(target_id, 150.0)
-		call.set_vad_threshold(false, -30.0)
+	# Changing "out_should_mute" doesn't reflect into SDK.
+	out_should_mute = true
 	
-	client.set_self_mute_all(true)
-	client.set_input_volume(75.0)
-	client.set_output_volume(120.0)
-	client.set_no_audio_input_threshold(-60.0)
-	client.set_no_audio_input_callback(_on_audio_crossing_threshold)
-	client.set_noise_suppression(true)
-	client.set_echo_cancellation(true)
-	client.set_automatic_gain_control(true)
-	client.set_noise_cancellation(true)
-	
-	#client.end_call(lobby_id, _on_call_ended)
-	#client.end_calls(_on_calls_ended)
+	var total_num_samples = samples_per_channel * channels
 
 
-func _on_audio_crossing_threshold(input_detected: bool) -> void:
-	if not input_detected:
-		print("🔈 Mic appears to be silent — check your device settings.")
-	else:
-		print("🔊 Mic is receiving audio again")
-
-
-func _on_call_ended() -> void:
-	print("🔇 Call ended successfully")
-
-
-func _on_calls_ended() -> void:
-	print("🔇 All calls ended successfully")
+func _on_audio_captured(data: Array[int], samples_per_channel: int, sample_rate: int, channels: int) -> void:
+	pass
 
 
 func _on_authorization_response(result: DiscordClientResult, code: String, redirect_uri: String) -> void:

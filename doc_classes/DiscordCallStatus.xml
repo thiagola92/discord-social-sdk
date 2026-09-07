@@ -21,7 +21,7 @@
 		</constant>
 		<constant name="DISCONNECTING" value="6" enum="Enum">
 		</constant>
-		<constant name="id" value="22">
+		<constant name="id" value="23">
 		</constant>
 	</constants>
 </class>

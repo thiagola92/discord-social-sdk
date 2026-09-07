@@ -1009,6 +1009,20 @@ void DiscordClient::get_user_messages_with_limit(int64_t recipient_id, int64_t l
 	obj->GetUserMessagesWithLimit(p0, p1, p2);
 }
 
+void DiscordClient::get_voice_settings(Callable cb) {
+	auto p0 = [cb](auto result, auto settings) {
+		discordpp::ClientResult *p0_t = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ p0_t });
+
+		discordpp::VoiceSettings *p1_t = memnew(discordpp::VoiceSettings(std::move(settings)));
+		DiscordVoiceSettings *p1 = memnew(DiscordVoiceSettings{ p1_t });
+
+		cb.call(p0, p1);
+	};
+
+	obj->GetVoiceSettings(p0);
+}
+
 void DiscordClient::is_discord_app_installed(Callable callback) {
 	auto p0 = [callback](auto installed) {
 		bool p0 = installed;
@@ -1726,6 +1740,17 @@ void DiscordClient::set_voice_participant_changed_callback(Callable cb) {
 	obj->SetVoiceParticipantChangedCallback(p0);
 }
 
+void DiscordClient::set_voice_settings_updated_callback(Callable callback) {
+	auto p0 = [callback](auto settings) {
+		discordpp::VoiceSettings *p0_t = memnew(discordpp::VoiceSettings(std::move(settings)));
+		DiscordVoiceSettings *p0 = memnew(DiscordVoiceSettings{ p0_t });
+
+		callback.call(p0);
+	};
+
+	obj->SetVoiceSettingsUpdatedCallback(p0);
+}
+
 void DiscordClient::unblock_user(int64_t user_id, Callable cb) {
 	int64_t p0 = user_id;
 	auto p1 = [cb](auto result) {
@@ -1979,6 +2004,9 @@ void DiscordClient::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("get_user_messages_with_limit", "recipient_id", "limit", "cb"),
 			&DiscordClient::get_user_messages_with_limit);
 
+	ClassDB::bind_method(D_METHOD("get_voice_settings", "cb"),
+			&DiscordClient::get_voice_settings);
+
 	ClassDB::bind_method(D_METHOD("is_authenticated"),
 			&DiscordClient::is_authenticated);
 
@@ -2209,6 +2237,9 @@ void DiscordClient::_bind_methods() {
 
 	ClassDB::bind_method(D_METHOD("set_voice_participant_changed_callback", "cb"),
 			&DiscordClient::set_voice_participant_changed_callback);
+
+	ClassDB::bind_method(D_METHOD("set_voice_settings_updated_callback", "callback"),
+			&DiscordClient::set_voice_settings_updated_callback);
 
 	ClassDB::bind_method(D_METHOD("show_audio_route_picker"),
 			&DiscordClient::show_audio_route_picker);

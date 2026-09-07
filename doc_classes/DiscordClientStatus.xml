@@ -25,7 +25,7 @@ Additionally, sometimes the socket will be disconnected, such as through tempora
 		</constant>
 		<constant name="HTTP_WAIT" value="6" enum="Enum">
 		</constant>
-		<constant name="id" value="24">
+		<constant name="id" value="25">
 		</constant>
 	</constants>
 </class>

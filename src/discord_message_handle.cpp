@@ -68,6 +68,22 @@ Variant DiscordMessageHandle::additional_content() {
 	return r1;
 }
 
+Variant DiscordMessageHandle::additional_name() {
+	auto r0 = obj->AdditionalName();
+
+	Variant r1;
+
+	if (!r0.has_value()) {
+		r1 = nullptr;
+	} else {
+		auto r0_v = r0.value();
+		String r1_v = String(r0_v.c_str());
+		r1 = Variant(r1_v);
+	}
+
+	return r1;
+}
+
 Variant DiscordMessageHandle::application_id() {
 	auto r0 = obj->ApplicationId();
 
@@ -238,6 +254,9 @@ int64_t DiscordMessageHandle::sent_timestamp() {
 void DiscordMessageHandle::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("additional_content"),
 			&DiscordMessageHandle::additional_content);
+
+	ClassDB::bind_method(D_METHOD("additional_name"),
+			&DiscordMessageHandle::additional_name);
 
 	ClassDB::bind_method(D_METHOD("application_id"),
 			&DiscordMessageHandle::application_id);

@@ -19,7 +19,7 @@
 		</constant>
 		<constant name="FORBIDDEN" value="5" enum="Enum">
 		</constant>
-		<constant name="id" value="21">
+		<constant name="id" value="22">
 		</constant>
 	</constants>
 </class>

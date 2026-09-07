@@ -44,6 +44,7 @@ class DiscordUserApplicationProfileHandle;
 class DiscordUserHandle;
 class DiscordUserMessageSummary;
 class DiscordVADThresholdSettings;
+class DiscordVoiceSettings;
 class DiscordVoiceStateHandle;
 
 // Definitions.
@@ -823,6 +824,7 @@ public:
 	void get_user_guilds(Callable cb);
 	void get_user_message_summaries(Callable cb);
 	void get_user_messages_with_limit(int64_t recipient_id, int64_t limit, Callable cb);
+	void get_voice_settings(Callable cb);
 	void is_discord_app_installed(Callable callback);
 	void join_linked_lobby_guild(int64_t lobby_id, Callable provisional_user_merge_required_callback, Callable callback);
 	void leave_lobby(int64_t lobby_id, Callable callback);
@@ -894,6 +896,7 @@ public:
 	void set_user_updated_callback(Callable cb);
 	void set_voice_log_dir(String path, DiscordLoggingSeverity::Enum min_severity);
 	void set_voice_participant_changed_callback(Callable cb);
+	void set_voice_settings_updated_callback(Callable callback);
 	void unblock_user(int64_t user_id, Callable cb);
 	void unlink_channel_from_lobby(int64_t lobby_id, Callable callback);
 	void unmerge_into_provisional_account(int64_t application_id, DiscordAuthenticationExternalAuthType::Enum external_auth_type, String external_auth_token, Callable callback);
@@ -1311,6 +1314,7 @@ public:
 	TypedDictionary<String, String> metadata();
 	TypedDictionary<String, String> moderation_metadata();
 	Variant additional_content();
+	Variant additional_name();
 	Variant application_id();
 	Variant author();
 	Variant channel();
@@ -1527,6 +1531,59 @@ public:
 	}
 
 	~DiscordVADThresholdSettings() {
+		memdelete(this->obj);
+	}
+};
+
+class DiscordVoiceSettings : public RefCounted {
+	GDCLASS(DiscordVoiceSettings, RefCounted)
+
+private:
+	discordpp::VoiceSettings *obj;
+
+	DiscordVoiceSettings() {}
+
+protected:
+	static void _bind_methods();
+
+public:
+	// Internal usage.
+	discordpp::VoiceSettings *unwrap() {
+		return obj;
+	}
+
+	// Constructors.
+
+	// Functions.
+	DiscordVoiceInputModeType::Enum input_mode();
+	String ptt_key();
+	bool automatic_gain_control();
+	bool echo_cancellation();
+	bool noise_cancellation();
+	bool noise_suppression();
+	bool self_deaf();
+	bool self_mute();
+	real_t input_volume();
+	real_t output_volume();
+	void set_automatic_gain_control(bool automatic_gain_control);
+	void set_echo_cancellation(bool echo_cancellation);
+	void set_input_mode(DiscordVoiceInputModeType::Enum input_mode);
+	void set_input_volume(real_t input_volume);
+	void set_noise_cancellation(bool noise_cancellation);
+	void set_noise_suppression(bool noise_suppression);
+	void set_output_volume(real_t output_volume);
+	void set_ptt_key(String ptt_key);
+	void set_self_deaf(bool self_deaf);
+	void set_self_mute(bool self_mute);
+
+	// Overloading functions.
+
+	// Internal usage.
+	DiscordVoiceSettings(discordpp::VoiceSettings *obj) {
+		this->obj = obj;
+	}
+
+	~DiscordVoiceSettings() {
 		memdelete(this->obj);
 	}
 };

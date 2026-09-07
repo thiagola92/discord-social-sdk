@@ -36,6 +36,14 @@ Handle objects in the SDK hold a reference both to the underlying data, and to t
 			Returns [DiscordAdditionalContent] or [code]null[/code].
 </description>
 		</method>
+		<method name="additional_name">
+			<return type="Variant" />
+			<description>
+			Returns an additional display name for this message, if one was set.
+			This is an optional, game-provided name (such as a character name) that the game or lobby integration associated with the author for this lobby.
+			Returns [String] or [code]null[/code].
+</description>
+		</method>
 		<method name="application_id">
 			<return type="Variant" />
 			<description>

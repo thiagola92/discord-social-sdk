@@ -1,0 +1,142 @@
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordVoiceSettings" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	A read-only snapshot of the user's voice settings in the connected Discord desktop client.
+</brief_description>
+	<description>
+	These belong to the Discord client, not to any individual [DiscordCall].
+</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="automatic_gain_control">
+			<return type="bool" />
+			<description>
+			Automatic gain control state.
+			</description>
+		</method>
+		<method name="echo_cancellation">
+			<return type="bool" />
+			<description>
+			Echo cancellation state.
+			</description>
+		</method>
+		<method name="input_mode">
+			<return type="int" enum="DiscordVoiceInputModeType.Enum" />
+			<description>
+			When the client transmits microphone audio.
+			</description>
+		</method>
+		<method name="input_volume">
+			<return type="float" />
+			<description>
+			Microphone volume, ranging from 0 to 100.
+			</description>
+		</method>
+		<method name="noise_cancellation">
+			<return type="bool" />
+			<description>
+			Noise cancellation state.
+			</description>
+		</method>
+		<method name="noise_suppression">
+			<return type="bool" />
+			<description>
+			Noise suppression state.
+			</description>
+		</method>
+		<method name="output_volume">
+			<return type="float" />
+			<description>
+			Speaker volume, ranging from 0 to 200.
+			</description>
+		</method>
+		<method name="ptt_key">
+			<return type="String" />
+			<description>
+			Display string for the push-to-talk key, such as "SHIFT + F". Empty when nothing is bound.
+			</description>
+		</method>
+		<method name="self_deaf">
+			<return type="bool" />
+			<description>
+			Self-deafen state.
+			</description>
+		</method>
+		<method name="self_mute">
+			<return type="bool" />
+			<description>
+			Self-mute state.
+			</description>
+		</method>
+		<method name="set_automatic_gain_control">
+			<return type="void" />
+			<param index="0" name="automatic_gain_control" type="bool" />
+			<description>
+			Setter for [method DiscordVoiceSettings.automatic_gain_control].
+			</description>
+		</method>
+		<method name="set_echo_cancellation">
+			<return type="void" />
+			<param index="0" name="echo_cancellation" type="bool" />
+			<description>
+			Setter for [method DiscordVoiceSettings.echo_cancellation].
+			</description>
+		</method>
+		<method name="set_input_mode">
+			<return type="void" />
+			<param index="0" name="input_mode" type="int" enum="DiscordVoiceInputModeType.Enum" />
+			<description>
+			Setter for [method DiscordVoiceSettings.input_mode].
+			</description>
+		</method>
+		<method name="set_input_volume">
+			<return type="void" />
+			<param index="0" name="input_volume" type="float" />
+			<description>
+			Setter for [method DiscordVoiceSettings.input_volume].
+			</description>
+		</method>
+		<method name="set_noise_cancellation">
+			<return type="void" />
+			<param index="0" name="noise_cancellation" type="bool" />
+			<description>
+			Setter for [method DiscordVoiceSettings.noise_cancellation].
+			</description>
+		</method>
+		<method name="set_noise_suppression">
+			<return type="void" />
+			<param index="0" name="noise_suppression" type="bool" />
+			<description>
+			Setter for [method DiscordVoiceSettings.noise_suppression].
+			</description>
+		</method>
+		<method name="set_output_volume">
+			<return type="void" />
+			<param index="0" name="output_volume" type="float" />
+			<description>
+			Setter for [method DiscordVoiceSettings.output_volume].
+			</description>
+		</method>
+		<method name="set_ptt_key">
+			<return type="void" />
+			<param index="0" name="ptt_key" type="String" />
+			<description>
+			Setter for [method DiscordVoiceSettings.ptt_key].
+			</description>
+		</method>
+		<method name="set_self_deaf">
+			<return type="void" />
+			<param index="0" name="self_deaf" type="bool" />
+			<description>
+			Setter for [method DiscordVoiceSettings.self_deaf].
+			</description>
+		</method>
+		<method name="set_self_mute">
+			<return type="void" />
+			<param index="0" name="self_mute" type="bool" />
+			<description>
+			Setter for [method DiscordVoiceSettings.self_mute].
+			</description>
+		</method>
+	</methods>
+</class>

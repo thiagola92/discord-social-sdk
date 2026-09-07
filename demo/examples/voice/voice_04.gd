@@ -23,8 +23,9 @@ func _ready() -> void:
 	
 	client.set_application_id(application_id)
 	client.add_log_callback(_on_log, DiscordLoggingSeverity.INFO)
-	client.set_status_changed_callback(_on_status_changed)
 	client.authorize(args, _on_authorization_response)
+	client.get_voice_settings(_on_voice_settings)
+	client.set_voice_settings_updated_callback(_on_voice_settings_updated)
 
 
 func _process(_delta: float) -> void:
@@ -35,70 +36,6 @@ func _on_log(message: String, severity: DiscordLoggingSeverity.Enum) -> void:
 	var enum_str: String = Discord.enum_to_string(severity, DiscordLoggingSeverity.id)
 	
 	print("[%s] %s" % [enum_str, message])
-
-
-func _on_status_changed(status: DiscordClientStatus.Enum, _error: DiscordClientError.Enum, _error_detail: int) -> void:
-	var enum_str: String = Discord.enum_to_string(status, DiscordClientStatus.id)
-	
-	print("Status changed to %s" % enum_str)
-	
-	if status == DiscordClientStatus.READY:
-		client.create_or_join_lobby("your-unique-lobby-secret", _on_joined_lobby)
-
-
-func _on_joined_lobby(result: DiscordClientResult, lobby_id: int) -> void:
-	if result.successful():
-		print("🎮 Successfully joined lobby!")
-		
-		var call: DiscordCall = client.start_call(lobby_id)
-		
-		if call:
-			print("🎤 Voice call operation initiated...")
-		else:
-			print("ℹ️ Already in this voice channel")
-		
-		# Let's give a second to simulate interacting from anywhere in your code.
-		get_tree().create_timer(1).timeout.connect(_on_call_started.bind(lobby_id))
-	else:
-		print("❌ Failed to join lobby: %s" % result.error())
-
-
-func _on_call_started(lobby_id: int) -> void:
-	var call: DiscordCall = client.get_call(lobby_id)
-	
-	if call:
-		call.set_self_mute(true)
-		call.set_self_deaf(false)
-		call.set_participant_volume(target_id, 150.0)
-		call.set_vad_threshold(false, -30.0)
-	
-	client.set_self_mute_all(true)
-	client.set_input_volume(75.0)
-	client.set_output_volume(120.0)
-	client.set_no_audio_input_threshold(-60.0)
-	client.set_no_audio_input_callback(_on_audio_crossing_threshold)
-	client.set_noise_suppression(true)
-	client.set_echo_cancellation(true)
-	client.set_automatic_gain_control(true)
-	client.set_noise_cancellation(true)
-	
-	#client.end_call(lobby_id, _on_call_ended)
-	#client.end_calls(_on_calls_ended)
-
-
-func _on_audio_crossing_threshold(input_detected: bool) -> void:
-	if not input_detected:
-		print("🔈 Mic appears to be silent — check your device settings.")
-	else:
-		print("🔊 Mic is receiving audio again")
-
-
-func _on_call_ended() -> void:
-	print("🔇 Call ended successfully")
-
-
-func _on_calls_ended() -> void:
-	print("🔇 All calls ended successfully")
 
 
 func _on_authorization_response(result: DiscordClientResult, code: String, redirect_uri: String) -> void:
@@ -133,3 +70,24 @@ func _on_token_updated(result: DiscordClientResult) -> void:
 	
 	print("🔑 Token updated, connecting to Discord...")
 	client.connect_discord()
+
+
+func _on_voice_settings(result: DiscordClientResult, settings: DiscordVoiceSettings) -> void:
+	if not result.successful():
+		print("❌ Failed to fetch voice settings: %s" % result.error())
+		return
+
+	print("Self mute: %s" % settings.self_mute())
+	print("Self deaf: %s" % settings.self_deaf())
+	print("Input volume: %s" % settings.input_volume()) # 0-100
+	print("Output volume: %s" % settings.output_volume()) # 0-200
+
+	# input_mode() is either DiscordVoiceInputModeType.VOICE_ACTIVITY or
+	# DiscordVoiceInputModeType.PUSH_TO_TALK
+	if settings.input_mode() == DiscordVoiceInputModeType.PUSH_TO_TALK:
+		# ptt_key() is a display string, e.g. "SHIFT + F", empty if unbound
+		print("Push-to-talk key: %s" % settings.ptt_key())
+
+
+func _on_voice_settings_updated(settings: DiscordVoiceSettings) -> void:
+	print("🔄 Voice settings updated - self mute: %s" % settings.self_mute())

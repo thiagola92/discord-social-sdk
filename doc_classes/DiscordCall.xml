@@ -104,7 +104,7 @@
 			<param index="0" name="audio_mode" type="int" enum="DiscordAudioModeType.Enum" />
 			<description>
 			Sets whether to use voice auto detection or push to talk for the current user on this call.
-			If using push to talk you should call [method DiscordCall.set_ptt_active] whenever the user presses their confused push to talk key.
+			If using push to talk you should call [method DiscordCall.set_ptt_active] whenever the user presses their configured push to talk key.
 			</description>
 		</method>
 		<method name="set_local_mute">

@@ -24,7 +24,7 @@
 		</constant>
 		<constant name="PLAY_STATION_NETWORK_ID_TOKEN" value="7" enum="Enum">
 		</constant>
-		<constant name="id" value="18">
+		<constant name="id" value="19">
 		</constant>
 	</constants>
 </class>

@@ -10,7 +10,7 @@
 	<constants>
 		<constant name="MESSAGE_DATA_VISIBLE_ON_DISCORD" value="3" enum="Enum">
 		</constant>
-		<constant name="id" value="16">
+		<constant name="id" value="17">
 		</constant>
 	</constants>
 </class>
