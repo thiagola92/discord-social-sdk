@@ -19,10 +19,10 @@ linux.debug.double.x86_64 = "linux/libdiscord_social_sdk.linux.template_debug.do
 linux.debug.x86_64 = "linux/libdiscord_social_sdk.linux.template_debug.x86_64.so"
 linux.release.double.x86_64 = "linux/libdiscord_social_sdk.linux.template_release.double.x86_64.so"
 linux.release.x86_64 = "linux/libdiscord_social_sdk.linux.template_release.x86_64.so"
-windows.debug.double.x86_64 = "windows/libdiscord_social_sdk.windows.template_debug.double.x86_64.dll"
-windows.debug.x86_64 = "windows/libdiscord_social_sdk.windows.template_debug.x86_64.dll"
-windows.release.double.x86_64 = "windows/libdiscord_social_sdk.windows.template_release.double.x86_64.dll"
-windows.release.x86_64 = "windows/libdiscord_social_sdk.windows.template_release.x86_64.dll"
+windows.debug.double.x86_64 = "windows/discord_social_sdk.windows.template_debug.double.x86_64.dll"
+windows.debug.x86_64 = "windows/discord_social_sdk.windows.template_debug.x86_64.dll"
+windows.release.double.x86_64 = "windows/discord_social_sdk.windows.template_release.double.x86_64.dll"
+windows.release.x86_64 = "windows/discord_social_sdk.windows.template_release.x86_64.dll"
 
 [dependencies]
 

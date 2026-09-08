@@ -8,6 +8,7 @@
 # - CPPDEFINES are for pre-processor defines
 # - LINKFLAGS are for linking flags
 
+import sys
 import shutil
 from pathlib import Path
 
@@ -149,10 +150,12 @@ elif platform == "windows":
     )
 
     library = env.SharedLibrary(
-        f"{BIN_DIR}{platform}/{lib_prefix}{GDEXTENSION_NAME}{suffix}{lib_suffix}",
+        f"{BIN_DIR}{platform}/{GDEXTENSION_NAME}{suffix}{lib_suffix}",
         source=sources,
     )
 else:
-    assert False, "Not a valid OS"
+    print("Not a valid OS", file=sys.stderr)
+
+    sys.exit(1)
 
 Default(library)
