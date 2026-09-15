@@ -1,0 +1,46 @@
+name: Build
+on:
+  workflow_dispatch:
+
+jobs:
+  build-linx-windows:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/thiagola92/discord-social-sdk:latest
+      env:
+        AUTHORIZATION: ${{ secrets.AUTHORIZATION }}
+        GODOT: /workspace/godot
+    steps:
+      - run: cd /workspace/discord-social-sdk-downloader && uv run main.py
+      - uses: actions/checkout@v7
+        with:
+          submodules: recursive
+      - run: mv /workspace/discord-social-sdk-downloader/DiscordSocialSdk*.zip .
+
+      # Unzip libraries and headers to correct directories.
+      - run: unzip DiscordSocialSdk*.zip -d /tmp/
+      - run: cp -r /tmp/discord_social_sdk/lib/release/*.so lib/linux/
+      - run: cp -r /tmp/discord_social_sdk/bin/release/*.dll lib/windows/
+      - run: cp -r /tmp/discord_social_sdk/lib/release/*.lib lib/windows/
+      - run: cp -r /tmp/discord_social_sdk/include/* include/
+      - run: rm -rf /tmp/discord_social_sdk
+
+      # Generate GDExtension API files.
+      - run: cd godot-cpp && $GODOT --headless --dump-extension-api && scons custom_api_file=extension_api.json
+
+      # Generate GDExtension source code.
+      - run: python scripts/main.py --code
+
+      # Generate GDExtension library.
+      - run: scons custom_api_file=godot-cpp/extension_api.json
+
+      # Open project, at least once, to be able to generate GDExtension documentation.
+      - run: $GODOT --headless --quit ./demo/project.godot
+
+      # Generate GDExtension documentations.
+      - run: python scripts/main.py --docs
+
+      # Link documentation to GDExtension library.
+      - run: scons custom_api_file=godot-cpp/extension_api.json
+      
+      - run: git status
