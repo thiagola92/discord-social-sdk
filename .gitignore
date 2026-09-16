@@ -329,8 +329,11 @@ google-services.json
 
 ####################### Project specific #######################
 
-# Scons
+# SCons
 *.os
+
+# Godot SCons
+src/gen
 
 # Doxygen
 scripts/__xml__/
@@ -350,7 +353,7 @@ scripts/__xml__/
 lib/*/*
 !lib/**/.gitkeep
 
-# Discord SDK ZIP
+# Discord Social SDK ZIP
 DiscordSocialSdk-*
 
 # Addon ZIP (for Asset Store)
