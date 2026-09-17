@@ -56,3 +56,9 @@ jobs:
 
       # Generate new ZIP file.
       - run: zip -r discord_social_sdk.zip demo/addons/discord_social_sdk/**
+
+      # Upload ZIP file.
+      - uses: actions/upload-artifact@v7
+        with:
+          path: discord_social_sdk.zip
+          archive: false
