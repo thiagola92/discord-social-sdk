@@ -8,9 +8,6 @@ jobs:
     container:
       image: ghcr.io/thiagola92/discord-social-sdk:latest
       env:
-        # Godot SConstruct.
-        SCONS_CACHE: ${{ github.workspace }}/.scons-cache/
-
         # Discord downloader.
         AUTHORIZATION: ${{ secrets.AUTHORIZATION }}
 
@@ -30,8 +27,8 @@ jobs:
       # Restore SCons cache.
       - uses: actions/cache/restore@v4
         with:
-          path: ${{ env.SCONS_CACHE }}
-          key: linux-win-${{ env.DISCORD_VERSION }}-${{ github.ref }}-${{ github.sha }}
+          path: .scons-cache/
+          key: linux-windows-${{ env.DISCORD_VERSION }}-${{ github.ref }}-${{ github.sha }}
 
       # Unzip libraries and headers to correct directories.
       - run: unzip DiscordSocialSdk*.zip -d /tmp/
@@ -66,15 +63,15 @@ jobs:
 
       # Build for many platforms.
       - run: scons platform=linux    target=template_debug   arch=x86_64 custom_api_file=godot-cpp/extension_api.json
-      # - run: scons platform=linux    target=template_release arch=x86_64 custom_api_file=godot-cpp/extension_api.json
-      # - run: scons platform=windows  target=template_debug   arch=x86_64 custom_api_file=godot-cpp/extension_api.json
-      # - run: scons platform=windows  target=template_release arch=x86_64 custom_api_file=godot-cpp/extension_api.json
+      - run: scons platform=linux    target=template_release arch=x86_64 custom_api_file=godot-cpp/extension_api.json
+      - run: scons platform=windows  target=template_debug   arch=x86_64 custom_api_file=godot-cpp/extension_api.json
+      - run: scons platform=windows  target=template_release arch=x86_64 custom_api_file=godot-cpp/extension_api.json
 
       # Save SCons cache.
       - uses: actions/cache/save@v4
         with:
-          path: ${{ env.SCONS_CACHE }}
-          key: linux-win-${{ env.DISCORD_VERSION }}-${{ github.ref }}-${{ github.sha }}
+          path: .scons-cache/
+          key: linux-windows-${{ env.DISCORD_VERSION }}-${{ github.ref }}-${{ github.sha }}
 
       # Generate new ZIP file.
       - run: zip -r discord_social_sdk.zip demo/addons/discord_social_sdk/**

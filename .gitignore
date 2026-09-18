@@ -334,6 +334,7 @@ google-services.json
 
 # Godot SCons
 src/gen
+.scons-cache/
 
 # Doxygen
 scripts/__xml__/

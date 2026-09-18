@@ -8,6 +8,7 @@
 # - CPPDEFINES are for pre-processor defines
 # - LINKFLAGS are for linking flags
 
+import os
 import sys
 import shutil
 from pathlib import Path
@@ -18,6 +19,8 @@ INCLUDE_DIR = "include/"
 BIN_DIR = "demo/addons/discord_social_sdk/bin/"
 LIB_DIR = "lib/"
 SRC_DIR = "src/"
+
+os.environ["SCONS_CACHE"] = ".scons-cache/"
 
 env = SConscript("godot-cpp/SConstruct")
 platform = env["platform"]
