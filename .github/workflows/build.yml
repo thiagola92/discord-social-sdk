@@ -29,6 +29,7 @@ jobs:
         with:
           path: .scons-cache/
           key: linux-windows-${{ env.DISCORD_VERSION }}-${{ github.ref }}-${{ github.sha }}
+        continue-on-error: true
 
       # Unzip libraries and headers to correct directories.
       - run: unzip DiscordSocialSdk*.zip -d /tmp/
@@ -72,6 +73,7 @@ jobs:
         with:
           path: .scons-cache/
           key: linux-windows-${{ env.DISCORD_VERSION }}-${{ github.ref }}-${{ github.sha }}
+        continue-on-error: true
 
       # Generate new ZIP file.
       - run: zip -r discord_social_sdk.zip demo/addons/discord_social_sdk/**
