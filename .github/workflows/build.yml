@@ -56,24 +56,11 @@ jobs:
       # Link documentation to GDExtension library.
       - run: scons custom_api_file=godot-cpp/extension_api.json
 
-      # Update repository
-      - run: git config --global user.name 'thiagola92'
-      - run: git config --global user.email 'thiagola92@gmail.com'
-      - run: git add -Am "[Action] Build"
-      - run: git push
-
       # Build for many platforms.
       - run: scons platform=linux    target=template_debug   arch=x86_64 custom_api_file=godot-cpp/extension_api.json
       - run: scons platform=linux    target=template_release arch=x86_64 custom_api_file=godot-cpp/extension_api.json
       - run: scons platform=windows  target=template_debug   arch=x86_64 custom_api_file=godot-cpp/extension_api.json
       - run: scons platform=windows  target=template_release arch=x86_64 custom_api_file=godot-cpp/extension_api.json
-
-      # Save SCons cache.
-      - uses: actions/cache/save@v4
-        with:
-          path: .scons-cache/
-          key: linux-windows-${{ env.DISCORD_VERSION }}-${{ github.ref }}-${{ github.sha }}
-        continue-on-error: true
 
       # Generate new ZIP file.
       - run: zip -r discord_social_sdk.zip demo/addons/discord_social_sdk/**
@@ -83,3 +70,16 @@ jobs:
         with:
           path: discord_social_sdk.zip
           archive: false
+
+      # Save SCons cache.
+      - uses: actions/cache/save@v4
+        with:
+          path: .scons-cache/
+          key: linux-windows-${{ env.DISCORD_VERSION }}-${{ github.ref }}-${{ github.sha }}
+        continue-on-error: true
+
+      # Update GDExtension repository
+      - run: git config --global user.name 'thiagola92'
+      - run: git config --global user.email 'thiagola92@gmail.com'
+      - run: git add -Am "[Action] Build"
+      - run: git push
