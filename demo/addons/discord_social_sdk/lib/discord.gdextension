@@ -7,14 +7,6 @@ android_aar_plugin = true
 
 [libraries]
 
-android.debug.arm32 = "android/arm32/libdiscord_social_sdk.android.template_debug.arm32.so"
-android.debug.arm64 = "android/arm64/libdiscord_social_sdk.android.template_debug.arm64.so"
-android.debug.x86_32 = "android/x86_32/libdiscord_social_sdk.android.template_debug.x86_32.so"
-android.debug.x86_64 = "android/x86_64/libdiscord_social_sdk.android.template_debug.x86_64.so"
-android.release.arm32 = "android/arm32/libdiscord_social_sdk.android.template_release.arm32.so"
-android.release.arm64 = "android/arm64/libdiscord_social_sdk.android.template_release.arm64.so"
-android.release.x86_32 = "android/x86_32/libdiscord_social_sdk.android.template_release.x86_32.so"
-android.release.x86_64 = "android/x86_64/libdiscord_social_sdk.android.template_release.x86_64.so"
 linux.debug.double.x86_64 = "linux/libdiscord_social_sdk.linux.template_debug.double.x86_64.so"
 linux.debug.x86_64 = "linux/libdiscord_social_sdk.linux.template_debug.x86_64.so"
 linux.release.double.x86_64 = "linux/libdiscord_social_sdk.linux.template_release.double.x86_64.so"
@@ -26,14 +18,6 @@ windows.release.x86_64 = "windows/discord_social_sdk.windows.template_release.x8
 
 [dependencies]
 
-android.debug.arm32 = { "android/arm32/libdiscord_partner_sdk.so": ""}
-android.debug.arm64 = { "android/arm64/libdiscord_partner_sdk.so": ""}
-android.debug.x86_32 = { "android/x86_32/libdiscord_partner_sdk.so": ""}
-android.debug.x86_64 = { "android/x86_64/libdiscord_partner_sdk.so": ""}
-android.release.arm32 = { "android/arm32/libdiscord_partner_sdk.so": ""}
-android.release.arm64 = { "android/arm64/libdiscord_partner_sdk.so": ""}
-android.release.x86_32 = { "android/x86_32/libdiscord_partner_sdk.so": ""}
-android.release.x86_64 = { "android/x86_64/libdiscord_partner_sdk.so": ""}
 linux.debug.x86_64 = { "linux/libdiscord_partner_sdk.so": ""}
 linux.release.x86_64 = { "linux/libdiscord_partner_sdk.so": ""}
 windows.debug.x86_64 = { "windows/discord_partner_sdk.dll": "", "windows/discord_partner_sdk.lib": ""}
