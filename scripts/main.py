@@ -6,8 +6,8 @@ from docs_gen.improver import Improver
 from utility.clean import clean_dir
 from utility.cli import clang_format, doctool, doxygen
 
-CDISCORD_PATH = Path("include/cdiscord.h")
-DISCORDPP_PATH = Path("include/discordpp.h")
+CDISCORD_PATH = Path("sdk/include/cdiscord.h")
+DISCORDPP_PATH = Path("sdk/include/discordpp.h")
 
 SRC_DIR = Path("src/")
 DOC_DIR = Path("doc_classes/")

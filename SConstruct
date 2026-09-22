@@ -15,9 +15,10 @@ from pathlib import Path
 
 GDEXTENSION_NAME = "discord_social_sdk"
 DISCORD_LIB_NAME = "discord_partner_sdk"
-INCLUDE_DIR = "include/"
-BIN_DIR = "demo/addons/discord_social_sdk/bin/"
-LIB_DIR = "lib/"
+INCLUDE_DIR = "sdk/include/"
+OUTPUT_DIR = "demo/addons/discord_social_sdk/lib/"
+BIN_DIR = "sdk/bin/release/"
+LIB_DIR = "sdk/lib/release/"
 SRC_DIR = "src/"
 
 os.environ["SCONS_CACHE"] = ".scons-cache/"
@@ -42,8 +43,8 @@ if target in ["editor", "template_debug"]:
         print("Not including class reference as we're targeting a pre-4.3 baseline.")
 
 
-# Copy libs to destination directory.
-def copy_lib(dest_dir: str, pattern: str):
+# Copy files to destination directory.
+def copy_lib(pattern: str, dest_dir: str):
     Path(dest_dir).mkdir(exist_ok=True)
 
     dest = Path(dest_dir).absolute()
@@ -58,107 +59,64 @@ def copy_lib(dest_dir: str, pattern: str):
 
 
 # Generate library.
-if platform == "android":
-    arch_dir = {
-        "arm64": "aar/jni/arm64-v8a/",
-        "arm32": "aar/jni/armeabi-v7a/",
-        "x86_64": "aar/jni/x86_64/",
-        "x86_32": "aar/jni/x86/",
-    }[arch]
-
+if platform == "linux":
     env.Append(
         CPPPATH=[SRC_DIR, INCLUDE_DIR],
-        LIBPATH=[f"{LIB_DIR}{platform}/{arch_dir}"],
+        LIBPATH=[LIB_DIR],
         LIBS=[DISCORD_LIB_NAME],
         RPATH=["."],
     )
 
     copy_lib(
-        f"{BIN_DIR}{platform}/{arch}/",
-        f"{LIB_DIR}{platform}/{arch_dir}*.so",
+        f"{LIB_DIR}/*.so",
+        f"{OUTPUT_DIR}{platform}/",
     )
 
     library = env.SharedLibrary(
-        f"{BIN_DIR}{platform}/{arch}/{lib_prefix}{GDEXTENSION_NAME}{suffix}{lib_suffix}",
+        f"{OUTPUT_DIR}{platform}/{lib_prefix}{GDEXTENSION_NAME}{suffix}{lib_suffix}",
         source=sources,
     )
-elif platform == "ios":
+elif platform == "macos":  # TODO
     env.Append(
         CPPPATH=[SRC_DIR, INCLUDE_DIR],
-        LIBPATH=[f"{LIB_DIR}{platform}"],
-        LIBS=[DISCORD_LIB_NAME],
-        RPATH=["."],
-    )
-
-    copy_lib(
-        f"{BIN_DIR}{platform}/",
-        f"{LIB_DIR}{platform}/*",
-    )
-
-    if env["ios_simulator"]:
-        library = env.StaticLibrary(
-            f"{BIN_DIR}{platform}/{lib_prefix}{GDEXTENSION_NAME}.{platform}.{target}.simulator.a",
-            source=sources,
-        )
-    else:
-        library = env.StaticLibrary(
-            f"{BIN_DIR}{platform}/{lib_prefix}{GDEXTENSION_NAME}.{platform}.{target}.a",
-            source=sources,
-        )
-elif platform == "linux":
-    env.Append(
-        CPPPATH=[SRC_DIR, INCLUDE_DIR],
-        LIBPATH=[f"{LIB_DIR}{platform}"],
-        LIBS=[DISCORD_LIB_NAME],
-        RPATH=["."],
-    )
-
-    copy_lib(
-        f"{BIN_DIR}{platform}/",
-        f"{LIB_DIR}{platform}/*",
-    )
-
-    library = env.SharedLibrary(
-        f"{BIN_DIR}{platform}/{lib_prefix}{GDEXTENSION_NAME}{suffix}{lib_suffix}",
-        source=sources,
-    )
-elif platform == "macos":
-    env.Append(
-        CPPPATH=[SRC_DIR, INCLUDE_DIR],
-        LIBPATH=[f"{LIB_DIR}{platform}"],
+        LIBPATH=[LIB_DIR],
         LIBS=[DISCORD_LIB_NAME],
         LINKFLAGS=["-Wl,-rpath,@loader_path"],
     )
 
     copy_lib(
-        f"{BIN_DIR}{platform}/",
-        f"{LIB_DIR}{platform}/*",
+        f"{LIB_DIR}/*.so",
+        f"{OUTPUT_DIR}{platform}/",
     )
 
     library = env.SharedLibrary(
-        f"{BIN_DIR}{platform}/{lib_prefix}{GDEXTENSION_NAME}.{platform}.{target}.framework/{lib_prefix}{GDEXTENSION_NAME}.{platform}.{target}",
+        f"{OUTPUT_DIR}{platform}/{lib_prefix}{GDEXTENSION_NAME}.{platform}.{target}.framework/{lib_prefix}{GDEXTENSION_NAME}.{platform}.{target}",
         source=sources,
     )
 elif platform == "windows":
     env.Append(
         CPPPATH=[SRC_DIR, INCLUDE_DIR],
-        LIBPATH=[f"{LIB_DIR}{platform}"],
+        LIBPATH=[LIB_DIR, BIN_DIR],
         LIBS=[DISCORD_LIB_NAME],
         RPATH=["."],
     )
 
     copy_lib(
-        f"{BIN_DIR}{platform}/",
-        f"{LIB_DIR}{platform}/*",
+        f"{LIB_DIR}/*.lib",
+        f"{OUTPUT_DIR}/",
+    )
+
+    copy_lib(
+        f"{BIN_DIR}/*.dll",
+        f"{OUTPUT_DIR}/",
     )
 
     library = env.SharedLibrary(
-        f"{BIN_DIR}{platform}/{GDEXTENSION_NAME}{suffix}{lib_suffix}",
+        f"{OUTPUT_DIR}{platform}/{GDEXTENSION_NAME}{suffix}{lib_suffix}",
         source=sources,
     )
 else:
-    print("Not a valid OS", file=sys.stderr)
-
+    print(f"No support for this operating system: {platform}", file=sys.stderr)
     sys.exit(1)
 
 Default(library)

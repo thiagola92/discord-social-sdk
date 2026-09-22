@@ -349,13 +349,15 @@ scripts/__xml__/
 # Apple
 *.xcframework
 
-# Maintain lib directory structure
-!lib/
-lib/*/*
-!lib/**/.gitkeep
+# Discord Social SDK binary & library
+sdk/bin/
+sdk/lib/
 
 # Discord Social SDK ZIP
 DiscordSocialSdk-*
+
+# GDExtension dependencies
+!demo/addons/discord_social_sdk/lib/
 
 # Addon ZIP (for Asset Store)
 discord_social_sdk.zip
