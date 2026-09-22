@@ -20,6 +20,7 @@ from templates.file.discord_classes_h import get_discord_classes_h
 from templates.file.discord_enum_h import get_discord_enum_h
 from templates.file.register_types_cpp import get_register_types_cpp
 from templates.file.register_types_h import get_register_types_h
+from templates.file.discord_int16_array_cpp import get_discord_int16_array_cpp
 from utility.cli import clang_format
 from utility.collect import ClassInfo, collect_namespace
 from utility.name import to_snake_case
@@ -43,6 +44,8 @@ class Builder:
 
         for c in self.namespace_info.classes:
             self.build_discord_class_cpp(c)
+
+        self.build_discord_support_cpp()
 
     def build_register_types_h(self):
         """
@@ -145,7 +148,7 @@ class Builder:
         """
         Build a file to represent one of the discord classes.
 
-        This file contains all methods of the specific discord class.
+        This file contains wrappers for all methods of the specific discord class.
         """
 
         functions_definitions = forge_functions_definitions(class_info)
@@ -163,3 +166,19 @@ class Builder:
         filepath.write_text(content)
 
         clang_format(filepath)
+
+    def build_discord_support_cpp(self) -> None:
+        """
+        Build all support files to help using the SDK.
+        """
+
+        file_to_content = {
+            "discord_int16_array.cpp": get_discord_int16_array_cpp(),
+        }
+
+        for f, c in file_to_content.items():
+            filepath = self.src_dir.joinpath(f)
+
+            filepath.write_text(c)
+
+            clang_format(filepath)

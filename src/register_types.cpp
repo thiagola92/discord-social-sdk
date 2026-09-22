@@ -14,7 +14,7 @@ void initialize_module(ModuleInitializationLevel p_level) {
 		return;
 	}
 
-	// Abstracts.
+	// Generated abstracts.
 	GDREGISTER_ABSTRACT_CLASS(Discord);
 	GDREGISTER_ABSTRACT_CLASS(DiscordActivityActionTypes);
 	GDREGISTER_ABSTRACT_CLASS(DiscordActivityGamePlatforms);
@@ -45,7 +45,10 @@ void initialize_module(ModuleInitializationLevel p_level) {
 	GDREGISTER_ABSTRACT_CLASS(DiscordUserHandleAvatarType);
 	GDREGISTER_ABSTRACT_CLASS(DiscordVoiceInputModeType);
 
-	// Runtimes.
+	// Support abstracts.
+	GDREGISTER_ABSTRACT_CLASS(DiscordInt16Array);
+
+	// Generated runtimes.
 	GDREGISTER_CLASS(DiscordActivity);
 	GDREGISTER_CLASS(DiscordActivityAssets);
 	GDREGISTER_CLASS(DiscordActivityButton);

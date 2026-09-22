@@ -10,7 +10,7 @@ from copy import deepcopy
 
 from templates.code.discord_class_cpp.discord_to_godot.array import (
     get_godot_array,
-    get_godot_array_sized,
+    get_godot_pointer,
 )
 from templates.code.discord_class_cpp.discord_to_godot.dictionary import (
     get_godot_dictionary,
@@ -31,7 +31,11 @@ from templates.code.discord_class_cpp.godot_to_discord.optional_object import (
     get_discord_optional_object,
 )
 from utility.data import FunctionInfo, ParamInfo, TypeInfo
-from utility.name import to_gdscript_class_name, to_gdscript_variable_name
+from utility.name import (
+    to_gdscript_class_name,
+    to_gdscript_variable_name,
+    to_gdscript_pointer_name,
+)
 from utility.discover import discover_pointer_size
 
 
@@ -136,10 +140,7 @@ def discord_type_to_godot_type(
         return "String"
 
     if is_discord_pointer(info):
-        s = deepcopy(info)
-        s.name = info.name.removesuffix(" *")
-        t = discord_type_to_godot_type(s)
-        return f"TypedArray<{t}>"
+        return to_gdscript_pointer_name(info.name)
 
     if is_discord_enum(info):
         if info.fake:
@@ -210,9 +211,7 @@ def discord_type_to_variant_type(info: TypeInfo | FunctionInfo) -> str:
         return "Variant::STRING"
 
     if is_discord_pointer(info):
-        s = deepcopy(info)
-        s.name = info.name.removesuffix(" *")
-        return discord_type_to_variant_type(s)
+        return "Variant::OBJECT"
 
     if is_discord_vector(info):
         return "Variant::ARRAY"
@@ -295,18 +294,13 @@ def discord_variable_to_godot_variable(
 def discord_pointer_to_godot_array(
     type_info: TypeInfo, target: str, source: str
 ) -> str:
-    typed_array = discord_type_to_godot_type(type_info)
-    sub_info = deepcopy(type_info)
-    sub_info.name = type_info.name.removesuffix(" *")
-    pointer_type = discord_type_to_godot_type(sub_info)
-    conversion = f"{pointer_type} {target}_t =({pointer_type}){source}[i];"
+    class_name = discord_type_to_godot_type(type_info)
     size = discover_pointer_size(type_info)
 
-    return get_godot_array_sized(
-        typed_array=typed_array,
+    return get_godot_pointer(
+        class_name=class_name,
         target=target,
         source=source,
-        conversion=conversion,
         size=size,
     )
 
@@ -604,10 +598,7 @@ def discord_type_to_gdscript_type(info: TypeInfo | FunctionInfo) -> str:
         return "String"
 
     if is_discord_pointer(info):
-        s = deepcopy(info)
-        s.name = info.name.removesuffix(" *")
-        t = discord_type_to_gdscript_type(s)
-        return f"Array[{t}]"
+        return to_gdscript_pointer_name(info.name)
 
     if is_discord_enum(info):
         if info.fake:

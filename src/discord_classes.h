@@ -11,7 +11,7 @@
 
 namespace godot {
 
-// Declarations.
+// Generated declarations.
 class Discord;
 class DiscordActivity;
 class DiscordActivityAssets;
@@ -47,7 +47,10 @@ class DiscordVADThresholdSettings;
 class DiscordVoiceSettings;
 class DiscordVoiceStateHandle;
 
-// Definitions.
+// Support declarations.
+class DiscordInt16Array;
+
+// Generated definitions.
 
 class Discord : public RefCounted {
 	GDCLASS(Discord, RefCounted)
@@ -1621,6 +1624,39 @@ public:
 	~DiscordVoiceStateHandle() {
 		memdelete(this->obj);
 	}
+};
+
+// Support definitions.
+class DiscordInt16Array : public RefCounted {
+	GDCLASS(DiscordInt16Array, RefCounted)
+
+private:
+	int16_t *_ptr;
+	int64_t _size;
+
+	DiscordInt16Array() {}
+
+protected:
+	static void _bind_methods();
+
+public:
+	// Internal usage.
+	int16_t *unwrap() {
+		return _ptr;
+	}
+
+	// Functions.
+	int64_t get(int64_t p_index);
+	int64_t size();
+	void set(int64_t p_index, int64_t value);
+
+	// Internal usage.
+	DiscordInt16Array(int16_t *ptr, int64_t size) {
+		_ptr = ptr;
+		_size = size;
+	}
+
+	~DiscordInt16Array() {}
 };
 
 } //namespace godot

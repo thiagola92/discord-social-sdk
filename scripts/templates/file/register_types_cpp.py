@@ -15,10 +15,13 @@ void initialize_module(ModuleInitializationLevel p_level) {{
 		return;
 	}}
 
-	// Abstracts.
+	// Generated abstracts.
     {register_abstracts}
 
-	// Runtimes.
+	// Support abstracts.
+    GDREGISTER_ABSTRACT_CLASS(DiscordInt16Array);
+
+	// Generated runtimes.
     {register_runtimes}
 }}
 

@@ -152,6 +152,19 @@ def to_gdscript_class_name(string: str) -> str:
     return string
 
 
+def to_gdscript_pointer_name(string: str) -> str:
+    """
+    Convert string to our expected pointer name.
+
+    GDScript doesn't have pointers, so it's a class with suffix "Array".
+    """
+    string = string.removesuffix(" *")
+    string = string.removesuffix("_t")
+    string = string.capitalize()
+    string = string + "Array"
+    return to_gdscript_class_name(string)
+
+
 def to_godot_enum_name(string: str) -> str:
     """Convert string to our expected enum name."""
     return to_gdscript_class_name(string) + "::Enum"
