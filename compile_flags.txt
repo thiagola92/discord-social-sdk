@@ -1,5 +1,5 @@
 -Isrc
--Iinclude
+-Isdk/include
 -Igodot-cpp/include
 -Igodot-cpp/gen/include
 -Igodot-cpp/gdextension
