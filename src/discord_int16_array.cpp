@@ -3,7 +3,7 @@
 
 using namespace godot;
 
-int64_t DiscordInt16Array::get(int64_t p_index) {
+int64_t DiscordInt16Array::get_value(int64_t p_index) {
 	{
 		CRASH_BAD_INDEX(p_index, _size);
 
@@ -11,7 +11,7 @@ int64_t DiscordInt16Array::get(int64_t p_index) {
 	}
 }
 
-void DiscordInt16Array::set(int64_t p_index, int64_t value) {
+void DiscordInt16Array::set_value(int64_t p_index, int64_t value) {
 	{
 		ERR_FAIL_INDEX(p_index, _size);
 
@@ -28,11 +28,11 @@ int64_t DiscordInt16Array::size() {
 // Binding.
 void DiscordInt16Array::_bind_methods() {
 	{
-		ClassDB::bind_method(D_METHOD("get", "index"),
-				&DiscordInt16Array::get);
+		ClassDB::bind_method(D_METHOD("get_value", "index"),
+				&DiscordInt16Array::get_value);
 
-		ClassDB::bind_method(D_METHOD("set", "index", "value"),
-				&DiscordInt16Array::set);
+		ClassDB::bind_method(D_METHOD("set_value", "index", "value"),
+				&DiscordInt16Array::set_value);
 
 		ClassDB::bind_method(D_METHOD("size"),
 				&DiscordInt16Array::size);

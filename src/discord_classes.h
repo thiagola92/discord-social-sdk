@@ -1647,9 +1647,9 @@ public:
 	}
 
 	// Functions.
-	int64_t get(int64_t p_index);
+	int64_t get_value(int64_t p_index);
+	void set_value(int64_t p_index, int64_t value);
 	int64_t size();
-	void set(int64_t p_index, int64_t value);
 
 	// Internal usage.
 	DiscordInt16Array(int16_t *ptr, int64_t size) {

@@ -62,7 +62,7 @@ func _on_joined_lobby(result: DiscordClientResult, lobby_id: int) -> void:
 
 func _on_audio_received(user_id: int, data: DiscordInt16Array, samples_per_channel: int, sample_rate: int, channels: int, out_should_mute: DiscordBoolRef) -> void:
 	for i in data.size():
-		data.set(i, data.get(i) * 0.1)
+		data.set_value(i, data.get_value(i) * 0.1)
 	
 	out_should_mute.set_value(true)
 	

@@ -42,9 +42,9 @@ public:
 	}}
 
 	// Functions.
-	int64_t get(int64_t p_index);
+	int64_t get_value(int64_t p_index);
+	void set_value(int64_t p_index, int64_t value);
 	int64_t size();
-	void set(int64_t p_index, int64_t value);
 
 	// Internal usage.
 	DiscordInt16Array(int16_t *ptr, int64_t size) {{
@@ -59,27 +59,27 @@ class DiscordBoolRef : public RefCounted {{
 	GDCLASS(DiscordBoolRef, RefCounted)
 
 private:
-  bool *_ptr = nullptr;
-  
-  DiscordBoolRef() {{}}
+	bool *_ptr = nullptr;
+
+	DiscordBoolRef() {{}}
   
 protected:
 	static void _bind_methods();
 
 public:
 	DiscordBoolRef(bool *ptr) {{
-    _ptr = ptr;
+		_ptr = ptr;
 	}}
-  
-  bool get_value() {{
+
+	bool get_value() {{
 		return _ptr ? *_ptr : false;
 	}}
-    
-  void set_value(bool p_value) {{
+
+	void set_value(bool p_value) {{
 		if (_ptr) *_ptr = p_value;
 	}}
-  
-  ~DiscordBoolRef() {{}}
+
+	~DiscordBoolRef() {{}}
 }};
 
 }} //namespace godot
