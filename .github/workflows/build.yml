@@ -1,6 +1,8 @@
 name: Build
 on:
   workflow_dispatch:
+permissions:
+  contents: write
 
 jobs:
   build-linx-windows:
