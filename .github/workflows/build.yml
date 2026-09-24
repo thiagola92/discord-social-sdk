@@ -80,5 +80,6 @@ jobs:
       - run: git config --global user.name 'GitHub Action'
       - run: git config --global user.email 'action@github.com'
       - run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
-      - run: git add -Am "Build"
+      - run: git add -A
+      - run: git commit -m "Build artifacts"
       - run: git push
