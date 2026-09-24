@@ -1,1 +1,0 @@
-$GODOT ./demo/project.godot
