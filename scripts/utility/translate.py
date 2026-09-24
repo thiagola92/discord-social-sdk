@@ -117,7 +117,7 @@ def is_discord_function(info: TypeInfo) -> bool:
 
 def discord_type_to_godot_type(
     info: TypeInfo | FunctionInfo,
-    pointer: bool = True,
+    as_pointer: bool = True,
 ) -> str:
     if isinstance(info, FunctionInfo):
         return "Callable"
@@ -168,7 +168,7 @@ def discord_type_to_godot_type(
         return f"TypedDictionary<{t}>"
 
     if is_discord_object(info):
-        if pointer:
+        if as_pointer:
             return to_gdscript_class_name(info.name) + " *"
         return to_gdscript_class_name(info.name)
 
