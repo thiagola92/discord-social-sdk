@@ -20,6 +20,7 @@ void initialize_module(ModuleInitializationLevel p_level) {{
 
 	// Support abstracts.
     GDREGISTER_ABSTRACT_CLASS(DiscordInt16Array);
+    GDREGISTER_ABSTRACT_CLASS(DiscordBoolRef);
 
 	// Generated runtimes.
     {register_runtimes}

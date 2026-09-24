@@ -43,8 +43,12 @@ def is_discord_void(type_info: TypeInfo) -> bool:
     return type_info.name in ["void"]
 
 
+def is_discord_bool_ref(type_info: TypeInfo) -> bool:
+    return type_info.name in ["bool&", "bool &"]
+
+
 def is_discord_bool(type_info: TypeInfo) -> bool:
-    return type_info.name in ["bool", "bool&", "bool &"]
+    return type_info.name in ["bool"]
 
 
 def is_discord_int(type_info: TypeInfo) -> bool:
@@ -250,6 +254,9 @@ def discord_variable_to_godot_variable(
 
     if is_discord_function(info):
         return False, f"Not implemented for {info.name} (implement if needed)"
+
+    if is_discord_bool_ref(info):
+        return f"Ref<DiscordBoolRef> {target} = memnew(DiscordBoolRef(&{source}));"
 
     if is_discord_bool(info):
         return f"bool {target} = {source};"
@@ -460,7 +467,10 @@ def godot_callable_to_discord_callback(
     call_params = []
 
     for i, p in enumerate(function_info.params):
-        callback_params.append(f"auto {p.gdscript_name}")
+        if p.type.name.endswith("&"):
+            callback_params.append(f"auto& {p.gdscript_name}")
+        else:
+            callback_params.append(f"auto {p.gdscript_name}")
         call_params.append(f"p{i}")
 
     callback_params = ", ".join(callback_params)

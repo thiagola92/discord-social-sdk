@@ -36,13 +36,13 @@ DiscordCall *DiscordClient::start_call(int64_t channel_id) {
 
 DiscordCall *DiscordClient::start_call_with_audio_callbacks(int64_t lobby_id, Callable received_cb, Callable captured_cb) {
 	int64_t p0 = lobby_id;
-	auto p1 = [received_cb](auto user_id, auto data, auto samples_per_channel, auto sample_rate, auto channels, auto out_should_mute) {
+	auto p1 = [received_cb](auto user_id, auto data, auto samples_per_channel, auto sample_rate, auto channels, auto &out_should_mute) {
 		int64_t p0 = (int64_t)user_id;
 		DiscordInt16Array *p1 = memnew(DiscordInt16Array(data, samples_per_channel * channels));
 		int64_t p2 = (int64_t)samples_per_channel;
 		int64_t p3 = (int64_t)sample_rate;
 		int64_t p4 = (int64_t)channels;
-		bool p5 = out_should_mute;
+		Ref<DiscordBoolRef> p5 = memnew(DiscordBoolRef(&out_should_mute));
 		received_cb.call(p0, p1, p2, p3, p4, p5);
 	};
 
