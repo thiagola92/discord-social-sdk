@@ -79,6 +79,6 @@ jobs:
       # Update GDExtension repository
       - run: git config --global user.name 'GitHub Action'
       - run: git config --global user.email 'action@github.com'
-      - run: git config --global --add safe.directory ${{ github.workspace }}
+      - run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - run: git add -Am "Build"
       - run: git push
