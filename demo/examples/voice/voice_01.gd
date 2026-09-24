@@ -60,12 +60,11 @@ func _on_joined_lobby(result: DiscordClientResult, lobby_id: int) -> void:
 		print("❌ Failed to join lobby: %s" % result.error())
 
 
-func _on_audio_received(user_id: int, data: DiscordInt16Array, samples_per_channel: int, sample_rate: int, channels: int, out_should_mute: bool) -> void:
+func _on_audio_received(user_id: int, data: DiscordInt16Array, samples_per_channel: int, sample_rate: int, channels: int, out_should_mute: DiscordBoolRef) -> void:
 	for i in data.size():
 		data.set(i, data.get(i) * 0.1)
 	
-	# Changing "out_should_mute" doesn't reflect into SDK.
-	out_should_mute = true
+	out_should_mute.set_value(true)
 	
 	var total_num_samples = samples_per_channel * channels
 

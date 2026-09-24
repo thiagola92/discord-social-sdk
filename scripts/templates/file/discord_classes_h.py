@@ -17,6 +17,7 @@ namespace godot {{
 
 // Support declarations.
 class DiscordInt16Array;
+class DiscordBoolRef;
 
 // Generated definitions.
 {classes_definitions}
@@ -52,6 +53,33 @@ public:
 	}}
 
 	~DiscordInt16Array() {{}}
+}};
+
+class DiscordBoolRef : public RefCounted {{
+	GDCLASS(DiscordBoolRef, RefCounted)
+
+private:
+  bool *_ptr = nullptr;
+  
+  DiscordBoolRef() {{}}
+  
+protected:
+	static void _bind_methods();
+
+public:
+	DiscordBoolRef(bool *ptr) {{
+    _ptr = ptr;
+	}}
+  
+  bool get_value() {{
+		return _ptr ? *_ptr : false;
+	}}
+    
+  void set_value(bool p_value) {{
+		if (_ptr) *_ptr = p_value;
+	}}
+  
+  ~DiscordBoolRef() {{}}
 }};
 
 }} //namespace godot

@@ -21,6 +21,7 @@ from templates.file.discord_enum_h import get_discord_enum_h
 from templates.file.register_types_cpp import get_register_types_cpp
 from templates.file.register_types_h import get_register_types_h
 from templates.file.discord_int16_array_cpp import get_discord_int16_array_cpp
+from templates.file.discord_bool_ref_cpp import get_discord_bool_ref_cpp
 from utility.cli import clang_format
 from utility.collect import ClassInfo, collect_namespace
 from utility.name import to_snake_case
@@ -106,7 +107,7 @@ class Builder:
         """
         Build discord_classes.h
 
-        This file contains are classes signatures.
+        This file contains all the class signatures.
         """
 
         classes_declarations = forge_classes_declarations(self.namespace_info)
@@ -174,6 +175,7 @@ class Builder:
 
         file_to_content = {
             "discord_int16_array.cpp": get_discord_int16_array_cpp(),
+            "discord_bool_ref.cpp": get_discord_bool_ref_cpp(),
         }
 
         for f, c in file_to_content.items():
