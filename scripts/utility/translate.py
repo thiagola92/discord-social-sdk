@@ -35,6 +35,7 @@ from utility.name import (
     to_gdscript_class_name,
     to_gdscript_variable_name,
     to_gdscript_pointer_name,
+    to_gdscript_ref_name,
 )
 from utility.discover import discover_pointer_size
 
@@ -588,6 +589,9 @@ def discord_type_to_gdscript_type(info: TypeInfo | FunctionInfo) -> str:
 
     if is_discord_function(info):
         return "Callable"
+
+    if is_discord_bool_ref(info):
+        return to_gdscript_ref_name(info.name)
 
     if is_discord_void(info):
         return "void"

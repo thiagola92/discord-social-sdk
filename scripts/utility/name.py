@@ -165,6 +165,18 @@ def to_gdscript_pointer_name(string: str) -> str:
     return to_gdscript_class_name(string)
 
 
+def to_gdscript_ref_name(string: str) -> str:
+    """
+    Convert string to our expected reference name.
+
+    GDScript doesn't have pointers, so it's a class with suffix "Ref".
+    """
+    string = string.removesuffix(" &")
+    string = string.capitalize()
+    string = string + "Ref"
+    return to_gdscript_class_name(string)
+
+
 def to_godot_enum_name(string: str) -> str:
     """Convert string to our expected enum name."""
     return to_gdscript_class_name(string) + "::Enum"
