@@ -7,18 +7,20 @@ android_aar_plugin = true
 
 [libraries]
 
+linux.debug.single.x86_64 = "linux/libdiscord_social_sdk.linux.template_debug.x86_64.so"
 linux.debug.double.x86_64 = "linux/libdiscord_social_sdk.linux.template_debug.double.x86_64.so"
-linux.debug.x86_64 = "linux/libdiscord_social_sdk.linux.template_debug.x86_64.so"
+linux.release.single.x86_64 = "linux/libdiscord_social_sdk.linux.template_release.x86_64.so"
 linux.release.double.x86_64 = "linux/libdiscord_social_sdk.linux.template_release.double.x86_64.so"
-linux.release.x86_64 = "linux/libdiscord_social_sdk.linux.template_release.x86_64.so"
+
+windows.debug.single.x86_64 = "windows/discord_social_sdk.windows.template_debug.x86_64.dll"
 windows.debug.double.x86_64 = "windows/discord_social_sdk.windows.template_debug.double.x86_64.dll"
-windows.debug.x86_64 = "windows/discord_social_sdk.windows.template_debug.x86_64.dll"
+windows.release.single.x86_64 = "windows/discord_social_sdk.windows.template_release.x86_64.dll"
 windows.release.double.x86_64 = "windows/discord_social_sdk.windows.template_release.double.x86_64.dll"
-windows.release.x86_64 = "windows/discord_social_sdk.windows.template_release.x86_64.dll"
 
 [dependencies]
 
 linux.debug.x86_64 = { "linux/libdiscord_partner_sdk.so": ""}
 linux.release.x86_64 = { "linux/libdiscord_partner_sdk.so": ""}
+
 windows.debug.x86_64 = { "windows/discord_partner_sdk.dll": ""}
 windows.release.x86_64 = { "windows/discord_partner_sdk.dll": ""}
