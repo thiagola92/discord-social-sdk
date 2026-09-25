@@ -28,7 +28,6 @@ platform = env["platform"]
 target = env["target"]
 suffix = env["suffix"]
 arch = env["arch"]
-lib_prefix = env.subst("$SHLIBPREFIX")
 lib_suffix = env.subst("$SHLIBSUFFIX")
 sources = Glob("src/*.cpp")
 
@@ -73,7 +72,7 @@ if platform == "linux":
     )
 
     library = env.SharedLibrary(
-        f"{OUTPUT_DIR}{platform}/{lib_prefix}{GDEXTENSION_NAME}{suffix}{lib_suffix}",
+        f"{OUTPUT_DIR}{platform}/lib{GDEXTENSION_NAME}{suffix}{lib_suffix}",
         source=sources,
     )
 elif platform == "macos":  # TODO
@@ -90,7 +89,7 @@ elif platform == "macos":  # TODO
     )
 
     library = env.SharedLibrary(
-        f"{OUTPUT_DIR}{platform}/{lib_prefix}{GDEXTENSION_NAME}.{platform}.{target}.framework/{lib_prefix}{GDEXTENSION_NAME}.{platform}.{target}",
+        f"{OUTPUT_DIR}{platform}/lib{GDEXTENSION_NAME}{suffix}{lib_suffix}",
         source=sources,
     )
 elif platform == "windows":
@@ -103,13 +102,16 @@ elif platform == "windows":
 
     copy_lib(
         f"{LIB_DIR}/*.lib",
-        f"{OUTPUT_DIR}/",
+        f"{OUTPUT_DIR}{platform}/",
     )
 
     copy_lib(
         f"{BIN_DIR}/*.dll",
-        f"{OUTPUT_DIR}/",
+        f"{OUTPUT_DIR}{platform}/",
     )
+
+    # Remove prefix added when SCons detect that is being built in a Linux.
+    env["SHLIBPREFIX"] = ""
 
     library = env.SharedLibrary(
         f"{OUTPUT_DIR}{platform}/{GDEXTENSION_NAME}{suffix}{lib_suffix}",

@@ -64,7 +64,7 @@ func _on_audio_received(user_id: int, data: DiscordInt16Array, samples_per_chann
 	for i in data.size():
 		data.set_value(i, data.get_value(i) * 0.5)
 	
-	out_should_mute.set_value(true)
+	out_should_mute.set_value(false)
 	
 	var total_num_samples = samples_per_channel * channels
 
