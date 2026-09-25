@@ -7,6 +7,19 @@
 	<tutorials>
 	</tutorials>
 	<methods>
+		<method name="get_value">
+			<return type="int" />
+			<param index="0" name="index" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="set_value">
+			<return type="void" />
+			<param index="0" name="index" type="int" />
+			<param index="1" name="value" type="int" />
+			<description>
+			</description>
+		</method>
 		<method name="size">
 			<return type="int" />
 			<description>
