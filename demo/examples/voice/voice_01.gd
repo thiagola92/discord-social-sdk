@@ -60,16 +60,26 @@ func _on_joined_lobby(result: DiscordClientResult, lobby_id: int) -> void:
 		print("❌ Failed to join lobby: %s" % result.error())
 
 
-func _on_audio_received(user_id: int, data: DiscordInt16Array, samples_per_channel: int, sample_rate: int, channels: int, out_should_mute: DiscordBoolRef) -> void:
+func _on_audio_received(
+	user_id: int,
+	data: DiscordInt16Array,
+	samples_per_channel: int,
+	sample_rate: int,
+	channels: int,
+	out_should_mute: DiscordBoolRef
+) -> void:
 	for i in data.size():
 		data.set_value(i, data.get_value(i) * 0.5)
 	
 	out_should_mute.set_value(false)
-	
-	var total_num_samples = samples_per_channel * channels
 
 
-func _on_audio_captured(data: DiscordInt16Array, samples_per_channel: int, sample_rate: int, channels: int) -> void:
+func _on_audio_captured(
+	data: DiscordInt16Array,
+	samples_per_channel: int,
+	sample_rate: int,
+	channels: int
+) -> void:
 	pass
 
 
