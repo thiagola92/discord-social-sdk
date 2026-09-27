@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d70rlfth38ek"]
+
+[ext_resource type="Script" uid="uid://o5k6jonoat37" path="res://examples/voice/per_call_controls.gd" id="1_s4nv2"]
+
+[node name="PerCallControls" type="Node"]
+script = ExtResource("1_s4nv2")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://iy5vp5d2bvd4"]
+
+[ext_resource type="Script" uid="uid://cy7q12y3x3fd0" path="res://examples/voice/join_call.gd" id="1_uja2p"]
+
+[node name="JoinCall" type="Node"]
+script = ExtResource("1_uja2p")

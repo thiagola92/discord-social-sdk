@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cv7fqhvvkl8fs"]
+
+[ext_resource type="Script" uid="uid://c4usrbpwvsv2p" path="res://examples/lobbies/receive_messages.gd" id="1_s45bh"]
+
+[node name="ReceiveMessages" type="Node"]
+script = ExtResource("1_s45bh")

@@ -24,6 +24,15 @@ func _ready() -> void:
 	client.set_application_id(application_id)
 	client.add_log_callback(_on_log, DiscordLoggingSeverity.INFO)
 	client.set_status_changed_callback(_on_status_changed)
+	
+	# Default (WebRTC)
+	client.set_noise_suppression(true)
+	client.set_echo_cancellation(true)
+	client.set_automatic_gain_control(true)
+	
+	# Advanced (Krisp)
+	#client.set_noise_cancellation(true)
+	
 	client.authorize(args, _on_authorization_response)
 
 
@@ -50,37 +59,22 @@ func _on_joined_lobby(result: DiscordClientResult, lobby_id: int) -> void:
 	if result.successful():
 		print("🎮 Successfully joined lobby!")
 		
-		var call: DiscordCall = client.start_call_with_audio_callbacks(lobby_id, _on_audio_received, _on_audio_captured)
+		var call: DiscordCall = client.start_call(lobby_id)
 		
 		if call:
 			print("🎤 Voice call operation initiated...")
 		else:
 			print("ℹ️ Already in this voice channel")
+		
+		await get_tree().create_timer(60).timeout
+		
+		client.end_call(lobby_id, _on_call_ended)
 	else:
 		print("❌ Failed to join lobby: %s" % result.error())
 
 
-func _on_audio_received(
-	user_id: int,
-	data: DiscordInt16Array,
-	samples_per_channel: int,
-	sample_rate: int,
-	channels: int,
-	out_should_mute: DiscordBoolRef
-) -> void:
-	for i in data.size():
-		data.set_value(i, data.get_value(i) * 0.5)
-	
-	out_should_mute.set_value(false)
-
-
-func _on_audio_captured(
-	data: DiscordInt16Array,
-	samples_per_channel: int,
-	sample_rate: int,
-	channels: int
-) -> void:
-	pass
+func _on_call_ended() -> void:
+	print("🔇 Call ended successfully")
 
 
 func _on_authorization_response(result: DiscordClientResult, code: String, redirect_uri: String) -> void:

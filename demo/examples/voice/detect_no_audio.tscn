@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cogjwvi73qku"]
+
+[ext_resource type="Script" uid="uid://cby2wtwjo5qvg" path="res://examples/voice/detect_no_audio.gd" id="1_yi830"]
+
+[node name="DetectNoAudio" type="Node"]
+script = ExtResource("1_yi830")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bi22g6yxmh0vt"]
+
+[ext_resource type="Script" uid="uid://b8tf2ml2miggp" path="res://examples/game_invites/send_invites.gd" id="1_lygpw"]
+
+[node name="SendInvites" type="Node"]
+script = ExtResource("1_lygpw")

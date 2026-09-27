@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dq8h4c642xfll"]
+
+[ext_resource type="Script" uid="uid://mn7h20lg2shl" path="res://examples/voice/read_settings.gd" id="1_sgioo"]
+
+[node name="ReadSettings" type="Node"]
+script = ExtResource("1_sgioo")

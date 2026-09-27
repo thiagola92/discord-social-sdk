@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6o25y2hctpmm"]
+
+[ext_resource type="Script" uid="uid://b7fhiiuwyrsr3" path="res://examples/voice/check_call.gd" id="1_rg0ry"]
+
+[node name="CheckCall" type="Node"]
+script = ExtResource("1_rg0ry")

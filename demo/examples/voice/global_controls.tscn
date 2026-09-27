@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddgky8xeep8k4"]
+
+[ext_resource type="Script" uid="uid://47gxieb151g3" path="res://examples/voice/global_controls.gd" id="1_wlvdj"]
+
+[node name="GlobalControls" type="Node"]
+script = ExtResource("1_wlvdj")

@@ -56,7 +56,9 @@ func _on_joined_lobby(result: DiscordClientResult, lobby_id: int) -> void:
 			var call_info = lobby.get_call_info_handle()
 			
 			if call_info is DiscordCallInfoHandle:
-				var participants = call_info.get_participants()
+				var participants: Array[int] = call_info.get_participants()
+				
+				print("Active call with %s participants" % participants.size())
 				
 				for participant_id in participants:
 					var voice_state = call_info.get_voice_state_handle(participant_id)

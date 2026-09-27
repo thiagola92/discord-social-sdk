@@ -23,6 +23,8 @@ func _ready() -> void:
 	
 	client.set_application_id(application_id)
 	client.add_log_callback(_on_log, DiscordLoggingSeverity.INFO)
+	client.set_no_audio_input_threshold(-60.0)
+	client.set_no_audio_input_callback(_on_audio_crossing_threshold)
 	client.set_status_changed_callback(_on_status_changed)
 	client.authorize(args, _on_authorization_response)
 
@@ -35,6 +37,13 @@ func _on_log(message: String, severity: DiscordLoggingSeverity.Enum) -> void:
 	var enum_str: String = Discord.enum_to_string(severity, DiscordLoggingSeverity.id)
 	
 	print("[%s] %s" % [enum_str, message])
+
+
+func _on_audio_crossing_threshold(input_detected: bool) -> void:
+	if not input_detected:
+		print("🔈 Mic appears to be silent — check your device settings.")
+	else:
+		print("🔊 Mic is receiving audio again")
 
 
 func _on_status_changed(status: DiscordClientStatus.Enum, _error: DiscordClientError.Enum, _error_detail: int) -> void:
@@ -57,48 +66,15 @@ func _on_joined_lobby(result: DiscordClientResult, lobby_id: int) -> void:
 		else:
 			print("ℹ️ Already in this voice channel")
 		
-		# Let's give a second to simulate interacting from anywhere in your code.
-		get_tree().create_timer(1).timeout.connect(_on_call_started.bind(lobby_id))
+		await get_tree().create_timer(60).timeout
+		
+		client.end_call(lobby_id, _on_call_ended)
 	else:
 		print("❌ Failed to join lobby: %s" % result.error())
 
 
-func _on_call_started(lobby_id: int) -> void:
-	var call: DiscordCall = client.get_call(lobby_id)
-	
-	if call:
-		call.set_self_mute(true)
-		call.set_self_deaf(false)
-		call.set_participant_volume(target_id, 150.0)
-		call.set_vad_threshold(false, -30.0)
-	
-	client.set_self_mute_all(true)
-	client.set_input_volume(75.0)
-	client.set_output_volume(120.0)
-	client.set_no_audio_input_threshold(-60.0)
-	client.set_no_audio_input_callback(_on_audio_crossing_threshold)
-	client.set_noise_suppression(true)
-	client.set_echo_cancellation(true)
-	client.set_automatic_gain_control(true)
-	client.set_noise_cancellation(true)
-	
-	#client.end_call(lobby_id, _on_call_ended)
-	#client.end_calls(_on_calls_ended)
-
-
-func _on_audio_crossing_threshold(input_detected: bool) -> void:
-	if not input_detected:
-		print("🔈 Mic appears to be silent — check your device settings.")
-	else:
-		print("🔊 Mic is receiving audio again")
-
-
 func _on_call_ended() -> void:
 	print("🔇 Call ended successfully")
-
-
-func _on_calls_ended() -> void:
-	print("🔇 All calls ended successfully")
 
 
 func _on_authorization_response(result: DiscordClientResult, code: String, redirect_uri: String) -> void:

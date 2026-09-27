@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmsonyosxkyg1"]
+
+[ext_resource type="Script" uid="uid://dgsbxgnpebmdc" path="res://examples/voice/audio_processing.gd" id="1_ee0io"]
+
+[node name="AudioProcessing" type="Node"]
+script = ExtResource("1_ee0io")

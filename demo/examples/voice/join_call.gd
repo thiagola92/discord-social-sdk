@@ -50,19 +50,22 @@ func _on_joined_lobby(result: DiscordClientResult, lobby_id: int) -> void:
 	if result.successful():
 		print("🎮 Successfully joined lobby!")
 		
-		var lobby = client.get_lobby_handle(lobby_id)
+		var call: DiscordCall = client.start_call(lobby_id)
 		
-		if lobby is DiscordLobbyHandle:
-			var call_info = lobby.get_call_info_handle()
-			
-			if call_info is DiscordCallInfoHandle:
-				var participants: Array[int] = call_info.get_participants()
-				
-				print("Active call with %s participants" % participants.size())
-			else:
-				print("No active voice call in this lobby")
+		if call:
+			print("🎤 Voice call operation initiated...")
+		else:
+			print("ℹ️ Already in this voice channel")
+		
+		await get_tree().create_timer(60).timeout
+		
+		client.end_call(lobby_id, _on_call_ended)
 	else:
 		print("❌ Failed to join lobby: %s" % result.error())
+
+
+func _on_call_ended() -> void:
+	print("🔇 Call ended successfully")
 
 
 func _on_authorization_response(result: DiscordClientResult, code: String, redirect_uri: String) -> void:
