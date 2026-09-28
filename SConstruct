@@ -71,6 +71,11 @@ if platform == "linux":
         f"{OUTPUT_DIR}{platform}/",
     )
 
+    copy_lib(
+        f"{LIB_DIR}/*.kef",
+        f"{OUTPUT_DIR}{platform}/",
+    )
+
     library = env.SharedLibrary(
         f"{OUTPUT_DIR}{platform}/lib{GDEXTENSION_NAME}{suffix}{lib_suffix}",
         source=sources,
@@ -85,6 +90,16 @@ elif platform == "macos":  # TODO
 
     copy_lib(
         f"{LIB_DIR}/*.so",
+        f"{OUTPUT_DIR}{platform}/",
+    )
+
+    copy_lib(
+        f"{LIB_DIR}/*.dylib",
+        f"{OUTPUT_DIR}{platform}/",
+    )
+
+    copy_lib(
+        f"{LIB_DIR}/*.kef",
         f"{OUTPUT_DIR}{platform}/",
     )
 
@@ -107,6 +122,11 @@ elif platform == "windows":
 
     copy_lib(
         f"{BIN_DIR}/*.dll",
+        f"{OUTPUT_DIR}{platform}/",
+    )
+
+    copy_lib(
+        f"{BIN_DIR}/*.kef",
         f"{OUTPUT_DIR}{platform}/",
     )
 
