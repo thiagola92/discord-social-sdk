@@ -62,7 +62,7 @@ func _on_joined_lobby(result: DiscordClientResult, lobby_id: int) -> void:
 		else:
 			print("ℹ️ Already in this voice channel")
 		
-		await get_tree().create_timer(60).timeout
+		await get_tree().create_timer(300, true, false, true).timeout
 		
 		client.end_call(lobby_id, _on_call_ended)
 	else:

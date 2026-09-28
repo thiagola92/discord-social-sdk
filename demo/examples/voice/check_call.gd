@@ -5,10 +5,6 @@ extends Node
 # This only exist so I don't accidentally git push my ID.
 var application_id: int = DotEnv.read_int("APPLICATION_ID")
 
-# ATTENTION: Replace DotEnv.read_int("TARGET_ID") with the target ID.
-# This only exist so I don't accidentally git push the target ID.
-var target_id: int = DotEnv.read_int("TARGET_ID")
-
 var client := DiscordClient.new()
 
 var code_verifier: DiscordAuthorizationCodeVerifier

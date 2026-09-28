@@ -5,10 +5,6 @@ extends Node
 # This only exist so I don't accidentally git push my ID.
 var application_id: int = DotEnv.read_int("APPLICATION_ID")
 
-# ATTENTION: Replace DotEnv.read_int("TARGET_ID") with the target ID.
-# This only exist so I don't accidentally git push the target ID.
-var target_id: int = DotEnv.read_int("TARGET_ID")
-
 var client := DiscordClient.new()
 
 var code_verifier: DiscordAuthorizationCodeVerifier
@@ -57,7 +53,7 @@ func _on_joined_lobby(result: DiscordClientResult, lobby_id: int) -> void:
 		else:
 			print("ℹ️ Already in this voice channel")
 		
-		await get_tree().create_timer(60).timeout
+		await get_tree().create_timer(300, true, false, true).timeout
 		
 		client.end_call(lobby_id, _on_call_ended)
 	else:

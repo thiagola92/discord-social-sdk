@@ -62,7 +62,7 @@ func _on_joined_lobby(result: DiscordClientResult, lobby_id: int) -> void:
 		client.set_input_volume(75.0)
 		client.set_output_volume(120.0)
 		
-		await get_tree().create_timer(60).timeout
+		await get_tree().create_timer(300, true, false, true).timeout
 		
 		client.end_calls(_on_calls_ended)
 	else:

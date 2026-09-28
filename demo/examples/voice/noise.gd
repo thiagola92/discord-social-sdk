@@ -25,12 +25,12 @@ func _ready() -> void:
 	client.add_log_callback(_on_log, DiscordLoggingSeverity.INFO)
 	client.set_status_changed_callback(_on_status_changed)
 	
-	# Default (WebRTC)
+	# Toggle individual WebRTC processors from a voice settings UI
 	client.set_noise_suppression(true)
 	client.set_echo_cancellation(true)
 	client.set_automatic_gain_control(true)
 	
-	# Advanced (Krisp)
+	# Enable Krisp noise cancellation
 	#client.set_noise_cancellation(true)
 	
 	client.authorize(args, _on_authorization_response)
@@ -65,16 +65,8 @@ func _on_joined_lobby(result: DiscordClientResult, lobby_id: int) -> void:
 			print("🎤 Voice call operation initiated...")
 		else:
 			print("ℹ️ Already in this voice channel")
-		
-		await get_tree().create_timer(60).timeout
-		
-		client.end_call(lobby_id, _on_call_ended)
 	else:
 		print("❌ Failed to join lobby: %s" % result.error())
-
-
-func _on_call_ended() -> void:
-	print("🔇 Call ended successfully")
 
 
 func _on_authorization_response(result: DiscordClientResult, code: String, redirect_uri: String) -> void:
