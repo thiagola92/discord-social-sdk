@@ -332,10 +332,6 @@ google-services.json
 # SCons
 *.os
 
-# Godot SCons
-src/gen
-.scons-cache/
-
 # Doxygen
 scripts/__xml__/
 
@@ -348,6 +344,14 @@ scripts/__xml__/
 
 # Apple
 *.xcframework
+
+# Discord Krisp
+*.kef
+*.kw
+
+# Godot SCons
+src/gen
+.scons-cache/
 
 # Discord Social SDK binary & library
 sdk/bin/
