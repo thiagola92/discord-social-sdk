@@ -108,7 +108,11 @@ void DiscordGuildChannel::set_linked_lobby(Variant linked_lobby) {
 
 	if (linked_lobby.get_type() == Variant::OBJECT) {
 		DiscordLinkedLobby *p0_t = Object::cast_to<DiscordLinkedLobby>(linked_lobby);
+		ERR_FAIL_NULL_MSG(p0_t, "Failed to convert to DiscordLinkedLobby");
 		p0 = std::optional<discordpp::LinkedLobby>{ *p0_t->unwrap() };
+
+	} else if (linked_lobby.get_type() != Variant::NIL) {
+		ERR_PRINT("Invalid type passed as argument");
 	}
 
 	obj->SetLinkedLobby(p0);
@@ -124,6 +128,8 @@ void DiscordGuildChannel::set_parent_id(Variant parent_id) {
 
 	if (parent_id.get_type() == Variant::INT) {
 		p0 = parent_id;
+	} else if (parent_id.get_type() != Variant::NIL) {
+		ERR_PRINT("Invalid type passed as argument");
 	}
 
 	obj->SetParentId(p0);

@@ -114,7 +114,11 @@ void DiscordAuthorizationArgs::set_code_challenge(Variant code_challenge) {
 
 	if (code_challenge.get_type() == Variant::OBJECT) {
 		DiscordAuthorizationCodeChallenge *p0_t = Object::cast_to<DiscordAuthorizationCodeChallenge>(code_challenge);
+		ERR_FAIL_NULL_MSG(p0_t, "Failed to convert to DiscordAuthorizationCodeChallenge");
 		p0 = std::optional<discordpp::AuthorizationCodeChallenge>{ *p0_t->unwrap() };
+
+	} else if (code_challenge.get_type() != Variant::NIL) {
+		ERR_PRINT("Invalid type passed as argument");
 	}
 
 	obj->SetCodeChallenge(p0);
@@ -125,6 +129,8 @@ void DiscordAuthorizationArgs::set_custom_scheme_param(Variant custom_scheme_par
 
 	if (custom_scheme_param.get_type() == Variant::STRING) {
 		p0 = custom_scheme_param.stringify().utf8().get_data();
+	} else if (custom_scheme_param.get_type() != Variant::NIL) {
+		ERR_PRINT("Invalid type passed as argument");
 	}
 
 	obj->SetCustomSchemeParam(p0);
@@ -135,6 +141,8 @@ void DiscordAuthorizationArgs::set_integration_type(Variant integration_type) {
 
 	if (integration_type.get_type() == Variant::OBJECT) {
 		p0 = std::optional<discordpp::IntegrationType>{ (discordpp::IntegrationType)(uint64_t)integration_type };
+	} else if (integration_type.get_type() != Variant::NIL) {
+		ERR_PRINT("Invalid type passed as argument");
 	}
 
 	obj->SetIntegrationType(p0);
@@ -145,6 +153,8 @@ void DiscordAuthorizationArgs::set_nonce(Variant nonce) {
 
 	if (nonce.get_type() == Variant::STRING) {
 		p0 = nonce.stringify().utf8().get_data();
+	} else if (nonce.get_type() != Variant::NIL) {
+		ERR_PRINT("Invalid type passed as argument");
 	}
 
 	obj->SetNonce(p0);
@@ -160,6 +170,8 @@ void DiscordAuthorizationArgs::set_state(Variant state) {
 
 	if (state.get_type() == Variant::STRING) {
 		p0 = state.stringify().utf8().get_data();
+	} else if (state.get_type() != Variant::NIL) {
+		ERR_PRINT("Invalid type passed as argument");
 	}
 
 	obj->SetState(p0);

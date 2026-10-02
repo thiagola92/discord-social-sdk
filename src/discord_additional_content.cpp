@@ -65,6 +65,8 @@ void DiscordAdditionalContent::set_title(Variant title) {
 
 	if (title.get_type() == Variant::STRING) {
 		p0 = title.stringify().utf8().get_data();
+	} else if (title.get_type() != Variant::NIL) {
+		ERR_PRINT("Invalid type passed as argument");
 	}
 
 	obj->SetTitle(p0);

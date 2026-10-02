@@ -251,6 +251,8 @@ void DiscordActivity::set_application_id(Variant application_id) {
 
 	if (application_id.get_type() == Variant::INT) {
 		p0 = application_id;
+	} else if (application_id.get_type() != Variant::NIL) {
+		ERR_PRINT("Invalid type passed as argument");
 	}
 
 	obj->SetApplicationId(p0);
@@ -261,7 +263,11 @@ void DiscordActivity::set_assets(Variant assets) {
 
 	if (assets.get_type() == Variant::OBJECT) {
 		DiscordActivityAssets *p0_t = Object::cast_to<DiscordActivityAssets>(assets);
+		ERR_FAIL_NULL_MSG(p0_t, "Failed to convert to DiscordActivityAssets");
 		p0 = std::optional<discordpp::ActivityAssets>{ *p0_t->unwrap() };
+
+	} else if (assets.get_type() != Variant::NIL) {
+		ERR_PRINT("Invalid type passed as argument");
 	}
 
 	obj->SetAssets(p0);
@@ -272,6 +278,8 @@ void DiscordActivity::set_details(Variant details) {
 
 	if (details.get_type() == Variant::STRING) {
 		p0 = details.stringify().utf8().get_data();
+	} else if (details.get_type() != Variant::NIL) {
+		ERR_PRINT("Invalid type passed as argument");
 	}
 
 	obj->SetDetails(p0);
@@ -282,6 +290,8 @@ void DiscordActivity::set_details_url(Variant details_url) {
 
 	if (details_url.get_type() == Variant::STRING) {
 		p0 = details_url.stringify().utf8().get_data();
+	} else if (details_url.get_type() != Variant::NIL) {
+		ERR_PRINT("Invalid type passed as argument");
 	}
 
 	obj->SetDetailsUrl(p0);
@@ -297,6 +307,8 @@ void DiscordActivity::set_parent_application_id(Variant parent_application_id) {
 
 	if (parent_application_id.get_type() == Variant::INT) {
 		p0 = parent_application_id;
+	} else if (parent_application_id.get_type() != Variant::NIL) {
+		ERR_PRINT("Invalid type passed as argument");
 	}
 
 	obj->SetParentApplicationId(p0);
@@ -307,7 +319,11 @@ void DiscordActivity::set_party(Variant party) {
 
 	if (party.get_type() == Variant::OBJECT) {
 		DiscordActivityParty *p0_t = Object::cast_to<DiscordActivityParty>(party);
+		ERR_FAIL_NULL_MSG(p0_t, "Failed to convert to DiscordActivityParty");
 		p0 = std::optional<discordpp::ActivityParty>{ *p0_t->unwrap() };
+
+	} else if (party.get_type() != Variant::NIL) {
+		ERR_PRINT("Invalid type passed as argument");
 	}
 
 	obj->SetParty(p0);
@@ -318,7 +334,11 @@ void DiscordActivity::set_secrets(Variant secrets) {
 
 	if (secrets.get_type() == Variant::OBJECT) {
 		DiscordActivitySecrets *p0_t = Object::cast_to<DiscordActivitySecrets>(secrets);
+		ERR_FAIL_NULL_MSG(p0_t, "Failed to convert to DiscordActivitySecrets");
 		p0 = std::optional<discordpp::ActivitySecrets>{ *p0_t->unwrap() };
+
+	} else if (secrets.get_type() != Variant::NIL) {
+		ERR_PRINT("Invalid type passed as argument");
 	}
 
 	obj->SetSecrets(p0);
@@ -329,6 +349,8 @@ void DiscordActivity::set_state(Variant state) {
 
 	if (state.get_type() == Variant::STRING) {
 		p0 = state.stringify().utf8().get_data();
+	} else if (state.get_type() != Variant::NIL) {
+		ERR_PRINT("Invalid type passed as argument");
 	}
 
 	obj->SetState(p0);
@@ -339,6 +361,8 @@ void DiscordActivity::set_state_url(Variant state_url) {
 
 	if (state_url.get_type() == Variant::STRING) {
 		p0 = state_url.stringify().utf8().get_data();
+	} else if (state_url.get_type() != Variant::NIL) {
+		ERR_PRINT("Invalid type passed as argument");
 	}
 
 	obj->SetStateUrl(p0);
@@ -349,6 +373,8 @@ void DiscordActivity::set_status_display_type(Variant status_display_type) {
 
 	if (status_display_type.get_type() == Variant::OBJECT) {
 		p0 = std::optional<discordpp::StatusDisplayTypes>{ (discordpp::StatusDisplayTypes)(uint64_t)status_display_type };
+	} else if (status_display_type.get_type() != Variant::NIL) {
+		ERR_PRINT("Invalid type passed as argument");
 	}
 
 	obj->SetStatusDisplayType(p0);
@@ -364,7 +390,11 @@ void DiscordActivity::set_timestamps(Variant timestamps) {
 
 	if (timestamps.get_type() == Variant::OBJECT) {
 		DiscordActivityTimestamps *p0_t = Object::cast_to<DiscordActivityTimestamps>(timestamps);
+		ERR_FAIL_NULL_MSG(p0_t, "Failed to convert to DiscordActivityTimestamps");
 		p0 = std::optional<discordpp::ActivityTimestamps>{ *p0_t->unwrap() };
+
+	} else if (timestamps.get_type() != Variant::NIL) {
+		ERR_PRINT("Invalid type passed as argument");
 	}
 
 	obj->SetTimestamps(p0);

@@ -63,6 +63,8 @@ void DiscordClientCreateOptions::set_cpu_affinity_mask(Variant cpu_affinity_mask
 
 	if (cpu_affinity_mask.get_type() == Variant::INT) {
 		p0 = cpu_affinity_mask;
+	} else if (cpu_affinity_mask.get_type() != Variant::NIL) {
+		ERR_PRINT("Invalid type passed as argument");
 	}
 
 	obj->SetCpuAffinityMask(p0);

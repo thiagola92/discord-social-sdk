@@ -10,5 +10,7 @@ std::optional<{template}> {target};
 
 if ({source}.get_type() == {variant}) {{
     {statements}
+}} else if ({source}.get_type() != Variant::NIL) {{
+    ERR_PRINT("Invalid type passed as argument");
 }}
 """
