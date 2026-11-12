@@ -11,7 +11,10 @@ var client := DiscordClient.new()
 func _ready() -> void:
 	client.set_application_id(application_id)
 	client.add_log_callback(_on_log, DiscordLoggingSeverity.INFO)
-	client.register_launch_command(application_id, OS.get_executable_path())
+	client.register_launch_command(
+		application_id,
+		ProjectSettings.globalize_path(OS.get_executable_path()),
+	)
 	client.set_activity_invite_created_callback(_on_activity_invite_created)
 	client.set_activity_join_callback(_on_activity_joined)
 
