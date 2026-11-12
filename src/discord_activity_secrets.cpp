@@ -8,7 +8,7 @@ using namespace godot;
 String DiscordActivitySecrets::join() {
 	auto r0 = obj->Join();
 
-	String r1 = String(r0.c_str());
+	String r1 = String::utf8(r0.c_str(), r0.length());
 
 	return r1;
 }

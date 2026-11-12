@@ -16,7 +16,7 @@ DiscordActivityActionTypes::Enum DiscordActivityInvite::type() {
 String DiscordActivityInvite::party_id() {
 	auto r0 = obj->PartyId();
 
-	String r1 = String(r0.c_str());
+	String r1 = String::utf8(r0.c_str(), r0.length());
 
 	return r1;
 }
@@ -24,7 +24,7 @@ String DiscordActivityInvite::party_id() {
 String DiscordActivityInvite::session_id() {
 	auto r0 = obj->SessionId();
 
-	String r1 = String(r0.c_str());
+	String r1 = String::utf8(r0.c_str(), r0.length());
 
 	return r1;
 }

@@ -8,7 +8,7 @@ using namespace godot;
 String DiscordAuthorizationArgs::scopes() {
 	auto r0 = obj->Scopes();
 
-	String r1 = String(r0.c_str());
+	String r1 = String::utf8(r0.c_str(), r0.length());
 
 	return r1;
 }
@@ -41,7 +41,7 @@ Variant DiscordAuthorizationArgs::custom_scheme_param() {
 		r1 = nullptr;
 	} else {
 		auto r0_v = r0.value();
-		String r1_v = String(r0_v.c_str());
+		String r1_v = String::utf8(r0_v.c_str(), r0_v.length());
 		r1 = Variant(r1_v);
 	}
 
@@ -73,7 +73,7 @@ Variant DiscordAuthorizationArgs::nonce() {
 		r1 = nullptr;
 	} else {
 		auto r0_v = r0.value();
-		String r1_v = String(r0_v.c_str());
+		String r1_v = String::utf8(r0_v.c_str(), r0_v.length());
 		r1 = Variant(r1_v);
 	}
 
@@ -89,7 +89,7 @@ Variant DiscordAuthorizationArgs::state() {
 		r1 = nullptr;
 	} else {
 		auto r0_v = r0.value();
-		String r1_v = String(r0_v.c_str());
+		String r1_v = String::utf8(r0_v.c_str(), r0_v.length());
 		r1 = Variant(r1_v);
 	}
 

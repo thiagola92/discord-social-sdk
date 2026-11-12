@@ -269,7 +269,7 @@ def discord_variable_to_godot_variable(
         return f"real_t {target} = (real_t){source};"
 
     if is_discord_string(info):
-        return f"String {target} = String({source}.c_str());"
+        return f"String {target} = String::utf8({source}.c_str(), {source}.length());"
 
     if is_discord_char_pointer(info):
         return f"String {target} = String({source});"

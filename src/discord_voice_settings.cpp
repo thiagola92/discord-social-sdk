@@ -16,7 +16,7 @@ DiscordVoiceInputModeType::Enum DiscordVoiceSettings::input_mode() {
 String DiscordVoiceSettings::ptt_key() {
 	auto r0 = obj->PttKey();
 
-	String r1 = String(r0.c_str());
+	String r1 = String::utf8(r0.c_str(), r0.length());
 
 	return r1;
 }

@@ -16,7 +16,7 @@ DiscordExternalIdentityProviderType::Enum DiscordUserApplicationProfileHandle::p
 String DiscordUserApplicationProfileHandle::avatar_hash() {
 	auto r0 = obj->AvatarHash();
 
-	String r1 = String(r0.c_str());
+	String r1 = String::utf8(r0.c_str(), r0.length());
 
 	return r1;
 }
@@ -24,7 +24,7 @@ String DiscordUserApplicationProfileHandle::avatar_hash() {
 String DiscordUserApplicationProfileHandle::metadata() {
 	auto r0 = obj->Metadata();
 
-	String r1 = String(r0.c_str());
+	String r1 = String::utf8(r0.c_str(), r0.length());
 
 	return r1;
 }
@@ -32,7 +32,7 @@ String DiscordUserApplicationProfileHandle::metadata() {
 String DiscordUserApplicationProfileHandle::provider_issued_user_id() {
 	auto r0 = obj->ProviderIssuedUserId();
 
-	String r1 = String(r0.c_str());
+	String r1 = String::utf8(r0.c_str(), r0.length());
 
 	return r1;
 }
@@ -40,7 +40,7 @@ String DiscordUserApplicationProfileHandle::provider_issued_user_id() {
 String DiscordUserApplicationProfileHandle::username() {
 	auto r0 = obj->Username();
 
-	String r1 = String(r0.c_str());
+	String r1 = String::utf8(r0.c_str(), r0.length());
 
 	return r1;
 }
@@ -54,7 +54,7 @@ Variant DiscordUserApplicationProfileHandle::provider_id() {
 		r1 = nullptr;
 	} else {
 		auto r0_v = r0.value();
-		String r1_v = String(r0_v.c_str());
+		String r1_v = String::utf8(r0_v.c_str(), r0_v.length());
 		r1 = Variant(r1_v);
 	}
 

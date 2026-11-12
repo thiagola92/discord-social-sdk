@@ -24,7 +24,7 @@ DiscordHttpStatusCode::Enum DiscordClientResult::status() {
 String DiscordClientResult::error() {
 	auto r0 = obj->Error();
 
-	String r1 = String(r0.c_str());
+	String r1 = String::utf8(r0.c_str(), r0.length());
 
 	return r1;
 }
@@ -32,7 +32,7 @@ String DiscordClientResult::error() {
 String DiscordClientResult::response_body() {
 	auto r0 = obj->ResponseBody();
 
-	String r1 = String(r0.c_str());
+	String r1 = String::utf8(r0.c_str(), r0.length());
 
 	return r1;
 }
@@ -40,7 +40,7 @@ String DiscordClientResult::response_body() {
 String DiscordClientResult::to_string_discord() {
 	auto r0 = obj->ToString();
 
-	String r1 = String(r0.c_str());
+	String r1 = String::utf8(r0.c_str(), r0.length());
 
 	return r1;
 }

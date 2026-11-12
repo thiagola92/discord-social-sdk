@@ -93,7 +93,7 @@ String DiscordClient::error_to_string(DiscordClientError::Enum type) {
 	discordpp::Client::Error p0 = (discordpp::Client::Error)type;
 	auto r0 = discordpp::Client::ErrorToString(p0);
 
-	String r1 = String(r0.c_str());
+	String r1 = String::utf8(r0.c_str(), r0.length());
 
 	return r1;
 }
@@ -101,7 +101,7 @@ String DiscordClient::error_to_string(DiscordClientError::Enum type) {
 String DiscordClient::get_default_audio_device_id() {
 	auto r0 = discordpp::Client::GetDefaultAudioDeviceId();
 
-	String r1 = String(r0.c_str());
+	String r1 = String::utf8(r0.c_str(), r0.length());
 
 	return r1;
 }
@@ -109,7 +109,7 @@ String DiscordClient::get_default_audio_device_id() {
 String DiscordClient::get_default_communication_scopes() {
 	auto r0 = discordpp::Client::GetDefaultCommunicationScopes();
 
-	String r1 = String(r0.c_str());
+	String r1 = String::utf8(r0.c_str(), r0.length());
 
 	return r1;
 }
@@ -117,7 +117,7 @@ String DiscordClient::get_default_communication_scopes() {
 String DiscordClient::get_default_presence_scopes() {
 	auto r0 = discordpp::Client::GetDefaultPresenceScopes();
 
-	String r1 = String(r0.c_str());
+	String r1 = String::utf8(r0.c_str(), r0.length());
 
 	return r1;
 }
@@ -125,7 +125,7 @@ String DiscordClient::get_default_presence_scopes() {
 String DiscordClient::get_version_hash() {
 	auto r0 = discordpp::Client::GetVersionHash();
 
-	String r1 = String(r0.c_str());
+	String r1 = String::utf8(r0.c_str(), r0.length());
 
 	return r1;
 }
@@ -134,7 +134,7 @@ String DiscordClient::status_to_string(DiscordClientStatus::Enum type) {
 	discordpp::Client::Status p0 = (discordpp::Client::Status)type;
 	auto r0 = discordpp::Client::StatusToString(p0);
 
-	String r1 = String(r0.c_str());
+	String r1 = String::utf8(r0.c_str(), r0.length());
 
 	return r1;
 }
@@ -143,7 +143,7 @@ String DiscordClient::thread_to_string(DiscordClientThread::Enum type) {
 	discordpp::Client::Thread p0 = (discordpp::Client::Thread)type;
 	auto r0 = discordpp::Client::ThreadToString(p0);
 
-	String r1 = String(r0.c_str());
+	String r1 = String::utf8(r0.c_str(), r0.length());
 
 	return r1;
 }
@@ -464,7 +464,7 @@ void DiscordClient::accept_activity_invite(DiscordActivityInvite *invite, Callab
 		discordpp::ClientResult *p0_t = memnew(discordpp::ClientResult(std::move(result)));
 		DiscordClientResult *p0 = memnew(DiscordClientResult{ p0_t });
 
-		String p1 = String(join_secret.c_str());
+		String p1 = String::utf8(join_secret.c_str(), join_secret.length());
 		cb.call(p0, p1);
 	};
 
@@ -497,7 +497,7 @@ void DiscordClient::accept_game_friend_request(int64_t user_id, Callable cb) {
 
 void DiscordClient::add_log_callback(Callable callback, DiscordLoggingSeverity::Enum min_severity) {
 	auto p0 = [callback](auto message, auto severity) {
-		String p0 = String(message.c_str());
+		String p0 = String::utf8(message.c_str(), message.length());
 		DiscordLoggingSeverity::Enum p1 = (DiscordLoggingSeverity::Enum)severity;
 		callback.call(p0, p1);
 	};
@@ -507,7 +507,7 @@ void DiscordClient::add_log_callback(Callable callback, DiscordLoggingSeverity::
 
 void DiscordClient::add_voice_log_callback(Callable callback, DiscordLoggingSeverity::Enum min_severity) {
 	auto p0 = [callback](auto message, auto severity) {
-		String p0 = String(message.c_str());
+		String p0 = String::utf8(message.c_str(), message.length());
 		DiscordLoggingSeverity::Enum p1 = (DiscordLoggingSeverity::Enum)severity;
 		callback.call(p0, p1);
 	};
@@ -521,8 +521,8 @@ void DiscordClient::authorize(DiscordAuthorizationArgs *args, Callable callback)
 		discordpp::ClientResult *p0_t = memnew(discordpp::ClientResult(std::move(result)));
 		DiscordClientResult *p0 = memnew(DiscordClientResult{ p0_t });
 
-		String p1 = String(code.c_str());
-		String p2 = String(redirect_uri.c_str());
+		String p1 = String::utf8(code.c_str(), code.length());
+		String p2 = String::utf8(redirect_uri.c_str(), redirect_uri.length());
 		callback.call(p0, p1, p2);
 	};
 
@@ -688,10 +688,10 @@ void DiscordClient::exchange_child_token(String parent_application_token, int64_
 		discordpp::ClientResult *p0_t = memnew(discordpp::ClientResult(std::move(result)));
 		DiscordClientResult *p0 = memnew(DiscordClientResult{ p0_t });
 
-		String p1 = String(access_token.c_str());
+		String p1 = String::utf8(access_token.c_str(), access_token.length());
 		DiscordAuthorizationTokenType::Enum p2 = (DiscordAuthorizationTokenType::Enum)token_type;
 		int64_t p3 = (int64_t)expires_in;
-		String p4 = String(scopes.c_str());
+		String p4 = String::utf8(scopes.c_str(), scopes.length());
 		callback.call(p0, p1, p2, p3, p4);
 	};
 
@@ -706,7 +706,7 @@ void DiscordClient::fetch_current_user(DiscordAuthorizationTokenType::Enum token
 		DiscordClientResult *p0 = memnew(DiscordClientResult{ p0_t });
 
 		int64_t p1 = (int64_t)id;
-		String p2 = String(name.c_str());
+		String p2 = String::utf8(name.c_str(), name.length());
 		callback.call(p0, p1, p2);
 	};
 
@@ -845,11 +845,11 @@ void DiscordClient::get_provisional_token(int64_t application_id, DiscordAuthent
 		discordpp::ClientResult *p0_t = memnew(discordpp::ClientResult(std::move(result)));
 		DiscordClientResult *p0 = memnew(DiscordClientResult{ p0_t });
 
-		String p1 = String(access_token.c_str());
-		String p2 = String(refresh_token.c_str());
+		String p1 = String::utf8(access_token.c_str(), access_token.length());
+		String p2 = String::utf8(refresh_token.c_str(), refresh_token.length());
 		DiscordAuthorizationTokenType::Enum p3 = (DiscordAuthorizationTokenType::Enum)token_type;
 		int64_t p4 = (int64_t)expires_in;
-		String p5 = String(scopes.c_str());
+		String p5 = String::utf8(scopes.c_str(), scopes.length());
 		callback.call(p0, p1, p2, p3, p4, p5);
 	};
 
@@ -865,11 +865,11 @@ void DiscordClient::get_token(int64_t application_id, String code, String code_v
 		discordpp::ClientResult *p0_t = memnew(discordpp::ClientResult(std::move(result)));
 		DiscordClientResult *p0 = memnew(DiscordClientResult{ p0_t });
 
-		String p1 = String(access_token.c_str());
-		String p2 = String(refresh_token.c_str());
+		String p1 = String::utf8(access_token.c_str(), access_token.length());
+		String p2 = String::utf8(refresh_token.c_str(), refresh_token.length());
 		DiscordAuthorizationTokenType::Enum p3 = (DiscordAuthorizationTokenType::Enum)token_type;
 		int64_t p4 = (int64_t)expires_in;
-		String p5 = String(scopes.c_str());
+		String p5 = String::utf8(scopes.c_str(), scopes.length());
 		callback.call(p0, p1, p2, p3, p4, p5);
 	};
 
@@ -882,11 +882,11 @@ void DiscordClient::get_token_from_device(DiscordDeviceAuthorizationArgs *args, 
 		discordpp::ClientResult *p0_t = memnew(discordpp::ClientResult(std::move(result)));
 		DiscordClientResult *p0 = memnew(DiscordClientResult{ p0_t });
 
-		String p1 = String(access_token.c_str());
-		String p2 = String(refresh_token.c_str());
+		String p1 = String::utf8(access_token.c_str(), access_token.length());
+		String p2 = String::utf8(refresh_token.c_str(), refresh_token.length());
 		DiscordAuthorizationTokenType::Enum p3 = (DiscordAuthorizationTokenType::Enum)token_type;
 		int64_t p4 = (int64_t)expires_in;
-		String p5 = String(scopes.c_str());
+		String p5 = String::utf8(scopes.c_str(), scopes.length());
 		callback.call(p0, p1, p2, p3, p4, p5);
 	};
 
@@ -901,11 +901,11 @@ void DiscordClient::get_token_from_device_provisional_merge(DiscordDeviceAuthori
 		discordpp::ClientResult *p0_t = memnew(discordpp::ClientResult(std::move(result)));
 		DiscordClientResult *p0 = memnew(DiscordClientResult{ p0_t });
 
-		String p1 = String(access_token.c_str());
-		String p2 = String(refresh_token.c_str());
+		String p1 = String::utf8(access_token.c_str(), access_token.length());
+		String p2 = String::utf8(refresh_token.c_str(), refresh_token.length());
 		DiscordAuthorizationTokenType::Enum p3 = (DiscordAuthorizationTokenType::Enum)token_type;
 		int64_t p4 = (int64_t)expires_in;
-		String p5 = String(scopes.c_str());
+		String p5 = String::utf8(scopes.c_str(), scopes.length());
 		callback.call(p0, p1, p2, p3, p4, p5);
 	};
 
@@ -923,11 +923,11 @@ void DiscordClient::get_token_from_provisional_merge(int64_t application_id, Str
 		discordpp::ClientResult *p0_t = memnew(discordpp::ClientResult(std::move(result)));
 		DiscordClientResult *p0 = memnew(DiscordClientResult{ p0_t });
 
-		String p1 = String(access_token.c_str());
-		String p2 = String(refresh_token.c_str());
+		String p1 = String::utf8(access_token.c_str(), access_token.length());
+		String p2 = String::utf8(refresh_token.c_str(), refresh_token.length());
 		DiscordAuthorizationTokenType::Enum p3 = (DiscordAuthorizationTokenType::Enum)token_type;
 		int64_t p4 = (int64_t)expires_in;
-		String p5 = String(scopes.c_str());
+		String p5 = String::utf8(scopes.c_str(), scopes.length());
 		callback.call(p0, p1, p2, p3, p4, p5);
 	};
 
@@ -1029,7 +1029,7 @@ void DiscordClient::join_linked_lobby_guild(int64_t lobby_id, Callable provision
 		discordpp::ClientResult *p0_t = memnew(discordpp::ClientResult(std::move(result)));
 		DiscordClientResult *p0 = memnew(DiscordClientResult{ p0_t });
 
-		String p1 = String(invite_url.c_str());
+		String p1 = String::utf8(invite_url.c_str(), invite_url.length());
 		callback.call(p0, p1);
 	};
 
@@ -1106,11 +1106,11 @@ void DiscordClient::refresh_token(int64_t application_id, String refresh_token, 
 		discordpp::ClientResult *p0_t = memnew(discordpp::ClientResult(std::move(result)));
 		DiscordClientResult *p0 = memnew(DiscordClientResult{ p0_t });
 
-		String p1 = String(access_token.c_str());
-		String p2 = String(refresh_token.c_str());
+		String p1 = String::utf8(access_token.c_str(), access_token.length());
+		String p2 = String::utf8(refresh_token.c_str(), refresh_token.length());
 		DiscordAuthorizationTokenType::Enum p3 = (DiscordAuthorizationTokenType::Enum)token_type;
 		int64_t p4 = (int64_t)expires_in;
-		String p5 = String(scopes.c_str());
+		String p5 = String::utf8(scopes.c_str(), scopes.length());
 		callback.call(p0, p1, p2, p3, p4, p5);
 	};
 
@@ -1385,7 +1385,7 @@ void DiscordClient::set_activity_invite_updated_callback(Callable cb) {
 
 void DiscordClient::set_activity_join_callback(Callable cb) {
 	auto p0 = [cb](auto join_secret) {
-		String p0 = String(join_secret.c_str());
+		String p0 = String::utf8(join_secret.c_str(), join_secret.length());
 		cb.call(p0);
 	};
 
@@ -1395,7 +1395,7 @@ void DiscordClient::set_activity_join_callback(Callable cb) {
 void DiscordClient::set_activity_join_with_application_callback(Callable cb) {
 	auto p0 = [cb](auto application_id, auto join_secret) {
 		int64_t p0 = (int64_t)application_id;
-		String p1 = String(join_secret.c_str());
+		String p1 = String::utf8(join_secret.c_str(), join_secret.length());
 		cb.call(p0, p1);
 	};
 

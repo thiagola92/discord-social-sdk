@@ -14,7 +14,7 @@ Variant DiscordActivityAssets::invite_cover_image() {
 		r1 = nullptr;
 	} else {
 		auto r0_v = r0.value();
-		String r1_v = String(r0_v.c_str());
+		String r1_v = String::utf8(r0_v.c_str(), r0_v.length());
 		r1 = Variant(r1_v);
 	}
 
@@ -30,7 +30,7 @@ Variant DiscordActivityAssets::large_image() {
 		r1 = nullptr;
 	} else {
 		auto r0_v = r0.value();
-		String r1_v = String(r0_v.c_str());
+		String r1_v = String::utf8(r0_v.c_str(), r0_v.length());
 		r1 = Variant(r1_v);
 	}
 
@@ -46,7 +46,7 @@ Variant DiscordActivityAssets::large_text() {
 		r1 = nullptr;
 	} else {
 		auto r0_v = r0.value();
-		String r1_v = String(r0_v.c_str());
+		String r1_v = String::utf8(r0_v.c_str(), r0_v.length());
 		r1 = Variant(r1_v);
 	}
 
@@ -62,7 +62,7 @@ Variant DiscordActivityAssets::large_url() {
 		r1 = nullptr;
 	} else {
 		auto r0_v = r0.value();
-		String r1_v = String(r0_v.c_str());
+		String r1_v = String::utf8(r0_v.c_str(), r0_v.length());
 		r1 = Variant(r1_v);
 	}
 
@@ -78,7 +78,7 @@ Variant DiscordActivityAssets::small_image() {
 		r1 = nullptr;
 	} else {
 		auto r0_v = r0.value();
-		String r1_v = String(r0_v.c_str());
+		String r1_v = String::utf8(r0_v.c_str(), r0_v.length());
 		r1 = Variant(r1_v);
 	}
 
@@ -94,7 +94,7 @@ Variant DiscordActivityAssets::small_text() {
 		r1 = nullptr;
 	} else {
 		auto r0_v = r0.value();
-		String r1_v = String(r0_v.c_str());
+		String r1_v = String::utf8(r0_v.c_str(), r0_v.length());
 		r1 = Variant(r1_v);
 	}
 
@@ -110,7 +110,7 @@ Variant DiscordActivityAssets::small_url() {
 		r1 = nullptr;
 	} else {
 		auto r0_v = r0.value();
-		String r1_v = String(r0_v.c_str());
+		String r1_v = String::utf8(r0_v.c_str(), r0_v.length());
 		r1 = Variant(r1_v);
 	}
 

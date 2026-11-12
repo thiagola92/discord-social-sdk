@@ -8,7 +8,7 @@ using namespace godot;
 String DiscordAudioDevice::id() {
 	auto r0 = obj->Id();
 
-	String r1 = String(r0.c_str());
+	String r1 = String::utf8(r0.c_str(), r0.length());
 
 	return r1;
 }
@@ -16,7 +16,7 @@ String DiscordAudioDevice::id() {
 String DiscordAudioDevice::name() {
 	auto r0 = obj->Name();
 
-	String r1 = String(r0.c_str());
+	String r1 = String::utf8(r0.c_str(), r0.length());
 
 	return r1;
 }

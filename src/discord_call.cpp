@@ -34,7 +34,7 @@ String DiscordCall::error_to_string(DiscordCallError::Enum type) {
 	discordpp::Call::Error p0 = (discordpp::Call::Error)type;
 	auto r0 = discordpp::Call::ErrorToString(p0);
 
-	String r1 = String(r0.c_str());
+	String r1 = String::utf8(r0.c_str(), r0.length());
 
 	return r1;
 }
@@ -43,7 +43,7 @@ String DiscordCall::status_to_string(DiscordCallStatus::Enum type) {
 	discordpp::Call::Status p0 = (discordpp::Call::Status)type;
 	auto r0 = discordpp::Call::StatusToString(p0);
 
-	String r1 = String(r0.c_str());
+	String r1 = String::utf8(r0.c_str(), r0.length());
 
 	return r1;
 }

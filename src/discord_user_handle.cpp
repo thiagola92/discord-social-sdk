@@ -26,7 +26,7 @@ String DiscordUserHandle::avatar_type_to_string(DiscordUserHandleAvatarType::Enu
 	discordpp::UserHandle::AvatarType p0 = (discordpp::UserHandle::AvatarType)type;
 	auto r0 = discordpp::UserHandle::AvatarTypeToString(p0);
 
-	String r1 = String(r0.c_str());
+	String r1 = String::utf8(r0.c_str(), r0.length());
 
 	return r1;
 }
@@ -36,7 +36,7 @@ String DiscordUserHandle::avatar_url(DiscordUserHandleAvatarType::Enum animated_
 	discordpp::UserHandle::AvatarType p1 = (discordpp::UserHandle::AvatarType)static_type;
 	auto r0 = obj->AvatarUrl(p0, p1);
 
-	String r1 = String(r0.c_str());
+	String r1 = String::utf8(r0.c_str(), r0.length());
 
 	return r1;
 }
@@ -44,7 +44,7 @@ String DiscordUserHandle::avatar_url(DiscordUserHandleAvatarType::Enum animated_
 String DiscordUserHandle::display_name() {
 	auto r0 = obj->DisplayName();
 
-	String r1 = String(r0.c_str());
+	String r1 = String::utf8(r0.c_str(), r0.length());
 
 	return r1;
 }
@@ -52,7 +52,7 @@ String DiscordUserHandle::display_name() {
 String DiscordUserHandle::username() {
 	auto r0 = obj->Username();
 
-	String r1 = String(r0.c_str());
+	String r1 = String::utf8(r0.c_str(), r0.length());
 
 	return r1;
 }
@@ -81,7 +81,7 @@ Variant DiscordUserHandle::avatar() {
 		r1 = nullptr;
 	} else {
 		auto r0_v = r0.value();
-		String r1_v = String(r0_v.c_str());
+		String r1_v = String::utf8(r0_v.c_str(), r0_v.length());
 		r1 = Variant(r1_v);
 	}
 
@@ -116,7 +116,7 @@ Variant DiscordUserHandle::global_name() {
 		r1 = nullptr;
 	} else {
 		auto r0_v = r0.value();
-		String r1_v = String(r0_v.c_str());
+		String r1_v = String::utf8(r0_v.c_str(), r0_v.length());
 		r1 = Variant(r1_v);
 	}
 

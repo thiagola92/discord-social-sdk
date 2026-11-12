@@ -8,7 +8,7 @@ using namespace godot;
 String DiscordMessageHandle::content() {
 	auto r0 = obj->Content();
 
-	String r1 = String(r0.c_str());
+	String r1 = String::utf8(r0.c_str(), r0.length());
 
 	return r1;
 }
@@ -16,7 +16,7 @@ String DiscordMessageHandle::content() {
 String DiscordMessageHandle::raw_content() {
 	auto r0 = obj->RawContent();
 
-	String r1 = String(r0.c_str());
+	String r1 = String::utf8(r0.c_str(), r0.length());
 
 	return r1;
 }
@@ -27,8 +27,8 @@ TypedDictionary<String, String> DiscordMessageHandle::metadata() {
 	TypedDictionary<String, String> r1 = TypedDictionary<String, String>();
 
 	for (auto i : r0) {
-		String k = String(i.first.c_str());
-		String v = String(i.second.c_str());
+		String k = String::utf8(i.first.c_str(), i.first.length());
+		String v = String::utf8(i.second.c_str(), i.second.length());
 		r1[k] = v;
 	}
 
@@ -41,8 +41,8 @@ TypedDictionary<String, String> DiscordMessageHandle::moderation_metadata() {
 	TypedDictionary<String, String> r1 = TypedDictionary<String, String>();
 
 	for (auto i : r0) {
-		String k = String(i.first.c_str());
-		String v = String(i.second.c_str());
+		String k = String::utf8(i.first.c_str(), i.first.length());
+		String v = String::utf8(i.second.c_str(), i.second.length());
 		r1[k] = v;
 	}
 
@@ -77,7 +77,7 @@ Variant DiscordMessageHandle::additional_name() {
 		r1 = nullptr;
 	} else {
 		auto r0_v = r0.value();
-		String r1_v = String(r0_v.c_str());
+		String r1_v = String::utf8(r0_v.c_str(), r0_v.length());
 		r1 = Variant(r1_v);
 	}
 

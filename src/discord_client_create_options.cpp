@@ -16,7 +16,7 @@ DiscordAudioSystem::Enum DiscordClientCreateOptions::experimental_audio_system()
 String DiscordClientCreateOptions::api_base() {
 	auto r0 = obj->ApiBase();
 
-	String r1 = String(r0.c_str());
+	String r1 = String::utf8(r0.c_str(), r0.length());
 
 	return r1;
 }
@@ -24,7 +24,7 @@ String DiscordClientCreateOptions::api_base() {
 String DiscordClientCreateOptions::web_base() {
 	auto r0 = obj->WebBase();
 
-	String r1 = String(r0.c_str());
+	String r1 = String::utf8(r0.c_str(), r0.length());
 
 	return r1;
 }

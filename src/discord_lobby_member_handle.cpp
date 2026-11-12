@@ -11,8 +11,8 @@ TypedDictionary<String, String> DiscordLobbyMemberHandle::metadata() {
 	TypedDictionary<String, String> r1 = TypedDictionary<String, String>();
 
 	for (auto i : r0) {
-		String k = String(i.first.c_str());
-		String v = String(i.second.c_str());
+		String k = String::utf8(i.first.c_str(), i.first.length());
+		String v = String::utf8(i.second.c_str(), i.second.length());
 		r1[k] = v;
 	}
 
