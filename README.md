@@ -8,3 +8,4 @@ Wrapper around [Discord Social SDK](https://discord.com/developers/docs/discord-
 </div>
 
 Documentation at: https://thiagola92.github.io/discord-social-sdk-docs/  
+Discord server: https://discord.gg/vzpXeA2yyv  
