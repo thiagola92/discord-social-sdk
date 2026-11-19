@@ -21,7 +21,7 @@
 		</constant>
 		<constant name="SUGGESTION" value="6" enum="Enum">
 		</constant>
-		<constant name="id" value="14">
+		<constant name="id" value="15">
 		</constant>
 	</constants>
 </class>

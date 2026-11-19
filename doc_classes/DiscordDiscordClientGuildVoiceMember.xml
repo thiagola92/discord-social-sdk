@@ -1,0 +1,130 @@
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordDiscordClientGuildVoiceMember" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	Voice member.
+</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="avatar_hash">
+			<return type="Variant" />
+			<description>
+			Avatar hash.
+			Returns [String] or [code]null[/code].
+</description>
+		</method>
+		<method name="deaf">
+			<return type="bool" />
+			<description>
+			Server deaf.
+			</description>
+		</method>
+		<method name="display_name">
+			<return type="String" />
+			<description>
+			Display name.
+			</description>
+		</method>
+		<method name="mute">
+			<return type="bool" />
+			<description>
+			Server mute.
+			</description>
+		</method>
+		<method name="self_deaf">
+			<return type="bool" />
+			<description>
+			Self deaf.
+			</description>
+		</method>
+		<method name="self_mute">
+			<return type="bool" />
+			<description>
+			Self mute.
+			</description>
+		</method>
+		<method name="set_avatar_hash">
+			<return type="void" />
+			<param index="0" name="avatar_hash" type="Variant" />
+			<description>
+			Setter for [method DiscordDiscordClientGuildVoiceMember.avatar_hash].
+			Parameter [param avatar_hash] can be [String] or [code]null[/code].
+</description>
+		</method>
+		<method name="set_deaf">
+			<return type="void" />
+			<param index="0" name="deaf" type="bool" />
+			<description>
+			Setter for [method DiscordDiscordClientGuildVoiceMember.deaf].
+			</description>
+		</method>
+		<method name="set_display_name">
+			<return type="void" />
+			<param index="0" name="display_name" type="String" />
+			<description>
+			Setter for [method DiscordDiscordClientGuildVoiceMember.display_name].
+			</description>
+		</method>
+		<method name="set_mute">
+			<return type="void" />
+			<param index="0" name="mute" type="bool" />
+			<description>
+			Setter for [method DiscordDiscordClientGuildVoiceMember.mute].
+			</description>
+		</method>
+		<method name="set_self_deaf">
+			<return type="void" />
+			<param index="0" name="self_deaf" type="bool" />
+			<description>
+			Setter for [method DiscordDiscordClientGuildVoiceMember.self_deaf].
+			</description>
+		</method>
+		<method name="set_self_mute">
+			<return type="void" />
+			<param index="0" name="self_mute" type="bool" />
+			<description>
+			Setter for [method DiscordDiscordClientGuildVoiceMember.self_mute].
+			</description>
+		</method>
+		<method name="set_speaking">
+			<return type="void" />
+			<param index="0" name="speaking" type="int" enum="DiscordDiscordClientGuildVoiceSpeakingState.Enum" />
+			<description>
+			Setter for [method DiscordDiscordClientGuildVoiceMember.speaking].
+			</description>
+		</method>
+		<method name="set_user_id">
+			<return type="void" />
+			<param index="0" name="user_id" type="int" />
+			<description>
+			Setter for [method DiscordDiscordClientGuildVoiceMember.user_id].
+			</description>
+		</method>
+		<method name="set_username">
+			<return type="void" />
+			<param index="0" name="username" type="String" />
+			<description>
+			Setter for [method DiscordDiscordClientGuildVoiceMember.username].
+			</description>
+		</method>
+		<method name="speaking">
+			<return type="int" enum="DiscordDiscordClientGuildVoiceSpeakingState.Enum" />
+			<description>
+			Speaking state.
+			</description>
+		</method>
+		<method name="user_id">
+			<return type="int" />
+			<description>
+			User ID.
+			</description>
+		</method>
+		<method name="username">
+			<return type="String" />
+			<description>
+			Username.
+			</description>
+		</method>
+	</methods>
+</class>

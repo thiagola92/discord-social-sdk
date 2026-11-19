@@ -1,0 +1,19 @@
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordDiscordClientGuildVoiceSpeakingState" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	Speaking state.
+</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<constants>
+		<constant name="UNAVAILABLE" value="0" enum="Enum">
+		</constant>
+		<constant name="SILENT" value="1" enum="Enum">
+		</constant>
+		<constant name="SPEAKING" value="2" enum="Enum">
+		</constant>
+		<constant name="id" value="12">
+		</constant>
+	</constants>
+</class>

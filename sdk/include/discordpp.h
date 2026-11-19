@@ -494,6 +494,19 @@ enum class VoiceInputModeType {
 	PushToTalk = 1,
 };
 
+/// \brief Speaking state.
+enum class DiscordClientGuildVoiceSpeakingState {
+
+	/// \brief Unavailable.
+	Unavailable = 0,
+
+	/// \brief Silent.
+	Silent = 1,
+
+	/// \brief Speaking.
+	Speaking = 2,
+};
+
 /// \brief The Discord Voice audio system to use.
 enum class AudioSystem {
 
@@ -717,6 +730,8 @@ class AdditionalContent;
 class MessageHandle;
 class AudioDevice;
 class VoiceSettings;
+class DiscordClientGuildVoiceMember;
+class DiscordClientGuildVoiceSnapshot;
 class UserMessageSummary;
 class ClientCreateOptions;
 class Client;
@@ -2431,7 +2446,8 @@ public:
 /// RelationshipHandle::DiscordRelationshipType field, and will persist across games. It is not
 /// possible to block a user in only one game.
 ///
-/// See the @ref friends documentation for more information.
+/// For more information, see:
+/// https://docs.discord.com/developers/discord-social-sdk/development-guides/creating-a-unified-friends-list
 ///
 /// Note: While the SDK allows you to manage a user's relationships, you should never take an action
 /// without their explicit consent. You should not automatically send or accept friend requests.
@@ -3279,6 +3295,141 @@ public:
 	void SetNoiseCancellation(bool NoiseCancellation);
 };
 
+/// \brief Voice member.
+class DiscordClientGuildVoiceMember {
+	/// \cond
+	mutable Discord_DiscordClientGuildVoiceMember instance_{};
+	DiscordObjectState state_ = DiscordObjectState::Invalid;
+	/// \endcond
+
+public:
+	/// \cond
+	Discord_DiscordClientGuildVoiceMember *instance() const { return &instance_; }
+	/// \endcond
+	/// \cond
+	explicit DiscordClientGuildVoiceMember(Discord_DiscordClientGuildVoiceMember instance,
+			DiscordObjectState state);
+	~DiscordClientGuildVoiceMember();
+	/// \endcond
+	/// Move constructor for DiscordClientGuildVoiceMember
+	DiscordClientGuildVoiceMember(DiscordClientGuildVoiceMember &&other) noexcept;
+	/// Move assignment operator for DiscordClientGuildVoiceMember
+	DiscordClientGuildVoiceMember &operator=(DiscordClientGuildVoiceMember &&other) noexcept;
+	/// Uninitialized instance of DiscordClientGuildVoiceMember
+	static const DiscordClientGuildVoiceMember nullobj;
+	/// Returns true if the instance contains a valid object
+	operator bool() const { return state_ != DiscordObjectState::Invalid; }
+
+	/// Copy constructor for DiscordClientGuildVoiceMember
+	DiscordClientGuildVoiceMember(const DiscordClientGuildVoiceMember &arg0);
+	/// Copy assignment operator for DiscordClientGuildVoiceMember
+	DiscordClientGuildVoiceMember &operator=(const DiscordClientGuildVoiceMember &arg0);
+
+	explicit DiscordClientGuildVoiceMember();
+
+	/// \cond
+	void Drop();
+	/// \endcond
+
+	/// \brief User ID.
+	uint64_t UserId() const;
+	/// Setter for DiscordClientGuildVoiceMember::UserId.
+	void SetUserId(uint64_t UserId);
+
+	/// \brief Display name.
+	std::string DisplayName() const;
+	/// Setter for DiscordClientGuildVoiceMember::DisplayName.
+	void SetDisplayName(std::string DisplayName);
+
+	/// \brief Username.
+	std::string Username() const;
+	/// Setter for DiscordClientGuildVoiceMember::Username.
+	void SetUsername(std::string Username);
+
+	/// \brief Avatar hash.
+	std::optional<std::string> AvatarHash() const;
+	/// Setter for DiscordClientGuildVoiceMember::AvatarHash.
+	void SetAvatarHash(std::optional<std::string> AvatarHash);
+
+	/// \brief Server mute.
+	bool Mute() const;
+	/// Setter for DiscordClientGuildVoiceMember::Mute.
+	void SetMute(bool Mute);
+
+	/// \brief Server deaf.
+	bool Deaf() const;
+	/// Setter for DiscordClientGuildVoiceMember::Deaf.
+	void SetDeaf(bool Deaf);
+
+	/// \brief Self mute.
+	bool SelfMute() const;
+	/// Setter for DiscordClientGuildVoiceMember::SelfMute.
+	void SetSelfMute(bool SelfMute);
+
+	/// \brief Self deaf.
+	bool SelfDeaf() const;
+	/// Setter for DiscordClientGuildVoiceMember::SelfDeaf.
+	void SetSelfDeaf(bool SelfDeaf);
+
+	/// \brief Speaking state.
+	discordpp::DiscordClientGuildVoiceSpeakingState Speaking() const;
+	/// Setter for DiscordClientGuildVoiceMember::Speaking.
+	void SetSpeaking(discordpp::DiscordClientGuildVoiceSpeakingState Speaking);
+};
+
+/// \brief Channel snapshot.
+class DiscordClientGuildVoiceSnapshot {
+	/// \cond
+	mutable Discord_DiscordClientGuildVoiceSnapshot instance_{};
+	DiscordObjectState state_ = DiscordObjectState::Invalid;
+	/// \endcond
+
+public:
+	/// \cond
+	Discord_DiscordClientGuildVoiceSnapshot *instance() const { return &instance_; }
+	/// \endcond
+	/// \cond
+	explicit DiscordClientGuildVoiceSnapshot(Discord_DiscordClientGuildVoiceSnapshot instance,
+			DiscordObjectState state);
+	~DiscordClientGuildVoiceSnapshot();
+	/// \endcond
+	/// Move constructor for DiscordClientGuildVoiceSnapshot
+	DiscordClientGuildVoiceSnapshot(DiscordClientGuildVoiceSnapshot &&other) noexcept;
+	/// Move assignment operator for DiscordClientGuildVoiceSnapshot
+	DiscordClientGuildVoiceSnapshot &operator=(DiscordClientGuildVoiceSnapshot &&other) noexcept;
+	/// Uninitialized instance of DiscordClientGuildVoiceSnapshot
+	static const DiscordClientGuildVoiceSnapshot nullobj;
+	/// Returns true if the instance contains a valid object
+	operator bool() const { return state_ != DiscordObjectState::Invalid; }
+
+	/// Copy constructor for DiscordClientGuildVoiceSnapshot
+	DiscordClientGuildVoiceSnapshot(const DiscordClientGuildVoiceSnapshot &arg0);
+	/// Copy assignment operator for DiscordClientGuildVoiceSnapshot
+	DiscordClientGuildVoiceSnapshot &operator=(const DiscordClientGuildVoiceSnapshot &arg0);
+
+	/// \cond
+	void Drop();
+	/// \endcond
+
+	/// \brief Channel members.
+	std::vector<discordpp::DiscordClientGuildVoiceMember> Members() const;
+
+	/// \brief Voice channel.
+	discordpp::GuildChannel Channel() const;
+	/// Setter for DiscordClientGuildVoiceSnapshot::Channel.
+	void SetChannel(discordpp::GuildChannel Channel);
+
+	/// \brief Channel selected.
+	bool Selected() const;
+	/// Setter for DiscordClientGuildVoiceSnapshot::Selected.
+	void SetSelected(bool Selected);
+
+	/// \brief Speaking available.
+	bool SpeakingAvailable() const;
+	/// Setter for DiscordClientGuildVoiceSnapshot::SpeakingAvailable.
+	void SetSpeakingAvailable(bool SpeakingAvailable);
+};
+
 /// \brief Represents a summary of a DM conversation with a user.
 class UserMessageSummary {
 	/// \cond
@@ -3401,7 +3552,8 @@ public:
 /// \brief The Client class is the main entry point for the Discord SDK. All functionality is
 /// exposed through this class.
 ///
-/// See @ref getting_started "Getting Started" for more information on how to use the Client class.
+/// See [Getting Started](https://docs.discord.com/developers/discord-social-sdk/getting-started)
+/// for more information on how to use the Client class.
 class Client {
 	/// \cond
 	mutable Discord_Client instance_{};
@@ -3481,6 +3633,51 @@ public:
 		/// \brief Network
 		Network = 2,
 	};
+
+	/// \brief Receives a channel snapshot.
+	using GetDiscordClientGuildVoiceChannelCallback =
+			std::function<void(discordpp::ClientResult result,
+					discordpp::DiscordClientGuildVoiceSnapshot snapshot)>;
+
+	/// \brief Receives voice channels.
+	using GetDiscordClientGuildVoiceChannelsCallback =
+			std::function<void(discordpp::ClientResult result,
+					std::vector<discordpp::GuildChannel> channels)>;
+
+	/// \brief Receives a voice result.
+	using DiscordClientGuildVoiceResultCallback =
+			std::function<void(discordpp::ClientResult result)>;
+
+	/// \brief A channel subscription ended.
+	using DiscordClientGuildVoiceChannelErrorCallback =
+			std::function<void(uint64_t channelId, discordpp::ClientResult result)>;
+
+	/// \brief A member joined.
+	using DiscordClientGuildVoiceMemberAddedCallback =
+			std::function<void(uint64_t channelId, uint64_t userId)>;
+
+	/// \brief A member left.
+	using DiscordClientGuildVoiceMemberRemovedCallback =
+			std::function<void(uint64_t channelId, uint64_t userId)>;
+
+	/// \brief A member changed.
+	using DiscordClientGuildVoiceMemberUpdatedCallback =
+			std::function<void(uint64_t channelId, uint64_t userId)>;
+
+	/// \brief A member started speaking.
+	using DiscordClientGuildVoiceSpeakingStartedCallback =
+			std::function<void(uint64_t channelId, uint64_t userId)>;
+
+	/// \brief A member stopped speaking.
+	using DiscordClientGuildVoiceSpeakingStoppedCallback =
+			std::function<void(uint64_t channelId, uint64_t userId)>;
+
+	/// \brief The selected channel changed.
+	using DiscordClientVoiceChannelSelectedCallback = std::function<void(uint64_t channelId)>;
+
+	/// \brief The voice connection changed.
+	using DiscordClientVoiceConnectionStatusChangedCallback =
+			std::function<void(std::string state)>;
 
 	/// \brief Callback invoked when Client::EndCall completes.
 	using EndCallCallback = std::function<void()>;
@@ -3837,6 +4034,19 @@ public:
 	/// enable a better authorization experience for users!
 	static std::string GetDefaultPresenceScopes();
 
+	/// \brief Gets watched state, fetching unwatched channels.
+	/// !group GuildVoice
+	void GetDiscordClientGuildVoiceChannel(
+			uint64_t channelId,
+			discordpp::Client::GetDiscordClientGuildVoiceChannelCallback callback);
+
+	/// \brief Lists desktop guild voice channels.
+	/// Requires GetDefaultCommunicationScopes() (`sdk.social_layer`), not presence-only.
+	/// !group GuildVoice
+	void GetDiscordClientGuildVoiceChannels(
+			uint64_t guildId,
+			discordpp::Client::GetDiscordClientGuildVoiceChannelsCallback callback);
+
 	/// \brief Returns the git commit hash this version was built from.
 	static std::string GetVersionHash();
 
@@ -3849,14 +4059,77 @@ public:
 	/// \brief Returns the patch version of the Discord Social SDK.
 	static int32_t GetVersionPatch();
 
+	/// \brief Joins desktop voice. Requires CONNECT.
+	/// !group GuildVoice
+	void JoinDiscordClientGuildVoiceChannel(
+			uint64_t channelId,
+			bool force,
+			discordpp::Client::DiscordClientGuildVoiceResultCallback callback);
+
+	/// \brief Leaves the specified desktop voice channel.
+	/// !group GuildVoice
+	void LeaveDiscordClientGuildVoiceChannel(
+			uint64_t channelId,
+			discordpp::Client::DiscordClientGuildVoiceResultCallback callback);
+
+	/// \brief Sets the channel-error callback.
+	/// !group GuildVoice
+	void SetDiscordClientGuildVoiceChannelErrorCallback(
+			discordpp::Client::DiscordClientGuildVoiceChannelErrorCallback cb);
+
+	/// \brief Sets the member-added callback.
+	/// !group GuildVoice
+	void SetDiscordClientGuildVoiceMemberAddedCallback(
+			discordpp::Client::DiscordClientGuildVoiceMemberAddedCallback cb);
+
+	/// \brief Sets the member-removed callback.
+	/// !group GuildVoice
+	void SetDiscordClientGuildVoiceMemberRemovedCallback(
+			discordpp::Client::DiscordClientGuildVoiceMemberRemovedCallback cb);
+
+	/// \brief Sets the member-updated callback.
+	/// !group GuildVoice
+	void SetDiscordClientGuildVoiceMemberUpdatedCallback(
+			discordpp::Client::DiscordClientGuildVoiceMemberUpdatedCallback cb);
+
+	/// \brief Sets the speaking-started callback.
+	/// !group GuildVoice
+	void SetDiscordClientGuildVoiceSpeakingStartedCallback(
+			discordpp::Client::DiscordClientGuildVoiceSpeakingStartedCallback cb);
+
+	/// \brief Sets the speaking-stopped callback.
+	/// !group GuildVoice
+	void SetDiscordClientGuildVoiceSpeakingStoppedCallback(
+			discordpp::Client::DiscordClientGuildVoiceSpeakingStoppedCallback cb);
+
+	/// \brief Sets the channel-selected callback.
+	/// !group GuildVoice
+	void SetDiscordClientVoiceChannelSelectedCallback(
+			discordpp::Client::DiscordClientVoiceChannelSelectedCallback cb);
+
+	/// \brief Sets the connection-status callback.
+	/// !group GuildVoice
+	void SetDiscordClientVoiceConnectionStatusChangedCallback(
+			discordpp::Client::DiscordClientVoiceConnectionStatusChangedCallback cb);
+
 	/// \brief This function is used to override the default HTTP timeout for the websocket client.
 	void SetHttpRequestTimeout(int32_t httpTimeoutInMilliseconds);
 
 	/// \brief Converts the Status enum to a string.
 	static std::string StatusToString(discordpp::Client::Status type);
 
+	/// \brief Subscribes to channel events. Requires full social access.
+	/// !group GuildVoice
+	void SubscribeDiscordClientGuildVoiceChannel(
+			uint64_t channelId,
+			discordpp::Client::DiscordClientGuildVoiceResultCallback callback);
+
 	/// \brief Converts the Thread enum to a string.
 	static std::string ThreadToString(discordpp::Client::Thread type);
+
+	/// \brief Unsubscribes from channel events.
+	/// !group GuildVoice
+	void UnsubscribeDiscordClientGuildVoiceChannel(uint64_t channelId);
 
 	/// @name Audio
 	/// @{
@@ -3977,7 +4250,9 @@ public:
 
 	/// \brief Enables or disables Krisp noise cancellation.
 	///
-	/// Defaults to off. When enabled, noise suppression is automatically disabled.
+	/// Defaults to off. Enabling Krisp turns WebRTC noise suppression off. If Krisp fails to
+	/// initialize, noise cancellation is turned back off and noise suppression returns to the value
+	/// it had before this call.
 	void SetNoiseCancellation(bool on);
 
 	/// \brief Enables basic background noise suppression.
@@ -5706,6 +5981,19 @@ inline const char *EnumToString(discordpp::VoiceInputModeType value) {
 			return "VoiceActivity";
 		case discordpp::VoiceInputModeType::PushToTalk:
 			return "PushToTalk";
+		default:
+			return "unknown";
+	}
+}
+/// Converts a discordpp::DiscordClientGuildVoiceSpeakingState to a string.
+inline const char *EnumToString(discordpp::DiscordClientGuildVoiceSpeakingState value) {
+	switch (value) {
+		case discordpp::DiscordClientGuildVoiceSpeakingState::Unavailable:
+			return "Unavailable";
+		case discordpp::DiscordClientGuildVoiceSpeakingState::Silent:
+			return "Silent";
+		case discordpp::DiscordClientGuildVoiceSpeakingState::Speaking:
+			return "Speaking";
 		default:
 			return "unknown";
 	}
@@ -7957,8 +8245,10 @@ void Call::SetOnVoiceStateChangedCallback(discordpp::Call::OnVoiceStateChanged c
 		auto userData__typed = static_cast<Tcb__UserData *>(userData__);
 		userData__typed->delegate(userId);
 	};
-	Discord_Call_SetOnVoiceStateChangedCallback(
-			&instance_, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Call_SetOnVoiceStateChangedCallback(&instance_,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Call::SetParticipantChangedCallback(discordpp::Call::OnParticipantChanged cb) {
 	assert(state_ == DiscordObjectState::Owned);
@@ -7968,8 +8258,10 @@ void Call::SetParticipantChangedCallback(discordpp::Call::OnParticipantChanged c
 		auto userData__typed = static_cast<Tcb__UserData *>(userData__);
 		userData__typed->delegate(userId, added);
 	};
-	Discord_Call_SetParticipantChangedCallback(
-			&instance_, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Call_SetParticipantChangedCallback(&instance_,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Call::SetParticipantVolume(uint64_t userId, float volume) {
 	assert(state_ == DiscordObjectState::Owned);
@@ -8000,8 +8292,10 @@ void Call::SetSpeakingStatusChangedCallback(discordpp::Call::OnSpeakingStatusCha
 				auto userData__typed = static_cast<Tcb__UserData *>(userData__);
 				userData__typed->delegate(userId, isPlayingSound);
 			};
-	Discord_Call_SetSpeakingStatusChangedCallback(
-			&instance_, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Call_SetSpeakingStatusChangedCallback(&instance_,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Call::SetStatusChangedCallback(discordpp::Call::OnStatusChanged cb) {
 	assert(state_ == DiscordObjectState::Owned);
@@ -8014,8 +8308,10 @@ void Call::SetStatusChangedCallback(discordpp::Call::OnStatusChanged cb) {
 						static_cast<discordpp::Call::Error>(error),
 						errorDetail);
 			};
-	Discord_Call_SetStatusChangedCallback(
-			&instance_, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Call_SetStatusChangedCallback(&instance_,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Call::SetVADThreshold(bool automatic, float threshold) {
 	assert(state_ == DiscordObjectState::Owned);
@@ -9684,6 +9980,297 @@ void VoiceSettings::SetNoiseCancellation(bool NoiseCancellation) {
 	assert(state_ == DiscordObjectState::Owned);
 	Discord_VoiceSettings_SetNoiseCancellation(&instance_, NoiseCancellation);
 }
+const DiscordClientGuildVoiceMember DiscordClientGuildVoiceMember::nullobj{
+	{},
+	DiscordObjectState::Invalid
+};
+DiscordClientGuildVoiceMember::~DiscordClientGuildVoiceMember() {
+	if (state_ == DiscordObjectState::Owned) {
+		Drop();
+		state_ = DiscordObjectState::Invalid;
+	}
+}
+DiscordClientGuildVoiceMember::DiscordClientGuildVoiceMember(
+		DiscordClientGuildVoiceMember &&other) noexcept
+		: instance_(other.instance_),
+		  state_(other.state_) {
+	other.state_ = DiscordObjectState::Invalid;
+}
+DiscordClientGuildVoiceMember &DiscordClientGuildVoiceMember::operator=(
+		DiscordClientGuildVoiceMember &&other) noexcept {
+	if (this != &other) {
+		if (state_ == DiscordObjectState::Owned) {
+			Drop();
+		}
+		instance_ = other.instance_;
+		state_ = other.state_;
+		other.state_ = DiscordObjectState::Invalid;
+	}
+	return *this;
+}
+DiscordClientGuildVoiceMember::DiscordClientGuildVoiceMember(
+		const DiscordClientGuildVoiceMember &arg0) : instance_{},
+													 state_(DiscordObjectState::Invalid) {
+	if (arg0.state_ == DiscordObjectState::Owned) {
+		Discord_DiscordClientGuildVoiceMember_Clone(&instance_, arg0.instance());
+
+		state_ = DiscordObjectState::Owned;
+	}
+}
+DiscordClientGuildVoiceMember &DiscordClientGuildVoiceMember::operator=(
+		const DiscordClientGuildVoiceMember &arg0) {
+	if (this != &arg0) {
+		if (state_ == DiscordObjectState::Owned) {
+			Drop();
+			state_ = DiscordObjectState::Invalid;
+		}
+		if (arg0.state_ == DiscordObjectState::Owned) {
+			Discord_DiscordClientGuildVoiceMember_Clone(&instance_, arg0.instance());
+
+			state_ = DiscordObjectState::Owned;
+		}
+	}
+	return *this;
+}
+DiscordClientGuildVoiceMember::DiscordClientGuildVoiceMember(
+		Discord_DiscordClientGuildVoiceMember instance,
+		DiscordObjectState state) : instance_(instance),
+									state_(state) {
+}
+DiscordClientGuildVoiceMember::DiscordClientGuildVoiceMember() {
+	assert(state_ == DiscordObjectState::Invalid);
+	Discord_DiscordClientGuildVoiceMember_Init(&instance_);
+	state_ = DiscordObjectState::Owned;
+}
+void DiscordClientGuildVoiceMember::Drop() {
+	if (state_ != DiscordObjectState::Owned) {
+		return;
+	}
+	Discord_DiscordClientGuildVoiceMember_Drop(&instance_);
+	state_ = DiscordObjectState::Invalid;
+}
+uint64_t DiscordClientGuildVoiceMember::UserId() const {
+	assert(state_ == DiscordObjectState::Owned);
+	uint64_t returnValue__;
+	returnValue__ = Discord_DiscordClientGuildVoiceMember_UserId(&instance_);
+	return returnValue__;
+}
+void DiscordClientGuildVoiceMember::SetUserId(uint64_t UserId) {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_DiscordClientGuildVoiceMember_SetUserId(&instance_, UserId);
+}
+std::string DiscordClientGuildVoiceMember::DisplayName() const {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_String returnValueNative__;
+	Discord_DiscordClientGuildVoiceMember_DisplayName(&instance_, &returnValueNative__);
+	std::string returnValue__(reinterpret_cast<char *>(returnValueNative__.ptr),
+			returnValueNative__.size);
+	Discord_Free(returnValueNative__.ptr);
+	return returnValue__;
+}
+void DiscordClientGuildVoiceMember::SetDisplayName(std::string DisplayName) {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_String DisplayName__str{ (uint8_t *)(DisplayName.data()), DisplayName.size() };
+	Discord_DiscordClientGuildVoiceMember_SetDisplayName(&instance_, DisplayName__str);
+}
+std::string DiscordClientGuildVoiceMember::Username() const {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_String returnValueNative__;
+	Discord_DiscordClientGuildVoiceMember_Username(&instance_, &returnValueNative__);
+	std::string returnValue__(reinterpret_cast<char *>(returnValueNative__.ptr),
+			returnValueNative__.size);
+	Discord_Free(returnValueNative__.ptr);
+	return returnValue__;
+}
+void DiscordClientGuildVoiceMember::SetUsername(std::string Username) {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_String Username__str{ (uint8_t *)(Username.data()), Username.size() };
+	Discord_DiscordClientGuildVoiceMember_SetUsername(&instance_, Username__str);
+}
+std::optional<std::string> DiscordClientGuildVoiceMember::AvatarHash() const {
+	assert(state_ == DiscordObjectState::Owned);
+	bool returnIsNonNull__;
+	Discord_String returnValueNative__;
+	returnIsNonNull__ =
+			Discord_DiscordClientGuildVoiceMember_AvatarHash(&instance_, &returnValueNative__);
+	if (!returnIsNonNull__) {
+		return {};
+	}
+	std::string returnValue__(reinterpret_cast<char *>(returnValueNative__.ptr),
+			returnValueNative__.size);
+	Discord_Free(returnValueNative__.ptr);
+	return returnValue__;
+}
+void DiscordClientGuildVoiceMember::SetAvatarHash(std::optional<std::string> AvatarHash) {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_String AvatarHash__str{};
+	if (AvatarHash.has_value()) {
+		AvatarHash__str.ptr = reinterpret_cast<uint8_t *>(AvatarHash->data());
+		AvatarHash__str.size = AvatarHash->size();
+	}
+	Discord_DiscordClientGuildVoiceMember_SetAvatarHash(
+			&instance_, (AvatarHash.has_value() ? &AvatarHash__str : nullptr));
+}
+bool DiscordClientGuildVoiceMember::Mute() const {
+	assert(state_ == DiscordObjectState::Owned);
+	bool returnValue__;
+	returnValue__ = Discord_DiscordClientGuildVoiceMember_Mute(&instance_);
+	return returnValue__;
+}
+void DiscordClientGuildVoiceMember::SetMute(bool Mute) {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_DiscordClientGuildVoiceMember_SetMute(&instance_, Mute);
+}
+bool DiscordClientGuildVoiceMember::Deaf() const {
+	assert(state_ == DiscordObjectState::Owned);
+	bool returnValue__;
+	returnValue__ = Discord_DiscordClientGuildVoiceMember_Deaf(&instance_);
+	return returnValue__;
+}
+void DiscordClientGuildVoiceMember::SetDeaf(bool Deaf) {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_DiscordClientGuildVoiceMember_SetDeaf(&instance_, Deaf);
+}
+bool DiscordClientGuildVoiceMember::SelfMute() const {
+	assert(state_ == DiscordObjectState::Owned);
+	bool returnValue__;
+	returnValue__ = Discord_DiscordClientGuildVoiceMember_SelfMute(&instance_);
+	return returnValue__;
+}
+void DiscordClientGuildVoiceMember::SetSelfMute(bool SelfMute) {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_DiscordClientGuildVoiceMember_SetSelfMute(&instance_, SelfMute);
+}
+bool DiscordClientGuildVoiceMember::SelfDeaf() const {
+	assert(state_ == DiscordObjectState::Owned);
+	bool returnValue__;
+	returnValue__ = Discord_DiscordClientGuildVoiceMember_SelfDeaf(&instance_);
+	return returnValue__;
+}
+void DiscordClientGuildVoiceMember::SetSelfDeaf(bool SelfDeaf) {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_DiscordClientGuildVoiceMember_SetSelfDeaf(&instance_, SelfDeaf);
+}
+discordpp::DiscordClientGuildVoiceSpeakingState DiscordClientGuildVoiceMember::Speaking() const {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_DiscordClientGuildVoiceSpeakingState returnValue__;
+	returnValue__ = Discord_DiscordClientGuildVoiceMember_Speaking(&instance_);
+	return static_cast<discordpp::DiscordClientGuildVoiceSpeakingState>(returnValue__);
+}
+void DiscordClientGuildVoiceMember::SetSpeaking(
+		discordpp::DiscordClientGuildVoiceSpeakingState Speaking) {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_DiscordClientGuildVoiceMember_SetSpeaking(
+			&instance_, static_cast<Discord_DiscordClientGuildVoiceSpeakingState>(Speaking));
+}
+const DiscordClientGuildVoiceSnapshot DiscordClientGuildVoiceSnapshot::nullobj{
+	{},
+	DiscordObjectState::Invalid
+};
+DiscordClientGuildVoiceSnapshot::~DiscordClientGuildVoiceSnapshot() {
+	if (state_ == DiscordObjectState::Owned) {
+		Drop();
+		state_ = DiscordObjectState::Invalid;
+	}
+}
+DiscordClientGuildVoiceSnapshot::DiscordClientGuildVoiceSnapshot(
+		DiscordClientGuildVoiceSnapshot &&other) noexcept
+		: instance_(other.instance_),
+		  state_(other.state_) {
+	other.state_ = DiscordObjectState::Invalid;
+}
+DiscordClientGuildVoiceSnapshot &DiscordClientGuildVoiceSnapshot::operator=(
+		DiscordClientGuildVoiceSnapshot &&other) noexcept {
+	if (this != &other) {
+		if (state_ == DiscordObjectState::Owned) {
+			Drop();
+		}
+		instance_ = other.instance_;
+		state_ = other.state_;
+		other.state_ = DiscordObjectState::Invalid;
+	}
+	return *this;
+}
+DiscordClientGuildVoiceSnapshot::DiscordClientGuildVoiceSnapshot(
+		const DiscordClientGuildVoiceSnapshot &arg0) : instance_{},
+													   state_(DiscordObjectState::Invalid) {
+	if (arg0.state_ == DiscordObjectState::Owned) {
+		Discord_DiscordClientGuildVoiceSnapshot_Clone(&instance_, arg0.instance());
+
+		state_ = DiscordObjectState::Owned;
+	}
+}
+DiscordClientGuildVoiceSnapshot &DiscordClientGuildVoiceSnapshot::operator=(
+		const DiscordClientGuildVoiceSnapshot &arg0) {
+	if (this != &arg0) {
+		if (state_ == DiscordObjectState::Owned) {
+			Drop();
+			state_ = DiscordObjectState::Invalid;
+		}
+		if (arg0.state_ == DiscordObjectState::Owned) {
+			Discord_DiscordClientGuildVoiceSnapshot_Clone(&instance_, arg0.instance());
+
+			state_ = DiscordObjectState::Owned;
+		}
+	}
+	return *this;
+}
+DiscordClientGuildVoiceSnapshot::DiscordClientGuildVoiceSnapshot(
+		Discord_DiscordClientGuildVoiceSnapshot instance,
+		DiscordObjectState state) : instance_(instance),
+									state_(state) {
+}
+void DiscordClientGuildVoiceSnapshot::Drop() {
+	if (state_ != DiscordObjectState::Owned) {
+		return;
+	}
+	Discord_DiscordClientGuildVoiceSnapshot_Drop(&instance_);
+	state_ = DiscordObjectState::Invalid;
+}
+std::vector<discordpp::DiscordClientGuildVoiceMember> DiscordClientGuildVoiceSnapshot::Members()
+		const {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_DiscordClientGuildVoiceMemberSpan returnValueNative__;
+	Discord_DiscordClientGuildVoiceSnapshot_Members(&instance_, &returnValueNative__);
+	std::vector<discordpp::DiscordClientGuildVoiceMember> returnValue__;
+	returnValue__.reserve(returnValueNative__.size);
+	for (size_t i__ = 0; i__ < returnValueNative__.size; ++i__) {
+		returnValue__.emplace_back(returnValueNative__.ptr[i__], DiscordObjectState::Owned);
+	}
+	Discord_Free(returnValueNative__.ptr);
+	return returnValue__;
+}
+discordpp::GuildChannel DiscordClientGuildVoiceSnapshot::Channel() const {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_GuildChannel returnValueNative__{};
+	Discord_DiscordClientGuildVoiceSnapshot_Channel(&instance_, &returnValueNative__);
+	discordpp::GuildChannel returnValue__(returnValueNative__, DiscordObjectState::Owned);
+	return returnValue__;
+}
+void DiscordClientGuildVoiceSnapshot::SetChannel(discordpp::GuildChannel Channel) {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_DiscordClientGuildVoiceSnapshot_SetChannel(&instance_, Channel.instance());
+}
+bool DiscordClientGuildVoiceSnapshot::Selected() const {
+	assert(state_ == DiscordObjectState::Owned);
+	bool returnValue__;
+	returnValue__ = Discord_DiscordClientGuildVoiceSnapshot_Selected(&instance_);
+	return returnValue__;
+}
+void DiscordClientGuildVoiceSnapshot::SetSelected(bool Selected) {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_DiscordClientGuildVoiceSnapshot_SetSelected(&instance_, Selected);
+}
+bool DiscordClientGuildVoiceSnapshot::SpeakingAvailable() const {
+	assert(state_ == DiscordObjectState::Owned);
+	bool returnValue__;
+	returnValue__ = Discord_DiscordClientGuildVoiceSnapshot_SpeakingAvailable(&instance_);
+	return returnValue__;
+}
+void DiscordClientGuildVoiceSnapshot::SetSpeakingAvailable(bool SpeakingAvailable) {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_DiscordClientGuildVoiceSnapshot_SetSpeakingAvailable(&instance_, SpeakingAvailable);
+}
 const UserMessageSummary UserMessageSummary::nullobj{ {}, DiscordObjectState::Invalid };
 UserMessageSummary::~UserMessageSummary() {
 	if (state_ == DiscordObjectState::Owned) {
@@ -9972,6 +10559,52 @@ std::string Client::GetDefaultPresenceScopes() {
 	Discord_Free(returnValueNative__.ptr);
 	return returnValue__;
 }
+void Client::GetDiscordClientGuildVoiceChannel(
+		uint64_t channelId,
+		discordpp::Client::GetDiscordClientGuildVoiceChannelCallback callback) {
+	assert(state_ == DiscordObjectState::Owned);
+	using Tcallback__UserData = TDelegateUserData<std::remove_reference_t<decltype(callback)>>;
+	auto callback__userData = new Tcallback__UserData(callback);
+	Discord_Client_GetDiscordClientGuildVoiceChannelCallback callback__native =
+			[](auto result, auto snapshot, void *userData__) {
+				auto userData__typed = static_cast<Tcallback__UserData *>(userData__);
+				discordpp::ClientResult result__obj(*result, DiscordObjectState::Owned);
+				discordpp::DiscordClientGuildVoiceSnapshot snapshot__obj(*snapshot,
+						DiscordObjectState::Owned);
+				userData__typed->delegate(std::move(result__obj), std::move(snapshot__obj));
+			};
+	Discord_Client_GetDiscordClientGuildVoiceChannel(
+			&instance_,
+			channelId,
+			(callback__userData->delegate ? callback__native : nullptr),
+			Tcallback__UserData::Free,
+			callback__userData);
+}
+void Client::GetDiscordClientGuildVoiceChannels(
+		uint64_t guildId,
+		discordpp::Client::GetDiscordClientGuildVoiceChannelsCallback callback) {
+	assert(state_ == DiscordObjectState::Owned);
+	using Tcallback__UserData = TDelegateUserData<std::remove_reference_t<decltype(callback)>>;
+	auto callback__userData = new Tcallback__UserData(callback);
+	Discord_Client_GetDiscordClientGuildVoiceChannelsCallback callback__native =
+			[](auto result, auto channels, void *userData__) {
+				auto userData__typed = static_cast<Tcallback__UserData *>(userData__);
+				discordpp::ClientResult result__obj(*result, DiscordObjectState::Owned);
+				std::vector<discordpp::GuildChannel> channels__vec;
+				channels__vec.reserve(channels.size);
+				for (size_t i__ = 0; i__ < channels.size; ++i__) {
+					channels__vec.emplace_back(channels.ptr[i__], DiscordObjectState::Owned);
+				}
+				Discord_Free(channels.ptr);
+				userData__typed->delegate(std::move(result__obj), std::move(channels__vec));
+			};
+	Discord_Client_GetDiscordClientGuildVoiceChannels(
+			&instance_,
+			guildId,
+			(callback__userData->delegate ? callback__native : nullptr),
+			Tcallback__UserData::Free,
+			callback__userData);
+}
 std::string Client::GetVersionHash() {
 	Discord_String returnValueNative__;
 	Discord_Client_GetVersionHash(&returnValueNative__);
@@ -9995,6 +10628,177 @@ int32_t Client::GetVersionPatch() {
 	returnValue__ = Discord_Client_GetVersionPatch();
 	return returnValue__;
 }
+void Client::JoinDiscordClientGuildVoiceChannel(
+		uint64_t channelId,
+		bool force,
+		discordpp::Client::DiscordClientGuildVoiceResultCallback callback) {
+	assert(state_ == DiscordObjectState::Owned);
+	using Tcallback__UserData = TDelegateUserData<std::remove_reference_t<decltype(callback)>>;
+	auto callback__userData = new Tcallback__UserData(callback);
+	Discord_Client_DiscordClientGuildVoiceResultCallback callback__native = [](auto result,
+																					void *userData__) {
+		auto userData__typed = static_cast<Tcallback__UserData *>(userData__);
+		discordpp::ClientResult result__obj(*result, DiscordObjectState::Owned);
+		userData__typed->delegate(std::move(result__obj));
+	};
+	Discord_Client_JoinDiscordClientGuildVoiceChannel(
+			&instance_,
+			channelId,
+			force,
+			(callback__userData->delegate ? callback__native : nullptr),
+			Tcallback__UserData::Free,
+			callback__userData);
+}
+void Client::LeaveDiscordClientGuildVoiceChannel(
+		uint64_t channelId,
+		discordpp::Client::DiscordClientGuildVoiceResultCallback callback) {
+	assert(state_ == DiscordObjectState::Owned);
+	using Tcallback__UserData = TDelegateUserData<std::remove_reference_t<decltype(callback)>>;
+	auto callback__userData = new Tcallback__UserData(callback);
+	Discord_Client_DiscordClientGuildVoiceResultCallback callback__native = [](auto result,
+																					void *userData__) {
+		auto userData__typed = static_cast<Tcallback__UserData *>(userData__);
+		discordpp::ClientResult result__obj(*result, DiscordObjectState::Owned);
+		userData__typed->delegate(std::move(result__obj));
+	};
+	Discord_Client_LeaveDiscordClientGuildVoiceChannel(
+			&instance_,
+			channelId,
+			(callback__userData->delegate ? callback__native : nullptr),
+			Tcallback__UserData::Free,
+			callback__userData);
+}
+void Client::SetDiscordClientGuildVoiceChannelErrorCallback(
+		discordpp::Client::DiscordClientGuildVoiceChannelErrorCallback cb) {
+	assert(state_ == DiscordObjectState::Owned);
+	using Tcb__UserData = TDelegateUserData<std::remove_reference_t<decltype(cb)>>;
+	auto cb__userData = new Tcb__UserData(cb);
+	Discord_Client_DiscordClientGuildVoiceChannelErrorCallback cb__native =
+			[](auto channelId, auto result, void *userData__) {
+				auto userData__typed = static_cast<Tcb__UserData *>(userData__);
+				discordpp::ClientResult result__obj(*result, DiscordObjectState::Owned);
+				userData__typed->delegate(channelId, std::move(result__obj));
+			};
+	Discord_Client_SetDiscordClientGuildVoiceChannelErrorCallback(
+			&instance_,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
+}
+void Client::SetDiscordClientGuildVoiceMemberAddedCallback(
+		discordpp::Client::DiscordClientGuildVoiceMemberAddedCallback cb) {
+	assert(state_ == DiscordObjectState::Owned);
+	using Tcb__UserData = TDelegateUserData<std::remove_reference_t<decltype(cb)>>;
+	auto cb__userData = new Tcb__UserData(cb);
+	Discord_Client_DiscordClientGuildVoiceMemberAddedCallback cb__native =
+			[](auto channelId, auto userId, void *userData__) {
+				auto userData__typed = static_cast<Tcb__UserData *>(userData__);
+				userData__typed->delegate(channelId, userId);
+			};
+	Discord_Client_SetDiscordClientGuildVoiceMemberAddedCallback(
+			&instance_,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
+}
+void Client::SetDiscordClientGuildVoiceMemberRemovedCallback(
+		discordpp::Client::DiscordClientGuildVoiceMemberRemovedCallback cb) {
+	assert(state_ == DiscordObjectState::Owned);
+	using Tcb__UserData = TDelegateUserData<std::remove_reference_t<decltype(cb)>>;
+	auto cb__userData = new Tcb__UserData(cb);
+	Discord_Client_DiscordClientGuildVoiceMemberRemovedCallback cb__native =
+			[](auto channelId, auto userId, void *userData__) {
+				auto userData__typed = static_cast<Tcb__UserData *>(userData__);
+				userData__typed->delegate(channelId, userId);
+			};
+	Discord_Client_SetDiscordClientGuildVoiceMemberRemovedCallback(
+			&instance_,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
+}
+void Client::SetDiscordClientGuildVoiceMemberUpdatedCallback(
+		discordpp::Client::DiscordClientGuildVoiceMemberUpdatedCallback cb) {
+	assert(state_ == DiscordObjectState::Owned);
+	using Tcb__UserData = TDelegateUserData<std::remove_reference_t<decltype(cb)>>;
+	auto cb__userData = new Tcb__UserData(cb);
+	Discord_Client_DiscordClientGuildVoiceMemberUpdatedCallback cb__native =
+			[](auto channelId, auto userId, void *userData__) {
+				auto userData__typed = static_cast<Tcb__UserData *>(userData__);
+				userData__typed->delegate(channelId, userId);
+			};
+	Discord_Client_SetDiscordClientGuildVoiceMemberUpdatedCallback(
+			&instance_,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
+}
+void Client::SetDiscordClientGuildVoiceSpeakingStartedCallback(
+		discordpp::Client::DiscordClientGuildVoiceSpeakingStartedCallback cb) {
+	assert(state_ == DiscordObjectState::Owned);
+	using Tcb__UserData = TDelegateUserData<std::remove_reference_t<decltype(cb)>>;
+	auto cb__userData = new Tcb__UserData(cb);
+	Discord_Client_DiscordClientGuildVoiceSpeakingStartedCallback cb__native =
+			[](auto channelId, auto userId, void *userData__) {
+				auto userData__typed = static_cast<Tcb__UserData *>(userData__);
+				userData__typed->delegate(channelId, userId);
+			};
+	Discord_Client_SetDiscordClientGuildVoiceSpeakingStartedCallback(
+			&instance_,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
+}
+void Client::SetDiscordClientGuildVoiceSpeakingStoppedCallback(
+		discordpp::Client::DiscordClientGuildVoiceSpeakingStoppedCallback cb) {
+	assert(state_ == DiscordObjectState::Owned);
+	using Tcb__UserData = TDelegateUserData<std::remove_reference_t<decltype(cb)>>;
+	auto cb__userData = new Tcb__UserData(cb);
+	Discord_Client_DiscordClientGuildVoiceSpeakingStoppedCallback cb__native =
+			[](auto channelId, auto userId, void *userData__) {
+				auto userData__typed = static_cast<Tcb__UserData *>(userData__);
+				userData__typed->delegate(channelId, userId);
+			};
+	Discord_Client_SetDiscordClientGuildVoiceSpeakingStoppedCallback(
+			&instance_,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
+}
+void Client::SetDiscordClientVoiceChannelSelectedCallback(
+		discordpp::Client::DiscordClientVoiceChannelSelectedCallback cb) {
+	assert(state_ == DiscordObjectState::Owned);
+	using Tcb__UserData = TDelegateUserData<std::remove_reference_t<decltype(cb)>>;
+	auto cb__userData = new Tcb__UserData(cb);
+	Discord_Client_DiscordClientVoiceChannelSelectedCallback cb__native = [](auto channelId,
+																				  void *userData__) {
+		auto userData__typed = static_cast<Tcb__UserData *>(userData__);
+		userData__typed->delegate(channelId);
+	};
+	Discord_Client_SetDiscordClientVoiceChannelSelectedCallback(
+			&instance_,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
+}
+void Client::SetDiscordClientVoiceConnectionStatusChangedCallback(
+		discordpp::Client::DiscordClientVoiceConnectionStatusChangedCallback cb) {
+	assert(state_ == DiscordObjectState::Owned);
+	using Tcb__UserData = TDelegateUserData<std::remove_reference_t<decltype(cb)>>;
+	auto cb__userData = new Tcb__UserData(cb);
+	Discord_Client_DiscordClientVoiceConnectionStatusChangedCallback cb__native =
+			[](auto state, void *userData__) {
+				auto userData__typed = static_cast<Tcb__UserData *>(userData__);
+				std::string state__str(reinterpret_cast<char *>(state.ptr), state.size);
+				userData__typed->delegate(std::move(state__str));
+				Discord_Free(state.ptr);
+			};
+	Discord_Client_SetDiscordClientVoiceConnectionStatusChangedCallback(
+			&instance_,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
+}
 void Client::SetHttpRequestTimeout(int32_t httpTimeoutInMilliseconds) {
 	assert(state_ == DiscordObjectState::Owned);
 	Discord_Client_SetHttpRequestTimeout(&instance_, httpTimeoutInMilliseconds);
@@ -10007,6 +10811,25 @@ std::string Client::StatusToString(discordpp::Client::Status type) {
 	Discord_Free(returnValueNative__.ptr);
 	return returnValue__;
 }
+void Client::SubscribeDiscordClientGuildVoiceChannel(
+		uint64_t channelId,
+		discordpp::Client::DiscordClientGuildVoiceResultCallback callback) {
+	assert(state_ == DiscordObjectState::Owned);
+	using Tcallback__UserData = TDelegateUserData<std::remove_reference_t<decltype(callback)>>;
+	auto callback__userData = new Tcallback__UserData(callback);
+	Discord_Client_DiscordClientGuildVoiceResultCallback callback__native = [](auto result,
+																					void *userData__) {
+		auto userData__typed = static_cast<Tcallback__UserData *>(userData__);
+		discordpp::ClientResult result__obj(*result, DiscordObjectState::Owned);
+		userData__typed->delegate(std::move(result__obj));
+	};
+	Discord_Client_SubscribeDiscordClientGuildVoiceChannel(
+			&instance_,
+			channelId,
+			(callback__userData->delegate ? callback__native : nullptr),
+			Tcallback__UserData::Free,
+			callback__userData);
+}
 std::string Client::ThreadToString(discordpp::Client::Thread type) {
 	Discord_String returnValueNative__;
 	Discord_Client_ThreadToString(static_cast<Discord_Client_Thread>(type), &returnValueNative__);
@@ -10014,6 +10837,10 @@ std::string Client::ThreadToString(discordpp::Client::Thread type) {
 			returnValueNative__.size);
 	Discord_Free(returnValueNative__.ptr);
 	return returnValue__;
+}
+void Client::UnsubscribeDiscordClientGuildVoiceChannel(uint64_t channelId) {
+	assert(state_ == DiscordObjectState::Owned);
+	Discord_Client_UnsubscribeDiscordClientGuildVoiceChannel(&instance_, channelId);
 }
 void Client::EndCall(uint64_t channelId, discordpp::Client::EndCallCallback callback) {
 	assert(state_ == DiscordObjectState::Owned);
@@ -10023,8 +10850,11 @@ void Client::EndCall(uint64_t channelId, discordpp::Client::EndCallCallback call
 		auto userData__typed = static_cast<Tcallback__UserData *>(userData__);
 		userData__typed->delegate();
 	};
-	Discord_Client_EndCall(
-			&instance_, channelId, callback__native, Tcallback__UserData::Free, callback__userData);
+	Discord_Client_EndCall(&instance_,
+			channelId,
+			(callback__userData->delegate ? callback__native : nullptr),
+			Tcallback__UserData::Free,
+			callback__userData);
 }
 void Client::EndCalls(discordpp::Client::EndCallsCallback callback) {
 	assert(state_ == DiscordObjectState::Owned);
@@ -10034,8 +10864,10 @@ void Client::EndCalls(discordpp::Client::EndCallsCallback callback) {
 		auto userData__typed = static_cast<Tcallback__UserData *>(userData__);
 		userData__typed->delegate();
 	};
-	Discord_Client_EndCalls(
-			&instance_, callback__native, Tcallback__UserData::Free, callback__userData);
+	Discord_Client_EndCalls(&instance_,
+			(callback__userData->delegate ? callback__native : nullptr),
+			Tcallback__UserData::Free,
+			callback__userData);
 }
 discordpp::Call Client::GetCall(uint64_t channelId) {
 	assert(state_ == DiscordObjectState::Owned);
@@ -10068,7 +10900,10 @@ void Client::GetCurrentInputDevice(discordpp::Client::GetCurrentInputDeviceCallb
 		discordpp::AudioDevice device__obj(*device, DiscordObjectState::Owned);
 		userData__typed->delegate(std::move(device__obj));
 	};
-	Discord_Client_GetCurrentInputDevice(&instance_, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_GetCurrentInputDevice(&instance_,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::GetCurrentOutputDevice(discordpp::Client::GetCurrentOutputDeviceCallback cb) {
 	assert(state_ == DiscordObjectState::Owned);
@@ -10079,8 +10914,10 @@ void Client::GetCurrentOutputDevice(discordpp::Client::GetCurrentOutputDeviceCal
 		discordpp::AudioDevice device__obj(*device, DiscordObjectState::Owned);
 		userData__typed->delegate(std::move(device__obj));
 	};
-	Discord_Client_GetCurrentOutputDevice(
-			&instance_, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_GetCurrentOutputDevice(&instance_,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::GetInputDevices(discordpp::Client::GetInputDevicesCallback cb) {
 	assert(state_ == DiscordObjectState::Owned);
@@ -10096,7 +10933,10 @@ void Client::GetInputDevices(discordpp::Client::GetInputDevicesCallback cb) {
 		Discord_Free(devices.ptr);
 		userData__typed->delegate(std::move(devices__vec));
 	};
-	Discord_Client_GetInputDevices(&instance_, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_GetInputDevices(&instance_,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 float Client::GetInputVolume() {
 	assert(state_ == DiscordObjectState::Owned);
@@ -10118,7 +10958,10 @@ void Client::GetOutputDevices(discordpp::Client::GetOutputDevicesCallback cb) {
 		Discord_Free(devices.ptr);
 		userData__typed->delegate(std::move(devices__vec));
 	};
-	Discord_Client_GetOutputDevices(&instance_, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_GetOutputDevices(&instance_,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 float Client::GetOutputVolume() {
 	assert(state_ == DiscordObjectState::Owned);
@@ -10149,7 +10992,10 @@ void Client::GetVoiceSettings(discordpp::Client::GetVoiceSettingsCallback cb) {
 				discordpp::VoiceSettings settings__obj(*settings, DiscordObjectState::Owned);
 				userData__typed->delegate(std::move(result__obj), std::move(settings__obj));
 			};
-	Discord_Client_GetVoiceSettings(&instance_, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_GetVoiceSettings(&instance_,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::SetAecDump(bool on) {
 	assert(state_ == DiscordObjectState::Owned);
@@ -10181,7 +11027,10 @@ void Client::SetDeviceChangeCallback(discordpp::Client::DeviceChangeCallback cal
 				userData__typed->delegate(std::move(inputDevices__vec), std::move(outputDevices__vec));
 			};
 	Discord_Client_SetDeviceChangeCallback(
-			&instance_, callback__native, Tcallback__UserData::Free, callback__userData);
+			&instance_,
+			(callback__userData->delegate ? callback__native : nullptr),
+			Tcallback__UserData::Free,
+			callback__userData);
 }
 void Client::SetEchoCancellation(bool on) {
 	assert(state_ == DiscordObjectState::Owned);
@@ -10201,8 +11050,11 @@ void Client::SetInputDevice(std::string deviceId, discordpp::Client::SetInputDev
 		discordpp::ClientResult result__obj(*result, DiscordObjectState::Owned);
 		userData__typed->delegate(std::move(result__obj));
 	};
-	Discord_Client_SetInputDevice(
-			&instance_, deviceId__str, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_SetInputDevice(&instance_,
+			deviceId__str,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::SetInputVolume(float inputVolume) {
 	assert(state_ == DiscordObjectState::Owned);
@@ -10218,7 +11070,10 @@ void Client::SetNoAudioInputCallback(discordpp::Client::NoAudioInputCallback cal
 		userData__typed->delegate(inputDetected);
 	};
 	Discord_Client_SetNoAudioInputCallback(
-			&instance_, callback__native, Tcallback__UserData::Free, callback__userData);
+			&instance_,
+			(callback__userData->delegate ? callback__native : nullptr),
+			Tcallback__UserData::Free,
+			callback__userData);
 }
 void Client::SetNoAudioInputThreshold(float dBFSThreshold) {
 	assert(state_ == DiscordObjectState::Owned);
@@ -10246,8 +11101,11 @@ void Client::SetOutputDevice(std::string deviceId, discordpp::Client::SetOutputD
 		discordpp::ClientResult result__obj(*result, DiscordObjectState::Owned);
 		userData__typed->delegate(std::move(result__obj));
 	};
-	Discord_Client_SetOutputDevice(
-			&instance_, deviceId__str, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_SetOutputDevice(&instance_,
+			deviceId__str,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::SetOutputVolume(float outputVolume) {
 	assert(state_ == DiscordObjectState::Owned);
@@ -10283,7 +11141,10 @@ void Client::SetVoiceParticipantChangedCallback(
 				userData__typed->delegate(lobbyId, memberId, added);
 			};
 	Discord_Client_SetVoiceParticipantChangedCallback(
-			&instance_, cb__native, Tcb__UserData::Free, cb__userData);
+			&instance_,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::SetVoiceSettingsUpdatedCallback(
 		discordpp::Client::VoiceSettingsUpdatedCallback callback) {
@@ -10297,7 +11158,10 @@ void Client::SetVoiceSettingsUpdatedCallback(
 		userData__typed->delegate(std::move(settings__obj));
 	};
 	Discord_Client_SetVoiceSettingsUpdatedCallback(
-			&instance_, callback__native, Tcallback__UserData::Free, callback__userData);
+			&instance_,
+			(callback__userData->delegate ? callback__native : nullptr),
+			Tcallback__UserData::Free,
+			callback__userData);
 }
 bool Client::ShowAudioRoutePicker() {
 	assert(state_ == DiscordObjectState::Owned);
@@ -10342,12 +11206,13 @@ discordpp::Call Client::StartCallWithAudioCallbacks(
 				auto userData__typed = static_cast<TcapturedCb__UserData *>(userData__);
 				userData__typed->delegate(data, samplesPerChannel, sampleRate, channels);
 			};
-	returnIsNonNull__ = Discord_Client_StartCallWithAudioCallbacks(&instance_,
+	returnIsNonNull__ = Discord_Client_StartCallWithAudioCallbacks(
+			&instance_,
 			lobbyId,
-			receivedCb__native,
+			(receivedCb__userData->delegate ? receivedCb__native : nullptr),
 			TreceivedCb__UserData::Free,
 			receivedCb__userData,
-			capturedCb__native,
+			(capturedCb__userData->delegate ? capturedCb__native : nullptr),
 			TcapturedCb__UserData::Free,
 			capturedCb__userData,
 			&returnValueNative__);
@@ -10380,8 +11245,11 @@ void Client::Authorize(discordpp::AuthorizationArgs args,
 				Discord_Free(redirectUri.ptr);
 				Discord_Free(code.ptr);
 			};
-	Discord_Client_Authorize(
-			&instance_, args.instance(), callback__native, Tcallback__UserData::Free, callback__userData);
+	Discord_Client_Authorize(&instance_,
+			args.instance(),
+			(callback__userData->delegate ? callback__native : nullptr),
+			Tcallback__UserData::Free,
+			callback__userData);
 }
 void Client::CloseAuthorizeDeviceScreen() {
 	assert(state_ == DiscordObjectState::Owned);
@@ -10424,7 +11292,7 @@ void Client::ExchangeChildToken(std::string const &parentApplicationToken,
 	Discord_Client_ExchangeChildToken(&instance_,
 			parentApplicationToken__str,
 			childApplicationId,
-			callback__native,
+			(callback__userData->delegate ? callback__native : nullptr),
 			Tcallback__UserData::Free,
 			callback__userData);
 }
@@ -10446,7 +11314,7 @@ void Client::FetchCurrentUser(discordpp::AuthorizationTokenType tokenType,
 	Discord_Client_FetchCurrentUser(&instance_,
 			static_cast<Discord_AuthorizationTokenType>(tokenType),
 			token__str,
-			callback__native,
+			(callback__userData->delegate ? callback__native : nullptr),
 			Tcallback__UserData::Free,
 			callback__userData);
 }
@@ -10486,7 +11354,7 @@ void Client::GetProvisionalToken(uint64_t applicationId,
 			applicationId,
 			static_cast<Discord_AuthenticationExternalAuthType>(externalAuthType),
 			externalAuthToken__str,
-			callback__native,
+			(callback__userData->delegate ? callback__native : nullptr),
 			Tcallback__UserData::Free,
 			callback__userData);
 }
@@ -10528,7 +11396,7 @@ void Client::GetToken(uint64_t applicationId,
 			code__str,
 			codeVerifier__str,
 			redirectUri__str,
-			callback__native,
+			(callback__userData->delegate ? callback__native : nullptr),
 			Tcallback__UserData::Free,
 			callback__userData);
 }
@@ -10559,8 +11427,11 @@ void Client::GetTokenFromDevice(discordpp::DeviceAuthorizationArgs args,
 		Discord_Free(refreshToken.ptr);
 		Discord_Free(accessToken.ptr);
 	};
-	Discord_Client_GetTokenFromDevice(
-			&instance_, args.instance(), callback__native, Tcallback__UserData::Free, callback__userData);
+	Discord_Client_GetTokenFromDevice(&instance_,
+			args.instance(),
+			(callback__userData->delegate ? callback__native : nullptr),
+			Tcallback__UserData::Free,
+			callback__userData);
 }
 void Client::GetTokenFromDeviceProvisionalMerge(
 		discordpp::DeviceAuthorizationArgs args,
@@ -10599,7 +11470,7 @@ void Client::GetTokenFromDeviceProvisionalMerge(
 			args.instance(),
 			static_cast<Discord_AuthenticationExternalAuthType>(externalAuthType),
 			externalAuthToken__str,
-			callback__native,
+			(callback__userData->delegate ? callback__native : nullptr),
 			Tcallback__UserData::Free,
 			callback__userData);
 }
@@ -10649,7 +11520,7 @@ void Client::GetTokenFromProvisionalMerge(
 			redirectUri__str,
 			static_cast<Discord_AuthenticationExternalAuthType>(externalAuthType),
 			externalAuthToken__str,
-			callback__native,
+			(callback__userData->delegate ? callback__native : nullptr),
 			Tcallback__UserData::Free,
 			callback__userData);
 }
@@ -10700,7 +11571,7 @@ void Client::RefreshToken(uint64_t applicationId,
 	Discord_Client_RefreshToken(&instance_,
 			applicationId,
 			refreshToken__str,
-			callback__native,
+			(callback__userData->delegate ? callback__native : nullptr),
 			Tcallback__UserData::Free,
 			callback__userData);
 }
@@ -10713,7 +11584,10 @@ void Client::RegisterAuthorizeRequestCallback(discordpp::Client::AuthorizeReques
 		userData__typed->delegate();
 	};
 	Discord_Client_RegisterAuthorizeRequestCallback(
-			&instance_, callback__native, Tcallback__UserData::Free, callback__userData);
+			&instance_,
+			(callback__userData->delegate ? callback__native : nullptr),
+			Tcallback__UserData::Free,
+			callback__userData);
 }
 void Client::RemoveAuthorizeRequestCallback() {
 	assert(state_ == DiscordObjectState::Owned);
@@ -10734,7 +11608,7 @@ void Client::RevokeToken(uint64_t applicationId,
 	Discord_Client_RevokeToken(&instance_,
 			applicationId,
 			token__str,
-			callback__native,
+			(callback__userData->delegate ? callback__native : nullptr),
 			Tcallback__UserData::Free,
 			callback__userData);
 }
@@ -10748,7 +11622,10 @@ void Client::SetAuthorizeDeviceScreenClosedCallback(
 		userData__typed->delegate();
 	};
 	Discord_Client_SetAuthorizeDeviceScreenClosedCallback(
-			&instance_, cb__native, Tcb__UserData::Free, cb__userData);
+			&instance_,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::SetGameWindowPid(int32_t pid) {
 	assert(state_ == DiscordObjectState::Owned);
@@ -10763,7 +11640,10 @@ void Client::SetTokenExpirationCallback(discordpp::Client::TokenExpirationCallba
 		userData__typed->delegate();
 	};
 	Discord_Client_SetTokenExpirationCallback(
-			&instance_, callback__native, Tcallback__UserData::Free, callback__userData);
+			&instance_,
+			(callback__userData->delegate ? callback__native : nullptr),
+			Tcallback__UserData::Free,
+			callback__userData);
 }
 void Client::UnmergeIntoProvisionalAccount(
 		uint64_t applicationId,
@@ -10786,7 +11666,7 @@ void Client::UnmergeIntoProvisionalAccount(
 			applicationId,
 			static_cast<Discord_AuthenticationExternalAuthType>(externalAuthType),
 			externalAuthToken__str,
-			callback__native,
+			(callback__userData->delegate ? callback__native : nullptr),
 			Tcallback__UserData::Free,
 			callback__userData);
 }
@@ -10804,7 +11684,11 @@ void Client::UpdateProvisionalAccountDisplayName(
 				userData__typed->delegate(std::move(result__obj));
 			};
 	Discord_Client_UpdateProvisionalAccountDisplayName(
-			&instance_, name__str, callback__native, Tcallback__UserData::Free, callback__userData);
+			&instance_,
+			name__str,
+			(callback__userData->delegate ? callback__native : nullptr),
+			Tcallback__UserData::Free,
+			callback__userData);
 }
 void Client::UpdateToken(discordpp::AuthorizationTokenType tokenType,
 		std::string token,
@@ -10821,7 +11705,7 @@ void Client::UpdateToken(discordpp::AuthorizationTokenType tokenType,
 	Discord_Client_UpdateToken(&instance_,
 			static_cast<Discord_AuthorizationTokenType>(tokenType),
 			token__str,
-			callback__native,
+			(callback__userData->delegate ? callback__native : nullptr),
 			Tcallback__UserData::Free,
 			callback__userData);
 }
@@ -10842,8 +11726,12 @@ void Client::DeleteUserMessage(uint64_t recipientId,
 		discordpp::ClientResult result__obj(*result, DiscordObjectState::Owned);
 		userData__typed->delegate(std::move(result__obj));
 	};
-	Discord_Client_DeleteUserMessage(
-			&instance_, recipientId, messageId, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_DeleteUserMessage(&instance_,
+			recipientId,
+			messageId,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::EditUserMessage(uint64_t recipientId,
 		uint64_t messageId,
@@ -10862,7 +11750,7 @@ void Client::EditUserMessage(uint64_t recipientId,
 			recipientId,
 			messageId,
 			content__str,
-			cb__native,
+			(cb__userData->delegate ? cb__native : nullptr),
 			Tcb__UserData::Free,
 			cb__userData);
 }
@@ -10896,8 +11784,12 @@ void Client::GetLobbyMessagesWithLimit(uint64_t lobbyId,
 				Discord_Free(messages.ptr);
 				userData__typed->delegate(std::move(result__obj), std::move(messages__vec));
 			};
-	Discord_Client_GetLobbyMessagesWithLimit(
-			&instance_, lobbyId, limit, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_GetLobbyMessagesWithLimit(&instance_,
+			lobbyId,
+			limit,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 std::optional<discordpp::MessageHandle> Client::GetMessageHandle(uint64_t messageId) const {
 	assert(state_ == DiscordObjectState::Owned);
@@ -10927,8 +11819,10 @@ void Client::GetUserMessageSummaries(discordpp::Client::UserMessageSummariesCall
 				Discord_Free(summaries.ptr);
 				userData__typed->delegate(std::move(result__obj), std::move(summaries__vec));
 			};
-	Discord_Client_GetUserMessageSummaries(
-			&instance_, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_GetUserMessageSummaries(&instance_,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::GetUserMessagesWithLimit(uint64_t recipientId,
 		int32_t limit,
@@ -10948,8 +11842,12 @@ void Client::GetUserMessagesWithLimit(uint64_t recipientId,
 				Discord_Free(messages.ptr);
 				userData__typed->delegate(std::move(result__obj), std::move(messages__vec));
 			};
-	Discord_Client_GetUserMessagesWithLimit(
-			&instance_, recipientId, limit, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_GetUserMessagesWithLimit(&instance_,
+			recipientId,
+			limit,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::OpenMessageInDiscord(
 		uint64_t messageId,
@@ -10976,10 +11874,12 @@ void Client::OpenMessageInDiscord(
 	};
 	Discord_Client_OpenMessageInDiscord(&instance_,
 			messageId,
-			provisionalUserMergeRequiredCallback__native,
+			(provisionalUserMergeRequiredCallback__userData->delegate
+							? provisionalUserMergeRequiredCallback__native
+							: nullptr),
 			TprovisionalUserMergeRequiredCallback__UserData::Free,
 			provisionalUserMergeRequiredCallback__userData,
-			callback__native,
+			(callback__userData->delegate ? callback__native : nullptr),
 			Tcallback__UserData::Free,
 			callback__userData);
 }
@@ -10996,8 +11896,12 @@ void Client::SendLobbyMessage(uint64_t lobbyId,
 				discordpp::ClientResult result__obj(*result, DiscordObjectState::Owned);
 				userData__typed->delegate(std::move(result__obj), messageId);
 			};
-	Discord_Client_SendLobbyMessage(
-			&instance_, lobbyId, content__str, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_SendLobbyMessage(&instance_,
+			lobbyId,
+			content__str,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::SendLobbyMessageWithMetadata(
 		uint64_t lobbyId,
@@ -11019,7 +11923,7 @@ void Client::SendLobbyMessageWithMetadata(
 			lobbyId,
 			content__str,
 			metadata__convert.Properties,
-			cb__native,
+			(cb__userData->delegate ? cb__native : nullptr),
 			Tcb__UserData::Free,
 			cb__userData);
 }
@@ -11036,8 +11940,12 @@ void Client::SendUserMessage(uint64_t recipientId,
 				discordpp::ClientResult result__obj(*result, DiscordObjectState::Owned);
 				userData__typed->delegate(std::move(result__obj), messageId);
 			};
-	Discord_Client_SendUserMessage(
-			&instance_, recipientId, content__str, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_SendUserMessage(&instance_,
+			recipientId,
+			content__str,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::SendUserMessageWithMetadata(
 		uint64_t recipientId,
@@ -11059,7 +11967,7 @@ void Client::SendUserMessageWithMetadata(
 			recipientId,
 			content__str,
 			metadata__convert.Properties,
-			cb__native,
+			(cb__userData->delegate ? cb__native : nullptr),
 			Tcb__UserData::Free,
 			cb__userData);
 }
@@ -11071,8 +11979,10 @@ void Client::SetMessageCreatedCallback(discordpp::Client::MessageCreatedCallback
 		auto userData__typed = static_cast<Tcb__UserData *>(userData__);
 		userData__typed->delegate(messageId);
 	};
-	Discord_Client_SetMessageCreatedCallback(
-			&instance_, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_SetMessageCreatedCallback(&instance_,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::SetMessageDeletedCallback(discordpp::Client::MessageDeletedCallback cb) {
 	assert(state_ == DiscordObjectState::Owned);
@@ -11083,8 +11993,10 @@ void Client::SetMessageDeletedCallback(discordpp::Client::MessageDeletedCallback
 				auto userData__typed = static_cast<Tcb__UserData *>(userData__);
 				userData__typed->delegate(messageId, channelId);
 			};
-	Discord_Client_SetMessageDeletedCallback(
-			&instance_, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_SetMessageDeletedCallback(&instance_,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::SetMessageUpdatedCallback(discordpp::Client::MessageUpdatedCallback cb) {
 	assert(state_ == DiscordObjectState::Owned);
@@ -11094,8 +12006,10 @@ void Client::SetMessageUpdatedCallback(discordpp::Client::MessageUpdatedCallback
 		auto userData__typed = static_cast<Tcb__UserData *>(userData__);
 		userData__typed->delegate(messageId);
 	};
-	Discord_Client_SetMessageUpdatedCallback(
-			&instance_, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_SetMessageUpdatedCallback(&instance_,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::SetShowingChat(bool showingChat) {
 	assert(state_ == DiscordObjectState::Owned);
@@ -11115,7 +12029,7 @@ void Client::AddLogCallback(discordpp::Client::LogCallback callback,
 		Discord_Free(message.ptr);
 	};
 	Discord_Client_AddLogCallback(&instance_,
-			callback__native,
+			(callback__userData->delegate ? callback__native : nullptr),
 			Tcallback__UserData::Free,
 			callback__userData,
 			static_cast<Discord_LoggingSeverity>(minSeverity));
@@ -11134,7 +12048,7 @@ void Client::AddVoiceLogCallback(discordpp::Client::LogCallback callback,
 		Discord_Free(message.ptr);
 	};
 	Discord_Client_AddVoiceLogCallback(&instance_,
-			callback__native,
+			(callback__userData->delegate ? callback__native : nullptr),
 			Tcallback__UserData::Free,
 			callback__userData,
 			static_cast<Discord_LoggingSeverity>(minSeverity));
@@ -11165,7 +12079,10 @@ void Client::OpenConnectedGamesSettingsInDiscord(
 				userData__typed->delegate(std::move(result__obj));
 			};
 	Discord_Client_OpenConnectedGamesSettingsInDiscord(
-			&instance_, callback__native, Tcallback__UserData::Free, callback__userData);
+			&instance_,
+			(callback__userData->delegate ? callback__native : nullptr),
+			Tcallback__UserData::Free,
+			callback__userData);
 }
 void Client::SetApplicationId(uint64_t applicationId) {
 	assert(state_ == DiscordObjectState::Owned);
@@ -11190,8 +12107,10 @@ void Client::SetStatusChangedCallback(discordpp::Client::OnStatusChanged cb) {
 						static_cast<discordpp::Client::Error>(error),
 						errorDetail);
 			};
-	Discord_Client_SetStatusChangedCallback(
-			&instance_, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_SetStatusChangedCallback(&instance_,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::SetVoiceLogDir(std::string const &path, discordpp::LoggingSeverity minSeverity) {
 	assert(state_ == DiscordObjectState::Owned);
@@ -11211,8 +12130,11 @@ void Client::CreateOrJoinLobby(std::string const &secret,
 				discordpp::ClientResult result__obj(*result, DiscordObjectState::Owned);
 				userData__typed->delegate(std::move(result__obj), lobbyId);
 			};
-	Discord_Client_CreateOrJoinLobby(
-			&instance_, secret__str, callback__native, Tcallback__UserData::Free, callback__userData);
+	Discord_Client_CreateOrJoinLobby(&instance_,
+			secret__str,
+			(callback__userData->delegate ? callback__native : nullptr),
+			Tcallback__UserData::Free,
+			callback__userData);
 }
 void Client::CreateOrJoinLobbyWithMetadata(
 		std::string const &secret,
@@ -11231,11 +12153,12 @@ void Client::CreateOrJoinLobbyWithMetadata(
 				discordpp::ClientResult result__obj(*result, DiscordObjectState::Owned);
 				userData__typed->delegate(std::move(result__obj), lobbyId);
 			};
-	Discord_Client_CreateOrJoinLobbyWithMetadata(&instance_,
+	Discord_Client_CreateOrJoinLobbyWithMetadata(
+			&instance_,
 			secret__str,
 			lobbyMetadata__convert.Properties,
 			memberMetadata__convert.Properties,
-			callback__native,
+			(callback__userData->delegate ? callback__native : nullptr),
 			Tcallback__UserData::Free,
 			callback__userData);
 }
@@ -11255,8 +12178,11 @@ void Client::GetGuildChannels(uint64_t guildId, discordpp::Client::GetGuildChann
 				Discord_Free(guildChannels.ptr);
 				userData__typed->delegate(std::move(result__obj), std::move(guildChannels__vec));
 			};
-	Discord_Client_GetGuildChannels(
-			&instance_, guildId, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_GetGuildChannels(&instance_,
+			guildId,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 std::optional<discordpp::LobbyHandle> Client::GetLobbyHandle(uint64_t lobbyId) const {
 	assert(state_ == DiscordObjectState::Owned);
@@ -11294,7 +12220,10 @@ void Client::GetUserGuilds(discordpp::Client::GetUserGuildsCallback cb) {
 				Discord_Free(guilds.ptr);
 				userData__typed->delegate(std::move(result__obj), std::move(guilds__vec));
 			};
-	Discord_Client_GetUserGuilds(&instance_, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_GetUserGuilds(&instance_,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::JoinLinkedLobbyGuild(
 		uint64_t lobbyId,
@@ -11323,10 +12252,12 @@ void Client::JoinLinkedLobbyGuild(
 			};
 	Discord_Client_JoinLinkedLobbyGuild(&instance_,
 			lobbyId,
-			provisionalUserMergeRequiredCallback__native,
+			(provisionalUserMergeRequiredCallback__userData->delegate
+							? provisionalUserMergeRequiredCallback__native
+							: nullptr),
 			TprovisionalUserMergeRequiredCallback__UserData::Free,
 			provisionalUserMergeRequiredCallback__userData,
-			callback__native,
+			(callback__userData->delegate ? callback__native : nullptr),
 			Tcallback__UserData::Free,
 			callback__userData);
 }
@@ -11339,8 +12270,11 @@ void Client::LeaveLobby(uint64_t lobbyId, discordpp::Client::LeaveLobbyCallback 
 		discordpp::ClientResult result__obj(*result, DiscordObjectState::Owned);
 		userData__typed->delegate(std::move(result__obj));
 	};
-	Discord_Client_LeaveLobby(
-			&instance_, lobbyId, callback__native, Tcallback__UserData::Free, callback__userData);
+	Discord_Client_LeaveLobby(&instance_,
+			lobbyId,
+			(callback__userData->delegate ? callback__native : nullptr),
+			Tcallback__UserData::Free,
+			callback__userData);
 }
 void Client::LinkChannelToLobby(uint64_t lobbyId,
 		uint64_t channelId,
@@ -11357,7 +12291,7 @@ void Client::LinkChannelToLobby(uint64_t lobbyId,
 	Discord_Client_LinkChannelToLobby(&instance_,
 			lobbyId,
 			channelId,
-			callback__native,
+			(callback__userData->delegate ? callback__native : nullptr),
 			Tcallback__UserData::Free,
 			callback__userData);
 }
@@ -11369,8 +12303,10 @@ void Client::SetLobbyCreatedCallback(discordpp::Client::LobbyCreatedCallback cb)
 		auto userData__typed = static_cast<Tcb__UserData *>(userData__);
 		userData__typed->delegate(lobbyId);
 	};
-	Discord_Client_SetLobbyCreatedCallback(
-			&instance_, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_SetLobbyCreatedCallback(&instance_,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::SetLobbyDeletedCallback(discordpp::Client::LobbyDeletedCallback cb) {
 	assert(state_ == DiscordObjectState::Owned);
@@ -11380,8 +12316,10 @@ void Client::SetLobbyDeletedCallback(discordpp::Client::LobbyDeletedCallback cb)
 		auto userData__typed = static_cast<Tcb__UserData *>(userData__);
 		userData__typed->delegate(lobbyId);
 	};
-	Discord_Client_SetLobbyDeletedCallback(
-			&instance_, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_SetLobbyDeletedCallback(&instance_,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::SetLobbyMemberAddedCallback(discordpp::Client::LobbyMemberAddedCallback cb) {
 	assert(state_ == DiscordObjectState::Owned);
@@ -11392,8 +12330,10 @@ void Client::SetLobbyMemberAddedCallback(discordpp::Client::LobbyMemberAddedCall
 				auto userData__typed = static_cast<Tcb__UserData *>(userData__);
 				userData__typed->delegate(lobbyId, memberId);
 			};
-	Discord_Client_SetLobbyMemberAddedCallback(
-			&instance_, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_SetLobbyMemberAddedCallback(&instance_,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::SetLobbyMemberRemovedCallback(discordpp::Client::LobbyMemberRemovedCallback cb) {
 	assert(state_ == DiscordObjectState::Owned);
@@ -11404,8 +12344,10 @@ void Client::SetLobbyMemberRemovedCallback(discordpp::Client::LobbyMemberRemoved
 				auto userData__typed = static_cast<Tcb__UserData *>(userData__);
 				userData__typed->delegate(lobbyId, memberId);
 			};
-	Discord_Client_SetLobbyMemberRemovedCallback(
-			&instance_, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_SetLobbyMemberRemovedCallback(&instance_,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::SetLobbyMemberUpdatedCallback(discordpp::Client::LobbyMemberUpdatedCallback cb) {
 	assert(state_ == DiscordObjectState::Owned);
@@ -11416,8 +12358,10 @@ void Client::SetLobbyMemberUpdatedCallback(discordpp::Client::LobbyMemberUpdated
 				auto userData__typed = static_cast<Tcb__UserData *>(userData__);
 				userData__typed->delegate(lobbyId, memberId);
 			};
-	Discord_Client_SetLobbyMemberUpdatedCallback(
-			&instance_, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_SetLobbyMemberUpdatedCallback(&instance_,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::SetLobbyUpdatedCallback(discordpp::Client::LobbyUpdatedCallback cb) {
 	assert(state_ == DiscordObjectState::Owned);
@@ -11427,8 +12371,10 @@ void Client::SetLobbyUpdatedCallback(discordpp::Client::LobbyUpdatedCallback cb)
 		auto userData__typed = static_cast<Tcb__UserData *>(userData__);
 		userData__typed->delegate(lobbyId);
 	};
-	Discord_Client_SetLobbyUpdatedCallback(
-			&instance_, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_SetLobbyUpdatedCallback(&instance_,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::UnlinkChannelFromLobby(uint64_t lobbyId,
 		discordpp::Client::LinkOrUnlinkChannelCallback callback) {
@@ -11442,7 +12388,11 @@ void Client::UnlinkChannelFromLobby(uint64_t lobbyId,
 		userData__typed->delegate(std::move(result__obj));
 	};
 	Discord_Client_UnlinkChannelFromLobby(
-			&instance_, lobbyId, callback__native, Tcallback__UserData::Free, callback__userData);
+			&instance_,
+			lobbyId,
+			(callback__userData->delegate ? callback__native : nullptr),
+			Tcallback__UserData::Free,
+			callback__userData);
 }
 void Client::IsDiscordAppInstalled(discordpp::Client::IsDiscordAppInstalledCallback callback) {
 	assert(state_ == DiscordObjectState::Owned);
@@ -11454,7 +12404,10 @@ void Client::IsDiscordAppInstalled(discordpp::Client::IsDiscordAppInstalledCallb
 		userData__typed->delegate(installed);
 	};
 	Discord_Client_IsDiscordAppInstalled(
-			&instance_, callback__native, Tcallback__UserData::Free, callback__userData);
+			&instance_,
+			(callback__userData->delegate ? callback__native : nullptr),
+			Tcallback__UserData::Free,
+			callback__userData);
 }
 void Client::AcceptActivityInvite(discordpp::ActivityInvite invite,
 		discordpp::Client::AcceptActivityInviteCallback cb) {
@@ -11469,8 +12422,11 @@ void Client::AcceptActivityInvite(discordpp::ActivityInvite invite,
 				userData__typed->delegate(std::move(result__obj), std::move(joinSecret__str));
 				Discord_Free(joinSecret.ptr);
 			};
-	Discord_Client_AcceptActivityInvite(
-			&instance_, invite.instance(), cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_AcceptActivityInvite(&instance_,
+			invite.instance(),
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::ClearRichPresence() {
 	assert(state_ == DiscordObjectState::Owned);
@@ -11502,8 +12458,12 @@ void Client::SendActivityInvite(uint64_t userId,
 		discordpp::ClientResult result__obj(*result, DiscordObjectState::Owned);
 		userData__typed->delegate(std::move(result__obj));
 	};
-	Discord_Client_SendActivityInvite(
-			&instance_, userId, content__str, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_SendActivityInvite(&instance_,
+			userId,
+			content__str,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::SendActivityJoinRequest(uint64_t userId,
 		discordpp::Client::SendActivityInviteCallback cb) {
@@ -11515,8 +12475,11 @@ void Client::SendActivityJoinRequest(uint64_t userId,
 		discordpp::ClientResult result__obj(*result, DiscordObjectState::Owned);
 		userData__typed->delegate(std::move(result__obj));
 	};
-	Discord_Client_SendActivityJoinRequest(
-			&instance_, userId, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_SendActivityJoinRequest(&instance_,
+			userId,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::SendActivityJoinRequestReply(discordpp::ActivityInvite invite,
 		discordpp::Client::SendActivityInviteCallback cb) {
@@ -11528,8 +12491,11 @@ void Client::SendActivityJoinRequestReply(discordpp::ActivityInvite invite,
 		discordpp::ClientResult result__obj(*result, DiscordObjectState::Owned);
 		userData__typed->delegate(std::move(result__obj));
 	};
-	Discord_Client_SendActivityJoinRequestReply(
-			&instance_, invite.instance(), cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_SendActivityJoinRequestReply(&instance_,
+			invite.instance(),
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::SetActivityInviteCreatedCallback(discordpp::Client::ActivityInviteCallback cb) {
 	assert(state_ == DiscordObjectState::Owned);
@@ -11540,8 +12506,10 @@ void Client::SetActivityInviteCreatedCallback(discordpp::Client::ActivityInviteC
 		discordpp::ActivityInvite invite__obj(*invite, DiscordObjectState::Owned);
 		userData__typed->delegate(std::move(invite__obj));
 	};
-	Discord_Client_SetActivityInviteCreatedCallback(
-			&instance_, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_SetActivityInviteCreatedCallback(&instance_,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::SetActivityInviteUpdatedCallback(discordpp::Client::ActivityInviteCallback cb) {
 	assert(state_ == DiscordObjectState::Owned);
@@ -11552,8 +12520,10 @@ void Client::SetActivityInviteUpdatedCallback(discordpp::Client::ActivityInviteC
 		discordpp::ActivityInvite invite__obj(*invite, DiscordObjectState::Owned);
 		userData__typed->delegate(std::move(invite__obj));
 	};
-	Discord_Client_SetActivityInviteUpdatedCallback(
-			&instance_, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_SetActivityInviteUpdatedCallback(&instance_,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::SetActivityJoinCallback(discordpp::Client::ActivityJoinCallback cb) {
 	assert(state_ == DiscordObjectState::Owned);
@@ -11565,8 +12535,10 @@ void Client::SetActivityJoinCallback(discordpp::Client::ActivityJoinCallback cb)
 		userData__typed->delegate(std::move(joinSecret__str));
 		Discord_Free(joinSecret.ptr);
 	};
-	Discord_Client_SetActivityJoinCallback(
-			&instance_, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_SetActivityJoinCallback(&instance_,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::SetActivityJoinWithApplicationCallback(
 		discordpp::Client::ActivityJoinWithApplicationCallback cb) {
@@ -11581,7 +12553,10 @@ void Client::SetActivityJoinWithApplicationCallback(
 				Discord_Free(joinSecret.ptr);
 			};
 	Discord_Client_SetActivityJoinWithApplicationCallback(
-			&instance_, cb__native, Tcb__UserData::Free, cb__userData);
+			&instance_,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::SetOnlineStatus(discordpp::StatusType status,
 		discordpp::Client::UpdateStatusCallback callback) {
@@ -11595,7 +12570,7 @@ void Client::SetOnlineStatus(discordpp::StatusType status,
 	};
 	Discord_Client_SetOnlineStatus(&instance_,
 			static_cast<Discord_StatusType>(status),
-			callback__native,
+			(callback__userData->delegate ? callback__native : nullptr),
 			Tcallback__UserData::Free,
 			callback__userData);
 }
@@ -11609,8 +12584,11 @@ void Client::UpdateRichPresence(discordpp::Activity activity,
 		discordpp::ClientResult result__obj(*result, DiscordObjectState::Owned);
 		userData__typed->delegate(std::move(result__obj));
 	};
-	Discord_Client_UpdateRichPresence(
-			&instance_, activity.instance(), cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_UpdateRichPresence(&instance_,
+			activity.instance(),
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::AcceptDiscordFriendRequest(uint64_t userId,
 		discordpp::Client::UpdateRelationshipCallback cb) {
@@ -11622,8 +12600,11 @@ void Client::AcceptDiscordFriendRequest(uint64_t userId,
 		discordpp::ClientResult result__obj(*result, DiscordObjectState::Owned);
 		userData__typed->delegate(std::move(result__obj));
 	};
-	Discord_Client_AcceptDiscordFriendRequest(
-			&instance_, userId, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_AcceptDiscordFriendRequest(&instance_,
+			userId,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::AcceptGameFriendRequest(uint64_t userId,
 		discordpp::Client::UpdateRelationshipCallback cb) {
@@ -11635,8 +12616,11 @@ void Client::AcceptGameFriendRequest(uint64_t userId,
 		discordpp::ClientResult result__obj(*result, DiscordObjectState::Owned);
 		userData__typed->delegate(std::move(result__obj));
 	};
-	Discord_Client_AcceptGameFriendRequest(
-			&instance_, userId, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_AcceptGameFriendRequest(&instance_,
+			userId,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::BlockUser(uint64_t userId, discordpp::Client::UpdateRelationshipCallback cb) {
 	assert(state_ == DiscordObjectState::Owned);
@@ -11647,7 +12631,11 @@ void Client::BlockUser(uint64_t userId, discordpp::Client::UpdateRelationshipCal
 		discordpp::ClientResult result__obj(*result, DiscordObjectState::Owned);
 		userData__typed->delegate(std::move(result__obj));
 	};
-	Discord_Client_BlockUser(&instance_, userId, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_BlockUser(&instance_,
+			userId,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::CancelDiscordFriendRequest(uint64_t userId,
 		discordpp::Client::UpdateRelationshipCallback cb) {
@@ -11659,8 +12647,11 @@ void Client::CancelDiscordFriendRequest(uint64_t userId,
 		discordpp::ClientResult result__obj(*result, DiscordObjectState::Owned);
 		userData__typed->delegate(std::move(result__obj));
 	};
-	Discord_Client_CancelDiscordFriendRequest(
-			&instance_, userId, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_CancelDiscordFriendRequest(&instance_,
+			userId,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::CancelGameFriendRequest(uint64_t userId,
 		discordpp::Client::UpdateRelationshipCallback cb) {
@@ -11672,8 +12663,11 @@ void Client::CancelGameFriendRequest(uint64_t userId,
 		discordpp::ClientResult result__obj(*result, DiscordObjectState::Owned);
 		userData__typed->delegate(std::move(result__obj));
 	};
-	Discord_Client_CancelGameFriendRequest(
-			&instance_, userId, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_CancelGameFriendRequest(&instance_,
+			userId,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 discordpp::RelationshipHandle Client::GetRelationshipHandle(uint64_t userId) const {
 	assert(state_ == DiscordObjectState::Owned);
@@ -11718,8 +12712,11 @@ void Client::RejectDiscordFriendRequest(uint64_t userId,
 		discordpp::ClientResult result__obj(*result, DiscordObjectState::Owned);
 		userData__typed->delegate(std::move(result__obj));
 	};
-	Discord_Client_RejectDiscordFriendRequest(
-			&instance_, userId, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_RejectDiscordFriendRequest(&instance_,
+			userId,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::RejectGameFriendRequest(uint64_t userId,
 		discordpp::Client::UpdateRelationshipCallback cb) {
@@ -11731,8 +12728,11 @@ void Client::RejectGameFriendRequest(uint64_t userId,
 		discordpp::ClientResult result__obj(*result, DiscordObjectState::Owned);
 		userData__typed->delegate(std::move(result__obj));
 	};
-	Discord_Client_RejectGameFriendRequest(
-			&instance_, userId, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_RejectGameFriendRequest(&instance_,
+			userId,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::RemoveDiscordAndGameFriend(uint64_t userId,
 		discordpp::Client::UpdateRelationshipCallback cb) {
@@ -11744,8 +12744,11 @@ void Client::RemoveDiscordAndGameFriend(uint64_t userId,
 		discordpp::ClientResult result__obj(*result, DiscordObjectState::Owned);
 		userData__typed->delegate(std::move(result__obj));
 	};
-	Discord_Client_RemoveDiscordAndGameFriend(
-			&instance_, userId, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_RemoveDiscordAndGameFriend(&instance_,
+			userId,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::RemoveGameFriend(uint64_t userId, discordpp::Client::UpdateRelationshipCallback cb) {
 	assert(state_ == DiscordObjectState::Owned);
@@ -11756,8 +12759,11 @@ void Client::RemoveGameFriend(uint64_t userId, discordpp::Client::UpdateRelation
 		discordpp::ClientResult result__obj(*result, DiscordObjectState::Owned);
 		userData__typed->delegate(std::move(result__obj));
 	};
-	Discord_Client_RemoveGameFriend(
-			&instance_, userId, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_RemoveGameFriend(&instance_,
+			userId,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 std::vector<discordpp::UserHandle> Client::SearchFriendsByUsername(std::string searchStr) const {
 	assert(state_ == DiscordObjectState::Owned);
@@ -11783,8 +12789,11 @@ void Client::SendDiscordFriendRequest(std::string const &username,
 		discordpp::ClientResult result__obj(*result, DiscordObjectState::Owned);
 		userData__typed->delegate(std::move(result__obj));
 	};
-	Discord_Client_SendDiscordFriendRequest(
-			&instance_, username__str, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_SendDiscordFriendRequest(&instance_,
+			username__str,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::SendDiscordFriendRequestById(uint64_t userId,
 		discordpp::Client::UpdateRelationshipCallback cb) {
@@ -11796,8 +12805,11 @@ void Client::SendDiscordFriendRequestById(uint64_t userId,
 		discordpp::ClientResult result__obj(*result, DiscordObjectState::Owned);
 		userData__typed->delegate(std::move(result__obj));
 	};
-	Discord_Client_SendDiscordFriendRequestById(
-			&instance_, userId, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_SendDiscordFriendRequestById(&instance_,
+			userId,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::SendGameFriendRequest(std::string const &username,
 		discordpp::Client::SendFriendRequestCallback cb) {
@@ -11810,8 +12822,11 @@ void Client::SendGameFriendRequest(std::string const &username,
 		discordpp::ClientResult result__obj(*result, DiscordObjectState::Owned);
 		userData__typed->delegate(std::move(result__obj));
 	};
-	Discord_Client_SendGameFriendRequest(
-			&instance_, username__str, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_SendGameFriendRequest(&instance_,
+			username__str,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::SendGameFriendRequestById(uint64_t userId,
 		discordpp::Client::UpdateRelationshipCallback cb) {
@@ -11823,8 +12838,11 @@ void Client::SendGameFriendRequestById(uint64_t userId,
 		discordpp::ClientResult result__obj(*result, DiscordObjectState::Owned);
 		userData__typed->delegate(std::move(result__obj));
 	};
-	Discord_Client_SendGameFriendRequestById(
-			&instance_, userId, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_SendGameFriendRequestById(&instance_,
+			userId,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::SetRelationshipCreatedCallback(discordpp::Client::RelationshipCreatedCallback cb) {
 	assert(state_ == DiscordObjectState::Owned);
@@ -11835,8 +12853,10 @@ void Client::SetRelationshipCreatedCallback(discordpp::Client::RelationshipCreat
 				auto userData__typed = static_cast<Tcb__UserData *>(userData__);
 				userData__typed->delegate(userId, isDiscordRelationshipUpdate);
 			};
-	Discord_Client_SetRelationshipCreatedCallback(
-			&instance_, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_SetRelationshipCreatedCallback(&instance_,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::SetRelationshipDeletedCallback(discordpp::Client::RelationshipDeletedCallback cb) {
 	assert(state_ == DiscordObjectState::Owned);
@@ -11847,8 +12867,10 @@ void Client::SetRelationshipDeletedCallback(discordpp::Client::RelationshipDelet
 				auto userData__typed = static_cast<Tcb__UserData *>(userData__);
 				userData__typed->delegate(userId, isDiscordRelationshipUpdate);
 			};
-	Discord_Client_SetRelationshipDeletedCallback(
-			&instance_, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_SetRelationshipDeletedCallback(&instance_,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::UnblockUser(uint64_t userId, discordpp::Client::UpdateRelationshipCallback cb) {
 	assert(state_ == DiscordObjectState::Owned);
@@ -11859,7 +12881,11 @@ void Client::UnblockUser(uint64_t userId, discordpp::Client::UpdateRelationshipC
 		discordpp::ClientResult result__obj(*result, DiscordObjectState::Owned);
 		userData__typed->delegate(std::move(result__obj));
 	};
-	Discord_Client_UnblockUser(&instance_, userId, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_UnblockUser(&instance_,
+			userId,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 std::optional<discordpp::UserHandle> Client::GetCurrentUserV2() const {
 	assert(state_ == DiscordObjectState::Owned);
@@ -11889,7 +12915,11 @@ void Client::GetDiscordClientConnectedUser(
 				userData__typed->delegate(std::move(result__obj), std::move(user__opt));
 			};
 	Discord_Client_GetDiscordClientConnectedUser(
-			&instance_, applicationId, callback__native, Tcallback__UserData::Free, callback__userData);
+			&instance_,
+			applicationId,
+			(callback__userData->delegate ? callback__native : nullptr),
+			Tcallback__UserData::Free,
+			callback__userData);
 }
 std::optional<discordpp::UserHandle> Client::GetUser(uint64_t userId) const {
 	assert(state_ == DiscordObjectState::Owned);
@@ -11913,7 +12943,10 @@ void Client::SetRelationshipGroupsUpdatedCallback(
 		userData__typed->delegate(userId);
 	};
 	Discord_Client_SetRelationshipGroupsUpdatedCallback(
-			&instance_, cb__native, Tcb__UserData::Free, cb__userData);
+			&instance_,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 void Client::SetUserUpdatedCallback(discordpp::Client::UserUpdatedCallback cb) {
 	assert(state_ == DiscordObjectState::Owned);
@@ -11923,8 +12956,10 @@ void Client::SetUserUpdatedCallback(discordpp::Client::UserUpdatedCallback cb) {
 		auto userData__typed = static_cast<Tcb__UserData *>(userData__);
 		userData__typed->delegate(userId);
 	};
-	Discord_Client_SetUserUpdatedCallback(
-			&instance_, cb__native, Tcb__UserData::Free, cb__userData);
+	Discord_Client_SetUserUpdatedCallback(&instance_,
+			(cb__userData->delegate ? cb__native : nullptr),
+			Tcb__UserData::Free,
+			cb__userData);
 }
 const CallInfoHandle CallInfoHandle::nullobj{ {}, DiscordObjectState::Invalid };
 CallInfoHandle::~CallInfoHandle() {

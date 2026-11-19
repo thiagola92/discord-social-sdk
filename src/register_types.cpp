@@ -33,6 +33,7 @@ void initialize_module(ModuleInitializationLevel p_level) {
 	GDREGISTER_ABSTRACT_CLASS(DiscordClientStatus);
 	GDREGISTER_ABSTRACT_CLASS(DiscordClientThread);
 	GDREGISTER_ABSTRACT_CLASS(DiscordDisclosureTypes);
+	GDREGISTER_ABSTRACT_CLASS(DiscordDiscordClientGuildVoiceSpeakingState);
 	GDREGISTER_ABSTRACT_CLASS(DiscordErrorType);
 	GDREGISTER_ABSTRACT_CLASS(DiscordExternalIdentityProviderType);
 	GDREGISTER_ABSTRACT_CLASS(DiscordHttpStatusCode);
@@ -69,6 +70,8 @@ void initialize_module(ModuleInitializationLevel p_level) {
 	GDREGISTER_CLASS(DiscordClientCreateOptions);
 	GDREGISTER_CLASS(DiscordClientResult);
 	GDREGISTER_CLASS(DiscordDeviceAuthorizationArgs);
+	GDREGISTER_CLASS(DiscordDiscordClientGuildVoiceMember);
+	GDREGISTER_CLASS(DiscordDiscordClientGuildVoiceSnapshot);
 	GDREGISTER_CLASS(DiscordGuildChannel);
 	GDREGISTER_CLASS(DiscordGuildMinimal);
 	GDREGISTER_CLASS(DiscordLinkedChannel);

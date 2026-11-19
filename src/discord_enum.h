@@ -194,7 +194,7 @@ protected:
 	}
 
 public:
-	static const int64_t id = 13;
+	static const int64_t id = 14;
 
 	enum Enum {
 		MODE_UNINIT = 0,
@@ -221,7 +221,7 @@ protected:
 	}
 
 public:
-	static const int64_t id = 12;
+	static const int64_t id = 13;
 
 	enum Enum {
 		STANDARD = 0,
@@ -277,7 +277,7 @@ protected:
 	}
 
 public:
-	static const int64_t id = 19;
+	static const int64_t id = 20;
 
 	enum Enum {
 		OIDC = 0,
@@ -309,7 +309,7 @@ protected:
 	}
 
 public:
-	static const int64_t id = 18;
+	static const int64_t id = 19;
 
 	enum Enum {
 		USER = 0,
@@ -339,7 +339,7 @@ protected:
 	}
 
 public:
-	static const int64_t id = 22;
+	static const int64_t id = 23;
 
 	enum Enum {
 		NONE = 0,
@@ -374,7 +374,7 @@ protected:
 	}
 
 public:
-	static const int64_t id = 23;
+	static const int64_t id = 24;
 
 	enum Enum {
 		DISCONNECTED = 0,
@@ -461,7 +461,7 @@ protected:
 	}
 
 public:
-	static const int64_t id = 24;
+	static const int64_t id = 25;
 
 	enum Enum {
 		NONE = 0,
@@ -494,7 +494,7 @@ protected:
 	}
 
 public:
-	static const int64_t id = 25;
+	static const int64_t id = 26;
 
 	enum Enum {
 		DISCONNECTED = 0,
@@ -526,7 +526,7 @@ protected:
 	}
 
 public:
-	static const int64_t id = 26;
+	static const int64_t id = 27;
 
 	enum Enum {
 		CLIENT = 0,
@@ -552,10 +552,38 @@ protected:
 	}
 
 public:
-	static const int64_t id = 17;
+	static const int64_t id = 18;
 
 	enum Enum {
 		MESSAGE_DATA_VISIBLE_ON_DISCORD = 3,
+	};
+};
+
+class DiscordDiscordClientGuildVoiceSpeakingState : public RefCounted {
+	GDCLASS(DiscordDiscordClientGuildVoiceSpeakingState, RefCounted)
+
+private:
+	DiscordDiscordClientGuildVoiceSpeakingState() {}
+	~DiscordDiscordClientGuildVoiceSpeakingState() {}
+
+protected:
+	static void _bind_methods() {
+		// Enums binds.
+		BIND_ENUM_CONSTANT(UNAVAILABLE);
+		BIND_ENUM_CONSTANT(SILENT);
+		BIND_ENUM_CONSTANT(SPEAKING);
+
+		// Constant binds.
+		BIND_CONSTANT(id);
+	}
+
+public:
+	static const int64_t id = 12;
+
+	enum Enum {
+		UNAVAILABLE = 0,
+		SILENT = 1,
+		SPEAKING = 2,
 	};
 };
 
@@ -624,7 +652,7 @@ protected:
 	}
 
 public:
-	static const int64_t id = 15;
+	static const int64_t id = 16;
 
 	enum Enum {
 		OIDC = 0,
@@ -826,7 +854,7 @@ protected:
 	}
 
 public:
-	static const int64_t id = 20;
+	static const int64_t id = 21;
 
 	enum Enum {
 		VERBOSE = 1,
@@ -856,7 +884,7 @@ protected:
 	}
 
 public:
-	static const int64_t id = 21;
+	static const int64_t id = 22;
 
 	enum Enum {
 		ONLINE_PLAYING_GAME = 0,
@@ -888,7 +916,7 @@ protected:
 	}
 
 public:
-	static const int64_t id = 14;
+	static const int64_t id = 15;
 
 	enum Enum {
 		NONE = 0,
@@ -953,7 +981,7 @@ protected:
 	}
 
 public:
-	static const int64_t id = 16;
+	static const int64_t id = 17;
 
 	enum Enum {
 		ONLINE = 0,
@@ -987,7 +1015,7 @@ protected:
 	}
 
 public:
-	static const int64_t id = 27;
+	static const int64_t id = 28;
 
 	enum Enum {
 		GIF = 0,
@@ -1043,6 +1071,7 @@ VARIANT_ENUM_CAST(DiscordClientError::Enum);
 VARIANT_ENUM_CAST(DiscordClientStatus::Enum);
 VARIANT_ENUM_CAST(DiscordClientThread::Enum);
 VARIANT_ENUM_CAST(DiscordDisclosureTypes::Enum);
+VARIANT_ENUM_CAST(DiscordDiscordClientGuildVoiceSpeakingState::Enum);
 VARIANT_ENUM_CAST(DiscordErrorType::Enum);
 VARIANT_ENUM_CAST(DiscordExternalIdentityProviderType::Enum);
 VARIANT_ENUM_CAST(DiscordHttpStatusCode::Enum);

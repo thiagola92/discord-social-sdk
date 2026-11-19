@@ -760,6 +760,42 @@ void DiscordClient::get_discord_client_connected_user(int64_t application_id, Ca
 	obj->GetDiscordClientConnectedUser(p0, p1);
 }
 
+void DiscordClient::get_discord_client_guild_voice_channel(int64_t channel_id, Callable callback) {
+	int64_t p0 = channel_id;
+	auto p1 = [callback](auto result, auto snapshot) {
+		discordpp::ClientResult *p0_t = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ p0_t });
+
+		discordpp::DiscordClientGuildVoiceSnapshot *p1_t = memnew(discordpp::DiscordClientGuildVoiceSnapshot(std::move(snapshot)));
+		DiscordDiscordClientGuildVoiceSnapshot *p1 = memnew(DiscordDiscordClientGuildVoiceSnapshot{ p1_t });
+
+		callback.call(p0, p1);
+	};
+
+	obj->GetDiscordClientGuildVoiceChannel(p0, p1);
+}
+
+void DiscordClient::get_discord_client_guild_voice_channels(int64_t guild_id, Callable callback) {
+	int64_t p0 = guild_id;
+	auto p1 = [callback](auto result, auto channels) {
+		discordpp::ClientResult *p0_t = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ p0_t });
+
+		TypedArray<DiscordGuildChannel> p1 = TypedArray<DiscordGuildChannel>();
+
+		for (auto i : channels) {
+			discordpp::GuildChannel *p1_t_t = memnew(discordpp::GuildChannel(std::move(i)));
+			DiscordGuildChannel *p1_t = memnew(DiscordGuildChannel{ p1_t_t });
+
+			p1.push_back(p1_t);
+		}
+
+		callback.call(p0, p1);
+	};
+
+	obj->GetDiscordClientGuildVoiceChannels(p0, p1);
+}
+
 void DiscordClient::get_guild_channels(int64_t guild_id, Callable cb) {
 	int64_t p0 = guild_id;
 	auto p1 = [cb](auto result, auto guild_channels) {
@@ -1019,6 +1055,19 @@ void DiscordClient::is_discord_app_installed(Callable callback) {
 	obj->IsDiscordAppInstalled(p0);
 }
 
+void DiscordClient::join_discord_client_guild_voice_channel(int64_t channel_id, bool force, Callable callback) {
+	int64_t p0 = channel_id;
+	bool p1 = force;
+	auto p2 = [callback](auto result) {
+		discordpp::ClientResult *p0_t = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ p0_t });
+
+		callback.call(p0);
+	};
+
+	obj->JoinDiscordClientGuildVoiceChannel(p0, p1, p2);
+}
+
 void DiscordClient::join_linked_lobby_guild(int64_t lobby_id, Callable provisional_user_merge_required_callback, Callable callback) {
 	int64_t p0 = lobby_id;
 	auto p1 = [provisional_user_merge_required_callback]() {
@@ -1034,6 +1083,18 @@ void DiscordClient::join_linked_lobby_guild(int64_t lobby_id, Callable provision
 	};
 
 	obj->JoinLinkedLobbyGuild(p0, p1, p2);
+}
+
+void DiscordClient::leave_discord_client_guild_voice_channel(int64_t channel_id, Callable callback) {
+	int64_t p0 = channel_id;
+	auto p1 = [callback](auto result) {
+		discordpp::ClientResult *p0_t = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ p0_t });
+
+		callback.call(p0);
+	};
+
+	obj->LeaveDiscordClientGuildVoiceChannel(p0, p1);
 }
 
 void DiscordClient::leave_lobby(int64_t lobby_id, Callable callback) {
@@ -1451,6 +1512,87 @@ void DiscordClient::set_device_change_callback(Callable callback) {
 	obj->SetDeviceChangeCallback(p0);
 }
 
+void DiscordClient::set_discord_client_guild_voice_channel_error_callback(Callable cb) {
+	auto p0 = [cb](auto channel_id, auto result) {
+		int64_t p0 = (int64_t)channel_id;
+
+		discordpp::ClientResult *p1_t = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p1 = memnew(DiscordClientResult{ p1_t });
+
+		cb.call(p0, p1);
+	};
+
+	obj->SetDiscordClientGuildVoiceChannelErrorCallback(p0);
+}
+
+void DiscordClient::set_discord_client_guild_voice_member_added_callback(Callable cb) {
+	auto p0 = [cb](auto channel_id, auto user_id) {
+		int64_t p0 = (int64_t)channel_id;
+		int64_t p1 = (int64_t)user_id;
+		cb.call(p0, p1);
+	};
+
+	obj->SetDiscordClientGuildVoiceMemberAddedCallback(p0);
+}
+
+void DiscordClient::set_discord_client_guild_voice_member_removed_callback(Callable cb) {
+	auto p0 = [cb](auto channel_id, auto user_id) {
+		int64_t p0 = (int64_t)channel_id;
+		int64_t p1 = (int64_t)user_id;
+		cb.call(p0, p1);
+	};
+
+	obj->SetDiscordClientGuildVoiceMemberRemovedCallback(p0);
+}
+
+void DiscordClient::set_discord_client_guild_voice_member_updated_callback(Callable cb) {
+	auto p0 = [cb](auto channel_id, auto user_id) {
+		int64_t p0 = (int64_t)channel_id;
+		int64_t p1 = (int64_t)user_id;
+		cb.call(p0, p1);
+	};
+
+	obj->SetDiscordClientGuildVoiceMemberUpdatedCallback(p0);
+}
+
+void DiscordClient::set_discord_client_guild_voice_speaking_started_callback(Callable cb) {
+	auto p0 = [cb](auto channel_id, auto user_id) {
+		int64_t p0 = (int64_t)channel_id;
+		int64_t p1 = (int64_t)user_id;
+		cb.call(p0, p1);
+	};
+
+	obj->SetDiscordClientGuildVoiceSpeakingStartedCallback(p0);
+}
+
+void DiscordClient::set_discord_client_guild_voice_speaking_stopped_callback(Callable cb) {
+	auto p0 = [cb](auto channel_id, auto user_id) {
+		int64_t p0 = (int64_t)channel_id;
+		int64_t p1 = (int64_t)user_id;
+		cb.call(p0, p1);
+	};
+
+	obj->SetDiscordClientGuildVoiceSpeakingStoppedCallback(p0);
+}
+
+void DiscordClient::set_discord_client_voice_channel_selected_callback(Callable cb) {
+	auto p0 = [cb](auto channel_id) {
+		int64_t p0 = (int64_t)channel_id;
+		cb.call(p0);
+	};
+
+	obj->SetDiscordClientVoiceChannelSelectedCallback(p0);
+}
+
+void DiscordClient::set_discord_client_voice_connection_status_changed_callback(Callable cb) {
+	auto p0 = [cb](auto state) {
+		String p0 = String::utf8(state.c_str(), state.length());
+		cb.call(p0);
+	};
+
+	obj->SetDiscordClientVoiceConnectionStatusChangedCallback(p0);
+}
+
 void DiscordClient::set_echo_cancellation(bool on) {
 	bool p0 = on;
 	obj->SetEchoCancellation(p0);
@@ -1738,6 +1880,18 @@ void DiscordClient::set_voice_settings_updated_callback(Callable callback) {
 	obj->SetVoiceSettingsUpdatedCallback(p0);
 }
 
+void DiscordClient::subscribe_discord_client_guild_voice_channel(int64_t channel_id, Callable callback) {
+	int64_t p0 = channel_id;
+	auto p1 = [callback](auto result) {
+		discordpp::ClientResult *p0_t = memnew(discordpp::ClientResult(std::move(result)));
+		DiscordClientResult *p0 = memnew(DiscordClientResult{ p0_t });
+
+		callback.call(p0);
+	};
+
+	obj->SubscribeDiscordClientGuildVoiceChannel(p0, p1);
+}
+
 void DiscordClient::unblock_user(int64_t user_id, Callable cb) {
 	int64_t p0 = user_id;
 	auto p1 = [cb](auto result) {
@@ -1774,6 +1928,11 @@ void DiscordClient::unmerge_into_provisional_account(int64_t application_id, Dis
 	};
 
 	obj->UnmergeIntoProvisionalAccount(p0, p1, p2, p3);
+}
+
+void DiscordClient::unsubscribe_discord_client_guild_voice_channel(int64_t channel_id) {
+	int64_t p0 = channel_id;
+	obj->UnsubscribeDiscordClientGuildVoiceChannel(p0);
 }
 
 void DiscordClient::update_provisional_account_display_name(String name, Callable callback) {
@@ -1919,6 +2078,12 @@ void DiscordClient::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("get_discord_client_connected_user", "application_id", "callback"),
 			&DiscordClient::get_discord_client_connected_user);
 
+	ClassDB::bind_method(D_METHOD("get_discord_client_guild_voice_channel", "channel_id", "callback"),
+			&DiscordClient::get_discord_client_guild_voice_channel);
+
+	ClassDB::bind_method(D_METHOD("get_discord_client_guild_voice_channels", "guild_id", "callback"),
+			&DiscordClient::get_discord_client_guild_voice_channels);
+
 	ClassDB::bind_method(D_METHOD("get_guild_channels", "guild_id", "cb"),
 			&DiscordClient::get_guild_channels);
 
@@ -2000,8 +2165,14 @@ void DiscordClient::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("is_discord_app_installed", "callback"),
 			&DiscordClient::is_discord_app_installed);
 
+	ClassDB::bind_method(D_METHOD("join_discord_client_guild_voice_channel", "channel_id", "force", "callback"),
+			&DiscordClient::join_discord_client_guild_voice_channel);
+
 	ClassDB::bind_method(D_METHOD("join_linked_lobby_guild", "lobby_id", "provisional_user_merge_required_callback", "callback"),
 			&DiscordClient::join_linked_lobby_guild);
+
+	ClassDB::bind_method(D_METHOD("leave_discord_client_guild_voice_channel", "channel_id", "callback"),
+			&DiscordClient::leave_discord_client_guild_voice_channel);
 
 	ClassDB::bind_method(D_METHOD("leave_lobby", "lobby_id", "callback"),
 			&DiscordClient::leave_lobby);
@@ -2113,6 +2284,30 @@ void DiscordClient::_bind_methods() {
 
 	ClassDB::bind_method(D_METHOD("set_device_change_callback", "callback"),
 			&DiscordClient::set_device_change_callback);
+
+	ClassDB::bind_method(D_METHOD("set_discord_client_guild_voice_channel_error_callback", "cb"),
+			&DiscordClient::set_discord_client_guild_voice_channel_error_callback);
+
+	ClassDB::bind_method(D_METHOD("set_discord_client_guild_voice_member_added_callback", "cb"),
+			&DiscordClient::set_discord_client_guild_voice_member_added_callback);
+
+	ClassDB::bind_method(D_METHOD("set_discord_client_guild_voice_member_removed_callback", "cb"),
+			&DiscordClient::set_discord_client_guild_voice_member_removed_callback);
+
+	ClassDB::bind_method(D_METHOD("set_discord_client_guild_voice_member_updated_callback", "cb"),
+			&DiscordClient::set_discord_client_guild_voice_member_updated_callback);
+
+	ClassDB::bind_method(D_METHOD("set_discord_client_guild_voice_speaking_started_callback", "cb"),
+			&DiscordClient::set_discord_client_guild_voice_speaking_started_callback);
+
+	ClassDB::bind_method(D_METHOD("set_discord_client_guild_voice_speaking_stopped_callback", "cb"),
+			&DiscordClient::set_discord_client_guild_voice_speaking_stopped_callback);
+
+	ClassDB::bind_method(D_METHOD("set_discord_client_voice_channel_selected_callback", "cb"),
+			&DiscordClient::set_discord_client_voice_channel_selected_callback);
+
+	ClassDB::bind_method(D_METHOD("set_discord_client_voice_connection_status_changed_callback", "cb"),
+			&DiscordClient::set_discord_client_voice_connection_status_changed_callback);
 
 	ClassDB::bind_method(D_METHOD("set_echo_cancellation", "on"),
 			&DiscordClient::set_echo_cancellation);
@@ -2237,6 +2432,9 @@ void DiscordClient::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("start_call_with_audio_callbacks", "lobby_id", "received_cb", "captured_cb"),
 			&DiscordClient::start_call_with_audio_callbacks);
 
+	ClassDB::bind_method(D_METHOD("subscribe_discord_client_guild_voice_channel", "channel_id", "callback"),
+			&DiscordClient::subscribe_discord_client_guild_voice_channel);
+
 	ClassDB::bind_method(D_METHOD("unblock_user", "user_id", "cb"),
 			&DiscordClient::unblock_user);
 
@@ -2245,6 +2443,9 @@ void DiscordClient::_bind_methods() {
 
 	ClassDB::bind_method(D_METHOD("unmerge_into_provisional_account", "application_id", "external_auth_type", "external_auth_token", "callback"),
 			&DiscordClient::unmerge_into_provisional_account);
+
+	ClassDB::bind_method(D_METHOD("unsubscribe_discord_client_guild_voice_channel", "channel_id"),
+			&DiscordClient::unsubscribe_discord_client_guild_voice_channel);
 
 	ClassDB::bind_method(D_METHOD("update_provisional_account_display_name", "name", "callback"),
 			&DiscordClient::update_provisional_account_display_name);

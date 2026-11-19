@@ -122,6 +122,15 @@ String Discord::enum_to_string(int64_t value, int64_t enum_id) {
 		return r1;
 	}
 
+	if (p1 == DiscordDiscordClientGuildVoiceSpeakingState::id) {
+		discordpp::DiscordClientGuildVoiceSpeakingState p0 = (discordpp::DiscordClientGuildVoiceSpeakingState)value;
+		auto r0 = discordpp::EnumToString(p0);
+
+		String r1 = String(r0);
+
+		return r1;
+	}
+
 	if (p1 == DiscordAudioSystem::id) {
 		discordpp::AudioSystem p0 = (discordpp::AudioSystem)value;
 		auto r0 = discordpp::EnumToString(p0);

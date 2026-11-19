@@ -32,6 +32,8 @@ class DiscordClient;
 class DiscordClientCreateOptions;
 class DiscordClientResult;
 class DiscordDeviceAuthorizationArgs;
+class DiscordDiscordClientGuildVoiceMember;
+class DiscordDiscordClientGuildVoiceSnapshot;
 class DiscordGuildChannel;
 class DiscordGuildMinimal;
 class DiscordLinkedChannel;
@@ -816,6 +818,8 @@ public:
 	void get_current_input_device(Callable cb);
 	void get_current_output_device(Callable cb);
 	void get_discord_client_connected_user(int64_t application_id, Callable callback);
+	void get_discord_client_guild_voice_channel(int64_t channel_id, Callable callback);
+	void get_discord_client_guild_voice_channels(int64_t guild_id, Callable callback);
 	void get_guild_channels(int64_t guild_id, Callable cb);
 	void get_input_devices(Callable cb);
 	void get_lobby_messages_with_limit(int64_t lobby_id, int64_t limit, Callable cb);
@@ -830,7 +834,9 @@ public:
 	void get_user_messages_with_limit(int64_t recipient_id, int64_t limit, Callable cb);
 	void get_voice_settings(Callable cb);
 	void is_discord_app_installed(Callable callback);
+	void join_discord_client_guild_voice_channel(int64_t channel_id, bool force, Callable callback);
 	void join_linked_lobby_guild(int64_t lobby_id, Callable provisional_user_merge_required_callback, Callable callback);
+	void leave_discord_client_guild_voice_channel(int64_t channel_id, Callable callback);
 	void leave_lobby(int64_t lobby_id, Callable callback);
 	void link_channel_to_lobby(int64_t lobby_id, int64_t channel_id, Callable callback);
 	void open_authorize_device_screen(int64_t client_id, String user_code);
@@ -865,6 +871,14 @@ public:
 	void set_authorize_device_screen_closed_callback(Callable cb);
 	void set_automatic_gain_control(bool on);
 	void set_device_change_callback(Callable callback);
+	void set_discord_client_guild_voice_channel_error_callback(Callable cb);
+	void set_discord_client_guild_voice_member_added_callback(Callable cb);
+	void set_discord_client_guild_voice_member_removed_callback(Callable cb);
+	void set_discord_client_guild_voice_member_updated_callback(Callable cb);
+	void set_discord_client_guild_voice_speaking_started_callback(Callable cb);
+	void set_discord_client_guild_voice_speaking_stopped_callback(Callable cb);
+	void set_discord_client_voice_channel_selected_callback(Callable cb);
+	void set_discord_client_voice_connection_status_changed_callback(Callable cb);
 	void set_echo_cancellation(bool on);
 	void set_engine_managed_audio_session(bool is_engine_managed);
 	void set_game_window_pid(int64_t pid);
@@ -901,9 +915,11 @@ public:
 	void set_voice_log_dir(String path, DiscordLoggingSeverity::Enum min_severity);
 	void set_voice_participant_changed_callback(Callable cb);
 	void set_voice_settings_updated_callback(Callable callback);
+	void subscribe_discord_client_guild_voice_channel(int64_t channel_id, Callable callback);
 	void unblock_user(int64_t user_id, Callable cb);
 	void unlink_channel_from_lobby(int64_t lobby_id, Callable callback);
 	void unmerge_into_provisional_account(int64_t application_id, DiscordAuthenticationExternalAuthType::Enum external_auth_type, String external_auth_token, Callable callback);
+	void unsubscribe_discord_client_guild_voice_channel(int64_t channel_id);
 	void update_provisional_account_display_name(String name, Callable callback);
 	void update_rich_presence(DiscordActivity *activity, Callable cb);
 	void update_token(DiscordAuthorizationTokenType::Enum token_type, String token, Callable callback);
@@ -1048,6 +1064,98 @@ public:
 	}
 
 	~DiscordDeviceAuthorizationArgs() {
+		memdelete(this->obj);
+	}
+};
+
+class DiscordDiscordClientGuildVoiceMember : public RefCounted {
+	GDCLASS(DiscordDiscordClientGuildVoiceMember, RefCounted)
+
+private:
+	discordpp::DiscordClientGuildVoiceMember *obj;
+
+protected:
+	static void _bind_methods();
+
+public:
+	// Internal usage.
+	discordpp::DiscordClientGuildVoiceMember *unwrap() {
+		return obj;
+	}
+
+	// Constructors.
+	DiscordDiscordClientGuildVoiceMember() {
+		this->obj = memnew(discordpp::DiscordClientGuildVoiceMember);
+	}
+
+	// Functions.
+	DiscordDiscordClientGuildVoiceSpeakingState::Enum speaking();
+	String display_name();
+	String username();
+	Variant avatar_hash();
+	bool deaf();
+	bool mute();
+	bool self_deaf();
+	bool self_mute();
+	int64_t user_id();
+	void set_avatar_hash(Variant avatar_hash);
+	void set_deaf(bool deaf);
+	void set_display_name(String display_name);
+	void set_mute(bool mute);
+	void set_self_deaf(bool self_deaf);
+	void set_self_mute(bool self_mute);
+	void set_speaking(DiscordDiscordClientGuildVoiceSpeakingState::Enum speaking);
+	void set_user_id(int64_t user_id);
+	void set_username(String username);
+
+	// Overloading functions.
+
+	// Internal usage.
+	DiscordDiscordClientGuildVoiceMember(discordpp::DiscordClientGuildVoiceMember *obj) {
+		this->obj = obj;
+	}
+
+	~DiscordDiscordClientGuildVoiceMember() {
+		memdelete(this->obj);
+	}
+};
+
+class DiscordDiscordClientGuildVoiceSnapshot : public RefCounted {
+	GDCLASS(DiscordDiscordClientGuildVoiceSnapshot, RefCounted)
+
+private:
+	discordpp::DiscordClientGuildVoiceSnapshot *obj;
+
+	DiscordDiscordClientGuildVoiceSnapshot() {}
+
+protected:
+	static void _bind_methods();
+
+public:
+	// Internal usage.
+	discordpp::DiscordClientGuildVoiceSnapshot *unwrap() {
+		return obj;
+	}
+
+	// Constructors.
+
+	// Functions.
+	DiscordGuildChannel *channel();
+	TypedArray<DiscordDiscordClientGuildVoiceMember> members();
+	bool selected();
+	bool speaking_available();
+	void set_channel(DiscordGuildChannel *channel);
+	void set_selected(bool selected);
+	void set_speaking_available(bool speaking_available);
+
+	// Overloading functions.
+
+	// Internal usage.
+	DiscordDiscordClientGuildVoiceSnapshot(discordpp::DiscordClientGuildVoiceSnapshot *obj) {
+		this->obj = obj;
+	}
+
+	~DiscordDiscordClientGuildVoiceSnapshot() {
 		memdelete(this->obj);
 	}
 };

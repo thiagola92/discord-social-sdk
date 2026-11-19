@@ -17,7 +17,7 @@
 		</constant>
 		<constant name="NONE" value="5" enum="Enum">
 		</constant>
-		<constant name="id" value="20">
+		<constant name="id" value="21">
 		</constant>
 	</constants>
 </class>

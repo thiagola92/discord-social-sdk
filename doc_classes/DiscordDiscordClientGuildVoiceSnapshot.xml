@@ -1,0 +1,56 @@
+<class xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="DiscordDiscordClientGuildVoiceSnapshot" inherits="RefCounted" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	Channel snapshot.
+</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="channel">
+			<return type="DiscordGuildChannel" />
+			<description>
+			Voice channel.
+			</description>
+		</method>
+		<method name="members">
+			<return type="DiscordDiscordClientGuildVoiceMember[]" />
+			<description>
+			Channel members.
+			</description>
+		</method>
+		<method name="selected">
+			<return type="bool" />
+			<description>
+			Channel selected.
+			</description>
+		</method>
+		<method name="set_channel">
+			<return type="void" />
+			<param index="0" name="channel" type="DiscordGuildChannel" />
+			<description>
+			Setter for [method DiscordDiscordClientGuildVoiceSnapshot.channel].
+			</description>
+		</method>
+		<method name="set_selected">
+			<return type="void" />
+			<param index="0" name="selected" type="bool" />
+			<description>
+			Setter for [method DiscordDiscordClientGuildVoiceSnapshot.selected].
+			</description>
+		</method>
+		<method name="set_speaking_available">
+			<return type="void" />
+			<param index="0" name="speaking_available" type="bool" />
+			<description>
+			Setter for [method DiscordDiscordClientGuildVoiceSnapshot.speaking_available].
+			</description>
+		</method>
+		<method name="speaking_available">
+			<return type="bool" />
+			<description>
+			Speaking available.
+			</description>
+		</method>
+	</methods>
+</class>

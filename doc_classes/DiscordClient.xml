@@ -3,7 +3,7 @@
 	The [DiscordClient] class is the main entry point for the Discord SDK. All functionality is exposed through this class.
 </brief_description>
 	<description>
-	See Getting Started for more information on how to use the [DiscordClient] class.
+	See [url=https://docs.discord.com/developers/discord-social-sdk/getting-started]Getting Started[/url] for more information on how to use the [DiscordClient] class.
 </description>
 	<tutorials>
 	</tutorials>
@@ -432,6 +432,30 @@ func(result: DiscordClientResult, user: Variant) -&gt; void: pass
 [/codeblock]
 </description>
 		</method>
+		<method name="get_discord_client_guild_voice_channel">
+			<return type="void" />
+			<param index="0" name="channel_id" type="int" />
+			<param index="1" name="callback" type="Callable" />
+			<description>
+			Gets watched state, fetching unwatched channels. !group GuildVoice.
+			Parameter [param callback] example:
+[codeblock]
+func(result: DiscordClientResult, snapshot: DiscordDiscordClientGuildVoiceSnapshot) -&gt; void: pass
+[/codeblock]
+</description>
+		</method>
+		<method name="get_discord_client_guild_voice_channels">
+			<return type="void" />
+			<param index="0" name="guild_id" type="int" />
+			<param index="1" name="callback" type="Callable" />
+			<description>
+			Lists desktop guild voice channels. Requires [method DiscordClient.get_default_communication_scopes] ([code]sdk.social_layer[/code]), not presence-only. !group GuildVoice.
+			Parameter [param callback] example:
+[codeblock]
+func(result: DiscordClientResult, channels: Array[DiscordGuildChannel]) -&gt; void: pass
+[/codeblock]
+</description>
+		</method>
 		<method name="get_guild_channels">
 			<return type="void" />
 			<param index="0" name="guild_id" type="int" />
@@ -778,6 +802,19 @@ func(installed: bool) -&gt; void: pass
 [/codeblock]
 </description>
 		</method>
+		<method name="join_discord_client_guild_voice_channel">
+			<return type="void" />
+			<param index="0" name="channel_id" type="int" />
+			<param index="1" name="force" type="bool" />
+			<param index="2" name="callback" type="Callable" />
+			<description>
+			Joins desktop voice. Requires CONNECT. !group GuildVoice.
+			Parameter [param callback] example:
+[codeblock]
+func(result: DiscordClientResult) -&gt; void: pass
+[/codeblock]
+</description>
+		</method>
 		<method name="join_linked_lobby_guild">
 			<return type="void" />
 			<param index="0" name="lobby_id" type="int" />
@@ -793,6 +830,18 @@ func() -&gt; void: pass
 Parameter [param callback] example:
 [codeblock]
 func(result: DiscordClientResult, invite_url: String) -&gt; void: pass
+[/codeblock]
+</description>
+		</method>
+		<method name="leave_discord_client_guild_voice_channel">
+			<return type="void" />
+			<param index="0" name="channel_id" type="int" />
+			<param index="1" name="callback" type="Callable" />
+			<description>
+			Leaves the specified desktop voice channel. !group GuildVoice.
+			Parameter [param callback] example:
+[codeblock]
+func(result: DiscordClientResult) -&gt; void: pass
 [/codeblock]
 </description>
 		</method>
@@ -1264,6 +1313,94 @@ func(input_devices: Array[DiscordAudioDevice], output_devices: Array[DiscordAudi
 [/codeblock]
 </description>
 		</method>
+		<method name="set_discord_client_guild_voice_channel_error_callback">
+			<return type="void" />
+			<param index="0" name="cb" type="Callable" />
+			<description>
+			Sets the channel-error callback. !group GuildVoice.
+			Parameter [param cb] example:
+[codeblock]
+func(channel_id: int, result: DiscordClientResult) -&gt; void: pass
+[/codeblock]
+</description>
+		</method>
+		<method name="set_discord_client_guild_voice_member_added_callback">
+			<return type="void" />
+			<param index="0" name="cb" type="Callable" />
+			<description>
+			Sets the member-added callback. !group GuildVoice.
+			Parameter [param cb] example:
+[codeblock]
+func(channel_id: int, user_id: int) -&gt; void: pass
+[/codeblock]
+</description>
+		</method>
+		<method name="set_discord_client_guild_voice_member_removed_callback">
+			<return type="void" />
+			<param index="0" name="cb" type="Callable" />
+			<description>
+			Sets the member-removed callback. !group GuildVoice.
+			Parameter [param cb] example:
+[codeblock]
+func(channel_id: int, user_id: int) -&gt; void: pass
+[/codeblock]
+</description>
+		</method>
+		<method name="set_discord_client_guild_voice_member_updated_callback">
+			<return type="void" />
+			<param index="0" name="cb" type="Callable" />
+			<description>
+			Sets the member-updated callback. !group GuildVoice.
+			Parameter [param cb] example:
+[codeblock]
+func(channel_id: int, user_id: int) -&gt; void: pass
+[/codeblock]
+</description>
+		</method>
+		<method name="set_discord_client_guild_voice_speaking_started_callback">
+			<return type="void" />
+			<param index="0" name="cb" type="Callable" />
+			<description>
+			Sets the speaking-started callback. !group GuildVoice.
+			Parameter [param cb] example:
+[codeblock]
+func(channel_id: int, user_id: int) -&gt; void: pass
+[/codeblock]
+</description>
+		</method>
+		<method name="set_discord_client_guild_voice_speaking_stopped_callback">
+			<return type="void" />
+			<param index="0" name="cb" type="Callable" />
+			<description>
+			Sets the speaking-stopped callback. !group GuildVoice.
+			Parameter [param cb] example:
+[codeblock]
+func(channel_id: int, user_id: int) -&gt; void: pass
+[/codeblock]
+</description>
+		</method>
+		<method name="set_discord_client_voice_channel_selected_callback">
+			<return type="void" />
+			<param index="0" name="cb" type="Callable" />
+			<description>
+			Sets the channel-selected callback. !group GuildVoice.
+			Parameter [param cb] example:
+[codeblock]
+func(channel_id: int) -&gt; void: pass
+[/codeblock]
+</description>
+		</method>
+		<method name="set_discord_client_voice_connection_status_changed_callback">
+			<return type="void" />
+			<param index="0" name="cb" type="Callable" />
+			<description>
+			Sets the connection-status callback. !group GuildVoice.
+			Parameter [param cb] example:
+[codeblock]
+func(state: String) -&gt; void: pass
+[/codeblock]
+</description>
+		</method>
 		<method name="set_echo_cancellation">
 			<return type="void" />
 			<param index="0" name="on" type="bool" />
@@ -1469,7 +1606,7 @@ func(input_detected: bool) -&gt; void: pass
 			<param index="0" name="on" type="bool" />
 			<description>
 			Enables or disables Krisp noise cancellation.
-			Defaults to off. When enabled, noise suppression is automatically disabled.
+			Defaults to off. Enabling Krisp turns WebRTC noise suppression off. If Krisp fails to initialize, noise cancellation is turned back off and noise suppression returns to the value it had before this call.
 			</description>
 		</method>
 		<method name="set_noise_suppression">
@@ -1717,6 +1854,18 @@ func(data: DiscordInt16Array, samples_per_channel: int, sample_rate: int, channe
 			Converts the [DiscordClientStatus] enum to a string.
 			</description>
 		</method>
+		<method name="subscribe_discord_client_guild_voice_channel">
+			<return type="void" />
+			<param index="0" name="channel_id" type="int" />
+			<param index="1" name="callback" type="Callable" />
+			<description>
+			Subscribes to channel events. Requires full social access. !group GuildVoice.
+			Parameter [param callback] example:
+[codeblock]
+func(result: DiscordClientResult) -&gt; void: pass
+[/codeblock]
+</description>
+		</method>
 		<method name="thread_to_string" qualifiers="static">
 			<return type="String" />
 			<param index="0" name="type" type="int" enum="DiscordClientThread.Enum" />
@@ -1766,6 +1915,13 @@ When first testing the SDK, it can be a lot easier to use a public client to get
 func(result: DiscordClientResult) -&gt; void: pass
 [/codeblock]
 </description>
+		</method>
+		<method name="unsubscribe_discord_client_guild_voice_channel">
+			<return type="void" />
+			<param index="0" name="channel_id" type="int" />
+			<description>
+			Unsubscribes from channel events. !group GuildVoice.
+			</description>
 		</method>
 		<method name="update_provisional_account_display_name">
 			<return type="void" />
