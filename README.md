@@ -3,7 +3,7 @@ Wrapper around [Discord Social SDK](https://discord.com/developers/docs/discord-
 
 <div align="center">
 
-![Logo](demo/assets/thumbnail.png)  
+![Thumbnail](demo/assets/thumbnail.png)  
 
 </div>
 
